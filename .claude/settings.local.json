@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__gmail__send_email",
+      "mcp__mcp-registry__search_mcp_registry",
+      "Bash(gh repo:*)",
+      "Bash(gh api:*)",
+      "Bash(npm install:*)",
+      "Bash(uipro init:*)",
+      "Bash(gh search:*)"
+    ]
+  }
+}
