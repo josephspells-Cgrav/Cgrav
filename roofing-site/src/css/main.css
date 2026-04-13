@@ -429,6 +429,26 @@ h6 { font-size: var(--text-lg); }
   .section {
     padding: var(--space-4xl) 0;
   }
+
+  .hero-stats {
+    justify-content: center;
+    text-align: center;
+    margin-top: var(--space-3xl);
+  }
+
+  .hero-content {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -455,6 +475,25 @@ h6 { font-size: var(--text-lg); }
 
   .hero-stats {
     gap: var(--space-xl);
+    justify-content: center;
+    text-align: center;
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+  }
+
+  .hero-content {
+    text-align: center;
+    margin: 0 auto;
+    padding-top: var(--space-4xl);
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
   }
 
   .hero-stat-number {
