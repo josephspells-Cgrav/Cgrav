@@ -501,7 +501,7 @@ h6 { font-size: var(--text-lg); }
     line-height: 1.5;
     max-width: 100%;
     padding: 0 5px;
-  }  margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-xl);
   }
 
   .hero-actions {
