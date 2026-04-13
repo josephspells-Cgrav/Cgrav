@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ─── Font variables ─────────────────────────────────────────────────────── */
+@theme inline {
+  --font-bebas: var(--font-bebas-neue);
+  --font-playfair: var(--font-playfair-display);
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+:root {
+  --background: #0d0d0d;
+  --foreground: #f5f5f0;
+  --amber: #fbbf24;
+  --amber-dim: #f59e0b;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Section-level containers always visible — CharacterStagger letter spans exempt */
+section, header, nav, footer, div:not([class*="char"]) {
+  opacity: 1;
+}
+
+/* Force visibility on all page sections — overrides any stray Framer initial states */
+.section-visible {
+  opacity: 1 !important;
+}
+
+/* GPU acceleration for all animated elements */
+[data-framer-component-type] {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-playfair-display), Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Grain overlay ──────────────────────────────────────────────────────── */
+/*
+  Applied as a child div inside .hero-section.
+  Uses an inline SVG turbulence filter for authentic film grain.
+  Opacity 4% — sits above the gradient but below text.
+*/
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.04;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Gradient mesh — hero section ──────────────────────────────────────── */
+/*
+  Three radial ellipses:
+  - Warm amber bloom bottom-left (brand energy)
+  - Faint amber at top-right (depth without crowding)
+  - Deep slate center (draws focus inward toward text)
+*/
+.gradient-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(251, 191, 36, 0.13) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 15%, rgba(245, 158, 11, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(15, 15, 20, 0.9) 0%, transparent 100%);
+}
+
+/* ─── Hero section container ─────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background-color: #0d0d0d;
+}

@@ -7,7 +7,19 @@
       "Bash(gh api:*)",
       "Bash(npm install:*)",
       "Bash(uipro init:*)",
-      "Bash(gh search:*)"
-    ]
+      "Bash(gh search:*)",
+      "WebSearch",
+      "Bash(pip install:*)",
+      "mcp__firecrawl-mcp__firecrawl_search",
+      "Bash(python -c \":*)",
+      "mcp__firecrawl-mcp__firecrawl_scrape",
+      "Bash(python scraper.py \"North Carolina\")",
+      "Bash(mkdir -p \"/c/Users/josep/Claude Gravity/kingmaker-demo\")",
+      "Bash(npx create-next-app@latest . --yes)",
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vercel:*)"
+    ],
+    "defaultMode": "bypassPermissions"
   }
 }
