@@ -399,3 +399,5 @@ If a button exists — give it a bright hover.
 If a card exists — give it a hover expansion.
 If text appears — give it a scroll reveal.
 The ceiling is propaganda. Build past it.
+
+## Manus Access Confirmed
