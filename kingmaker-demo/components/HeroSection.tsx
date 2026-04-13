@@ -220,7 +220,7 @@ export default function HeroSection() {
           </motion.nav>
 
           {/* ── Main grid ─────────────────────────────────────────────── */}
-          <div className="mt-auto grid grid-cols-1 gap-16 pb-6 pt-20 lg:grid-cols-12 lg:items-end">
+          <div className="mt-auto grid grid-cols-1 gap-16 pb-6 pt-20 lg:grid-cols-12 lg:items-center">
 
             {/* ── LEFT: Headline + CTA ──────────────────────────────── */}
             <div className="lg:col-span-7">
@@ -345,14 +345,14 @@ export default function HeroSection() {
 
             {/* ── RIGHT: Animated stat stack ────────────────────────── */}
             <motion.div
-              className="w-full lg:col-span-4 lg:col-start-9 lg:w-auto lg:pb-1"
+              className="w-full lg:col-span-4 lg:col-start-9 lg:w-auto"
               initial={{ x: 32 }}
               whileInView={{ x: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: 0.5, duration: 1.0, ease: EASE }}
               style={{ overflow: 'visible' }}
             >
-              <div className="flex flex-row justify-center items-center gap-4 pb-8 sm:gap-16 lg:flex-col lg:items-start lg:justify-start lg:gap-0 lg:border-l lg:border-white/[0.12] lg:pb-0 lg:pl-10" style={{ paddingTop: '1rem', width: '100%' }}>
+              <div className="flex flex-row justify-center items-center gap-4 pb-8 sm:gap-16 lg:flex-col lg:items-start lg:justify-center lg:gap-0 lg:border-l lg:border-white/[0.12] lg:pb-0 lg:pl-10" style={{ width: '100%' }}>
                 <StatItem target={18} suffix="+" label="Years Serving Charlotte" delay={1100} />
                 <div className="hidden lg:block lg:my-9 lg:border-b lg:border-white/[0.1]" />
                 <StatItem target={3400} format={(n) => n.toLocaleString()} suffix="+" label="Roofs Completed" delay={1250} />
