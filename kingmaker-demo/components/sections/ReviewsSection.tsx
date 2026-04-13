@@ -69,7 +69,7 @@ export default function ReviewsSection() {
       </motion.div>
 
       {/* Cards — y stagger only */}
-      <div className="grid grid-cols-1 gap-px bg-white/[0.05] md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-px bg-white/[0.05] md:grid-cols-3">
         {REVIEWS.map((review, i) => (
           <motion.div
             key={review.name}

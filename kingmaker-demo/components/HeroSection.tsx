@@ -268,7 +268,7 @@ export default function HeroSection() {
 
               {/* Subheadline */}
               <motion.p
-                className="mt-8 max-w-[510px] text-lg leading-[1.8] text-white/52 md:text-[1.18rem]"
+                className="mt-6 max-w-[510px] text-base leading-[1.6] text-white/60 md:mt-8 md:text-lg md:leading-[1.8]"
                 style={{ fontFamily: "var(--font-playfair-display)" }}
                 initial={{ y: 20 }}
                 whileInView={{ y: 0 }}
@@ -352,7 +352,7 @@ export default function HeroSection() {
               transition={{ delay: 0.5, duration: 1.0, ease: EASE }}
               style={{ overflow: 'visible' }}
             >
-              <div className="flex flex-row justify-between gap-4 pb-8 sm:gap-12 lg:flex-col lg:gap-0 lg:border-l lg:border-white/[0.12] lg:pb-0 lg:pl-10" style={{ paddingTop: '2rem', width: '100%' }}>
+              <div className="flex flex-row justify-center items-center gap-4 pb-8 sm:gap-16 lg:flex-col lg:items-start lg:justify-start lg:gap-0 lg:border-l lg:border-white/[0.12] lg:pb-0 lg:pl-10" style={{ paddingTop: '1rem', width: '100%' }}>
                 <StatItem target={18} suffix="+" label="Years Serving Charlotte" delay={1100} />
                 <div className="hidden lg:block lg:my-9 lg:border-b lg:border-white/[0.1]" />
                 <StatItem target={3400} format={(n) => n.toLocaleString()} suffix="+" label="Roofs Completed" delay={1250} />

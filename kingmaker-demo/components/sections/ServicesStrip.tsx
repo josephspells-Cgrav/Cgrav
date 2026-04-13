@@ -82,7 +82,7 @@ export default function ServicesStrip() {
       </motion.div>
 
       {/* Cards — y stagger only */}
-      <div className="grid grid-cols-1 gap-px bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-px bg-white/[0.06] md:grid-cols-3 lg:grid-cols-4">
         {SERVICES.map((service, i) => (
           <motion.a
             key={service.title}

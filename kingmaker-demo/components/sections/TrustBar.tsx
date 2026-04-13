@@ -35,8 +35,8 @@ function GuaranteeCell() {
         viewBox="0 0 24 24"
         fill="none"
         stroke="#EAB308"
-        strokeWidth={1.5}
-        className="mb-1 h-8 w-8"
+        strokeWidth={2}
+        className="mb-1 h-10 w-10"
         aria-hidden="true"
       >
         <path
@@ -45,15 +45,12 @@ function GuaranteeCell() {
           d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
         />
       </svg>
-      <div className="leading-none text-white" style={{ fontFamily: "var(--font-bebas-neue)", fontSize: "clamp(1.4rem, 2.5vw, 2rem)" }}>
-        100% Satisfaction
+      <div className="leading-none text-white" style={{ fontFamily: "var(--font-bebas-neue)", fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}>
+        100% Satisfaction Guarantee
       </div>
       <div className="h-px w-8 bg-amber-400/50" />
-      <span className="text-[0.65rem] uppercase tracking-[0.18em] text-white/38" style={{ fontFamily: "var(--font-bebas-neue)" }}>
-        Guarantee
-      </span>
-      <span className="mt-1 max-w-[12ch] text-[0.58rem] leading-snug text-white/22" style={{ fontFamily: "var(--font-bebas-neue)", letterSpacing: "0.05em" }}>
-        Lifetime workmanship warranty on every job
+      <span className="mt-1 max-w-[20ch] text-[0.7rem] leading-snug text-white/38 uppercase tracking-[0.1em]" style={{ fontFamily: "var(--font-bebas-neue)" }}>
+        Every job backed by our lifetime workmanship warranty
       </span>
     </div>
   );

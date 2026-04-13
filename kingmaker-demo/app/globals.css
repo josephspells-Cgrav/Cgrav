@@ -20,12 +20,14 @@
 
 /* Section-level containers always visible — CharacterStagger letter spans exempt */
 section, header, nav, footer, div:not([class*="char"]) {
-  opacity: 1;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Force visibility on all page sections — overrides any stray Framer initial states */
 .section-visible {
   opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* GPU acceleration for all animated elements */
