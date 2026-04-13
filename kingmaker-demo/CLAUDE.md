@@ -401,3 +401,4 @@ If text appears — give it a scroll reveal.
 The ceiling is propaganda. Build past it.
 
 ## Manus Access Confirmed
+// trigger build
