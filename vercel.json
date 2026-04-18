@@ -1,4 +1,5 @@
 {
+  "framework": null,
   "installCommand": "cd roofing-site && npm install",
   "buildCommand": "cd roofing-site && npm run build",
   "outputDirectory": "roofing-site/dist"
