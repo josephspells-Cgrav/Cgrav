@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Bunn's Heating & Air — SEO, AEO &amp; Revenue Opportunity Audit</title>
+<meta name="description" content="A deep-dive SEO, AI search, conversion, UX, and revenue audit for Bunn's Heating & Air Conditioning of Louisburg, NC. Competitive analysis, AEO/GEO opportunity, traffic projections, and off-page tier scaling with variance bands." />
+<meta name="robots" content="noindex,nofollow" />
+<style>
+  :root{
+    --bg:#FBF8F2;
+    --bg-card:#FFFFFF;
+    --ink:#0F1B2D;
+    --ink-soft:#3B4A60;
+    --ink-mute:#6B7689;
+    --rule:#E6DFD0;
+    --rule-strong:#D5CBB3;
+    --navy:#16314E;
+    --navy-deep:#0B1F36;
+    --amber:#C2742F;
+    --amber-soft:#F4E7D2;
+    --red:#9B2C2C;
+    --red-soft:#FCE8E6;
+    --green:#1F6F4A;
+    --green-soft:#E0EFE5;
+    --yellow:#8A6A14;
+    --yellow-soft:#FFF1CC;
+    --pill-bg:#EFE9D9;
+    --shadow: 0 1px 0 rgba(15,27,45,.04), 0 8px 24px -16px rgba(15,27,45,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Iowan Old Style","Charter","Georgia","Source Serif Pro",serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.55}
+  body{font-size:17px}
+  .ui,h1,h2,h3,h4,h5,nav,button,.tag,.pill,.kv,.note,.tbl,.kpi,.cta,.callout,.tldr,.footer,.toc,.legend,.scenario-title{font-family:"Inter","SF Pro Text","Segoe UI","Helvetica Neue",system-ui,-apple-system,sans-serif}
+  a{color:var(--navy);text-decoration:underline;text-decoration-color:rgba(22,49,78,.3);text-underline-offset:3px;transition:all .15s}
+  a:hover{text-decoration-color:var(--navy)}
+  .wrap{max-width:980px;margin:0 auto;padding:0 28px}
+  @media (max-width:640px){.wrap{padding:0 18px}}
+
+  /* Top bar */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(251,248,242,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:980px;margin:0 auto;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+  .topbar-brand{font-weight:600;color:var(--navy);letter-spacing:.06em}
+  .topbar-meta{display:flex;gap:18px;color:var(--ink-mute)}
+  @media (max-width:640px){.topbar-meta .hide-sm{display:none}}
+
+  /* Hero */
+  .hero{padding:84px 0 56px;border-bottom:1px solid var(--rule)}
+  .eyebrow{font-family:"Inter",sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--amber);font-weight:600;margin-bottom:18px}
+  h1{font-size:54px;line-height:1.05;letter-spacing:-.02em;margin:0 0 22px;font-weight:500;color:var(--ink)}
+  h1 em{font-style:italic;color:var(--navy);font-weight:500}
+  @media (max-width:640px){h1{font-size:38px}}
+  .lede{font-size:20px;line-height:1.55;color:var(--ink-soft);max-width:760px;margin:0 0 28px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:24px;color:var(--ink-mute);font-size:14px;font-family:"Inter",sans-serif}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+
+  /* TLDR card */
+  .tldr{margin:48px 0;padding:32px;background:var(--bg-card);border:1px solid var(--rule);border-radius:6px;box-shadow:var(--shadow)}
+  .tldr h2{margin:0 0 18px;font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--amber);font-weight:600}
+  .tldr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px}
+  @media (max-width:760px){.tldr-grid{grid-template-columns:1fr 1fr}}
+  .tldr-cell{padding:18px 14px;border-right:1px solid var(--rule)}
+  .tldr-cell:last-child{border-right:none}
+  @media (max-width:760px){.tldr-cell{border-right:none;border-bottom:1px solid var(--rule)}.tldr-cell:nth-child(3),.tldr-cell:nth-child(4){border-right:none}.tldr-cell:nth-child(2){border-right:1px solid var(--rule)}.tldr-cell:nth-child(4){border-bottom:none}.tldr-cell:nth-child(3){border-bottom:none}}
+  .tldr-label{font-family:"Inter",sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-mute);margin-bottom:8px}
+  .tldr-value{font-size:24px;line-height:1.2;color:var(--ink);font-weight:500}
+  .tldr-value small{font-family:"Inter",sans-serif;display:block;font-size:12px;color:var(--ink-mute);font-weight:400;margin-top:4px;text-transform:none;letter-spacing:0}
+
+  /* TOC */
+  .toc{margin:48px 0;font-family:"Inter",sans-serif;font-size:14px}
+  .toc-title{text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--ink-mute);margin-bottom:14px;font-weight:600}
+  .toc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 32px}
+  @media (max-width:640px){.toc-list{grid-template-columns:1fr}}
+  .toc-list li{display:flex;align-items:baseline;gap:10px}
+  .toc-list .num{font-variant-numeric:tabular-nums;color:var(--amber);font-weight:600;min-width:22px}
+  .toc-list a{text-decoration:none;color:var(--ink-soft)}
+  .toc-list a:hover{color:var(--navy)}
+
+  /* Sections */
+  section{padding:64px 0;border-bottom:1px solid var(--rule)}
+  section:last-of-type{border-bottom:none}
+  .section-num{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:14px}
+  h2{font-size:36px;line-height:1.15;letter-spacing:-.015em;margin:0 0 16px;font-weight:500}
+  h3{font-size:22px;line-height:1.3;margin:36px 0 14px;font-weight:600;color:var(--ink);font-family:"Inter",sans-serif}
+  h4{font-size:15px;line-height:1.4;margin:24px 0 10px;font-weight:600;color:var(--navy);font-family:"Inter",sans-serif;text-transform:uppercase;letter-spacing:.06em}
+  p{margin:0 0 16px;max-width:780px}
+
+  /* Tables */
+  .tbl-wrap{margin:24px 0 8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table.tbl{width:100%;border-collapse:collapse;font-family:"Inter",sans-serif;font-size:13.5px;background:var(--bg-card);border:1px solid var(--rule);min-width:600px}
+  table.tbl th,table.tbl td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
+  table.tbl th{background:var(--pill-bg);font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.04em;font-size:11.5px}
+  table.tbl tr:last-child td{border-bottom:none}
+  table.tbl td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  table.tbl td.num-l{font-variant-numeric:tabular-nums;text-align:left;white-space:nowrap}
+  table.tbl th.num{text-align:right}
+  table.tbl .lift{color:var(--green);font-weight:600}
+  table.tbl .warn{color:var(--red);font-weight:600}
+  table.tbl tr.total{background:#F8F2E2}
+  table.tbl tr.total td{font-weight:600;color:var(--ink);border-top:2px solid var(--rule-strong)}
+  table.tbl tr.subtle td{color:var(--ink-mute);font-style:italic;font-size:12.5px}
+  .tbl-cap{font-family:"Inter",sans-serif;font-size:12px;color:var(--ink-mute);margin-top:8px;font-style:italic}
+
+  /* Severity pills */
+  .sev{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-family:"Inter",sans-serif;line-height:1.6}
+  .sev-crit{background:var(--red-soft);color:var(--red)}
+  .sev-high{background:var(--yellow-soft);color:var(--yellow)}
+  .sev-med{background:var(--amber-soft);color:var(--amber)}
+  .sev-good{background:var(--green-soft);color:var(--green)}
+
+  /* Callouts */
+  .callout{background:var(--bg-card);border-left:3px solid var(--amber);padding:18px 22px;margin:24px 0;border-radius:0 4px 4px 0;font-family:"Inter",sans-serif;font-size:14.5px;line-height:1.6;color:var(--ink-soft)}
+  .callout strong{color:var(--ink)}
+  .callout.warning{border-left-color:var(--red)}
+  .callout.success{border-left-color:var(--green)}
+  .callout.navy{border-left-color:var(--navy)}
+
+  /* Tier diagram */
+  .tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0;font-family:"Inter",sans-serif}
+  @media (max-width:760px){.tier-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){.tier-grid{grid-template-columns:1fr}}
+  .tier{padding:18px;background:var(--bg-card);border:1px solid var(--rule);border-radius:6px;position:relative}
+  .tier-num{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:6px}
+  .tier-name{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:4px}
+  .tier-miles{font-size:12px;color:var(--ink-mute);margin-bottom:12px}
+  .tier-cities{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:10px}
+  .tier-diff{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .tier-diff.low{color:var(--green)}
+  .tier-diff.med{color:var(--amber)}
+  .tier-diff.high{color:var(--yellow)}
+  .tier-diff.vhigh{color:var(--red)}
+
+  /* Variance band */
+  .variance-grid{display:grid;grid-template-columns:1fr;gap:0;margin:24px 0;border:1px solid var(--rule);border-radius:6px;background:var(--bg-card);overflow:hidden;font-family:"Inter",sans-serif}
+  .variance-row{display:grid;grid-template-columns:200px 1fr 1fr;border-bottom:1px solid var(--rule);align-items:center}
+  .variance-row:last-child{border-bottom:none}
+  .variance-row.header{background:var(--pill-bg);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);font-weight:600}
+  .variance-row > div{padding:12px 16px;font-size:13.5px}
+  @media (max-width:640px){.variance-row{grid-template-columns:1fr 1fr 1fr;font-size:12px}.variance-row > div{padding:10px 12px}.variance-row > div:first-child{font-weight:600}}
+
+  /* Footer */
+  .footer{padding:48px 0;font-family:"Inter",sans-serif;font-size:13px;color:var(--ink-mute);text-align:center;border-top:1px solid var(--rule);background:var(--navy);color:rgba(255,255,255,.8)}
+  .footer a{color:rgba(255,255,255,.95)}
+  .footer strong{color:#fff}
+
+  /* Sources */
+  .sources{font-family:"Inter",sans-serif;font-size:13px;line-height:1.8;color:var(--ink-soft)}
+  .sources li{margin-bottom:4px}
+
+  /* Print */
+  @media print{
+    body{font-size:11pt;background:#fff}
+    .topbar,.footer{display:none}
+    section{padding:24pt 0;page-break-inside:avoid}
+    .tbl-wrap{overflow:visible}
+    table.tbl{min-width:0;font-size:9pt}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">Audit · Bunn's Heating &amp; Air</div>
+    <div class="topbar-meta">
+      <span class="hide-sm">Prepared May 2026</span>
+      <span>Confidential</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">SEO · AEO · Conversion · Revenue Audit</div>
+    <h1>The 43-year-old brand that's <em>invisible</em> to Google <em>and</em> ChatGPT.</h1>
+    <p class="lede">Bunn's Heating &amp; Air Conditioning has an A+ BBB rating, 12 employees, and a four-decade reputation in Louisburg, NC — and a website that Google effectively cannot read, plus zero footprint in the AI search surface that 45% of consumers now use to find local services. This audit quantifies both gaps, models the recovery, layers in AI search opportunity, and bands every number with a margin of error you can defend in a meeting.</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span>Subject: bunnsheatingandair.com</span>
+      <span><span class="dot"></span>Location: 218 S Main St, Louisburg, NC 27549</span>
+      <span><span class="dot"></span>Market: Franklin County + adjacents</span>
+    </div>
+  </header>
+
+  <!-- TLDR -->
+  <div class="tldr">
+    <h2>Bottom Line · all figures include AEO/AI-search layer</h2>
+    <div class="tldr-grid">
+      <div class="tldr-cell">
+        <div class="tldr-label">Current annual organic rev.</div>
+        <div class="tldr-value">$5K – $104K<small>direct organic only · no AI presence</small></div>
+      </div>
+      <div class="tldr-cell">
+        <div class="tldr-label">Site rebuild only (12-mo run-rate)</div>
+        <div class="tldr-value">$184K – $2.12M<small>base $166K–$1.66M + AEO $18K–$460K</small></div>
+      </div>
+      <div class="tldr-cell">
+        <div class="tldr-label">+ $1K/mo off-page (recommended)</div>
+        <div class="tldr-value">$459K – $6.06M<small>base $408K–$4.58M + AEO $51K–$1.48M</small></div>
+      </div>
+      <div class="tldr-cell">
+        <div class="tldr-label">+ $2K/mo off-page (aggressive)</div>
+        <div class="tldr-value">$691K – $9.05M<small>base $608K–$6.66M + AEO $83K–$2.39M</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title">Sections</div>
+    <ol class="toc-list">
+      <li><span class="num">01</span><a href="#current">Current State Audit</a></li>
+      <li><span class="num">02</span><a href="#gmb">GMB &amp; Service Area</a></li>
+      <li><span class="num">03</span><a href="#competition">Competitive Landscape</a></li>
+      <li><span class="num">04</span><a href="#difficulty">Market Difficulty</a></li>
+      <li><span class="num">05</span><a href="#assumptions">Model Assumptions</a></li>
+      <li><span class="num">06</span><a href="#scenarios">Master Three-Scenario</a></li>
+      <li><span class="num">07</span><a href="#onsite">On-Site Only Isolation</a></li>
+      <li><span class="num">08</span><a href="#tiers">Off-Page Tier Scaling</a></li>
+      <li><span class="num">09</span><a href="#aeo">AI Search Optimization (AEO/GEO)</a></li>
+      <li><span class="num">10</span><a href="#selfaudit">Self-Audit &amp; Model Caveats</a></li>
+      <li><span class="num">11</span><a href="#variance">Variance &amp; Margin of Error</a></li>
+      <li><span class="num">12</span><a href="#failure">50%-Wrong Scenarios</a></li>
+      <li><span class="num">13</span><a href="#takeaway">Recommendation</a></li>
+      <li><span class="num">14</span><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. CURRENT STATE -->
+  <section id="current">
+    <div class="section-num">01 · Current State</div>
+    <h2>What we found when we crawled the site.</h2>
+    <p>The site is a Framer template wired to nine pages, six of which are functionally empty. Google has very little to index. Below is the audit punch-list, severity-coded.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr><th>Issue</th><th>Severity</th><th>Evidence</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Identical <code>&lt;title&gt;</code> sitewide</td><td><span class="sev sev-crit">Critical</span></td><td>Every page = "Bunn's Heating and Air Conditioning". No service or location modifiers.</td></tr>
+          <tr><td>Identical meta description with typo</td><td><span class="sev sev-crit">Critical</span></td><td>"Hvac Company Servicing Louisburg And <strong>Surronding</strong> Areas"</td></tr>
+          <tr><td>Empty service pages (thin / doorway content)</td><td><span class="sev sev-crit">Critical</span></td><td><code>/heating-repair</code> and <code>/hvac-repair</code> contain ~12 words of unique content each</td></tr>
+          <tr><td>Missing H1 on service pages</td><td><span class="sev sev-crit">Critical</span></td><td>Only an H2: "Servicing Louisburg North Carolina Area"</td></tr>
+          <tr><td>Zero structured data</td><td><span class="sev sev-crit">Critical</span></td><td>No LocalBusiness, Service, FAQ, or Review schema markup anywhere</td></tr>
+          <tr><td>Broken footer linking</td><td><span class="sev sev-crit">Critical</span></td><td>10+ footer service links resolve to the homepage <code>/</code> instead of dedicated pages</td></tr>
+          <tr><td>Phone-only conversion path</td><td><span class="sev sev-crit">Critical</span></td><td>No form, no chat, no booking calendar — entire intake gated through a phone number</td></tr>
+          <tr><td>Broken counter animation</td><td><span class="sev sev-high">High</span></td><td>Visible on homepage: "<strong>0+</strong> Years In Business · <strong>0+</strong> 5 Star Reviews · <strong>0+</strong> Happy Customers"</td></tr>
+          <tr><td>AI keyword-stuffed homepage copy</td><td><span class="sev sev-high">High</span></td><td>"HVAC" + "heating and cooling" + "HVAC service" repeated 30+ times bolded in 10-paragraph block</td></tr>
+          <tr><td>No service-area pages</td><td><span class="sev sev-high">High</span></td><td>Missing pages for Franklinton, Henderson, Oxford, Youngsville, Zebulon, Wendell, Wake Forest, Bunn</td></tr>
+          <tr><td>No image alt text</td><td><span class="sev sev-high">High</span></td><td>Framer hero carousel images carry no alt attributes</td></tr>
+          <tr><td>No blog / content engine</td><td><span class="sev sev-high">High</span></td><td>Zero content marketing assets — no seasonal guides, no troubleshooting, no buyer's guides</td></tr>
+          <tr><td>Review schema / social proof not surfaced</td><td><span class="sev sev-high">High</span></td><td>A+ BBB, 4.6★ Yelp, 5.0 Houzz exist — none displayed on-site or marked up</td></tr>
+          <tr><td>Performance: Framer-default mobile</td><td><span class="sev sev-med">Medium</span></td><td>Heavy hero carousel, lazy-load issues typical of Framer; estimated mobile Lighthouse ~55–70</td></tr>
+          <tr><td>No <code>llms.txt</code> file</td><td><span class="sev sev-crit">Critical (AEO)</span></td><td>AI crawlers have no curated map of which pages matter — Bunn's is among the 87% of HVAC contractors invisible to ChatGPT</td></tr>
+          <tr><td>No FAQ content / no FAQPage schema</td><td><span class="sev sev-crit">Critical (AEO)</span></td><td>AI systems pull heavily from Q&amp;A formatted content. Zero exists on the site.</td></tr>
+          <tr><td>AI crawler access not configured</td><td><span class="sev sev-high">High (AEO)</span></td><td>GPTBot, ClaudeBot, PerplexityBot, Google-Extended access policy is undefined — defaults vary by platform</td></tr>
+          <tr><td>Review count below AI citation threshold</td><td><span class="sev sev-high">High (AEO)</span></td><td>ChatGPT-recommended businesses average 4.3★ with 100+ recent reviews. Bunn's has 13 Yelp reviews.</td></tr>
+          <tr><td>NAP not verified across directory ecosystem</td><td><span class="sev sev-high">High (AEO)</span></td><td>AI cross-references NAP across 15+ directories. Inconsistencies are a direct citation-blocker.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Estimated current organic state</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th class="num">Conservative</th><th class="num">Optimistic</th></tr></thead>
+        <tbody>
+          <tr><td>Monthly organic sessions</td><td class="num">30</td><td class="num">120</td></tr>
+          <tr><td>% from brand search</td><td class="num">80%</td><td class="num">60%</td></tr>
+          <tr><td>Non-brand (intent) sessions captured</td><td class="num">~6</td><td class="num">~48</td></tr>
+          <tr><td>Indexed quality pages</td><td class="num">3–4</td><td class="num">6–8</td></tr>
+          <tr><td>Referring domains (link profile)</td><td class="num">&lt;5</td><td class="num">~10</td></tr>
+          <tr><td>Site conversion rate (phone-only)</td><td class="num">1.5%</td><td class="num">3.0%</td></tr>
+          <tr class="total"><td>Booked jobs / mo from organic</td><td class="num">0.2</td><td class="num">2.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>Why so low?</strong> The site cannot rank for generic search because service pages are empty and titles don't carry service+location keywords. The only thing keeping it visible is the 43-year brand history and the Google Business Profile — which is doing 95%+ of the digital lifting.
+    </div>
+  </section>
+
+  <!-- 2. GMB & SERVICE AREA -->
+  <section id="gmb">
+    <div class="section-num">02 · GMB &amp; Service Area</div>
+    <h2>Where they actually are, and where they can actually go.</h2>
+
+    <h3>Verified Google Business Profile</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tbody>
+          <tr><td><strong>Business Name</strong></td><td>Bunn's Heating &amp; Air Conditioning Inc.</td></tr>
+          <tr><td><strong>Address</strong></td><td>218 S Main St, Louisburg, NC 27549 (Franklin County seat)</td></tr>
+          <tr><td><strong>Phone</strong></td><td>(919) 496-2253</td></tr>
+          <tr><td><strong>Hours listed</strong></td><td>24 hours / 7 days</td></tr>
+          <tr><td><strong>Founded</strong></td><td>1983 — 43 years in business</td></tr>
+          <tr><td><strong>Ownership</strong></td><td>Robert Fagan Jr. (President), Marcia Fagan (Owner), Justin Bunn (Partner)</td></tr>
+          <tr><td><strong>Employees</strong></td><td>12</td></tr>
+          <tr><td><strong>BBB rating</strong></td><td>A+ (Accredited since Feb 27, 2025)</td></tr>
+          <tr><td><strong>Yelp</strong></td><td>4.6 ★ · 13 reviews · 14 photos (latest: Sep 6, 2025)</td></tr>
+          <tr><td><strong>Houzz / Angi</strong></td><td>5.0 / 5.0 · 4.3 / 5.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The 50-mile radius, broken into realistic tiers</h3>
+    <p>A theoretical 50-mile radius from 27549 sweeps from Henderson up north all the way down to parts of Raleigh and Cary. But HVAC service is constrained by <strong>drive time</strong>, not search radius. Below is the honest, defensible breakdown of where Bunn's can realistically win business — and where the math should not be modeled.</p>
+
+    <div class="tier-grid">
+      <div class="tier">
+        <div class="tier-num">Tier 1 · 0–10 mi</div>
+        <div class="tier-name">Hometown</div>
+        <div class="tier-miles">Direct drive · &lt; 15 min</div>
+        <div class="tier-cities">Louisburg · Bunn · Centerville · Mapleville · Justice</div>
+        <div class="tier-diff low">Low difficulty</div>
+      </div>
+      <div class="tier">
+        <div class="tier-num">Tier 2 · 10–20 mi</div>
+        <div class="tier-name">Adjacent</div>
+        <div class="tier-miles">15–30 min drive</div>
+        <div class="tier-cities">Franklinton · Youngsville · Henderson · Castalia · Spring Hope</div>
+        <div class="tier-diff med">Medium difficulty</div>
+      </div>
+      <div class="tier">
+        <div class="tier-num">Tier 3 · 20–30 mi</div>
+        <div class="tier-name">Stretch</div>
+        <div class="tier-miles">30–45 min drive</div>
+        <div class="tier-cities">Wake Forest · Rolesville · Zebulon · Wendell · Oxford · Nashville</div>
+        <div class="tier-diff high">High difficulty</div>
+      </div>
+      <div class="tier">
+        <div class="tier-num">Tier 4 · 30–50 mi</div>
+        <div class="tier-name">Theoretical</div>
+        <div class="tier-miles">45–75 min drive</div>
+        <div class="tier-cities">Raleigh · Durham · Cary · Apex · Knightdale · Chapel Hill</div>
+        <div class="tier-diff vhigh">Out of scope</div>
+      </div>
+    </div>
+
+    <div class="callout warning">
+      <strong>Tier 4 is excluded from this model.</strong> A 45–75-minute drive from Louisburg into the Raleigh/Durham metro is not a defensible service area for routine residential repair work. Even if Bunn's could rank there (which is extremely unlikely against entrenched competitors with 1,500+ reviews), the unit economics break down on drive time. The original projections in earlier drafts of this audit included some Tier 4 capture — they have been removed.
+    </div>
+
+    <h3>Effective addressable market</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Market</th><th>Population</th><th class="num">Median HH income</th><th>Realistic Bunn's share ceiling</th></tr></thead>
+        <tbody>
+          <tr><td>Franklin County (full)</td><td class="num-l">82,385</td><td class="num">$71,386</td><td>15–22%</td></tr>
+          <tr><td>Northern Wake County spillover</td><td class="num-l">~45,000</td><td class="num">~$95,000</td><td>3–6%</td></tr>
+          <tr><td>Granville / Vance County edge</td><td class="num-l">~25,000</td><td class="num">~$58,000</td><td>4–8%</td></tr>
+          <tr><td>Nash County edge</td><td class="num-l">~15,000</td><td class="num">~$54,000</td><td>3–6%</td></tr>
+          <tr class="total"><td>Total effective addressable</td><td class="num-l">~167,000</td><td class="num">—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3. COMPETITIVE LANDSCAPE -->
+  <section id="competition">
+    <div class="section-num">03 · Competitive Landscape</div>
+    <h2>Who's already ranking, and how far ahead they are.</h2>
+    <p>This is the section the original audit underweighted. The Wake Forest spillover market in particular contains entrenched contractors with review profiles that dwarf Bunn's — and that materially constrains how much Tier 3 traffic is realistically capturable in year one.</p>
+
+    <h3>Direct local competitors (Tiers 1–2 — Bunn's primary battleground)</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Competitor</th><th>Base</th><th>Founded</th><th>Coverage</th><th>Threat to Bunn's</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Alford Mechanical</strong></td><td>Bunn, NC</td><td>2000</td><td>Wake + Franklin + 8 adjacent towns</td><td><span class="sev sev-crit">Primary</span> — largest service-area overlap</td></tr>
+          <tr><td><strong>Jordan's Heating &amp; Cooling</strong></td><td>114 Hillside Dr, Louisburg</td><td>2000</td><td>Wake + Franklin counties</td><td><span class="sev sev-crit">Primary</span> — same town, same vintage of business</td></tr>
+          <tr><td><strong>Oakes AC Services</strong></td><td>Franklin County</td><td>—</td><td>Franklin + Wake</td><td><span class="sev sev-high">Secondary</span></td></tr>
+          <tr><td><strong>Langley Heating &amp; Air</strong></td><td>Multi-county</td><td>—</td><td>Franklinton + Youngsville + Louisburg</td><td><span class="sev sev-high">Secondary</span> — strong Wake Forest reputation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Tier 3 (Wake Forest spillover) — the fierce zone</h3>
+    <p>Wake Forest, Rolesville, and Zebulon are technically within drive radius but contain a different class of competitor. Aggregate review data tells the story:</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Player</th><th>Reputation signal</th><th class="num">Est. reviews</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Jay's Heating &amp; Cooling</strong></td><td>"Best HVAC Contractor Wake Forest 2024" (Business Rate)</td><td class="num">500+</td><td>5.0★ avg · NATE-certified · 24/7 emergency</td></tr>
+          <tr><td><strong>Mechanical HVAC Services</strong></td><td>30+ years, Wake Forest</td><td class="num">300+</td><td>Same-day in winter weather, strong reputation</td></tr>
+          <tr><td><strong>Air Works Heating &amp; Air</strong></td><td>5.0★</td><td class="num">250+</td><td>Known for second-opinion installs over replacement</td></tr>
+          <tr><td><strong>Wake Forest HVAC Company</strong></td><td>—</td><td class="num">200+</td><td>Local Wake Forest specialist</td></tr>
+          <tr class="total"><td>Wake Forest top-8 aggregate</td><td>4.9★ average</td><td class="num">~2,550 total</td><td>Mean ≈ 318 reviews per contractor</td></tr>
+          <tr><td><strong>Bunn's Heating &amp; Air</strong></td><td>—</td><td class="num">13 (Yelp)</td><td><span class="warn">~25× behind the competitive set</span></td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-cap">Aggregate review counts above are conservative estimates from third-party aggregator pages. Exact counts vary by source.</div>
+    </div>
+
+    <h3>Tier 4 (Raleigh metro) — out of scope, for reference</h3>
+    <p>Listed only to demonstrate why these players are <strong>not modeled</strong> as direct threats:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Player</th><th>Edge</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Carolina Comfort Air</strong></td><td>Trane dealer · Google Guaranteed · large fleet</td></tr>
+          <tr><td><strong>Air Experts Heating &amp; Cooling</strong></td><td>24-hour emergency · multi-system dealer</td></tr>
+          <tr><td><strong>SantaAir Heating and Air</strong></td><td>Top-of-mind Yelp Raleigh</td></tr>
+          <tr><td><strong>Klimatology HVAC</strong></td><td>Premium-positioning brand</td></tr>
+          <tr><td><strong>Raleigh Heating &amp; Air</strong></td><td>Plumbing + HVAC bundled brand</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-mute);">These brands operate at 1,500+ review counts with $50K–$200K/mo marketing budgets. Bunn's is not competing with them in this engagement.</p>
+  </section>
+
+  <!-- 4. DIFFICULTY -->
+  <section id="difficulty">
+    <div class="section-num">04 · Market Difficulty</div>
+    <h2>How hard is it to rank, by tier.</h2>
+    <p>NC HVAC SEO benchmarks (from <a href="https://www.localmighty.com/blog/hvac-local-seo-guide/">LocalMighty</a> and corroborating industry sources) show that top map-pack positions in Charlotte and Raleigh require <strong>150–400 reviews at 4.5+ stars, with 12–20 net-new reviews per month sustained over 12–18 months</strong>. Smaller NC markets need significantly less. Here's the realistic difficulty grade for each of Bunn's tiers.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Tier</th><th>Reviews needed for top-3 map pack</th><th class="num">Time to top-3 (mo)</th><th>Bunn's realistic ceiling</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tier 1 · Hometown</strong></td><td>30–60 reviews</td><td class="num">3–6</td><td>Top-3 → Top-1 with sustained velocity</td></tr>
+          <tr><td><strong>Tier 2 · Adjacent</strong></td><td>60–120 reviews</td><td class="num">6–9</td><td>Top-3 to Top-5 by month 9–12</td></tr>
+          <tr><td><strong>Tier 3 · Stretch (incl. Wake Forest)</strong></td><td>150–250 reviews</td><td class="num">12–18</td><td>Top 5–10 year 1 · Top 3–5 year 2 (Wake Forest)</td></tr>
+          <tr><td><strong>Tier 4 · Raleigh metro</strong></td><td>400+ reviews</td><td class="num">24–36+</td><td><span class="warn">Not modeled</span> — capacity-prohibitive</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout success">
+      <strong>The reason this still works:</strong> Bunn's primary battleground is Tier 1 (their hometown) and Tier 2 (adjacents). The review gap that looks scary in Tier 3 is much smaller in their actual core market. To dominate Louisburg + Franklinton + Youngsville + Henderson, Bunn's needs roughly <strong>50–100 net-new reviews</strong> — which the proposed marketing program produces in months 6–12 even on conservative numbers.
+    </div>
+  </section>
+
+  <!-- 5. ASSUMPTIONS -->
+  <section id="assumptions">
+    <div class="section-num">05 · Model Assumptions</div>
+    <h2>The unit economics we're using.</h2>
+    <p>Locked, sourced, transparent. Every revenue number in this audit traces back to these inputs.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Input</th><th class="num">Conservative</th><th class="num">Optimistic</th><th>Source / rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Avg repair ticket</td><td class="num">$333</td><td class="num">$450</td><td>NC market average across multiple Carolina HVAC pricing references</td></tr>
+          <tr><td>Avg install ticket</td><td class="num">$7,500</td><td class="num">$10,500</td><td>NC residential install range $5K–$12K</td></tr>
+          <tr><td>Job mix (repair : install by volume)</td><td class="num">75% : 25%</td><td class="num">70% : 30%</td><td>HVAC industry standard residential</td></tr>
+          <tr><td><strong>Blended avg ticket</strong></td><td class="num"><strong>$2,125</strong></td><td class="num"><strong>$3,465</strong></td><td>Computed from above</td></tr>
+          <tr><td>HVAC customer LTV (7–10 yr)</td><td class="num">$15,340</td><td class="num">$47,200</td><td>Mediagistic / FirstPageSage industry benchmarks</td></tr>
+          <tr><td>LTV capture rate</td><td class="num">50%</td><td class="num">70%</td><td>Industry retention norms for established brands</td></tr>
+          <tr><td>Lead → booked-job close rate</td><td class="num">50%</td><td class="num">65%</td><td>Industry: 46% avg, 85% top performers; new site lifts intake significantly</td></tr>
+          <tr><td>Site conversion (with UI/UX 9.5 + MCTB + Opus chatbot)</td><td class="num">5.0%</td><td class="num">8.0%</td><td>Premium UI +20–40% · MCTB +30% · Opus chatbot +15–25% stacked</td></tr>
+          <tr><td>Effective addressable population</td><td class="num">~140,000</td><td class="num">~167,000</td><td>Franklin + spillover from Wake/Granville/Vance/Nash</td></tr>
+          <tr><td>Service-intent monthly search volume (realistic capture zone)</td><td class="num">950</td><td class="num">1,700</td><td>Tiers 1–3 combined; Tier 4 excluded</td></tr>
+          <tr><td>Year-1 realistic capture share</td><td class="num">7–18%</td><td class="num">15–28%</td><td>Varies by tier; weighted by competition density</td></tr>
+          <tr><td>AI search traffic share (% of organic baseline)</td><td class="num">4–7%</td><td class="num">10–18%</td><td>Local services AI adoption range; scales with citation build</td></tr>
+          <tr><td>Blended AI search conversion rate</td><td class="num">9%</td><td class="num">13%</td><td>Market-share-weighted across ChatGPT (14–16%), Perplexity (10.5%), Claude (5%), Gemini (3%)</td></tr>
+          <tr><td>AI Overview defensive uplift (% of base revenue protected)</td><td class="num">5%</td><td class="num">15%</td><td>Organic CTR protection as AI Overviews expand to 48%+ of SERPs</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Why MCTB + Opus 4.7 chatbot matter so much</h4>
+    <p>Small home-service businesses miss <strong>20–40% of inbound calls during busy periods</strong> (industry data). HVAC callers are in panic mode — broken AC in summer, no heat in winter. If they hit voicemail, they're gone in under two minutes. Missed-call text-back recovers 35–50% of those callers. An always-on Opus 4.7 chatbot does the actual booking — not just engagement. The combined effect is <strong>+30–60% on call-to-job conversion, independent of traffic.</strong></p>
+  </section>
+
+  <!-- 6. MASTER SCENARIO -->
+  <section id="scenarios">
+    <div class="section-num">06 · Master Three-Scenario</div>
+    <h2>Current vs. site rebuild vs. site + $500/mo off-page.</h2>
+    <p>All numbers shown as <strong>Conservative</strong> | <strong>Optimistic</strong>. Year-1 run-rate, measured at month 12.</p>
+
+    <h3>Monthly performance (steady-state, month 12)</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th class="num">A · Current</th><th class="num">B · Rebuild only</th><th class="num">C · Rebuild + $500/mo</th></tr></thead>
+        <tbody>
+          <tr><td>Organic + map sessions / mo</td><td class="num">30 | 120</td><td class="num">200 | 600</td><td class="num">300 | 950</td></tr>
+          <tr><td>% non-brand (intent) traffic</td><td class="num">20% | 40%</td><td class="num">70% | 80%</td><td class="num">78% | 85%</td></tr>
+          <tr><td>Local pack visibility (service KWs)</td><td class="num">0–1</td><td class="num">6–10</td><td class="num">10–16</td></tr>
+          <tr><td>Site conversion rate</td><td class="num">1.5% | 3.0%</td><td class="num">5.0% | 8.0%</td><td class="num">5.0% | 8.0%</td></tr>
+          <tr><td>Direct leads / mo</td><td class="num">0.5 | 3.6</td><td class="num">10 | 48</td><td class="num">15 | 76</td></tr>
+          <tr><td>+ MCTB recovery</td><td class="num">0 | 0</td><td class="num">+3 | +14</td><td class="num">+4 | +21</td></tr>
+          <tr class="total"><td>Total leads / mo</td><td class="num">0.5 | 3.6</td><td class="num">13 | 62</td><td class="num">19 | 97</td></tr>
+          <tr><td>Booked jobs / mo (50–65% close)</td><td class="num">0.2 | 2.5</td><td class="num">6.5 | 40</td><td class="num">9.5 | 63</td></tr>
+          <tr><td>Repair jobs / mo</td><td class="num">0.2 | 1.8</td><td class="num">4.9 | 28</td><td class="num">7.1 | 44</td></tr>
+          <tr><td>Install jobs / mo</td><td class="num">0.0 | 0.8</td><td class="num">1.6 | 12</td><td class="num">2.4 | 19</td></tr>
+          <tr><td>Repair revenue / mo</td><td class="num">$67 | $810</td><td class="num">$1,631 | $12,600</td><td class="num">$2,364 | $19,800</td></tr>
+          <tr><td>Install revenue / mo</td><td class="num">$0 | $8,400</td><td class="num">$12,188 | $126,000</td><td class="num">$17,813 | $199,500</td></tr>
+          <tr class="total"><td>Immediate revenue / mo</td><td class="num">$67 | $9,210</td><td class="num">$13,819 | $138,600</td><td class="num">$20,177 | $219,300</td></tr>
+          <tr class="subtle"><td>LTV pipeline added / mo</td><td class="num">$1,534 | $82,600</td><td class="num">$49,855 | $1,321,600</td><td class="num">$72,865 | $2,082,520</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Annualized (12 months @ steady state)</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th class="num">A · Current</th><th class="num">B · Rebuild only</th><th class="num">C · Rebuild + $500/mo</th></tr></thead>
+        <tbody>
+          <tr><td>Booked jobs / year</td><td class="num">2 | 30</td><td class="num">78 | 480</td><td class="num">114 | 756</td></tr>
+          <tr><td>Immediate revenue / year</td><td class="num">$800 | $111K</td><td class="num"><strong>$166K | $1.66M</strong></td><td class="num"><strong>$242K | $2.63M</strong></td></tr>
+          <tr><td>Δ over current</td><td class="num">—</td><td class="num lift">+$165K | +$1.55M</td><td class="num lift">+$241K | +$2.52M</td></tr>
+          <tr><td>12-mo LTV pipeline added</td><td class="num">$18K | $991K</td><td class="num">$598K | $15.9M</td><td class="num">$874K | $25M</td></tr>
+          <tr><td>Reviews added / year (1 per job)</td><td class="num">2 | 30</td><td class="num">78 | 480</td><td class="num">114 | 756</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-cap">Steady-state means month 12 run-rate. Months 1–6 ramp at ~30–50% of these numbers as SEO compounds.</div>
+    </div>
+
+    <div class="callout">
+      <strong>Capacity sanity-check:</strong> The optimistic case in column C is <strong>~63 booked jobs/mo</strong>, or ~14/week. Bunn's has 12 employees — that's at the edge of current capacity assuming a typical 60% tech-to-overhead ratio. The optimistic upper bound assumes Bunn's hires 2–4 additional technicians during the year. Conservative numbers (9.5 jobs/mo) are comfortably absorbed by current staffing.
+    </div>
+  </section>
+
+  <!-- 7. ON-SITE ONLY -->
+  <section id="onsite">
+    <div class="section-num">07 · On-Site Only Isolation</div>
+    <h2>What the rebuild alone unlocks. No off-page spend.</h2>
+    <p>This is the deliverable to show a client who wants to understand what the site bundle (9.5/10 UI/UX, on-page + technical SEO, MCTB, Opus 4.7 chatbot) yields with zero ongoing marketing spend.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th class="num">Current</th><th class="num">After rebuild</th><th class="num">Δ Lift</th></tr></thead>
+        <tbody>
+          <tr><td>Monthly organic sessions</td><td class="num">30 | 120</td><td class="num">200 | 600</td><td class="num lift">+6.7× | +5.0×</td></tr>
+          <tr><td>Site conversion rate</td><td class="num">1.5% | 3.0%</td><td class="num">5.0% | 8.0%</td><td class="num lift">+3.3× | +2.7×</td></tr>
+          <tr><td>Total leads / mo (incl. MCTB)</td><td class="num">0.5 | 3.6</td><td class="num">13 | 62</td><td class="num lift">+26× | +17×</td></tr>
+          <tr><td>Booked jobs / mo</td><td class="num">0.2 | 2.5</td><td class="num">6.5 | 40</td><td class="num lift">+33× | +16×</td></tr>
+          <tr><td>Immediate revenue / mo</td><td class="num">$67 | $9.2K</td><td class="num">$13.8K | $138.6K</td><td class="num lift">+$13.8K | +$129.4K</td></tr>
+          <tr class="total"><td>Immediate revenue / year</td><td class="num">$0.8K | $111K</td><td class="num">$166K | $1.66M</td><td class="num lift">+$165K | +$1.55M</td></tr>
+          <tr><td>LTV pipeline / year</td><td class="num">$18K | $991K</td><td class="num">$598K | $15.9M</td><td class="num lift">+$580K | +$14.9M</td></tr>
+          <tr><td>Reviews added / year</td><td class="num">2 | 30</td><td class="num">78 | 480</td><td class="num lift">+76 | +450</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>What's driving each lever</h3>
+    <p><strong>Traffic 6.7× lift</strong> — Fixing identical titles to unique service+location titles. Filling empty service pages with real content. Adding 5–8 service-area pages (Franklinton, Henderson, Youngsville, Wake Forest, Zebulon, Oxford). Schema markup unlocks local pack reinforcement and rich results. None of this is aggressive — it's catching up to baseline.</p>
+    <p><strong>Conversion 3.3× lift</strong> — Premium UI/UX alone is +20–40% in industry studies. MCTB recovers 35–50% of missed calls. Opus 4.7 chatbot books appointments 24/7 (covers nights, weekends, busy days). These stack.</p>
+    <p><strong>Capacity reality</strong> — Conservative adds ~78 jobs/year = ~1.5/week. Easily absorbed by current staffing. Optimistic requires hiring 3–5 techs during the year.</p>
+  </section>
+
+  <!-- 8. TIER SCALING -->
+  <section id="tiers">
+    <div class="section-num">08 · Off-Page Tier Scaling</div>
+    <h2>$500 vs. $1,000 vs. $2,000 per month — layered on the rebuild.</h2>
+    <p>Off-page work compounds through three independent vectors: <strong>backlinks</strong> (organic rankings), <strong>Google Business Profile activity</strong> (map pack share), and the <strong>review flywheel</strong> (each new job = 1 five-star review → improved map ranking + on-page conversion lift). GMB optimization + automation switches on at the $1,000 tier per scope.</p>
+
+    <h3>Tier composition</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Component</th><th class="num">$500/mo</th><th class="num">$1,000/mo</th><th class="num">$2,000/mo</th></tr></thead>
+        <tbody>
+          <tr><td>Fat Joe guest posts</td><td class="num">2/mo DR20–40</td><td class="num">3/mo DR30–50</td><td class="num">5/mo DR40–60</td></tr>
+          <tr><td>Fat Joe niche edits</td><td class="num">1/mo</td><td class="num">2/mo</td><td class="num">4/mo</td></tr>
+          <tr><td>Local citations &amp; directory cleanup</td><td class="num">—</td><td class="num">5/mo</td><td class="num">10/mo</td></tr>
+          <tr><td><strong>GMB optimization</strong></td><td class="num">❌</td><td class="num">✅ Weekly posts, photos, Q&amp;A, services schema</td><td class="num">✅ Daily posts, geo-tagged media, products section</td></tr>
+          <tr><td><strong>GMB automation (Opus 4.7)</strong></td><td class="num">❌</td><td class="num">✅ Auto-generated weekly post copy + image</td><td class="num">✅ Full automation + review-response automation</td></tr>
+          <tr><td>New referring domains / mo</td><td class="num">2–3</td><td class="num">4–6</td><td class="num">8–12</td></tr>
+          <tr><td>Map pack rank lift (months 1→6)</td><td class="num">+1–2 spots</td><td class="num">+2–4 spots</td><td class="num">+3–6 spots</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Performance at month 12 (steady-state, conservative | optimistic)</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th class="num">Rebuild only</th><th class="num">+ $500/mo</th><th class="num">+ $1,000/mo</th><th class="num">+ $2,000/mo</th></tr></thead>
+        <tbody>
+          <tr><td>Sessions / mo</td><td class="num">200 | 600</td><td class="num">300 | 950</td><td class="num">450 | 1,500</td><td class="num">650 | 2,200</td></tr>
+          <tr><td>Map-pack share of leads</td><td class="num">35%</td><td class="num">42%</td><td class="num"><strong>58%</strong></td><td class="num"><strong>66%</strong></td></tr>
+          <tr><td>Reviews accumulated yr 1</td><td class="num">78 | 480</td><td class="num">114 | 756</td><td class="num">192 | 1,332</td><td class="num">276 | 1,932</td></tr>
+          <tr><td>Avg rating delta vs. current 4.6</td><td class="num">→4.7 | 4.8</td><td class="num">→4.7 | 4.8</td><td class="num">→4.8 | 4.9</td><td class="num">→4.8 | 4.9</td></tr>
+          <tr><td>Total leads / mo (incl. MCTB)</td><td class="num">13 | 62</td><td class="num">19 | 97</td><td class="num">32 | 170</td><td class="num">46 | 248</td></tr>
+          <tr><td>Booked jobs / mo</td><td class="num">6.5 | 40</td><td class="num">9.5 | 63</td><td class="num">16 | 111</td><td class="num">23 | 161</td></tr>
+          <tr class="total"><td>Annualized immediate revenue</td><td class="num"><strong>$166K | $1.66M</strong></td><td class="num"><strong>$242K | $2.63M</strong></td><td class="num"><strong>$408K | $4.58M</strong></td><td class="num"><strong>$608K | $6.66M</strong></td></tr>
+          <tr class="subtle"><td>12-mo LTV pipeline added</td><td class="num">$598K | $15.9M</td><td class="num">$874K | $25M</td><td class="num">$1.47M | $43.5M</td><td class="num">$2.12M | $63M</td></tr>
+          <tr><td>Off-page annual cost</td><td class="num">$0</td><td class="num">$6,000</td><td class="num">$12,000</td><td class="num">$24,000</td></tr>
+          <tr class="total"><td>Net ROI on off-page spend / yr</td><td class="num">—</td><td class="num lift">+$76K | +$970K</td><td class="num lift">+$242K | +$2.92M</td><td class="num lift">+$442K | +$5.0M</td></tr>
+          <tr><td>ROAS on off-page</td><td class="num">—</td><td class="num lift">13× | 162×</td><td class="num lift">21× | 244×</td><td class="num lift">19× | 209×</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Marginal analysis — what each extra $500 actually buys</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Step up</th><th class="num">Marginal cost / yr</th><th class="num">Marginal revenue gain / yr</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>$0 → $500/mo</td><td class="num">+$6K</td><td class="num lift">+$76K | +$970K</td><td>Pure links, no GMB</td></tr>
+          <tr><td>$500 → $1,000/mo</td><td class="num">+$6K</td><td class="num lift">+$166K | +$1.95M</td><td><strong>Best $/$ ratio</strong> — GMB automation switches on</td></tr>
+          <tr><td>$1,000 → $2,000/mo</td><td class="num">+$12K</td><td class="num lift">+$200K | +$2.08M</td><td>Diminishing per-dollar return; scales install volume</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout success">
+      <strong>Best-value tier: $1,000/mo.</strong> GMB automation is the single largest off-page ROI unlock because Bunn's map pack is their dominant lead source for a county this size. Going from $500 → $1,000 nearly triples the annual revenue gain. Going $1,000 → $2,000 is more about install volume capture than fundamental ranking lift — defensible only if Bunn's has the capacity to absorb installs.
+    </div>
+  </section>
+
+  <!-- 9. AI SEARCH OPTIMIZATION -->
+  <section id="aeo">
+    <div class="section-num">09 · AI Search Optimization (AEO / GEO)</div>
+    <h2>The layer most audits miss — and it's compounding fast.</h2>
+    <p>45% of consumers now use AI tools (ChatGPT, Gemini, Perplexity, Claude, Copilot) to find local services. Yet ChatGPT recommends only <strong>1.2%</strong> of local businesses, and an industry survey put <strong>87% of HVAC and plumbing contractors</strong> in the AI-invisible bucket. Bunn's is squarely in that 87%. This section quantifies the layer on top of the rebuild and off-page work — and unlike most "AI hype" sections in a marketing audit, this one has numbers behind it.</p>
+
+    <h3>Why AEO matters for HVAC in 2026 — offense AND defense</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Signal</th><th>2026 value</th><th>Implication for Bunn's</th></tr></thead>
+        <tbody>
+          <tr><td>Google searches showing AI Overviews</td><td class="num-l">48%</td><td>Half of all SERPs already have AI answers above the local pack</td></tr>
+          <tr><td>AI Overview impact on organic CTR</td><td class="num-l">−61%</td><td>Without AEO presence, organic traffic decays as AI Overviews expand</td></tr>
+          <tr><td>Lift for brands cited <em>in</em> AI Overviews</td><td class="num-l">+35% clicks</td><td>Being cited isn't optional — it's how you survive the SERP shift</td></tr>
+          <tr><td>Consumers using AI for local services</td><td class="num-l">45%</td><td>Nearly half of Bunn's TAM is querying AI before they ever see Google</td></tr>
+          <tr><td>ChatGPT YoY Gen AI traffic share</td><td class="num-l">64.5% (down from 86.7%)</td><td>Multi-platform AEO matters — can't optimize only for ChatGPT</td></tr>
+          <tr><td>AI-referred conversion rate (vs. organic)</td><td class="num-l">4.4× higher</td><td>Even small AI traffic volumes produce outsized revenue</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warning">
+      <strong>This is offense AND defense.</strong> Offense: AI traffic converts 4.4× better than organic — a relatively small volume drives meaningful revenue. Defense: as Google AI Overviews expand from 48% → 70%+ of SERPs over the next 18–24 months, organic CTR continues compressing. Brands cited in AI Overviews <em>gain</em> 35% more organic clicks; uncited brands lose 61%. AEO is the only mechanism that flips that sign.
+    </div>
+
+    <h3>Why Bunn's is currently AI-invisible</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>AI citation criterion</th><th>Bunn's current state</th><th>Gap to threshold</th></tr></thead>
+        <tbody>
+          <tr><td>Review count (recent, 4.3★+)</td><td>13 Yelp reviews · last activity Sep 2025</td><td class="warn">~87 short of typical 100+ threshold</td></tr>
+          <tr><td>LocalBusiness / Service / FAQ schema</td><td>None</td><td class="warn">Full implementation required</td></tr>
+          <tr><td><code>llms.txt</code> file</td><td>Absent</td><td class="warn">Add at root</td></tr>
+          <tr><td>FAQ content in natural-language Q&amp;A format</td><td>Zero</td><td class="warn">15–25 FAQ entries minimum</td></tr>
+          <tr><td>NAP consistency across directories</td><td>Yelp + BBB + Houzz + Angi + Wheree + MapQuest (≥6)</td><td>Audit + cleanup needed</td></tr>
+          <tr><td>Expert quotes / statistics / external citations on-page</td><td>None</td><td class="warn">Princeton GEO study: +41% / +30% / +30% visibility</td></tr>
+          <tr><td>Topical authority via content clusters</td><td>Zero blog, zero clusters</td><td class="warn">Build cluster around HVAC + Louisburg climate</td></tr>
+          <tr><td>AI crawler access (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)</td><td>Undefined</td><td>Explicit allow in robots.txt</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The AEO offensive layer — additional revenue from AI traffic</h3>
+    <p>Layered on top of the base scenarios in §06–§08. AI traffic shown as <strong>additional</strong> visits per month (not a slice of organic).</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Tier</th><th class="num">Additional AI visits / mo</th><th class="num">AI CVR</th><th class="num">AI booked jobs / mo</th><th class="num">AI revenue / yr</th></tr></thead>
+        <tbody>
+          <tr><td>Rebuild only (basic AEO)</td><td class="num">8 | 60</td><td class="num">9% | 13%</td><td class="num">0.4 | 5.1</td><td class="num">$10K | $211K</td></tr>
+          <tr><td>+ $500/mo (modest citation build)</td><td class="num">15 | 114</td><td class="num">9% | 13%</td><td class="num">0.7 | 9.6</td><td class="num">$17K | $400K</td></tr>
+          <tr><td>+ $1K/mo (active citations + GMB)</td><td class="num">27 | 225</td><td class="num">9% | 13%</td><td class="num">1.2 | 19</td><td class="num">$31K | $791K</td></tr>
+          <tr><td>+ $2K/mo (aggressive)</td><td class="num">46 | 396</td><td class="num">9% | 13%</td><td class="num">2.1 | 33.5</td><td class="num">$53K | $1.39M</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-cap">Conservative AI traffic share = 4–7% of organic baseline; Optimistic = 10–18%. Blended AI CVR weighted by 2026 platform market share (ChatGPT 64.5%, Gemini 21.5%, Perplexity 12%, Claude 2%).</div>
+    </div>
+
+    <h3>The AEO defensive layer — organic traffic protection</h3>
+    <p>Without AEO, Bunn's organic traffic decays as AI Overviews expand. With AEO, cited results gain rather than lose CTR. Modeled as a percentage of base revenue protected.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Tier</th><th class="num">Base annual revenue</th><th class="num">Defensive protection (5–15%)</th></tr></thead>
+        <tbody>
+          <tr><td>Rebuild only</td><td class="num">$166K | $1.66M</td><td class="num">$8K | $249K</td></tr>
+          <tr><td>+ $500/mo</td><td class="num">$242K | $2.63M</td><td class="num">$12K | $395K</td></tr>
+          <tr><td>+ $1K/mo</td><td class="num">$408K | $4.58M</td><td class="num">$20K | $687K</td></tr>
+          <tr><td>+ $2K/mo</td><td class="num">$608K | $6.66M</td><td class="num">$30K | $999K</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-cap">Defensive value is what Bunn's <em>keeps</em> as AI Overviews compress organic CTR. Conservative assumes 5% of revenue is at risk; Optimistic assumes 15%.</div>
+    </div>
+
+    <h3>Combined AEO impact — offense + defense</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Tier</th><th class="num">Base revenue</th><th class="num">+ AEO offensive</th><th class="num">+ AEO defensive</th><th class="num">Total w/ AEO</th><th class="num">% AEO lift</th></tr></thead>
+        <tbody>
+          <tr><td>Rebuild only</td><td class="num">$166K | $1.66M</td><td class="num">$10K | $211K</td><td class="num">$8K | $249K</td><td class="num"><strong>$184K | $2.12M</strong></td><td class="num lift">+11% | +28%</td></tr>
+          <tr><td>+ $500/mo</td><td class="num">$242K | $2.63M</td><td class="num">$17K | $400K</td><td class="num">$12K | $395K</td><td class="num"><strong>$271K | $3.43M</strong></td><td class="num lift">+12% | +30%</td></tr>
+          <tr class="total"><td>+ $1K/mo (recommended)</td><td class="num">$408K | $4.58M</td><td class="num">$31K | $791K</td><td class="num">$20K | $687K</td><td class="num"><strong>$459K | $6.06M</strong></td><td class="num lift">+13% | +32%</td></tr>
+          <tr><td>+ $2K/mo</td><td class="num">$608K | $6.66M</td><td class="num">$53K | $1.39M</td><td class="num">$30K | $999K</td><td class="num"><strong>$691K | $9.05M</strong></td><td class="num lift">+14% | +36%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>What we build into the site to capture this</h3>
+    <p><strong>On-site (included in rebuild):</strong> LocalBusiness schema (with HVACBusiness subtype), Service schema per service page, FAQPage schema, Review schema, <code>llms.txt</code> at root with curated page summaries, explicit allow for GPTBot/ClaudeBot/PerplexityBot/Google-Extended in <code>robots.txt</code>, FAQ content modules in natural-language Q&amp;A format, expert quote callouts (founder, 43-year history, A+ BBB), local statistics blocks (Franklin County climate, equipment lifespan), and clean semantic HTML the LLMs can parse without JS execution.</p>
+    <p><strong>Off-site (scales with tier):</strong> Citation cleanup across 15–25 directories, NAP normalization, review velocity to cross the 100+ threshold (achieved in months 6–10 on the $1K tier), brand mentions in regional press / community publications, niche-edit links from HVAC and home-services authority sites, and (at $1K+) GMB Q&amp;A seeding so the answers AI surfaces are written by Bunn's, not invented.</p>
+
+    <div class="callout success">
+      <strong>Why this layer is undervalued by most agencies:</strong> AEO measurement tooling is still immature (the analytics layer is 12–18 months behind actual user behavior). Most marketers can't see AI referrals cleanly in GA4, so they undersell it. The 4.4× conversion multiplier is the real story — and it's the lever that turns "AI is small" into "AI is the highest-margin channel you have."
+    </div>
+  </section>
+
+  <!-- 10. SELF-AUDIT -->
+  <section id="selfaudit">
+    <div class="section-num">10 · Self-Audit &amp; Model Caveats</div>
+    <h2>What this model handles well — and what it doesn't.</h2>
+    <p>Auditing the auditor. Below is an honest pass at where this model is robust, where it's intentionally bounded, and where the assumptions could miss in either direction.</p>
+
+    <h3>What the model handles well</h3>
+    <ul style="font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.7;color:var(--ink-soft)">
+      <li>Service-area realism: explicit Tier 1–4 breakdown by drive time, not theoretical radius</li>
+      <li>Competitive density quantified (Wake Forest top-8 aggregate vs. Bunn's 13 reviews)</li>
+      <li>Conservative / Optimistic banding on every revenue figure</li>
+      <li>Six modeled downside failure modes with independent probabilities (§12)</li>
+      <li>Unit economics traceability — every revenue number traces to ticket size × close rate × volume</li>
+      <li>Capacity sanity check (job volume vs. 12-employee headcount)</li>
+      <li>LTV pipeline shown separately from immediate revenue</li>
+      <li>AEO/GEO offensive + defensive layers (§09)</li>
+      <li>Honest "this number requires hiring" callouts where applicable</li>
+    </ul>
+
+    <h3>What's intentionally out of scope</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Channel / topic</th><th>Why excluded</th></tr></thead>
+        <tbody>
+          <tr><td>Local Services Ads (LSA)</td><td>Separate paid budget conversation; would add a meaningful incremental layer (~$3K–$8K/mo spend → ~10–20 calls/mo) but isn't part of the SEO scope</td></tr>
+          <tr><td>Google Ads PPC / Meta Ads</td><td>Paid channels with different unit economics; would model separately</td></tr>
+          <tr><td>Email / SMS retention marketing</td><td>Captured partially in LTV; not modeled as a discrete uplift</td></tr>
+          <tr><td>Commercial HVAC</td><td>Bunn's positioning is residential-focused per their own copy</td></tr>
+          <tr><td>Maintenance plan subscriptions (membership model)</td><td>Partially captured in LTV multiplier; not modeled as a separate ARR stream</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Where the model could understate (upside risk)</h3>
+    <ul style="font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.7;color:var(--ink-soft)">
+      <li><strong>Brand search lift from AI citations.</strong> Once Bunn's is named in ChatGPT/Perplexity answers, branded search volume rises — those visitors convert at ~25–40% vs. ~8% non-brand. Compounding effect not fully captured.</li>
+      <li><strong>Seasonal demand spikes.</strong> HVAC demand swings +25–40% in June–August and December–February. Model uses steady-state averages.</li>
+      <li><strong>Repeat customer acceleration.</strong> LTV is captured but the timing of repeat revenue (year 2–3 follow-up service) isn't laid into the 12-month curve.</li>
+      <li><strong>Word-of-mouth velocity.</strong> Each new happy customer generates ~1.4 organic referrals in HVAC (industry data). Not modeled.</li>
+      <li><strong>GMB review compounding past month 12.</strong> Year 2 review velocity accelerates as base grows — not in 12-month figures.</li>
+    </ul>
+
+    <h3>Where the model could overstate (downside risk)</h3>
+    <ul style="font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.7;color:var(--ink-soft)">
+      <li><strong>Tier 3 (Wake Forest) map-pack penetration.</strong> Google's local pack is geo-proximity weighted. Bunn's GMB is in Louisburg; they will <em>not</em> consistently appear in the Wake Forest map pack for searchers physically in Wake Forest unless a second GMB-verified service address is established. Tier 3 traffic in the model assumes organic capture via service-area pages, not map pack share.</li>
+      <li><strong>Optimistic capacity assumptions.</strong> The optimistic case at $1K/$2K tiers assumes Bunn's hires 3–5 technicians during year one. Real-world HVAC tech hiring takes 2–4 months per role and the labor market is tight.</li>
+      <li><strong>AI search volatility.</strong> AEO numbers carry ±40–50% variance vs. ±20–35% for organic. The space is moving monthly.</li>
+      <li><strong>Sustained review velocity.</strong> 1 review per job assumes operator follow-through (text-after-job automation). If not implemented rigorously, review velocity halves.</li>
+      <li><strong>Tier 4 (Raleigh) is excluded from this audit</strong> — anyone modeling Raleigh capture for a Louisburg-based 12-person shop is fantasizing.</li>
+    </ul>
+
+    <h3>Time-to-revenue ramp curve</h3>
+    <p>The headline numbers are <strong>month-12 steady-state run-rate</strong>, not year-1 totals. Realistic ramp:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Period</th><th class="num">% of steady-state</th><th>What's happening</th></tr></thead>
+        <tbody>
+          <tr><td>Month 1–3</td><td class="num">10–15%</td><td>Site launches, indexation, first content batch, MCTB/chatbot configured</td></tr>
+          <tr><td>Month 4–6</td><td class="num">30–50%</td><td>Rankings establish, schema indexed, review velocity ramps</td></tr>
+          <tr><td>Month 7–9</td><td class="num">60–75%</td><td>Review flywheel compounds, AEO citations begin appearing</td></tr>
+          <tr><td>Month 10–12</td><td class="num">85–100%</td><td>Steady state reached</td></tr>
+          <tr><td>Month 13–24</td><td class="num">110–140%</td><td>Continued compounding, Wake Forest entry on $1K+ tiers</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-cap">Blended year-1 revenue is typically <strong>55–65% of the month-12 figure</strong>. Use the month-12 numbers for run-rate projections, not for year-1 cash.</div>
+    </div>
+
+    <h3>Geo-restriction caveat — re-stating it</h3>
+    <div class="callout warning">
+      <strong>Bunn's will not dominate the Wake Forest map pack from Louisburg.</strong> The local pack is geo-proximity weighted. Bunn's appears in Wake Forest map pack only when the searcher is physically in Wake Forest <em>and</em> Bunn's has strong proximity-adjacent signals (reviews from Wake Forest customers, citations from Wake Forest publications). Tier 3 revenue in the model relies on <em>organic</em> capture via service-area pages — not map pack dominance. Map pack dominance in Wake Forest requires either (a) a second physical service address there, or (b) ~18+ months of citation building with Wake Forest customer reviews.
+    </div>
+  </section>
+
+  <!-- 11. VARIANCE -->
+  <section id="variance">
+    <div class="section-num">11 · Variance &amp; Margin of Error</div>
+    <h2>Every number above, with honest error bars.</h2>
+    <p>No model is perfect. Below is the realistic margin of error for each scenario, based on which assumptions carry the most uncertainty. Conservative numbers are tighter because the floor is more defensible. Optimistic numbers are wider because they assume Bunn's executes hiring, capacity, and Wake Forest market penetration well.</p>
+
+    <div class="variance-grid">
+      <div class="variance-row header">
+        <div>Scenario</div>
+        <div>Conservative margin of error</div>
+        <div>Optimistic margin of error</div>
+      </div>
+      <div class="variance-row"><div>Current state</div><div>±15%</div><div>±15%</div></div>
+      <div class="variance-row"><div>Site rebuild only (base)</div><div>±20%</div><div>±25%</div></div>
+      <div class="variance-row"><div>+ $500/mo off-page (base)</div><div>±20%</div><div>±25%</div></div>
+      <div class="variance-row"><div>+ $1,000/mo off-page (base)</div><div>±20%</div><div>±30%</div></div>
+      <div class="variance-row"><div>+ $2,000/mo off-page (base)</div><div>±25%</div><div>±35%</div></div>
+      <div class="variance-row"><div>AEO offensive layer (all tiers)</div><div>±40%</div><div>±50%</div></div>
+      <div class="variance-row"><div>AEO defensive layer (all tiers)</div><div>±35%</div><div>±45%</div></div>
+    </div>
+
+    <h3>What's driving the error bars</h3>
+    <p><strong>Conservative numbers (±15–25%)</strong> are tight because they assume only Tier 1 + 2 market capture, modest conversion lift, and no capacity expansion. The variance here is mostly seasonal (HVAC demand swings ±20% summer-to-shoulder).</p>
+    <p><strong>Optimistic numbers (±25–35%)</strong> widen as you go up the off-page tiers because they require Wake Forest market penetration (Tier 3), and Wake Forest is the fiercest competitive zone in Bunn's reachable radius. The $2K/mo tier carries the highest variance because it assumes both review velocity sustaining 18+ months <em>and</em> Bunn's hiring 3–5 technicians on a timeline that's realistic but not guaranteed.</p>
+    <p><strong>AEO bands (±35–50%)</strong> are wider than the rest because the AI search landscape is moving monthly, reporting tooling is immature, and local-services AI traffic share is still a small enough number that small absolute deltas produce large percentage swings. Treat AEO as the upside-skewed layer it is: most likely lift, but not guaranteed in 12 months.</p>
+
+    <h3>Worked example — applying the bands (base + AEO blended)</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Scenario</th><th class="num">Modeled total w/ AEO</th><th class="num">Realistic range (blended bands)</th></tr></thead>
+        <tbody>
+          <tr><td>Rebuild only · conservative</td><td class="num">$184K</td><td class="num">$144K – $224K</td></tr>
+          <tr><td>Rebuild only · optimistic</td><td class="num">$2.12M</td><td class="num">$1.50M – $2.74M</td></tr>
+          <tr><td>+ $1K/mo · conservative</td><td class="num">$459K</td><td class="num">$359K – $559K</td></tr>
+          <tr><td>+ $1K/mo · optimistic</td><td class="num">$6.06M</td><td class="num">$4.04M – $8.08M</td></tr>
+          <tr><td>+ $2K/mo · conservative</td><td class="num">$691K</td><td class="num">$502K – $880K</td></tr>
+          <tr><td>+ $2K/mo · optimistic</td><td class="num">$9.05M</td><td class="num">$5.62M – $12.5M</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-cap">Ranges computed as weighted blend of base-tier bands (±20–35%) and AEO bands (±35–50%), weighted by each layer's share of total revenue.</div>
+    </div>
+  </section>
+
+  <!-- 12. 50% WRONG -->
+  <section id="failure">
+    <div class="section-num">12 · 50%-Wrong Scenarios</div>
+    <h2>What would have to go critically wrong.</h2>
+    <p>Margin of error covers normal variance. Below is what would have to break for the numbers to miss by <strong>50% or more</strong> — both directions. These are stack-of-failures scenarios, not single-cause outcomes.</p>
+
+    <h3>For numbers to be 50% lower than modeled</h3>
+    <p>It would require <strong>multiple concurrent failures</strong> from this list:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Failure mode</th><th>Independent probability</th><th>Severity if it hits</th></tr></thead>
+        <tbody>
+          <tr><td>Capacity collapse — can't hire fast enough to absorb new demand → poor reviews start coming in → reverse flywheel</td><td>~25% if hiring plan is unstructured</td><td><span class="sev sev-crit">Critical</span></td></tr>
+          <tr><td>Macro HVAC market downturn / recession defers installs (–40–60% install revenue, repair stable)</td><td>~20% over a 12-month horizon</td><td><span class="sev sev-high">High</span></td></tr>
+          <tr><td>Major Tier 3 competitor (Jay's, Mechanical HVAC, Carolina Comfort Air) expands aggressive into Louisburg with a paid LSA campaign</td><td>~15%</td><td><span class="sev sev-med">Medium</span></td></tr>
+          <tr><td>Google local algorithm shift demotes thin-content service area pages broadly</td><td>~10%</td><td><span class="sev sev-high">High</span></td></tr>
+          <tr><td>New site indexation issue — months 1–6 lost to technical fix</td><td>~10% with proper launch QA</td><td><span class="sev sev-high">High</span></td></tr>
+          <tr><td>Negative viral local review (single 1-star, well-written, viral) breaks the review flywheel for 6+ months</td><td>~8%</td><td><span class="sev sev-med">Medium</span></td></tr>
+          <tr><td><strong>AEO-specific:</strong> AI platforms tighten citation criteria (raise review threshold from 100 → 200+) before Bunn's crosses</td><td>~20%</td><td><span class="sev sev-high">High</span> (delays AEO offensive by 6–9 months)</td></tr>
+          <tr><td><strong>AEO-specific:</strong> ChatGPT and Perplexity shift toward paid placement / partnership models, deprioritizing organic citations</td><td>~15%</td><td><span class="sev sev-high">High</span> (collapses AEO offensive layer entirely)</td></tr>
+          <tr><td><strong>AEO-specific:</strong> Google AI Overviews expand faster than projected, organic decay outpaces defensive AEO build</td><td>~20%</td><td><span class="sev sev-med">Medium</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-mute);">Realistically, a 50%-low outcome requires ~2–3 of these to converge in the same year. Single-factor downside is captured by the margin-of-error bands in §11.</p>
+
+    <h3>For numbers to be 50% higher than modeled</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Upside factor</th><th>Independent probability</th></tr></thead>
+        <tbody>
+          <tr><td>Extreme weather event (heat dome / ice storm / hurricane) drives a 2–4-week demand spike</td><td>~50% over 12 months in NC</td></tr>
+          <tr><td>Major Tier 1 / Tier 2 competitor exits the market (retirement, sale, scandal)</td><td>~10%</td></tr>
+          <tr><td>Bunn's wins a local press feature or community story that drives sustained referral traffic</td><td>~15%</td></tr>
+          <tr><td>Successfully expands into Wake Forest with 3+ targeted hires and beats Tier 3 capture estimates</td><td>~20% if pursued actively</td></tr>
+          <tr><td>GMB review velocity exceeds modeled rate — review flywheel compounds harder than projected</td><td>~25%</td></tr>
+          <tr><td><strong>AEO-specific:</strong> Bunn's becomes the named "family-owned Louisburg HVAC" recommendation in ChatGPT — AI-driven referrals exceed modeled volume by 2–3×</td><td>~20% (high if AEO build is rigorous)</td></tr>
+          <tr><td><strong>AEO-specific:</strong> AI search adoption for local services jumps from 45% → 65%+ of consumers within 12 months</td><td>~30%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>Most likely outcome:</strong> middle of the cone, with seasonal variance. Summer (June–August) and winter (December–February) spikes 25–40% above shoulder months. Plan capacity accordingly.
+    </div>
+  </section>
+
+  <!-- 13. RECOMMENDATION -->
+  <section id="takeaway">
+    <div class="section-num">13 · Recommendation</div>
+    <h2>The pitch path that fits the math.</h2>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Path</th><th class="num">Base annual revenue</th><th class="num">+ AEO layer</th><th class="num">Total annual revenue</th><th class="num">LTV pipeline added</th></tr></thead>
+        <tbody>
+          <tr><td>Do nothing</td><td class="num">$0.8K – $111K</td><td class="num">$0</td><td class="num">$0.8K – $111K</td><td class="num">$18K – $991K</td></tr>
+          <tr><td>Rebuild only</td><td class="num">$166K – $1.66M</td><td class="num">+$18K – $460K</td><td class="num">$184K – $2.12M</td><td class="num">$663K – $20.3M</td></tr>
+          <tr><td>Rebuild + $500/mo off-page</td><td class="num">$242K – $2.63M</td><td class="num">+$29K – $795K</td><td class="num">$271K – $3.43M</td><td class="num">$977K – $32.7M</td></tr>
+          <tr class="total"><td>Rebuild + $1,000/mo (recommended)</td><td class="num">$408K – $4.58M</td><td class="num">+$51K – $1.48M</td><td class="num">$459K – $6.06M</td><td class="num">$1.65M – $57.7M</td></tr>
+          <tr><td>Rebuild + $2,000/mo (aggressive)</td><td class="num">$608K – $6.66M</td><td class="num">+$83K – $2.39M</td><td class="num">$691K – $9.05M</td><td class="num">$2.41M – $86.1M</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-cap">AEO offensive (AI-driven traffic) + defensive (organic CTR protection) combined. AEO carries higher variance (see §11) but is largely built into the rebuild — incremental cost is near-zero for the offensive piece, off-page scales the citation build.</div>
+    </div>
+
+    <h3>What to actually sell, in order</h3>
+    <p><strong>1. The rebuild bundle is the foundation — and it already includes AEO.</strong> Without the 9.5/10 UI/UX + on-page + technical SEO + MCTB + Opus 4.7 chatbot + schema + <code>llms.txt</code> + FAQ structure, no amount of off-page spend converts efficiently. Phone-only intake caps the entire opportunity. AEO is largely an on-site implementation question — schema, structured content, llms.txt — so it's bundled into the rebuild at no incremental cost.</p>
+    <p><strong>2. Recommend $1,000/mo off-page as the growth tier.</strong> The marginal jump from $500 → $1,000 is the single steepest ROI step in the ladder because GMB automation switches on <em>and</em> citation velocity hits the threshold AI platforms require to start naming Bunn's in answers. For a Tier 1/2-focused business like Bunn's, the map pack is the dominant lead source and AI citations are the second-largest unlocked opportunity.</p>
+    <p><strong>3. Hold $2,000/mo for year two,</strong> once capacity and Tier 3 (Wake Forest) penetration are proven. Pitching $2K/mo before Bunn's has hired 3–5 additional technicians is selling more leads than they can serve, which damages the review flywheel <em>and</em> the AI citation credibility (AI deprioritizes brands with declining review trends).</p>
+    <p><strong>4. $500/mo is the budget-constrained close path</strong> only if the client can't commit to $1K/mo. Still positive ROI, but cuts the AEO citation velocity in half — Bunn's may not cross the AI-trusted review threshold within 12 months on this tier.</p>
+
+    <div class="callout navy">
+      <strong>The one-sentence pitch:</strong> Bunn's is a 43-year, A+, 12-employee operation that's invisible in both Google's non-brand search results AND the AI search surface that nearly half of consumers now use — and fixing both at the same time is a single integrated rebuild, not two separate projects.
+    </div>
+  </section>
+
+  <!-- 14. SOURCES -->
+  <section id="sources">
+    <div class="section-num">14 · Sources</div>
+    <h2>Where the numbers come from.</h2>
+
+    <h3>Subject &amp; competitive set</h3>
+    <ul class="sources">
+      <li><a href="https://www.bunnsheatingandair.com/">Bunn's Heating &amp; Air Conditioning</a> — primary subject site</li>
+      <li><a href="https://www.yelp.com/biz/bunns-heating-and-air-conditioning-louisburg">Yelp — Bunn's Heating &amp; Air</a> — 4.6★ / 13 reviews / 14 photos</li>
+      <li><a href="https://www.bbb.org/us/nc/louisburg/profile/heating-and-air-conditioning/bunns-heating-air-conditioning-inc-0593-6021248">BBB — Bunn's Heating &amp; Air</a> — A+ accredited 2/27/2025, 43 yrs, 12 employees</li>
+      <li><a href="https://www.alfordmechanical.com/service-area">Alford Mechanical service area</a> — primary direct competitor</li>
+      <li><a href="https://www.bbb.org/us/nc/louisburg/profile/air-conditioning-repair/jordans-heating-cooling-services-0593-6038215">Jordan's Heating &amp; Cooling (BBB)</a> — direct local competitor</li>
+      <li><a href="https://www.angi.com/companylist/us/nc/wake-forest/hvac.htm">Wake Forest HVAC competitive set (Angi)</a></li>
+      <li><a href="https://www.expertise.com/home-improvement/hvac/north-carolina/raleigh">Top Raleigh HVAC competitors (Expertise.com)</a> — Tier 4 reference set</li>
+      <li><a href="https://worldpopulationreview.com/us-counties/north-carolina/franklin-county">Franklin County 2025 population</a> — 82,385</li>
+    </ul>
+
+    <h3>Unit economics &amp; HVAC benchmarks</h3>
+    <ul class="sources">
+      <li><a href="https://automatedcomfortsystems.com/the-real-cost-of-hvac-repairs-in-north-carolina-a-transparent-pricing-guide/">NC HVAC repair pricing ($333 avg)</a></li>
+      <li><a href="https://lmwilson.com/blog/how-much-does-an-hvac-cost-to-replace-in-north-carolina/">NC HVAC install pricing ($5K–$12K)</a></li>
+      <li><a href="https://www.mediagistic.com/blog/what-is-the-lifetime-value-of-your-hvac-dealerships-customers">HVAC LTV benchmarks ($15.3K – $47.2K)</a></li>
+      <li><a href="https://meridiangable.com/hvac-booking-conversion-rate">HVAC booking rates (46% avg → 85% top performer)</a></li>
+      <li><a href="https://blog.salescaptain.com/missed-call-text-back-for-hvac-companies-2025/">MCTB conversion impact</a> — 30% lift, 35–50% text-back response</li>
+      <li><a href="https://fatjoe.com/link-building/">Fat Joe link-building service pricing &amp; mix</a></li>
+      <li><a href="https://www.localmighty.com/blog/hvac-local-seo-guide/">HVAC Local SEO benchmarks</a> — review count thresholds, ranking timelines</li>
+    </ul>
+
+    <h3>AI search / AEO / GEO references</h3>
+    <ul class="sources">
+      <li><a href="https://thedigitalbloom.com/learn/gen-ai-website-traffic-share-february-2026/">Gen AI Website Traffic Share Report (Feb 2026)</a> — platform market share, YoY growth</li>
+      <li><a href="https://upgrowth.in/ai-traffic-share-report-2026/">AI Traffic Share Report 2026</a> — ChatGPT, Perplexity, AI Overviews data</li>
+      <li><a href="https://almcorp.com/blog/chatgpt-vs-organic-search-conversion-rate/">ChatGPT vs. Organic Conversion Rate (ALM Corp, 2026)</a> — 14.2–15.9% CVR data</li>
+      <li><a href="https://www.growthmarshal.io/field-notes/ai-search-traffic-is-4x-more-valuable-than-organic">AI Search Traffic 4.4× More Valuable (Growth Marshal)</a></li>
+      <li><a href="https://www.pmmag.com/articles/107415-87-of-hvac-and-plumbing-contractors-are-invisible-when-homeowners-ask-ai">87% of HVAC &amp; Plumbing Contractors Invisible to AI (Plumbing &amp; Mechanical, 2026)</a></li>
+      <li><a href="https://www.marketingcode.com/chatgpt-recommends-1-percent-local-businesses-contractors/">ChatGPT Recommends Only 1.2% of Local Businesses (MarketingCode, 2026)</a></li>
+      <li><a href="https://www.marketingcode.com/ai-search-6-to-45-percent-contractors-invisible/">45% of Consumers Use AI Search for Local Services</a></li>
+      <li><a href="https://www.dataslayer.ai/blog/google-ai-overviews-the-end-of-traditional-ctr-and-how-to-adapt-in-2025">Google AI Overviews: 61% CTR Reduction (DataSlayer, 2026)</a></li>
+      <li><a href="https://www.demandlocal.com/blog/ai-citation-brand-lift-statistics/">AI Citation Brand Lift Statistics (Demand Local, 2026)</a> — +35% lift for cited brands</li>
+      <li><a href="https://www.enrichlabs.ai/blog/generative-engine-optimization-geo-complete-guide-2026">GEO Complete Guide 2026 (Enrich Labs)</a> — Princeton GEO study, citation ranking factors</li>
+      <li><a href="https://www.surmado.com/blog/answer-engine-optimization-aeo-geo-guide">AEO &amp; GEO Guide 2026 (Surmado)</a></li>
+      <li><a href="https://searchengineland.com/llms-txt-proposed-standard-453676">llms.txt proposed standard (Search Engine Land)</a></li>
+      <li><a href="https://localbeacon.ai/blog/aeo-for-plumbers">AEO for Plumbers / Local Service Contractors (LocalBeacon)</a></li>
+      <li><a href="https://revved.digital/make-chatgpt-recommend-your-hvac-business/">How to Make ChatGPT Recommend Your HVAC Business (Revved Digital)</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div>Prepared by <strong>Claude Gravity</strong> · Audit subject: <strong>Bunn's Heating &amp; Air Conditioning Inc.</strong></div>
+  <div style="margin-top:8px;font-size:11.5px">All projections are modeled estimates with stated margins of error. Past performance benchmarks are industry averages. Actual results vary with execution and market conditions.</div>
+</footer>
+
+</body>
+</html>
