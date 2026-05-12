@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Bunn's Heating &amp; Air — Revenue Potential Analysis</title>
+<meta name="description" content="Bunn's Heating & Air Conditioning of Louisburg, NC — revenue potential analysis. Engine, Gas, Keys, and AIO framework. Three-year compounding revenue projections." />
+<meta name="robots" content="noindex,nofollow" />
+<style>
+  :root{
+    --bg:#0E1218;
+    --bg-2:#161B22;
+    --bg-3:#1B2230;
+    --bg-card:#1A2030;
+    --rule:rgba(255,255,255,0.08);
+    --rule-strong:rgba(255,255,255,0.16);
+    --ink:#FFFFFF;
+    --ink-soft:rgba(255,255,255,0.72);
+    --ink-mute:rgba(255,255,255,0.5);
+    --amber:#D4AC4A;
+    --amber-soft:rgba(212,172,74,0.12);
+    --amber-line:rgba(212,172,74,0.45);
+    --green:#5FCE7B;
+    --green-soft:rgba(95,206,123,0.1);
+    --green-line:rgba(95,206,123,0.5);
+    --red:#E55050;
+    --red-soft:rgba(229,80,80,0.1);
+    --red-line:rgba(229,80,80,0.4);
+    --cyan:#5BC0EB;
+    --purple:#A78BFA;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Inter","SF Pro Text","Segoe UI","Helvetica Neue",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.55}
+  body{font-size:16px}
+  a{color:var(--amber);text-decoration:none}
+
+  .wrap{max-width:1000px;margin:0 auto;padding:0 32px}
+  @media (max-width:640px){.wrap{padding:0 20px}}
+
+  /* Top accent bar */
+  .top-accent{height:3px;background:var(--amber);width:100%;max-width:1000px;margin:0 auto}
+
+  /* Page sections */
+  .page{padding:72px 0 96px;border-bottom:1px solid var(--rule);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start}
+  .page:last-of-type{border-bottom:none}
+
+  /* Eyebrow */
+  .eyebrow{display:inline-block;background:var(--bg-3);color:var(--amber);padding:7px 14px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px}
+
+  /* Headings */
+  h1{font-size:54px;line-height:1.05;letter-spacing:-.02em;font-weight:700;color:var(--ink);margin:0 0 18px}
+  @media (max-width:640px){h1{font-size:38px}}
+  h2{font-size:30px;line-height:1.2;letter-spacing:-.01em;font-weight:700;color:var(--ink);margin:48px 0 18px}
+  h3{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin:36px 0 16px}
+  h4{font-size:18px;font-weight:600;color:var(--ink);margin:18px 0 8px}
+
+  .lede{font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:760px;margin:0 0 32px}
+  p{margin:0 0 14px;max-width:760px;color:var(--ink-soft)}
+
+  /* KPI row */
+  .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px 0 28px}
+  .kpi-row.k4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:760px){.kpi-row,.kpi-row.k4{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){.kpi-row,.kpi-row.k4{grid-template-columns:1fr}}
+  .kpi{padding:22px 22px;background:var(--bg-card);border:1px solid var(--rule);border-radius:10px}
+  .kpi-value{font-size:44px;line-height:1;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.02em}
+  .kpi-value.green{color:var(--green)}
+  .kpi-value.amber{color:var(--amber)}
+  .kpi-value.red{color:var(--red)}
+  .kpi-label{font-size:13px;color:var(--ink-mute);letter-spacing:.02em}
+  @media (max-width:480px){.kpi-value{font-size:34px}}
+
+  /* Tables */
+  .tbl-wrap{margin:18px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table.tbl{width:100%;border-collapse:collapse;font-size:14px;background:transparent;min-width:560px}
+  table.tbl th,table.tbl td{padding:12px 16px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--rule)}
+  table.tbl thead th{background:var(--bg-3);color:var(--ink-soft);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--rule-strong)}
+  table.tbl tbody tr{background:var(--bg-2)}
+  table.tbl tbody tr:nth-child(even){background:var(--bg-card)}
+  table.tbl td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.tbl th.num{text-align:right}
+  table.tbl tr.total td{background:var(--bg-3);font-weight:700;color:var(--ink);border-top:2px solid var(--rule-strong)}
+  .green{color:var(--green);font-weight:600}
+  .amber{color:var(--amber);font-weight:600}
+  .red{color:var(--red);font-weight:600}
+  .muted{color:var(--ink-mute)}
+
+  /* Callout */
+  .callout{margin:24px 0;padding:18px 22px;border:1px solid var(--amber-line);background:var(--amber-soft);border-radius:8px;font-weight:600;color:var(--amber)}
+  .callout small{display:block;margin-top:6px;font-weight:400;color:var(--ink-soft);font-size:13.5px}
+  .callout.green{border-color:var(--green-line);background:var(--green-soft);color:var(--green)}
+  .callout.red{border-color:var(--red-line);background:var(--red-soft);color:var(--red)}
+  .callout.plain{border-color:var(--rule-strong);background:var(--bg-card);color:var(--ink);font-weight:500}
+
+  /* Pillar grid (Engine/Gas/Keys/AIO) */
+  .pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:28px 0}
+  @media (max-width:900px){.pillar-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){.pillar-grid{grid-template-columns:1fr}}
+  .pillar{padding:24px 22px;background:var(--bg-card);border:1px solid var(--rule);border-radius:10px;position:relative}
+  .pillar-num{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--amber);text-transform:uppercase;margin-bottom:10px}
+  .pillar-title{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:10px}
+  .pillar-desc{font-size:14px;color:var(--ink-soft);line-height:1.55;margin-bottom:14px}
+  .pillar-list{font-size:13px;color:var(--ink-mute);line-height:1.7;margin:0;padding-left:18px}
+  .pillar-list li{margin-bottom:2px}
+
+  /* Year compound cards */
+  .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+  @media (max-width:760px){.year-grid{grid-template-columns:1fr}}
+  .year-card{padding:22px;background:var(--bg-card);border:1px solid var(--rule);border-radius:10px}
+  .year-card.highlight{border-color:var(--green-line);background:linear-gradient(180deg,rgba(95,206,123,0.06),transparent)}
+  .year-label{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+  .year-assumptions{font-size:12px;color:var(--ink-mute);margin-bottom:18px;line-height:1.5}
+  .year-row{display:flex;justify-content:space-between;padding:7px 0;font-size:14px;border-bottom:1px solid var(--rule)}
+  .year-row:last-child{border-bottom:none}
+  .year-row .label{color:var(--ink-soft)}
+  .year-row .value{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .year-row.rev .value{color:var(--green);font-size:16px}
+  .year-row.roi .value{color:var(--amber)}
+
+  /* Step list */
+  .step-list{margin:24px 0;display:flex;flex-direction:column;gap:14px}
+  .step{display:flex;gap:20px;padding:20px 22px;background:var(--bg-card);border:1px solid var(--rule);border-radius:10px;align-items:flex-start}
+  .step.highlight{border-color:var(--green-line);background:linear-gradient(180deg,rgba(95,206,123,0.05),transparent)}
+  .step-num{font-size:18px;font-weight:700;color:var(--amber);min-width:32px;flex-shrink:0;line-height:1.3}
+  .step.highlight .step-num{color:var(--green)}
+  .step-content h4{margin:0 0 6px;font-size:18px;color:var(--ink);font-weight:700}
+  .step-content p{margin:0;color:var(--ink-soft);font-size:14.5px}
+
+  /* FAQ-style */
+  .faq{margin:20px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 28px}
+  @media (max-width:760px){.faq{grid-template-columns:1fr}}
+  .faq-q{padding:0}
+  .faq-q .q{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px}
+  .faq-q .a{font-size:14px;color:var(--ink-soft);line-height:1.55}
+
+  /* Page header w/ section count */
+  .pg-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
+
+  /* Topbar */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,18,24,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:1000px;margin:0 auto;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+  .topbar-brand{font-weight:700;color:var(--amber)}
+
+  /* Footer */
+  .footer{padding:42px 0;font-size:12px;color:var(--ink-mute);text-align:center;border-top:1px solid var(--rule);letter-spacing:.06em}
+
+  /* Inline status badge */
+  .badge{display:inline-block;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .badge-red{background:var(--red-soft);color:var(--red)}
+  .badge-amber{background:var(--amber-soft);color:var(--amber)}
+  .badge-green{background:var(--green-soft);color:var(--green)}
+
+  /* Print */
+  @media print {
+    body{background:#fff;color:#111;font-size:11pt}
+    .topbar,.footer{display:none}
+    .page{min-height:0;padding:24pt 0;page-break-after:always;border:none}
+    .page:last-of-type{page-break-after:auto}
+    .kpi,.pillar,.year-card,.step,table.tbl tbody tr,table.tbl tbody tr:nth-child(even){background:#fff;color:#111;border-color:#ddd}
+    h1,h2,h3,h4,.kpi-value,.year-row .value{color:#111}
+    .amber,.green,.red{color:#111;font-weight:700}
+    .callout{background:#fff;color:#111;border-color:#999}
+    .tbl-wrap{overflow:visible}
+    table.tbl{min-width:0}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-accent"></div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">Revenue Potential Analysis</div>
+    <div>Bunn's Heating &amp; Air · Confidential</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ PAGE 1 — DIAGNOSIS ============ -->
+  <section class="page">
+    <div class="pg-meta"><span>Page 01 / 04</span><span>The Diagnosis</span></div>
+    <div class="eyebrow">REVENUE POTENTIAL ANALYSIS</div>
+    <h1>Bunn's Heating &amp; Air</h1>
+    <p class="lede">A 43-year, A+ BBB, 12-employee HVAC operation in Louisburg, NC — invisible across 9 of 10 cities in its own service area, and absent from the AI search results 45% of consumers now use to find local services.</p>
+
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-value">1,460</div><div class="kpi-label">Monthly searches in service area</div></div>
+      <div class="kpi"><div class="kpi-value red">9 of 10</div><div class="kpi-label">Cities effectively invisible</div></div>
+      <div class="kpi"><div class="kpi-value">~1</div><div class="kpi-label">Current monthly organic lead</div></div>
+    </div>
+
+    <h3>Current Visibility — 30-Mile Realistic Service Radius</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th class="num">Mo. Search Volume</th>
+            <th class="num">Current Organic Rank</th>
+            <th class="num">Current Leads</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Louisburg</td><td class="num">220</td><td class="num amber">Rank 8–15</td><td class="num green">~1 Lead</td></tr>
+          <tr><td>Wake Forest</td><td class="num">380</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr><td>Henderson</td><td class="num">175</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr><td>Oxford</td><td class="num">140</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr><td>Zebulon</td><td class="num">130</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr><td>Youngsville</td><td class="num">115</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr><td>Wendell</td><td class="num">110</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr><td>Franklinton</td><td class="num">95</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr><td>Spring Hope</td><td class="num">60</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr><td>Bunn</td><td class="num">35</td><td class="num red">Rank 100+</td><td class="num red">0 Leads</td></tr>
+          <tr class="total"><td>Total</td><td class="num">1,460</td><td class="num"><span class="badge badge-red">9 of 10 invisible</span></td><td class="num">~1 lead</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      Bunn's is invisible in 9 of 10 cities representing 1,240 combined monthly searches.
+      <small>Identical title tags sitewide, empty service pages, no schema, no city-specific landing pages. Google can't verify your service coverage outside Louisburg — and ChatGPT/Perplexity/Gemini can't either, because Bunn's lives in the 87% of HVAC contractors AI never names.</small>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 — THE SYSTEM ============ -->
+  <section class="page">
+    <div class="pg-meta"><span>Page 02 / 04</span><span>The System</span></div>
+    <div class="eyebrow">FOUR PILLARS</div>
+    <h1>What we build, and why it works.</h1>
+    <p class="lede">Four pieces. They only work together. The first three rank you in Google; the fourth makes sure ChatGPT and Perplexity name Bunn's when 45% of your future customers ask AI for an HVAC company.</p>
+
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="pillar-num">01 · The Engine</div>
+        <div class="pillar-title">The Website</div>
+        <div class="pillar-desc">A site rebuilt with dedicated pages for every city you service. Tells Google exactly where you work — city by city, not as a paragraph on one page.</div>
+        <ul class="pillar-list">
+          <li>~92 pages (12 hub + 80 city)</li>
+          <li>9.5/10 UI/UX — agency-grade</li>
+          <li>80–90% unique content per city</li>
+          <li>Schema, FAQ, internal linking</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02 · The Gas</div>
+        <div class="pillar-title">Off-Page Authority</div>
+        <div class="pillar-desc">Monthly work outside the site — backlinks, citations, GBP optimization. Moves you from page 5 to page 1. The more invested, the faster you get there.</div>
+        <ul class="pillar-list">
+          <li>15–20 quality backlinks / mo</li>
+          <li>Citation cleanup across 20+ directories</li>
+          <li>GBP weekly posts + automation</li>
+          <li>Local PR &amp; outreach</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03 · The Keys</div>
+        <div class="pillar-title">Reviews &amp; GBP</div>
+        <div class="pillar-desc">8–10 new Google reviews per month minimum. This is how Google (and AI) verifies you actually did work where you say you did.</div>
+        <ul class="pillar-list">
+          <li>Automated review request after every job</li>
+          <li>One five-star review per booked job</li>
+          <li>Currently 13 reviews → target 100+ by year-end</li>
+          <li>Map pack rank climbs with review velocity</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04 · AIO</div>
+        <div class="pillar-title">AI Optimization</div>
+        <div class="pillar-desc">The layer that gets Bunn's <em>cited</em> when someone asks ChatGPT, Perplexity, or Gemini "best HVAC near Louisburg." 45% of consumers do this. 87% of HVAC contractors are invisible.</div>
+        <ul class="pillar-list">
+          <li><code style="color:var(--amber)">llms.txt</code> file + AI crawler config</li>
+          <li>LocalBusiness + Service + FAQ schema</li>
+          <li>Natural-language Q&amp;A content blocks</li>
+          <li>NAP cleanup so AI trusts the data</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>What's included in the base bundle (one-time build)</h3>
+    <p>The Engine and AIO are <strong>built into the rebuild</strong>. Schema, llms.txt, FAQ structure, and city pages are part of the site itself. The Gas (off-page) and the Keys (reviews) are the monthly programs that follow.</p>
+
+    <h3>"Never Miss A Lead" — included with rebuild</h3>
+    <div class="kpi-row k4">
+      <div class="kpi" style="background:var(--bg-card);border-color:var(--rule)">
+        <div class="kpi-label" style="color:var(--cyan);font-weight:700;letter-spacing:.06em">AI RECEPTIONIST</div>
+        <div style="font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.5">Opus 4.7 answers every call 24/7. Qualifies, captures contact, books the estimate.</div>
+      </div>
+      <div class="kpi" style="background:var(--bg-card);border-color:var(--rule)">
+        <div class="kpi-label" style="color:var(--green);font-weight:700;letter-spacing:.06em">MISSED-CALL TEXT-BACK</div>
+        <div style="font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.5">Texts the homeowner within 60 seconds of a missed call. Recovers 25–30% of lost calls.</div>
+      </div>
+      <div class="kpi" style="background:var(--bg-card);border-color:var(--rule)">
+        <div class="kpi-label" style="color:var(--purple);font-weight:700;letter-spacing:.06em">WEBSITE CHATBOT</div>
+        <div style="font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.5">Opus 4.7 live on every page 24/7. Qualifies visitors, books estimates directly.</div>
+      </div>
+      <div class="kpi" style="background:var(--bg-card);border-color:var(--rule)">
+        <div class="kpi-label" style="color:var(--amber);font-weight:700;letter-spacing:.06em">FOLLOW-UP SEQUENCES</div>
+        <div style="font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.5">Automated SMS + email day 1/3/7 for leads that go cold. Stops when they book.</div>
+      </div>
+    </div>
+    <div class="callout green">
+      All four AI lead-capture modules are bundled into the rebuild.
+      <small>The average HVAC company misses 35–40% of inbound calls. The Engine gets you found, the Gas gets you ranked, the AI capture stack makes sure every call that comes in actually becomes a job.</small>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 3 — REVENUE ============ -->
+  <section class="page">
+    <div class="pg-meta"><span>Page 03 / 04</span><span>The Revenue</span></div>
+    <div class="eyebrow">12-MONTH &amp; 3-YEAR PROJECTIONS</div>
+    <h1>The compound effect.</h1>
+    <p class="lede">Authority builds. Reviews accumulate. Capture rates climb. Cost per job drops every year. Three program tiers — same engine, different fuel volume.</p>
+
+    <h3>Year 1 — Conservative annual revenue at each tier</h3>
+    <div class="kpi-row k4">
+      <div class="kpi"><div class="kpi-value">$5–104K</div><div class="kpi-label">Current state (do nothing)</div></div>
+      <div class="kpi"><div class="kpi-value green">$184K</div><div class="kpi-label">Rebuild only · no off-page</div></div>
+      <div class="kpi"><div class="kpi-value green">$459K</div><div class="kpi-label">+ $1K/mo (recommended)</div></div>
+      <div class="kpi"><div class="kpi-value green">$691K</div><div class="kpi-label">+ $2K/mo (aggressive)</div></div>
+    </div>
+
+    <h2>3-Year Compounding — $1,000 / month program</h2>
+    <div class="year-grid">
+      <div class="year-card">
+        <div class="year-label">Year 1</div>
+        <div class="year-assumptions">5% capture · 5% lead conv · 50% close</div>
+        <div class="year-row"><span class="label">Jobs / month</span><span class="value">8</span></div>
+        <div class="year-row"><span class="label">Annual jobs</span><span class="value">96</span></div>
+        <div class="year-row rev"><span class="label">Annual revenue</span><span class="value">$459,000</span></div>
+        <div class="year-row"><span class="label">Cost / job</span><span class="value amber">$125</span></div>
+        <div class="year-row roi"><span class="label">ROI</span><span class="value">38:1</span></div>
+      </div>
+      <div class="year-card">
+        <div class="year-label">Year 2</div>
+        <div class="year-assumptions">8% capture · 6% lead conv · 55% close</div>
+        <div class="year-row"><span class="label">Jobs / month</span><span class="value">14</span></div>
+        <div class="year-row"><span class="label">Annual jobs</span><span class="value">168</span></div>
+        <div class="year-row rev"><span class="label">Annual revenue</span><span class="value">$750,000</span></div>
+        <div class="year-row"><span class="label">Cost / job</span><span class="value amber">$71</span></div>
+        <div class="year-row roi"><span class="label">ROI</span><span class="value">62:1</span></div>
+      </div>
+      <div class="year-card highlight">
+        <div class="year-label" style="color:var(--green)">Year 3</div>
+        <div class="year-assumptions">11% capture · 7% lead conv · 60% close</div>
+        <div class="year-row"><span class="label">Jobs / month</span><span class="value">21</span></div>
+        <div class="year-row"><span class="label">Annual jobs</span><span class="value">252</span></div>
+        <div class="year-row rev"><span class="label">Annual revenue</span><span class="value">$1,020,000</span></div>
+        <div class="year-row"><span class="label">Cost / job</span><span class="value amber">$48</span></div>
+        <div class="year-row roi"><span class="label">ROI</span><span class="value">85:1</span></div>
+      </div>
+    </div>
+    <div class="callout green">
+      3-Year Total — $1K/mo program: <strong>$2.23M revenue · 516 jobs</strong> · Total spend $36K · <strong>62:1 ROI</strong>
+      <small>Projections use blended HVAC ticket (75% repair @ $400, 25% install @ $8,500). Excludes referral jobs, repeat business, and paid channel amplification.</small>
+    </div>
+
+    <h2>3-Year Compounding — $2,000 / month program</h2>
+    <div class="year-grid">
+      <div class="year-card">
+        <div class="year-label">Year 1</div>
+        <div class="year-assumptions">7% capture · 5.5% lead conv · 55% close</div>
+        <div class="year-row"><span class="label">Jobs / month</span><span class="value">12</span></div>
+        <div class="year-row"><span class="label">Annual jobs</span><span class="value">144</span></div>
+        <div class="year-row rev"><span class="label">Annual revenue</span><span class="value">$691,000</span></div>
+        <div class="year-row"><span class="label">Cost / job</span><span class="value amber">$167</span></div>
+        <div class="year-row roi"><span class="label">ROI</span><span class="value">29:1</span></div>
+      </div>
+      <div class="year-card">
+        <div class="year-label">Year 2</div>
+        <div class="year-assumptions">12% capture · 6.5% lead conv · 60% close</div>
+        <div class="year-row"><span class="label">Jobs / month</span><span class="value">21</span></div>
+        <div class="year-row"><span class="label">Annual jobs</span><span class="value">252</span></div>
+        <div class="year-row rev"><span class="label">Annual revenue</span><span class="value">$1,110,000</span></div>
+        <div class="year-row"><span class="label">Cost / job</span><span class="value amber">$95</span></div>
+        <div class="year-row roi"><span class="label">ROI</span><span class="value">46:1</span></div>
+      </div>
+      <div class="year-card highlight">
+        <div class="year-label" style="color:var(--green)">Year 3</div>
+        <div class="year-assumptions">16% capture · 7.5% lead conv · 63% close</div>
+        <div class="year-row"><span class="label">Jobs / month</span><span class="value">30</span></div>
+        <div class="year-row"><span class="label">Annual jobs</span><span class="value">360</span></div>
+        <div class="year-row rev"><span class="label">Annual revenue</span><span class="value">$1,400,000</span></div>
+        <div class="year-row"><span class="label">Cost / job</span><span class="value amber">$67</span></div>
+        <div class="year-row roi"><span class="label">ROI</span><span class="value">58:1</span></div>
+      </div>
+    </div>
+    <div class="callout green">
+      3-Year Total — $2K/mo program: <strong>$3.2M revenue · 756 jobs</strong> · Total spend $72K · <strong>44:1 ROI</strong>
+      <small>Aggressive growth path. Requires Bunn's to hire 3–5 additional technicians during year one to absorb optimistic-case demand.</small>
+    </div>
+
+    <div class="callout plain">
+      <strong>Realistic timeline.</strong> Months 1–3: infrastructure indexing, minimal visible movement. Months 4–6: rankings climb in low-competition cities; first organic leads come in. Months 7–12: authority compounds; consistent lead flow — this is where the ROI hits. Year 1 cash is typically 55–65% of the month-12 run-rate as the curve ramps.
+    </div>
+  </section>
+
+  <!-- ============ PAGE 4 — SIMPLE VERSION ============ -->
+  <section class="page">
+    <div class="pg-meta"><span>Page 04 / 04</span><span>The Bottom Line</span></div>
+    <div class="eyebrow">THE SIMPLE VERSION</div>
+    <h1>How this works, in plain English.</h1>
+    <p class="lede">No jargon. No fluff. Just how Google and AI decide who gets the call.</p>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h4>The Engine — your website</h4>
+          <p>We build a site with dedicated pages for every city you service. Right now Google thinks you only operate in Louisburg because your site doesn't tell it otherwise. The engine fixes that — city by city.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h4>The Gas — monthly off-page work</h4>
+          <p>Backlinks, citations, and Google Business Profile optimization. This is what moves you from page 5 to page 1. The more invested, the faster you get there.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h4>The Keys — reviews</h4>
+          <p>8–10 new Google reviews per month, from real customers, in the cities we're targeting. Without reviews, Google can't verify you did work there — and the timeline doubles.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h4>AIO — getting cited by AI</h4>
+          <p>Schema, <code style="color:var(--amber)">llms.txt</code>, and structured Q&amp;A content so that ChatGPT, Perplexity, and Gemini name Bunn's when 45% of consumers ask AI for an HVAC company. Built into the rebuild.</p>
+        </div>
+      </div>
+      <div class="step highlight">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h4>The Result</h4>
+          <p>You show up when homeowners in your service area search for an HVAC company — on Google, in the map pack, and inside ChatGPT answers. Not just Louisburg. Every city within your radius. Every month. Compounding.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Common Questions, Quick Answers</h3>
+    <div class="faq">
+      <div class="faq-q">
+        <div class="q">How long before I see results?</div>
+        <div class="a">Months 1–3: infrastructure. Months 4–6: smaller cities start showing up. Months 7–12: real lead flow.</div>
+      </div>
+      <div class="faq-q">
+        <div class="q">Why 8–10 reviews per month minimum?</div>
+        <div class="a">Velocity, not just count. Google watches how consistently reviews come in. Without it, double the timeline.</div>
+      </div>
+      <div class="faq-q">
+        <div class="q">What happens if I stop after six months?</div>
+        <div class="a">The site stays. But without the gas it coasts and eventually stalls. Rankings decay over 6–12 months.</div>
+      </div>
+      <div class="faq-q">
+        <div class="q">What's the difference between $1K and $2K?</div>
+        <div class="a">Speed. Same destination, shorter runway. $2K acquires more links, citations, and content per month.</div>
+      </div>
+      <div class="faq-q">
+        <div class="q">Can I just run Google Ads instead?</div>
+        <div class="a">You can. But ads stop the second you stop paying. SEO compounds. Most smart contractors do both.</div>
+      </div>
+      <div class="faq-q">
+        <div class="q">Why does AIO matter for HVAC?</div>
+        <div class="a">45% of consumers now use AI for local services. ChatGPT only recommends 1.2% of local businesses. Be one of them.</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px;font-size:16px;text-align:center;padding:24px;line-height:1.5">
+      The company that builds this first claims Louisburg, Franklin County, and the surrounding markets by default.
+      <small style="text-align:center;margin-top:10px">Everyone else competes for whatever's left.</small>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  Bunn's Heating &amp; Air · Revenue Potential Analysis · Prepared confidentially
+</footer>
+
+</body>
+</html>
