@@ -24,3 +24,11 @@ npm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Obsidian knowledge vault (Karpathy memory architecture — local-only)
+vault/
+leads/
+king_maker_outbound/
+kingmaker/
+blackboard/
+kingmaker-v3/
