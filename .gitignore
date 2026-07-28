@@ -32,3 +32,9 @@ king_maker_outbound/
 kingmaker/
 blackboard/
 kingmaker-v3/
+
+# Codex CLI config — contains plaintext MCP API keys, never commit (public repo)
+.codex/
+
+# Vale — downloaded style packages (re-fetch with: vale sync)
+.vale-styles/ai-tells/
