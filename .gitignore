@@ -38,3 +38,6 @@ kingmaker-v3/
 
 # Vale — downloaded style packages (re-fetch with: vale sync)
 .vale-styles/ai-tells/
+
+# Alex prompt: master is annotated, VAPI paste file is GENERATED
+king_maker_outbound/MABREY_ALEX_VAPI_PASTE.md
