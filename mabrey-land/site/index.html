@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Land Finder — Mabrey Roofing and Construction</title>
+<meta name="description" content="Curated, verified buildable lots within 1.5 hours of Raleigh, NC — hand-checked for Mabrey Construction build clients.">
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root{
+    --navy:#0e2140; --navy-2:#16305c; --red:#c02026; --ink:#1a2333;
+    --muted:#5b6b84; --line:#dde4ee; --bg:#f4f6fa; --card:#ffffff;
+    --good:#1a7f4e; --warn:#b7791f; --chip:#eef2f8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  a{color:var(--navy-2)}
+  header{background:var(--navy);color:#fff;padding:18px 16px 14px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 4px}
+  .brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .brand h1{font-size:1.35rem;letter-spacing:.2px}
+  .brand .sub{opacity:.75;font-size:.85rem}
+  .stampbar{background:var(--navy-2);color:#cdd8ec;font-size:.78rem;padding:6px 16px}
+  .stampbar b{color:#fff}
+  /* controls */
+  .controls{background:var(--card);border-bottom:1px solid var(--line);padding:12px 16px;position:sticky;top:0;z-index:5;box-shadow:0 1px 6px rgba(14,33,64,.06)}
+  .controls .wrap{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .controls input[type=search]{flex:1 1 220px;min-width:170px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:.95rem}
+  .controls select,.controls button{padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:.9rem;cursor:pointer}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;padding:8px 16px 2px}
+  .chip{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.82rem;cursor:pointer;user-select:none}
+  .chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .meta-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px 4px;font-size:.86rem;color:var(--muted)}
+  /* grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:12px 16px 40px}
+  .lot{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+  .lot .top{padding:14px 14px 8px}
+  .lot .price{font-size:1.3rem;font-weight:800;color:var(--navy)}
+  .lot .ppa{font-size:.78rem;color:var(--muted);font-weight:500;margin-left:6px}
+  .lot h3{font-size:.98rem;margin:4px 0 2px;line-height:1.3}
+  .lot .loc{font-size:.85rem;color:var(--muted)}
+  .facts{display:flex;flex-wrap:wrap;gap:6px;padding:8px 14px}
+  .fact{background:var(--chip);border-radius:6px;padding:3px 8px;font-size:.78rem}
+  .fact.good{background:#e7f5ee;color:var(--good)}
+  .fact.warn{background:#fbf3e2;color:var(--warn)}
+  .score{display:flex;align-items:center;gap:8px;padding:2px 14px 8px;font-size:.8rem;color:var(--muted)}
+  .bar{flex:1;height:6px;background:var(--chip);border-radius:3px;overflow:hidden}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,#3d6fb4,#1a7f4e)}
+  .notes{padding:0 14px 10px;font-size:.83rem;color:var(--muted)}
+  .lot .cta{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--line);margin-top:auto}
+  .cta a{flex:1;text-align:center;padding:9px 8px;border-radius:8px;font-size:.88rem;font-weight:600;text-decoration:none}
+  .cta .src{background:var(--navy);color:#fff}
+  .cta .map{border:1px solid var(--line);color:var(--navy)}
+  .badge{font-size:.72rem;padding:2px 8px;border-radius:999px;font-weight:600}
+  .badge.live{background:#e7f5ee;color:var(--good)}
+  .badge.unv{background:#fbf3e2;color:var(--warn)}
+  .badge.stale{background:#fdecec;color:var(--red)}
+  .empty{padding:60px 16px;text-align:center;color:var(--muted)}
+  /* knowledge */
+  .kn{background:var(--card);border-top:1px solid var(--line);padding:26px 16px 50px}
+  .kn h2{color:var(--navy);margin-bottom:10px;font-size:1.15rem}
+  .kn details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fff}
+  .kn summary{padding:12px 14px;font-weight:600;cursor:pointer;font-size:.95rem}
+  .kn .body{padding:0 14px 14px;font-size:.9rem;color:#2c3a52}
+  .kn .body p{margin:8px 0}
+  footer{background:var(--navy);color:#a9b8d4;font-size:.78rem;padding:18px 16px;line-height:1.6}
+  footer b{color:#fff}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <h1>Land Finder</h1>
+      <span class="sub">Mabrey Roofing and Construction · Veteran-owned · NC GC #84804 · Curated for Mabrey build clients — not a listing service</span>
+    </div>
+  </div>
+</header>
+<div class="stampbar"><span class="wrap" style="display:block">Every lot below was <b>hand-verified against its live listing</b> on <b id="stamp">—</b>. Land moves fast — tap through to confirm before you fall in love.</span></div>
+
+<div class="controls">
+  <div class="wrap">
+    <input type="search" id="q" placeholder="Search town, road, county…">
+    <select id="price">
+      <option value="">Any price</option>
+      <option value="0-50000">Under $50k</option>
+      <option value="50000-100000">$50k – $100k</option>
+      <option value="100000-150000">$100k – $150k</option>
+      <option value="150000-200000">$150k – $200k</option>
+      <option value="200000-99999999">$200k+</option>
+    </select>
+    <select id="acres">
+      <option value="">Any size</option>
+      <option value="0-1">Under 1 ac</option>
+      <option value="1-3">1 – 3 ac</option>
+      <option value="3-10">3 – 10 ac</option>
+      <option value="10-999">10+ ac</option>
+    </select>
+    <select id="drive">
+      <option value="">Any drive time</option>
+      <option value="30">≤ 30 min to Raleigh</option>
+      <option value="45">≤ 45 min</option>
+      <option value="60">≤ 60 min</option>
+      <option value="90">≤ 90 min</option>
+    </select>
+    <select id="sort">
+      <option value="score">Best build score</option>
+      <option value="price">Price: low → high</option>
+      <option value="ppa">$ / acre: low → high</option>
+      <option value="acres">Acres: high → low</option>
+      <option value="drive">Closest to Raleigh</option>
+    </select>
+  </div>
+  <div class="chips" id="countyChips"></div>
+</div>
+
+<div class="meta-row wrap"><span id="count">Loading…</span><span id="filterNote"></span></div>
+<main class="grid" id="grid"></main>
+<div class="empty" id="empty" style="display:none">No lots match those filters — loosen one and try again.</div>
+<details class="wrap" id="unvWrap" style="display:none;padding:0 16px 30px">
+  <summary id="unvSummary" style="cursor:pointer;font-weight:600;color:var(--muted);padding:8px 0"></summary>
+  <p style="font-size:.82rem;color:var(--muted);margin:4px 0 10px">These couldn't be fully re-checked against their source (or may be pending/sold) — treat as leads, not confirmed inventory.</p>
+  <div class="grid" id="unvGrid" style="padding:0"></div>
+</details>
+
+<section class="kn wrap" id="knowledge">
+  <h2>How buying land actually works in NC</h2>
+  <div id="knBody"><!-- knowledge layer injected from data --></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>Mabrey Roofing and Construction</b> · Durham, NC<br>
+    Mabrey Roofing and Construction is a licensed North Carolina general contractor (license #84804), not a real estate broker, and offers no brokerage services. This page is an informational courtesy for Mabrey build clients. All property inquiries go to the listing agent or source via each lot's link. Details are believed accurate as of the date shown but are not guaranteed — confirm everything with the listing source. Lot availability changes daily.
+    <div id="methodNote" style="margin-top:8px;opacity:.8"></div>
+  </div>
+</footer>
+
+<script>
+let LOTS=[], KN=[], GIS={}, activeCounties=new Set();
+const $=id=>document.getElementById(id);
+const fmt=n=>n==null?"—":"$"+n.toLocaleString();
+
+fetch("lots.json").then(r=>r.json()).then(d=>{
+  LOTS=(d.lots||[]).filter(l=>l.status!=="killed");
+  KN=d.knowledge||[];
+  GIS=d.countyGis||{};
+  $("stamp").textContent=d.verifiedAt||"—";
+  if(d.methodNote)$("methodNote").textContent=d.methodNote;
+  buildChips();buildKnowledge();render();
+}).catch(()=>{$("count").textContent="Data failed to load — refresh.";});
+
+function buildChips(){
+  const counties=[...new Set(LOTS.map(l=>l.county))].sort();
+  $("countyChips").innerHTML=counties.map(c=>`<span class="chip" data-c="${c}">${c}</span>`).join("");
+  $("countyChips").onclick=e=>{
+    const c=e.target.dataset.c; if(!c)return;
+    activeCounties.has(c)?activeCounties.delete(c):activeCounties.add(c);
+    e.target.classList.toggle("on");render();
+  };
+}
+function buildKnowledge(){
+  $("knBody").innerHTML=KN.map(k=>`<details><summary>${k.title}</summary><div class="body">${k.html}</div></details>`).join("")||"<p style='color:var(--muted)'>Guide loading with the full dataset.</p>";
+}
+function inRange(v,spec){if(!spec)return true;if(v==null)return false;const[a,b]=spec.split("-").map(Number);return v>=a&&v<=b;}
+function passes(l){
+  const q=$("q").value.trim().toLowerCase();
+  if(q&&!((l.title||"")+" "+(l.area||"")+" "+(l.county||"")+" "+(l.address||"")).toLowerCase().includes(q))return false;
+  if(activeCounties.size&&!activeCounties.has(l.county))return false;
+  if(!inRange(l.price,$("price").value))return false;
+  if(!inRange(l.acres,$("acres").value))return false;
+  const dmax=$("drive").value;if(dmax&&(l.driveMinToRaleigh==null||l.driveMinToRaleigh>+dmax))return false;
+  return true;
+}
+function sortRows(rows){
+  const s=$("sort").value;
+  return rows.sort((a,b)=>s==="price"?(a.price??9e9)-(b.price??9e9)
+    :s==="ppa"?(a.pricePerAcre??9e9)-(b.pricePerAcre??9e9)
+    :s==="acres"?(b.acres??0)-(a.acres??0)
+    :s==="drive"?(a.driveMinToRaleigh??999)-(b.driveMinToRaleigh??999)
+    :(b.buildScore??0)-(a.buildScore??0));
+}
+function render(){
+  const verified=sortRows(LOTS.filter(l=>l.status==="verified-live"&&passes(l)));
+  const unv=sortRows(LOTS.filter(l=>l.status==="unverified"&&passes(l)));
+  const stale=sortRows(LOTS.filter(l=>l.status==="stale-risk"&&passes(l)));
+  const other=[...unv,...stale];
+  $("count").textContent=`${verified.length} verified lot${verified.length===1?"":"s"}${other.length?` · ${other.length} more unverified`:""}`;
+  $("empty").style.display=(verified.length||other.length)?"none":"block";
+  $("grid").innerHTML=verified.map(card).join("");
+  $("unvWrap").style.display=other.length?"block":"none";
+  $("unvSummary").textContent=`Unverified finds (${other.length}) — tap to expand`;
+  $("unvGrid").innerHTML=other.map(card).join("");
+}
+function card(l){
+  const badge=l.status==="verified-live"?`<span class="badge live">verified live</span>`
+    :l.status==="stale-risk"?`<span class="badge stale">may be pending/sold</span>`
+    :`<span class="badge unv">unverified</span>`;
+  const facts=[
+    l.acres!=null?`<span class="fact">${l.acres} ac</span>`:"",
+    l.driveMinToRaleigh!=null?`<span class="fact">≈${l.driveMinToRaleigh} min to Raleigh (est.)</span>`:"",
+    l.utilities?.water==="municipal"?`<span class="fact good">county water</span>`:l.utilities?.water==="well"?`<span class="fact warn">well needed</span>`:"",
+    l.utilities?.sewer==="municipal"?`<span class="fact good">sewer</span>`:l.utilities?.sewer==="septic-installed"?`<span class="fact good">septic in</span>`:l.utilities?.sewer==="septic-needed"?`<span class="fact warn">septic needed</span>`:"",
+    l.percStatus==="approved"?`<span class="fact good">perc approved</span>`:"",
+    l.zoning?`<span class="fact">${l.zoning}</span>`:"",
+    l.floodNote?`<span class="fact warn">${l.floodNote}</span>`:""
+  ].join("");
+  const maps=l.lat&&l.lng?`https://www.google.com/maps?q=${l.lat},${l.lng}${l.latlngApprox?"":""}`:(GIS[l.county]||null);
+  const mapBtn=maps?`<a class="map" href="${maps}" target="_blank" rel="noopener">${l.lat&&l.lng?"Map"+(l.latlngApprox?" (approx)":""):"County GIS"}</a>`:"";
+  return `<article class="lot">
+    <div class="top">
+      <div><span class="price">${fmt(l.price)}</span><span class="ppa">${l.pricePerAcre?fmt(l.pricePerAcre)+"/ac":""}</span> ${badge}</div>
+      <h3>${l.title||"Lot"}</h3>
+      <div class="loc">${[l.area,l.county+" Co."].filter(Boolean).join(", ")}</div>
+    </div>
+    <div class="facts">${facts}</div>
+    ${l.buildScore!=null?`<div class="score"><span>Build score ${l.buildScore}</span><div class="bar"><i style="width:${l.buildScore}%"></i></div></div>`:""}
+    ${l.buildNotes?`<div class="notes">${l.buildNotes}</div>`:""}
+    <div class="cta">
+      <a class="src" href="${l.url}" target="_blank" rel="noopener">View listing → ${l.source||"source"}</a>
+      ${mapBtn}
+    </div>
+  </article>`;
+}
+["q","price","acres","drive","sort"].forEach(id=>$(id).addEventListener("input",render));
+</script>
+</body>
+</html>

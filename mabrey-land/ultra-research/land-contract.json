@@ -1,0 +1,26 @@
+{
+  "question": "What buildable residential land is currently available within a 1.5-hour drive of Raleigh NC for Mabrey Construction's five build-ready customers, and how should a build-ready buyer actually find and vet land in each county? (RADIUS RULE, Joseph 2026-08-05: drive time <=90 min to Raleigh is the inclusion filter, not county membership.)",
+  "subQuestions": [
+    "Which residential lots/land parcels (0.3-15 acres, ~$30k-$200k) are currently for sale in each target county (Wake, Johnston, Harnett, Franklin, Granville, Nash, Durham, Wilson, Cumberland, Hoke)?",
+    "Which channels actually surface NC land inventory — listed (land platforms, MLS-fed portals, auctions, FSBO) and off-market (GIS vacant-parcel mining, estate/probate, timber/farm brokers, developer remnants) — and which can only be worked by a human?",
+    "What makes an NC lot buildable — perc/septic approval, well vs municipal water, zoning and minimum lot size, road frontage, flood/wetlands — and what are the real costs and timelines per county right now?",
+    "County by county: who issues permits, where is the GIS/parcel portal, what are current septic-permit wait times, and how tight is lot inventory versus price?",
+    "How should the five customers be matched to inventory once their locations and budgets arrive from Sean?"
+  ],
+  "checklist": [
+    "per-county lot inventory: Wake", "per-county lot inventory: Johnston", "per-county lot inventory: Harnett",
+    "per-county lot inventory: Franklin", "per-county lot inventory: Granville", "per-county lot inventory: Nash",
+    "per-county lot inventory: Durham", "per-county lot inventory: Wilson", "per-county lot inventory: Cumberland",
+    "per-county lot inventory: Hoke",
+    "lens coverage: land-specialist platforms", "lens coverage: MLS-fed portals", "lens coverage: auction/county-surplus",
+    "lens coverage: county GIS / off-market", "lens coverage: FSBO (or honest human-channel flag)",
+    "buildability mechanics: septic/perc process + cost + timeline", "buildability mechanics: well vs municipal water",
+    "buildability mechanics: zoning + minimum lot sizes", "buildability mechanics: flood/wetland/easement kill factors",
+    "off-market playbook", "compliance note (NC brokerage law shape)", "stale-listing handling policy"
+  ],
+  "tier": "custom-enhanced (Joseph-ordered): ~22-28 agents, Sonnet 5 bulk, Opus judge, Fable synthesis",
+  "mode": "breadth",
+  "currentDate": "2026-08-05",
+  "stopCondition": "Clean: all 10 counties saturated (2 consecutive dry lens-rotated rounds each) OR >=60 verified-live lots with every county swept >=2 rounds. Provisional: 30-agent floor or persistent tool degradation — gaps enumerated, never hidden.",
+  "userConfirmedTier": true
+}
