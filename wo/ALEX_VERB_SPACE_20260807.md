@@ -110,3 +110,40 @@ operator-dictated copy = a grouped set of send_text-class scheduled sends (+opti
 steps) with a run row for unit cancel/visibility. This is "what OS47 hand-built for Ann as
 raw outbox rows" promoted to a one-message verb. The approved-copy law softens here:
 operator-dictated text through send_text is ALREADY allowed today with two-phase confirm.
+
+---
+
+## LAYER 2 — THE INTELLIGENCE LAYER (Joseph 08:47am dump + paranoia sweep #2, 08:52)
+
+**New capability requirements (his words, distilled):**
+1. UNIVERSAL COLLISION LAW — every scheduling/sending verb enumerates what already exists
+   for that person/slot FIRST, acts smart (merge/move/skip), and DISCLOSES what it did
+   ("one already set for 3 — didn't add, moved the others around it"). Applies to cadences,
+   custom cadences, appointments, scheduled texts, document sends.
+2. DEBRIEF VERB (composite) — post-call voice-dump → parsed into: appointment (via booking
+   core), notes, LEAD stage move, payment preference, insurance flag, proposal-sent marker —
+   ONE confirmation card previewing every write; ambiguity → one question back.
+3. THREAD READ (CONFIRMED missing — zero message-thread access in tool files) + LEAD
+   TIMELINE view (calls + texts + outbox incl. FAILED + activities, chronological). "Full
+   CRM awareness" = universal read + timeline + thread.
+4. BEST-JUDGMENT COMPOSITION — "just write her a text": Alex drafts in a BLESSED WRITTEN
+   REGISTER (new artifact: ALEX_TEXT_REGISTER.md, survives model swaps), cadence-context
+   aware, exact body previewed, two-phase confirm unchanged.
+5. QUIET HOURS = WARN-AND-CONFIRM, NEVER BLOCK (Joseph's ruling — late leads are real).
+6. Calendar: week view EXISTS (list_appointments, 14-day default — probed). Cancel/move =
+   still to build.
+
+**Paranoia #2 findings/rules:**
+- [CONFIRMED] no message-thread read (P6, zero hits).
+- [REFUTED] week calendar missing (P7 — exists). [REFUTED] $15k-budget-in-notes breaks the
+  money wall (P8 — assertDeclarable is FIELD-level; free-text notes pass; money FIELDS walled).
+- RULES MINTED: debrief confirm card echoes EVERY parsed slot + flags out-of-window times
+  (Joseph's own 11pm/11am slip in the requirements message is the canonical case) · stage
+  INFERENCE = LEAD stages only, JOB stages explicit-only (they text the homeowner) · debrief
+  idempotency (recent-duplicate check + disclose) · ambiguous referent on ANY composite
+  write → refuse-and-list, never guess · post-write READ-BACK (reply reflects re-read rows,
+  not intent) · fact-location mapping pinned in WO (structured field where exists, note
+  otherwise) · self-serve /book 409s translated to plain speech · failed sends visually
+  distinct in timeline · Sean's Slack permission tier = OPEN DECISION (flag before he joins).
+
+Status: spec COMPLETE and convergence-shaped. Build fires on Joseph's go.
