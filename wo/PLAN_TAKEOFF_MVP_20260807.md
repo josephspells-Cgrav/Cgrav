@@ -356,9 +356,12 @@ emits its named flag text into `meta.assumption` (key = the constant name).
 `--create-contact` inserts a minimal contacts row (existing default contact type); Maass is
 Sean's REAL client in Sean's REAL CRM — prod data, not demo.
 
-**A13 THIS set's canonical partition (P3)** — pg1-4 none · pg5-6 NOTES text (slab thickness,
-R-values, covering, wall/shell spec) · pg7 rooms + AREA SCHEDULE · pg8+10 dimension strings
-(merged by segment, never additive) · pg9 window/door TAGS + wall legend · pg11 roof layout ·
+**A13 THIS set's canonical partition (P3; rooms-source corrected by truth-draft probe
+2026-08-07 ~6am — pg7 is the AREA plan, interior room labels live on the annotation plan)** —
+pg1-4 none · pg5-6 NOTES text (slab thickness, R-values, covering, wall/shell spec) ·
+pg7 AREA SCHEDULE + area-plan callouts ONLY · pg8+10 dimension strings
+(merged by segment, never additive) · pg9 window/door TAGS + wall legend + interior ROOM
+labels (names/finishes; P-ROOMS assist runs on pg9 tiles) · pg11 roof layout ·
 pg12-13 elevations (pitch/covering cross-check) · pg14 foundation (perimeter, footings) ·
 pg15 electrical SYMBOLS (vision) · pg16 plumbing fixtures · pg17 metal columns (shellSystem
 evidence; no counts).
