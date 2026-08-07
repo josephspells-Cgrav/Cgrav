@@ -70,3 +70,43 @@
 - Alex register: TERSE (prompt-line fix, include in sweep WO).
 
 Status: BANKED, build NOT started (Joseph: "don't ask me to build anything yet").
+
+---
+
+## BLESSED-LIST REVISION (OS48 + paranoia sweep, 08:44am — supersedes the A/B/C tables above where they conflict)
+
+**PROBED CORRECTION: the live surface is 28 verbs, not 13.** Full verified list (name dump
+from the assistant tool files): add_note · bulk_delete_leads · call_transcript ·
+cancel_cadence · create_task · crm_overview · delete_lead · find_contact_id · find_customer ·
+find_lead · job_progress · list_appointments · list_by_stage · list_cadence_runs ·
+list_documents · list_leads · pause_alex · pending_booking_requests · reassign_lead ·
+recent_calls · schedule_appointment · send_document · send_text · set_do_not_contact ·
+set_job_stage · set_lead_stage · set_task_status · start_cadence.
+Notables that ALREADY exist vs Joseph's rant: call_transcript (full verbatim) ·
+schedule_appointment (real booking core — confirm text, reminders, conflict guard, books
+'proposed'; pending_booking_requests feeds the confirm flow) · send_document (re-send +
+redirect) · delete_lead/bulk · per-lead cadence status.
+
+**PARANOIA FINDINGS (ledger receipts in session 2026-08-07):**
+1. CONFIRMED — outbox: ZERO references in any tool file → Alex blind to pending/failed/
+   queued sends (the Ann false-negative, generalized). Fix = universal read (or outbox read).
+2. CONFIRMED — read surface ≈9 of ~30 tables (from() enumeration: activities, cadenceRuns,
+   calls, contacts, documents, jobs, leads, settings, users). No funnel/attribution, photos,
+   suppressions, estimating, takeoff.
+3. CONFIRMED — set_job_stage's description does NOT disclose that stage moves TEXT the
+   homeowner → the model cannot warn the operator of a side effect it can't see. One-line
+   description fix + confirm-preview disclosure.
+4. CONFIRMED — custom-cadence collision is schema-possible: `cadence_runs_active_dedupe_uq`
+   is (dedupe_key, cadence_key) → a custom key coexists with a live ladder + pending manual
+   outbox rows → double-texting. The custom-cadence verb MUST enumerate + disclose +
+   consolidate (cancel/absorb) whatever is already chasing the person, in the confirm preview.
+5. TRIPWIRE — bulk_delete_leads enumerate-first behavior UNVERIFIED (792-of-820 law) —
+   verify in the sweep WO before first real use.
+6. WO rules: operator-time steps outside 8am-8pm ET warn · resend-failed-text verb rides on
+   outbox visibility · mint+text booking link verb · STOP-list read verb.
+
+**Custom-cadence design note (Joseph's 11am/3pm/7pm example):** operator TIMES + approved or
+operator-dictated copy = a grouped set of send_text-class scheduled sends (+optional call
+steps) with a run row for unit cancel/visibility. This is "what OS47 hand-built for Ann as
+raw outbox rows" promoted to a one-message verb. The approved-copy law softens here:
+operator-dictated text through send_text is ALREADY allowed today with two-phase confirm.
