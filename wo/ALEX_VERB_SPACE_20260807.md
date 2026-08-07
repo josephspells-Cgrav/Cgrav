@@ -147,3 +147,88 @@ operator-dictated text through send_text is ALREADY allowed today with two-phase
   distinct in timeline · Sean's Slack permission tier = OPEN DECISION (flag before he joins).
 
 Status: spec COMPLETE and convergence-shaped. Build fires on Joseph's go.
+
+---
+
+# ⭐ FINAL CONSOLIDATED BUILD SPEC (post 3-pass Kimi loop, 09:25am — SUPERSEDES everything above on conflict)
+
+Ledger: KIMI_LEDGER_ALEX_CONVERGENCE_20260807-0920.md (37/37, 0 rejects). Build order is
+load-bearing: **#0 before #1.**
+
+## 0. THE ATTEMPT LEDGER (THE ONE THING — precondition for everything)
+Every outbound attempt — call, text, email; manual, cadence, voice-agent, SMS-agent —
+writes ONE row at attempt time (outbox row channel='call' or an attempts table), terminal
+status written back. Kills the unrecorded-call-failure hole (cadence.ts console.error) and
+gives the collision law + timeline a COMPLETE substrate. Success criterion 2 (rewritten):
+every customer-reaching action AND attempt lands a queryable row; every absence-answer
+discloses its search space.
+
+## 1. UNIVERSAL READ (hardened)
+- Read-only via a SEPARATE NEON ROLE: SELECT grants ONLY on the operational INCLUDE list —
+  string checks are defense-in-depth, never the wall (data-modifying CTEs defeat regexes).
+- INCLUDE list (default-deny): leads, contacts, contact_people, calls, appointments,
+  activities, outbox, cadence_runs, cadences, suppressions, documents, jobs, job_tasks,
+  job_stage_events, photos, measurements, material_orders, referrals(-money cols),
+  reviews, funnel_events, settings(non-secret keys). EXCLUDED: invoices, payments,
+  commissions, price_book, all *_token/*_hash columns, users.password_hash, api_tokens,
+  demo_sessions, demo_events, showroom_overrides, beat_runs, narrator_usage,
+  change_requests, assistant_turns (until per-user gating lands).
+- Column denylist on top (money cents cols on included tables, every token/hash).
+- Single statement · statement_timeout · row cap · byte caps · fat columns steered to
+  call_transcript/thread tools.
+- EVERY response: {returned, truncated, filtersEcho}; absence-answers BANNED on truncated
+  results; empty-states disclose their windows (pending_booking_requests' 24h cutoff fixed
+  same WO).
+- Org-scope proven BY TEST per query surface; grounding's missing whereOrg fixed same WO.
+
+## 2. VERBS (build list, final)
+NEW: place_call (pinned opener templates per blessed purpose — reschedule/follow-up/confirm;
+no freeform voice copy) · set_appointment_status (completed/no_show/cancelled via
+booking-core; no_show discloses ladder eligibility; WO verifies auto-enroll wiring first) ·
+cancel_scheduled_send (conditional pending→cancelled; 0 rows → report TRUE terminal state) ·
+cancel/move appointment (booking-core supersede/cancel ONLY; 409s in plain speech) ·
+add_lead · add_contact · edit_contact (phone/address) · upload/delete photos ·
+custom_cadence (fixed key custom_outreach per handset — ONE live custom ladder per phone,
+absorb-or-refuse; rows owned via meta.cadenceRunId so existing drain cancels) ·
+reschedule_cadence_step · thread_read + lead_timeline (server-side assembled, single tools;
+3 visual classes live/terminal/DRAFT-alex_suggested; held rows at hold time) ·
+mint+text booking link · resend_failed_send · STOP-list check.
+FEATURE GAPS (CRM first, verb after): change orders (NO entity exists — change_requests is
+showroom machinery, schema:1922) · production-change notifications · crew requests ·
+contact merge · EagleView (own runbook).
+FIXES: resolveSendAt past-refusal · find_contact_id required-params · reassign_lead roster
+filter (inRotation) · bulk_delete silent invalid-id note · window unification to ONE source
+(nextWindowOpening; TCPA 9pm bound — evening sends to 9pm GO, later held w/ real fire time
+echoed — Joseph's late-lead ruling + spine truth reconciled) · start_cadence prod flag check
+(probed enabled:true 08-07 04:12, re-verify at ship).
+
+## 3. INTELLIGENCE LAYER (final laws)
+- COLLISION LAW: enumerate → PROPOSE per-item in the confirm card → act on yes. Manual/
+  operator rows NEVER auto-cancelled (listed only). Cancel-old-before-insert-new. Enumeration
+  RE-RUNS at confirm. Includes last-touch-any-agent < N min via the attempt ledger.
+- DEBRIEF VERB: customer-reaching slots FIRST + visually distinct; appointments book
+  `proposed` unless homeowner agreement was stated (confirmed ⇒ texts her — echoed);
+  per-slot correction ("change 2"); slot-hash idempotency + recent-duplicate check;
+  proposal-sent = lead-stage move unless "send it" said (then real sendDocument flow);
+  stage inference = LEAD stages only; ambiguous referent → refuse-and-list; post-write
+  READ-BACK from re-read rows.
+- COMPOSITION: ALEX_TEXT_REGISTER.md injected as prompt AND enforced by a mechanical
+  pre-preview linter (money patterns, off-domain links, length, banned claims). Doc
+  persuades; lint decides.
+- CONFIRM BINDING: (requesting Slack user id, echo hash, ~5min expiry); mismatch/stale →
+  refuse. Universal read + debrief + place_call gated to JOSEPH's Slack id until Sean's
+  tier is DECIDED (open decision, now mechanical).
+- UNTRUSTED CONTENT: all tool-result content wrapped as data-never-instructions;
+  recipients/bodies never sourced from read content; destinations echoed verbatim.
+- SIDE-EFFECT DISCLOSURES LIVE IN PREVIEW STRINGS (code), never descriptions alone —
+  survives model swaps; audited per verb.
+- ITERATION CAP: explicit "ran out of room mid-check — ask narrower" reply, never lastText.
+- TERSE register everywhere.
+
+## LAW ADOPTED FOR ALL FUTURE SWEEPS
+A CONFIRMED finding carries a file:line receipt or it is not CONFIRMED (this audit caught
+two of OS48's own receipt-less CONFIRMEDs — change_requests misread + a stale
+set_job_stage claim).
+
+STATUS: BUILD-READY. Cycle on go: plan → WO(s) → Sonnet-5 builders (sandbox protocol) →
+OS48 gates → deploy. Kimi's verdict: "yes, as amended."
