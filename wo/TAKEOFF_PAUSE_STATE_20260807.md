@@ -1,10 +1,14 @@
 # TAKEOFF ARC — PAUSE POINT (OS48, 2026-08-07 ~8:20am ET, Joseph's call)
 
-## 🔖 RESUME GATE — ASK JOSEPH THIS FIRST, BEFORE ANY WORK (his explicit instruction, 8:17am)
+## ✅ RESUME GATE — ANSWERED 2026-08-07 11:15am. 17 pages IS the complete set (Joseph re-sent the original file, same path/bytes). The vault's 122-page claim was FALSE and is corrected at km-takeoff-tool-idea-2026-08-06. Arc RESUMED via WO_TAKEOFF_T5_SONNET.md.
+
+<details><summary>original gate text</summary>
 **"The vault said the Maass plan set is 122 pages; the PDF in Downloads is 17 pages (same
 title block, REVISED FINAL 04-30-2024). Does a fuller set exist anywhere, or is 17 the whole
 thing?"** — the answer decides whether the pipeline's first real run targets this file or a
 bigger one. Do not start the resume moves below until he answers.
+
+</details>
 
 **Everything below is committed + pushed. Resume from THIS file — it is the exact seam.**
 
