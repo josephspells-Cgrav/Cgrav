@@ -2,3 +2,4 @@ node_modules/
 out/
 public/take.mp4
 public/take-cfr.mp4
+public/*.png
