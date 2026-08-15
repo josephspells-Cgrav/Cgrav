@@ -9,6 +9,7 @@ import {CapLab2} from './CapLab2';
 import {RealBB} from './RealBB';
 import {RealBBRoll} from './RealBBRoll';
 import {CapLab3} from './CapLab3';
+import {RealBBv6} from './RealBBv6';
 
 export const Root: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ export const Root: React.FC = () => {
       width={1080}
       height={1920}
     />
+  <Composition id="RealBBv6" component={RealBBv6} durationInFrames={1380} fps={30} width={1080} height={1920} />
   <Composition id="CapLab3" component={CapLab3} durationInFrames={960} fps={30} width={1080} height={1920} />
   <Composition id="RealBB" component={RealBB} durationInFrames={1380} fps={30} width={1080} height={1920} />
   <Composition id="RealBBRoll" component={RealBBRoll} durationInFrames={1380} fps={30} width={1080} height={1920} />

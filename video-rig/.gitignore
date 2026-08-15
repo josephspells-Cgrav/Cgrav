@@ -4,3 +4,6 @@ public/take.mp4
 public/take-cfr.mp4
 public/*.png
 public/*.mp4
+public/**/*.mp4
+public/*.webm
+wo/audio-assets/
