@@ -156,8 +156,9 @@ const T2: React.FC<{t: number; frame: number; fps: number}> = ({t, frame, fps}) 
         </svg>
       </div>
 
-      {/* "for your" — small, tucked under OVERPAY's right edge. The -4deg
-          lifts the right side ~36px, so this rides correspondingly higher. */}
+      {/* "for your roof" — small, tucked under OVERPAY's right edge. The -4deg
+          lifts the right side ~36px, so this rides correspondingly higher.
+          Joseph, 08-15: was "FOR YOUR", which left the phrase hanging. */}
       <div
         style={{
           position: 'absolute',
@@ -176,7 +177,7 @@ const T2: React.FC<{t: number; frame: number; fps: number}> = ({t, frame, fps}) 
           }),
         }}
       >
-        FOR YOUR
+        FOR YOUR ROOF
       </div>
     </>
   );

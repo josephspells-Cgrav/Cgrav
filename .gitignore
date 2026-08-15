@@ -41,3 +41,6 @@ kingmaker-v3/
 
 # Alex prompt: master is annotated, VAPI paste file is GENERATED
 king_maker_outbound/MABREY_ALEX_VAPI_PASTE.md
+
+# Alarm-co dispatch demo — real customer names/phones/addresses, never public
+alarm-dispatch/

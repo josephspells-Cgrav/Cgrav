@@ -9,9 +9,10 @@ import {
   useVideoConfig,
   interpolate,
   spring,
+  Easing,
 } from 'remotion';
 import chunksData from '../public/take2-chunks.json';
-import {HookSpectacle, hookBackground, hookSuppressesCaptions, ANTON} from './HookSpectacle';
+import {HookSpectacle, hookBackground, hookSuppressesCaptions, ANTON, INTER} from './HookSpectacle';
 
 // ── REAL BB v6 — v5 (RealBBRoll) with the type-as-spectacle hook layered
 // over 0–8.6s. WO_HOOK_SPECTACLE.
@@ -55,7 +56,7 @@ const CTA_T = 43.5; // end card takeover
 type Cut = {
   id: string;
   src?: string;
-  kind?: 'bill' | 'map';
+  kind?: 'bill' | 'map' | 'billboard';
   // v6.1 — a cut whose plate is a MOVING clip rather than a still.
   video?: boolean;
   srcFrom?: number; // seconds into the source clip where the cut opens
@@ -67,17 +68,26 @@ type Cut = {
 };
 
 export const CUTS: Cut[] = [
+  // ⚖️ v6.3 (Joseph, 08-15 9:53am): cuts 1, 2 and 6 are now REAL DRONE MOVES.
+  // Cut 1 was a still; cut 2's old clip read as "a still with a shaky-cam
+  // effect" (its motion WAS handheld micro-sway); cut 6's house was miscast —
+  // golden-hour glamour brick instead of a traditional early-2000s suburban
+  // home. All three regenerated as drone parallax — the ONE motion class that
+  // survived the push-in law, because parallax reveals geometry instead of
+  // inventing texture detail. Camera-move lerps stay NEUTRAL: the clips carry
+  // real moves and a synthetic push on top would double-move.
   // 1 — "we offer the highest quality roof replacements" (5.48-7.80)
-  {id: 'drone', src: 'br2-dronehouse.png', from: 5.5, to: 7.75, s: [1.11, 1.01], x: [0, 0], y: [-1, 1]},
+  {id: 'drone', src: 'broll-v2/drone-house.mp4', video: true, srcFrom: 0.15, from: 5.5, to: 7.75, s: [1, 1], x: [0, 0], y: [0, 0]},
   // 2 — "is over 15 years old" (9.80-11.24)
-  //     v6.1 — the still is retired for the WO_BROLL v2 CLIP. Camera-move
-  //     lerps go NEUTRAL: the clip carries a real move, and a synthetic push
-  //     on top of it would double-move.
   {
     id: 'old',
-    src: 'broll-v2/br3-oldroof-v2.mp4',
+    // v6.5 (Joseph's reference shot, 11:32am): the wide house is retired for a
+    // ~50% crop of that overhead hip roof, drone-panned. Cropping BEFORE
+    // generation means the model only has roof to animate — no street, no
+    // trees, no lawn to get wrong.
+    src: 'broll-v2/drone-oldroof2.mp4',
     video: true,
-    srcFrom: 0.2,
+    srcFrom: 0.4,
     from: 9.8,
     to: 11.3,
     s: [1, 1],
@@ -98,8 +108,18 @@ export const CUTS: Cut[] = [
   },
   {id: 'stain', src: 'br5-ceiling.png', from: 14.02, to: 15.55, s: [1.04, 1.12], x: [0, 0], y: [3, -1]},
   {id: 'bill', kind: 'bill', from: 15.55, to: 18.02, s: [1, 1], x: [0, 0], y: [0, 0]},
-  {id: 'new', src: 'br7-newroof.png', from: 18.02, to: 19.9, s: [1.14, 1.03], x: [1.5, -1.5], y: [0, 0]},
+  // 6 — "it's time for you to get a new roof" (18.30-19.88) — THE WANT
+  //     v6.4 (Joseph picked N2, 11:14am): the whole-house shot is retired for a
+  //     TIGHT new-roof shot — slope + gutter + fascia + siding. Same distance
+  //     band as the aging-roof cut at 9.80, so the two play as a before/after
+  //     without the ad ever saying so. Fewer objects in frame = fewer AI tells,
+  //     which is the law his cold-viewer test and the Z-ladder both landed on.
+  {id: 'new', src: 'broll-v2/drone-newroof.mp4', video: true, srcFrom: 0.4, from: 18.02, to: 19.9, s: [1, 1], x: [0, 0], y: [0, 0]},
   {id: 'map', kind: 'map', from: 32.95, to: 37.35, s: [1, 1], x: [0, 0], y: [0, 0]},
+  // "We've installed over $50 million of roofs" (37.26-39.92) — the brand
+  // billboard. Out at 40.2 so his face carries "for homeowners just like
+  // yourself", which is the warm line and belongs on a human.
+  {id: 'billboard', kind: 'billboard', from: 37.35, to: 40.2, s: [1, 1], x: [0, 0], y: [0, 0]},
 ];
 
 const activeCut = (t: number) => CUTS.find((c) => t >= c.from && t < c.to);
@@ -160,6 +180,134 @@ const BillGraphic: React.FC<{t: number; from: number; fps: number; frame: number
   );
 };
 
+// ══ THE BILLBOARD — the brand comes back ══════════════════════════════
+// ⚖️ v6.6 (Joseph, 1:09pm). The behind-subject composite is GONE — scrim,
+// rack-focus blur, ghost numerals, matted speaker, all of it. His read: too
+// flashy, and the ghosting artefacts around his beard and the floating "$50"
+// were the tell. Replaced with a BILLBOARD: a full-frame branded card, same
+// grammar as the bill chart and the map, which the ad already established.
+// His call and it's the right one — the ad hadn't shown the brand since the
+// 5s mark, and the proof beat is exactly where identity should land.
+const BillboardCard: React.FC<{from: number; to: number; t: number; fps: number; frame: number}> = ({
+  from,
+  to,
+  t,
+  fps,
+  frame,
+}) => {
+  const f = frame - Math.round(from * fps);
+  const out = interpolate(t, [to - 0.25, to], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+
+  // staged build — brand first, number as the hero, locality last
+  const brand = spring({frame: f - 3, fps, config: {damping: 15, stiffness: 180}});
+  const rule = interpolate(f, [10, 24], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const over = interpolate(f, [16, 24], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const hero = spring({frame: f - 20, fps, config: {damping: 12, stiffness: 150}});
+  const inst = spring({frame: f - 32, fps, config: {damping: 15, stiffness: 170}});
+  const foot = interpolate(f, [44, 56], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+
+  return (
+    <AbsoluteFill style={{background: NAVY, opacity: out, overflow: 'hidden'}}>
+      {/* depth: a soft red glow behind the hero number, and a subtle vignette */}
+      <AbsoluteFill
+        style={{
+          background: `radial-gradient(ellipse 70% 34% at 50% 46%, ${RED}22 0%, rgba(0,0,0,0) 70%)`,
+          opacity: hero,
+        }}
+      />
+      <AbsoluteFill
+        style={{background: 'radial-gradient(ellipse 90% 60% at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,.45) 100%)'}}
+      />
+
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', padding: '0 60px'}}>
+        {/* BRAND */}
+        <div
+          style={{
+            ...H,
+            fontFamily: ANTON,
+            fontSize: 74,
+            color: WHITE,
+            letterSpacing: 9,
+            opacity: brand,
+            transform: `translateY(${(1 - brand) * -34}px)`,
+          }}
+        >
+          MABREY ROOFING
+        </div>
+        <div
+          style={{
+            height: 9,
+            width: `${rule * 62}%`,
+            background: RED,
+            borderRadius: 5,
+            marginTop: 20,
+            boxShadow: `0 0 26px ${RED}77`,
+          }}
+        />
+
+        {/* THE CLAIM */}
+        <div
+          style={{
+            ...H,
+            fontFamily: INTER,
+            fontSize: 46,
+            color: '#8fa6c0',
+            letterSpacing: 12,
+            marginTop: 66,
+            opacity: over,
+          }}
+        >
+          OVER
+        </div>
+        <div
+          style={{
+            ...H,
+            fontFamily: ANTON,
+            fontSize: 168,
+            lineHeight: '172px',
+            color: WHITE,
+            marginTop: 6,
+            textShadow: '0 8px 0 rgba(0,0,0,.45)',
+            transform: `scale(${0.86 + 0.14 * Math.min(1, hero)})`,
+            opacity: Math.min(1, hero * 1.4),
+          }}
+        >
+          $50 MILLION
+        </div>
+        <div
+          style={{
+            ...H,
+            fontFamily: ANTON,
+            fontSize: 88,
+            color: RED,
+            letterSpacing: 4,
+            marginTop: 4,
+            opacity: inst,
+            transform: `translateY(${(1 - inst) * 26}px)`,
+          }}
+        >
+          INSTALLED
+        </div>
+
+        {/* LOCALITY */}
+        <div
+          style={{
+            ...H,
+            fontFamily: INTER,
+            fontSize: 34,
+            color: '#6b8099',
+            letterSpacing: 7,
+            marginTop: 64,
+            opacity: foot,
+          }}
+        >
+          RALEIGH-DURHAM, NC
+        </div>
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
 // ══ THE MAP — a pin drops on Raleigh-Durham ═══════════════════════════
 const MapGraphic: React.FC<{t: number; from: number; to: number; fps: number; frame: number}> = ({
   t,
@@ -181,23 +329,27 @@ const MapGraphic: React.FC<{t: number; from: number; to: number; fps: number; fr
   const CY = 900;
 
   return (
-    <AbsoluteFill style={{background: '#e8ecea', overflow: 'hidden'}}>
+    // ⚖️ NAVY, not pale (Joseph, 08-15): the map was the ONLY bright full-frame
+    // moment in an ad whose other takeovers (bill graphic, end card) are navy —
+    // a tonal outlier. Same geometry, palette inverted: roads now GLOW on dark,
+    // which also makes the gold beltlines and the red pin read harder.
+    <AbsoluteFill style={{background: NAVY, overflow: 'hidden'}}>
       <AbsoluteFill style={{transform: `scale(${push})`}}>
         <svg width="1080" height="1920" viewBox="0 0 1080 1920" style={{position: 'absolute'}}>
-          <rect width="1080" height="1920" fill="#eef1ee" />
-          <path d="M -40 1500 Q 260 1430 470 1560 T 1120 1520 L 1120 1980 L -40 1980 Z" fill="#cfe0e8" />
-          <ellipse cx="200" cy="620" rx="210" ry="150" fill="#dbe7d6" />
-          <ellipse cx="900" cy="1180" rx="180" ry="140" fill="#dbe7d6" />
+          <rect width="1080" height="1920" fill="#0c1b2e" />
+          <path d="M -40 1500 Q 260 1430 470 1560 T 1120 1520 L 1120 1980 L -40 1980 Z" fill="#102a3e" />
+          <ellipse cx="200" cy="620" rx="210" ry="150" fill="#122c22" />
+          <ellipse cx="900" cy="1180" rx="180" ry="140" fill="#122c22" />
           {Array.from({length: 16}).map((_, i) => (
-            <line key={`h${i}`} x1="0" y1={120 * i + 60} x2="1080" y2={120 * i + 60} stroke="#dfe4e0" strokeWidth="3" />
+            <line key={`h${i}`} x1="0" y1={120 * i + 60} x2="1080" y2={120 * i + 60} stroke="#16304a" strokeWidth="3" />
           ))}
           {Array.from({length: 10}).map((_, i) => (
-            <line key={`v${i}`} x1={120 * i + 40} y1="0" x2={120 * i + 40} y2="1920" stroke="#dfe4e0" strokeWidth="3" />
+            <line key={`v${i}`} x1={120 * i + 40} y1="0" x2={120 * i + 40} y2="1920" stroke="#16304a" strokeWidth="3" />
           ))}
-          <circle cx={CX} cy={CY} r="290" fill="none" stroke="#ffffff" strokeWidth="26" />
+          <circle cx={CX} cy={CY} r="290" fill="none" stroke="#24435f" strokeWidth="26" />
           <circle cx={CX} cy={CY} r="290" fill="none" stroke="#f4c95d" strokeWidth="16" />
-          <circle cx={CX} cy={CY} r="560" fill="none" stroke="#ffffff" strokeWidth="24" />
-          <circle cx={CX} cy={CY} r="560" fill="none" stroke="#f0d48a" strokeWidth="13" />
+          <circle cx={CX} cy={CY} r="560" fill="none" stroke="#24435f" strokeWidth="24" />
+          <circle cx={CX} cy={CY} r="560" fill="none" stroke="#c9a24a" strokeWidth="13" />
           {[-70, -20, 35, 110, 160, 215, 260, 310].map((deg) => {
             const r = (deg * Math.PI) / 180;
             return (
@@ -207,8 +359,9 @@ const MapGraphic: React.FC<{t: number; from: number; to: number; fps: number; fr
                 y1={CY + Math.sin(r) * 120}
                 x2={CX + Math.cos(r) * 1200}
                 y2={CY + Math.sin(r) * 1200}
-                stroke="#ffffff"
+                stroke="#dce7f2"
                 strokeWidth="18"
+                opacity={0.92}
               />
             );
           })}
@@ -287,6 +440,7 @@ const BRoll: React.FC<{t: number; fps: number; frame: number}> = ({t, fps, frame
 
   if (cut.kind === 'bill') return <BillGraphic t={t} from={cut.from} fps={fps} frame={frame} />;
   if (cut.kind === 'map') return <MapGraphic t={t} from={cut.from} to={cut.to} fps={fps} frame={frame} />;
+  if (cut.kind === 'billboard') return <BillboardCard from={cut.from} to={cut.to} t={t} fps={fps} frame={frame} />;
 
   const p = (t - cut.from) / (cut.to - cut.from);
   const lerp = ([a, b]: [number, number]) => a + (b - a) * p;
@@ -379,6 +533,103 @@ const Captions: React.FC<{t: number}> = ({t}) => {
 // ══ 2A — the house highlighter ════════════════════════════════════════
 // v5 verbatim + one optional `font` prop (defaults to the v5 stack, so the
 // four v5 graphics are unchanged). T4 passes Anton to match the hook.
+// ══ THE SECOND CARD GRAMMAR ═══════════════════════════════════════════
+// Joseph's composition note (08-15 6:56am): the money block ran the SAME
+// 2A lockup three times in ten seconds — small lead / red bar under a big
+// key / small sub, identical geometry each time. By the third the eye stops
+// reading it as an event. The reference alternated TWO card grammars; this
+// is ours. $98 lands as a left-aligned editorial number: asymmetric, no bar,
+// the $ carries the red instead. Rhythm across the ad becomes
+// BAR → EDITORIAL → BAR → … → BAR.
+const EditorialMoney: React.FC<{
+  t: number;
+  frame: number;
+  fps: number;
+  from: number;
+  to: number;
+  lead: string;
+  amount: string;
+  tail: string;
+}> = ({t, frame, fps, from, to, lead, amount, tail}) => {
+  if (t < from || t > to + 0.3) return null;
+  const f0 = frame - Math.round(from * fps);
+  const s = spring({frame: f0, fps, config: {damping: 13, stiffness: 220}});
+  const sTail = spring({frame: f0 - 9, fps, config: {damping: 14, stiffness: 180}});
+  const out = interpolate(t, [to, to + 0.3], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  // the rule slides out from under the number instead of a highlighter bar
+  const rule = interpolate(f0, [10, 26], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: GFX_TOP,
+        left: 54,
+        right: 54,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        opacity: out,
+      }}
+    >
+      <span
+        style={{
+          ...H,
+          fontFamily: INTER,
+          fontSize: 44,
+          letterSpacing: 8,
+          color: WHITE,
+          textShadow: SHADOW,
+          opacity: s,
+          transform: `translateX(${(1 - s) * -30}px)`,
+        }}
+      >
+        {lead}
+      </span>
+      <span
+        style={{
+          ...H,
+          fontFamily: ANTON,
+          fontSize: 232,
+          lineHeight: '236px',
+          color: WHITE,
+          textShadow: '0 6px 0 rgba(0,0,0,.7), 0 0 34px rgba(0,0,0,.55)',
+          transform: `translateY(${(1 - s) * 26}px)`,
+          opacity: s,
+        }}
+      >
+        <span style={{color: RED}}>$</span>
+        {amount}
+      </span>
+      {/* red rule — the accent without repeating the highlighter */}
+      <span
+        style={{
+          height: 12,
+          width: `${rule * 62}%`,
+          background: RED,
+          borderRadius: 6,
+          boxShadow: `0 0 22px ${RED}66`,
+          marginTop: -6,
+        }}
+      />
+      <span
+        style={{
+          ...H,
+          fontFamily: ANTON,
+          fontSize: 68,
+          color: WHITE,
+          textShadow: SHADOW,
+          marginTop: 8,
+          marginLeft: '38%',
+          opacity: sTail,
+          transform: `translateX(${(1 - sTail) * 24}px)`,
+        }}
+      >
+        {tail}
+      </span>
+    </div>
+  );
+};
+
 const Hi2A: React.FC<{
   t: number;
   frame: number;
@@ -512,25 +763,50 @@ const BigNumeral: React.FC<{top: number; left: number; dy: number}> = ({top, lef
 const G4Composite: React.FC = () => {
   const f = useCurrentFrame(); // sequence-relative: 0 … 95
   const {fps} = useVideoConfig();
-  // in over 8 frames from the mount, out over the 8 frames ending 40.4.
-  const env = interpolate(f, [0, 8, G4C_DUR - 8, G4C_DUR], [0, 1, 1, 0], {
+  // ⚖️ v6.6 — RACK FOCUS, not lighting swap (Joseph, 11:56am: the navy scrim
+  // "filter coming up" was jarring). Diagnosis: this was the only moment in
+  // the ad where BASE REALITY changed — 37s of graphics-over-daylight, then
+  // the world went 85% navy for 3s mid-sentence. New treatment: the yard
+  // stays PRESENT but goes soft (blur + gentle dim), like a lens racking
+  // focus onto him. His pixels never change; only the background softens.
+  // A focus pull is a transition the brain already has a category for.
+  // Mechanically: a second copy of the base take, filter-ramped. At env=0
+  // the copy is pixel-identical to the sharp base beneath it, so the mount
+  // is invisible — same property the scrim had, without the teleport.
+  const env = interpolate(f, [0, 14, G4C_DUR - 12, G4C_DUR], [0, 1, 1, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
+    easing: Easing.inOut(Easing.quad),
   });
   const drift = -(f / fps) * 12; // ~12px/s upward
 
   return (
     <>
-      {/* 2 — scrim */}
-      <AbsoluteFill style={{background: `rgba(12,27,46,${0.85 * env})`}} />
+      {/* 2 — the world, racked soft: blur ramps 0→16px, brightness 1→0.72.
+             scale(1.055) hides the dark edge-bleed blur sampling creates. */}
+      <AbsoluteFill style={{overflow: 'hidden'}}>
+        <OffthreadVideo
+          muted
+          src={staticFile('take2-cfr.mp4')}
+          trimBefore={G4C_FROM}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: `blur(${16 * env}px) brightness(${1 - 0.28 * env})`,
+            transform: `scale(${1 + 0.055 * env})`,
+          }}
+        />
+      </AbsoluteFill>
 
-      {/* 3 — behind-graphics: 20% ceiling, slow drift. Texture, not
-              competition — it must never pull the eye off the headline. */}
-      <AbsoluteFill style={{opacity: 0.2 * env, overflow: 'hidden'}}>
-        <BigNumeral top={470} left={-46} dy={drift} />
-        <BigNumeral top={1160} left={238} dy={drift - 26} />
-        <div style={{position: 'absolute', inset: 0, opacity: 0.75}}>
-          <RoofSilhouette />
+      {/* 3 — ghost numerals in the mid-space between the soft world and him.
+             Soft dark halo gives them separation on bright blurred patches.
+             (Roof silhouette retired with the void — a fake skyline over a
+             REAL blurred yard reads as a sticker. One-line restore if wanted.) */}
+      <AbsoluteFill style={{opacity: 0.26 * env, overflow: 'hidden'}}>
+        <div style={{position: 'absolute', inset: 0, textShadow: '0 2px 22px rgba(0,0,0,0.6)'}}>
+          <BigNumeral top={470} left={-46} dy={drift} />
+          <BigNumeral top={1160} left={238} dy={drift - 26} />
         </div>
       </AbsoluteFill>
 
@@ -632,14 +908,6 @@ export const RealBBv6: React.FC = () => {
 
       <BRoll t={t} fps={fps} frame={frame} />
 
-      {/* G4 — the behind-subject composite. It sits UNDER the two-zone scrim
-          on purpose: the matted speaker has to take the same top/bottom
-          darkening the base take takes, or he brightens the instant the
-          layer mounts. */}
-      <Sequence from={G4C_FROM} durationInFrames={G4C_DUR} layout="none">
-        <G4Composite />
-      </Sequence>
-
       {/* Two scrims, one per zone. Off on full graphic cuts. */}
       {onGraphicCut || t >= CTA_T ? null : (
         <AbsoluteFill
@@ -666,20 +934,11 @@ export const RealBBv6: React.FC = () => {
 
       {/* the four ordered v5 graphics — 2A house style, TOP ZONE ONLY */}
       <Hi2A t={t} frame={frame} fps={fps} from={G1[0]} to={G1[1]} lead="WE OFFER" keyText="ZERO DOWN" sub="FINANCING" />
-      <Hi2A t={t} frame={frame} fps={fps} from={G2[0]} to={G2[1]} lead="AS LOW AS" keyText="$98 A MONTH" />
+      <EditorialMoney t={t} frame={frame} fps={fps} from={G2[0]} to={G2[1]} lead="AS LOW AS" amount="98" tail="A MONTH" />
       <Hi2A t={t} frame={frame} fps={fps} from={G3[0]} to={G3[1]} lead="NO PAYMENTS" keyText="FOR 12 MONTHS" keySize={88} />
-      <Hi2A
-        t={t}
-        frame={frame}
-        fps={fps}
-        from={G4[0]}
-        to={G4[1]}
-        lead="WE'VE INSTALLED OVER"
-        keyText="$50 MILLION"
-        sub="OF ROOFS"
-        leadSize={54}
-        keySize={104}
-      />
+      {/* G4's top-zone lockup is retired — the BILLBOARD cut carries the $50M
+          claim full-frame now, and stacking a 2A lockup on top of it would be
+          the same message twice in one frame. */}
 
       <EndCard t={t} frame={frame} fps={fps} />
 

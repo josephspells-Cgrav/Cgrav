@@ -7,3 +7,4 @@ public/*.mp4
 public/**/*.mp4
 public/*.webm
 wo/audio-assets/
+face_landmarker.task
