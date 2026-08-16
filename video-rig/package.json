@@ -11,9 +11,19 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@remotion/captions": "^4.0.509",
     "@remotion/cli": "^4.0.509",
+    "@remotion/google-fonts": "^4.0.509",
+    "@remotion/lottie": "^4.0.509",
+    "@remotion/motion-blur": "^4.0.509",
+    "@remotion/noise": "^4.0.509",
+    "@remotion/paths": "^4.0.509",
+    "@remotion/shapes": "^4.0.509",
+    "@remotion/transitions": "^4.0.509",
+    "lottie-web": "^5.13.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "remotion": "^4.0.509"
+    "remotion": "^4.0.509",
+    "split-type": "^0.3.4"
   }
 }
