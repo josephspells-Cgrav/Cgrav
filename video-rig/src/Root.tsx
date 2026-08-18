@@ -1,5 +1,9 @@
 import React from 'react';
 import {Composition} from 'remotion';
+import {MoGraph01, MOGRAPH01_FRAMES} from './MoGraph01';
+import {MoGraph02, MOGRAPH02_FRAMES} from './MoGraph02';
+import {IconLab, ICONLAB_FRAMES} from './IconLab';
+import {IconLabBlind, ICONLABBLIND_FRAMES} from './IconLabBlind';
 import {BreadButter} from './BreadButter';
 import {GoldBB} from './GoldBB';
 import {MotionBB} from './MotionBB';
@@ -22,6 +26,10 @@ export const Root: React.FC = () => {
       width={1080}
       height={1920}
     />
+  <Composition id="IconLabBlind" component={IconLabBlind} durationInFrames={ICONLABBLIND_FRAMES} fps={30} width={1080} height={1920} />
+  <Composition id="IconLab" component={IconLab} durationInFrames={ICONLAB_FRAMES} fps={30} width={1080} height={1920} />
+  <Composition id="MoGraph02" component={MoGraph02} durationInFrames={MOGRAPH02_FRAMES} fps={30} width={1080} height={1920} />
+  <Composition id="MoGraph01" component={MoGraph01} durationInFrames={MOGRAPH01_FRAMES} fps={30} width={1080} height={1920} />
   <Composition id="RealBBv6" component={RealBBv6} durationInFrames={1380} fps={30} width={1080} height={1920} />
   <Composition id="CapLab3" component={CapLab3} durationInFrames={960} fps={30} width={1080} height={1920} />
   <Composition id="RealBB" component={RealBB} durationInFrames={1380} fps={30} width={1080} height={1920} />
