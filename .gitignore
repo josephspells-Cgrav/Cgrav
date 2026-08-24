@@ -44,3 +44,89 @@ king_maker_outbound/MABREY_ALEX_VAPI_PASTE.md
 
 # Alarm-co dispatch demo — real customer names/phones/addresses, never public
 alarm-dispatch/
+
+# ─── OS63 hygiene pass, 2026-08-24 ────────────────────────────────────────────
+
+# 🔑 CREDENTIALS — never commit. Was untracked but UN-IGNORED, i.e. one
+# `git add -A` away from being pushed to a GitHub remote. Verified never
+# committed (`git log --all -- king-maker-codes.txt` empty) before ignoring.
+king-maker-codes.txt
+*codes.txt
+.env.production
+*.pem
+*.key
+
+# Nested git repos — each has its OWN remote and is tracked there. Committing
+# them here creates gitlink entries, the exact rot dropped in 3f0dabf
+# ("two phantom gitlink entries, showing as permanent D since April").
+mabrey-roofing/
+mabrey-crm-app/
+mabrey-docs/
+mabrey-construction/
+summit-oak-roofing/
+
+# Throwaway worktrees + WO scratch checkouts
+mabrey-wt-*/
+mabrey-meta-wt-*/
+mabrey-fix-wt-*/
+mabrey-crm-wo*/
+so-ws-*/
+*.bundle
+
+# Capture / audit debris — screenshots and one-off probe harnesses from
+# verification runs. Regenerable by definition; never inputs to anything.
+.dq-*.png
+.we10-*
+.h10-*
+.h11-*
+.r3-*.png
+.rate*.png
+.rate-capture.cjs
+.audit-*
+.hero-reg*
+.km-anim-frames*
+.so-home-audit*
+.so-seo-verify*
+.so-reaudit/
+.res-audit/
+.rev-audit/
+.rev-cap.cjs
+.live-audit/
+.live-verify/
+.adqa/
+.ugc-tmp/
+.km-spec/
+.v2-deploy.png
+.backup-log.txt
+HERO-1*-REVIEW/
+
+# Large media + generated output (video-rig public assets are GBs)
+video-rig/public/
+video-rig/tools/
+video-rig/assets/
+video-rig/out/
+video-rig/ingest/
+out/
+
+# Local backups (point-in-time copies, not source of truth)
+backups/
+_vault-backup-*/
+
+# Stale gate-escape acks, kept for the record but not source
+.skills-gate-ack.stale-*
+
+# Media asset piles + vendored runtimes. Ignored HERE because they do not
+# belong in this repo — NOT because they are disposable. mabrey-construction-
+# assets/ (869 jpgs) and mabrey-ads/ (201 images) are client photography and ad
+# creative; their durable home is the mabrey-construction / mabrey-docs repos,
+# which have remotes. ⚠️ OPEN QUESTION for Joseph — see the OS63 hygiene report.
+mabrey-construction-assets/
+mabrey-ads/
+mabrey-portfolio/
+km-ugc-ads/
+km-roofing-concept/
+king_maker_brand/
+knight-picker/
+*.exe
+*.dist-info/
+*.jsonl
