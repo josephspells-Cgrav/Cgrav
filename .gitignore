@@ -149,3 +149,9 @@ ad-swipe/**/*.wav
 ad-swipe/**/*.m4a
 yt-research/**/*.mp4
 yt-research/**/*.webm
+# mabrey-blueprint-forge: a git WORKTREE of mabrey-roofing (branch
+# forge/blueprint-motion-we23), in sync with its own remote. Its .git is a
+# FILE (gitdir pointer), not a directory — a naive `[ -d .git ]` check reads it
+# as a plain folder and would commit 14,723 files incl. .next build output.
+mabrey-blueprint-forge/
+memory_check_output.txt
