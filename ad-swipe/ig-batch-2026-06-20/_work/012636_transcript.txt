@@ -1,0 +1,16 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+C:\Users\josep\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages\huggingface_hub\file_download.py:137: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\josep\.cache\huggingface\hub\models--Systran--faster-whisper-small.en. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+# transcript: ig-batch-2026-06-20/_work/012636.wav
+# lang=en dur=39.9s model=small.en
+# ---
+[   0.0-   4.1] is not optimized and because of that you are missing out on thousands of dollars.
+[   4.1-   9.3] The next 10 customers we are waiving the three to five thousand dollar website build out fee
+[   9.3-  14.7] that is AI and SEO optimized. We're more interested in the long-term partnership with our clients
+[  14.7-  18.5] which is why we're waiving the three to five thousand dollar build out fee of the websites.
+[  18.5-  22.9] Our services range from services that help you build your revenue, help you increase your
+[  22.9-  27.0] your online reputation and presence so that when people look for you online they can trust you
+[  27.4-  31.5] with your reviews. We also have services that help you manage and host all your leads and
+[  31.5-  36.6] capture all your leads and all of this for a base price of $297 a month. If you feel like
+[  36.6-  39.9] this is something that can help your business to go to the next level just fill out the form.

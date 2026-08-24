@@ -1,0 +1,20 @@
+# transcript: _work/Screen_Recording_20260619_222210_Instagram.wav
+# lang=en dur=88.4s model=small.en
+# ---
+[   0.0-   8.0] ...and you want results like this from the Google Map Pack, and you want results like this, or like this, I'll show you exactly how we did it.
+[   8.0-  16.0] It all starts with the Google Business Profile. First, make sure this is completely optimized, has all your service areas built out, all your primary categories, your subcategories.
+[  16.0-  22.0] Also, make sure that your primary category is inside of your actual website. It looks like this.
+[  22.0-  27.0] Primary keyword is in the title tag, the description, the H1 header, and also the first paragraph.
+[  27.0-  32.0] Also, make sure that you internally link with your primary category to your Google Business Profile.
+[  32.0-  38.0] Set up dedicated service pages, dedicated service area network, set up local blog posts, but this is important.
+[  38.0-  43.0] Build blogs that actually look like money pages instead of actual blog posts, because those are boring.
+[  43.0-  46.0] Simple stuff like adding your GVP to the footer.
+[  46.0-  50.0] Make sure you're building out local citations and local backlinks from relevant sources.
+[  50.0-  56.0] Publishing consistently on your Google Business Profile. Clean up all the technical details on your website to make sure it's fast and user-friendly.
+[  56.0-  63.0] Picking up for near-me keywords and showing up in AI overview, so you can start getting more customers and more qualified leads this year.
+[  63.0-  65.0] Getting picked up in chat is pretty cool, too.
+[  65.0-  71.0] Long story short, if you're a home service company doing over a million a year and you want to get more calls from Google Maps and AI Search,
+[  71.0-  77.0] comment local for a custom Loom video audit, I do hundreds of these personal video audits every single year.
+[  77.0-  83.0] I'll send you the video audit and a 90-day action plan. If you want us to implement that action plan, great.
+[  83.0-  86.0] If not, at least you'll have a 90-day plan and you'll know exactly what to fix.
+[  86.0-  89.0] Grab a free audit today. I'll see you on the other side.

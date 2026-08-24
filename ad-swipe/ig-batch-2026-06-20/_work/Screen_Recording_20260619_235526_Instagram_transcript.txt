@@ -1,0 +1,10 @@
+# transcript: _work/Screen_Recording_20260619_235526_Instagram.wav
+# lang=en dur=35.9s model=small.en
+# ---
+[   0.1-   4.2] It's for home service businesses like roofers plumbers
+[   4.8-  10.8] Electricians and landscapers a website like this would normally cost anywhere from three to five thousand dollars
+[  10.8-  15.4] But right now I'm doing it completely for free because I'm trying to expand my referral base
+[  15.4-  20.0] And I'm trying to grow my reviews now these websites are going to be SEO optimized
+[  20.3-  24.9] They're made to rank and they're built on WordPress. They're very high-quality websites
+[  25.2-  31.8] One thing I can't offer for free is obviously the hosting and maintenance of the website and that's just $84 a month
+[  32.1-  36.0] So if you're interested, you can just click the link below and we can get you started

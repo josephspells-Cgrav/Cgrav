@@ -1,0 +1,8 @@
+# transcript: _work/Screen_Recording_20260620_013118_Instagram.wav
+# lang=en dur=21.6s model=small.en
+# ---
+[   0.1-   4.4] on marketing but your website is sending people away most business owners don't
+[   4.4-   9.7] realize a bad website kills every ad every referral every chance to close
+[   9.7-  13.2] we've helped businesses turn their website into their number one sales
+[  13.2-  18.6] tool 100% custom design unlimited revisions stop losing leads get your
+[  18.6-  22.6] free website consultation today

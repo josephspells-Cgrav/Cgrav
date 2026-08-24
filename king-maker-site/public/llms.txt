@@ -1,0 +1,29 @@
+# King Maker
+
+> King Maker is a web + SEO firm and an education-first buyer's-guide platform for contractors. The premise: a brochure describes your business; an authority site is a ranking and citation system. We teach the mechanics openly, every claim flagged measured or modeled, and build the system done-for-you.
+
+King Maker helps high-ticket contractors (roofing, HVAC, plumbing, painting, kitchen & bath, outdoor living, typically $1M-$10M+) understand and build the website that ranks. The enemy is the generic 10-page brochure site, not any one platform. Our 1,017-site scan is a measured sample of the brochure problem. The firm's own site is built to the exact enterprise standard it teaches: server-rendered, schema-complete, AI-legible, fast, no orphans. Audit it yourself, ask any AI.
+
+## The argument
+- A brochure ranks for your name and home city. An authority site builds a dedicated page for every service you sell and every town you serve, marks every fact up as schema, answers the buyer's questions, and loads fast. About 147 pages on our reference build versus about 10 on a brochure.
+- Most contractor sites miss the fundamentals (measured): 94.8% fail WCAG accessibility, ~52% fail Core Web Vitals, ~27% of small businesses have no dedicated site, ~96% ship no LocalBusiness schema.
+- 96.55% of all web pages get zero Google traffic, usually for lack of a page to be found. 72.9% of page-one results are 3+ years old; authority is accumulated time.
+
+## Guides (the buyer's guide cluster)
+- [The buyer's guide](https://www.kingmakerseo.com/guides): the pillar hub.
+- [Anatomy of an enterprise site](https://www.kingmakerseo.com/guides/enterprise-website-anatomy)
+- [Why a brochure can't win](https://www.kingmakerseo.com/guides/why-a-brochure-cant-win)
+- [How Google picks the winner](https://www.kingmakerseo.com/guides/how-google-picks-the-winner)
+- [Organic vs paid](https://www.kingmakerseo.com/guides/organic-vs-paid)
+- [The honesty layer](https://www.kingmakerseo.com/guides/the-honesty-layer): what we won't claim.
+
+## Tools + reference
+- [Audit your site](https://www.kingmakerseo.com/audit): a guided self-audit against the ten enterprise fundamentals.
+- [Glossary](https://www.kingmakerseo.com/glossary): plain-English definitions.
+- [The Playbook](https://www.kingmakerseo.com/playbook): the $1M to $10M business-growth narrative.
+- [Apply](https://www.kingmakerseo.com/apply): one contractor per city, per vertical.
+
+## Honesty
+- Numbers are flagged measured (hard data) or modeled/illustrative (projection). Promise the floor, project the ceiling.
+- Authority organic wins the considered research; the map pack catches proximity; ads catch the emergency. We never say nobody clicks ads. No guaranteed #1. Ranges, not hype.
+- Security posture is OWASP-hardened with zero stored data. We do not claim SOC 2, bank-level, or HIPAA.

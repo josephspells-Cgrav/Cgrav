@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * Summit & Oak — V2 roofing identity tokens (Tailwind v4 @theme).
+ * Contractor RED on near-black CHARCOAL + white. Newsreader display serif
+ * (more traditional-but-modern than Fraunces, clean lining numerals) + Plus
+ * Jakarta Sans body. Contrast: white-on-red 4.96:1, #FF6066 for small red
+ * text on dark (6.08:1).
+ * ------------------------------------------------------------------------- */
+@theme {
+  --color-ink: #161719; /* near-black charcoal base */
+  --color-navy: #1e1f22;
+  --color-surface: #202126; /* raised panel */
+  --color-line: #34353c; /* borders */
+  --color-red: #d8262c; /* contractor red — CTA + decoration */
+  --color-redhi: #e63a40; /* hover */
+  --color-redink: #ff6066; /* small red text on dark (contrast-safe) */
+  --color-mist: #a7a9af; /* muted gray text on dark */
+
+  --font-display: "Newsreader", Georgia, ui-serif, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --shadow-card: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 18px 40px -12px rgba(216, 38, 44, 0.5);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-ink);
+    color: #fff;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Film-grain texture overlay (decorative, on CTA band). */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+
+/* Respect reduced motion globally. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

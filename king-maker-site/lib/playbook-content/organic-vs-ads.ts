@@ -1,0 +1,101 @@
+import type { GuideContent } from "@/lib/content-blocks";
+
+export const content: GuideContent = {
+  sections: [
+    {
+      id: "two-kinds-of-attention",
+      h2: "Why are organic and paid two different kinds of attention, not two prices for the same thing?",
+      navLabel: "Two kinds of attention",
+      speakable: true,
+      blocks: [
+        { kind: "p", text: "There are two ways to reach a buyer, and they are not interchangeable. You can answer the person who is **actively searching**, or you can **interrupt** the person who is not." },
+        { kind: "p", text: "Active search is pull: the buyer typed the question, the buyer wants the answer, the buyer chose to read. Interruption is push: the buyer was scrolling a feed or watching a video, and you bought a slice of that attention for a moment. Same town, same trade, two different states of mind." },
+        { kind: "p", text: "The format selects the buyer. A Meta ad runs against people who were not looking for a roof, so it has to manufacture the want before it can sell." },
+        { kind: "p", text: "A Google Search ad and an organic result both run against people who were looking, so they meet demand that already exists. That single distinction, demand created versus demand captured, decides what every click is worth and what every channel costs. Treat the channels as one undifferentiated pile of leads and you will misprice your entire funnel." },
+        { kind: "p", text: "So the real question is never paid versus organic in the abstract. It is which buyer you are paying to reach, in what state of mind, and whether you are renting that position or owning it. The rest of this chapter takes the three channels apart on exactly those terms." },
+        { kind: "takeaway", text: "Active search is **pull**: it answers a buyer who is already looking. Interruption is **push**: it creates want where there was none. The channel you pick decides the buyer you get, not just the price you pay." },
+      ],
+    },
+    {
+      id: "the-three-channels",
+      h2: "Meta, Google Search ads, and organic: which buyer does each one actually reach?",
+      navLabel: "The three channels",
+      blocks: [
+        { kind: "p", text: "Meta is interruption. It places your offer in front of people by demographic and behavior, not by intent, because there is no roofing query to match against." },
+        { kind: "p", text: "That makes it the wide net: it is how you reach a homeowner who has not yet started looking, how you stay in front of a town for brand recall, how you retarget someone who visited the site and left. It works. It also costs more per closed job, because you are paying to create the want before you can capture it." },
+        { kind: "p", text: "Google Search ads are high intent and rented. The buyer typed the query, so the demand is real, and you sit at the top of the page the instant the campaign turns on." },
+        { kind: "p", text: "That is genuine value: day one, before a single page has climbed, you are in front of buyers this afternoon. But you hold that position for exactly as long as the card is charged." },
+        { kind: "p", text: "Pause the budget and the slot belongs to the next advertiser. You captured the intent, but you rented the spot to do it, and you re-buy that spot every click, forever, at an auction price that only climbs as more competitors bid." },
+        { kind: "p", text: "Organic is high intent and owned. Same searching buyer as the Google ad, but the position is an asset instead of a lease." },
+        { kind: "p", text: "A page that earns its ranking keeps earning while you sleep, while you spend zero, while you are on the next job. The work that ranked it does not evaporate when the month closes, because there is no monthly invoice." },
+        { kind: "p", text: "This is the considered, high-ticket research lane: the homeowner pricing a roof over three weeks reads, compares, and shortlists, and the deep site is what they read. We size the asset that does this in [The asset is your website](/playbook/the-asset-your-website)." },
+        {
+          kind: "comparison",
+          leftLabel: "Rented",
+          rightLabel: "Owned",
+          rows: [
+            { label: "Meets active intent", brochure: "Yes", system: "Yes", flag: "MEASURED" },
+            { label: "Position survives a paused budget", brochure: "No", system: "Yes", flag: "MEASURED" },
+            { label: "Compounds over time", brochure: "No", system: "Yes", flag: "MEASURED" },
+            { label: "Re-buys every click", brochure: "Yes", system: "No", flag: "MEASURED" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "rent-vs-equity",
+      h2: "Why is paid renting and organic owning?",
+      navLabel: "Rent vs. equity",
+      blocks: [
+        { kind: "p", text: "An ad, Meta or Search, is a leased position. You hold it exactly as long as the budget runs." },
+        { kind: "p", text: "The day the spend stops, the position is gone and nothing accrued. You rented attention by the click and returned it on schedule. Run the same campaign for three years and on the day you turn it off you own precisely what you owned on day one: nothing." },
+        { kind: "p", text: "An organic ranking is equity. Every page you rank makes the next page rank faster, because the trust you already hold lifts what you publish next." },
+        { kind: "p", text: "The asset compounds. Paid never compounds: the leads it bought last month do nothing to lower the price of the leads it buys next month." },
+        { kind: "p", text: "One channel is a cost line that resets to zero the moment you stop feeding it. The other is an asset line that builds." },
+        { kind: "chart", chart: "mechanism-ledger" },
+        { kind: "p", text: "The ledger is the whole argument in one frame. On the rented side, the position is leased, it dies when the budget dies, it re-buys every click, and it never compounds." },
+        { kind: "p", text: "On the owned side, the position is held, it survives a paused budget, the marginal cost of the next click is roughly nothing, and the trust accumulates. The honesty: the owned side starts behind." },
+        { kind: "p", text: "The pages take time to climb. That early lag is exactly the gap ads are built to cover, which is the next section." },
+        { kind: "takeaway", label: "The mechanism", text: "Paid rents the position and re-buys it forever. Organic owns the position and compounds it. The rented lane is fast and flat; the owned lane is slow and rising. You want both lanes for different reasons." },
+      ],
+    },
+    {
+      id: "ads-as-tactical-layer",
+      h2: "If organic is the asset, what are ads actually for?",
+      navLabel: "Ads as a tactical layer",
+      blocks: [
+        { kind: "p", text: "Plenty, and we will not pretend otherwise. Nobody-clicks-ads is a myth told by people who never ran them. Ads are a tactical layer over the organic asset, and they buy three things organic cannot give you fast enough." },
+        { kind: "p", text: "**Speed.** Day one, before a page has ranked for anything, an ad puts you in front of buyers this afternoon. That opening window is exactly when organic is weakest, so the two are complements on the calendar, not rivals." },
+        { kind: "p", text: "You rent the fast lane while you build the asset that eventually makes the rent optional. The organic cost-per-lead crosses below paid around month six (ILLUSTRATIVE): paid wins the early months, then the lines cross and organic keeps falling while paid holds flat at the auction price." },
+        { kind: "p", text: "**The storm surge.** When a hailstorm or a wind event hits a county, demand spikes for two weeks and then collapses. Organic cannot turn on that fast, and the map pack is proximity-capped to roughly five miles, so it cannot cover a whole region in a surge." },
+        { kind: "p", text: "Ads can: you raise spend across the affected ZIPs the morning after the storm and harvest the emergency demand the considered-research lane and the pack both leave on the table. The pack early on is about one to two jobs a month (MODELED, claim the shape not a count), maturing toward perhaps ten a month only at a two-year ceiling, so it is no substitute for surge coverage." },
+        { kind: "p", text: "**Retargeting.** Most of the considered buyers who read your deep site do not call on the first visit; the B2B-style high-ticket journey runs long. A retargeting layer keeps your name in front of the person who already read the page, so the asset you built does the convincing and the ad does the reminding. And the channels lift each other: running organic and paid together raises total clicks roughly 50% and conversions roughly 27% over either one alone (MEASURED), because seeing the same name in the ad slot and the organic result reads as a bigger, more trusted business than seeing it in one place." },
+        { kind: "debunk", myth: "Nobody clicks ads, so paid is wasted money.", reality: "Ads buy day-one speed, harvest the storm surge, retarget the readers, and lift total clicks ~50% and conversions ~27% when run alongside organic.", why: "Organic wins on cost, durability, and trust, not on a higher click-conversion rate. The error is reading it as paid-versus-organic. The truth is paid for speed, surges, and retargeting now; organic for the durable owned demand that ads can never buy you." },
+      ],
+    },
+    {
+      id: "how-to-run-both",
+      h2: "How do you run paid and organic together without overpaying?",
+      navLabel: "Running both",
+      blocks: [
+        { kind: "p", text: "The right read is a stack, not a bake-off. Organic is the foundation: the deep site that owns the considered, high-ticket research and drives the marginal cost of a lead toward zero over time." },
+        { kind: "p", text: "Paid is the tactical layer on top: it covers the early months while the foundation is still climbing, it absorbs the storm surges the foundation is too slow to catch, and it retargets the readers the foundation attracts. Each channel does the job the other cannot." },
+        {
+          kind: "priceRange",
+          title: "Mature cost per lead by channel",
+          rows: [
+            { label: "Organic search", range: "~$30", detail: "marginal cost once the pages rank; you stop re-buying the click" },
+            { label: "Local Services Ads", range: "~$162", detail: "pay-per-lead, capped reach, resets to zero when you pause" },
+            { label: "Pay-per-click", range: "~$228", detail: "re-bought at auction every lead; the price climbs as competition does" },
+          ],
+          note: "Mature CPL ranges, MEASURED. The honest sequencing: paid wins the opening months because organic ranks for nothing yet, then organic crosses below around month six (ILLUSTRATIVE) and keeps falling toward the marginal-cost floor while paid holds flat at the auction price.",
+        },
+        { kind: "p", text: "Spend accordingly. In the first months, paid carries the lead flow because the asset is not built yet." },
+        { kind: "p", text: "As pages climb, you do not kill paid; you reallocate it from buying base demand, which organic now owns more cheaply, to the jobs only paid can do: surges and retargeting. The mistake is treating paid as a permanent substitute for the asset, re-buying base demand forever at the auction price when an owned page would have captured it for the cost of the next click." },
+        { kind: "p", text: "One discipline holds across both lanes. Keep the offer NC-insurance-compliant: no $0-deductible, no public-adjuster, no guaranteed-claim language, in the ad copy and on the page alike." },
+        { kind: "p", text: "Channel strategy never overrides compliance. Next, see how the map pack fits the same stack in [Organic vs. the map pack](/playbook/organic-vs-the-map-pack), or [run the audit](/audit) to size your own gap." },
+        { kind: "takeaway", label: "The honest version", text: "Build the organic asset as the foundation, then layer paid on top for the three jobs organic is too slow to do: speed, storm surges, and retargeting. Rent the fast lane while you build the one you own. Run both; pay for each only to do what it does best." },
+      ],
+    },
+  ],
+};

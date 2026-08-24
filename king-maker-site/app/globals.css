@@ -1,0 +1,435 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * KING MAKER — firm-site identity tokens (Tailwind v4 @theme).
+ * BLUE / WHITE theme (WO_03, 2026-06-26): clean white canvas + slate ink +
+ * a confident brand BLUE, tuned for MAXIMUM READABILITY. The reader is a
+ * 50-60yo contractor skimming dense material on a phone — high contrast,
+ * generous size, short measure, big tap targets. Blue is fully removed.
+ * Square corners stay (institutional). Two-font system stays.
+ *
+ * Contrast bonds (verified on #ffffff): ink #0f172a = 16.8:1 (AAA, body);
+ * muted #475569 = 7.6:1 (AA, secondary); dim #64748b = 4.9:1 (AA, labels);
+ * blue #1d4ed8 = 6.3:1 (AA, brand text/links/marks); blue-action #2563eb =
+ * 5.2:1 (AA, CTA + link pop); white-on-blue-action = 5.2:1 (AA, the button).
+ * ------------------------------------------------------------------------- */
+@theme {
+  /* Canvas + surfaces (clean whites + one faint cool tint) */
+  --color-bg: #ffffff; /* white — the canvas */
+  --color-bg-tint: #eef2f8; /* faint cool tint — the alternating band. Deepened a
+                               step from slate-50 (WO_05) so the white/tint band
+                               rhythm still reads at a 25-50% zoom-out review,
+                               while staying a light, readable whisper at 100%. */
+  --color-surface: #ffffff; /* raised card */
+  --color-surface-2: #f1f5f9; /* raised panel (slate-100) */
+  --color-surface-3: #e2e8f0; /* deeper panel (slate-200) */
+  --color-line: #e2e8f0; /* borders (slate-200) */
+  --color-line-soft: #eef2f6; /* soft border / nav backdrop */
+
+  /* The blue system — the brand + action + the "you / winning" data series.
+     blue (700) carries brand marks liberally (readable on white); blue-action
+     (600) is the brightest, RESERVED for CTAs + links so they pop. */
+  --color-blue: #1d4ed8; /* blue-700 — BRAND: headings accents, logo, links, marks, data */
+  --color-blue-action: #2563eb; /* blue-600 — CTA fills + link pop (white text on it) */
+  --color-blue-deep: #172554; /* blue-950 — dark nav / footer / deepest brand */
+  --color-blue-tint: #eff6ff; /* blue-50 — faint highlight wash / the "you/winning" fill */
+  --color-blue-100: #dbeafe; /* blue-100 — soft fill / chart bands */
+
+  /* Text ramp — slate carries ALL text */
+  --color-ink: #0f172a; /* slate-900 — body + headings (max-readable AAA) */
+  --color-text: #0f172a; /* = ink */
+  --color-muted: #475569; /* slate-600 — secondary / lede (AA 7.6:1) */
+  --color-dim: #586679; /* slate-500/600 — labels / captions. Darkened from
+                           slate-500 so it stays AA (>=4.5) on the faint tint +
+                           surface-2/3 panels, not just on white (WO_03 §9). */
+
+  /* RED — the negative / damage signal (WO_04). The bad stats read RED so they
+     say "broken," where blue alone wouldn't. Disciplined: red ONLY on negatives
+     + errors, never decorative. red (600) for LARGE numbers (>=18px, 3:1 ok);
+     red-ink (700) for small text (AA >=4.5 on white + tint + surface-2/3);
+     red-tint (50) for the faint damage wash. */
+  --color-red: #dc2626; /* red-600 — big negative numbers + fills */
+  --color-red-ink: #b91c1c; /* red-700 — small red text/labels (AA everywhere) */
+  --color-red-tint: #fef2f2; /* red-50 — faint damage wash */
+
+  /* Type — "King Maker Grotesque" system. Archivo = the architectural/
+     institutional grotesque display (heavy, tight); Plus Jakarta Sans = the
+     distinct, warmer geometric body (two families = "designed, not generated").
+     Space Grotesk + Inter deliberately AVOIDED (over-defaulted AI faces). Mono
+     (JetBrains Mono) = the SCARCE technical voice for FlagChip / spec / schema
+     tokens only. */
+  --font-display: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Depth — TWO-LAYER slate-tinted shadows (a tight contact shadow + a soft
+     ambient one) for REAL physical elevation off the white canvas. WO_06: the
+     prior single -24px-spread shadows cancelled their own blur and read flat;
+     these keep genuine spread so a card visibly sits ABOVE the surface. Tinted
+     toward slate/blue, never pure black. */
+  --color-blue-glow: rgba(37, 99, 235, 0.14);
+  /* WO visual-upgrade: 3-layer elevation (contact + mid + deep ambient) so cards
+     genuinely FLOAT off the canvas instead of reading flat/binary. Slate/blue-
+     tinted, never harsh black. The inset top-highlight (applied in the recipes)
+     gives a "lit from above" edge on the tinted surfaces. */
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.05), 0 6px 16px -6px rgba(15, 23, 42, 0.12), 0 20px 44px -16px rgba(15, 23, 42, 0.20);
+  --shadow-lift: 0 2px 6px rgba(15, 23, 42, 0.08), 0 12px 28px -8px rgba(15, 23, 42, 0.16), 0 34px 64px -18px rgba(15, 23, 42, 0.30);
+  --shadow-blue: 0 2px 6px rgba(37, 99, 235, 0.12), 0 14px 34px -10px rgba(37, 99, 235, 0.22), 0 30px 62px -20px rgba(37, 99, 235, 0.32);
+  --shadow-panel: 0 2px 8px rgba(15, 23, 42, 0.06), 0 18px 40px -12px rgba(15, 23, 42, 0.16), 0 46px 88px -32px rgba(15, 23, 42, 0.32);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* Readable body default — 17px / 1.7 is the long-form reading baseline (WO_03
+     §3). Components override with explicit px where needed; never below 16px on
+     a phone. */
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  /* Display (Archivo) reserved for H1 + H2. H3+ drops to the body face —
+     display goes DOWN the page, never up. Readable, not oversized (WO_03 §3):
+     a touch more line-height than v2 so multi-line headings breathe on mobile. */
+  h1,
+  h2 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+  ::selection {
+    background-color: rgba(37, 99, 235, 0.18);
+    color: #0f172a;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-blue-action);
+    outline-offset: 2px;
+  }
+  /* Square corners everywhere by default (institutional, not soft). */
+  button,
+  input,
+  select,
+  textarea {
+    border-radius: 0;
+  }
+  /* Tailwind v4 Preflight dropped the v3 default `cursor: pointer` on buttons —
+     restore it so every clickable control reads as clickable (ui-ux-pro-max). */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Disciplined blue primitives.
+ * ------------------------------------------------------------------------- */
+
+/* Tabular figures — stats/axis numbers don't "wiggle" on count-up. */
+.km-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* The display face, used directly when not a heading element. */
+.km-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* The scoped mono technical voice — tokens / FlagChip / spec blocks only. */
+.km-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+/* Shared type scale — READABLE, NOT OVERSIZED (WO_03 §3). Locks the per-
+   component clamp drift. Display only at H1/H2; H3 drops to the body face. */
+.km-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+}
+.km-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+}
+.km-h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+}
+
+/* ---------------------------------------------------------------------------
+ * MAXIMALIST OVERLAY primitives (WO_05) — depth + interaction, calibrated just
+ * under the overstimulation line. Square corners stay; no glass, no gradients,
+ * no glows beyond the one disciplined aura + hairline. NOT dark.
+ * ------------------------------------------------------------------------- */
+
+/* Unified card hover-lift — every interactive card on the home uses this one
+   recipe: a gentle rise, a blue border-shift, a soft lift-shadow. GPU-safe
+   (transform + box-shadow + border-color only). Guarded to real-hover devices
+   so it never sticks on a phone tap. Reduced-motion freezes the transition
+   (global @media) — the lift still works on hover, it just snaps. */
+.km-card-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+}
+@media (hover: hover) {
+  .km-card-hover:hover {
+    transform: translateY(-6px);
+    border-color: rgba(29, 78, 216, 0.55); /* --color-blue / 55 — clearer blue edge on lift */
+    box-shadow: var(--shadow-lift);
+  }
+}
+/* Two-part / grouped cards: the wrapper lifts, the inner cards take the
+   border-shift + shadow on the shared hover (paired with `group`). */
+.km-lift-group {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) {
+  .km-lift-group:hover {
+    transform: translateY(-6px);
+  }
+}
+
+/* The ONE resting-card depth recipe — crisp border + white face + the real
+   two-layer shadow. Pair with .km-card-hover for the lift. Applied to every
+   home card so elevation reads consistently (WO_06 unified-depth). */
+.km-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+/* The featured/lever cell — its resting + lift shadow carry the brand hue, plus a
+   lit top-edge highlight that reads against the blue-tint fill. */
+.km-card-blue {
+  background: var(--color-blue-tint);
+  border: 2px solid rgba(29, 78, 216, 0.5);
+  box-shadow: var(--shadow-blue), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+@media (hover: hover) {
+  .km-card-hover.km-card-blue:hover {
+    border-color: rgba(29, 78, 216, 0.7);
+    box-shadow: var(--shadow-blue);
+  }
+}
+
+/* Code housing — the ONE restrained dark accent block (the deep-blue field).
+   The approved technical voice for the code teasers; never slate-950 / emerald /
+   glass / dark-everywhere. */
+.km-code {
+  border: 1px solid rgba(23, 37, 84, 0.18); /* --color-blue-deep / 18% */
+  background: var(--color-blue-deep);
+  color: var(--color-blue-100);
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+/* ---------------------------------------------------------------------------
+ * LIBRARY PROSE — the heart of the readability system (WO_03 §3).
+ * Narrow measure (~40rem / ~64ch), 17px / 1.7, near-black ink, generous
+ * paragraph spacing, true bullets, left-aligned ragged-right. Built for a
+ * contractor reading one-handed on a phone. Data modules break OUT of this
+ * via the GuideLayout grid (prose narrow, data wide).
+ * ------------------------------------------------------------------------- */
+.km-prose {
+  max-width: 40rem;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-ink);
+  text-align: left; /* never justify — ragged-right reads easier on a phone */
+  text-wrap: pretty; /* avoid orphans/rivers in a narrow column */
+}
+.km-prose > p {
+  margin-top: 1.25rem; /* ~20px — generous paragraph spacing */
+}
+.km-prose > p:first-child {
+  margin-top: 0;
+}
+.km-prose strong {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+.km-prose a {
+  color: var(--color-blue-action);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(37, 99, 235, 0.4);
+  transition: text-decoration-color 0.15s ease;
+}
+.km-prose a:hover {
+  text-decoration-color: var(--color-blue-action);
+}
+.km-prose ul,
+.km-prose ol {
+  margin-top: 1.25rem;
+  font-size: 17px;
+}
+.km-prose li {
+  position: relative;
+  margin-top: 0.7rem;
+  padding-left: 1.5rem;
+  line-height: 1.65;
+}
+/* Square blue bullet — the brand mark, comfortably sized + spaced. */
+.km-prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  background: var(--color-blue);
+}
+/* Numbered lists — blue tabular counters. */
+.km-prose ol {
+  counter-reset: km-ol;
+}
+.km-prose ol > li {
+  counter-increment: km-ol;
+}
+.km-prose ol > li::before {
+  content: counter(km-ol);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-blue);
+}
+
+/* Thin blue rule — the editorial hairline (brand blue, visible on white). */
+.km-hairline {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--color-blue),
+    var(--color-blue) 42%,
+    transparent
+  );
+}
+
+/* Film-grain texture overlay (decorative). Faint slate dots on white. */
+.km-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.022) 1px, transparent 1px);
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+
+/* Blueprint grid — faint blue engineering lines. The institutional texture for
+   the crest field (fills the empty plate; "ascension by design"). Decorative. */
+.km-blueprint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(29, 78, 216, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(29, 78, 216, 0.07) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* A single, restrained blue radial — used ONCE per view max (anti-glow-soup). */
+.km-aura {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    var(--color-blue-glow),
+    transparent 70%
+  );
+}
+
+/* ---------------------------------------------------------------------------
+ * TYPEWRITER (WO_07 P1) — the AI-safe heading reveal. `.km-type` is the
+ * clip-path wrapper (ONE intact text node inside; only the clip animates, in JS).
+ * `.km-caret` is the blinking caret — the ONE sanctioned continuous motion (a
+ * slow, hard step-blink). The global reduced-motion rule freezes it (and TypeIn
+ * renders no caret at all under reduced-motion). step-end keeps the frozen state
+ * at opacity 1 (visible), never trapped invisible.
+ * ------------------------------------------------------------------------- */
+.km-type {
+  display: inline-block;
+  max-width: 100%;
+}
+.km-caret {
+  display: inline-block;
+  width: 0.12em;
+  min-width: 3px;
+  height: 0.92em;
+  margin-left: 0.1em;
+  background: var(--color-blue);
+  vertical-align: -0.08em;
+  animation: km-blink 1.06s step-end infinite;
+}
+.km-caret-lg {
+  height: 0.96em;
+  width: 0.14em;
+  min-width: 4px;
+}
+@keyframes km-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* The gap-card "damage" caret-arrow (WO_07): a small red marker that slow-blinks
+   beside each broken-stat label (the idiomatic-caret exception — slow + subtle,
+   dips, never fully off). Frozen visible under reduced-motion. */
+.km-arrow-blink {
+  animation: km-arrow-blink 1.5s step-end infinite;
+}
+@keyframes km-arrow-blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Reduced motion — freeze every decorative animation, honor the user setting.
+ * ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

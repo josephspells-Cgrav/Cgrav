@@ -137,3 +137,15 @@ knight-picker/
 # Dot-prefixed WE/WO capture debris (note: tracked `wo/` has no dot, unaffected)
 .we[0-9]*
 .wo[0-9]*
+
+# Build artifacts inside the untracked-source app dirs tracked below
+**/node_modules/
+**/.next/
+**/test-results/
+**/playwright-report/
+# ad-swipe: competitor reference recordings (~430MB of mp4/wav). Media, not source.
+ad-swipe/**/*.mp4
+ad-swipe/**/*.wav
+ad-swipe/**/*.m4a
+yt-research/**/*.mp4
+yt-research/**/*.webm
