@@ -130,3 +130,10 @@ knight-picker/
 *.exe
 *.dist-info/
 *.jsonl
+
+# Worktree seats (live: .wt-deploy-seo, .wt-seo-a5, .wt-seo-rating) — these are
+# checkouts of mabrey-roofing, tracked by THAT repo. Never content here.
+.wt-*/
+# Dot-prefixed WE/WO capture debris (note: tracked `wo/` has no dot, unaffected)
+.we[0-9]*
+.wo[0-9]*
