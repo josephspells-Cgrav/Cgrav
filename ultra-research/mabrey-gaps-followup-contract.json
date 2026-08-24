@@ -1,0 +1,25 @@
+{
+  "question": "Targeted follow-up on the three gaps the max-tier KM model audit could not cover, each operationally urgent for the Mabrey Roofing week-1 rollout: (1) an FTC-compliant automated review-request SOP under the 2024 fake-review final rule; (2) a verdict on AI-agent/Claude-Code backlink-automation tools; (3) evidence-based time-to-rank expectations for a rebuilt local contractor site.",
+  "subQuestions": [
+    "Under the FTC's 2024 fake-review final rule (16 CFR Part 465, effective Oct 2024) and Google's review policies: what exactly is prohibited (review gating, incentivized reviews, employee/insider reviews, review suppression), what are the actual penalties and enforcement actions to date, and what does a COMPLIANT automated post-job review-request SOP look like for a contractor CRM (ask-everyone timing, wording, no filtering by sentiment)?",
+    "What do the AI-agent backlink-automation tools and GitHub projects (Claude Code / LLM-agent outreach bots, programmatic directory submitters, auto-citation builders) actually do in practice in 2025-2026 — is there ANY legitimate white-hat automation lane (e.g. citation building, digital-PR pitch drafting, unlinked-mention reclamation), which uses cross Google's link-spam line, and are there confirmed field outcomes (penalties or wins) either way?",
+    "What is the evidence-based time-to-rank for an EXISTING local contractor domain that gets a full site rebuild (new architecture, 150-200 pages): months to meaningful movement in (a) the map pack after GBP+review optimization and (b) local organic after the rebuild — and does published evidence support a 3-month-movement / 6-month-notice / 12-month-mature ramp?"
+  ],
+  "checklist": [
+    "FTC 16 CFR Part 465 final rule provisions: gating, incentives, insiders, suppression",
+    "FTC enforcement actions / penalty amounts under the rule 2024-2026",
+    "Google review policy on review gating and solicitation",
+    "compliant review-request SOP patterns (timing, channel, wording, ask-everyone)",
+    "AI/LLM agent backlink tools on GitHub: capabilities and categories",
+    "Google link-spam policy line for automated outreach / programmatic links",
+    "white-hat automation lanes: citations, unlinked mentions, digital PR drafting",
+    "confirmed penalty or success cases from automated link building 2025-2026",
+    "time-to-rank studies for local SEO: pack movement timeline after GBP/review work",
+    "time-to-rank for rebuilt/redesigned local sites: organic timeline evidence",
+    "3/6/12-month local SEO ramp: any published support or refutation"
+  ],
+  "tier": "lite",
+  "mode": "balanced",
+  "currentDate": "2026-07-06",
+  "stopCondition": "Each of the three sub-questions has at least 2 independent sources; the FTC SOP question yields a concrete do/don't list usable in the Mabrey CRM build; conflicts surfaced."
+}

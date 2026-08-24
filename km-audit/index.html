@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bunn's Heating and Air Conditioning — Website Audit</title>
+<style>
+:root{--blue:#15346b;--ink:#0d1b34;--ok:#16a34a;--no:#dc2626;--paper:#f4f7fc;--gold:#ffd23f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;background:#0a1428;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.card{width:1600px;height:900px;display:flex;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+/* LEFT SIDEBAR — brand, score, opportunity */
+.side{width:540px;background:linear-gradient(165deg,#1a3f7e,#0c2350 70%);color:#fff;padding:34px 36px;display:flex;flex-direction:column}
+.brand{font-weight:900;font-size:22px;letter-spacing:.3px}.brand span{color:var(--gold)}
+.co{font-size:38px;font-weight:900;letter-spacing:-.8px;line-height:1.02;margin-top:26px}
+.loc{font-size:20px;font-weight:600;opacity:.82;margin-top:6px}
+.url{font-size:13px;opacity:.55;margin-top:8px;font-family:ui-monospace,monospace;word-break:break-all}
+.scorewrap{display:flex;align-items:baseline;gap:14px;margin:22px 0 6px}
+.scorewrap .n{font-size:88px;font-weight:900;line-height:.85;color:var(--gold)}
+.scorewrap .d{font-size:34px;font-weight:800;opacity:.6}
+.scorewrap .l{font-size:13px;font-weight:800;letter-spacing:2px;opacity:.8}
+.opp{margin-top:26px;display:flex;flex-direction:column;gap:12px}
+.tier{background:rgba(255,255,255,.07);border-radius:12px;padding:15px 17px}
+.tier.up{background:rgba(255,210,63,.12);border:1px solid rgba(255,210,63,.4)}
+.tlabel{font-size:12px;font-weight:800;letter-spacing:1px;opacity:.78}
+.tval{font-size:30px;font-weight:900;color:var(--gold);line-height:1.05;margin:3px 0}
+.tval span{font-size:14px;font-weight:700;color:#fff;opacity:.7}
+.tnote{font-size:12px;opacity:.78;line-height:1.36}
+.ill{font-size:10.5px;opacity:.5;margin-top:4px;line-height:1.3}
+/* RIGHT MAIN — checklist */
+.main{flex:1;background:var(--paper);padding:26px 32px;display:flex;flex-direction:column}
+.mhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.mhead h1{font-size:21px;font-weight:900;color:var(--ink);letter-spacing:-.3px}
+.mhead .legend{font-size:13px;font-weight:700}
+.mhead .legend b{color:var(--ok)}.mhead .legend i{color:var(--no);font-style:normal}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;flex:1;align-content:start}
+.ch{font-size:13.5px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;margin-bottom:6px;padding-bottom:6px;border-bottom:2px solid currentColor}
+.col.bad .ch{color:var(--no)}.col.good .ch{color:var(--ok)}
+.empty{font-size:12.5px;color:#8a96a8;padding:10px 0}
+.row{display:flex;gap:11px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.ic{flex:0 0 24px;height:24px;border-radius:50%;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.row.ok .ic{background:var(--ok)}.row.no .ic{background:var(--no)}
+.lbl{font-size:16.5px;font-weight:800;color:var(--ink);line-height:1.1}
+.why{font-size:11.5px;color:#67738a;margin-top:1px;line-height:1.25}
+.mnote{margin-top:10px;font-size:11.5px;color:#9a7b1f;background:#fff7e6;border:1px solid #f0e2c0;border-radius:8px;padding:7px 12px}
+.foot{margin-top:10px;display:flex;justify-content:space-between;font-size:11px;color:#9aa6b8}
+</style></head><body>
+<div class="card">
+  <aside class="side">
+    <div class="brand">👑 King Maker <span>SEO</span></div>
+    <div class="co">Bunn's Heating and Air Conditioning</div>
+    <div class="loc">Louisburg, NC · Roofing</div>
+    <div class="url">https://www.bunnsheatingandair.com/</div>
+    <div class="scorewrap"><div class="n">14</div><div class="d">/17</div><div class="l">SEO<br>SCORE</div></div>
+    <div class="opp">
+      <div class="tier"><div class="tlabel">① FIX WHAT YOU HAVE</div><div class="tval">~$4k–$7k<span>/mo</span></div><div class="tnote">Fix the 3 confirmed gaps on the current site ≈ 4–7 jobs/yr × ~$12k.</div></div>
+      <div class="tier up"><div class="tlabel">② ENTERPRISE SITE + OFF-PAGE</div><div class="tval">~$60k–$96k<span>/mo at maturity</span></div><div class="tnote">New enterprise site + $1,000/mo off-page. Optimistic — full metro dominance ≈ 5–8 jobs/mo, vs $1k/mo in.</div></div>
+      <div class="ill">Illustrative models, not a guarantee · ramps 6–12 mo · ~$12k avg ticket · Tier ② = optimistic at maturity</div>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="mhead"><h1>Website Audit</h1><div class="legend">scores <b>14/17</b> on the basics</div></div>
+    <div class="cols">
+      <div class="col good"><div class="ch">✓ Working (14)</div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Secure (HTTPS)</div><div class="why">Buyers + Google distrust an unsecured site.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Crawlable HTML (not JS-only)</div><div class="why">JS-only = near-invisible to AI search, slow to index.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Page Title</div><div class="why">The #1 on-page signal Google shows in results.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Meta Description</div><div class="why">Drives the click from the search result.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Canonical Tag</div><div class="why">Stops duplicate-URL confusion that splits ranking.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Social / Open Graph</div><div class="why">How your link looks when shared or texted.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">H1 Heading</div><div class="why">Tells Google the page topic in one line.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Mobile-Ready (viewport)</div><div class="why">Most roofing searches are on a phone.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Image Alt Text</div><div class="why">Image SEO + accessibility basics.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Contact Form</div><div class="why">No clear way to turn a visitor into a lead.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Click-to-Call</div><div class="why">One-tap calling — most roofing leads phone in.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">robots.txt</div><div class="why">Guides crawlers — missing one is an amateur tell.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">XML Sitemap</div><div class="why">The map of every page you have for Google.</div></div></div><div class="row ok"><div class="ic">✓</div><div class="tx"><div class="lbl">Reviews / Proof</div><div class="why">Social proof is the #1 conversion lever.</div></div></div></div>
+      <div class="col bad"><div class="ch">✗ Costing You Jobs (3)</div><div class="row no"><div class="ic">✗</div><div class="tx"><div class="lbl">Schema Markup</div><div class="why">Hands Google the facts (2–4x rich-result + AI).</div></div></div><div class="row no"><div class="ic">✗</div><div class="tx"><div class="lbl">Service Pages</div><div class="why">One page per service = one clean Google match.</div></div></div><div class="row no"><div class="ic">✗</div><div class="tx"><div class="lbl">Location Pages</div><div class="why">No city pages = invisible past your ~5-mile pocket.</div></div></div></div>
+    </div>
+    <div class="mnote">⚠ 2 not measured (speed test unavailable): Mobile Page Speed · Core Web Vitals</div>
+    <div class="foot"><div>Audit · 2026-06-30</div><div>Mobile speed via Google PageSpeed</div></div>
+  </main>
+</div></body></html>

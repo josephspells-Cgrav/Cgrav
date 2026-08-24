@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>King Maker — Structure Doctrine (generation program)</title>
+<style>
+  :root {
+    --doc-bg:        #0F1117;
+    --doc-surface:   #161922;
+    --doc-surface-2: #1d2230;
+    --doc-border:    #2a3145;
+    --doc-text:      #e8eaf0;
+    --doc-text-mute: #9ca3b8;
+    --doc-text-dim:  #6b7388;
+    --doc-mono:      ui-monospace, SFMono-Regular, Menlo, monospace;
+    --doc-display:   ui-sans-serif, -apple-system, system-ui, sans-serif;
+    --am-navy:       #1b3361;
+    --am-red:        #b02549;
+    --am-red-hover:  #8a1d3a;
+    --am-text:       #1a1a1a;
+    --am-muted:      #6b7280;
+    --am-border:     #e5e7eb;
+    --am-tint:       #f5f7fb;
+    --am-white:      #ffffff;
+    --km-bg:         #0A0A0A;
+    --km-surface:    #15110A;
+    --km-border:     #2D2516;
+    --km-gold:       #FFB900;
+    --km-gold-bright:#FFD24A;
+    --km-text-mute:  #B5A982;
+    --km-alert:      #C25A3A;
+    --contract-bg:   #1a0d12;
+    --contract-bord: #4a1a28;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--doc-bg);
+    color: var(--doc-text);
+    font-family: var(--doc-display);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--am-red); color: #fff; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  .doc-header {
+    border-bottom: 1px solid var(--doc-border);
+    padding: 64px 32px 44px;
+    background: linear-gradient(180deg, var(--doc-surface) 0%, var(--doc-bg) 100%);
+  }
+  .doc-header .ver {
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+  .doc-header h1 {
+    margin: 0 0 12px;
+    font-size: clamp(32px, 4.2vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+  .doc-header .tagline {
+    color: var(--doc-text-mute);
+    font-size: 18px;
+    max-width: 820px;
+    margin: 0 0 16px;
+  }
+  .doc-header .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--contract-bg);
+    border: 1px solid var(--contract-bord);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 10px 16px;
+    margin-top: 16px;
+    font-family: var(--doc-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+  }
+  .doc-header .badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--am-red);
+    box-shadow: 0 0 6px rgba(176,37,73,0.85);
+  }
+
+  section.chapter {
+    border-top: 1px solid var(--doc-border);
+    padding: 56px 0 48px;
+  }
+  section.chapter:first-of-type { border-top: 0; }
+  h2.chapter-title {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    line-height: 1.1;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  h2.chapter-title .ix {
+    font-family: var(--doc-mono);
+    font-size: 13px;
+    color: var(--am-red);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  h3.section-title {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 28px 0 12px;
+    color: #fff;
+  }
+  h4.subsection {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 22px 0 8px;
+    color: var(--doc-text);
+    letter-spacing: 0.01em;
+  }
+  p { margin: 0 0 14px; }
+  p.lede { font-size: 17px; color: var(--doc-text-mute); max-width: 860px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+
+  code {
+    font-family: var(--doc-mono);
+    font-size: 0.9em;
+    background: var(--doc-surface-2);
+    color: #f4d56b;
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+  pre {
+    font-family: var(--doc-mono);
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #d8dde9;
+    margin: 12px 0 18px;
+  }
+
+  .callout {
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .callout.warn { border-left-color: #d97757; background: rgba(217,119,87,0.05); }
+  .callout.good { border-left-color: #6dd57c; background: rgba(109,213,124,0.06); }
+  .callout.gold { border-left-color: var(--km-gold); }
+  .callout .label {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--am-red);
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .callout.warn .label { color: #d97757; }
+  .callout.good .label { color: #6dd57c; }
+  .callout.gold .label { color: var(--km-gold); }
+
+  .contract {
+    background: var(--contract-bg);
+    border: 2px solid var(--contract-bord);
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0 28px;
+    position: relative;
+  }
+  .contract::before {
+    content: "GENERATION CONTRACT · NON-OVERRIDABLE";
+    position: absolute;
+    top: -11px;
+    left: 24px;
+    background: var(--am-red);
+    color: #fff;
+    font-family: var(--doc-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+  .contract h3 {
+    color: #fff;
+    font-size: 17px;
+    margin: 0 0 10px;
+    font-weight: 800;
+  }
+  .contract p { color: rgba(255,255,255,0.85); margin: 0 0 12px; font-size: 14px; line-height: 1.6; }
+  .contract ol, .contract ul { color: rgba(255,255,255,0.85); padding-left: 24px; margin: 0 0 12px; }
+  .contract li { margin-bottom: 8px; }
+  .contract strong { color: #fff; }
+  .contract code { background: rgba(255,255,255,0.08); color: #ffc8c8; }
+  .contract pre { background: rgba(0,0,0,0.35); border-left-color: var(--am-red); color: #ffe1e1; }
+
+  table.t {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 22px;
+    font-size: 13.5px;
+  }
+  table.t th, table.t td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--doc-border);
+    vertical-align: top;
+  }
+  table.t th {
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--doc-surface);
+  }
+  table.t td.id { font-family: var(--doc-mono); color: var(--doc-text-mute); width: 64px; }
+  table.t td.name { font-weight: 700; color: #fff; }
+  table.t td.use { color: var(--doc-text-mute); }
+  table.t td.where { font-family: var(--doc-mono); font-size: 12px; color: #f4d56b; }
+
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 14px 0 22px; }
+  .swatch { border: 1px solid var(--doc-border); border-radius: 4px; overflow: hidden; background: var(--doc-surface); }
+  .swatch .chip { height: 56px; }
+  .swatch .meta { padding: 10px 12px; font-size: 12px; }
+  .swatch .meta .name { font-weight: 700; color: #fff; }
+  .swatch .meta .hex { font-family: var(--doc-mono); color: var(--doc-text-mute); margin-top: 2px; }
+  .swatch .meta .ratio { font-family: var(--doc-mono); color: var(--doc-text-dim); font-size: 11px; margin-top: 4px; }
+
+  footer.doc-footer {
+    border-top: 1px solid var(--doc-border);
+    padding: 36px 32px 56px;
+    color: var(--doc-text-dim);
+    text-align: center;
+    font-size: 13px;
+  }
+  a { color: #f4d56b; }
+  a:hover { color: #fff; }
+
+  .surface {
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid #f4d56b;
+    background: rgba(244,213,107,0.04);
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+  .surface .label {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #f4d56b;
+    margin-bottom: 8px;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="wrap">
+    <div class="ver">King Maker · STRUCTURE_DOCTRINE · 2026-05-18 · split from v13</div>
+    <h1>Structure Doctrine — Generation Program</h1>
+    <p class="tagline">
+      This file is the GENERATION PROGRAM for structure. Always loaded at session start
+      alongside MOTION_DOCTRINE.html. Covers the Eleven Locks, instruction priority,
+      universal aesthetic, variance library, palette discipline, engineering / accessibility /
+      verification rules, contractor-site skeleton, SEO essentials.
+    </p>
+    <div class="badge"><span class="dot"></span>GENERATION-CRITICAL · LOAD AT SESSION START · MUST FIRE</div>
+  </div>
+</header>
+
+<!-- ============================ §00 GENERATION CONTRACT ============================ -->
+<section class="chapter wrap" id="contract">
+  <h2 class="chapter-title"><span class="ix">00</span>Generation contract — The Eleven Locks</h2>
+  <p class="lede">
+    First thing read on any frontend session. Non-overridable — not by taste, not by reference
+    site, not by user instruction, not by time pressure. The contract exists because the
+    failure mode it prevents (default AI editorial cards shipped as production UI) silently
+    undoes every other investment in this doctrine.
+  </p>
+
+  <div class="contract">
+    <h3>The Eleven Locks</h3>
+    <ol>
+      <li>
+        <strong>Pre-flight before Phase 1 generation.</strong> Skills in §01 must be invoked via the
+        Skill tool BEFORE writing any UI JSX. INVOKE ALL 6 ALWAYS skills in parallel (trimmed 2026-05-18 post static-first pivot — down from 7; design-motion-principles moved to CONDITIONAL, loads with MOTION_PLAYBOOK on Phase 2 trigger only; brandkit/contractor-ad-research/imagegen-frontend-web also CONDITIONAL — invoke on trigger only) in a
+        single message. Output the EXACT line:
+        <pre>Skills loaded: impeccable, design-taste-frontend, frontend-design, ui-ux-pro-max, high-end-visual-design, gpt-taste</pre>
+        Plus a second line listing specific skill commands / workflows / artifacts firing this turn:
+        <pre>Skill capabilities engaged this turn: impeccable.critique, gpt-taste.design_plan, ui-ux-pro-max.design-system, design-taste-frontend.anti-slop, ...</pre>
+        Absence of either line = Lock 1 violation.
+      </li>
+      <li>
+        <strong>Atom audit before writing any new section.</strong> Before writing JSX for
+        any section that doesn't already exist as a project atom, audit against the named
+        atom palette (REFERENCE_LIBRARY §14 AM palette / §06 universal patterns / §14B KMv2
+        palette). Name out loud which atom this section maps to, and which structural
+        principles it carries (asymmetric 1.4fr/1fr header grid, hierarchical eyebrows
+        with red rule + ◆ markers, glow underlines on H2s, stat-anchor clusters with 3
+        anchors min, layered background rhythm, photo-led composition for dense info,
+        compose-using-DNA never-from-primitives). If "none — I'll compose from scratch,"
+        <strong>STOP</strong>. Either find the right atom, extend an existing one, or propose
+        a new named atom. Never inline-default.
+      </li>
+      <li>
+        <strong>No-AI-slop is a hard constraint.</strong> Flat editorial cards (white card +
+        border + heading + paragraph + bullet list) are forbidden as default output. If the
+        section about to be written would render as a flat card, redesign before writing.
+      </li>
+      <li>
+        <strong>Render preview before write.</strong> Before writing JSX, mentally render the
+        output as the user will see it. If it trips the slop signature (4 forms in MOTION
+        §01.9), STOP. Fix is structural (visual partner, photo split, tier bars, single-word
+        eyebrows, pick-instead tags), not cosmetic. <strong>Atom membership is not slop
+        immunity.</strong> An atom + slop content = slop output.
+      </li>
+      <li>
+        <strong>Variance composition before write.</strong> v13 ships ONE universal aesthetic
+        (§02). Per project, at §01.5 pre-flight: gather project specification + propose
+        variance composition (one pick per dimension from §03) + audit against §04 coherence
+        rules + output labeled composition + get user confirmation. The 10-line block must
+        appear before any UI Edit:
+        <pre>Variance composition:
+Buttons: ([A/B/C]) [pick]
+Dividers: ([A/B/C]) [pick]
+Heading: ([A/B/C]) [pick]
+Trust: ([A/B/C]) [pick]
+Image: ([A/B/C]) [pick]
+Form: ([A/B/C]) [pick]
+Footer: ([A/B/C]) [pick]
+Voice: ([A/B/C]) [pick]
+Glyph: ([A/B/C]) [pick]
+Grid pattern: ([A/B/C]) [pick]</pre>
+        Absence = Lock 5 violation.
+      </li>
+      <li>
+        <strong>Ship-time verification before reporting complete.</strong> "Deploy command
+        said READY" / "git push succeeded" / "build passed" are NOT verification. Before any
+        "shipped" / "live" / "deployed" claim:
+        (a) confirm deploy mechanism per §07 — <code>git push</code> is not a deploy where
+        GitHub auto-deploy is off;
+        (b) execute §08 VC-11 (cache-busted production fetch + grep for new asset path /
+        copy / component class);
+        (c) output the evidence statement:
+        <pre>Verified shipped: fetched [url] at [timestamp], grep returned [evidence].</pre>
+        Without (c), the work is not done.
+      </li>
+      <li>
+        <strong>Audit loop pass before reporting complete.</strong> First-draft contractor
+        sites and new pages MUST run a <code>/contractor-audit-loop</code> pass (minimum 3
+        iterations, default 5) before any "complete" claim. Output:
+        <pre>Audit loop pass complete: N iterations logged at {project}/.audit-loop-log.md, K MED/LOW + M doctrine items queued.</pre>
+        Absence = Lock 7 violation.
+      </li>
+      <li>
+        <strong>Mid-build skill audit at every Nth edit.</strong> Every 5th UI Edit/Write
+        (or iteration boundary):
+        <pre>Mid-build skill audit · iter [N] / edit [M]:
+- skill capacity (6 ALWAYS Phase 1): avg [X%], underused [&lt;50%]: [list]
+- verification stack: Chrome MCP [ready/missing], Playwright [ready/missing], axe-core [ready/missing]
+- next iteration adjustments: [specific commands / workflows to engage]</pre>
+        Without this output at cadence, the next Edit/Write is a Lock 8 violation.
+      </li>
+      <li>
+        <strong>§08 Layer 1 — Chrome MCP loaded at session start.</strong>
+        <pre>Chrome MCP loaded: navigate, screenshot, gif_creator, read_console_messages, read_network_requests, get_page_text — ready.</pre>
+        ToolSearch queries <code>"chrome browser navigate screenshot"</code> +
+        <code>"computer-use"</code> bring these online. Primary use post-pivot: static
+        layout review, console error checks, network asset checks. Without this line,
+        Edit/Write to UI files is a Lock 9 violation.
+      </li>
+      <li>
+        <strong>§08 Layer 2 — Playwright FULL capabilities ready.</strong>
+        <pre>Playwright stack: @playwright/test installed, capture.spec.ts exists, playwright.config.ts (video.mode "on" + trace "on" remain useful for Phase 2 verification; static-only Phase 1 can disable video to speed runs), axe-core integrated — ready.</pre>
+        Required at session start for any contractor-site project. Phase 1 use: fast
+        static screenshots desktop + mobile, console error capture, layout verification.
+        Phase 2 use: pre-motion + post-motion capture diff to verify motion landed.
+        Mechanical enforcement via auto-capture hook. Without this line, Edit/Write is
+        a Lock 10 violation.
+      </li>
+      <li>
+        <strong>§08 Layer 3 — axe-core 0 critical / 0 serious.</strong> After each Playwright
+        capture run:
+        <pre>axe-core (post-capture): 0 critical, 0 serious, [N] moderate, [M] minor — [pass/fail].</pre>
+        Critical or serious violations block "shipped" / "complete" claims (Lock 11 gates
+        Lock 6). Note: axe is MORE important post-pivot — Phase 1 has no motion to chase,
+        so accessibility gets the full attention of the verification cycle.
+      </li>
+    </ol>
+
+    <h3>What "AI slop" means</h3>
+    <p>
+      Any frontend output where the visual language traces directly to training-data defaults
+      rather than to the doctrine's design language. Telltales: plain bordered white cards
+      with centered eyebrow + h2 + paragraph + bullet list; plain <code>&lt;h2&gt;</code>
+      instead of <code>HeadingWithUnderline</code>; "3-column grid of bordered cards" as the
+      universal answer to "list of things"; content composed from primitives instead of from
+      atom palette; bullet lists with no diamond markers / no pulse / no left rule.
+    </p>
+
+    <h3>The Generation Reflex</h3>
+    <ol>
+      <li>What's the section's role? (Diagnose? Compare? Showcase? List? Convert?)</li>
+      <li>Which existing atom serves that role? (REFERENCE_LIBRARY §14 AM palette, §06 universal patterns.)</li>
+      <li>If no atom fits, which DNA principles must the new atom carry? (MOTION §01.)</li>
+      <li>Only after answering 1–3 do you write JSX.</li>
+    </ol>
+  </div>
+
+  <div class="callout">
+    <span class="label">Posture</span>
+    <strong>Compose using DNA, never compose from primitives.</strong> The doctrine is
+    descriptive about what good looks like. The contract above is what makes the description
+    active at generation time.
+  </div>
+</section>
+
+<!-- ============================ §01 INSTRUCTION PRIORITY ============================ -->
+<section class="chapter wrap" id="priority">
+  <h2 class="chapter-title"><span class="ix">01</span>Instruction priority</h2>
+  <pre>Priority 1 (LOWEST)  — Taste profile
+Priority 2           — Doctrine recipes and patterns
+Priority 3           — Reference site direction
+Priority 4           — Explicit user instruction
+Priority 5 (HIGHEST) — Engineering rules + operating principles + Generation Contract (§00)</pre>
+  <p>
+    Engineering rules, operating principles, and the §00 Generation Contract are never overridden —
+    not by taste, not by reference, not by user instruction. They prevent broken builds and AI slop.
+  </p>
+
+  <h3 class="section-title">Composable instructions</h3>
+  <p>Instructions stack. Users can combine STRUCTURE + DOCTRINE + TIGHTNESS in one directive:</p>
+  <table class="t">
+    <thead><tr><th>User says</th><th>Structure</th><th>Doctrine</th><th>Tightness</th></tr></thead>
+    <tbody>
+      <tr><td>"Roofing company, Charlotte, navy + gold"</td><td>Inferred from industry</td><td>v13 default</td><td>Loose</td></tr>
+      <tr><td>"Take [URL], same structure, v13"</td><td>Reference site (exact)</td><td>v13 closely</td><td>Structure locked, motion upgraded</td></tr>
+      <tr><td>"Take [URL] but King Maker DNA"</td><td>Reference site</td><td>v13 DNA strictly</td><td>Old reference content, new motion + atoms</td></tr>
+      <tr><td>"I want this exact site but 2026"</td><td>Reference (exact)</td><td>v13 strictly</td><td>Full upgrade — springs, blur enters, video hero</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ §02 UNIVERSAL AESTHETIC ============================ -->
+<section class="chapter wrap" id="aesthetic">
+  <h2 class="chapter-title"><span class="ix">02</span>The universal King Maker aesthetic (always-true)</h2>
+  <p class="lede">
+    For the contractor-trade scope (plumbers, HVAC, electricians, roofers, painters,
+    kitchen remodelers, general contractors, landscapers, hardscape), v13 ships ONE
+    universal aesthetic. <strong>There is no mode-picking.</strong> Five qualities apply to
+    every contractor-trade site, never selected against:
+  </p>
+  <ul>
+    <li><strong>Fleshed-out</strong> — every section pulls its weight. No placeholder text, no half-built recipes shipped as final. If a section role isn't filled with real content, the section doesn't ship.</li>
+    <li><strong>No dead space</strong> — visual rhythm fills the screen. Asymmetric headers, stat-anchor clusters, photo-led tiles, layered backgrounds. Empty white areas read as "missing content."</li>
+    <li><strong>Fluid</strong> — sections flow into each other intentionally. The page reads top-to-bottom as a single experience, not a stack of independent boxes.</li>
+    <li><strong>Well-animated</strong> — motion vocabulary applied consistently. Heading reveals on every H2 (per §03 pick). FadeUp + Stagger. Hover bloom. Pulsing markers. Subtle continuous life across the page.</li>
+    <li><strong>Not overstimulating</strong> — motion is balanced. Continuous loops stop on <code>prefers-reduced-motion</code>. Animated separators don't crowd content. Counter durations scale to target size.</li>
+  </ul>
+  <p>
+    The DNA principles (MOTION §01) ARE the universal aesthetic in detail. The §03 variance
+    library is how each new project draws from the implementation pool with deliberate
+    novelty. The two reference projects (AM, KMv2 — see REFERENCE_LIBRARY) seed the library.
+  </p>
+</section>
+
+<!-- ============================ §03 VARIANCE LIBRARY ============================ -->
+<section class="chapter wrap" id="variance">
+  <h2 class="chapter-title"><span class="ix">03</span>Pattern variance library (9 dimensions × 3 picks)</h2>
+  <p class="lede">
+    Per-dimension pattern options drawn from AM + KMv2. Agent picks ONE option per dimension
+    per new project at §06.5 pre-flight and surfaces the composition to the user.
+    The combination must be novel — no project should ship with the same combination across
+    all 9 dimensions as AM or KMv2 wholesale (default-bleed, anti-pattern 7.26). The library
+    expands when a new reference project ships and contributes new patterns.
+  </p>
+  <table class="t">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Pattern options — pick ONE per new project</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="id">Button DNA</td>
+        <td class="use">
+          <strong>(A) Rounded + accent fill</strong> — border-radius 6–8px, accent-color filled primary, rounded ghost variant. Source: AM. Warm + craftsman.<br>
+          <strong>(B) Square-corner + filled accent with high-contrast text</strong> — border-radius 0, accent-color fill, dark text on light fills, outer-ring glow on hover. Source: KMv2. Premium + decisive.<br>
+          <strong>(C) Outlined-only</strong> — primary and ghost both border + accent text, no fill. Quieter. Useful for projects that want to feel less salesy.
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Section dividers</td>
+        <td class="use">
+          <strong>(A) Animated 1px scaleX rules</strong> — TP-04 fine-line separators with scaleX 0→1 reveal. Source: AM. Polished + cinematic.<br>
+          <strong>(B) Contrast-only rhythm</strong> — alternating <code>bg</code> / <code>surface/40</code> with <code>border-y</code>. No animated dividers. Source: KMv2. Tighter + premium.<br>
+          <strong>(C) Mixed</strong> — animated dividers in hero/landing zones, contrast-only in dense/diagnostic zones. Useful for multi-page sites.
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Heading reveal</td>
+        <td class="use">
+          <strong>(A) HeadingWithUnderline + glow + typeIn</strong> — every H2 only. Source: AM.<br>
+          <strong>(B) Per-word motion-blur reveal</strong> — every H2 AND H3 site-wide. Source: KMv2.<br>
+          <strong>(C) Mixed</strong> — HeadingWithUnderline on H2, motion-blur on H3, or vice versa. Avoid both on same heading.
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Trust signal strategy</td>
+        <td class="use">
+          <strong>(A) Testimonials-led</strong> — TestimonialsGrid + star ratings + photo testimonials. Source: AM. Standard service-business credibility.<br>
+          <strong>(B) Artifacts-led</strong> — live portfolio gallery + tech-stack marquee + diagnostic audit-ledger card. Source: KMv2. Premium + "the work speaks."<br>
+          <strong>(C) Mixed</strong> — audit-ledger up top (diagnostic the visitor cares about) + testimonials below the fold (social proof). Excellent for diagnostic-heavy verticals.
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Image policy</td>
+        <td class="use">
+          <strong>(A) Real installer photography + before/after</strong> — Source: AM. Required for verticals where homeowner trust hinges on "real people, real trucks."<br>
+          <strong>(B) Property-led, no people</strong> — exterior shots, room-after-remodel, landscape transformation. People implied, not shown. Useful for premium kitchen / hardscape / property-aesthetic verticals.<br>
+          <strong>(C) Mixed</strong> — installer photos on About + Process where trust matters; property-led on Services + Gallery where the work matters.
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Form input atom</td>
+        <td class="use">
+          <strong>(A) Bordered + radius'd</strong> — Source: AM. Standard service-business intake. Homeowner-friendly.<br>
+          <strong>(B) Bottom-border-only</strong> — Source: KMv2. Premium feel; appropriate for kitchen-remodel / high-end hardscape.<br>
+          <strong>(C) Hybrid</strong> — bordered for required fields, bottom-border for free-text fields.
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Footer density</td>
+        <td class="use">
+          <strong>(A) Dense multi-column</strong> — sitemap, brand wordmark, location-templated descriptor, social links, full contact, legal microcopy. Source: AM. Required for SEO on most contractor sites.<br>
+          <strong>(B) Restrained 3-col</strong> — brand + tagline / single contact / promise line. Source: KMv2. Reserve for design-build / boutique only.<br>
+          <strong>(C) Medium</strong> — dense contact + sitemap, no social-link clutter, trimmed legal microcopy. Useful middle ground.
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Voice / concept-naming</td>
+        <td class="use">
+          <strong>(A) Installer-perspective, regional craftsman</strong> — Source: AM. "We install / We service." Sentence-form. Question-form titles where self-diagnostic.<br>
+          <strong>(B) Concept-named system</strong> — Source: KMv2. Service tiers carry metaphor cohesion ("The Diagnosis / The Patch / The Replacement" for plumbing). Fragments. Em-dashes (in concept names only — not in body copy where anti-pattern 7.31 bans them).<br>
+          <strong>(C) Mixed</strong> — concept-named service tiers (memorable hook) + sentence-form supporting copy (homeowner-friendly).
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Brand glyph</td>
+        <td class="use">
+          <strong>(A) Bullet-marker only</strong> — accent-colored diamond ◆ used only as bullet point. Source: AM.<br>
+          <strong>(B) Cross-surface signature glyph</strong> — single glyph (◆ / ● / ▸) appears in logo mark, marquee separator, footer mark, form bullet. Source: KMv2.<br>
+          <strong>(C) Vertical-specific signature</strong> — SVG glyph matched to the vertical (water drop for plumber, lightning for electrician, leaf for landscape, flame for HVAC) used as cross-surface signature. <strong>Recommended for inter-project differentiation.</strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Hero pattern</td>
+        <td class="use">
+          <strong>(A) Full-bleed cinematic video</strong> — see MOTION §03.4 for canonical spec. <strong>Default for contractor sites — THE doctrine hero, not a HIGH option.</strong><br>
+          <strong>(B) Full-bleed cinematic still</strong> — same section structure but <code>&lt;Image priority fetchPriority="high"&gt;</code> instead of <code>&lt;video&gt;</code>. Same cascade reveal sequence. Same overlay + vignette stack.<br>
+          <strong>(C) Asymmetric split (text + framed installer photo)</strong> — <code>lg:grid-cols-[1.05fr_0.95fr]</code>, photo gets Doppelrand frame + duotone overlay. Use only when photo IS the selling proof. Rare. Reserve for verticals where "look at our work" is a stronger pitch than "watch our work."
+        </td>
+      </tr>
+      <tr>
+        <td class="id">Section grid pattern (10th — added v13 session-9 per anti-pattern 7.33)</td>
+        <td class="use">
+          <strong>(A) 3-col equal repeated</strong> — anti-pattern 7.33 by default; defensible for at most ONE section per page (e.g. ServicesGrid).<br>
+          <strong>(B) Varied across sections</strong> — bento + zig-zag + scroller + 3-col. Diversification IS the differentiation.<br>
+          <strong>(C) All-bento or all-zigzag</strong> — deliberate stylistic restraint. Coherent across whole page.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">3.1 · Variance composition workflow</h3>
+  <p>
+    At §06.5 pre-flight, after gathering project specification (vertical, brand, palette,
+    motion intensity per MOTION §03.1), the agent proposes a variance composition — one
+    pick per dimension above — and surfaces it to the user. The composition must:
+  </p>
+  <ol>
+    <li><strong>Not be a wholesale clone of AM or KMv2.</strong> If every pick comes from one reference project, default-bleed (anti-pattern 7.26).</li>
+    <li><strong>Pass coherence rules (§04).</strong> Some pattern combinations break the universal aesthetic.</li>
+    <li><strong>Fit the vertical.</strong> Some choices fit plumbing but not landscape; some fit premium kitchen-remodel but not regional HVAC.</li>
+    <li><strong>Be surfaced as a labeled summary, not a vague claim.</strong> Output the explicit 10-line block (Lock 5 format). User confirms or redirects.</li>
+  </ol>
+</section>
+
+<!-- ============================ §04 PAIRING COHERENCE RULES ============================ -->
+<section class="chapter wrap" id="coherence">
+  <h2 class="chapter-title"><span class="ix">04</span>Pairing coherence rules</h2>
+  <p class="lede">
+    Not every combination holds together. Agent flags incoherent combinations during variance
+    composition (§03.1 step 2) before lock-in:
+  </p>
+  <table class="t">
+    <thead><tr><th>Combination</th><th>Verdict</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Artifacts-led trust (B) + dense AM footer (A) + AM real photography (A)</td><td class="use"><strong style="color: #16805a;">SAFE — sweet spot</strong></td><td class="where">Trade-contractor differentiation. Audit-ledger gives premium feel + testimonial backup keeps trust + real-people photos build credibility + SEO-rich footer.</td></tr>
+      <tr><td class="name">Concept-named voice (B) + bordered+radius'd forms (A)</td><td class="use"><strong style="color: #16805a;">SAFE</strong></td><td class="where">Concept names give memorability; bordered forms keep intake homeowner-friendly. Best of both for trades wanting premium feel without alienating.</td></tr>
+      <tr><td class="name">No-people imagery (B) + testimonials-led trust (A)</td><td class="use"><strong style="color: #c0392b;">BREAKS</strong></td><td class="where">Photo testimonials require photos of customers. Contradiction. Either pick (B) artifacts-led to match image policy, or (A) installer photography to match testimonials.</td></tr>
+      <tr><td class="name">Bottom-border-only forms (B) + installer-perspective regional voice (A)</td><td class="use"><strong style="color: #c0392b;">BREAKS</strong></td><td class="where">Bottom-border-only reads as premium-agency; regional installer voice reads as down-home. Tonal mismatch. Pick (C) hybrid form OR (B) concept-named voice.</td></tr>
+      <tr><td class="name">Restrained 3-col footer (B) + most contractor verticals</td><td class="use"><strong style="color: #c0392b;">BREAKS</strong></td><td class="where">Most trade contractors NEED SEO-rich footer for local search. Restrained footer hurts conversion. Reserve (B) for design-build / boutique general contractor only.</td></tr>
+      <tr><td class="name">Per-word motion-blur reveal (B) + Motion intensity LOW</td><td class="use"><strong style="color: #c0392b;">BREAKS</strong></td><td class="where">Per-word motion-blur is a HIGH-intensity pattern. Picking it at LOW intensity is incoherent. Either pick (A) HeadingWithUnderline or raise intensity to DEFAULT.</td></tr>
+      <tr><td class="name">Square-corner buttons (B) + dense AM footer (A)</td><td class="use"><strong style="color: #c9750f;">DEBATABLE</strong></td><td class="where">Square reads as premium-restraint; dense footer reads as down-market. Tension. Resolve by previewing both on home page; ship the cohesive one.</td></tr>
+      <tr><td class="name">Hero pattern (C) split + first-time client (no real installer photo)</td><td class="use"><strong style="color: #c0392b;">BREAKS</strong></td><td class="where">Split hero with stock photo reads as generic SaaS template. If no real photography, pick (A) full-bleed cinematic video or (B) cinematic still.</td></tr>
+      <tr><td class="name">Hero pattern (A) full-bleed video + Motion intensity LOW</td><td class="use"><strong style="color: #c0392b;">BREAKS</strong></td><td class="where">Full-bleed video requires DEFAULT or HIGH intensity. LOW strips loops — video sits silently with no surrounding motion language. Either raise to DEFAULT or pick (B) cinematic still.</td></tr>
+    </tbody>
+  </table>
+  <p>Coherence rules grow over time. Add rows when a composition is validated as SAFE or flagged as BREAKS in the wild.</p>
+</section>
+
+<!-- ============================ §05 BRAND PALETTES ============================ -->
+<section class="chapter wrap" id="palettes">
+  <h2 class="chapter-title"><span class="ix">05</span>Brand palette discipline</h2>
+  <p class="lede">Validated palette templates ship with the doctrine. Each has WCAG-AA contrast verified per surface. Use as-is OR as starting points to bump for project needs.</p>
+
+  <h3 class="section-title">Patriotic Navy + Red — American Masterworks (flagship)</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="chip" style="background: var(--am-navy);"></div><div class="meta"><div class="name">--color-navy</div><div class="hex">#1b3361</div><div class="ratio">21:1 vs white ✓</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-red);"></div><div class="meta"><div class="name">--color-red</div><div class="hex">#b02549</div><div class="ratio">7.6:1 vs white ✓</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-red-hover);"></div><div class="meta"><div class="name">--color-red-hover</div><div class="hex">#8a1d3a</div><div class="ratio">10:1 vs white ✓</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-text);"></div><div class="meta"><div class="name">--color-text</div><div class="hex">#1a1a1a</div><div class="ratio">17:1 vs white ✓</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-muted);"></div><div class="meta"><div class="name">--color-muted</div><div class="hex">#6b7280</div><div class="ratio">4.7:1 vs white ✓ AA</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-tint); border-bottom: 1px solid var(--am-border);"></div><div class="meta"><div class="name">--color-tint</div><div class="hex">#f5f7fb</div><div class="ratio">Section bg</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-border);"></div><div class="meta"><div class="name">--color-border</div><div class="hex">#e5e7eb</div><div class="ratio">Card dividers</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-white); border-bottom: 1px solid var(--am-border);"></div><div class="meta"><div class="name">--color-white</div><div class="hex">#ffffff</div><div class="ratio">Primary bg</div></div></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="label">Critical</span>
+    <strong>Red on navy is the contrast killer.</strong> Full red <code>#b02549</code> on navy
+    <code>#1b3361</code> renders ~2.5:1 — illegible. Site-wide rule: caps eyebrows on dark
+    surfaces use <code>text-white/85 font-semibold</code> with the red dot/rule as the only red
+    accent.
+  </div>
+
+  <h3 class="section-title">Regal Black + Gold — King Maker v2</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="chip" style="background: var(--km-bg);"></div><div class="meta"><div class="name">--bg</div><div class="hex">#0A0A0A</div><div class="ratio">21:1 vs white ✓</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-surface);"></div><div class="meta"><div class="name">--surface</div><div class="hex">#15110A</div><div class="ratio">Warm-dark cards</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-gold);"></div><div class="meta"><div class="name">--gold</div><div class="hex">#FFB900</div><div class="ratio">11.4:1 vs bg ✓ AAA</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-gold-bright);"></div><div class="meta"><div class="name">--gold-bright</div><div class="hex">#FFD24A</div><div class="ratio">Hover</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-text-mute);"></div><div class="meta"><div class="name">--text-muted</div><div class="hex">#B5A982</div><div class="ratio">7.6:1 vs bg ✓ AAA</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-alert);"></div><div class="meta"><div class="name">--alert</div><div class="hex">#C25A3A</div><div class="ratio">4.7:1 vs bg ✓ AA</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-border);"></div><div class="meta"><div class="name">--border</div><div class="hex">#2D2516</div><div class="ratio">Subtle dividers</div></div></div>
+  </div>
+
+  <div class="callout gold">
+    <span class="label">Discipline</span>
+    KMv2 reserves <code>--alert</code> (brick red) <strong>exclusively</strong> for diagnostic
+    content. Brand color discipline: gold for everything brand-positive, alert for everything
+    brand-negative, never crossed. AM uses single-accent red across all content; both are valid
+    approaches as long as the discipline is locked at project start.
+  </div>
+
+  <h3 class="section-title">Validation rule for any new palette</h3>
+  <ul>
+    <li>Validate every text token against every surface token at WCAG AA contrast BEFORE first build.</li>
+    <li>Default sets often ship too dim — bump aggressively. Ship a contrast matrix in the palette doc.</li>
+    <li>Any text on lifted surfaces (cards above bg) needs to satisfy AA at the lifted surface contrast, not just the bg.</li>
+    <li>Text using accent colors that fail AA in body usage must be 18px+ to satisfy WCAG large-text exemption.</li>
+  </ul>
+
+  <h3 class="section-title">Slop-banned palette defaults</h3>
+  <ul>
+    <li><strong>Pure #000 / #fff neutrals (untinted) — banned.</strong> Tint every neutral toward the brand hue (chroma 0.005–0.01 in OKLCH; or for hex, shift R/G/B by 4–12 units toward the dominant brand color). Pure black/white reads as un-considered defaults.</li>
+    <li><strong>Inter / Roboto / system-ui defaults — banned.</strong> Default to Geist, Outfit, Cabinet Grotesk, or Satoshi for display + body. JetBrains Mono / Geist Mono for code and mono-caps eyebrows.</li>
+    <li><strong>Em dashes in body copy — banned.</strong> Use commas, colons, semicolons, periods, or parentheses. Also not <code>--</code>. Em dashes in concept names (KMv2 voice pick B) are OK; em dashes in regular body copy are an AI writing tic that signals machine-generated text at scroll glance.</li>
+    <li><strong>Side-stripe borders &gt; 1px as colored accent — banned.</strong> (Impeccable skill absolute ban.) Rewrite with full borders, background tints, leading numbers/icons, or nothing.</li>
+  </ul>
+</section>
+
+<!-- ============================ §06 PRE-FLIGHT ============================ -->
+<section class="chapter wrap" id="preflight">
+  <h2 class="chapter-title"><span class="ix">06</span>Pre-flight checklist</h2>
+  <p class="lede">
+    Run BEFORE writing any UI. Bulk-invoke skills via the Skill tool. Bulk-load MCPs via
+    ToolSearch. Verify dev env. Gather project specification + propose variance composition.
+    Report to user. Only then begin.
+  </p>
+
+  <h3 class="section-title">6.1 · Skills to invoke (non-negotiable; INVOKE ALL)</h3>
+  <p>
+    Bulk-invoke every ALWAYS skill at pre-flight via the Skill tool in parallel. Output the
+    literal line (Lock 1):
+  </p>
+  <pre>Skills loaded: impeccable, design-taste-frontend, frontend-design, ui-ux-pro-max, high-end-visual-design, gpt-taste, design-motion-principles</pre>
+
+  <table class="t">
+    <thead><tr><th>Gate</th><th>Skill</th><th>Why it fires</th></tr></thead>
+    <tbody>
+      <tr><td class="id">ALWAYS · PRE-BUILD</td><td class="name">brandkit</td><td class="use">New contractor-client brand setup — palette, voice, visual identity.</td></tr>
+      <tr><td class="id">ALWAYS · DOMAIN</td><td class="name">contractor-ad-research</td><td class="use">Contractor-trade-specific patterns + audience expectations.</td></tr>
+      <tr><td class="id">ALWAYS · DESIGN</td><td class="name">impeccable</td><td class="use">Production-craft framework, design laws, absolute bans, setup gates.</td></tr>
+      <tr><td class="id">ALWAYS · DESIGN</td><td class="name">design-taste-frontend</td><td class="use">Variance/intensity/density dials + anti-slop bias correction (banned fonts, colors, patterns).</td></tr>
+      <tr><td class="id">ALWAYS · DESIGN</td><td class="name">frontend-design</td><td class="use">General design lens, aesthetic commitment, distinctive direction.</td></tr>
+      <tr><td class="id">ALWAYS · DESIGN</td><td class="name">ui-ux-pro-max</td><td class="use">Comprehensive UX lens, interaction patterns, full UI/UX rigor.</td></tr>
+      <tr><td class="id">ALWAYS · DESIGN</td><td class="name">high-end-visual-design</td><td class="use">Premium-tier visual calibration.</td></tr>
+      <tr><td class="id">ALWAYS · DESIGN</td><td class="name">gpt-taste</td><td class="use">Additional taste lens. Stacks for triangulation.</td></tr>
+      <tr><td class="id">ALWAYS · MOTION</td><td class="name">design-motion-principles</td><td class="use">Motion audit framework. Mandatory every build (universal aesthetic requires "well-animated").</td></tr>
+      <tr><td class="id">ALWAYS · IMAGERY</td><td class="name">imagegen-frontend-web</td><td class="use">Higgsfield default imagery workflow. Inherited default = Higgsfield generation.</td></tr>
+      <tr><td class="id">CONDITIONAL · MOTION HIGH</td><td class="name">gsap-core, gsap-scrolltrigger, gsap-react, gsap-timeline, gsap-performance</td><td class="use">Only when motion-intensity = HIGH (using GSAP — Recipe 35 sticky pin, Recipe 31 dual scrub counter).</td></tr>
+      <tr><td class="id">CONDITIONAL · REDESIGN</td><td class="name">redesign-existing-projects</td><td class="use">Only when modernizing an existing contractor site.</td></tr>
+      <tr><td class="id">CONDITIONAL · MOBILE</td><td class="name">imagegen-frontend-mobile</td><td class="use">When project has substantial mobile-specific imagery requirements.</td></tr>
+      <tr><td class="id">VERIFY · TOOLING</td><td class="name">Chrome MCP visual + Playwright (FULL) + axe-core</td><td class="use">Not skills — verification stack per §08. All three required.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">6.2 · MCPs to bulk-load via ToolSearch</h3>
+  <pre>ToolSearch({ query: "chrome browser navigate screenshot", max_results: 15 })
+ToolSearch({ query: "preview screenshot start", max_results: 10 })
+ToolSearch({ query: "firecrawl scrape extract", max_results: 10 })
+ToolSearch({ query: "generate image video balance models", max_results: 10 })
+ToolSearch({ query: "computer-use", max_results: 30 })
+ToolSearch({ query: "magic component", max_results: 5 })</pre>
+
+  <h3 class="section-title">6.3 · Higgsfield workflow (when generating imagery)</h3>
+  <table class="t">
+    <thead><tr><th>Model</th><th>Best for</th><th>Render</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Cinema Studio 3.0 (6s)</td><td class="use">Hero video, cinematic loops</td><td class="where">60–120s · Premium</td></tr>
+      <tr><td class="name">Cinema Studio 3.0 (12s)</td><td class="use">Premium pull-up reveal (no playbackRate slowdown)</td><td class="where">5–8 min · Premium</td></tr>
+      <tr><td class="name">Kling 3.0</td><td class="use">Image-to-video animation</td><td class="where">90–180s · Premium</td></tr>
+      <tr><td class="name">Veo 3.1 Lite</td><td class="use">Budget fallback when Cinema Studio throttles</td><td class="where">30–60s · Budget</td></tr>
+      <tr><td class="name">Nano Banana Pro</td><td class="use">Fast concept images</td><td class="where">15–30s · Cheap</td></tr>
+      <tr><td class="name">Cinema Studio 2.5</td><td class="use">Cinematic stills</td><td class="where">30–60s · Mid</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>Plus monthly plan has per-month throttle independent of credit balance. Plan 1–2 generations per session.</li>
+    <li>Always include realism anti-prompts. Models default to dramatic/unrealistic placement. Example: "on a concrete pad on the SIDE of the house, NOT on sidewalk, NOT on front wall."</li>
+    <li>Generate at native long duration — never <code>playbackRate &lt; 1.0</code> (halves frame rate → stutter).</li>
+  </ul>
+
+  <h3 class="section-title">6.4 · Dev environment</h3>
+  <pre>node --version           # need 20+
+npm --version
+gh --version             # for repo creation
+npm list framer-motion   # required
+npm list gsap            # required if using ScrollTrigger
+npx playwright --version
+npm list @axe-core/playwright</pre>
+  <ul>
+    <li><code>framer-motion</code> is mandatory. <code>gsap</code> required if any recipe uses ScrollTrigger.</li>
+    <li>If Playwright + axe-core missing: <code>npm install -D @playwright/test @axe-core/playwright; npx playwright install</code></li>
+    <li>Stack floors: Next.js 16, TypeScript strict, Tailwind 4, Framer Motion 12+, GSAP 3.12+.</li>
+  </ul>
+
+  <h3 class="section-title">6.5 · Client onboarding + project specification + variance composition (Lock 5)</h3>
+  <p>
+    Ask the user explicitly via interactive prompt (AskUserQuestion or equivalent). v13 scope
+    is AGENCY work — building sites for paying contractor clients. Six questions:
+  </p>
+  <ol>
+    <li><strong>Client onboarding:</strong> Client business name + city/region + primary contact phone + domain status + any client-provided brand assets.</li>
+    <li><strong>Vertical?</strong> Plumber / HVAC / electrician / roofer / painter / kitchen remodeler / general contractor / landscaper / hardscape.</li>
+    <li><strong>Project scope?</strong> Small (~5–7 pages), Medium (~10–20 pages), Large (~30+ pages). Drives skeleton selection per §10.</li>
+    <li><strong>Brand voice direction?</strong> Down-home regional / premium boutique / middle.</li>
+    <li><strong>Palette?</strong> Custom (brand-driven — most common) OR pick from §05 library. Custom requires §05 validation pass before first build.</li>
+    <li><strong>Motion intensity?</strong> LOW / DEFAULT / HIGH per MOTION §03.1.</li>
+  </ol>
+  <p>
+    After answers gathered, agent proposes variance composition — one pick per dimension
+    from §03 — audits against §04 coherence rules, flags any BREAKS combinations, and
+    outputs the labeled composition in the Lock-5 format. User confirms or redirects.
+    Only after confirmation is JSX written.
+  </p>
+  <p>
+    <strong>Inherited defaults (do NOT ask; just use):</strong>
+  </p>
+  <ul>
+    <li><strong>Lead capture:</strong> Twilio + SMS to client's primary contact phone. React form → <code>/api/contact</code> → Twilio SMS with full lead context. Codified default unless client explicitly requests otherwise.</li>
+    <li><strong>Imagery sourcing:</strong> Higgsfield generation per §6.3 workflow. Contractor-provided real photos preferred when available but not blocking.</li>
+    <li><strong>Hosting / deploy:</strong> Vercel CLI manual deploy per §07. <code>npx vercel deploy --prod --yes</code> from <code>web/</code>. Never assume <code>git push</code> deploys.</li>
+    <li><strong>Site structure:</strong> Standard contractor-site skeleton per §10, scaled to project-scope tier.</li>
+  </ul>
+
+  <h3 class="section-title">6.6 · Consolidated capability report to user (before scaffold)</h3>
+  <p>
+    Before scaffolding motion primitives, emit ONE consolidated message to the user:
+    verification stack ✓/✗, skills available + invoked, MCPs available, dev env status,
+    project specification gathered (vertical, brand, palette, motion intensity), proposed
+    variance composition (labeled 10-line summary per Lock 5 format). User confirms
+    composition. Then proceed.
+  </p>
+  <div class="callout warn">
+    <span class="label">Doctrine violation</span>
+    A build that ships with 0% skill utilization despite skills being available is a
+    pre-flight violation. Audit mid-build (Lock 8) at every 5th edit. At every major
+    iteration boundary, list relevant skills, list invocations to date, gap = invoke
+    before continuing.
+  </div>
+
+  <h3 class="section-title">6.7 · Motion primitives scaffold (PHASE 2 ONLY — post-pivot)</h3>
+  <div class="callout warn">
+    <span class="label">Phase 2 trigger required</span>
+    <strong>Do NOT scaffold motion primitives during Phase 1.</strong> Phase 1 ships
+    static-only — zero motion code, zero motion imports, zero motion components in
+    <code>components/motion/</code>. The scaffold below happens ONLY after the user
+    triggers Phase 2 ("phase 2", "add motion", "load the playbook", "motion it up",
+    or similar).
+  </div>
+  <p>
+    On Phase 2 trigger, scaffold the 9 motion primitives in <code>components/motion/</code>.
+    Canonical source is AM's <code>web/components/motion/</code> — copy verbatim, then rename
+    palette tokens. Full per-primitive spec in MOTION_PLAYBOOK.html §02. MOTION_DOCTRINE.html
+    §03.3 is deep reference for when the playbook doesn't cover a case.
+  </p>
+  <pre>components/motion/
+  ├── FadeUp.tsx
+  ├── Stagger.tsx + StaggerItem
+  ├── TypeIn.tsx
+  ├── HeadingWithUnderline.tsx
+  ├── AnimatedUnderline.tsx
+  ├── SlideIn.tsx
+  ├── Marquee.tsx
+  ├── StatCounter.tsx
+  └── PerimeterDraw.tsx</pre>
+  <p>After scaffolding on Phase 2 trigger, output:</p>
+  <pre>Motion primitives loaded (Phase 2 active): FadeUp, Stagger, TypeIn, HeadingWithUnderline, AnimatedUnderline, SlideIn, Marquee, StatCounter, PerimeterDraw</pre>
+
+  <h3 class="section-title">6.8 · Post-build audit loop registration (Lock 7)</h3>
+  <p>
+    First-draft contractor sites and any new pages MUST run a <code>/contractor-audit-loop</code>
+    pass after build is complete. Output:
+  </p>
+  <pre>Audit loop next: run /contractor-audit-loop (full-site, 5 iter default) per Lock 7.</pre>
+  <p>After the loop completes + punchlist is reviewed:</p>
+  <pre>Audit loop pass complete: N iterations logged at {project}/.audit-loop-log.md, K MED/LOW + M doctrine items queued.</pre>
+
+  <h3 class="section-title">6.9 · Audit loop methodology (when, scope, mechanics)</h3>
+  <table class="t">
+    <thead><tr><th>Situation</th><th>Loop applies?</th><th>Scope</th></tr></thead>
+    <tbody>
+      <tr><td class="name">New contractor client first-draft</td><td>YES — mandatory per Lock 7</td><td>Full-site, 5 iter default (<code>/contractor-audit-loop</code>)</td></tr>
+      <tr><td class="name">New page added to existing site</td><td>YES — mandatory per Lock 7</td><td>Page-scoped, 2-3 iter (<code>/contractor-audit-loop page &lt;name&gt;</code>)</td></tr>
+      <tr><td class="name">New section added to existing page</td><td>YES — mandatory per Lock 7</td><td>Section-scoped, 1 iter (<code>/contractor-audit-loop section &lt;name&gt;</code>)</td></tr>
+      <tr><td class="name">Fast pass on full site (after small edits)</td><td>Recommended, not mandatory</td><td>Full-site, 3 iter (<code>/contractor-audit-loop fast</code>)</td></tr>
+      <tr><td class="name">Same client, palette/voice tweak (no new sections)</td><td>Optional</td><td>Skip — palette/voice aren't audited by motion grammar/utilization</td></tr>
+      <tr><td class="name">One-off creative work (logo, copy, photography)</td><td>NO</td><td>Skip — loop only works for doctrine-checkable patterns</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Hard constraints (NEVER violate):</strong></p>
+  <ul>
+    <li>NEVER skip pre-flight on iteration 1.</li>
+    <li>NEVER schedule wakeup if currentIteration === N (where N is the scope's max).</li>
+    <li>NEVER auto-apply V13_DOCTRINE_SUBTRACTIVE changes (modifying existing rows, removing constants, restructuring) — queue for end-of-run human review.</li>
+    <li>NEVER add new motion primitives beyond the 9 in §6.6 — flag as doctrine question, queue for review.</li>
+    <li>NEVER apply a fix that touches &gt;3 files — downgrade to QUEUED with "too-big" note.</li>
+    <li>NEVER modify <code>{project}/.audit-loop-log.md</code> retroactively (append-only).</li>
+    <li>NEVER restart from iteration 1 if log already shows N entries — resume from N+1.</li>
+    <li>NEVER claim "shipped" without §08 VC-12 + Lock 6 + Lock 7 evidence statements.</li>
+  </ul>
+</section>
+
+<!-- ============================ §07 ENGINEERING + ACCESSIBILITY ============================ -->
+<section class="chapter wrap" id="engineering">
+  <h2 class="chapter-title"><span class="ix">07</span>Engineering rules + accessibility + tactical ops</h2>
+  <p class="lede">
+    Hard rules. Never bend. Carry Priority 5 with the Generation Contract. Motion-specific
+    perf bans live in MOTION §02; this section covers framework / hydration / accessibility /
+    deploy / dev-env discipline.
+  </p>
+
+  <h3 class="section-title">7.1 · Hydration + framework</h3>
+  <ul>
+    <li><code>'use client'</code> on every component using Framer Motion or GSAP. No exceptions.</li>
+    <li><code>useGSAP()</code> hook for all GSAP in React. Never raw <code>useEffect</code> + <code>gsap.context</code>.</li>
+    <li>GSAP and Framer Motion never target the same DOM element. One element, one animation system.</li>
+    <li><strong>Hooks-in-loop is fatal in React 19 strict.</strong> Never call FM hooks (<code>useTransform</code>, <code>useMotionValueEvent</code>, <code>useScroll</code>) inside <code>.map()</code>. Extract loop body to child component.</li>
+    <li><strong>JSX exports from <code>'use client'</code> modules don't survive RSC boundaries.</strong> Put JSX (icons) in non-client modules.</li>
+    <li><code>&lt;div&gt;</code> never nests inside <code>&lt;span&gt;</code> / <code>&lt;p&gt;</code> / <code>&lt;a&gt;</code> (CCR-06) — invalid HTML, hydration mismatch.</li>
+  </ul>
+
+  <h3 class="section-title">7.2 · Accessibility (non-negotiable)</h3>
+  <ul>
+    <li>WCAG 2.1 AA color contrast: 4.5:1 normal text, 3:1 large.</li>
+    <li><code>prefers-reduced-motion</code> honored. Continuous loops stop. Opacity reveals stay.</li>
+    <li>axe-core: 0 critical, 0 serious. Run on every page (Lock 11 gate).</li>
+    <li><code>aria-hidden="true"</code> on glows, lines, particles, decorative chars.</li>
+    <li>Translucent fixed-position navs need ≥40% backdrop opacity or axe false-positives.</li>
+    <li>Every input has paired <code>label htmlFor</code> with matching id, OR <code>aria-label</code>. Range sliders need aria-label. Decorative prefix glyphs (<code>$</code>, <code>/mo</code>) need <code>aria-hidden="true"</code>.</li>
+    <li>Validate token brightness against every surface BEFORE first build.</li>
+  </ul>
+
+  <h3 class="section-title">7.3 · Tactical operations</h3>
+  <ul>
+    <li>
+      <strong>Vercel deploy:</strong> <code>cd web && npx vercel@latest --prod --yes</code>.
+      Auto-aliases to <code>{project}.vercel.app</code>. <strong><code>git push</code> is NOT
+      a deploy.</strong> Audit the project's Vercel Deployments tab — if every "source"
+      column reads <code>vercel deploy</code> (CLI) and never a commit hash, GitHub
+      auto-deploy is OFF and the CLI is the only ship mechanism. Pushing to <code>main</code>
+      in that setup lands code on GitHub but production stays on the prior build until
+      someone runs the CLI. Verify post-deploy via §08 VC-11 before reporting shipped.
+    </li>
+    <li><strong>Worktree path discipline:</strong> when operating in a worktree, all Edit/Read paths must include the worktree segment. Edits to main-repo paths from a worktree session land on main's working tree, not the worktree branch.</li>
+    <li><strong>Dev cache corruption</strong> after production builds: <code>rm -rf .next</code> + restart. Symptom: <code>Cannot find module './741.js'</code>.</li>
+    <li><strong>Never run <code>npm install</code> in pnpm projects.</strong> Lockfile mixing silently breaks builds.</li>
+    <li><strong>When CDP screenshots time out</strong> on motion-heavy pages: pivot to deploy-and-verify via Vercel + WebFetch. Don't burn 20+ min fighting CDP retry loops.</li>
+    <li><strong>Centralize repeated strings.</strong> Day-range pairs with time via <code>BUSINESS.hoursShort</code> — never let "Mon-Sat" appear without "9 AM – 6 PM."</li>
+  </ul>
+</section>
+
+<!-- ============================ §08 VERIFICATION CONTRACT ============================ -->
+<section class="chapter wrap" id="verification">
+  <h2 class="chapter-title"><span class="ix">08</span>Verification contract (VC-01 — VC-12)</h2>
+  <pre>Layer 1: VISUAL    (Chrome MCP — Primary Eyes)
+   ↓
+Layer 2: AUTOMATED (Playwright FULL capabilities — not just DOM)
+   ↓
+Layer 3: ACCESSIBILITY (axe-core)</pre>
+
+  <h3 class="section-title">Playwright FULL capabilities — use all of these</h3>
+  <ul>
+    <li>Video recording (<code>video: { mode: 'on' }</code>) — every motion-heavy build</li>
+    <li>Trace files — debug failed sequences</li>
+    <li><code>toHaveScreenshot()</code> pixel-diff — catch unintended regressions</li>
+    <li>Device emulation — real mobile profiles, not just viewport size</li>
+    <li>Network interception — loading perf, missing assets</li>
+    <li>Console listeners — uncaught exceptions, hydration mismatches</li>
+    <li>Accessibility tree — beyond axe</li>
+  </ul>
+
+  <h3 class="section-title">Checklist</h3>
+  <table class="t">
+    <thead><tr><th>ID</th><th>Check</th><th>Pass</th></tr></thead>
+    <tbody>
+      <tr><td class="id">VC-01</td><td class="name">Reload stability</td><td class="use">Hero settles. No stuck animations.</td></tr>
+      <tr><td class="id">VC-02</td><td class="name">FPS desktop</td><td class="use">50fps sustained, 30fps floor.</td></tr>
+      <tr><td class="id">VC-03</td><td class="name">FPS mobile</td><td class="use">5fps headless floor (verify on physical).</td></tr>
+      <tr><td class="id">VC-04</td><td class="name">Horizontal overflow</td><td class="use">No scrollbar at 390px.</td></tr>
+      <tr><td class="id">VC-05</td><td class="name">Stat container fit</td><td class="use">Numbers fit. No overflow.</td></tr>
+      <tr><td class="id">VC-06</td><td class="name">Accessibility</td><td class="use">axe: 0 critical, 0 serious.</td></tr>
+      <tr><td class="id">VC-07</td><td class="name">Contrast</td><td class="use">4.5:1 against backgrounds.</td></tr>
+      <tr><td class="id">VC-08</td><td class="name">Reduced motion</td><td class="use">Loops stop with <code>prefers-reduced-motion: reduce</code>.</td></tr>
+      <tr><td class="id">VC-09</td><td class="name">Cross-viewport</td><td class="use">1440x900 + 390x844 both pass.</td></tr>
+      <tr><td class="id">VC-10</td><td class="name">Asset weight</td><td class="use">Total &lt; 5MB. Hero video &lt; 3MB.</td></tr>
+      <tr><td class="id">VC-11</td><td class="name">Post-deploy production grep</td><td class="use">Fetch the production URL with cache-bust query (<code>?bust=$(date +%s)</code>) and grep response for new asset path / copy / component class. "Deploy command said READY" is NOT verification. Never report shipped without grepping production for evidence.</td></tr>
+      <tr><td class="id">VC-12</td><td class="name">Audit loop pass evidence</td><td class="use">For first-draft contractor sites + new pages, verify <code>{project}/.audit-loop-log.md</code> exists with ≥3 iteration blocks (5 for first-drafts) AND <code>{project}/.audit-loop-punchlist.md</code> surfaced + reviewed (no un-resolved HIGH items). Output the "Audit loop pass complete: ..." line. Without this evidence, Lock 7 is unsatisfied.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ §09 SEO ESSENTIALS ============================ -->
+<section class="chapter wrap" id="seo">
+  <h2 class="chapter-title"><span class="ix">09</span>SEO essentials — must-dos</h2>
+  <p class="lede">
+    The minimum SEO that fires on every contractor-site build. Full §13 doctrine
+    (AI Overview citations, schema graph specifics, page-count ceilings, link-graph matrix
+    pattern) lives in REFERENCE_LIBRARY.html — browse on demand.
+  </p>
+
+  <h3 class="section-title">9.1 · Top-3 leverage items (do these or the site doesn't rank)</h3>
+  <ol>
+    <li>
+      <strong>Google Business Profile completeness + correct primary category.</strong>
+      #1 local-pack factor per BrightLocal 2026. Customer-gated — the agency surfaces this
+      as a deliverable but the client owns the action.
+    </li>
+    <li>
+      <strong>Steady review velocity with text reviews.</strong> Review weight rose
+      16% → 20% of local-pack 2023–2025. Monthly volume &gt; total count. Customer-gated.
+    </li>
+    <li>
+      <strong>First-hand experience content with named authorship.</strong> Helpful Content
+      guidance explicitly rewards "first-hand expertise + depth of knowledge." Person schema
+      for owner, real install photos.
+    </li>
+  </ol>
+
+  <h3 class="section-title">9.2 · Penalties — Google explicitly punishes</h3>
+  <ul>
+    <li><strong>Doorway pages</strong> — explicitly named in Google's spam policy: "multiple domain names or pages targeted at specific regions or cities that funnel users to one page."</li>
+    <li><strong>Scaled content abuse</strong> (May 2024 spam policy) — "many pages for the primary purpose of manipulating Search rankings," AI- or human-written. Applies even if "well-written."</li>
+    <li><strong>Helpful Content System</strong> — folded into core ranking March 2024, site-wide. Thin pages drag the whole domain's classifier down.</li>
+    <li><strong>Link-buying / footer links across unrelated sites.</strong> Manual-action risk.</li>
+    <li><strong>Faking freshness</strong> via updated dates + thin filler.</li>
+  </ul>
+
+  <h3 class="section-title">9.3 · The swap test (operational rule)</h3>
+  <p>
+    <strong>Definition:</strong> if you can take a page and swap the city or product modifier,
+    and the page still reads correctly without other rewrites, it's a doorway page.
+  </p>
+  <p>
+    Every hyperlocal or category-variant page must pass the swap test. Topic-level uniqueness
+    beats word-level uniqueness. Subdivision names, local routes, climate notes — all are
+    "local color" if the page's reasoning is identical to peers.
+  </p>
+
+  <h3 class="section-title">9.4 · The 70/30 customer-gated rule</h3>
+  <p>
+    For a local contractor: ~70-90% of SEO leverage is customer-gated (GBP, reviews, photos,
+    authorizations). The other 10-30% is engineer/agency unilateral (schema, internal linking,
+    meta tags, technical hygiene). <strong>Don't pretend engineering-only SEO captures the
+    bulk of upside.</strong> Surface this honestly in proposals: the agency ships the 10–30%
+    perfectly; the 70% needs the client.
+  </p>
+</section>
+
+<!-- ============================ §10 CONTRACTOR-SITE SKELETON ============================ -->
+<section class="chapter wrap" id="skeleton">
+  <h2 class="chapter-title"><span class="ix">10</span>Standard contractor-site skeleton (page inventory per tier)</h2>
+  <p class="lede">
+    Every contractor-trade project starts from a known skeleton — derived from AM's
+    multi-page structure scaled to project scope. Pre-flight (§06.5) gathers the scope tier;
+    this chapter specifies what pages exist at each tier and which recipes/atoms compose
+    each page. Skeleton is a STARTING POINT, not a cage — add or drop pages based on client
+    need. The §03 variance composition determines HOW the pages look; the skeleton determines
+    WHICH pages exist.
+  </p>
+
+  <h3 class="section-title">10.1 · Scope tiers</h3>
+  <table class="t">
+    <thead><tr><th>Tier</th><th>Page count</th><th>Fits</th></tr></thead>
+    <tbody>
+      <tr><td class="name">SMALL</td><td class="use">~5–7 pages</td><td class="where">Solo contractor in one city. Single service line. Brochure presence.</td></tr>
+      <tr><td class="name">MEDIUM</td><td class="use">~10–20 pages</td><td class="where">Established contractor in regional market. 3–8 services. 2–4 service-area cities.</td></tr>
+      <tr><td class="name">LARGE</td><td class="use">~30+ pages</td><td class="where">Multi-location contractor. Full service matrix. Brand pages (windows installer carrying MI/Harvey; HVAC carrying Carrier/Trane).</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">10.2 · SMALL tier — page inventory</h3>
+  <table class="t">
+    <thead><tr><th>Page</th><th>URL</th><th>Composition</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Home</td><td class="where"><code>/</code></td><td class="use">PageHero + ServicesSummary + ReviewsSection + ProcessSteps + ServiceAreaTeaser + FaqSection + FooterCTA.</td></tr>
+      <tr><td class="name">Services</td><td class="where"><code>/services</code></td><td class="use">Hero + service list (3–5 cards) + secondary CTA. No per-service drill-down.</td></tr>
+      <tr><td class="name">About</td><td class="where"><code>/about</code></td><td class="use">Hero + founder/team story + credentials + ProcessSteps reused + CTA.</td></tr>
+      <tr><td class="name">FAQ</td><td class="where"><code>/faq</code></td><td class="use">FaqSection full + Compact Quick Answer band atop + FooterCTA.</td></tr>
+      <tr><td class="name">Contact</td><td class="where"><code>/contact</code></td><td class="use">Hero + ContactForm (Twilio+SMS) + business hours + service area summary + phone CTA.</td></tr>
+    </tbody>
+  </table>
+  <p>Optional add: single Gallery page if client provides 12+ project photos.</p>
+
+  <h3 class="section-title">10.3 · MEDIUM tier — page inventory</h3>
+  <table class="t">
+    <thead><tr><th>Page</th><th>URL</th><th>Composition</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Home</td><td class="where"><code>/</code></td><td class="use">PageHero + ServicesGrid + ReviewsSection + ProcessSteps + BrandsTrustBar (if applicable) + ServiceAreaGrid + FaqSection + FooterCTA.</td></tr>
+      <tr><td class="name">Services hub</td><td class="where"><code>/services</code></td><td class="use">Hero + ServicesGrid (3–8 photo-led tiles) + ServiceAreaGrid + ReviewsSection slice + FooterCTA.</td></tr>
+      <tr><td class="name">Per-service pages</td><td class="where"><code>/services/[slug]</code></td><td class="use">3–8 pages. Each: PageHero + SignsGrid + SpecDeck + ProcessSteps + MaterialsGrid (if applicable) + ServiceAreaGrid + FaqSection + FooterCTA. ProductLocationsStrip cross-links service to service-area pages.</td></tr>
+      <tr><td class="name">Service Areas hub</td><td class="where"><code>/service-areas</code></td><td class="use">Hero + ServiceAreaGrid (2–4 city tiles) + ReviewsSection slice + FooterCTA.</td></tr>
+      <tr><td class="name">Per-city pages</td><td class="where"><code>/service-areas/[city]</code></td><td class="use">2–4 pages. Each: LocationHero + LocationBrief + ServicesSummary + ReviewsSection (local-filtered) + FaqSection (location-templated) + FooterCTA.</td></tr>
+      <tr><td class="name">About</td><td class="where"><code>/about</code></td><td class="use">Hero + founder/team story + credentials + ProcessSteps reused + ReviewsSection slice + ServiceAreaGrid teaser.</td></tr>
+      <tr><td class="name">Gallery</td><td class="where"><code>/gallery</code></td><td class="use">Hero + StyleGrid of before/after pairs + per-service filters + FooterCTA. Required at this tier.</td></tr>
+      <tr><td class="name">FAQ</td><td class="where"><code>/faq</code></td><td class="use">FaqSection full + Compact Quick Answer band atop.</td></tr>
+      <tr><td class="name">Contact</td><td class="where"><code>/contact</code></td><td class="use">Hero + ContactForm (Twilio+SMS) + business hours + service area summary + phone CTA + map (if useful).</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">10.4 · LARGE tier — page inventory</h3>
+  <p>Everything from MEDIUM plus:</p>
+  <table class="t">
+    <thead><tr><th>Page</th><th>URL</th><th>Composition</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Brand pages</td><td class="where"><code>/brands/[slug]</code></td><td class="use">For verticals carrying manufacturer brands. Each: BrandHero + BrandNarrativeSplit + BrandLinesGrid + BrandWhenRight + BrandCaveats + BrandPeerLinks + FaqSection. AM's brand pages = canonical pattern.</td></tr>
+      <tr><td class="name">Per-service × per-city matrix</td><td class="where"><code>/services/[slug]/[city]</code> (avoid)</td><td class="use">Doorway-page anti-pattern unless every cell has genuinely unique content. <strong>Default: skip this matrix.</strong> Use ProductLocationsStrip on per-service pages for link-graph matrix coverage WITHOUT URL bloat.</td></tr>
+      <tr><td class="name">Process / Why-Us / Differentiator pages</td><td class="where"><code>/process</code>, <code>/why-us</code></td><td class="use">Standalone pages for brands selling on craft + warranty + locality. Each: Hero + ProcessSteps full + WhyUsPillars + ReviewsSection + FooterCTA.</td></tr>
+      <tr><td class="name">Resources / Education</td><td class="where"><code>/resources</code> + <code>/resources/[slug]</code></td><td class="use">SEO-driven educational content. Long-form with §09 SEO doctrine. Optional but valuable for verticals with high educational-query search volume.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">10.5 · Scaling rules</h3>
+  <ul>
+    <li><strong>Start at the picked tier.</strong> SMALL sites should NOT include MEDIUM pages "just in case." Agency adds tier later as paid upgrade.</li>
+    <li><strong>Don't ship doorway pages.</strong> Per-service × per-city URL matrix at LARGE tier is anti-pattern unless every cell has genuinely unique content.</li>
+    <li><strong>Brand pages are vertical-conditional.</strong> Only ship <code>/brands/[slug]</code> if the contractor genuinely carries manufacturer brands.</li>
+    <li><strong>Gallery is MEDIUM+ required.</strong> Trust mechanism for installer-photography pick. SMALL can defer to inline-on-Services-page photos.</li>
+    <li><strong>FAQ count: 6 per page.</strong> 2-col FaqSection balance rule. Pages needing fewer FAQs use the Compact Quick Answer band without the accordion.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="label">Skeleton + variance composition</span>
+    The skeleton specifies WHICH pages exist; the §03 variance composition specifies HOW
+    they look. Two MEDIUM-tier plumber clients have the same skeleton (Home, Services hub,
+    /services/[slug] × 3–8, /service-areas/[city] × 2–4, About, Gallery, FAQ, Contact) but
+    different §03 picks — one might use AM rounded buttons + testimonials-led trust, the
+    other KMv2 square buttons + audit-ledger trust. Same skeleton; different visual identity
+    per client. That's the agency billing justification.
+  </div>
+</section>
+
+<!-- ============================ §11 POSTURE + CHANGELOG ============================ -->
+<section class="chapter wrap" id="posture">
+  <h2 class="chapter-title"><span class="ix">11</span>Posture + changelog</h2>
+
+  <div class="callout good">
+    <span class="label">What this file IS</span>
+    <strong>Phase 1 generation program for structure.</strong> Locks (all 11 Eleven, post-pivot reframed).
+    Universal aesthetic. Variance library. Coherence rules. Palette discipline. Pre-flight checklist.
+    Engineering bans. Accessibility. Verification contract. Contractor-site skeleton. SEO
+    essentials. Post static-first pivot 2026-05-18, this is the ONLY auto-loaded generation
+    contract.
+  </div>
+
+  <div class="callout warn">
+    <span class="label">What this file IS NOT</span>
+    <strong>Reference material.</strong> No flagship case studies, no recipe library, no
+    pattern gallery, no anti-pattern worked examples, no TP/OP narrative, no flagship
+    palette swatches beyond §05 templates. Those live in REFERENCE_LIBRARY.html. Browse
+    REFERENCE on demand. Motion application catalog lives in MOTION_PLAYBOOK.html (loads
+    on Phase 2 trigger). Motion deep reference lives in MOTION_DOCTRINE.html (browse on
+    demand only, no longer auto-loaded).
+  </div>
+
+  <div class="callout">
+    <span class="label">Static-first pivot · 2026-05-18</span>
+    <p style="margin: 0 0 8px;">
+      Three consecutive failed attempts (deep-remix v1, deep-remix v2, Cedar Creek Plumbing
+      solo run) confirmed motion-heavy first-draft generation fails under compression even
+      after splitting v13 into MOTION + STRUCTURE + REFERENCE. Motion catalog precision
+      values (cascade 0.00/0.50/0.45, ambient 2.4s/1.8s, hover 300ms/200ms, spring 260/18,
+      marquee 45/50/55s, charStagger 0.022s) bypass routinely.
+    </p>
+    <p style="margin: 0 0 8px;">
+      <strong>New flow:</strong> Phase 1 ships static-only via this file (no motion code at all).
+      Phase 2 applies motion manually section-by-section via MOTION_PLAYBOOK.html (section-pattern-keyed
+      copy-paste catalog), triggered by user voice ("phase 2", "add motion", etc.).
+      User does speech-to-text vibe-coding — the section-by-section voice workflow matches input modality.
+    </p>
+    <p style="margin: 0;">
+      <strong>What didn't change:</strong> static slop is still real. Lock 2 (atom audit), Lock 3
+      (no slop), Lock 5 (variance composition) still fire. Form 1 in MOTION §01.9 (flat editorial
+      cards) is a STATIC failure mode. Removing motion from generation doesn't remove the
+      requirement to compose from named atoms. See <code>~/.claude/projects/&lt;am-redaux&gt;/memory/feedback_static_first_pivot.md</code>
+      for the full rationale + evidence trail.
+    </p>
+  </div>
+
+  <h3 class="section-title">Split from v13 — what was promoted, what was cut</h3>
+  <ul>
+    <li><strong>Promoted into STRUCTURE_DOCTRINE:</strong> §00 Generation Contract (all 11 Locks), §02 instruction priority, §04.1 universal aesthetic, §04.2 variance library (9 dimensions + 10th grid-pattern dimension), §04.3 composition workflow, §04.4 coherence rules, §04.9 audit-loop methodology (when/scope/mechanics + hard constraints), §05 brand palettes (both AM + KMv2 + validation rule + slop-banned defaults), §09.2 hydration + framework, §09.3 accessibility, §09.4 tactical ops (including Vercel deploy mechanism audit), §10 verification contract (VC-01 through VC-12), §13 SEO essentials (13.1 top-3 leverage, 13.2 penalties, 13.3 swap test, 13.6 70/30 rule), §14C contractor skeleton (page inventory per tier).</li>
+    <li><strong>Cut from this file (lives in MOTION_DOCTRINE):</strong> §03 DNA, §04.5 motion intensity dial, §04.6 motion catalog (4 constants, 9 primitives with all defaults, hero spec, cascade ladder, ambient loops, hover gestures, springs), §04.7 per-section motion grammar, §04.8 utilization audit (now depth-checked), §09.1 motion-relevant performance bans.</li>
+    <li><strong>Cut from this file (lives in REFERENCE_LIBRARY):</strong> §06 rendered pattern previews, §07 recipes 1–61, §08 anti-patterns 7.1–7.33, §11 taste profile (TP-01 through TP-32), §12 operating principles (OP-01 through OP-18), §13 full SEO doctrine (long-form 13.4 / 13.5 / 13.7), §14 AM flagship narrative + atom palette + how-to-reference, §14B KMv2 flagship narrative + atom palette + how-to-reference, §15 composition + creative freedom, §16 self-contained principle, §17 AM build state, §18 changelog.</li>
+  </ul>
+</section>
+
+<footer class="doc-footer">
+  <div>King Maker · STRUCTURE_DOCTRINE · 2026-05-18 (static-first pivot) · sole auto-loaded generation contract · paired with MOTION_PLAYBOOK.html (Phase 2 trigger) + MOTION_DOCTRINE.html (deep reference, browse on demand) + REFERENCE_LIBRARY.html (browse on demand) · archival v13 at C:\Users\josep\Claude Gravity\KING_MAKER_v13.html</div>
+</footer>
+
+</body>
+</html>

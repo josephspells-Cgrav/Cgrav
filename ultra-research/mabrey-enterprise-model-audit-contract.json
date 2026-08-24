@@ -1,0 +1,51 @@
+{
+  "question": "Red-team/blue-team audit of the Kingmaker SEO enterprise contractor-site business model before the live Mabrey Roofing build: verify every load-bearing internal claim against external 2025-2026 evidence — the client-facing capture metric, the on-page/technical doctrine, Google algorithm assumptions, the highest-ROI DIY off-page levers, GEO/AIO optimization, and any guaranteed-failure pitfalls.",
+  "subQuestions": [
+    "Is the client-facing metric '1-2% of an area's money-term searches become calls' (derived: 15% traffic capture site-only / 30% full-system, x 10% visitor-to-lead conversion) defensible against 2025-2026 organic CTR curves, map-pack vs organic click share, zero-click/AI-Overview click erosion, and home-services website conversion benchmarks? Where does it break?",
+    "Does a ~150-200 page service-x-city architecture with real-job-gated unique content build ranking topical authority for a local contractor in 2026 — and where exactly is Google's doorway-page / scaled-content-abuse enforcement line (documented manual actions, HCU suppressions) for service-area pages?",
+    "What did Google's 2025-2026 core updates and AI Overviews expansion actually change for LOCAL contractor SEO: do AI Overviews appear on local commercial money terms (roof replacement, custom home builders), at what rate, and with what measured click impact? What do post-update local ranking factor studies say?",
+    "Which technical doctrine claims hold in 2026: (a) SSR/SSG is non-negotiable because AI crawlers (GPTBot, ClaudeBot, PerplexityBot) don't render JavaScript; (b) structured data/schema is 'insurance' with real retrieval value; (c) Core Web Vitals/INP carry meaningful ranking weight; (d) website/on-page signals materially influence map-pack rankings ('the site wins the pack when all else is equal')?",
+    "What are the highest-ROI off-page levers a solo operator can execute himself in 2026 for a local contractor (GBP primary category, review velocity, citations, manufacturer certification links like GAF/Owens Corning, local sponsorships, digital PR, HARO successors) — ranked by effort-to-impact with evidence?",
+    "What do the 'Claude Code / AI agent backlink' tools and GitHub projects people discuss actually do (automated outreach, programmatic citations, directory submission, comment/parasite spam) — which if any are legitimate white-hat leverage vs link-spam risk that violates Google policies, and what measurable ROI evidence exists?",
+    "What GEO/AIO (generative engine optimization) tactics have MEASURED evidence of increasing citations/visibility in AI Overviews, ChatGPT, and Perplexity for local service businesses (answer-first blocks, statistics, quotable snippets, entity sameAs, Bing indexing for ChatGPT, GBP data feeds) — and is llms.txt still unsupported/refuted in 2026?",
+    "What are the guaranteed-failure pitfalls for this model: doorway manual-action risk at 150-200 pages, FTC review-gating enforcement (fines, rules), GBP suspension triggers, cross-client duplicate-template footprint risk when cloning one design system across many contractor clients, unrealistic time-to-rank expectations for a rebuilt domain (realistic months-to-traction), and NC-specific contractor marketing compliance?"
+  ],
+  "checklist": [
+    "2025-2026 organic CTR curve by position + AI Overview click-loss studies (Pew, Ahrefs, seoClarity or equivalent)",
+    "map pack vs organic click share on local service queries",
+    "home-services / contractor website visitor-to-lead conversion benchmarks (5-10%? 10%+?)",
+    "Google doorway-page policy text + documented enforcement on service-area/city pages",
+    "scaled content abuse policy (March 2024+) enforcement examples",
+    "topical authority evidence for local/small sites",
+    "local ranking factors survey weights: GBP, reviews, on-page, links, citations, behavioral (pack vs local organic)",
+    "AI crawler JavaScript rendering capabilities: GPTBot, ClaudeBot, PerplexityBot, Google-Extended",
+    "llms.txt support status among major AI providers as of 2026",
+    "GEO tactics with measured visibility lift (Princeton GEO paper and successors)",
+    "AI Overviews presence rate on local commercial intent queries 2026",
+    "DIY contractor link sources: manufacturer certification profiles (dofollow status), chambers, sponsorships, suppliers",
+    "HARO successor landscape 2026 (Connectively shutdown, alternatives)",
+    "AI-agent backlink automation tools on GitHub: what they do, spam/policy risk",
+    "FTC review gating / fake review rule (2024 final rule) penalties and what a compliant review SOP looks like",
+    "GBP suspension triggers and reinstatement reality",
+    "realistic time-to-rank for new or rebuilt local contractor sites (months to meaningful traffic)",
+    "duplicate/template footprint risk across cloned client sites (same design system, different content)",
+    "review velocity + primary category as pack levers (evidence)",
+    "12-month ramp assumption for local SEO results"
+  ],
+  "tier": "max",
+  "mode": "balanced",
+  "currentDate": "2026-07-06",
+  "stopCondition": "Each load-bearing internal claim has at least 2 independent external sources supporting or refuting it, with conflicts surfaced rather than averaged; every checklist subtopic covered or enumerated as a gap.",
+  "internalClaimLedger": {
+    "capture-metric": "1-2% of money-term searches -> calls; T1 site-only 15% capture x 10% conv = 1.5%; T2 full system 30% x 10% = 3%; 6-month conservative ~0.75%; denominator = money-term/high-intent searches only",
+    "two-tier": "site+citations+reviews ~15% capture; full system + off-page ~30%; baseline = T1; 12-month ramp; never stack optimism",
+    "conversion": "10% visitor->lead is the enterprise house conversion number; change one factor never both",
+    "architecture": "~150-200 service x city pages, real-job-gated (anti-doorway: review/real-job-backed unique pages, delete-the-city-name test), NO service x town combo clone matrix",
+    "site-wins-pack": "the site wins the map pack when all else is equal (deeper site = tiebreaker); on-page ~19% / off-page ~71% directional heuristic",
+    "technical": "Next.js SSG/SSR non-negotiable for AI legibility; Cloudflare AI-crawler unblock; Bing bootstrap for ChatGPT; llms.txt REFUTED; schema = insurance; word-level heading animation fragments for crawler-readable rendered text",
+    "off-page": "primary GBP category = #1 pack lever; review VELOCITY = fastest lever; GBP link -> dedicated landing page; geo-grid SoLV = the proof metric; NEVER PBNs",
+    "geo-aio": "AI-legibility QA: static + rendered innerText + AI extraction must all pass; .seo-answer blocks; entity sameAs; organic regional dominance = the engine, pack = ~5-7mi near-default byproduct",
+    "competitor-ceiling": "any pack projection computed from the same Local Falcon scan: leader coverage = the bound; project 'new market leader' not blue-sky",
+    "mabrey-context": "Durham NC roofer, $1.8M/yr shop, fragmented market (leader 11/49 top-3 at 58 reviews), SoLV 6.1% baseline, mabreyroofing.com rebuild 150-200 URLs, custom-home expansion pool ~1,130/mo money-terms Wake+Durham+Orange"
+  }
+}

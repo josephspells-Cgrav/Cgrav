@@ -2,10 +2,264 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "traffic-deck",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "kingmaker/deck/serve.mjs",
+        "8132"
+      ],
+      "port": 8132,
+      "autoPort": false
+    },
+    {
       "name": "bunns-revenue",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "serve", "bunns-revenue", "-l", "4173", "--no-clipboard"],
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "bunns-revenue",
+        "-l",
+        "4173",
+        "--no-clipboard"
+      ],
       "port": 4173
+    },
+    {
+      "name": "kingmaker-v3",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "kingmaker-v3",
+        "run",
+        "dev",
+        "--",
+        "-p",
+        "3100"
+      ],
+      "port": 3100
+    },
+    {
+      "name": "mission-control",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "blackboard/dashboard/server.mjs"
+      ],
+      "port": 7777
+    },
+    {
+      "name": "demo-engine",
+      "runtimeExecutable": "C:\\Users\\josep\\OneDrive\\DOCUME~1\\Claude\\Projects\\AMERIC~1\\CLAUDE~1\\WORKTR~1\\CRANKY~2\\web\\NODE_M~1\\BIN~1\\next.cmd",
+      "runtimeArgs": [
+        "dev",
+        "C:\\Users\\josep\\OneDrive\\DOCUME~1\\Claude\\Projects\\AMERIC~1\\CLAUDE~1\\WORKTR~1\\CRANKY~2\\web",
+        "-p",
+        "3200"
+      ],
+      "port": 3200
+    },
+    {
+      "name": "kingmaker-summit-oak-roofing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "kingmaker-summit-oak-roofing",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5188"
+      ],
+      "port": 5188
+    },
+    {
+      "name": "king-maker-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "king-maker-site",
+        "run",
+        "dev"
+      ],
+      "port": 3310
+    },
+    {
+      "name": "summit-oak-roofing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "summit-oak-roofing",
+        "run",
+        "dev",
+        "--",
+        "-p",
+        "3340"
+      ],
+      "port": 3340
+    },
+    {
+      "name": "kingmaker-seo-audit",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "kingmaker-seo-audit",
+        "-l",
+        "4321",
+        "--no-clipboard"
+      ],
+      "port": 4321
+    },
+    {
+      "name": "design-kit",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "design-kit",
+        "-l",
+        "4400",
+        "--no-clipboard"
+      ],
+      "port": 4400
+    },
+    {
+      "name": "mabrey-crm",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "mabrey-crm-app",
+        "exec",
+        "next",
+        "start",
+        "-p",
+        "3450"
+      ],
+      "port": 3450
+    },
+    {
+      "name": "mabrey-crm-wo7n",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "mabrey-crm-wo7n",
+        "run",
+        "dev"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "mabrey-crm-wo-b-scroll",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "C:\\Users\\josep\\os33-wt\\wo-b-scroll",
+        "run",
+        "dev"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "mabrey-roofing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "port": 3007,
+      "cwd": "mabrey-roofing"
+    },
+    {
+      "name": "mabrey-docs",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "mabrey-docs",
+        "-l",
+        "4520",
+        "--no-clipboard"
+      ],
+      "port": 4520
+    },
+    {
+      "name": "mabrey-crm-dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "mabrey-crm-app",
+        "exec",
+        "next",
+        "dev",
+        "-p",
+        "3460"
+      ],
+      "port": 3460
+    },
+    {
+      "name": "mabrey-crm-start",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "mabrey-crm-app",
+        "exec",
+        "next",
+        "start",
+        "-p",
+        "3465"
+      ],
+      "port": 3465
+    },
+    {
+      "name": "mabrey-terms",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "king_maker_outbound/terms-draft-7k3x",
+        "-l",
+        "4540",
+        "--no-clipboard"
+      ],
+      "port": 4540
+    },
+    {
+      "name": "alarm-dispatch",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "alarm-dispatch",
+        "-l",
+        "4530",
+        "--no-clipboard"
+      ],
+      "port": 4530
+    },
+    {
+      "name": "mabrey-land",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "mabrey-land/site",
+        "-l",
+        "4560",
+        "--no-clipboard"
+      ],
+      "port": 4560
+    },
+    {
+      "name": "ads-gallery",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "C:\\Users\\josep\\AppData\\Local\\Temp\\claude\\C--Users-josep-Claude-Gravity\\888745ec-8c2f-401a-ab76-776be4f599cf\\scratchpad\\ads-gallery",
+        "-l",
+        "4510",
+        "--no-clipboard"
+      ],
+      "port": 4510
     }
   ]
 }

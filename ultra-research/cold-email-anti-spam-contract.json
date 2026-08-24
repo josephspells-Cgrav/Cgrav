@@ -1,0 +1,27 @@
+{
+  "question": "Why do our cold B2B emails land in Gmail's SPAM folder with the banner 'It's similar to messages that were identified as spam' despite verified-perfect SPF/DKIM/DMARC on warmed Google Workspace domains — and what is the evidence-based, myth-busted ruleset for cold-email copy that reliably reaches the Gmail Primary inbox? Apply it to diagnose and rewrite our specific Email 1.",
+  "context": "B2B cold email to US roofing contractors via Instantly. Google Workspace sending domains; SPF + DKIM + DMARC verified perfect (DMARC p=reject); mailboxes warmed; plain text; no open/link tracking; NO links or images in Email 1. A Gmail seed test landed in SPAM with the CONTENT-pattern banner 'It's similar to messages that were identified as spam' (NOT a domain-reputation banner, NOT an auth failure). EMAIL 1 VERBATIM: 'Hey [firstName], this is Joe. Just took a look at [companyName]'s site — noticed a few things Google is penalizing you for: [3 bulleted findings, e.g. No location pages (service area unverified) / No storm damage page / No manufacturer pages]. Also a handful of other technical issues (rebuild territory). These issues typically cost you about 1-2 jobs a week, give or take. Let me know if you want to see what a rebuild would look like — I've got a demo you can check out. Joe'. The email leads with an SEO-audit findings list and a loss/fear frame, sent near-identically (merge-var personalized) to thousands.",
+  "subQuestions": [
+    "What does Gmail's 'similar to messages that were identified as spam' signal specifically mean — content fingerprinting / ML content classifiers / bulk-pattern detection vs IP/domain reputation flags — and can a message with perfect SPF/DKIM/DMARC still be spam-foldered purely on content/pattern?",
+    "Which specific content patterns, phrases, words, structures, and formatting actually trigger spam classification in cold email, separating evidence-backed factors from debunked 'spam trigger word list' folklore?",
+    "How much does template fingerprinting (near-identical content sent to thousands) hurt inbox placement, and how much do spintax / content randomization / per-message uniqueness measurably help? Cite real benchmarks where they exist.",
+    "How do recipient engagement signals (replies, 'mark not spam', opens, delete-without-open) and the cold-start reputation problem drive Gmail folder placement (Primary vs Promotions vs Spam)?",
+    "What do credible deliverability authorities (Instantly, Smartlead, lemlist, Quickmail, MailReach, GlockApps, Google Postmaster guidance, Mailmodo) actually recommend for inbox-safe cold-email copy — ideal length, structure, first line, CTA type, link policy, personalization depth, what to never include?",
+    "Is 'I audited your website / here are your SEO problems / let me rebuild it' web-design/SEO cold outreach an especially heavily spam-filtered category, and what specifically gets that category into the inbox?",
+    "How do you scientifically test and iterate inbox placement (seed tests, GlockApps/MailReach, controlled one-variable changes, attribution), and given OUR exact profile (perfect auth + warmed Google Workspace + a CONTENT-pattern spam flag) what is the single highest-leverage fix plus the full rank-ordered list of changes?"
+  ],
+  "checklist": [
+    "Meaning of Gmail's content-similarity spam signal vs domain/IP reputation vs auth; whether perfect auth can still spam-folder on content alone",
+    "Evidence-backed content spam triggers vs debunked spam-word-list myths",
+    "Template fingerprinting and content variation/spintax impact on placement (with benchmarks if available)",
+    "Engagement signals and cold-start reputation in Primary/Promotions/Spam placement",
+    "Authority best-practice ruleset for inbox-safe cold-email copy",
+    "SEO/website-audit cold-outreach category — spam risk and what inboxes it",
+    "Scientific placement testing and iteration methodology",
+    "Ranked diagnosis of OUR Email 1 (what trips the filter, in order) + prescribed rewrite direction preserving the diagnostic/loss-framing strategy"
+  ],
+  "tier": "max",
+  "mode": "depth",
+  "userConfirmedTier": true,
+  "stopCondition": "Each competing placement-cause hypothesis (content-pattern vs domain reputation vs engagement/cold-start) supported by >=2 independent credible sources; the anti-spam copy ruleset and the ranked fix for our profile grounded only in adversarially-verified claims; spam-word-list folklore explicitly flagged as myth where the evidence refutes it."
+}

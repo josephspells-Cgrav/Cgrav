@@ -1,0 +1,22 @@
+{
+  "question": "What does it actually cost to generate a residential roofing lead (and a held appointment) via Meta ads in 2025-2026, and how do lead vendors selling $75 exclusive leads / $150-250 appointments make their economics work?",
+  "subQuestions": [
+    "What CPL do roofing lead vendors/aggregators actually generate at — the buy-side economics behind $75 exclusive-lead and $150-250 appointment pricing (vendor pricing sheets, media-buyer communities, arbitrage case studies)?",
+    "What are real-world 2025-2026 Meta CPLs for roofing INSTANT FORMS from practitioner receipts (media buyers, r/PPC, r/roofing contractors, case studies with numbers) — as distinct from agency marketing-content benchmarks?",
+    "Does routing the click to a full-screen website form TAKEOVER inside the Facebook in-app browser (no site chrome, no exits) close the CPL gap vs native instant forms — any documented tests of form-takeover vs instant-form vs classic landing page?",
+    "What does lead-to-APPOINTMENT-HELD economics look like: appointment-setter/call-center costs, speed-to-lead conversion rates, and what appointment shops' $150-250 pricing implies about their underlying costs?",
+    "What explains the spread between published benchmarks ($80-140+) and vendor arbitrage prices ($30-75): quality/exclusivity games, incentivized leads, scale/creative effects — and which side should a single-client, optimized, speed-to-lead-armed account expect?"
+  ],
+  "checklist": [
+    "vendor exclusive-lead pricing evidence with sources",
+    "practitioner CPL receipts (not agency marketing posts)",
+    "instant-form vs in-app-browser form-takeover vs landing-page comparison",
+    "appointment-held economics and setter costs",
+    "benchmark-vs-arbitrage reconciliation",
+    "lead quality / exclusivity caveats on vendor numbers"
+  ],
+  "tier": "standard",
+  "mode": "breadth",
+  "currentDate": "2026-08-04",
+  "stopCondition": "each of the 5 sub-questions has at least 2 independent practitioner-grade sources; vendor economics triangulated from at least 3 distinct vendor/community sources"
+}

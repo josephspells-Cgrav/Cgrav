@@ -1,0 +1,83 @@
+I have what I need. The two reads confirm the critical inconsistency the IA flagged (two competing chapter systems) and the actual claims data. Now I'll synthesize the critique.
+
+# KING MAKER FIRM SITE — COMPLETENESS + PRACTICALITY CRITIQUE OF THE 4-SPEC SET
+
+Verdict up front: the four specs are individually strong and the chassis judgment (keep design, build the library inside it) is correct. But as a SET they have real seams — chiefly an unreconciled GHL-vs-brochure tension that the INVENTORY and IA resolve differently from how the DATAVIZ spec actually carries the data, a route-family naming conflict between specs, and a chart catalog that quietly outgrew its home pages. Below are the three lists, builder-actionable.
+
+---
+
+## GAP LIST (topic/page/viz/component not yet specced or under-developed)
+
+**G1 — The honesty/"what we won't claim" page (§13) is named everywhere but specced nowhere.** IA lists `/guides/the-honesty-layer` and DESIGN mentions a "debunk module," but no spec gives it a section outline, a component, or its debunk-stat content (domain-age myth, DA-score, "nobody clicks ads," guaranteed-#1, llms.txt-as-magic, self-serving review stars). This is the credibility moat per the topic map and it has the thinnest spec coverage of any locked section. It needs: a page outline, a `DebunkBlock` atom (myth → reality → why-it-persists), and the actual list of ~6 debunked claims with sources.
+
+**G2 — The §9 buyer-guide content (price ranges, material comparison, what-to-expect, financing/warranty/insurance) is the weakest-specced topic.** DESIGN names `PriceRangeCard`/`MaterialCompare`, DATAVIZ has no viz for it at all, IA gives it one guide page (`what-good-content-gives-buyers`) with no section outline. This is the section that proves "what good content gives the BUYER" — ironically the most buyer-facing topic is the least built. It needs real example content (a sample roofing price-range table, a shingle-vs-metal comparison) so the page demonstrates the thing it describes. Flag the insurance copy as NC-compliant (no $0-deductible / public-adjuster language) — none of the specs carry that rail into §9.
+
+**G3 — The `/audit` interactive tool is a load-bearing conversion hinge in the IA but has no design or data spec.** IA makes it "the conversion hinge between learner and lead" and the embodiment of "audit it yourself." DESIGN never styles it. DATAVIZ never feeds it. No spec decides v1 (static self-audit checklist) vs v2 (real URL scanner), what it outputs, or how it captures. This is the single biggest scope risk in the set: an interactive tool with backend implications, hand-waved across all four. The WO must either fully scope it or explicitly defer it to a phase-2 with a checklist-only v1.
+
+**G4 — `/api/lead` is dead (`TODO(phase-2)`, drops leads) and only the INVENTORY + IA flag it; neither commits a sink.** Every spec routes the entire funnel to `/apply` → `/api/lead`, which currently returns `{ok:true}` and persists nothing. The whole education-funnel-narrow architecture dead-ends at a no-op. This MUST be wired (n8n MCP is available) before any launch claim — it's not a "nice to have," it's the bottom of every flow chart in the IA.
+
+**G5 — The §11 anti-doorway / "delete-the-city-name test" explainer is referenced but never given a surface.** IA puts it on `/system` and per-trade pages as a "note"; DATAVIZ carries it only as a caveat caption on Viz 8. No spec gives it its own explainer block. Given it's a core KM doctrine and the anti-slop differentiator, it deserves a named `AntiDoorway` component with the real-job→page logic and the delete-the-city-name test spelled out, not a footnote.
+
+**G6 — Glossary (`/glossary`) appears only in the IA; no design treatment, no `DefinitionBlock` inventory.** DESIGN specs a `DefinitionBlock` atom but never connects it to a glossary page or lists the terms. The glossary is also doing entity/sameAs SEO work per the IA — that schema wiring (DefinedTerm / DefinedTermSet) is unspecced.
+
+**G7 — Viz A16 "Anatomy of an enterprise page" is the single best visual for §2 (the keystone guide) but is buried in DATAVIZ's "additional/proposed" tier.** §2 (`enterprise-website-anatomy`) is the most-linked guide in the IA and DESIGN's "self-demonstrating" instinct is exactly right. This viz should be promoted to required and explicitly assigned as the hero visual of the anatomy guide — right now no spec names a primary visual for that page.
+
+**G8 — No spec addresses the home hero copy rewrite concretely enough.** INVENTORY and IA both say "soften the GHL-centric hero," IA proposes "Your website is the reason you're stuck at $1M." But the current hero is "WE MAKE KINGS" with a "143 GoHighLevel sites scrubbed" seal baked in. No spec decides whether "WE MAKE KINGS" survives, what replaces the GHL seal, or how the dual-CTA changes. This is the most-seen surface on the site and it's left ambiguous across all four.
+
+**G9 — Mobile treatment of the two-column reference shell is under-specced.** DESIGN gives the desktop three-column shell in detail but collapses mobile to "sticky On-this-page dropdown" in one line. For a reference doc a contractor reads on a phone (likely the majority), the sticky-left-topic-tree → mobile pattern needs more than a sentence. IA's "accordion" and DESIGN's "dropdown" aren't even the same pattern (see I7).
+
+**G10 — Reading-time / "what you'll learn" / last-updated metadata on guides.** A buyer's-guide platform needs per-guide trust/scannability furniture (estimated read time, a "what you'll learn" bullet summary at top, a visible last-updated date that also feeds `dateModified` schema). None of the four specs include these standard resource-center elements.
+
+---
+
+## INCONSISTENCY LIST (contradictions across the 4 specs)
+
+**I1 — The GHL-vs-brochure reframe is applied INCONSISTENTLY across specs.** INVENTORY and IA both mandate a global relabel from GHL-teardown → brochure-teardown (GHL demoted to "one example"). But DATAVIZ keeps the 143-GHL audit as a featured panel in Viz 3 ("your *proprietary MEASURED* data and the strongest panel") and `lib/claims.ts` `ONE_LINE` still literally reads "GoHighLevel sells a $297/mo brochure." So the data layer and the dataviz spec are still GHL-centric while the IA/design layer says de-GHL. **Resolution the WO must pin:** the 143-GHL audit is KM's strongest *measured proof* and shouldn't be thrown away — but it must be reframed as "143 sites built on the most popular contractor platform, as a measured sample of the brochure problem," not "the enemy is GHL." Decide this once and propagate to `claims.ts`, Viz 3, ProofBar, and `/work`.
+
+**I2 — Route-family naming conflict: `/guides/*` vs `/resources/[slug]`.** IA commits hard to `/guides/` (and `/guides/trades/[trade]`). DESIGN repeatedly says `/resources/[slug]` (or `/guides/[slug]`) and its "builder next steps" literally says "a new `/resources/[slug]`." INVENTORY says "`/resources/[slug]` or `/guides/[slug]`." Three specs, three hedges. **Pick `/guides/` (IA is the most committed and most buyer-legible) and strike `/resources` everywhere.**
+
+**I3 — Chart component names don't match across DESIGN, DATAVIZ, and IA.** Same atoms, three names:
+- Compounding curve: DESIGN `LineChart`, DATAVIZ "extend Dashboard.tsx" (no name), IA `CompoundingCurve`.
+- Bars: DESIGN `BarChart`/`ComparisonBars`, IA `BarCompare`, DATAVIZ unnamed.
+- Gap wall: DESIGN/DATAVIZ `GapStatWall`, IA also `GapStatWall` (this one agrees).
+- Gauge: DESIGN `Gauge`/`MeterBar`, IA `CWVGauge`.
+- Matrix: DESIGN (none), DATAVIZ "matrix grid," IA `MatrixGrid`.
+The WO must publish ONE canonical component manifest (name + file path + which viz it renders) or the builder will create duplicates.
+
+**I4 — Two competing 10-chapter systems are real and only the IA catches it.** Confirmed in code: `app/playbook/page.tsx` ships a BUSINESS-GROWTH 10-chapter map ("The $1–2M Ceiling," "Organic vs. the Map Pack," "The Asset: Your Website"…). The brief's locked 13-section topic map is WEBSITE-MECHANICS. INVENTORY treats the playbook chapters AS the education hub ("This IS the education platform") — which would put website-mechanics content under business-growth titles. IA correctly separates them (Playbook = growth narrative; Guides = the 13-section mechanics) and cross-links. **IA is right; INVENTORY's framing is wrong and must be overridden in the WO**, or the builder will pour §2/§3/§6 mechanics content into chapter shells titled "The $1–2M Ceiling."
+
+**I5 — Page-count numbers disagree between the live data and the specs.** `claims.ts` has the reference build at **141** pages (`enterpriseUrls: 141`, REFERENCE_BUILD blurb "141 pages") and RELEVANCY at **130** (`enterprisePages: 130`). The brief, MEMORY, INVENTORY, and DATAVIZ all say **147** (roofing shipped). DATAVIZ Viz 2/14 hardcodes 147. So the site will render 141 in one component and 147 in another. **Reconcile to one number** (147 per the latest WO_19 memory) across `claims.ts`, Viz 2, Viz 14, `/work`, and the trades pages — this is exactly the kind of cross-component number drift the FlagChip discipline exists to prevent.
+
+**I6 — `SIDE_BY_SIDE` "Jobs/month" and "Monthly visitors" are ILLUSTRATIVE but the brochure baseline is suspiciously precise.** `claims.ts` shows brochure "10 visitors / 2 jobs" vs system "50 / 10," flagged ILLUSTRATIVE. DATAVIZ's honesty pass never audits these home-page numbers (it audits the new viz). The brief's honesty rail says "never claim a brochure gets zero traffic" — fine — but "2 jobs/month from a brochure" is an unsourced specific that a skeptical contractor will challenge. DATAVIZ scrutinized 6 figures; it should also scrutinize the home page's existing illustrative claims, not just the new ones.
+
+**I7 — Mobile in-page nav: IA says "accordion," DESIGN says "dropdown."** IA: "on mobile it collapses to a sticky 'On this page' header / accordion." DESIGN: "the right TOC collapses into a sticky 'On this page ▾' dropdown." These are different interaction patterns. Pick one (a sticky dropdown is the lighter, more common doc pattern) and name it once.
+
+**I8 — DATAVIZ's 60%→27% "no dedicated site" correction contradicts the brief AND the home spec.** DATAVIZ Viz 3 correctly flags "60% of SMBs no dedicated site" as STALE and replaces it with ~27%. But the brief's locked §6 still lists "60% of SMBs no dedicated site," and IA's Home outline (D1, item 3) still hardcodes "60% of SMBs no dedicated site" in the gap wall. **The DATAVIZ correction is right and load-bearing — but it must be pushed back into the Home outline and the §6 guide, or the home page ships the debunked stat the honesty layer elsewhere disowns.** This is a live self-contradiction risk on the most-trafficked page.
+
+**I9 — Density/spacing guidance conflicts between DESIGN's marketing-vs-library split and the existing build.** DESIGN says library pages run denser (`py-16/20`) while home/marketing keep `py-24/32`. But the existing `Section` component has a single `tone` prop and one py scale; no spec says whether to add a `density` prop, fork `Section`, or create a `LibrarySection`. The builder needs the mechanism, not just the intent.
+
+**I10 — DESIGN introduces a NEW mono font; the brand lock says Archivo + Plus Jakarta Sans only.** DESIGN proposes "a single monospace face" for technical tokens/FlagChip/schema snippets. The locked brand is two fonts. This may be fine (mono for code-like tokens is defensible and on-pattern for "the site is the proof") — but it's a brand-lock deviation that no other spec acknowledges and the founder hasn't signed off on. The WO must flag it as a deliberate exception for approval, not slip it in.
+
+---
+
+## MUST-NAIL LIST (the 5–8 the work order absolutely has to get right)
+
+**M1 — Resolve the GHL-vs-brochure reframe ONCE, end to end, and propagate it through the data layer.** The enemy is the generic 10-page brochure; GHL is one example and the 143-audit is a measured *sample*, not the villain. This means editing `lib/claims.ts` (`ONE_LINE`, `STRUCTURAL_KILLER`, `MEASURED_GAPS` framing), ProofBar, ProblemReframe, `/work`, AND Viz 3 in lockstep. If the data layer still says "GoHighLevel sells a $297/mo brochure" the reframe is fake. This is the #1 reframe-drift risk in the set (I1).
+
+**M2 — Lock the dual chapter-system architecture: Playbook = growth narrative, Guides = the 13-section mechanics, cross-linked, NOT merged.** Override INVENTORY's "playbook IS the education platform" framing. Get this wrong and website-mechanics content lands under business-growth titles and the whole 13-section map is mis-homed (I4). This is the single most important structural decision and the IA already got it right — the WO must carry IA's resolution verbatim.
+
+**M3 — Publish ONE canonical component + route manifest before any building.** One name per chart atom, one name per resource atom, one route family (`/guides/`), one mobile-nav pattern, one mapping of viz → home page. Resolves I2, I3, I7 in a single table. Without it the builder ships duplicate `LineChart`/`CompoundingCurve`/`BarCompare` atoms and `/resources` + `/guides` both half-exist.
+
+**M4 — Carry the DATAVIZ honesty corrections back into the Home page and the brief's §6 — don't let the home page ship debunked stats.** Specifically: drop "60% no dedicated site" → "~27%" (I8); kill "99.5% of AI citations from top-10 organic" → "88% of AI-cited URLs are NOT top-10" reframe; reframe the 2.4%/1.3% conversion claim to "organic wins on cost/durability/trust, not a higher click rate"; flag "94-day journey" ILLUSTRATIVE. The DATAVIZ spec found these; the OTHER specs still contain the old numbers. Reconcile to the corrected versions everywhere, especially the home gap wall.
+
+**M5 — Reconcile the page-count number (141 vs 130 vs 147) to a single source of truth in `claims.ts`.** Pick 147 (latest shipped per memory), fix `enterpriseUrls`/`enterprisePages`/REFERENCE_BUILD, and have every viz and trade page pull from the constant — never hardcode. Cross-component number drift on the CENTRAL proof stat (page count) is the most embarrassing possible failure for a site whose entire pitch is "audit it yourself, every number is flagged" (I5).
+
+**M6 — Wire `/api/lead` to a real sink and scope `/audit` honestly (or defer it explicitly).** The funnel's bottom (`/api/lead`) currently drops every lead, and the conversion hinge (`/audit`) is unspecced. Decide: `/audit` v1 = static self-audit checklist (no backend, ships now), v2 = URL scanner (phase 2). Wire `/api/lead` via n8n. Don't ship an "education funnel" whose narrow end is a no-op (G3, G4).
+
+**M7 — Hold "practical, not editorial" as a build gate, not just a principle — and resist the chart catalog's own scope creep.** DATAVIZ proposes 18 visualizations (14 + 4 proposed). That's a LOT, and several (geo-grid heatmap, flywheel, channel quadrant) lean toward showpiece/editorial when the brief says premium-utilitarian reference. The WO should rank the chart build (DATAVIZ's own priority order is good: Viz 1, 14, 2, 6, 10, 3, 8 first) and treat the conceptual/decorative ones (A18 quadrant, geo-grid) as optional. Every chart must earn its place by teaching a topic-map section — not by being impressive. Enforce: takeaway-titled, direct-labeled, FlagChip'd, table-twin, left-aligned, gold = one takeaway. The "looks really fucking good in a PRACTICAL sense" bar is a gate the WO checks per page.
+
+**M8 — Every taught stat wears a FlagChip and ships an accessible/AI-legible table twin — including the conceptual diagrams.** This is the differentiator AND the proof. DATAVIZ nailed the discipline (table/`<dl>`/`<ol>` twin per viz, word-level headings, no per-letter animation per the AI-legibility law). The WO must make this non-negotiable for the resource atoms too (DefinitionBlock, KeyTakeaway, ComparisonTable), not just charts — because the site being machine-readable to every crawler/AI is itself Exhibit A for what KM sells.
+
+---
+
+Files load-bearing to these findings: `C:/Users/josep/Claude Gravity/king-maker-site/lib/claims.ts` (the 141/130-vs-147 drift at lines 47–58, the GHL-centric `ONE_LINE` at line 25, the unaudited ILLUSTRATIVE home numbers at lines 68–72), `C:/Users/josep/Claude Gravity/king-maker-site/app/playbook/page.tsx` (the business-growth 10-chapter system at lines 18–29 that collides with the 13-section mechanics map), and `app/api/lead/route.ts` (the dead lead sink).

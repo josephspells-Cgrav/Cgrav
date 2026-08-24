@@ -1,0 +1,123 @@
+<!-- @dsCard group="Brand" name="Elevation & Signatures" subtitle="3-step elevation, the blue fold, grain band, focus ring" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mabrey — Elevation &amp; Signatures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --page:#fff; --ink:#14213d; --body:#33415c; --navy:#0e2140;
+    --surface:#f4f6fb; --tint:#eef2fb; --line:#e2e8f0;
+    --brand:#1a489a; --brandhi:#14356f; --brandsoft:#eaf0fb;
+    --red:#c02026; --redhi:#a11a20; --mist:#51607a;
+    --display:"Newsreader",Georgia,ui-serif,serif;
+    --sans:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --elev-1:0 1px 2px rgba(15,23,42,.05), 0 6px 16px -8px rgba(15,23,42,.10);
+    --elev-2:0 1px 2px rgba(15,23,42,.05), 0 14px 30px -14px rgba(15,23,42,.16);
+    --elev-3:0 2px 6px rgba(15,23,42,.07), 0 30px 60px -22px rgba(15,23,42,.22);
+    --inset-hi:inset 0 1px 0 rgba(255,255,255,.7);
+    --shadow-glow:0 14px 34px -12px rgba(192,32,38,.30);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--body);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55}
+  .wrap{max-width:1140px;margin:0 auto;padding:56px 40px 72px}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--brand)}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(34px,4vw,46px);color:var(--ink);margin:14px 0 10px;letter-spacing:-.015em}
+  .lede{font-size:17px;color:var(--mist);max-width:700px;margin:0 0 44px}
+  h2{font-family:var(--display);font-weight:600;font-size:21px;color:var(--ink);margin:48px 0 6px;letter-spacing:-.01em}
+  .hint{font-size:13.5px;color:var(--mist);margin:0 0 20px}
+
+  .elevs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .ecard{background:#fff;border:1px solid var(--line);padding:24px 22px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}
+  .e1{box-shadow:var(--inset-hi),var(--elev-1)}
+  .e2{box-shadow:var(--inset-hi),var(--elev-2)}
+  .e3{box-shadow:var(--inset-hi),var(--elev-3)}
+  .ecard .t{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink)}
+  .ecard .d{font-size:13px;color:var(--mist);margin-top:6px}
+
+  .sigs{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+  .sig{background:#fff;border:1px solid var(--line);box-shadow:var(--inset-hi),var(--elev-2);padding:0;overflow:hidden;position:relative}
+  .sig .demo{height:132px;display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--line);background:var(--surface)}
+  .sig .body{padding:16px 20px 18px}
+  .sig .t{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink)}
+  .sig .d{font-size:13.5px;color:var(--body);margin-top:7px}
+
+  .foldcard{position:relative;width:150px;height:86px;background:#fff;border:1px solid var(--line);box-shadow:var(--inset-hi),var(--elev-2)}
+  .foldcard .so-fold{position:absolute;top:0;right:0;height:1.25rem;width:1.25rem;background:var(--brand);clip-path:polygon(0 0,100% 0,100% 100%);transform-origin:top right;transition:transform .2s cubic-bezier(.16,1,.3,1)}
+  .foldcard:hover .so-fold{transform:scale(1.22)}
+
+  .grainband{width:100%;height:100%;background:var(--navy);position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--display);font-weight:600;font-size:17px}
+  .grainband::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:3px 3px;pointer-events:none}
+
+  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--red);color:#fff;font-weight:700;font-size:14.5px;padding:13px 22px;box-shadow:var(--shadow-glow);border:0}
+  .cta:hover{background:var(--redhi)}
+  .focusdemo{display:inline-flex;align-items:center;padding:11px 20px;background:#fff;border:1px solid var(--line);font-weight:600;font-size:14px;color:var(--ink);outline:2px solid var(--brand);outline-offset:2px;border-radius:2px}
+  .seldemo{font-size:15.5px;color:var(--body);max-width:230px;text-align:center;line-height:1.5}
+  .seldemo mark{background:rgba(26,72,154,.16);color:var(--ink)}
+
+  .law{margin-top:50px;padding:24px 26px;background:var(--brandsoft);border-left:3px solid var(--brand)}
+  .law h3{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);margin:0 0 12px}
+  .law ul{margin:0;padding-left:19px}
+  .law li{font-size:14.5px;color:var(--body);margin-bottom:8px}
+  .law b{color:var(--ink)}
+  .law code{font-family:var(--mono);font-size:12.5px;color:var(--brand)}
+  @media(max-width:860px){.elevs{grid-template-columns:1fr}.sigs{grid-template-columns:1fr}.wrap{padding:40px 22px 56px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="kicker"><span class="dot"></span> Mabrey Roofing &amp; Construction</span>
+  <h1>Elevation &amp; Signatures</h1>
+  <p class="lede">On dark, glow does the lifting. On white, <em>structure</em> does — a three-step elevation ramp with a top inset highlight, so a card reads as a raised panel lit from above.</p>
+
+  <h2>Elevation ramp</h2>
+  <p class="hint">Every card carries <span style="font-family:var(--mono);font-size:12.5px">--inset-hi</span> plus one elevation step. Hover promotes elev-2 → elev-3.</p>
+  <div class="elevs">
+    <div class="ecard e1"><div class="t">--elev-1</div><div class="d">Chips, tiles, quiet surfaces resting near the slab.</div></div>
+    <div class="ecard e2"><div class="t">--elev-2 · default</div><div class="d">The standard card. Floats off the white without shouting.</div></div>
+    <div class="ecard e3"><div class="t">--elev-3 · hover</div><div class="d">The lift on interaction. Never a resting state.</div></div>
+  </div>
+
+  <h2>Signature treatments</h2>
+  <p class="hint">Four marks that make a page read as Mabrey and nothing else.</p>
+  <div class="sigs">
+    <div class="sig">
+      <div class="demo"><div class="foldcard"><span class="so-fold"></span></div></div>
+      <div class="body"><div class="t">.so-fold — the folded corner</div><div class="d">The house signature, now <b>brand blue</b> (it is red on Summit &amp; Oak). Scales to 1.22 on hover; honors <span style="font-family:var(--mono);font-size:12px">prefers-reduced-motion</span>.</div></div>
+    </div>
+    <div class="sig">
+      <div class="demo" style="padding:0"><div class="grainband">Film grain — navy bands only</div></div>
+      <div class="body"><div class="t">.grain — the texture</div><div class="d">A 3px radial dot lattice at 3% white. Decorative, and permitted <b>only</b> on deep-navy rhythm bands and the CTA band. Never on white.</div></div>
+    </div>
+    <div class="sig">
+      <div class="demo"><button class="cta">Get a free estimate →</button></div>
+      <div class="body"><div class="t">--shadow-glow — the red halo</div><div class="d">A soft red halo sits under the primary CTA and <b>nothing else</b>. It is how the eye finds the one place to press.</div></div>
+    </div>
+    <div class="sig">
+      <div class="demo" style="gap:20px;flex-direction:column">
+        <span class="focusdemo">Focus ring</span>
+        <p class="seldemo">Selection stays readable: <mark>a full roof replacement</mark></p>
+      </div>
+      <div class="body"><div class="t">Focus &amp; selection</div><div class="d">2px brand outline at 2px offset — never removed, never red. Selection is brand at 16% alpha with ink text, so highlighted money copy stays legible.</div></div>
+    </div>
+  </div>
+
+  <div class="law">
+    <h3>Elevation law</h3>
+    <ul>
+      <li><b>Inset highlight always.</b> <code>--inset-hi</code> pairs with every elevation step — it is what sells "lit from above" on a white slab.</li>
+      <li><b>elev-3 is a hover state,</b> never a resting one. A page where everything floats has nothing that floats.</li>
+      <li><b>The red halo is single-use.</b> One glowing element per view: the primary CTA. Two halos means neither is a signal.</li>
+      <li><b>Grain is dark-surface-only.</b> On white it reads as noise, not texture.</li>
+      <li><b>Motion honors reduced-motion,</b> everywhere, without exception — the fold, the lift, the reveals.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; overflow:hidden; }
+  body { font-family:'Barlow',sans-serif; }
+  .ad2 { width:1080px; height:1350px; display:none; flex-direction:column; position:relative;
+         background:var(--bg); color:var(--ink); }
+  .ad2.active { display:flex; }
+
+  /* ---- themes (CSS vars) ---- */
+  .t-navy     { --bg:linear-gradient(160deg,#0B1E30,#16406B); --ink:#fff; --muted:#C9D8E8; --accent:#F26522; --accentink:#12100E; --eyebrow:#F5A623; --chipb:rgba(255,255,255,.35); --chipink:#E8F0F8; --ctabg:#fff; --ctaink:#0B1E30; --ctasub:#9FB4C8; }
+  .t-charcoal { --bg:linear-gradient(170deg,#141414,#2E2E2E); --ink:#fff; --muted:#CFCFCF; --accent:#D7263D; --accentink:#fff; --eyebrow:#FF6B7F; --chipb:rgba(255,255,255,.3); --chipink:#E8E8E8; --ctabg:#fff; --ctaink:#141414; --ctasub:#9A9A9A; }
+  .t-cream    { --bg:#F6F1E8; --ink:#12263A; --muted:#4A5A68; --accent:#F26522; --accentink:#12100E; --eyebrow:#C24E0F; --chipb:rgba(18,38,58,.3); --chipink:#22394E; --ctabg:#12263A; --ctaink:#fff; --ctasub:#7A8896; }
+  .t-gold     { --bg:linear-gradient(165deg,#0E0E0E,#242018); --ink:#fff; --muted:#D8CFC0; --accent:#E8B93E; --accentink:#141005; --eyebrow:#E8B93E; --chipb:rgba(232,185,62,.45); --chipink:#F2E8CE; --ctabg:#E8B93E; --ctaink:#141005; --ctasub:#A89B7E; }
+  .t-forest   { --bg:linear-gradient(160deg,#10231A,#1E4632); --ink:#fff; --muted:#C4D8CB; --accent:#F2C14E; --accentink:#141005; --eyebrow:#F2C14E; --chipb:rgba(255,255,255,.3); --chipink:#E4F0E8; --ctabg:#fff; --ctaink:#10231A; --ctasub:#9AB4A4; }
+  .t-slate    { --bg:linear-gradient(160deg,#152238,#24466E); --ink:#fff; --muted:#C2D2E8; --accent:#4EA8F2; --accentink:#0A1826; --eyebrow:#8FC6F7; --chipb:rgba(255,255,255,.3); --chipink:#E2EDF9; --ctabg:#fff; --ctaink:#152238; --ctasub:#9AB0C8; }
+  .t-orange   { --bg:linear-gradient(165deg,#E85A17,#F26522); --ink:#fff; --muted:#FFE3D2; --accent:#12263A; --accentink:#fff; --eyebrow:#FFD9C4; --chipb:rgba(255,255,255,.5); --chipink:#fff; --ctabg:#12263A; --ctaink:#fff; --ctasub:#FFCFBB; }
+  .t-teal     { --bg:linear-gradient(160deg,#0C262B,#15505A); --ink:#fff; --muted:#BFDDE2; --accent:#FFB03A; --accentink:#1A1205; --eyebrow:#FFB03A; --chipb:rgba(255,255,255,.3); --chipink:#DDEFF2; --ctabg:#fff; --ctaink:#0C262B; --ctasub:#8FB6BD; }
+  .t-reddeep  { --bg:linear-gradient(165deg,#240C12,#571C2A); --ink:#fff; --muted:#E8C8CF; --accent:#FF6B7F; --accentink:#2A0A12; --eyebrow:#FF9AA8; --chipb:rgba(255,255,255,.3); --chipink:#F6DEE3; --ctabg:#fff; --ctaink:#240C12; --ctasub:#C99AA5; }
+  .t-ice      { --bg:#EDF3FA; --ink:#152238; --muted:#46586E; --accent:#1F5FBF; --accentink:#fff; --eyebrow:#1F5FBF; --chipb:rgba(21,34,56,.3); --chipink:#22394E; --ctabg:#1F5FBF; --ctaink:#fff; --ctasub:#7A8896; }
+
+  /* ---- components (var-driven) ---- */
+  .topbar { display:flex; justify-content:space-between; align-items:center; padding:44px 72px 0; }
+  .brand { font-family:'Barlow Condensed'; font-weight:800; font-size:34px; letter-spacing:2.5px; }
+  .locale { font-weight:600; font-size:22px; letter-spacing:3px; opacity:.75; }
+  .rule { height:6px; margin:22px 72px 0; background:var(--accent); }
+  .eyebrow { font-weight:700; font-size:26px; letter-spacing:6px; padding:0 72px; margin-top:52px; color:var(--eyebrow); }
+  h1 { font-family:'Barlow Condensed'; font-weight:800; line-height:.95; padding:0 72px; margin-top:18px; font-size:112px; }
+  h1 .hl { color:var(--accent); }
+  .sub { font-size:33px; line-height:1.35; font-weight:500; padding:0 72px; margin-top:26px; max-width:900px; color:var(--muted); }
+  .offer { margin:44px 72px 0; border-radius:18px; padding:34px 40px; background:var(--accent); color:var(--accentink); box-shadow:0 20px 50px rgba(0,0,0,.3); }
+  .offer .o1 { font-family:'Barlow Condensed'; font-weight:800; font-size:56px; line-height:1; }
+  .offer .o2 { font-weight:600; font-size:28px; margin-top:10px; }
+  .chips { display:flex; flex-wrap:wrap; gap:14px; padding:0 72px; margin-top:34px; }
+  .chip { font-weight:600; font-size:23px; padding:13px 22px; border-radius:999px; border:2px solid var(--chipb); color:var(--chipink); }
+  .cta { margin:auto 72px 0; text-align:center; border-radius:16px; padding:30px; background:var(--ctabg); color:var(--ctaink);
+         font-family:'Barlow Condensed'; font-weight:800; font-size:46px; letter-spacing:1.5px; }
+  .cta-sub { text-align:center; font-size:25px; font-weight:500; padding:18px 72px 60px; color:var(--ctasub); }
+  .sm h1 { font-size:96px; }
+</style>
+</head>
+<body>
+
+<!-- ================= PRIMARY v4 — HIDDEN DAMAGE — black/gold ================= -->
+<section class="ad2 t-gold" id="v4">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">FOR TRIANGLE HOMEOWNERS</div>
+  <h1>WHAT'S YOUR ROOF <span class="hl">HIDING?</span></h1>
+  <p class="sub">Leaks, rot, and storm damage usually start where you can't see them. By the time they show up inside your home, the repair bill has grown right along with them.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">+ Written condition report. No obligation, no pressure.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Dedicated Warranty Dept.</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= PRIMARY v5 — MILITARY — forest ================= -->
+<section class="ad2 t-forest sm" id="v5">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">FOR VETERANS, ACTIVE DUTY &amp; MILITARY FAMILIES</div>
+  <h1>WE SERVE <span class="hl">THOSE WHO SERVED.</span></h1>
+  <p class="sub">Mabrey Roofing offers dedicated roofing discounts for military families across the Carolinas — backed by the same family-owned team and warranty department as every roof we build.</p>
+  <div class="offer"><div class="o1">FREE INSPECTION + MILITARY DISCOUNT</div><div class="o2">On repairs and full replacements. Written report included.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Serving the Carolinas</div><div class="chip">Dedicated Warranty Dept.</div></div>
+  <div class="cta">CLAIM YOUR MILITARY DISCOUNT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= PRIMARY v6 — INSURANCE CLAIMS — slate ================= -->
+<section class="ad2 t-slate sm" id="v6">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">FOR TRIANGLE HOMEOWNERS</div>
+  <h1>ROOF CLAIM <span class="hl">DENIED?</span> OR JUST CONFUSING?</h1>
+  <p class="sub">Insurance claims are what we do. Our team documents the damage, handles the paperwork, and works with your adjuster — so you don't have to fight it alone.</p>
+  <div class="offer"><div class="o1">FREE INSPECTION + CLAIM REVIEW</div><div class="o2">We document everything, in writing, from day one.</div></div>
+  <div class="chips"><div class="chip">Insurance Claim Experts</div><div class="chip">Family Owned &amp; Operated</div><div class="chip">Dedicated Warranty Dept.</div></div>
+  <div class="cta">GET YOUR FREE CLAIM REVIEW →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= PRIMARY v7 — SUMMER HEAT — orange ================= -->
+<section class="ad2 t-orange sm" id="v7">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">SUMMER IN THE TRIANGLE</div>
+  <h1>NC HEAT IS <span class="hl">BAKING YOUR SHINGLES.</span></h1>
+  <p class="sub">Triple-digit attic temps and summer humidity accelerate roof aging every single year. A free inspection now beats a surprise repair bill in the fall.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">+ Written condition report. No obligation, no pressure.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= PRIMARY v8 — WARRANTY — teal ================= -->
+<section class="ad2 t-teal sm" id="v8">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">THE MABREY DIFFERENCE</div>
+  <h1>A WARRANTY WITH AN <span class="hl">ACTUAL DEPARTMENT.</span></h1>
+  <p class="sub">Most roofers hand you a brochure and disappear. Mabrey runs a dedicated warranty department — so if something ever goes wrong, you get a person, not a voicemail.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">+ Written condition report. No obligation, no pressure.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= PRIMARY v9 — RISK REVERSAL — cream ================= -->
+<section class="ad2 t-cream sm" id="v9">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">FOR TRIANGLE HOMEOWNERS</div>
+  <h1>THE REPORT IS YOURS. <span class="hl">EITHER WAY.</span></h1>
+  <p class="sub">Free 21-point inspection. Written condition report. No obligation. Even if you never spend a dollar with us, you keep the report — and you'll finally know where your roof stands.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">Written report you keep, whatever you decide.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Dedicated Warranty Dept.</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= PRIMARY v10 — FAMILY / LOCAL — deep red ================= -->
+<section class="ad2 t-reddeep sm" id="v10">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">SERVING THE CAROLINAS</div>
+  <h1>FAMILY OWNED. <span class="hl">LOCAL SINCE DAY ONE.</span></h1>
+  <p class="sub">We're not a franchise, and we're not a storm-chasing crew that vanishes in October. We're a Triangle family company — and we stand behind every roof we touch.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">+ Written condition report. No obligation, no pressure.</div></div>
+  <div class="chips"><div class="chip">Insurance Claim Experts</div><div class="chip">Dedicated Warranty Dept.</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= RT1 — STILL FREE — navy ================= -->
+<section class="ad2 t-navy sm" id="rt1">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">STILL ON THE FENCE?</div>
+  <h1>THE INSPECTION IS <span class="hl">STILL FREE.</span></h1>
+  <p class="sub">No catch and no obligation — one visit, one written report, and you know exactly where your roof stands. That's it.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">+ Written condition report you keep, either way.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Obligation</div><div class="chip">Written Report Included</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= RT2 — KEEP THE REPORT — orange ================= -->
+<section class="ad2 t-orange sm" id="rt2">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">QUICK REMINDER</div>
+  <h1>KEEP THE REPORT. <span class="hl">NO STRINGS.</span></h1>
+  <p class="sub">Our 21-point inspection ends with a written condition report — yours to keep whether you hire us, hire someone else, or do nothing at all.</p>
+  <div class="offer"><div class="o1">FREE. WRITTEN. YOURS TO KEEP.</div><div class="o2">One visit. Zero obligation.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Pressure, Ever</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= RT3 — SLOTS THIS WEEK — cream ================= -->
+<section class="ad2 t-cream sm" id="rt3">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">STILL PLANNING TO BOOK?</div>
+  <h1>INSPECTION SLOTS ARE <span class="hl">OPEN THIS WEEK.</span></h1>
+  <p class="sub">Pick a day and time that works for you — mornings, afternoons, or after work. Free inspection, written report included, no obligation.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">Choose your time. It takes 60 seconds.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">PICK YOUR TIME SLOT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= RT4 — NO SALES PITCH — charcoal ================= -->
+<section class="ad2 t-charcoal sm" id="rt4">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">THE HONEST QUESTION</div>
+  <h1>WORRIED IT'S A <span class="hl">SALES PITCH?</span> IT ISN'T.</h1>
+  <p class="sub">A free inspection shouldn't be an ambush. Ours ends with your roof's findings in writing — what you do with them is entirely up to you.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">Written findings. Zero pressure. Your call.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Obligation</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= RT5 — WHAT IT CATCHES — forest ================= -->
+<section class="ad2 t-forest sm" id="rt5">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">WORTH KNOWING</div>
+  <h1>WHAT A 21-POINT INSPECTION <span class="hl">ACTUALLY CATCHES</span></h1>
+  <p class="sub">Cracked shingles. Failing flashing. Poor ventilation. Soft decking. The kind of problems that cost a little now — and a lot after the next big storm.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">+ Written condition report. No obligation.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= RT6 — INSURANCE ANGLE — slate ================= -->
+<section class="ad2 t-slate sm" id="rt6">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">ONE MORE THING WORTH CHECKING</div>
+  <h1>DAMAGE FROM PAST STORMS <span class="hl">MAY BE COVERED.</span></h1>
+  <p class="sub">Hail and wind damage often goes unnoticed for years — and many policies still cover it. We inspect free, document everything, and handle the claim paperwork if there's a case.</p>
+  <div class="offer"><div class="o1">FREE INSPECTION + CLAIM REVIEW</div><div class="o2">Documented in writing from day one.</div></div>
+  <div class="chips"><div class="chip">Insurance Claim Experts</div><div class="chip">Family Owned &amp; Operated</div></div>
+  <div class="cta">GET YOUR FREE CLAIM REVIEW →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= RT7 — MILITARY — gold/black ================= -->
+<section class="ad2 t-gold sm" id="rt7">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">DON'T FORGET</div>
+  <h1>MILITARY FAMILY? <span class="hl">ASK ABOUT YOUR DISCOUNT.</span></h1>
+  <p class="sub">Veterans, active duty, and military families get dedicated pricing at Mabrey Roofing — on top of a free inspection and written report.</p>
+  <div class="offer"><div class="o1">FREE INSPECTION + MILITARY DISCOUNT</div><div class="o2">Mention it when you book — we'll take it from there.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Serving the Carolinas</div></div>
+  <div class="cta">CLAIM YOUR MILITARY DISCOUNT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= RT8 — 30–45 MINUTES — teal ================= -->
+<section class="ad2 t-teal sm" id="rt8">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">EASIER THAN YOU THINK</div>
+  <h1>30–45 MINUTES. <span class="hl">ANSWERS IN WRITING.</span></h1>
+  <p class="sub">That's the whole appointment. We check all 21 points, hand you a written condition report, and you're free to do whatever you want with it.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">One short visit. Zero obligation.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Pressure, Ever</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= RT9 — WARRANTY — ice ================= -->
+<section class="ad2 t-ice sm" id="rt9">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">WHY HOMEOWNERS PICK MABREY</div>
+  <h1>BACKED BY A REAL <span class="hl">WARRANTY DEPARTMENT.</span></h1>
+  <p class="sub">Not a brochure — a dedicated department that handles warranty claims and answers when you call. That's what "standing behind our work" actually means.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">+ Written condition report. No obligation.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= RT10 — NEIGHBORS — deep red ================= -->
+<section class="ad2 t-reddeep sm" id="rt10">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">LOOK DOWN YOUR STREET</div>
+  <h1>EVERY ROOF ON YOUR BLOCK <span class="hl">IS AGING TOGETHER.</span></h1>
+  <p class="sub">Most Triangle neighborhoods were built — and roofed — around the same time. If your neighbors are starting to replace theirs, your free inspection is overdue.</p>
+  <div class="offer"><div class="o1">FREE 21-POINT ROOF INSPECTION</div><div class="o2">+ Written condition report. No obligation.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Serving the Carolinas</div></div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+</section>
+
+<!-- ================= PRIMARY v11 — SATELLITE MEASUREMENT — ice ================= -->
+<section class="ad2 t-ice sm" id="v11">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">NO LADDER REQUIRED</div>
+  <h1>YOUR ROOF, MEASURED <span class="hl">BY SATELLITE.</span></h1>
+  <p class="sub">Mabrey Roofing uses EagleView aerial measurement — precise roof dimensions and a real quote, without anyone climbing on your house or knocking on your door.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">Precise EagleView dimensions + written quote for your home.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Dedicated Warranty Dept.</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to request</div>
+</section>
+
+<!-- ================= RT11 — SATELLITE FOR THE HESITANT — slate ================= -->
+<section class="ad2 t-slate sm" id="rt11">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">NOT READY FOR AN INSPECTION?</div>
+  <h1>START WITH A <span class="hl">SATELLITE MEASUREMENT.</span></h1>
+  <p class="sub">We measure your roof with EagleView aerial imagery — no appointment, no ladder, no one in your driveway. Just precise numbers and a written quote for your home.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">Zero-commitment way to see where you stand.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Pressure, Ever</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= PRIMARY v12 — SATELLITE: SPACE/WRITING — navy ================= -->
+<section class="ad2 t-navy sm" id="v12">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">EAGLEVIEW AERIAL MEASUREMENT</div>
+  <h1>MEASURED FROM SPACE. <span class="hl">QUOTED IN WRITING.</span></h1>
+  <p class="sub">We measure your roof with EagleView satellite imagery, then put your quote in writing — precise dimensions, real numbers, no ladder and no sales visit.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">Precise EagleView dimensions + written quote for your home.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to request</div>
+</section>
+
+<!-- ================= PRIMARY v13 — SATELLITE: NO VISIT — charcoal ================= -->
+<section class="ad2 t-charcoal sm" id="v13">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">THE NO-VISIT ROOF QUOTE</div>
+  <h1>NO ONE ON YOUR ROOF. <span class="hl">NO ONE AT YOUR DOOR.</span></h1>
+  <p class="sub">EagleView aerial measurement gives us your roof's exact dimensions from satellite imagery — so your quote starts with precision, not a stranger in your living room.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">No appointment. No ladder. Written quote included.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Pressure, Ever</div><div class="chip">Dedicated Warranty Dept.</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to request</div>
+</section>
+
+<!-- ================= PRIMARY v14 — SATELLITE: PRECISION — gold ================= -->
+<section class="ad2 t-gold sm" id="v14">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">WHY GUESS AT YOUR ROOF'S SIZE?</div>
+  <h1>PRECISE DOWN TO <span class="hl">THE SQUARE FOOT.</span></h1>
+  <p class="sub">EagleView aerial measurement maps your roof's exact dimensions, pitch, and features — the same data we use to quote and build. Yours free, before you commit to anything.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">Exact dimensions + written quote for your home.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Dedicated Warranty Dept.</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to request</div>
+</section>
+
+<!-- ================= PRIMARY v15 — SATELLITE: TIME — teal ================= -->
+<section class="ad2 t-teal sm" id="v15">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">FOR BUSY HOMEOWNERS</div>
+  <h1>A ROOF QUOTE SHOULDN'T <span class="hl">COST YOU A SATURDAY.</span></h1>
+  <p class="sub">Request online in 60 seconds. We measure your roof by satellite with EagleView, and your written quote follows — no appointments, no waiting around for a knock on the door.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">Precise dimensions + written quote. No visit needed.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Pressure, Ever</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to request</div>
+</section>
+
+<!-- ================= RT12 — SATELLITE: JUST THE NUMBER — ice ================= -->
+<section class="ad2 t-ice sm" id="rt12">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">FAIR ENOUGH</div>
+  <h1>JUST WANT <span class="hl">THE NUMBER?</span> START THERE.</h1>
+  <p class="sub">No inspection, no appointment. We measure your roof by satellite with EagleView and send you a written quote — take it, compare it, or file it away. It's yours.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">Precise dimensions + written quote. Zero commitment.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Pressure, Ever</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= RT13 — SATELLITE: NO APPOINTMENT — cream ================= -->
+<section class="ad2 t-cream sm" id="rt13">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">SKIPPING THE APPOINTMENT? FINE.</div>
+  <h1>NO APPOINTMENT NEEDED. <span class="hl">SERIOUSLY.</span></h1>
+  <p class="sub">EagleView satellite measurement means we never need to step foot on your property to get your roof's exact dimensions — and get you a real, written quote.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">Request in 60 seconds. No visit, no ladder.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">Insurance Claim Experts</div><div class="chip">Military Discounts</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= RT14 — SATELLITE: SEE YOUR ROOF — forest ================= -->
+<section class="ad2 t-forest sm" id="rt14">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">YOUR HOME, FROM ABOVE</div>
+  <h1>SEE YOUR ROOF <span class="hl">LIKE WE SEE IT.</span></h1>
+  <p class="sub">Your free EagleView report maps your actual roof from aerial imagery — exact dimensions, pitch, every facet. The same measurements we'd use to build it.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">Your roof's real numbers, in writing, yours to keep.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Obligation</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<!-- ================= RT15 — SATELLITE: LAST RUNG — reddeep ================= -->
+<section class="ad2 t-reddeep sm" id="rt15">
+  <div class="topbar"><div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div><div class="locale">RALEIGH–DURHAM, NC</div></div>
+  <div class="rule"></div>
+  <div class="eyebrow">THE EASIEST FIRST STEP IN ROOFING</div>
+  <h1>60 SECONDS TO REQUEST. <span class="hl">ZERO VISITS REQUIRED.</span></h1>
+  <p class="sub">If you've been putting this off, this is the version with nothing to put off. Satellite measurement, written quote, done — whenever you're ready for more, we'll be here.</p>
+  <div class="offer"><div class="o1">FREE SATELLITE ROOF MEASUREMENT</div><div class="o2">EagleView precision. No appointment, ever required.</div></div>
+  <div class="chips"><div class="chip">Family Owned &amp; Operated</div><div class="chip">No Pressure, Ever</div></div>
+  <div class="cta">GET YOUR SATELLITE MEASUREMENT →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<script>
+  const q = new URLSearchParams(location.search);
+  const id = q.get('v') ? 'v' + q.get('v') : 'rt' + (q.get('rt') || '1');
+  document.getElementById(id).classList.add('active');
+</script>
+</body>
+</html>

@@ -1,0 +1,2109 @@
+{
+ "results": [
+  {
+   "kind": "city",
+   "key": "raleigh-nc",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "Does Kingmaker Roofing work on historic ITB homes, or only newer construction?",
+       "answer": "Historic roofs are a core specialty here. Oakwood Victorians, Boylan Heights bungalows, and Hayes Barton Colonial Revivals all have steep pitches, century-old framing, and sometimes original wood sheathing underneath. We document existing conditions before we touch anything, source period-appropriate materials where required, and flag structural surprises in writing before proceeding — no mid-job price ambushes."
+      },
+      {
+       "question": "My roof looks fine from the street. Do I really need an inspection after a storm?",
+       "answer": "Hail and straight-line wind damage is almost always invisible from the ground. Quarter-size hail — exactly what struck central Wake County in April 2025 — bruises asphalt mat without visibly cracking shingles. That bruising accelerates granule loss and can void your manufacturer warranty within a few seasons. Our documented inspections include close-contact photos so you can see exactly what we see."
+      },
+      {
+       "question": "How does the 25-year workmanship warranty work?",
+       "answer": "It covers defects in our installation — flashing, penetrations, ridge, edge detail — for 25 years and is written, transferable, and registered with our name and your address. It sits on top of the manufacturer's material warranty. You receive both documents before we leave the job site, not after you ask for them."
+      },
+      {
+       "question": "I got three quotes already. What makes Kingmaker different from the other roofers who knocked on my door after the last storm?",
+       "answer": "Our crews are employees, not day-labor subcontracts. We carry every permit, pull inspections through the Wake County building department, and our GAF Master Elite status — held by fewer than 2% of roofing contractors in North America — requires background checks, insurance verification, and ongoing training to maintain. Storm-chaser crews cannot earn or hold that designation."
+      },
+      {
+       "question": "We live north of 540 in a newer production home. Are your warranties and crew standards the same?",
+       "answer": "Identical. Whether we are re-roofing a 1924 craftsman in Boylan Heights or a 2019 production home in a North Raleigh community off Strickland Road, the same own-crew installation, the same GAF-backed material warranty, and the same 25-year written workmanship warranty apply. The only thing that changes is the shingle profile and pitch approach."
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Raleigh's housing stock demands a roofer who knows the difference between a 1924 craftsman and a 2005 production build",
+     "whyLocalParagraphs": [
+      "Raleigh splits sharply at the beltline. Inside the 440 loop, neighborhoods like Historic Oakwood, Boylan Heights, and the Five Points cluster — Bloomsbury, Hayes Barton, Georgetown — carry roofs on century-old framing. Those steep-slope craftsman and Colonial Revival structures were built before modern underlayment existed. Mature willow oaks and white oaks line these streets, and every major wind event turns limb mass into a projectile risk that flat-line hail maps simply do not capture. A re-roof here requires careful decking assessment, proper step-flashing at dormers, and material choices that satisfy both code and historic-district review.",
+      "Wake County recorded 69 storm events in 2025, including two confirmed EF1 tornadoes since late 2023 — one of which traveled a 1.5-mile path through the Garner area south of Raleigh. Quarter-size hail struck central Wake in April 2025. Straight-line microbursts account for the largest share of residential roof claims in the county, and the damage they cause — lifted tab edges, cracked ridge caps, failed step-flashing — is rarely visible from a ladder on the ground. That is why every inspection we run is documented with close-contact photos handed to the homeowner on the same day.",
+      "North of 540, the story shifts. Communities off Strickland Road, Durant Road, and the Falls of Neuse corridor were built quickly during Raleigh's growth decade — most between 2000 and 2015 — on architectural shingles now aging into their first full replacement cycle. These production roofs were installed to code minimums. Upgrading to a GAF Timberline HDZ or equivalent at replacement is a meaningful durability step, and we walk every North Raleigh homeowner through the tradeoff honestly before they sign anything.",
+      "Kingmaker Roofing is headquartered here in Raleigh, not dispatched from a regional hub after a storm. That means our crews know Wake County permit offices, the historic-district application process, and the micro-geography of where limb damage concentrates versus where straight-line wind tracks. When you call our 24/7 storm line, the person who answers can tell you which neighborhoods took the hardest hit last night — because we were already out assessing them at first light."
+     ],
+     "atAGlance": [
+      "Headquarters: Raleigh, NC — serves full 30-mile metro radius",
+      "GAF Master Elite certified — fewer than 2% of North American contractors qualify",
+      "Specialization in steep-slope historic re-roofs: Oakwood, Boylan Heights, Five Points",
+      "Own crews on every job — no day-labor subcontracts",
+      "Free documented inspections with close-contact photo evidence",
+      "Written 25-year workmanship warranty, transferable, registered same day"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "Historic ITB Re-Roof Assessment",
+       "body": "Boylan Heights, Oakwood, and Hayes Barton homes carry original framing that modern shingle systems need to be adapted to — not forced onto. We document decking condition, assess ridge and hip geometry, and provide a written scope before any commitment."
+      },
+      {
+       "title": "Post-Storm Damage Documentation",
+       "body": "Wake County logged over 60 storm events in a recent 12-month span. If your home was in the path of straight-line winds or the April 2025 hail track, a documented inspection gives you clear evidence for an insurance claim — no guesswork, no pressure."
+      },
+      {
+       "title": "North Raleigh Production-Home Roof Replacement",
+       "body": "Homes built along Durant Road, Strickland Road, and the Falls of Neuse corridor between 2000 and 2015 are reaching first-replacement age. We compare shingle upgrade tiers honestly so you buy the right roof for your tenure, not the highest-margin one."
+      },
+      {
+       "title": "Mature-Tree Limb Damage Emergency",
+       "body": "The oak canopy that defines ITB Raleigh is also its primary limb-strike risk after any severe wind event. Emergency tarping, decking assessment, and a repair scope — same-day when storm volume allows, always within 24 hours for documented emergencies."
+      }
+     ]
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "69",
+       "unit": "storm events",
+       "label": "Wake County recorded in 2025 alone"
+      },
+      {
+       "value": "2",
+       "unit": "EF1 tornadoes",
+       "label": "confirmed in Wake County since December 2023"
+      },
+      {
+       "value": "100+",
+       "unit": "years old",
+       "label": "age of oldest roofed structures in Historic Oakwood"
+      },
+      {
+       "value": "25",
+       "unit": "year written warranty",
+       "label": "workmanship coverage on every Kingmaker installation"
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Raleigh, NC — Home Base",
+     "heading": "Raleigh Roofing, Done Right the First Time",
+     "subhead": "Kingmaker Roofing is headquartered in Raleigh and has re-roofed homes across every era of the city's housing stock — from 1920s craftsman bungalows in Boylan Heights and Historic Oakwood to production builds north of 540. Wake County averages more than eleven hail events a year, and two EF1 tornadoes have tracked through the area since late 2023. When it is your roof, you deserve a written inspection, a crew that answers for its own work, and a 25-year workmanship warranty you can hold in your hand.",
+     "ctaLabel": "Get Your Free Documented Inspection",
+     "imageDescription": "Steep-slope craftsman home in a mature-tree ITB Raleigh neighborhood, viewed from street level with a recently completed dark architectural shingle roof; overcast post-storm sky, no people"
+    }
+   }
+  },
+  {
+   "kind": "city",
+   "key": "cary-nc",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "Our HOA requires color-approval before we can replace the roof. Can you handle that paperwork?",
+       "answer": "Yes. For communities like Lochmere and Preston, we prepare the full architectural review packet — GAF shingle sample board, color profile spec sheet, and manufacturer documentation — so you submit once and get a clean approval. We have handled HOA submissions across Cary's master-planned communities and know what reviewers flag."
+      },
+      {
+       "question": "Our 1990s builder-grade shingles are still holding, but neighbors keep replacing theirs. Should we wait?",
+       "answer": "Probably not much longer. Builder-grade 25-year architectural shingles installed between 1990 and 2003 are hitting the end of their rated life now. Granule loss, ridge-line cracking, and soft spots under flashing are the first signs. A free documented inspection tells you exactly where your roof stands — no pressure to sign anything that day."
+      },
+      {
+       "question": "We had hail come through in spring 2025. How do we know if the roof was hit?",
+       "answer": "Quarter-size hail crossed central North Carolina in April 2025 and was reported near Cary. Impact damage on architectural shingles shows as bruising and granule loss that is hard to spot from the ground. Our inspection includes photos of every affected plane so you have documentation whether or not you file a claim."
+      },
+      {
+       "question": "What does your 25-year workmanship warranty actually cover?",
+       "answer": "It covers labor defects in our installation — flashing, valley work, ridge cap, penetration seals — for 25 years, in writing, transferable to a future buyer. Combined with GAF's manufacturer warranty on materials, most homeowners have full system coverage. We walk you through both documents before you sign anything."
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Cary's master-planned communities and why their roofs are all aging at once",
+     "whyLocalParagraphs": [
+      "Preston, Lochmere, and MacGregor Downs were developed in waves — Preston predominantly between 1988 and 2001, Lochmere from the mid-1980s through the 1990s, MacGregor Downs from the 1970s onward with a heavy concentration of 1980s and 1990s builds. Builder-grade architectural shingles installed during those decades carry a 25-to-30-year rated life. That window is closing street by street right now. When one house on a Preston cul-de-sac replaces its roof, the neighbors with the same original shingles are typically within two to four years of the same decision.",
+      "Replacing a roof in Cary's HOA-governed communities is not a two-call project. Lochmere's Architectural Committee requires a formal application, a 30-day review period, material specifications, and color samples before work begins. Preston's 35 subdivisions each carry their own approved palette — earth tones like Driftwood and Estate Gray dominate, but the exact allowed profiles vary by sub-association. We prepare the complete submission packet and coordinate with your management company, typically Associa H.R.W. for Lochmere, so you do not have to chase paperwork between a roofing contractor and an HOA reviewer.",
+      "The storm picture matters here. Cary has been under severe weather warnings more than 125 times in the past 12 months, and quarter-size hail was confirmed across central Wake County in April 2025. Mature tree canopy in neighborhoods like MacGregor Downs and Lochmere's lakeside sections protects siding but concentrates debris impact on roof planes. Our inspections document every affected plane with photographs — useful whether a homeowner is filing an insurance claim or simply establishing a condition baseline before an HOA application."
+     ],
+     "atAGlance": [
+      "11 miles from our Raleigh headquarters via Kildaire Farm Road corridor",
+      "Preston: 1,291 homes, most built 1988–2001, now at or past original shingle life",
+      "Lochmere: 30-day HOA architectural review required before any roof replacement",
+      "MacGregor Downs: mix of 1970s–1990s builds on large wooded lots",
+      "April 2025 quarter-size hail confirmed in central Wake County",
+      "GAF Master Elite status — fewer than 2% of North American roofing contractors qualify"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "HOA Architectural Review Package",
+       "body": "Cary HOA communities require full material specs and color samples before a nail goes in. We assemble the complete submission packet for Lochmere, Preston, and MacGregor Downs associations and coordinate with your management company through approval."
+      },
+      {
+       "title": "Builder-Grade Shingle Age Assessment",
+       "body": "Homes built in Preston and Lochmere between 1988 and 2001 are hitting the end of rated shingle life now. Our free documented inspection establishes exactly where your roof stands — granule loss, ridge cracking, flashing condition — with photos you keep."
+      },
+      {
+       "title": "Post-Storm Damage Documentation",
+       "body": "After the April 2025 hail event across central Wake County, many Cary homeowners need a clear record of impact damage. We photograph every affected plane and prepare a written findings report suitable for an insurance submission or HOA filing."
+      },
+      {
+       "title": "Full Roof Replacement with Written Warranty",
+       "body": "When a Preston or Lochmere home needs full replacement, we use our own crews — no subcontracted labor — and deliver a 25-year workmanship warranty in writing, transferable to the next buyer and valid alongside the GAF manufacturer coverage."
+      }
+     ]
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "1,291",
+       "unit": "homes",
+       "label": "Preston subdivision, most built 1988–2001"
+      },
+      {
+       "value": "30",
+       "unit": "day review",
+       "label": "Lochmere HOA architectural approval window"
+      },
+      {
+       "value": "125+",
+       "unit": "severe weather warnings",
+       "label": "Cary area in the past 12 months"
+      },
+      {
+       "value": "11",
+       "unit": "miles",
+       "label": "From our Raleigh HQ to central Cary"
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Roofing · Cary, NC",
+     "heading": "When an HOA has a say in your roof, bring a contractor who's done this before",
+     "subhead": "Preston, Lochmere, and MacGregor Downs were built street by street in the 1990s — and their builder-grade shingles are aging out the same way. Kingmaker Roofing handles the HOA architectural review paperwork, the color-sample submissions, and the 30-day approval coordination so the process moves without you chasing it. Our own crews do the work. The 25-year workmanship warranty goes in writing before we start.",
+     "ctaLabel": "Get a Free Documented Inspection",
+     "imageDescription": "Aerial view of a Cary NC master-planned neighborhood with mature tree canopy, curved streets, and 1990s-era two-story homes showing aging architectural shingle roofs"
+    }
+   }
+  },
+  {
+   "kind": "city",
+   "key": "wake-forest-nc",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "My Heritage home has a 20-year-old roof — can it still be repaired, or does it need full replacement?",
+       "answer": "Heritage homes built in the early 2000s are at the age where an inspector needs to see the actual shingle condition, not just the calendar. If fewer than two or three tabs per square are lifting or cracked, targeted repair often buys another season. If the mat is brittling or hail has left widespread bruising, replacement is the honest call. We document everything in writing so you make the decision, not us."
+      },
+      {
+       "question": "My 1920s mill cottage in Glen Royall is on the National Register. Does that restrict what shingles I can use?",
+       "answer": "The Town of Wake Forest's Historic Preservation Commission reviews exterior changes in the Glen Royall district. In practice that usually means matching existing profile, texture, and color rather than mandating a specific product. We work through that approval process routinely and will pull the HPC guidelines before writing your estimate so there are no surprises at the permit stage."
+      },
+      {
+       "question": "How quickly can Kingmaker reach Wake Forest after a storm?",
+       "answer": "Our Raleigh base puts us 12 miles from Wake Forest — typically a 20-to-25-minute drive. When a severe weather event hits the US-1 corridor we stage crews to respond the same day. Our 24/7 storm line connects you directly to a scheduler, not an answering service."
+      },
+      {
+       "question": "What does a free documented inspection actually include?",
+       "answer": "We walk the roof, photograph every area of concern, note shingle age and granule loss, check flashing at chimneys and valleys, and inspect the attic deck for staining or soft spots. You receive a written report with photos. No invoice attached, no pressure to sign anything that day."
+      },
+      {
+       "question": "Does the 25-year workmanship warranty transfer if I sell my home?",
+       "answer": "Yes. The written warranty is tied to the property, so it transfers to the buyer at closing. For homeowners in Traditions or Heritage who may be selling within a decade of install, a transferable warranty is a concrete selling point you can show on the disclosure form."
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Wake Forest has two completely different roofing challenges — and most contractors treat them the same",
+     "whyLocalParagraphs": [
+      "North Main Street and the Glen Royall Mill Village carry roofs built before your grandparents were born. The pyramidal and triple-A cottages along the mill village were constructed starting in 1900 to house Royall Cotton Mill workers; many retain their original raftering and narrow eave profiles. Replacing a roof on a National Register property means working inside the Town's Historic Preservation Commission guidelines — matching existing shingle profile, color, and texture rather than simply pulling a permit and starting. We have done this work in Wake Forest's historic districts and know the HPC review cycle. Skipping that step, or using a contractor unfamiliar with it, can mean a stop-work order and a required tear-off.",
+      "The subdivisions that filled in along US-1 and Capital Boulevard through the 2000s and 2010s tell a different story. Heritage of Wake Forest's more than 2,000 homes and the gated Traditions community represent a generation of builder-grade 3-tab and architectural shingles now entering the 15-to-25-year replacement window. These roofs were installed fast and at volume — some carried lighter felt underlayment and inadequate valley flashing from the start. An aging Heritage or Traditions roof that survived the string of severe weather warnings this area has seen in the past several years may be holding together visually while losing granules and softening at the decking underneath. The inspection we provide is documented in writing for exactly that reason.",
+      "Wake Forest also sits in the path of the June-through-November storm corridor that crosses Wake County every season. Trained storm spotters have logged confirmed hail reports for this area, and the town has been under severe weather warnings dozens of times in recent years. Wind and hail damage on these roofs is often not visible from the ground — bruised shingles crack under winter freeze-thaw cycles months after the storm that caused them. Waiting until the ceiling stains appear is the expensive version of the story."
+     ],
+     "atAGlance": [
+      "12 miles from our Raleigh base — same-day response on storm events",
+      "GAF Master Elite status: fewer than 2% of North American contractors qualify",
+      "Historic district experience: Glen Royall and North Main Street HPC process",
+      "Free written inspection — photos included, no invoice attached",
+      "25-year written workmanship warranty, transfers at closing",
+      "24/7 storm line — direct to a scheduler, not a recording"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "Historic District Roof Replacement (Glen Royall / North Main)",
+       "body": "Mill cottages and Faculty Avenue homes built between 1900 and 1950. HPC review required. We match existing profile and shepherd the approval process — full replacement or targeted re-roof depending on decking condition."
+      },
+      {
+       "title": "Post-Storm Inspection — Heritage and Traditions Subdivisions",
+       "body": "Builder-grade roofs from the 2000s and 2010s that have weathered multiple Wake County storm seasons. We document hail bruising and granule loss in writing, with photos, before any repair discussion begins."
+      },
+      {
+       "title": "Aging Architectural Shingle Replacement",
+       "body": "Heritage and Traditions homes hitting the 20-year mark often show decking soft spots and flashing failures that cosmetic repair cannot address. Full replacement with proper underlayment and valley flashing — no shortcuts carried over from the original build."
+      },
+      {
+       "title": "Emergency Tarp and Storm-Line Response",
+       "body": "Active leak or visible storm damage in Wake Forest. Our 24/7 line routes directly to a crew scheduler. Temporary protection goes on the same day; documented inspection follows before any repair estimate is written."
+      }
+     ]
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "12",
+       "unit": "miles",
+       "label": "From our Raleigh base to Wake Forest"
+      },
+      {
+       "value": "1900",
+       "unit": "est.",
+       "label": "Oldest housing stock in Glen Royall Mill Village"
+      },
+      {
+       "value": "2,000+",
+       "unit": "homes",
+       "label": "In Heritage of Wake Forest alone"
+      },
+      {
+       "value": "25",
+       "unit": "year",
+       "label": "Written workmanship warranty, transferable at closing"
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Wake Forest, NC",
+     "heading": "Two towns, one roof standard",
+     "subhead": "Wake Forest splits cleanly between pre-war mill cottages on North Main and Glen Royall, and the 2000s master-planned subdivisions along US-1. Our crews have worked both sides — National Register permit process on one end, aging Heritage builder-grade shingles on the other. Twelve miles from our Raleigh base. Every inspection is documented in writing, and our 25-year workmanship warranty is in your hands before we leave the driveway.",
+     "ctaLabel": "Schedule a free documented inspection",
+     "imageDescription": "Aerial view of Wake Forest NC neighborhood showing mix of older bungalow-style homes near historic district and newer subdivision rooftops under partly cloudy sky with late-afternoon light"
+    }
+   }
+  },
+  {
+   "kind": "city",
+   "key": "garner-nc",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "Garner, NC — 10 Miles from Our Raleigh Shop",
+     "heading": "Garner's Brick Ranches Deserve a Roof That Lasts Another 30 Years",
+     "subhead": "Along the I-40 and US-70 corridor, Garner's 1970s and 1980s brick ranches carry history in their walls — and original 3-tab shingles on too many of their roofs. Those low-slope rear additions are where water gets in first after a hail run through Wake County's southeast quadrant. Kingmaker Roofing sends its own crew, documents the inspection in writing, and backs every installation with a 25-year written workmanship warranty. No subcontractors. No pressure.",
+     "ctaLabel": "Get a Free Documented Roof Inspection",
+     "imageDescription": "A 1970s brick ranch on a quiet street near Timber Drive in Garner NC, late afternoon light, with a freshly installed architectural shingle roof and clean ridge cap visible against a blue sky"
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "10",
+       "unit": "miles",
+       "label": "From our Raleigh shop to central Garner"
+      },
+      {
+       "value": "~35%",
+       "unit": "of homes",
+       "label": "Built before 1990 — prime re-roof age"
+      },
+      {
+       "value": "74",
+       "unit": "warnings",
+       "label": "Severe weather events in the Garner area over 12 months"
+      },
+      {
+       "value": "25",
+       "unit": "year written warranty",
+       "label": "On every Kingmaker workmanship installation"
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Why the I-40/US-70 Corridor Has a Roofing Problem Nobody's Talking About",
+     "whyLocalParagraphs": [
+      "Garner grew fast along the US-70 and I-40 spines in the 1970s and 1980s. Neighborhoods near Timber Drive, Vandora Springs Road, and Aversboro Road filled in with solid brick ranches — honest houses built to last, but not forever. The 3-tab shingles standard at that time had a rated life of 20 to 25 years. Many of those roofs were replaced once in the 1990s or early 2000s and are now due again. The flat or low-slope additions common to that generation of ranch floor plans compound the exposure: water pools differently on a 2/12 pitch than on the main roof's steeper run, and it shows up as a ceiling stain long before the homeowner suspects a roofing issue.",
+      "Garner sits in Wake County's southeast quadrant, directly in the path of storm cells that push northeast out of the Sandhills and stall against the metro's heat island. The area logged 74 severe weather warnings in a single 12-month stretch. Hail that tracks through Johnston County tends to clip Garner before it hits downtown Raleigh — meaning some of the heaviest granule loss in the region lands on rooftops that already have 15 to 20 years of UV fatigue on them. A dented, granule-stripped 3-tab on a 1982 build near Heather Hills or Autumn Oaks is not a cosmetic issue; it is a water-intrusion event waiting for the next hard rain.",
+      "Kingmaker Roofing is GAF Master Elite-certified — one of fewer than 2% of roofing contractors in North America to earn that designation. We use it to pull full system warranties that a standard installer cannot offer. For Garner homeowners dealing with an insurance adjuster after a storm, that certification is a meaningful credential: it means our documentation holds up and our material selections qualify for extended coverage. Our 24/7 storm line is staffed by the same crew leads who run the jobs, not a call center."
+     ],
+     "atAGlance": [
+      "Brick ranch era: 1970s–1980s along Timber Drive and Aversboro Road corridors",
+      "Low-slope additions common — a known water-intrusion risk on aging stock",
+      "Southeast Wake County hail path: 74 severe weather warnings in past 12 months",
+      "GAF Master Elite installer — fewer than 2% of North American contractors qualify",
+      "Own crews only — no subcontractors on any Garner job",
+      "Free written inspection report, 25-year workmanship warranty in writing"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "Low-Slope Addition Inspection",
+       "body": "Garner's brick ranches commonly have rear or side additions with 2/12 or 3/12 pitches that drain differently than the main roof plane. We document the transition flashing, slope, and underlayment condition in writing before recommending any scope of work."
+      },
+      {
+       "title": "Storm-Track Hail Assessment",
+       "body": "Wake County's southeast quadrant — including the Timber Drive and Vandora Springs corridors — sits in a documented hail path. We map granule loss and bruising against your shingle age and provide a written report you can hand directly to your insurance carrier."
+      },
+      {
+       "title": "3-Tab to Architectural Upgrade",
+       "body": "Original 3-tab shingles on 1970s–1980s Garner builds are at or past rated life. We price a full architectural-shingle replacement with honest line items — no inflated charges, no surprise add-ons when the crew arrives at your Aversboro Road or Heather Hills address."
+      },
+      {
+       "title": "Written 25-Year Workmanship Review",
+       "body": "If a previous contractor installed your roof without a written workmanship warranty, we will inspect the installation and tell you plainly what was done well and what was not. Free inspection. No obligation to hire us afterward."
+      }
+     ]
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "My house is a 1979 brick ranch near Timber Drive. The roof doesn't leak — do I actually need to replace it?",
+       "answer": "Not necessarily, but age and condition are different things. A 3-tab roof installed in the late 1990s on a 1979 build may carry 25 to 28 years of wear. We inspect for granule loss, bruised mat, and compromised flashing — especially on low-slope additions — and deliver a written condition report so you decide based on evidence, not a salesperson's word."
+      },
+      {
+       "question": "A storm came through and my neighbor filed a claim. How do I know if my roof was damaged?",
+       "answer": "Hail damage on 3-tab shingles often shows as soft spots or missing granules that aren't visible from the ground. We do a free documented inspection — photos, measurements, a written summary — and tell you honestly whether the damage is claim-worthy or cosmetic. We do not manufacture damage to drive claims."
+      },
+      {
+       "question": "What does GAF Master Elite actually mean for me as a Garner homeowner?",
+       "answer": "It qualifies us to install GAF's full system warranty, covering both materials and labor for up to 50 years. Fewer than 2% of North American roofing contractors hold this status. For homeowners working with an insurance adjuster, our certification and documentation carry recognized industry weight that a standard installer's paperwork does not."
+      },
+      {
+       "question": "Will you use subcontractors on my job?",
+       "answer": "No. Kingmaker uses its own crew from tear-off through final inspection. The workers on your Garner roof in the morning are the same people who close out the job and sign the warranty documentation. We do not broker work to outside day-labor crews."
+      },
+      {
+       "question": "How long does a full replacement take on a typical Garner ranch?",
+       "answer": "A standard single-story ranch — the kind common near Vandora Springs or Aversboro Road — is typically a one-day job for our crew, debris hauled the same day. If your home has a low-slope addition requiring membrane work, we scope that honestly in the written estimate before any work begins."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "city",
+   "key": "knightdale-nc",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "How do I know if my Knightdale home's roof actually needs replacing versus just repairs?",
+       "answer": "We document every finding with photos during the free inspection — granule loss in gutters, soft spots at valleys, cracked ridge caps, and flashing gaps that let water track under the deck. You get the report whether you hire us or not. In the 2000s-era two-stories common in Widewaters Village and Princeton Manor, we frequently find that original three-tab shingles are at the end of their rated life even when the roof looks intact from the street."
+      },
+      {
+       "question": "Will my insurance claim cover a full replacement if only part of the roof was hit by hail?",
+       "answer": "Wake County adjusters regularly document hail events that push east out of Raleigh into the 27545 zip code. When hail is large enough to bruise shingles — as the ping-pong-size stones documented in recent storms were — insurers typically approve full replacements because patching creates mismatched coverage. We walk every claim with you and provide our own documented inspection to support your file."
+      },
+      {
+       "question": "What does GAF Master Elite status mean for me as a homeowner?",
+       "answer": "Fewer than 2% of roofing contractors in North America earn it. The designation requires verified licensing, insurance, ongoing training, and sustained customer-satisfaction benchmarks. For you it means the manufacturer backs our installs with a system warranty that goes beyond the standard shingle warranty — and that warranty is in writing before we touch your roof."
+      },
+      {
+       "question": "How long does a full replacement take on a typical Knightdale two-story?",
+       "answer": "Most standard-pitch two-stories in Princeton Manor and Glenmere take a single full day with our crew. We leave nothing staged overnight unless weather is genuinely unsafe. Dumpster drops in the morning, final cleanup and magnet sweep for fasteners before we leave."
+      },
+      {
+       "question": "Do you use subcontractors for jobs in Knightdale?",
+       "answer": "No. The crew that starts your roof is the crew that finishes it — Kingmaker's own employees. That is how we enforce quality on the steep-slope sections common in the 2000s-2010s Knightdale builds, and it is the only way we stand behind a written 25-year workmanship warranty with confidence."
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Why Knightdale's 2000s housing wave is reaching its first roof replacement cycle now",
+     "whyLocalParagraphs": [
+      "Knightdale grew faster than almost any town on Raleigh's east side. Subdivisions like Widewaters Village (built 2004-2007), Princeton Manor (built 2004-2016), Rockbridge, and Glenmere filled in along US 64 Business and Hodge Road with vinyl-clad two-story homes on tight timelines — the kind of construction where original three-tab shingles were standard and cost controlled. Those roofs carry 20-25 year rated lifespans. Do the math: the oldest homes in these neighborhoods are now at or past that window, and the remainder are approaching it fast.",
+      "Storm load accelerates the math. Knightdale sits directly in the path of cells that organize west of Raleigh and track northeast along the I-440 / US 264 corridor. The town has been named in National Weather Service severe thunderstorm warnings alongside ping-pong-size hail and 60 mph wind gusts — the kind of event that leaves impact bruising on already-aged shingles that an untrained eye misses from the street. By the time a homeowner notices ceiling stains, the deck may have been taking water for a full season.",
+      "Kingmaker Roofing is 9 miles from Knightdale's center. When a storm comes through, we are already in the neighborhood — not dispatching from a distant market office. Our 24/7 storm line connects to a real person, and our free documented inspection gives you a photo record of every finding, regardless of whether you hire us."
+     ],
+     "atAGlance": [
+      "9 miles from Kingmaker's Raleigh headquarters to central Knightdale",
+      "Over 66% of Knightdale's housing stock built since 2000 — first replacement wave now arriving",
+      "Widewaters Village, Princeton Manor, Rockbridge, Glenmere: primary service neighborhoods",
+      "Storm cells exiting Raleigh track northeast and reach Knightdale first",
+      "GAF Master Elite certified — one of fewer than 2% of contractors in North America",
+      "Written 25-year workmanship warranty, own crews, no subcontractors"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "Free Roof Inspection — Knightdale Homes",
+       "body": "We document condition with photos and a written report — no charge, no obligation. Built for the 2000s-2010s two-story homes in Widewaters Village, Princeton Manor, and surrounding neighborhoods now entering their first replacement window."
+      },
+      {
+       "title": "Storm Damage Assessment — 24/7 Line",
+       "body": "After a hail or wind event in the 27545 zip code, call our storm line any hour. We prioritize same-week inspections for Knightdale addresses and provide a photo report you can submit directly to your insurance adjuster."
+      },
+      {
+       "title": "Full Replacement Estimate — Princeton Manor / Rockbridge Homes",
+       "body": "Steep-pitch and hip-roof profiles common in these Knightdale subdivisions require precise material takeoffs. We price per square with written line items — no verbal estimates, no surprise additions when the crew arrives."
+      },
+      {
+       "title": "Insurance Claim Support",
+       "body": "Knightdale homeowners in subdivisions built 2004-2012 are frequently eligible for full insurance-funded replacements after documented hail events. We provide the inspection report, attend the adjuster walkthrough if needed, and explain every line on your estimate."
+      }
+     ]
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "9",
+       "unit": "miles",
+       "label": "From Kingmaker HQ to central Knightdale"
+      },
+      {
+       "value": "66%+",
+       "unit": "of homes",
+       "label": "Built after 2000 — first replacement cycle now"
+      },
+      {
+       "value": "25",
+       "unit": "year written",
+       "label": "Workmanship warranty on every job"
+      },
+      {
+       "value": "<2%",
+       "unit": "of contractors",
+       "label": "Earn GAF Master Elite status — Kingmaker qualifies"
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Roofing — Knightdale, NC",
+     "heading": "Knightdale's First Roof Replacement Wave Is Here",
+     "subhead": "The subdivisions that filled in along US 64 Business and Hodge Road between 2004 and 2016 — Widewaters Village, Princeton Manor, Rockbridge, Glenmere — built out on standard three-tab shingles now at or near the end of their rated life. Kingmaker Roofing is 9 miles from central Knightdale, GAF Master Elite certified, and carries a written 25-year workmanship warranty. We show you what we find, explain what it means, and let you decide.",
+     "ctaLabel": "Schedule Your Free Inspection",
+     "imageDescription": "Aerial view of a Knightdale NC vinyl-clad two-story neighborhood with mature trees, showing rooflines in various states of wear — some with newer architectural shingles, some with original three-tab showing granule loss — on a partly cloudy afternoon suggesting recent storm passage"
+    }
+   }
+  },
+  {
+   "kind": "city",
+   "key": "morrisville-nc",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "How does a shared-roof HOA claim work — do I file, or does my association?",
+       "answer": "It depends on your HOA's governing documents. Many Morrisville townhome HOAs own the exterior roof envelope and file the master policy claim; individual owners handle interior damage separately. We pull the documentation before we start and walk both the homeowner and the HOA contact through the process so nothing slips between those two policies."
+      },
+      {
+       "question": "Will you work directly with our property management company to schedule the project?",
+       "answer": "Yes. We coordinate directly with property managers and HOA boards — site access, noise windows, staging zones, dumpster placement. For attached communities in Morrisville we typically schedule a pre-project walkthrough with the management contact so neighbors and the HOA have notice and the timeline in writing before the first crew arrives."
+      },
+      {
+       "question": "What wind speeds does the Morrisville area typically see during storm events?",
+       "answer": "Wake County severe weather alerts have included 60 mph wind gusts in recent years, and the open terrain near RDU amplifies that exposure. We install to NC building code wind uplift requirements and use ring-shank nails and sealed decking at every job — not the minimum, the standard we'd use on our own homes."
+      },
+      {
+       "question": "Do you handle roofing for individual townhome units, or only whole-building HOA contracts?",
+       "answer": "Both. If your HOA is replacing the entire building's roof, we bid and manage the full project. If you own a fee-simple townhome and are responsible for your own roof section, we handle that individual scope the same way — documented inspection, written estimate, GAF-backed warranty."
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Morrisville Roofing: HOA Coordination, Airport-Corridor Wind, and Tech-Professional Standards",
+     "whyLocalParagraphs": [
+      "Morrisville is one of the most townhome- and condo-dense towns in the Triangle, shaped by its proximity to Research Triangle Park and RDU. Communities like Breckenridge — built largely between 2001 and 2004, now 20-plus years old — and master-planned neighborhoods like Kitts Creek and Carpenter Village carry a large share of attached housing where rooflines cross property lines and replacement decisions run through HOA boards, not individual owners. That changes every step of a roofing project: who signs the contract, who holds the master policy, who grants site access, and who needs the schedule in writing before work starts. Our crews work this model on a routine basis. We do not show up expecting a single-family handshake.",
+      "The land along Airport Boulevard and the open RTP corridor sits in a wind-exposure zone that catches storm energy before it dissipates into denser residential areas. Wake County has logged severe weather warnings more than 70 times in the past year, and on-the-ground hail reports near Morrisville have confirmed stones in the 1.0-to-1.75-inch range in recent storm cycles. That kind of impact leaves bruising on fiberglass mat that is not visible from the ground — it shows on a drone pass and a close-up shingle inspection. Kingmaker Roofing's inspections are documented with photography and a written findings report, which is what your HOA's insurance adjuster will ask for anyway. We provide it at no charge before any contract conversation begins.",
+      "Morrisville homeowners tend to work in tech, biotech, or professional services — industries where schedules are real, documentation matters, and a vendor who goes quiet mid-project is a hard no. We match that expectation. Every job gets a written scope, a day-by-day production schedule, and a single point of contact on our crew. When the job is done, you receive your GAF-backed 25-year workmanship warranty in writing, not a handshake promise. If you need to produce documentation for an HOA board meeting or an insurance renewal, it exists."
+     ],
+     "atAGlance": [
+      "11 miles from Raleigh HQ — Morrisville is a primary service town",
+      "Breckenridge, Kitts Creek, Carpenter Village, Preston served",
+      "HOA and property management coordination handled directly",
+      "Airport-corridor wind and hail exposure — documented inspections standard",
+      "Free written inspection report before any contract",
+      "GAF Master Elite installer — fewer than 2% of contractors in North America"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "HOA Roof Replacement — Full Building Scope",
+       "body": "Breckenridge and Carpenter Village buildings built in the early 2000s are reaching the end of a 20-year shingle lifespan. We bid full-building replacements, coordinate with your property manager, and deliver a written project schedule your board can present to residents."
+      },
+      {
+       "title": "Post-Storm Inspection — Hail and Wind Documentation",
+       "body": "Wake County storm events have produced confirmed 1.0-to-1.5-inch hail near Morrisville. We provide a drone-assisted, photographed inspection report structured for insurance adjuster review — the documentation your HOA or individual claim actually needs."
+      },
+      {
+       "title": "Individual Townhome Unit — Fee-Simple Repair or Replacement",
+       "body": "If your townhome deed places roof responsibility on you rather than the HOA, we treat your individual scope with the same written estimate, production schedule, and warranty as a full-building project. No minimum job size."
+      },
+      {
+       "title": "Pre-Purchase Roof Assessment — Morrisville Attached Housing",
+       "body": "A 20-year-old townhome in Breckenridge or Preston may have two to five years of life left — or two months. Before closing, a documented Kingmaker inspection gives your agent and lender a clear picture of what's there."
+      }
+     ]
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "11",
+       "unit": "miles from Raleigh HQ",
+       "label": "Morrisville Response Distance"
+      },
+      {
+       "value": "20+",
+       "unit": "years",
+       "label": "Breckenridge-Era Housing Age"
+      },
+      {
+       "value": "72",
+       "unit": "severe weather warnings",
+       "label": "Wake County — past 12 months"
+      },
+      {
+       "value": "25",
+       "unit": "year written warranty",
+       "label": "GAF Workmanship Coverage"
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Roofing in Morrisville, NC",
+     "heading": "HOA Roofs Done Right — Documentation First, No Surprises",
+     "subhead": "Morrisville's dense townhome corridors — from Breckenridge to Carpenter Village to Kitts Creek — require a roofer who understands shared-roof HOA decisions, coordinates with property managers before the first nail goes down, and delivers written documentation your board and insurer can actually use. Kingmaker Roofing has operated 11 miles from RTP since day one. We bring the paperwork, not just the crew.",
+     "ctaLabel": "Request a Free Documented Inspection",
+     "imageDescription": "Aerial view of a Morrisville NC townhome community roofline — craftsman-style attached homes with coordinated shingle runs, mature trees, and a clear storm sky overhead"
+    }
+   }
+  },
+  {
+   "kind": "city",
+   "key": "apex-nc",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "How do I know if my Apex roof has hail damage after a storm?",
+       "answer": "Hail damage on architectural shingles often shows as dark bruise marks or granule loss that is not visible from the ground. After any storm that drops quarter-sized hail — as Wake County saw in April 2025 — the safest step is a documented inspection by a trained eye. We walk your roof, photograph every finding, and hand you the report regardless of whether you proceed with repairs."
+      },
+      {
+       "question": "My Bella Casa home has a steep-pitch roof with a lot of square footage. Does that affect cost?",
+       "answer": "Pitch and total roof area are the two biggest drivers of labor cost. Steeper roofs above Bella Casa's larger footprints take longer to stage and work safely, which affects the quote. We measure everything before we price anything, and we show you the line-item math — no lump sums that hide the roof geometry."
+      },
+      {
+       "question": "The houses near Salem Street are old. Can you work on historic or older homes?",
+       "answer": "Yes. The Craftsman bungalows and early-20th-century houses near Salem Street often have original decking, skip sheathing, or older ventilation configurations we need to account for. We inspect the substrate before quoting and never install new shingles over a deck that won't support them correctly."
+      },
+      {
+       "question": "What does GAF Master Elite status actually mean for me?",
+       "answer": "It means we carry GAF's highest-tier warranty — the Golden Pledge — which covers both the shingles and our workmanship for 25 years, with GAF backing the labor portion directly. Fewer than 2% of roofing contractors in North America qualify. That credential is not a marketing badge; it determines which warranty product we can put on your roof."
+      },
+      {
+       "question": "How fast can you get out to Apex after a storm?",
+       "answer": "We run a 24/7 storm line and Apex sits 15 miles from our Raleigh base. After a significant event we prioritize documented inspections and can typically get to your roof within 24–48 hours. We triage by damage severity, not by whoever calls loudest."
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Apex Roofs Have Two Different Stories — and We Know Both",
+     "whyLocalParagraphs": [
+      "The homes near Salem Street carry a century of Apex history in their bones. The Craftsman bungalows and side-gable houses within a few blocks of the historic downtown core were built when a 240-pound three-tab shingle was the only option on the market. Those roofs are now at or past their service life, and the decking underneath often holds surprises — skip sheathing, undersized rafters, ventilation paths that were never engineered. We have worked on enough of these houses to know that quoting them sight-unseen is a disservice to the homeowner.",
+      "The newer west-side communities tell a different story. Bella Casa's estate-scale homes — built between 2006 and 2016 on lots ranging from a third to over half an acre — carry complex roof geometries: multiple valleys, dormers, steep pitches, and in many cases designer shingle upgrades that are now aged enough to start showing wear. Scotts Mill, built through the late 1990s and early 2000s east of 540, sits in the generation of architectural shingle that took the hardest hits from April 2025's quarter-sized hail. Many of those roofs have bruised granule layers that look fine at ground level but are compromised. A free documented inspection is the honest starting point — not a quote."
+     ],
+     "atAGlance": [
+      "Apex sits 15 miles southwest of our Raleigh base",
+      "Bella Casa homes: built 2006–2016, estate-scale, complex roof geometry",
+      "Scotts Mill: late 1990s–early 2000s architectural shingle stock",
+      "Historic Salem Street corridor: Craftsman bungalows and early-20th-century structures",
+      "April 2025: quarter-sized hail reported across Wake County including Apex",
+      "GAF Master Elite installer — written 25-year workmanship warranty on every job"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "Free Documented Roof Inspection — Apex",
+       "body": "We photograph every finding and leave you a written report whether you hire us or not. Designed for Apex homeowners in Scotts Mill and Bella Casa who want an honest post-storm baseline, not a sales pitch."
+      },
+      {
+       "title": "Architectural-to-Designer Shingle Upgrade Consultation",
+       "body": "Bella Casa's estate-scale footprints and steep pitches are well-suited for premium shingle profiles. We walk you through GAF's designer lines with material samples, show you side-by-side pricing, and let the numbers speak."
+      },
+      {
+       "title": "Historic Home Substrate Assessment",
+       "body": "For homes near Salem Street or Haddon Hall built before 2000, we inspect the decking, ventilation, and underlayment before we quote anything. Older Apex housing stock often has substrate conditions that change the scope of work."
+      },
+      {
+       "title": "24/7 Storm Response — Wake County",
+       "body": "After any severe weather event across the Apex area, call our storm line for priority scheduling. We document damage for insurance purposes with timestamped photos and a written scope — the same report your adjuster will ask for."
+      }
+     ]
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "15",
+       "unit": "miles from Raleigh HQ",
+       "label": "Apex service distance"
+      },
+      {
+       "value": "2006–2016",
+       "unit": "build era",
+       "label": "Bella Casa housing stock"
+      },
+      {
+       "value": "700+",
+       "unit": "homes",
+       "label": "Haddon Hall subdivision alone"
+      },
+      {
+       "value": "Top 2%",
+       "unit": "in North America",
+       "label": "GAF Master Elite qualification tier"
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Roofing — Apex, NC",
+     "heading": "Apex Roofs Deserve More Than a Ground-Level Glance",
+     "subhead": "From the Craftsman bungalows a block off Salem Street to the estate-scale footprints of Bella Casa, Apex carries two generations of roofing history on its skyline. The April 2025 hail events that crossed Wake County left damage on Scotts Mill's 1990s-era architectural shingles that most homeowners cannot see from the driveway. Kingmaker Roofing sends a trained inspector, documents every finding in writing, and gives you that report before you decide anything. No pressure, no lump-sum mystery quotes — just an honest look at what your roof actually needs.",
+     "ctaLabel": "Request a Free Documented Inspection",
+     "imageDescription": "Aerial view of a Apex NC residential neighborhood with architectural shingle rooftops, mature tree canopy, and suburban streets at golden hour"
+    }
+   }
+  },
+  {
+   "kind": "city",
+   "key": "holly-springs-nc",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "My Holly Glen home was built around 2001. Is it due for a full replacement or just repairs?",
+       "answer": "A roof from 2001 is entering its 22nd to 25th year, which is the typical end-of-life window for builder-grade 3-tab shingles installed during the Triangle's construction boom. We document everything — granule loss, deck condition, ridge cap wear, soffit ventilation — so you get a straight answer rather than a sales pitch. Some roofs have years left; others don't."
+      },
+      {
+       "question": "How does a free inspection work, and what do I get from it?",
+       "answer": "We walk the roof, photograph every finding, and hand you a written report before we leave — no verbal summaries, no pressure. If the roof is sound, we tell you. If it needs work, the report shows exactly what and why. You own that document regardless of whether you hire us."
+      },
+      {
+       "question": "Will my insurance cover a storm-damaged roof in Holly Springs?",
+       "answer": "Coverage depends on the cause and your policy. Hail and high-wind events that hit Wake County frequently create valid claims. We document the damage with date-stamped photos and measurements your adjuster needs. We work with your insurer, not around them — no inflated estimates, no signed-over claim schemes."
+      },
+      {
+       "question": "What does a 25-year workmanship warranty actually cover?",
+       "answer": "It covers the installation itself — flashing, valleys, penetrations, ridge, and deck fastening — not just the shingle manufacturer's material warranty. Everything we do is written and transferable if you sell the home. GAF Master Elite status, which fewer than 2% of North American contractors earn, is required to offer this tier of coverage."
+      },
+      {
+       "question": "How quickly can you respond after a storm?",
+       "answer": "We run a 24/7 storm line specifically for Wake County events. After any named storm or severe-weather event tracked through the area, we prioritize documented calls in the order received and can typically reach Holly Springs within one business day for initial inspection."
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Why Holly Springs Roofs Are Hitting a Replacement Threshold All at Once",
+     "whyLocalParagraphs": [
+      "Holly Springs grew faster than almost any town in Wake County between 1998 and 2008. Subdivisions like Holly Glen — which started in 1994 but filled out through the early 2000s with over 1,100 homes — and Sunset Ridge, anchored since the early 1990s with additions built well into the 2000s, were constructed on tight builder timelines. That means the shingles, ridge caps, and soffit ventilation were all spec'd to minimum cost. As these roofs cross the 20-to-25-year mark together, entire neighborhoods are entering the replacement window at the same time — not because one event caused it, but because the original materials were never meant to go further.",
+      "Ventilation is the quiet problem most of these homes share. Builder-grade ridge vents and undersized soffit intake were standard practice for production housing in that era. Inadequate airflow traps summer heat in the attic — in a climate where July and August regularly push above 90 degrees — which accelerates shingle deterioration from the underside up. By the time a homeowner sees curling edges or granule loss in the gutters, the deck may already be compromised. That is the kind of finding our documented inspection is designed to surface before it becomes a water intrusion.",
+      "Holly Springs also sits squarely in Wake County's severe-weather corridor. The area has been under severe weather warnings dozens of times in recent years, and the April 2025 quarter-sized hail event that swept central North Carolina left impact damage across the 27540 zip code. Homes on Avent Ferry Road, GB Alford Highway, and throughout the Braxton Village and Sunset Oaks corridors all took exposure. Hail damage on aging builder-grade shingles is not always visible from the ground — it shows up as bruised mat and cracked granules that an adjuster or storm-line inspection will document."
+     ],
+     "atAGlance": [
+      "17 miles from Raleigh HQ — crew on site same day or next morning",
+      "Holly Glen and Sunset Ridge: 1,100-plus homes from the early-2000s build wave",
+      "Builder-grade shingles on these roofs are now 20-25 years old",
+      "Braxton Village and Sunset Oaks also in peak replacement window",
+      "Wake County severe-weather warnings: 88 in the past 12 months",
+      "GAF Master Elite installation — written 25-year workmanship warranty"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "Document My 2000s-Era Roof Before It Fails",
+       "body": "Holly Glen and Sunset Ridge homes built between 1999 and 2007 are at or past the typical service life for builder-grade shingles. We photograph every section, measure granule loss, and check the soffit ventilation — a written report, no charge."
+      },
+      {
+       "title": "Storm Damage Inspection After the April 2025 Hail",
+       "body": "Quarter-sized hail swept Wake County in April 2025. Impact damage on aging shingles is often invisible from the ground but shows clearly in our close-range photos. We document it in the format insurance adjusters actually use."
+      },
+      {
+       "title": "Ventilation Audit for Builder-Grade Attic Systems",
+       "body": "Production homes built during the Holly Springs boom era routinely have undersized soffit intake and minimal ridge exhaust. A ventilation shortfall quietly degrades shingles from below — we measure intake-to-exhaust ratios and show you where the gap is."
+      },
+      {
+       "title": "Full Replacement With a Written 25-Year Warranty",
+       "body": "When an inspection confirms end-of-life, we provide a fixed-price scope before any work begins. GAF Master Elite status means we can back that scope with a 25-year written workmanship warranty — transferable if you sell the home."
+      }
+     ]
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "17",
+       "unit": "miles",
+       "label": "From Raleigh HQ to Holly Springs"
+      },
+      {
+       "value": "1,100+",
+       "unit": "homes",
+       "label": "Holly Glen subdivision alone"
+      },
+      {
+       "value": "20–25",
+       "unit": "years",
+       "label": "Age of 2000s-era builder roofs"
+      },
+      {
+       "value": "88",
+       "unit": "severe weather warnings",
+       "label": "Wake County in the past 12 months"
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Holly Springs, NC · 27540",
+     "heading": "Your Roof and 1,000 Neighbors' Roofs Were All Built the Same Year",
+     "subhead": "Holly Glen, Sunset Ridge, Braxton Village — these subdivisions were built out between 1998 and 2007 on the same builder timelines, with the same spec-grade shingles and the same undersized attic ventilation. Those roofs are now 20 to 25 years old. Kingmaker Roofing provides free documented inspections, written pricing, and a 25-year workmanship warranty — 17 miles from our Raleigh office, with a 24/7 storm line for Wake County events.",
+     "ctaLabel": "Book a Free Documented Inspection",
+     "imageDescription": "Aerial view of a Holly Springs NC subdivision — uniform rooflines of homes built in the early 2000s, mature trees lining cul-de-sacs, late afternoon light"
+    }
+   }
+  },
+  {
+   "kind": "city",
+   "key": "clayton-nc",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "Can you handle both the newer Flowers Plantation homes and the older farmhouses out on the county roads?",
+       "answer": "Yes. Our crews work both ends of Johnston County's housing spectrum regularly — GAF architectural shingles on 2015-era construction in Flowers Plantation and standing-seam or exposed-fastener metal panels on older agricultural properties. Different materials, same documented inspection and written warranty on every job."
+      },
+      {
+       "question": "Why is metal roofing so common out here compared to closer-in suburbs?",
+       "answer": "Johnston County's mix of agricultural parcels and larger residential lots makes metal a practical choice: longer lifespan, lower maintenance across a bigger footprint, and a track record on farm structures that local homeowners have watched hold up for decades. We install and warrant both metal and asphalt, so we give you an honest comparison rather than defaulting to one material."
+      },
+      {
+       "question": "How quickly can you get to Clayton after a storm?",
+       "answer": "Our 24/7 storm line dispatches from Raleigh. Clayton sits 16 miles out, and we keep crew schedules that account for Johnston County calls alongside our Wake County volume. We will give you a realistic arrival window when you call — not a vague promise."
+      },
+      {
+       "question": "What does your free inspection actually cover?",
+       "answer": "A documented, photo-backed assessment of every roof plane — field shingles, ridge, valleys, flashing at chimneys and dormers, soffit and fascia condition, and any hail or wind bruising. You get the written report regardless of whether you hire us, so you have something real to show your insurance adjuster."
+      }
+     ]
+    },
+    "locationBrief": {
+     "whyLocalHeading": "Johnston County's growth edge calls for a different kind of roofing contractor",
+     "whyLocalParagraphs": [
+      "Clayton sits at the seam between Wake County's suburban density and Johnston County's agricultural past. Drive five minutes east of the Flowers Plantation entrance on NC-42 and the streetscape shifts from new-construction subdivisions to tobacco-era farmhouses and outbuildings with standing-seam metal roofs that have been up for thirty or forty years. That mix shapes what homeowners here actually need from a roofer: someone who can assess a 2016 GAF architectural shingle on a Flowers Plantation home the same afternoon they quote a metal re-roof on a working farm parcel a few miles down Buffalo Road.",
+      "Metal roofing acceptance in Clayton runs meaningfully higher than it does closer to I-440. Homeowners here have grown up watching corrugated and standing-seam panels outlast asphalt on barns and outbuildings, and that observation translates into residential purchasing decisions. Kingmaker installs and warranties both systems, and we give every Clayton customer a side-by-side cost-and-longevity comparison so the choice is grounded in numbers, not habit.",
+      "The August 2024 severe thunderstorm that pushed trees onto I-40 and I-95 near the Johnston County line was a reminder that this corridor takes meaningful wind loads. The area has logged more than 100 severe weather warnings in a rolling 12-month period. Glen Laurel's custom homes along the Neuse River, the townhome clusters inside Riverwood Athletic Club, and the newer Crossings at Flowers Plantation phases all carry roofs exposed to the same storm track — and all of them benefit from an inspection before they need one."
+     ],
+     "atAGlance": [
+      "16 miles from Raleigh HQ via US-70",
+      "Serves Flowers Plantation, Glen Laurel, Riverwood Athletic Club, Portofino, Tuscany, and surrounding county roads",
+      "Metal and asphalt installs — both warranted in writing",
+      "Johnston County's agricultural housing stock a regular part of the workload",
+      "GAF Master Elite status — fewer than 2% of North American roofing contractors qualify",
+      "24/7 storm line, free documented inspection"
+     ]
+    },
+    "locationRequests": {
+     "requests": [
+      {
+       "title": "Metal Roof Assessment",
+       "body": "Clayton's mix of residential and agricultural properties means metal is on the table more often than in most markets. We assess your existing panels or quote a new standing-seam or exposed-fastener system and show you the numbers against asphalt before you decide."
+      },
+      {
+       "title": "Post-Storm Inspection — Wind and Hail",
+       "body": "Johnston County's I-40 corridor took documented wind damage in August 2024. If your home is in Flowers Plantation, Glen Laurel, or anywhere along the NC-42 or US-70 corridors, a documented photo inspection gives you real leverage with your insurance carrier."
+      },
+      {
+       "title": "Flowers Plantation New-Construction Warranty Review",
+       "body": "Homes built in the Crossings, Copper Ridge, and other Flowers Plantation phases between 2015 and 2023 are approaching the window where builder-installed roofs benefit from a baseline inspection. We document current condition so you have a record before any warranty period lapses."
+      },
+      {
+       "title": "Farm Property Re-Roof",
+       "body": "Working parcels and older homesteads east of Clayton proper often carry aging metal or three-tab asphalt that has outlived its rated lifespan. We quote both replacement systems and provide the same written workmanship warranty we issue on every residential job."
+      }
+     ]
+    },
+    "locationStats": {
+     "stats": [
+      {
+       "value": "16",
+       "unit": "miles from Raleigh HQ",
+       "label": "Drive distance to Clayton"
+      },
+      {
+       "value": "100+",
+       "unit": "severe weather warnings",
+       "label": "Johnston County — rolling 12 months"
+      },
+      {
+       "value": "3,000",
+       "unit": "acres",
+       "label": "Flowers Plantation planned community"
+      },
+      {
+       "value": "25",
+       "unit": "year written warranty",
+       "label": "Kingmaker workmanship guarantee"
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Roofing — Clayton, NC",
+     "heading": "Clayton's Roofing Contractor for Farm Country and Planned Communities Both",
+     "subhead": "Johnston County's housing stock runs the full range: brand-new townhomes inside Flowers Plantation's Crossings neighborhoods, custom homes backing up to the Neuse River in Glen Laurel, and working-farm parcels on county roads where standing-seam metal has been the standard for generations. Kingmaker Roofing works across that whole range — GAF Master Elite-certified, with a written 25-year workmanship warranty and free documented inspections on every property we assess.",
+     "ctaLabel": "Schedule a Free Clayton Inspection",
+     "imageDescription": "Wide aerial view of Clayton NC rooftops with a mix of new subdivision homes and older farmland visible in the background, Johnston County landscape, clear sky after storm clearing"
+    }
+   }
+  },
+  {
+   "kind": "brand",
+   "key": "gaf",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "GAF Master Elite Certified Roofing Contractor",
+     "heading": "The Certification Most Roofers Will Never Earn",
+     "subhead": "Kingmaker Roofing is one of fewer than 2% of roofing contractors in North America to earn GAF Master Elite® status — which means we can offer homeowners a 25-year workmanship warranty backed by the largest roofing manufacturer in North America.",
+     "ctaLabel": "Get a Free Roof Inspection",
+     "imageDescription": "Aerial view of a newly completed GAF Timberline HDZ roof on a two-story colonial home in Raleigh NC, showing clean hip-and-ridge lines, uniform shingle alignment, and a full GAF accessory system including ridge cap and starter strips"
+    },
+    "brandFacts": {
+     "certificationLine": "One of fewer than 2% of roofing contractors in North America to earn GAF Master Elite® status.",
+     "warrantyLine": "Golden Pledge Limited Warranty: 50-year non-prorated material coverage + 25-year workmanship coverage (30 years on Timberline UHDZ on single-family residences). No dollar limit on covered claims. Includes tear-off and disposal. Transferable once — full remaining coverage transfers if sold within the first 20 years.",
+     "productLines": [
+      {
+       "name": "Timberline HDZ",
+       "pitch": "GAF's best-selling shingle in North America. LayerLock technology bonds two shingle courses into a monolithic holding layer, qualifying it for the WindProven unlimited wind warranty — the only wind warranty in the industry with no maximum wind speed. Includes a 25-year StainGuard Plus algae warranty."
+      },
+      {
+       "name": "Timberline UHDZ",
+       "pitch": "The step-up option for homeowners who want the longest coverage terms. Ten percent more Time-Release Algae-Fighting Technology than HDZ, a 30-year StainGuard Plus Pro algae warranty, and Golden Pledge workmanship extended to 30 years on single-family residences. Also qualifies for WindProven unlimited wind coverage."
+      },
+      {
+       "name": "Grand Sequoia AS",
+       "pitch": "An oversized designer shingle — 17 by 40 inches, up to 50% heavier than standard architectural shingles — that mimics hand-split cedar shake. The AS variant carries UL 2218 Class 4 impact resistance, the highest available rating, plus 130 mph wind certification with GAF Starter Strip Shingles and proper nailing. Built for homes where appearance and storm performance both matter."
+      }
+     ]
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "What does GAF Master Elite actually require — is it something any roofer can sign up for?",
+       "answer": "No. GAF controls admission directly. To qualify, a contractor must hold a valid state roofing license, carry a minimum of $1 million in general liability plus workers' compensation, have been in business at least 7 years, maintain a satisfactory BBB standing, pass GAF-administered training and annual testing, and meet ongoing installation volume thresholds. GAF also runs a credit check. Contractors cannot self-apply — GAF decides who earns the designation. That screening process is why fewer than 2% of North American roofers ever reach this tier."
+      },
+      {
+       "question": "What is the Golden Pledge warranty, and why can't my neighbor's roofer offer it?",
+       "answer": "The Golden Pledge is GAF's top-tier warranty and is only available through Master Elite contractors — no lower certification tier can register one. It covers 50 years of materials on a non-prorated basis plus 25 years of workmanship (or 30 years on Timberline UHDZ for single-family homes), with no dollar cap on covered claims and no depreciation applied to valid claims. It also covers tear-off and disposal costs if a covered failure occurs. To qualify, the project must include one GAF shingle plus one product from each of five accessory categories: Leak Barrier, Roof Deck Protection, Starter Strip Shingles, Attic Ventilation, and Hip and Ridge Cap Shingles. An uncredentialed roofer who installs GAF shingles without Master Elite status cannot register a Golden Pledge — the warranty simply is not available to them."
+      },
+      {
+       "question": "What is the WindProven warranty and which shingles qualify?",
+       "answer": "WindProven is an industry-first limited wind warranty with no maximum wind speed limitation — the only warranty of its kind. It covers the shingles only (not the full accessory system) for 15 years. To qualify, the installation must use LayerLock-labeled shingles — Timberline HDZ and Timberline UHDZ both qualify — plus four specific GAF accessories: Starter Strip Shingles, Roof Deck Protection, Ridge Cap Shingles, and either a Leak Barrier or Attic Ventilation product. LayerLock works by passing nails through two shingle courses so the asphalt-to-asphalt bond cures into a single holding layer, rather than relying on adhesive strips alone."
+      },
+      {
+       "question": "If I sell my home, does the Golden Pledge warranty transfer to the buyer?",
+       "answer": "Yes, once, with an important condition tied to timing. If the transfer happens within the first 20 years of the installation date, the new owner receives the full remaining coverage with no reduction in terms. If the transfer happens after the 20-year mark, coverage is reduced to a 2-year prorated period. This is worth knowing for anyone buying an older home with an existing Golden Pledge — the age of the installation determines what the buyer actually receives, not the remaining calendar years on the original term."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "brand",
+   "key": "owens-corning",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "Owens Corning Platinum Preferred Contractor",
+     "heading": "A Manufacturer-Backed Warranty That Outlasts Any Contractor",
+     "subhead": "Platinum Preferred Contractors represent less than 1% of the industry — the only tier qualified to register the Platinum Protection Roofing System Limited Warranty, backed directly by Owens Corning.",
+     "ctaLabel": "Get a Free Roof Inspection",
+     "imageDescription": "Raleigh NC craftsman home with a freshly installed Owens Corning Duration shingle roof, warm afternoon light, crew visible on the peak — photographed from the street to show full roof geometry"
+    },
+    "brandFacts": {
+     "certificationLine": "Platinum Preferred Contractors represent less than 1% of the industry and are the only contractors who can offer the Platinum Protection Roofing System Limited Warranty.",
+     "warrantyLine": "Platinum Protection Limited Warranty: 50-year material coverage + 25-year non-prorated workmanship coverage, backed directly by Owens Corning — not the local contractor. If we ever go out of business, Owens Corning still honors the workmanship warranty.",
+     "productLines": [
+      {
+       "name": "TruDefinition Duration",
+       "pitch": "The standard-bearer in the OC line. SureNail Technology embeds a woven-fabric strip in the nailing zone, creating a target 10 times wider than a standard nail line and up to 2.5x greater nail pull-through resistance. Wind warranty: 130 mph. Class 3 impact. Class A fire."
+      },
+      {
+       "name": "Duration FLEX",
+       "pitch": "Class 4 impact rating — the highest under UL 2218 — achieved through SBS polymer-modified asphalt paired with SureNail fastening. Designed for NC's hail season. Same 130 mph wind warranty as standard Duration, with the added resilience of a rubberized asphalt matrix."
+      },
+      {
+       "name": "Duration STORM",
+       "pitch": "Also Class 4 rated, but via a separate technology: patented WeatherGuard rather than SBS modification. Two distinct engineering paths to the same top impact rating — ask us which fits your roof geometry, budget, and insurance situation."
+      }
+     ]
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "What does Owens Corning Platinum Preferred actually mean for my warranty?",
+       "answer": "It means Owens Corning — not just Kingmaker Roofing — stands behind the workmanship for 25 years. If a leak traces back to how the roof was installed, OC covers the labor, tear-off, and disposal, even if our company no longer exists. Preferred and entry-level contractors can only offer shorter workmanship periods that depend entirely on the local contractor staying in business."
+      },
+      {
+       "question": "What do I lose if I sell the house before the 25 years are up?",
+       "answer": "The Platinum Protection warranty transfers once to the first subsequent buyer, but it must be completed within 60 days of closing with the required documentation and fee. The workmanship terms are reduced for the new owner — we will not market it as a full lifetime workmanship pass. The accurate framing is this: a registered, transferable manufacturer warranty adds documented value to a home sale and reduces buyer risk perception."
+      },
+      {
+       "question": "What makes Duration FLEX different from Duration STORM if both are Class 4?",
+       "answer": "They reach the same Class 4 UL 2218 impact rating by different means. FLEX uses SBS polymer-modified asphalt — a rubberized compound that flexes on impact rather than cracking. STORM uses Owens Corning's patented WeatherGuard Technology. Both carry a 130 mph wind warranty. The right choice depends on your roof's pitch, your insurer's product preferences, and your budget — we walk through both options before any contract is signed."
+      },
+      {
+       "question": "Do I have to use an all-Owens Corning system to get the Platinum Protection warranty?",
+       "answer": "Yes. The Platinum Protection warranty requires a complete Owens Corning roofing system: qualifying shingles plus OC starter strips, underlayment, hip-and-ridge, and ventilation products. Installing competing components can void the coverage. This is not a marketing decision — it is a warranty condition stated in OC's documentation. We specify the full system on every Platinum Protection job and review the scope with you before installation begins."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "brand",
+   "key": "certainteed",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "CertainTeed SELECT ShingleMaster",
+     "heading": "The Warranty That Covers Your Roof — and the People Who Built It",
+     "subhead": "CertainTeed's highest contractor designation — SELECT ShingleMaster™ — requiring at least 5 years in business, a crew majority of certified Master Shingle Applicators, and the company owner passing CertainTeed's Business Fiscal Responsibility exam.",
+     "ctaLabel": "Get Your Free Estimate",
+     "imageDescription": "A steep-slope Raleigh home with a freshly installed CertainTeed Grand Manor roof, photographed in soft overcast light that shows the dimensional shadow lines and slate-like texture — crew equipment visible in the driveway, communicating an active, owner-operated job site"
+    },
+    "brandFacts": {
+     "certificationLine": "CertainTeed's highest contractor designation — SELECT ShingleMaster™ — requiring at least 5 years in business, a crew majority of certified Master Shingle Applicators, and the company owner passing CertainTeed's Business Fiscal Responsibility exam.",
+     "warrantyLine": "SureStart PLUS 5-Star Warranty: 50-year non-prorated material coverage and 25 years of workmanship coverage — both backed directly by CertainTeed, not just the installing contractor. Transferable once to the first subsequent owner within 10 years of installation.",
+     "productLines": [
+      {
+       "name": "Landmark",
+       "pitch": "The workhorse of the CertainTeed line — 227 lb per square, Class A fire rating, 25-year StreakFighter algae warranty, and a standard wind rating upgradeable to 160 mph. The right starting point for most Raleigh homes."
+      },
+      {
+       "name": "Landmark PRO",
+       "pitch": "Heavier laminate at 270 lb per square, a 30-year algae warranty, and a 15-year SureStart non-prorated protection period — a meaningful durability step up from the base Landmark without moving into luxury pricing."
+      },
+      {
+       "name": "Grand Manor",
+       "pitch": "CertainTeed's premium slate-profile shingle at 420+ lb per square: Class 4 impact resistance (the highest UL 2218 rating), 130 mph wind certification, and 25 years of labor protection from certified installers — built for homeowners who want the best and want it documented in writing."
+      }
+     ]
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "What makes a SELECT ShingleMaster different from any other CertainTeed installer?",
+       "answer": "SELECT ShingleMaster is CertainTeed's highest residential credential — there is no tier above it. To hold the designation, a company must have been in business at least five years, employ a crew where the majority of shingle installers hold the individual Master Craftsman credential, keep a Shingle Quality Specialist on staff, and have the company owner pass CertainTeed's Business Fiscal Responsibility exam. CertainTeed also performs random job-site inspections on completed projects and requires a minimum 4.0 out of 5.0 customer satisfaction score based on surveys CertainTeed conducts after every install — not scores the contractor self-reports. That combination of crew credentials, owner accountability, and third-party auditing is what separates this designation from a basic certified tier."
+      },
+      {
+       "question": "What warranty does a SELECT ShingleMaster unlock that other roofers cannot offer?",
+       "answer": "Only a SELECT ShingleMaster can register the SureStart PLUS 5-Star Warranty with CertainTeed. It covers 50 years of materials and 25 years of workmanship — and both coverages are backed directly by CertainTeed, not just by Kingmaker Roofing. That distinction matters: if a contractor closes in Year 8, a standard contractor-backed warranty closes with them. The 5-Star warranty does not. It also covers 100% of material costs, labor, disposal, and tear-off during the non-prorated period, and it requires a complete CertainTeed Integrity Roof System — qualifying shingles plus CertainTeed starter strips and hip/ridge products. You cannot get this warranty from a roofer who simply orders CertainTeed shingles; the full system and the installer credential both have to be in place."
+      },
+      {
+       "question": "Can the CertainTeed warranty transfer to a new owner if I sell my home?",
+       "answer": "Yes, once. The SureStart PLUS 5-Star Warranty transfers to the first subsequent owner, provided the transfer is completed within 10 years of the original installation date. If you are evaluating a home purchase and the seller has a CertainTeed 5-Star warranty installed by a SELECT ShingleMaster, that coverage can move with the home — adding a documented, manufacturer-backed protection layer to the transaction."
+      },
+      {
+       "question": "Which CertainTeed shingle is right for my home after a hail storm?",
+       "answer": "For Raleigh-area homeowners replacing a roof after hail damage, the Grand Manor is worth a serious look. It carries a Class 4 impact rating under UL 2218 — the highest available — along with a 130 mph wind certification. In eligible states with participating insurers, Class 4 shingles may qualify for a premium discount; check with your carrier before selecting a product. If budget is the primary constraint, the Landmark and Landmark PRO both carry standard wind upgrades and the full 5-Star warranty protection when installed as part of the Integrity Roof System — you are not giving up the manufacturer-backed workmanship coverage by choosing the base line."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "brand",
+   "key": "malarkey",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "Malarkey Emerald Premium Certified Contractor",
+     "heading": "A Roof Built to Last — From the Ground Up",
+     "subhead": "A Malarkey Emerald Premium Certified Contractor — vetted by the manufacturer on experience, licensing, and installation standards, and qualified to offer a 25-year workmanship warranty.",
+     "ctaLabel": "Get a Free Roof Inspection",
+     "imageDescription": "Wide-angle view of a completed Malarkey Vista AR shingle install on a Raleigh NC residential home, late-afternoon light, rich color variation across the roof deck, clean ridge line, no people in frame"
+    },
+    "brandFacts": {
+     "certificationLine": "A Malarkey Emerald Premium Certified Contractor — vetted by the manufacturer on experience, licensing, and installation standards, and qualified to offer a 25-year workmanship warranty.",
+     "warrantyLine": "Emerald Premium Warranty: 25-year workmanship coverage with a Right Start non-depreciating period — requires a complete Malarkey Secure Choice system (shingles plus at least four qualifying accessories). The workmanship warranty is only available through an Emerald Premium certified installer.",
+     "productLines": [
+      {
+       "name": "Vista AR",
+       "pitch": "Class 4 impact-rated and IBHS FORTIFIED Roof eligible. Three laminate bonds, two rain seals, and a 130 mph wind warranty with Secure Choice accessories — built to the same standard insurance companies use to qualify hail-zone premium discounts."
+      },
+      {
+       "name": "Legacy",
+       "pitch": "Thicker and heavier than Vista, tested to withstand simulated 2-inch hailstones without splitting. Class 4 impact rated, IBHS FORTIFIED Roof eligible, and wind-warranted to 130 mph — the right call when the threat level is higher."
+      },
+      {
+       "name": "Windsor",
+       "pitch": "A slate-profile luxury shingle made with Flexor polymer-modified asphalt. Class 4 impact rating, Scotchgard black-streak protection, and Class A fire resistance — architectural character without the weight or fragility of real slate."
+      }
+     ]
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "What does Emerald Premium certification actually mean for my roof?",
+       "answer": "Emerald Premium is Malarkey's upper certification tier, requiring a minimum of five years of documented installation experience, active state licensing and insurance, and completion of Malarkey's product and installation training. The practical difference: only an Emerald Premium certified contractor can register the Emerald Premium Warranty on your behalf — which includes the 25-year workmanship coverage and the Right Start non-depreciating period. An uncredentialed installer cannot offer this warranty regardless of which shingles they put on your roof."
+      },
+      {
+       "question": "What is the Right Start period and why does it matter?",
+       "answer": "The Right Start period is the portion of the Malarkey warranty during which your shingles do not depreciate in coverage value. If a covered issue appears early in the roof's life — when most installation-related problems surface — you receive full coverage, not a prorated fraction. After the Right Start period ends, standard warranty depreciation applies. The Emerald Premium system's Right Start terms apply only when a complete Malarkey Secure Choice system (shingles plus at least four qualifying accessories) is installed."
+      },
+      {
+       "question": "What makes Malarkey shingles different from standard asphalt?",
+       "answer": "Malarkey's NEX polymer-modified asphalt — used across the Vista and Legacy lines — is produced with a rubber compound that delivers 30% greater strength and 65% greater granule adhesion compared to standard oxidized asphalt. That same chemistry incorporates approximately five post-consumer rubber tires and approximately 3,200 plastic bags per roof, diverting them from landfill. GreenCircle, an independent third-party certifier, verifies these sustainability claims. The shingles also carry 3M-supplied photocatalytic granules that convert nitrogen oxides into harmless water-soluble nitrates, with roughly the air-cleaning equivalent of two trees per roof."
+      },
+      {
+       "question": "Does a Class 4 impact rating mean the shingles are covered if hail damages them?",
+       "answer": "No — and this is an important distinction. Class 4 under UL 2218 is a laboratory test result: a 2-inch steel ball is dropped from a set height and the shingle must show no cracking or splitting. It confirms how the material performs under controlled conditions, not what Malarkey's warranty covers. Hail damage is a weather event, not a manufacturing defect. Malarkey's limited warranty does not automatically cover hail damage. What the Class 4 rating does do: it qualifies these shingles for insurance premium discounts in many states and satisfies IBHS FORTIFIED Roof requirements — which can meaningfully reduce your insurance costs over time."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "brand",
+   "key": "iko",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "IKO ROOFPRO Craftsman Premier",
+     "heading": "IKO Roofing — Engineered to Hold",
+     "subhead": "An IKO ROOFPRO Craftsman Premier contractor — IKO's top certified tier — qualified to offer the Iron Clad Extended Protection Limited Warranty.",
+     "ctaLabel": "Schedule a Free Roof Assessment",
+     "imageDescription": "Close-up of IKO Dynasty shingles installed on a steep-slope Raleigh home roof, showing the ArmourZone nailing band and dimensional shadow lines; late-afternoon light; clean soffits and gutters visible in the lower frame."
+    },
+    "brandFacts": {
+     "certificationLine": "An IKO ROOFPRO Craftsman Premier contractor — IKO's top certified tier — qualified to offer the Iron Clad Extended Protection Limited Warranty.",
+     "warrantyLine": "Iron Clad Extended Protection Limited Warranty — up to 25 years depending on shingle type, applied for separately through IKO, and available only through Select or Craftsman Premier certified contractors.",
+     "productLines": [
+      {
+       "name": "IKO Dynasty",
+       "pitch": "A workhorse architectural shingle with ArmourZone — a 1-1/4\"-wide reinforced nailing surface with a woven tear-resistant band. Every nail lands in the engineered zone, reducing nail pull-through and shingle blow-off. 130 mph wind warranty, Class 3 impact rating, oversized 40-7/8\" profile."
+      },
+      {
+       "name": "IKO Nordic",
+       "pitch": "IKO's Class 4 impact-rated shingle — the highest rating under UL 2218 — with the same ArmourZone nailing precision and 130 mph wind warranty as Dynasty. Built for hail-belt zip codes where insurers recognize the Class 4 standard for potential premium discounts."
+      }
+     ]
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "What does ROOFPRO Craftsman Premier certification actually require?",
+       "answer": "IKO's ROOFPRO program has three tiers: Preferred, Select, and Craftsman Premier at the top. Craftsman Premier status requires meeting IKO's licensing, insurance, and installation training standards, along with sustained installation volume that qualifies the contractor for the highest level of manufacturer support and warranty access. The Iron Clad Extended Protection warranty — up to 25 years — is available only through Select and Craftsman Premier contractors. A roofer without this certification cannot register it for you."
+      },
+      {
+       "question": "Does IKO's Class 4 impact rating mean my roof is covered for hail damage?",
+       "answer": "No, and this distinction matters. Class 4 is a laboratory test rating under UL 2218 — it measures how the shingle performs when a steel ball is dropped on it under controlled conditions. IKO's published limited warranty explicitly excludes hail damage regardless of the shingle's impact rating. What the Class 4 rating does provide: eligibility for insurance premium discounts in states and with insurers that recognize the UL 2218 standard. If hail coverage is your goal, that conversation belongs with your insurance agent, not your roofer."
+      },
+      {
+       "question": "How is ArmourZone different from a standard architectural shingle nailing zone?",
+       "answer": "A standard architectural shingle has a narrow nailing area — miss it and you risk a \"high nail,\" which reduces the shingle's holding strength. ArmourZone is a 1-1/4\"-wide reinforced band with a woven tear-resistant backing built directly into the shingle. The wider target reduces installation error, and the woven band resists the pull-through force that causes blow-offs in high-wind events. The 130 mph wind warranty IKO backs on Dynasty and Nordic reflects this engineering — the shingle is designed to hold even when installation isn't perfect."
+      },
+      {
+       "question": "Do I need to do anything after installation to get the Iron Clad warranty?",
+       "answer": "Yes. The Iron Clad Extended Protection Limited Warranty does not automatically activate at the end of a project — it must be applied for separately through IKO after installation is complete. As a ROOFPRO Craftsman Premier contractor, we handle that application on your behalf. There is a $75 processing fee in the US, which is waived for Cambridge and Cambridge Cool Colors shingles. Your warranty documentation is issued by IKO and covers the specific shingle type installed on your home."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "brand",
+   "key": "atlas",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "Atlas AtlasPRO+ Diamond Certified",
+     "heading": "Roofing Built for the Long Haul — Backed by Atlas, Verified by Performance",
+     "subhead": "An Atlas AtlasPRO+ Diamond contractor — Atlas's highest certified tier, requiring three consecutive years of sustained high-volume performance and hundreds of verified Signature Select system installations.",
+     "ctaLabel": "Request a Free Roof Inspection",
+     "imageDescription": "Wide-angle photo of a completed Pinnacle Pristine HP42 roof on a two-story colonial home in a Raleigh-area neighborhood — overcast sky, slight patina on the gutters suggesting an older home now freshly roofed, surrounding mature oak canopy"
+    },
+    "brandFacts": {
+     "certificationLine": "An Atlas AtlasPRO+ Diamond contractor — Atlas's highest certified tier, requiring three consecutive years of sustained high-volume performance and hundreds of verified Signature Select system installations.",
+     "warrantyLine": "Diamond-tier contractors can register the Signature Select PRO and Signature Select PRO 50 warranties — extended coverage up to 50 years — available only when Atlas shingles are installed alongside at least three qualifying Atlas accessories as a complete Signature Select system.",
+     "productLines": [
+      {
+       "name": "Pinnacle Pristine HP42",
+       "pitch": "Atlas's flagship architectural shingle in a wider 42-inch format that reduces penetration points and installation time. Ships with 3M Scotchgard Protector — copper-ceramic granules that slowly release ions over the shingle's lifetime to resist algae streaking, backed by Atlas's Lifetime Algae Resistance Warranty. 130 mph wind rating. Class 3 impact (UL 2218). Sweet Spot nailing zone clearly marked at 1.5 inches wide."
+      },
+      {
+       "name": "Signature Select System",
+       "pitch": "Not a shingle — the full accessory system that unlocks extended warranty coverage. Requires Pinnacle Pristine HP42 shingles plus at least three qualifying Atlas accessories (starter strips, underlayment, hip-and-ridge, ventilation). Only a Diamond-tier contractor can register the Signature Select PRO 50 warranty at installation — an uncredentialed installer cannot offer this coverage regardless of the products used."
+      }
+     ]
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "What does the AtlasPRO+ Diamond designation actually mean for my roof?",
+       "answer": "Diamond is the top tier in Atlas's contractor certification program. Reaching it requires three consecutive years at the Platinum level and a documented history of hundreds of Signature Select system installations — it is a volume-and-consistency credential, not a one-time test. That track record matters because the extended Signature Select PRO 50 warranty Atlas backs requires that the full accessory system was installed correctly, every time. A contractor with one or two Atlas jobs on record cannot credibly offer that coverage."
+      },
+      {
+       "question": "What warranty can I get on an Atlas roof that I couldn't get from an uncredentialed roofer?",
+       "answer": "The Signature Select PRO and Signature Select PRO 50 warranties — offering coverage terms up to 50 years — are only registerable by an AtlasPRO+ certified contractor who installs the complete Signature Select system (qualifying shingles plus at least three Atlas accessories). A roofer who simply buys Atlas shingles at a lumber yard and installs them cannot register this warranty on your behalf. The extended non-prorated period and workmanship coverage only activate when the full system is in place and the installing contractor holds current certification."
+      },
+      {
+       "question": "Does the Pinnacle Pristine HP42 have Class 4 impact resistance?",
+       "answer": "No. The Pinnacle Pristine HP42 carries a Class 3 impact rating under UL 2218 — that is a meaningful and durable product, but it is not the same as Class 4. If your primary concern is hail (a reasonable concern in central NC), we will walk you through the tradeoffs between the HP42 and other product lines before you decide. We will not oversell a rating the product does not carry."
+      },
+      {
+       "question": "What is 3M Scotchgard Protector and why does it matter in Raleigh's climate?",
+       "answer": "Scotchgard Protector is a licensed 3M technology — copper-containing granules coated with a porous ceramic that slowly releases copper ions over time. Those ions inhibit the algae (Gloeocapsa magma) responsible for the black streaking common on roofs in humid climates like central North Carolina. Atlas backs this with a Lifetime Algae Resistance Warranty. It is baked into the granule during manufacturing, not sprayed on after — so it does not wash off or require re-application over the roof's life."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "service",
+   "key": "metal-roofing",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "How long does a metal roof actually last?",
+       "answer": "Standing-seam metal roofs routinely last 40 to 70 years with no major intervention beyond periodic inspections. That lifespan outlasts two or three asphalt roof cycles on the same house. The key variable is fastener design: concealed-fastener standing seam eliminates the main failure mode (exposed gasketed screws that degrade in UV and thermal cycling), while exposed-fastener panels are less expensive upfront but require periodic re-fastening over their life."
+      },
+      {
+       "question": "What is the difference between standing-seam and exposed-fastener metal?",
+       "answer": "Standing-seam panels interlock at raised seams and attach to the deck with hidden clips — no screw penetrates the weather surface. Rain, wind, and UV have no path to a fastener or gasket. Exposed-fastener panels use screws driven directly through the face of the panel; the neoprene gaskets under each screw head are the long-term vulnerability. Standing seam is the right choice for a primary residence. Exposed-fastener panels are appropriate for outbuildings, barns, and commercial utility structures where budget matters more than longevity."
+      },
+      {
+       "question": "When does metal roofing make economic sense over asphalt?",
+       "answer": "Metal earns its premium when you plan to stay in the home long-term, when your current roof is in its second or third replacement cycle, or when local hail and wind exposure makes a one-time investment in a tougher material worth more than the price of repeated asphalt replacements. The installed cost of standing-seam steel runs $10 to $16 per square foot; architectural asphalt runs $4 to $6. On a 2,000-square-foot home that gap is real — but a metal roof that lasts 50 years against two or three asphalt replacements over the same period closes the gap considerably."
+      },
+      {
+       "question": "Will a metal roof make my house hotter in the summer?",
+       "answer": "Color and finish do more work here than the base material. Light-colored and unpainted Galvalume finishes reflect a meaningful portion of solar radiation; darker painted panels absorb more heat, similar to dark asphalt. Energy-efficient metal roofs with light or reflective finishes can reduce attic heat gain compared to dark asphalt, particularly in North Carolina's long cooling season. If energy performance is a priority, specify a lighter panel color and confirm the coating qualifies for any applicable utility rebates in your area."
+      },
+      {
+       "question": "Does metal roofing make more noise in rain and hail?",
+       "answer": "On a properly installed roof with solid decking below — which is the standard for residential standing-seam work — the sound difference between metal and asphalt is minimal. The deck, insulation, and ceiling assembly absorb most impact sound. Open-frame agricultural metal buildings with no decking are the source of the rain-on-a-tin-roof noise most people have in mind; that is a different installation context entirely."
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Metal Roofing — Raleigh, NC",
+     "heading": "A Metal Roof Built to Outlast the Mortgage",
+     "subhead": "Standing-seam and exposed-fastener metal roofing for Raleigh homeowners who want one roof, done right, with a lifespan measured in generations — not decades.",
+     "ctaLabel": "Request a Free Metal Roof Estimate",
+     "imageDescription": "Aerial view of a charcoal standing-seam steel roof on a two-story Raleigh home, mid-afternoon light showing the clean vertical panel lines running ridge to eave, with mature oak canopy in the background"
+    },
+    "whatToExpect": {
+     "eyebrow": "Metal Roofing — What You Need to Know",
+     "heading": "Honest numbers, real trade-offs, no pressure",
+     "bullets": [
+      "Standing-seam metal is the premium residential option: panels lock together at raised seams with no exposed fasteners, eliminating the primary long-term leak path found on exposed-fastener systems.",
+      "Lifespan for a properly installed standing-seam steel roof runs 40 to 70 years — outlasting two or three asphalt replacements on the same home, which changes the lifetime cost calculation significantly.",
+      "Exposed-fastener panels cost less upfront at $5 to $12 per square foot installed, but the neoprene gaskets under each face-fastener are a known wear point that standing seam avoids entirely; we recommend them for outbuildings and commercial utility structures, not primary residences.",
+      "Standing-seam steel installed in Raleigh typically runs $10 to $16 per square foot; aluminum panels run $11 to $17 per square foot — aluminum is lighter and corrosion-resistant, which matters near coastal areas or in chemistry-heavy environments.",
+      "Metal roofing performs well in North Carolina's hail and wind seasons: there is no granule bond to fracture, no asphalt matrix to bruise, and standing-seam profiles shed wind load more predictably than flat-tab systems.",
+      "We pull a permit through the Wake County Building Department for every metal roof replacement and schedule the required final inspection before we close the job — no shortcuts that come back on you at resale."
+     ],
+     "stats": [
+      {
+       "value": "40–70",
+       "unit": "years",
+       "label": "Standing-seam lifespan"
+      },
+      {
+       "value": "$10–$16",
+       "unit": "per sq ft",
+       "label": "Steel standing-seam installed"
+      },
+      {
+       "value": "$11–$17",
+       "unit": "per sq ft",
+       "label": "Aluminum standing-seam installed"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Full tear-off of existing roofing down to the deck",
+       "Deck inspection and replacement of any rotted or damaged sheathing (quoted separately at site)",
+       "Drip edge and eave flashings",
+       "Ridge cap and hip detailing in matching panel finish",
+       "Penetration flashings — pipes, chimneys, skylights",
+       "Wake County building permit and final inspection",
+       "Written warranty documentation provided before we leave the job site"
+      ],
+      "excluded": [
+       "Gutters and downspout replacement (quoted as a separate line item on request)",
+       "Interior attic insulation upgrades (we can refer you to a trusted insulation contractor)",
+       "HVAC curb flashing on commercial transitions (residential scope only — commercial projects quoted separately)",
+       "Painting or touch-up of fascia boards (roofing scope ends at the drip edge)",
+       "Any structural framing repairs beyond sheathing-level decking — full rafter or truss work is a structural contractor scope"
+      ],
+      "timeline": [
+       "Day 1: Site measure and panel-profile selection — we bring physical samples so you can see the finish in your yard's light",
+       "Days 2–5: Material lead time varies by panel profile and color; standard profiles typically ship within a week from Raleigh-area distributors",
+       "Installation day 1: Full tear-off, deck inspection, any sheathing replacement, drip edge set",
+       "Installation days 2–3: Panel installation, ridge and hip cap, all penetration flashings",
+       "Final day: Permit inspection scheduled, site clean-up, written warranty and permit card handed to homeowner"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "kind": "service",
+   "key": "commercial-roofing",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "Commercial Roofing — Raleigh, NC",
+     "heading": "Protect Your Building's Bottom Line",
+     "subhead": "TPO, EPDM, and standing-seam metal for offices, retail, and light industrial. NDL warranties. Own crews. Scheduled around your operating hours.",
+     "ctaLabel": "Schedule a Roof Assessment",
+     "imageDescription": "Wide-angle photograph of a completed TPO commercial flat roof on a single-story office building in a suburban Raleigh business park. Clean white membrane, no ponding water, crisp termination bar at the parapet. Mid-morning light. No people in frame."
+    },
+    "whatToExpect": {
+     "eyebrow": "What Commercial Roofing Actually Looks Like",
+     "heading": "Honest Scope Before Anyone Signs Anything",
+     "bullets": [
+      "We start with a written condition assessment — drone imagery, core samples where warranted, and a drainage survey — before we recommend a membrane or a budget number.",
+      "Every proposal specifies the warranty tier you are getting: material-only, prorated labor, or NDL (No Dollar Limit), along with what is required to keep that warranty valid through its full term.",
+      "Installation is scheduled around your building's operating hours; phased sequencing and weekend work are standard options, not premium add-ons.",
+      "Our crews are employees on payroll, not day-labor subcontractors — the same people who start your roof finish it, and they carry workers' compensation coverage.",
+      "We file the permit, attend all required inspections, and deliver a documented closeout package including warranty registration, inspection sign-offs, and the annual inspection schedule that keeps your NDL coverage active.",
+      "At project completion we walk the roof with your facilities contact, photograph every penetration and termination, and put the first annual inspection date on the calendar before we leave."
+     ],
+     "stats": [
+      {
+       "value": "$5–$10",
+       "unit": "per sq ft installed",
+       "label": "TPO Single-Ply"
+      },
+      {
+       "value": "$4–$9",
+       "unit": "per sq ft installed",
+       "label": "EPDM Single-Ply"
+      },
+      {
+       "value": "$10–$16",
+       "unit": "per sq ft installed",
+       "label": "Standing-Seam Steel"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Full written condition assessment before scope is finalized",
+       "Permit application and all required inspections",
+       "Heat-welded TPO seams (the highest-integrity flat-roof seam available)",
+       "NDL warranty registration with the manufacturer",
+       "Documented annual inspection schedule to keep warranty active",
+       "Phased or off-hours scheduling at no premium",
+       "Written closeout package: warranty docs, inspection records, as-built notes"
+      ],
+      "excluded": [
+       "Structural deck repairs beyond standard fastener replacement (scoped and priced separately after tear-off reveals deck condition)",
+       "HVAC, skylight, or mechanical equipment relocation — coordinated with your contractors, not included in roofing scope",
+       "Interior repairs from pre-existing damage discovered after tear-off",
+       "Roof access equipment (ladders, hatches) beyond what is required for installation"
+      ],
+      "timeline": [
+       "Week 1: Condition assessment, drainage survey, core samples if needed",
+       "Week 2–3: Proposal, warranty tier selection, permit application",
+       "Week 4–6: Permit issued (Wake County typical turnaround); material delivery scheduled",
+       "Installation: 2–7 business days for most light-commercial flat roofs; 10+ days for larger or complex buildings",
+       "Closeout: Final inspection, warranty registration, and documented handoff within 5 business days of installation completion"
+      ]
+     }
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "Which membrane — TPO, EPDM, or PVC — is right for my building?",
+       "answer": "The right answer depends on your building's use, climate exposure, and what is currently on the roof. In Raleigh's warm climate, TPO is our most common recommendation for offices and retail — its heat-welded seams eliminate the adhesive seam failures that cause most flat-roof leaks, and its white surface qualifies for ENERGY STAR cool-roof designation, which can meaningfully reduce cooling loads. EPDM is the better choice in colder climates and on low-complexity roofs where budget is the primary driver. PVC is the correct membrane for buildings with kitchen exhaust vents, grease traps, or chemical exposure — TPO and EPDM degrade on contact with animal fats and petroleum solvents. We will tell you which membrane the building actually needs, not the one with the widest margin."
+      },
+      {
+       "question": "What is an NDL warranty and why does it matter for a commercial building?",
+       "answer": "NDL stands for No Dollar Limit. It means the manufacturer covers the full cost of any covered repair — materials and labor — with no cap, for the warranty's full term, adjusted for real-world repair costs rather than locked to an original price. A standard prorated warranty pays a declining fraction of repair costs each year; by year 15 it may cover less than half. An NDL warranty is documented on a building's balance sheet as a risk-reduction asset. It transfers with the property, which matters when you sell, refinance, or lease — a prospective buyer or lender sees a 20-year NDL with 14 years remaining as a concrete, quantifiable protection. NDL warranties require installation by a manufacturer-certified contractor; certification level matters because a contractor certified for a 12-year prorated warranty is not automatically eligible to issue a 20-year NDL on the same manufacturer's product."
+      },
+      {
+       "question": "What does a commercial roof maintenance plan actually include, and is it required?",
+       "answer": "Most single-ply membrane manufacturers require at least one documented annual inspection by an authorized contractor to keep the warranty valid. The maintenance plan is the mechanism that preserves the coverage you paid for. A standard plan includes two full inspections per year — spring and fall — along with drain and gutter cleaning, debris removal, and a written inspection report that becomes part of your warranty documentation trail. If you ever need to file a warranty claim, the inspection record is what proves the membrane was maintained per manufacturer requirements. Without it, the manufacturer can deny the claim regardless of what caused the failure. We provide the documentation package, not just the visit."
+      },
+      {
+       "question": "How much disruption should we expect during a commercial re-roof?",
+       "answer": "Most light-commercial flat roofs are replaced in 2 to 7 business days. Larger or more complex buildings can run 10 or more days. TPO and EPDM single-ply systems reduce active construction time compared to multi-layer built-up systems because the membrane goes down in large sheets rather than multiple applied layers. We schedule sequentially so no portion of your roof is left open overnight, and we can structure work in phases — completing one section before opening the next — when continuous operations require it. Night shifts and weekend installations are available for buildings where any daytime disruption is unacceptable. We discuss operating schedule constraints at the assessment stage, before scope is finalized."
+      },
+      {
+       "question": "How do we budget for a commercial roof replacement before we have a formal bid?",
+       "answer": "Installed cost ranges by membrane type, based on current market data: TPO runs $5–$10 per square foot; EPDM runs $4–$9 per square foot; PVC runs $8–$15 per square foot; standing-seam steel runs $10–$16 per square foot. A 5,000 square foot flat roof — a common light-commercial footprint — typically falls in the $20,000–$75,000 range depending on membrane selection, insulation requirements, and whether tear-off is included. Tear-off adds $1–$3 per square foot. Labor accounts for 40–60% of total project cost, and that fraction rises on roofs with complex drainage, multiple penetrations, or difficult access. These are planning ranges, not quotes — deck condition, insulation R-value requirements, and local permit fees all affect the final number. A site assessment is the only way to produce a defensible budget figure."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "service",
+   "key": "tpo-roofing",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "Commercial Flat Roofing — Raleigh, NC",
+     "heading": "TPO Roofing: Heat-Welded Seams, Long-Term Energy Savings, Honest Scope",
+     "subhead": "Thermoplastic polyolefin membrane is the flat-roof choice for commercial buildings that need energy efficiency, seam reliability, and a documented 20-to-30-year service life. We install it right the first time — own crews, written warranty, no subcontractors.",
+     "ctaLabel": "Get a Commercial Roof Assessment",
+     "imageDescription": "Wide aerial photograph of a large commercial flat roof in Raleigh NC with a clean white TPO membrane freshly installed, heat-welded seam detail visible in the foreground, city skyline in the background under a clear blue sky"
+    },
+    "whatToExpect": {
+     "eyebrow": "What TPO Roofing Actually Covers — and What It Does Not",
+     "heading": "Straight Talk on Scope, Cost, and Timeline",
+     "bullets": [
+      "A TPO membrane roof starts with a full tear-off and substrate inspection — no new membrane goes over a damaged or wet deck, and any insulation issues found during that inspection are reported to you before we proceed.",
+      "Heat-welded seams are the defining advantage of TPO over EPDM: the membrane panels are fused into a single monolithic layer by a hot-air welding tool, eliminating the adhesive-bond failure that causes most flat-roof leaks.",
+      "White or light-colored TPO reflects up to 80 percent of solar energy and qualifies for ENERGY STAR cool-roof designation, which translates to measurable cooling-cost reduction for climate-controlled commercial spaces in Raleigh's warm-weather months.",
+      "Every TPO project we complete is eligible for a No Dollar Limit (NDL) manufacturer warranty when installed to specification by a certified contractor — that warranty travels with the building and is a documented asset on a property balance sheet.",
+      "We are not the right choice for buildings with heavy kitchen-exhaust grease exposure or direct chemical contact — PVC membrane is the defensible spec for those uses, and we will tell you that upfront rather than install the wrong system.",
+      "Project timelines for most commercial TPO replacements run two to seven business days depending on building size, access complexity, and whether phased installation is required to keep your operations running."
+     ],
+     "stats": [
+      {
+       "value": "$5–$10",
+       "unit": "per sq ft installed",
+       "label": "TPO installed cost range (materials + labor)"
+      },
+      {
+       "value": "20–30",
+       "unit": "year service life",
+       "label": "Expected TPO lifespan under normal conditions"
+      },
+      {
+       "value": "Up to 80%",
+       "unit": "solar reflectance",
+       "label": "TPO cool-roof performance vs. black EPDM"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Full tear-off of existing membrane and debris disposal",
+       "Substrate and insulation inspection before new membrane goes down",
+       "Heat-welded seam installation — no adhesive, no tape",
+       "Flashing replacement at penetrations, parapets, and drains",
+       "Post-installation seam inspection and pull-test documentation",
+       "NDL warranty registration with manufacturer (where applicable)",
+       "Written scope of work and line-item pricing before any work begins"
+      ],
+      "excluded": [
+       "Buildings with active kitchen-exhaust grease exposure (PVC is the correct spec)",
+       "Standing water caused by structural deck deflection — drainage correction is a separate structural scope",
+       "Interior damage from pre-existing leaks — drywall, insulation, and ceiling repairs are outside roofing scope",
+       "Rooftop equipment removal and reinstallation (HVAC, solar, signage) — owner or equipment contractor coordinates that work",
+       "Permit fees where required by the local AHJ — these are passed through at cost, not marked up"
+      ],
+      "timeline": [
+       "Day 1–2: Tear-off, substrate inspection, insulation repairs identified and approved",
+       "Day 2–4: New membrane installation, heat-welded seam runs, penetration flashing",
+       "Day 4–5: Final inspection, seam pull-test, drain and edge-detail review",
+       "Day 5–7 (larger buildings): Punch-list completion, photo documentation, warranty registration submittal"
+      ]
+     }
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "How does TPO compare to EPDM for a commercial building in Raleigh?",
+       "answer": "For warm-climate markets like Raleigh, TPO's heat-welded seams and solar reflectivity give it a real performance edge over EPDM. EPDM uses adhesive or tape seams — the industry's leading flat-roof leak cause — and black EPDM absorbs heat rather than reflecting it. White EPDM is available but not the default. Where EPDM earns its place is in cold-northern climates where rubber flexibility at sub-zero temperatures matters most. In Raleigh's climate, TPO is the stronger spec for most commercial applications. Installed cost is comparable: TPO runs $5–$10 per sq ft, EPDM $4–$9 per sq ft."
+      },
+      {
+       "question": "Why is TPO less suited than PVC for restaurants or food-processing buildings?",
+       "answer": "TPO has moderate resistance to grease and petroleum-based chemicals, but it degrades under sustained direct exposure to animal fats, vegetable oils, and industrial solvents. PVC membrane is specifically formulated to resist those substances and is the correct spec for any building with kitchen exhaust discharging onto the roof surface or direct chemical exposure. We will tell you this before we quote — installing the wrong membrane to save a few dollars per square foot creates a warranty-voiding liability you should not accept."
+      },
+      {
+       "question": "What is an NDL warranty and why does it matter for a commercial property?",
+       "answer": "NDL stands for No Dollar Limit. Standard roofing warranties cap the manufacturer's liability — as repair costs rise with inflation or scope, that cap erodes coverage. An NDL warranty carries no dollar ceiling on covered repair costs for the warranty term, typically 15, 20, or 30 years. For commercial property owners, remaining NDL coverage is a documented balance-sheet asset that influences purchase decisions, lease negotiations, and portfolio capital planning. It requires installation by a manufacturer-certified contractor and annual inspection documentation to stay valid — the maintenance program is the warranty-preservation mechanism, not an optional add-on."
+      },
+      {
+       "question": "What does the installation process actually disrupt for a business that stays open?",
+       "answer": "Most commercial TPO replacements run two to seven business days. Tear-off is the noisiest phase, typically days one and two. We can phase the work to keep active sections of roof intact and move in sections around operating HVAC or rooftop equipment. We coordinate sequencing with your facilities or property manager before work begins — not the morning of. If your business has noise-sensitive hours or tenant lease requirements around construction, tell us during the assessment and we will build that into the schedule."
+      },
+      {
+       "question": "What is the honest cost range for a commercial TPO project in Raleigh?",
+       "answer": "TPO installs at $5–$10 per sq ft, materials and labor combined. On a 5,000 sq ft commercial flat roof, the total installed range is roughly $25,000–$50,000 depending on insulation requirements, tear-off layers, access complexity, and penetration count. Labor accounts for 40–60 percent of that total. We do not quote per-square-foot numbers without a site inspection — roof complexity and substrate condition are the variables that move cost within that range, and a number given without seeing the building is a guess, not a quote."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "service",
+   "key": "epdm-roofing",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "EPDM Rubber Roofing — Raleigh, NC",
+     "heading": "Flat Roofs Done Right: EPDM That Holds for Decades",
+     "subhead": "A single-ply rubber membrane with a 25–30 year track record on low-slope roofs, additions, and smaller commercial buildings. Honest advice on when EPDM is the right call — and when it isn't.",
+     "ctaLabel": "Get a Free EPDM Inspection",
+     "imageDescription": "A clean-seamed black EPDM membrane stretched across a low-slope addition roof, with pipe flashings neatly booted and a drip-edge at the eave — daylight Raleigh residential neighborhood visible in the background"
+    },
+    "whatToExpect": {
+     "eyebrow": "What EPDM Roofing Includes",
+     "heading": "No Surprises on Scope or Price",
+     "bullets": [
+      "We remove and haul away the existing membrane and insulation, then assess the decking underneath before any new material goes down — hidden deck rot cannot be priced until we have eyes on it.",
+      "New EPDM membrane is laid and mechanically fastened or fully adhered depending on the substrate and slope; we discuss both methods with you before signing anything.",
+      "Every pipe boot, drain collar, and parapet flashing is installed as a separate detail — these are where flat roofs fail first, and we treat them as the most important part of the job.",
+      "All seams are sealed with factory-approved EPDM tape or bonding adhesive; we do not apply seams in temperatures below manufacturer minimums, and we will reschedule rather than cut corners on adhesive cure.",
+      "A written close-out includes photos of every seam and penetration detail, plus the manufacturer warranty registration paperwork.",
+      "We explain the maintenance your membrane needs to reach its full service life — one inspection per year is all it takes to catch the early signs before they become a leak."
+     ],
+     "stats": [
+      {
+       "value": "$4–$9",
+       "unit": "per sq ft installed",
+       "label": "EPDM Installed Cost Range"
+      },
+      {
+       "value": "25–30",
+       "unit": "year baseline lifespan",
+       "label": "Expected Service Life"
+      },
+      {
+       "value": "40+",
+       "unit": "years best-case",
+       "label": "With Ideal Install and Maintenance"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Full tear-off and disposal of existing membrane",
+       "Deck inspection and written report on substrate condition",
+       "Mechanically fastened or fully adhered EPDM membrane",
+       "All pipe boots, drain collars, and perimeter flashings",
+       "Seams sealed per manufacturer temperature and cure specifications",
+       "Manufacturer warranty registration",
+       "Close-out photo documentation package"
+      ],
+      "excluded": [
+       "Rotted or damaged deck sheathing (quoted separately after tear-off inspection)",
+       "Structural repairs to parapet walls or curbs",
+       "HVAC unit disconnection or reconnection",
+       "Interior ceiling or drywall repairs from pre-existing water damage",
+       "Gutter or downspout replacement unless included in written contract"
+      ],
+      "timeline": [
+       "Day 1–2: Tear-off and deck inspection — any hidden damage is photographed and quoted before work continues",
+       "Day 2–4: Membrane installation, penetration flashings, perimeter terminations — typical residential addition in one to two days; larger flat roofs scheduled accordingly",
+       "Final day: Seam inspection walkthrough, close-out photos, warranty paperwork, and your written maintenance schedule"
+      ]
+     }
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "How does EPDM compare to TPO — and when should I choose one over the other?",
+       "answer": "The honest answer depends on your building and climate. EPDM rubber stays flexible in cold temperatures and has the longest documented track record on flat roofs — it has been the standard on residential additions and smaller commercial roofs for decades. TPO has heat-welded seams, which are a stronger bond than adhesive, and reflects more heat in summer (EPDM is typically black and absorbs heat). If your flat roof is on a sun-baked commercial building in a warm climate, TPO's reflectivity can matter. If it's on a residential addition or a building in a market where cold-weather flexibility is the priority, EPDM is hard to beat. We walk through both options with every flat-roof client before we write a proposal."
+      },
+      {
+       "question": "What do adhesive seams mean for long-term performance?",
+       "answer": "Seam failure is the single leading cause of flat-roof leaks across all single-ply systems, and EPDM uses adhesive or tape rather than TPO's heat-welded bond. Done correctly — right adhesive, right temperature, proper dwell time — adhesive seams last the life of the membrane. Done incorrectly, they can begin to peel within five to ten years. This is why installation quality matters more on EPDM than almost any other roofing material. We will not apply adhesive seams outside the manufacturer's temperature window, and we schedule around weather rather than rush a job."
+      },
+      {
+       "question": "What does EPDM cost for a typical residential addition or small flat roof in Raleigh?",
+       "answer": "Installed EPDM in the Raleigh market runs roughly $4 to $9 per square foot, depending on roof size, access difficulty, insulation requirements, and whether existing membrane tear-off is included. A small addition in the 300 to 600 square foot range is a straightforward job; a larger low-slope garage or commercial suite adds scope. We do not quote off square footage alone — an accurate number requires looking at the deck condition, drain locations, and penetration count. Call us for a free on-site assessment and written scope before you compare bids."
+      },
+      {
+       "question": "Is EPDM right for my home addition or low-slope roof section?",
+       "answer": "EPDM is one of the most proven choices for residential additions, low-slope connector roofs between structures, flat garage roofs, and smaller commercial buildings where heat-welding equipment is impractical. It is not the right call if the roof has significant grease or chemical exhaust exposure — those applications call for PVC. It is also worth a conversation if your addition has generous sun exposure and cooling costs are a concern, because white TPO would reflect more heat. For a straightforward residential flat section with no special chemical or exhaust exposure, EPDM at a proper installation has a 25 to 30 year baseline service life and costs less than TPO."
+      },
+      {
+       "question": "How do I know when my EPDM roof needs to be replaced versus repaired?",
+       "answer": "Most EPDM issues — open seams, cracked pipe boots, punctures from foot traffic — are repairable if caught early. Signs that indicate replacement rather than repair: membrane has become brittle and is shrinking or pulling away from flashings at multiple points, ponding water areas show widespread granular chalking, or the membrane has been patched repeatedly and the repair patches are themselves failing. A professional inspection will tell you clearly which category you are in. We are not interested in selling a replacement when a repair covers it — we will tell you straight."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "service",
+   "key": "emergency-roof-repair",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "What counts as a roof emergency — and what can wait until morning?",
+       "answer": "A roof emergency is any breach that is actively letting water into your living space, or a structural situation where delay makes the damage significantly worse. Active leaking through ceilings or walls, a large section of missing shingles after a storm, visible daylight through your attic, collapsed flashing around a chimney or vent stack, or a tree limb that has punched through the deck — these are emergencies. A few lifted shingles with no current rain in the forecast, minor granule loss, or surface staining you noticed last weekend are real issues that deserve prompt attention, but they are not a same-night call. We will be honest with you about the difference — and we will not charge emergency rates for a job that can be safely scheduled during business hours."
+      },
+      {
+       "question": "What does emergency tarping actually do, and how long can a tarp stay on?",
+       "answer": "A tarp is a holding action, not a repair. It stops an open roof breach from admitting additional water while we assess the full scope of damage and schedule proper repairs. A correctly installed tarp is weighted or mechanically fastened at the edges so it cannot shift or channel water inward — an improperly secured tarp can make water intrusion worse. Most tarps are designed for short-term protection: a few days to a few weeks. They are not a substitute for repairs, and leaving one on for months increases the risk of deck damage underneath from trapped moisture. We will tell you exactly how long your tarp buys you and schedule the repair inside that window."
+      },
+      {
+       "question": "Will my homeowner's insurance cover emergency repairs?",
+       "answer": "Most standard NC homeowner's policies cover sudden and accidental storm damage — the tarp, the emergency response, and the subsequent repair work are typically filed under the same claim as the storm event. What the policy will not cover is damage caused by deferred maintenance or pre-existing deterioration. We document everything at first contact — photos, timestamps, written condition notes — so your insurer has the evidence they need. North Carolina policies generally require prompt notice of a claim, often within 30 to 60 days of the storm date. Filing after that window can jeopardize coverage entirely. We do not negotiate your claim or act as a public adjuster — we give you thorough documentation and attend the adjuster inspection to make sure nothing legitimate gets missed."
+      },
+      {
+       "question": "How are emergency repairs priced, and will I know the cost before work starts?",
+       "answer": "Emergency work is priced transparently. Tarping and the initial stabilization visit are quoted before we start. Full repair pricing depends on the scope we find once the damaged area is accessible — storm damage that looks minor from the ground often reveals compromised decking or flashing beneath the surface. We will give you a written itemized estimate before any repair work begins. If we find additional damage during the work that changes the scope, we stop and walk you through it before proceeding. There are no surprise invoices after the fact."
+      },
+      {
+       "question": "How quickly can you respond after a storm in Raleigh?",
+       "answer": "We dispatch 24 hours a day, seven days a week for active water intrusion emergencies. Response time depends on storm volume — after a widespread weather event, our crews work in priority order based on severity of breach. We will give you an honest ETA when you call rather than a number we cannot keep. If you are in the queue for a non-critical stabilization, we will tell you that directly so you can make an informed decision about your situation."
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "24/7 Emergency Roof Repair — Raleigh, NC",
+     "heading": "When the storm leaves a hole, we close it tonight.",
+     "subhead": "Active leaks and storm breaches do not wait for business hours. Kingmaker Roofing dispatches around the clock for emergency tarping and stabilization — with a written estimate before a single nail goes in.",
+     "ctaLabel": "Get Emergency Help Now",
+     "imageDescription": "An aerial drone shot at dusk of a residential Raleigh neighborhood after a summer storm — wet streets reflecting streetlights, a row of traditional colonial homes with heavy tree cover, one roof in the foreground showing freshly installed blue-tarp emergency covering weighted at the ridgeline and eaves, crew members in branded Kingmaker Roofing gear securing the edges with ladders and fasteners, the surrounding homes undamaged and dry."
+    },
+    "whatToExpect": {
+     "eyebrow": "How Emergency Response Works",
+     "heading": "Triage first. Full scope second. Repair on your timeline.",
+     "bullets": [
+      "When you call with an active leak or storm breach, our first question is whether water is currently entering the structure — that single fact determines response priority and whether you need a crew tonight or first thing in the morning.",
+      "We arrive with tarping materials sized for residential roofs and the anchoring equipment to install them correctly — a tarp that shifts in wind or channels water to a seam is worse than no tarp at all.",
+      "After stabilization, we perform a full visual inspection of the affected area in daylight, including attic access if available, to identify damage that is not visible from the ground or from inside.",
+      "We document every finding with photographs, measurements, and written condition notes — the same package your insurance adjuster will reference when they assess the claim.",
+      "You receive a written itemized repair estimate before work begins; if we uncover additional damage during repair — rotted decking, compromised flashing, damaged underlayment — we show you exactly what we found and confirm your approval before the scope changes.",
+      "Repair work is performed by Kingmaker Roofing's own crews, not subcontractors — the same people who inspect the damage are the ones who fix it, and they carry the company's GAF Master Elite certification standards on every job."
+     ],
+     "stats": [
+      {
+       "value": "24/7",
+       "unit": "availability",
+       "label": "Emergency dispatch, every day of the year"
+      },
+      {
+       "value": "30–60",
+       "unit": "days",
+       "label": "Typical NC policy window to file a storm claim — do not wait"
+      },
+      {
+       "value": "$2–$5",
+       "unit": "per sq ft",
+       "label": "Typical cost range for damaged decking repair found during emergency work"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Emergency stabilization tarp, correctly anchored to prevent wind shift or water channeling",
+       "Full post-storm inspection including attic access and soft-metal check (gutters, flashing, vent caps)",
+       "Photo documentation package suitable for insurance adjuster review",
+       "Written itemized estimate before any repair work begins",
+       "Crew attendance at your adjuster inspection to ensure covered items are documented",
+       "Repair work performed by Kingmaker's own certified crews under GAF Master Elite standards",
+       "Written warranty on all completed repair work"
+      ],
+      "excluded": [
+       "Negotiating your insurance claim or acting as a public adjuster — that requires a separate license and we do not hold one",
+       "Deductible assistance, discounts, or waivers of any kind — these constitute insurance fraud under NC law",
+       "Damage caused by pre-existing maintenance neglect or long-term deterioration, which standard storm policies do not cover",
+       "Repair of interior finishes, drywall, flooring, or personal property — a licensed general contractor or restoration company handles contents and interior water damage"
+      ],
+      "timeline": [
+       "Same night or next morning: crew dispatch for active water intrusion; tarping and stabilization completed",
+       "Within 24–48 hours: full daylight inspection, photo documentation, written estimate delivered to homeowner",
+       "Within 3–7 business days (non-emergency scope): scheduled repair work once estimate is approved and materials are confirmed",
+       "Insurance path: we attend adjuster inspection when scheduled; supplement documentation submitted within 5–10 business days of adjuster visit if covered items were missed"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "kind": "service",
+   "key": "siding",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "Can a roofing contractor handle siding, or should I hire a separate company?",
+       "answer": "When storm damage hits your home, it rarely stops at the roof line. Wind and hail routinely damage siding, fascia, and soffit in the same event — sometimes in the same claim. Having one licensed crew handle both means one damage assessment, one adjuster meeting, one scope of work, and one point of accountability for the finished result. We install vinyl and James Hardie fiber-cement siding with the same crew and the same quality standards we apply to roofing."
+      },
+      {
+       "question": "What is the real difference between vinyl and James Hardie siding?",
+       "answer": "Vinyl is a polymer product: lighter, lower installed cost, zero painting required, and it holds up well in NC's humidity. James Hardie is fiber-cement — heavier, harder, dimensionally stable under temperature swings, and paintable to any color with a finish that resists fading longer than vinyl. Hardie also qualifies for HardiePlank fire resistance ratings vinyl cannot match. The honest answer is that both are durable choices; the decision usually comes down to budget, aesthetic preference, and whether your insurance scope covers a specific product."
+      },
+      {
+       "question": "My insurance adjuster is coming out next week. Should I wait until after the inspection to call you?",
+       "answer": "Call before, not after. We can conduct our own thorough inspection and prepare written photo documentation before the adjuster arrives. If documented damage is present, we are available to meet your adjuster on-site so nothing legitimate gets missed in the scope. We do not negotiate your claim or act as a public adjuster — the settlement is between you and your insurer. We give you the documentation and the technical expertise to support your own claim."
+      },
+      {
+       "question": "How long does a full siding replacement take?",
+       "answer": "A standard single-family home in Raleigh — typical 1,800 to 2,500 square foot two-story — runs two to four days for vinyl and three to five days for James Hardie, weather permitting. Homes with complex profiles, multiple stories, or significant trim work take longer. We walk the scope with you before the job starts so the timeline is not a surprise."
+      },
+      {
+       "question": "Does new siding require a permit in Raleigh?",
+       "answer": "Raleigh's building code requires a permit for full siding replacements. We pull the permit, schedule the inspection, and close it out before we consider the job complete. Never let a contractor skip the permit on a siding job — it can complicate homeowners insurance claims and create problems at resale."
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Siding Installation & Replacement — Raleigh, NC",
+     "heading": "One Crew. Roof and Siding. One Accountable Contractor.",
+     "subhead": "Storm damage rarely stops at the ridge. Kingmaker Roofing installs vinyl and James Hardie fiber-cement siding with the same licensed crew that handles your roof — so one inspection covers the whole envelope, and one warranty backs the whole job.",
+     "ctaLabel": "Schedule a Free Inspection",
+     "imageDescription": "A two-story Raleigh home with freshly installed James Hardie lap siding in a warm gray tone, crisp white trim, and a new architectural shingle roof visible above — photographed at golden hour from the front yard to show the full building envelope."
+    },
+    "whatToExpect": {
+     "eyebrow": "What the Job Covers",
+     "heading": "Honest Scope Before the First Nail",
+     "bullets": [
+      "We inspect every wall face, soffit, fascia, and trim board — not just the side that faces the street — and document everything in writing before the job starts.",
+      "Storm-damage scopes are prepared with insurance-standard photo documentation so your adjuster has a complete picture; we attend the on-site inspection and answer technical questions so nothing legitimate gets missed.",
+      "Vinyl siding is installed with proper J-channel, starter strip, and back-flashing around all penetrations — corners and windows are the most common failure points on budget installations and we treat them accordingly.",
+      "James Hardie fiber-cement is installed per HardiePlank installation specifications, including approved caulking at all butt joints, correct fastener patterns, and primer-sealed cut ends — requirements that protect both the product warranty and your paint finish.",
+      "Permits are pulled before demo starts; the Raleigh building inspection is scheduled and closed before we call the job complete.",
+      "We haul off all old siding, wrapping, trim material, and job debris — the site is clean the day we finish."
+     ],
+     "stats": [
+      {
+       "value": "2–5",
+       "unit": "days",
+       "label": "Typical installation window for a standard Raleigh two-story home, material-dependent"
+      },
+      {
+       "value": "25",
+       "unit": "year",
+       "label": "James Hardie ColorPlus finish warranty against cracking, chipping, and peeling"
+      },
+      {
+       "value": "1",
+       "unit": "crew",
+       "label": "Same licensed team handles roof and siding — no subcontracted handoff between trades"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Full perimeter inspection and written damage assessment",
+       "Permit application and final inspection closeout",
+       "Proper vapor barrier and house wrap installation",
+       "All J-channel, trim coil, soffit, and fascia replacement as scoped",
+       "Starter strip and back-flashing at all windows and penetrations",
+       "Primer-sealed cut ends on all Hardie boards",
+       "Complete job-site cleanup and debris removal",
+       "Written warranty documentation for both labor and materials"
+      ],
+      "excluded": [
+       "Structural sheathing repair beyond what is identified in the pre-job scope (additional damaged sheathing found during demo is quoted separately before work proceeds — never billed as a surprise)",
+       "Interior drywall or insulation work",
+       "Window replacement (we flag damaged windows and can refer a trusted installer)",
+       "Paint or stain application on raw-fiber-cement boards (Hardie ColorPlus pre-finished or a licensed painter is the right path)"
+      ],
+      "timeline": [
+       "Day 1: Permit in hand, old siding removed, sheathing inspected and any additional damage documented and approved before proceeding",
+       "Days 1–2: House wrap installed; window and door flashing details completed before any siding panel goes up",
+       "Days 2–4 (vinyl) or Days 2–5 (Hardie): Panel installation from bottom course up; trim, soffit, and fascia finished",
+       "Final day: Full perimeter walkthrough with homeowner, punch-list items corrected, building inspection scheduled",
+       "Post-job: Permit closed, warranty documents delivered in writing"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "kind": "storm",
+   "key": "hail",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "How long do I have to file a hail damage claim in North Carolina?",
+       "answer": "Most NC homeowners policies require prompt notice — often within 30 to 60 days of the storm date. The three-year statute of limitations to take legal action is not the same as your notice window. If you are unsure, pull out your declarations page and call your agent today. Waiting to see whether the damage gets worse is one of the most common reasons claims get denied."
+      },
+      {
+       "question": "My neighbor got a free roof — can you waive my deductible?",
+       "answer": "No, and be wary of any contractor who offers that. Waiving or discounting a deductible is insurance fraud under NC law — a Class H felony that exposes both the contractor and the homeowner to criminal charges. Your deductible is your policy's responsibility. What we do instead: make sure the insurance scope covers every dollar of legitimate damage so the money you do spend is working for you."
+      },
+      {
+       "question": "The storm wasn't that bad. Do I really need an inspection?",
+       "answer": "Yes. A 2025 peer-reviewed study confirmed that hailstones under one inch — storms that never make local news — can fracture shingle bonds internally and significantly accelerate aging. The damage is invisible from the ground and invisible in the attic, but it reduces your roof's resistance to the next storm. A documented inspection is the only way to know what you are dealing with."
+      },
+      {
+       "question": "What is the difference between an RCV and an ACV policy?",
+       "answer": "Replacement Cost Value (RCV) pays what it costs to replace your roof today, minus your deductible. Actual Cash Value (ACV) pays that same number minus depreciation for the roof's age — on a 20-year-old roof, an ACV policy might generate a $3,000 check toward a $15,000 job. This distinction matters before you file. If you are unsure which policy you carry, check your declarations page under 'loss settlement' — we are glad to help you read it."
+      },
+      {
+       "question": "Will you negotiate my settlement with the insurance company?",
+       "answer": "That is the job of a licensed public adjuster, not a roofing contractor — and NC law is clear on that line. What we do is prepare a complete, photo-documented damage assessment using industry-standard pricing your insurer recognizes, and we are available to walk through it with your adjuster on-site. The settlement stays between you and your carrier. Our job is to make sure nothing legitimate gets missed."
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Storm Damage Inspections — Raleigh, NC",
+     "heading": "Hail damage hides. We find what your insurer needs to see.",
+     "subhead": "Most hail damage is invisible from the ground and from the street. Bruised fiberglass, fractured granule bonds, and crushed shingle edges only show under a trained eye — and the clock on your claim starts the day the storm hits. We document everything, in writing, before you file.",
+     "ctaLabel": "Schedule a Free Inspection",
+     "imageDescription": "Close-up of an asphalt shingle showing circular soft-metal bruising and exposed black fiberglass mat where granule bond has fractured, with a gutter below showing fresh impact craters — all standard adjuster-recognized evidence of recent hail impact."
+    },
+    "whatToExpect": {
+     "eyebrow": "How It Works",
+     "heading": "Your storm response, step by step",
+     "bullets": [
+      "We perform an independent roof inspection and photograph every sign of damage before you contact your insurer — giving you a documented baseline your carrier cannot dispute.",
+      "You file the claim directly with your insurance company; we provide you the written damage assessment and are available to answer your agent's questions.",
+      "We attend the adjuster's on-site inspection and walk through our documentation together, making sure every covered item is reviewed — we do not negotiate your settlement, we make sure nothing legitimate is missed.",
+      "If the adjuster's scope omits items our documentation clearly shows, we prepare a formal written supplement request using industry-standard pricing; this is a legitimate process, not bid inflation.",
+      "Once you and your insurer have agreed on scope, we schedule the build with our own crew — no subcontracted labor, no storm chasers, no high-pressure same-day contract.",
+      "Every completed job comes with a written warranty; we go over the terms with you at the final walkthrough so you know exactly what is covered and for how long."
+     ],
+     "stats": [
+      {
+       "value": "$12K–$17K",
+       "unit": "typical NC hail claim payout",
+       "label": "2024–2025 industry average — varies by policy type and scope"
+      },
+      {
+       "value": "30–60",
+       "unit": "days",
+       "label": "typical NC policy notification window from storm date"
+      },
+      {
+       "value": "42%",
+       "unit": "of claims",
+       "label": "close at zero payout — usually due to incomplete documentation, not missing damage"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Written damage assessment with time-stamped photos",
+       "Soft-metal evidence documentation (gutters, flashing, caps)",
+       "On-site adjuster walkthrough support",
+       "Formal supplement request if covered items are missed",
+       "Own-crew installation — no subcontractors",
+       "Written warranty delivered at final walkthrough"
+      ],
+      "excluded": [
+       "Deductible waiver or discount — illegal under NC law",
+       "Negotiating or settling your claim (requires a public adjuster license)",
+       "Same-day contract pressure",
+       "Promises of a 'free roof'",
+       "Power of attorney or assignment of benefits solicitation",
+       "Any guarantee of a specific payout amount"
+      ],
+      "timeline": [
+       "Day 1: Free inspection and photo documentation",
+       "Days 1–3: Written damage assessment delivered to you",
+       "Days 2–7: You file claim with your insurer",
+       "Week 2–4: Adjuster inspection — we attend with documentation",
+       "Week 3–6: Insurer issues scope of loss; supplement submitted if needed",
+       "Week 4–10: Agreed scope reached; build scheduled and completed"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "kind": "storm",
+   "key": "wind",
+   "payload": {
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "How is wind damage different from hail damage on a roof?",
+       "answer": "Wind damage follows the prevailing storm direction — lifted tabs, creased shingles, and missing shingles cluster on the windward face of the roof and run in a consistent pattern. Hail damage is random: circular bruises and granule loss scattered across the entire deck with no directional signature. An adjuster and a trained roofing inspector look for that pattern first because it determines which coverage applies."
+      },
+      {
+       "question": "Can a few missing shingles really cause a serious leak?",
+       "answer": "Yes — and faster than most homeowners expect. Each shingle is part of an overlapping waterproofing system. When even two or three are gone, the underlying roofing felt (underlayment) is exposed directly to rain. Felt is a secondary barrier, not a finished weather surface. Sustained rain, especially driven by wind, can saturate felt within hours and reach the wood decking beneath. Wet decking swells, warps, and begins to rot — what started as a small blow-off becomes a structural repair if it sits uncorrected for a single season."
+      },
+      {
+       "question": "What should I do immediately after wind damages my roof?",
+       "answer": "First, document what you can safely see from the ground — photographs with timestamps are evidence your insurer will use. Do not climb the roof yourself in post-storm conditions. Call a licensed contractor for an emergency assessment and temporary tarping if sections are open to the sky. Then contact your insurance carrier promptly — most NC policies require notice within 30 to 60 days of the storm event. Waiting to \"see if it gets worse\" can cost you the ability to file."
+      },
+      {
+       "question": "What is the difference between an RCV and an ACV policy for wind damage?",
+       "answer": "Replacement cost value (RCV) policies pay what it costs to replace damaged materials at today's prices, minus your deductible. Actual cash value (ACV) policies apply depreciation — a 15-year-old roof might be considered 60% through its useful life, meaning the payout is 40% of replacement cost before your deductible comes out. On a $14,000 job that could be a $2,800 check. Review your declarations page before a storm hits so there are no surprises when you need to file."
+      },
+      {
+       "question": "Are ridge caps and drip edge covered in a wind damage claim?",
+       "answer": "Ridge caps and drip edge are among the first components to fail in high winds — ridge caps sit at the highest exposure point and drip edge is unsupported at the perimeter. Both are covered components under most homeowner policies when wind is the named cause of loss. A thorough inspection documents these specifically because adjusters can overlook edge and ridge in a quick walk-through. We photograph and itemize every damaged component so nothing legitimate is left out of the scope of loss."
+      }
+     ]
+    },
+    "pageHero": {
+     "eyebrow": "Wind Damage Roofing — Raleigh, NC",
+     "heading": "When the Storm Passes, the Real Work Starts",
+     "subhead": "A lifted tab or a few missing shingles can look minor from the ground and turn into a rotted deck by spring. Kingmaker Roofing inspects, documents, and repairs wind damage across the Triangle — with our own crews, not subcontractors — and gives you a written assessment you can hand directly to your adjuster.",
+     "ctaLabel": "Schedule a Free Wind Damage Inspection",
+     "imageDescription": "Aerial close-up of a residential roof showing lifted shingle tabs and two missing shingles exposing dark roofing felt on the windward slope, with a Ridge cap partially detached at the peak — overcast post-storm sky, suburban Raleigh neighborhood visible below"
+    },
+    "whatToExpect": {
+     "eyebrow": "How Wind Claims Work",
+     "heading": "Our Storm Response Process — What's Included, What's Not, and When to Expect Each Step",
+     "bullets": [
+      "We arrive for a post-storm inspection within 24 to 48 hours and document every point of wind damage with dated photographs, measurements, and written notes — the same evidence standard insurers and their adjusters use.",
+      "If any sections of the roof are open to the sky, we install a properly weighted and secured tarp before we leave the property, protecting your attic and interior from further water intrusion while the claim process moves forward.",
+      "We provide a complete written damage assessment and a repair estimate using industry-standard pricing your insurance carrier will recognize — no inflated figures, no mystery line items.",
+      "We are available to meet your insurance adjuster on-site during the inspection walk; our role is to make sure all documented damage is reviewed and nothing legitimate is overlooked.",
+      "Once your insurer issues the scope of loss, we review it alongside our documentation and formally request a supplement if any covered items were missed — this is standard, legitimate practice and not bid inflation.",
+      "We schedule the repair or replacement with our own employees — not day-labor subcontractors — and back every installation with a written warranty you can read before we start."
+     ],
+     "stats": [
+      {
+       "value": "24–48",
+       "unit": "hrs",
+       "label": "Typical response for post-storm inspection in the Triangle"
+      },
+      {
+       "value": "30–60",
+       "unit": "days",
+       "label": "NC policy window to notify your insurer after a storm event"
+      },
+      {
+       "value": "25",
+       "unit": "yr",
+       "label": "Workmanship warranty on GAF Golden Pledge installations"
+      }
+     ],
+     "columns": {
+      "included": [
+       "On-site wind damage inspection with photo documentation",
+       "Temporary emergency tarping for open roof sections",
+       "Written damage assessment and itemized repair estimate",
+       "On-site availability during adjuster inspection",
+       "Formal supplement request if covered items are missing from insurer scope",
+       "Ridge cap, drip edge, and flashing inspection and documentation",
+       "Written labor and materials warranty on all completed work"
+      ],
+      "excluded": [
+       "Negotiating your claim or acting as a public adjuster",
+       "Filing your claim on your behalf",
+       "Deductible waivers, reductions, or assistance of any kind",
+       "Guaranteeing a specific insurance payout amount",
+       "Pressuring you to sign a same-day contract — take the time you need"
+      ],
+      "timeline": [
+       "Day 1–2: Emergency inspection and tarping if needed",
+       "Day 3–5: Written damage assessment and estimate delivered to you",
+       "Day 5–14: Adjuster meeting (scheduled by you with your insurer; we attend)",
+       "Day 7–21: Insurer issues scope of loss; we review and supplement if warranted",
+       "Day 14–30: Repair or replacement scheduled once scope is agreed",
+       "Day of install: Our own crew completes work; written warranty issued same day"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "kind": "storm",
+   "key": "hub",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "Storm Damage Roofing — Raleigh, NC",
+     "heading": "Your Roof Took a Hit. Here Is What Happens Next.",
+     "subhead": "We inspect, document, and build to the approved scope. No pressure, no shortcuts, no deductible schemes. Just honest work and a written warranty on every job.",
+     "ctaLabel": "Schedule a Free Storm Inspection",
+     "imageDescription": "Aerial view of a Raleigh-area neighborhood after a hail storm — dark asphalt shingles with visible impact marks on several roofs, gutters showing fresh dents, late-afternoon overcast light. One home in the foreground has a Kingmaker Roofing crew on the roof performing an inspection, with ladders visible and an orange safety cone on the driveway."
+    },
+    "whatToExpect": {
+     "eyebrow": "The Insurance Claim Process — Step by Step",
+     "heading": "We Document. You Decide. We Build to the Approved Scope.",
+     "bullets": [
+      "Within 24 hours of your call, a trained Kingmaker inspector reaches your home, photographs every damaged surface, and produces a written damage report — before you file anything with your insurer.",
+      "You file the claim directly with your insurance company. That is your right and your responsibility. We are here to support the process with documentation, not to take it over.",
+      "When your insurer schedules an adjuster visit, we attend on-site. We walk the adjuster through our findings and make sure every documented item is reviewed — nothing gets missed because nobody was there to point it out.",
+      "Once your insurer issues a scope of loss, we review it line by line. If covered items are absent from the estimate, we prepare a formal supplement request backed by photos, measurements, and industry-standard pricing your carrier recognizes.",
+      "After the scope is agreed between you and your insurer, we schedule the build. We use own crews — no subcontracted strangers — and pull the required Raleigh building permit for every replacement job.",
+      "At completion, you receive a written warranty covering both materials and workmanship. Not a handshake. Not a business card. A document with your name on it."
+     ],
+     "stats": [
+      {
+       "value": "$51B",
+       "unit": "in US insured storm losses",
+       "label": "2025 — third straight year above $50 billion (Insurance Information Institute)"
+      },
+      {
+       "value": "30–60",
+       "unit": "days",
+       "label": "typical NC policy window to notify your insurer after storm damage — waiting can cost you the claim"
+      },
+      {
+       "value": "42%",
+       "unit": "of claims",
+       "label": "close with zero payout — usually because documentation was incomplete, not because the damage wasn't real (NAIC data)"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Independent pre-claim inspection and photo documentation",
+       "Written damage report before you file",
+       "On-site presence at adjuster inspection",
+       "Formal supplement request if covered items are missing from scope",
+       "Own crews on every job — no day-labor subcontractors",
+       "Required Raleigh building permit and final inspection",
+       "Written warranty — materials and workmanship — delivered at completion",
+       "GAF Golden Pledge or OC Platinum Protection system available (manufacturer-backed, 25-year workmanship)"
+      ],
+      "excluded": [
+       "Filing your claim on your behalf — that is your right, not ours",
+       "Negotiating your settlement or acting as a public adjuster",
+       "Waiving, absorbing, or discounting your deductible (illegal in NC — protects you, not us)",
+       "Any promise of 'no out-of-pocket' that implies deductible forgiveness",
+       "Work beyond the insurer-approved scope without your written authorization",
+       "High-pressure same-day contracts or door-to-door solicitation"
+      ],
+      "timeline": [
+       "Day 1 — Free inspection, photo documentation, written damage report delivered to you",
+       "Days 2–5 — You file your claim; we prepare the damage package your adjuster will review",
+       "Week 1–2 — Adjuster site visit; we attend on-site",
+       "Week 2–4 — Insurer issues scope of loss; we review and supplement if needed",
+       "Once scope is agreed — build scheduled, permit pulled, materials ordered",
+       "Build day — crew arrives, full replacement completed typically in 1–2 days",
+       "Completion — final inspection passed, warranty paperwork in your hands"
+      ]
+     }
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "Can you waive or cover my deductible?",
+       "answer": "No — and any roofer who offers to is breaking the law. In North Carolina, waiving, absorbing, or discounting a homeowner's insurance deductible is insurance fraud under N.C.G.S. § 58-2-161, a Class H felony that applies to both the contractor and the homeowner. We do not offer it, and you should walk away from any company that does. What we do offer: thorough documentation to make sure the insurer's scope covers every dollar of legitimate damage, so your deductible is the only out-of-pocket cost you carry."
+      },
+      {
+       "question": "Can you handle my insurance claim for me?",
+       "answer": "We can support your claim process with inspection documentation, an on-site presence at the adjuster meeting, and a supplement request if covered items were missed. What we cannot do — and will not do — is negotiate your settlement, represent you with your insurer, or act as a public adjuster. That requires a separate license under N.C.G.S. § 58-33A-10, and a contractor cannot hold both a roofing license and a public adjuster license simultaneously. The settlement stays between you and your carrier. We give you the documentation to stand on solid ground when you get there."
+      },
+      {
+       "question": "My roof looks fine from the ground. Do I still need an inspection after a storm?",
+       "answer": "Yes. Hail damage is often invisible from the ground. A trained inspector looks for granule loss that exposes the black fiberglass mat, soft circular bruising in the asphalt layer, and dents on soft metals like gutters, downspouts, and chimney caps — all of which are adjuster-recognized evidence. A 2025 peer-reviewed study (Frontiers in Materials) confirmed that hailstones under one inch in diameter can significantly reduce a shingle's resistance to future weather and accelerate aging, even when the damage is not visible at street level. The inspection costs you nothing. Missing documented damage can cost you the claim."
+      },
+      {
+       "question": "How long do I have to file a storm damage claim in North Carolina?",
+       "answer": "Most NC homeowner policies require prompt notification — often within 30 to 60 days of the storm date. This is not the same as the three-year statute of limitations to sue your insurer; that is the deadline to pursue a legal dispute, not the deadline to notify your carrier. Waiting to 'see if it gets worse' can result in your insurer denying coverage for failure to report promptly. Call your insurer and call us as soon as you suspect storm damage."
+      },
+      {
+       "question": "What is the difference between an RCV and an ACV policy for a roof claim?",
+       "answer": "Replacement Cost Value (RCV) policies pay for a new roof minus your deductible, regardless of how old your current roof is. Actual Cash Value (ACV) policies pay the depreciated value of your roof at the time of loss — on a 20-year-old roof, that could mean a check for roughly $3,000 toward a $15,000 job. Check your declarations page or call your agent before a storm, not after. If you have an ACV policy, we will give you an honest picture of what the payout is likely to cover and what the gap will be."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "cost",
+   "key": "costGuide",
+   "payload": {
+    "pageHero": {
+     "eyebrow": "Transparent Pricing for Raleigh Homeowners",
+     "heading": "What Does a Roof Replacement Cost in Raleigh, NC?",
+     "subhead": "Most roofing contractors won't publish their pricing. We do. Real installed ranges, honest cost drivers, and the financing facts you need before you sign anything — because you deserve to make this decision with clear numbers, not pressure.",
+     "ctaLabel": "Get Your Free Measured Quote",
+     "imageDescription": "A Raleigh home mid-replacement — crew on the roof stripping old shingles, fresh decking visible, GAF Timberline HDZ bundles staged at the ridge. Morning light, residential neighborhood, no storm damage visible."
+    },
+    "whatToExpect": {
+     "eyebrow": "What Moves the Number",
+     "heading": "5 Factors That Determine Your Actual Price",
+     "bullets": [
+      "Roof footprint, not home square footage, is what you pay for — a single-story 2,000 sq ft home has nearly twice the roof area of a two-story home the same size, so story count is one of the first questions on every estimate.",
+      "Pitch and slope add 30–50% to labor costs on steep roofs (8/12 pitch and above) because the crew works slower, uses safety equipment, and carries higher workers' compensation exposure — that cost is real and shows up in every honest bid.",
+      "Every layer of old roofing that has to come off adds $0.40–$2.00 per square foot in tear-off and disposal fees, so a home that's been re-roofed over once or twice carries meaningfully higher base costs before a single new shingle is installed.",
+      "Rotted or damaged decking is the hidden-cost risk on every job — it can't be assessed until old shingles are stripped, so any contractor who quotes a firm price without a written allowance for decking repair is leaving you exposed to surprise charges at $2–$5 per square foot or $75–$120 per sheet.",
+      "Material choice is the single largest variable in the total project price — the gap between standard architectural asphalt and standing-seam metal on the same Raleigh home can exceed $20,000, so matching material to budget and use case is the most important conversation before a number is ever written down."
+     ],
+     "stats": [
+      {
+       "value": "Free",
+       "unit": "measured on-site quote",
+       "label": "No estimates from the street — we measure your actual roof footprint before quoting"
+      },
+      {
+       "value": "Itemized",
+       "unit": "written estimate",
+       "label": "Every line item in writing: materials, labor, tear-off, decking allowance, accessories"
+      },
+      {
+       "value": "25-Year",
+       "unit": "workmanship warranty",
+       "label": "Manufacturer-backed labor coverage — not just a contractor promise that disappears if we do"
+      }
+     ],
+     "columns": {
+      "included": [
+       "Tear-off and disposal of existing shingles (up to one layer)",
+       "New felt or synthetic underlayment",
+       "Ridge cap and starter strips",
+       "Drip edge replacement",
+       "Re-flash of all penetrations (vents, pipes)",
+       "Manufacturer-registered warranty documentation",
+       "Post-install cleanup and magnet sweep for nails"
+      ],
+      "excluded": [
+       "Rotted or damaged decking beyond one sheet (quoted separately on discovery)",
+       "Chimney masonry repair (flashing replacement is included; brick repointing is not)",
+       "Gutter replacement or realignment",
+       "Solar panel removal and reinstall",
+       "Structural repairs to rafters or fascia boards",
+       "HVAC equipment on flat roofs"
+      ],
+      "timeline": [
+       "Day 1 — On-site measurement and inspection; written itemized quote same day or next morning",
+       "Days 2–5 — Material delivery and permit pulled from Wake County (required for full replacements)",
+       "Installation day(s) — Most Raleigh homes complete in one day; complex rooflines or larger homes may take two",
+       "Day after completion — Final inspection, walkthrough, warranty registration submitted to manufacturer"
+      ]
+     }
+    },
+    "faqSection": {
+     "faqs": [
+      {
+       "question": "What does a roof replacement actually cost in Raleigh, NC?",
+       "answer": "For a typical Raleigh home, installed costs run $10,500–$22,000 for standard architectural asphalt shingles. NC runs 15–20% below the national average, so Raleigh homeowners generally land below what you'll see quoted on national cost sites. The range is wide because roof footprint, pitch, layers to tear off, and material choice all move the number. A 1,700 sq ft home on a standard pitch with one layer to remove and GAF Timberline HDZ typically lands in the $9,500–$11,000 range. A steeper roof, a second layer to tear off, or a premium material pushes that number meaningfully higher. We quote after measuring — not before."
+      },
+      {
+       "question": "What's the difference between standard and premium shingles, and is the upgrade worth it?",
+       "answer": "Standard architectural asphalt (GAF HDZ, Owens Corning Duration, CertainTeed Landmark) runs $4.11–$5.57 per square foot installed and carries a 25-year manufacturer-backed workmanship warranty on a Golden Pledge or Platinum Protection system. Designer and premium lines run $4.39–$5.95 installed and add features like Class 4 impact resistance, longer algae warranties, and heavier weight for a more dimensional appearance. The upgrade is most defensible if you're in a hail-prone area (Class 4 shingles can qualify for insurance premium reductions), if the home has a high-visibility roofline where curb appeal matters, or if you're planning to sell within five years and want a transferable manufacturer warranty as a selling point."
+      },
+      {
+       "question": "Will my insurance cover the replacement, and how does that work?",
+       "answer": "For storm-damaged roofs, the average insurance payout for a hail or wind claim in NC runs $12,000–$17,000 — most homeowners pay only their deductible out of pocket on a replacement cost value (RCV) policy. The critical detail is policy type: an RCV policy pays the full cost to replace with like materials, minus your deductible. An actual cash value (ACV) policy depreciates the payout based on roof age — a 20-year-old roof on an ACV policy can result in a check as low as $3,000 toward a $15,000 job. We conduct a thorough post-storm inspection and provide written documentation with photos. We can meet your insurance adjuster on-site to ensure all covered damage is reviewed. We do not negotiate your claim or act as a public adjuster — the settlement stays between you and your insurer."
+      },
+      {
+       "question": "Can I finance a new roof, and what does that actually cost per month?",
+       "answer": "Yes. A $12,000 roof replacement financed over 60 months at 8.99% APR is approximately $249 per month — less than most car payments, protecting the largest asset you own. Ask about promotional payment options when you request your quote. One disclosure worth knowing: some roofing financing programs advertise deferred-interest plans. These are not the same as 0% interest — interest accrues during the promotional period and is back-charged in full if the balance isn't paid before the promo window closes. We'll explain the terms of any financing option clearly before you sign anything. Financing is subject to credit approval."
+      },
+      {
+       "question": "How do I know if I need a full replacement or just a repair?",
+       "answer": "A repair is often the right call for isolated damage — a few missing shingles after a wind event, a single flashing failure, or localized granule loss on an otherwise young roof. A replacement typically makes more economic sense when the roof is within 5 years of its expected lifespan, when damage covers more than 30% of the surface, or when a second layer of old shingles is already in place (a third layer is not permitted under NC building code and requires full tear-off). The honest answer can only come after an inspection — any contractor who recommends a full replacement from the driveway, without getting on the roof, is selling, not assessing."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "critics": {
+  "facts": {
+   "pass": false,
+   "violations": [
+    {
+     "where": "CertainTeed payload — certificationLine and pageHero subhead",
+     "problem": "Both the certificationLine and the pageHero subhead describe the individual applicator credential as 'Master Shingle Applicators.' The dossier (Section 1C) identifies the correct individual credential name as 'Master Craftsman.' The SELECT ShingleMaster requirement is that 50% of the shingle installation crew plus all supervisors hold the Master Craftsman credential — not 'Master Shingle Applicators,' which is a fabricated credential name not used by CertainTeed. Notably, the FAQ within the same payload correctly uses 'Master Craftsman credential,' making the inconsistency internal as well as a dossier violation.",
+     "fix": "Replace 'Master Shingle Applicators' with 'Master Craftsman' in both the certificationLine and the pageHero subhead. Exact corrected phrasing per dossier: 'requiring at least 5 years in business, a crew majority of certified Master Craftsman applicators, and the company owner passing CertainTeed's Business Fiscal Responsibility exam.'"
+    },
+    {
+     "where": "Malarkey payload — Legacy product pitch in brandFacts.productLines",
+     "problem": "The Legacy pitch states 'wind-warranted to 130 mph' as an unconditional claim. The dossier (Section 1D) specifies that Legacy's wind warranty is '110 mph standard / 130 mph enhanced (with Secure Choice accessories)' — identical to Vista AR's structure. The Vista AR pitch in the same payload correctly includes the condition ('a 130 mph wind warranty with Secure Choice accessories'), but the Legacy pitch drops the Secure Choice requirement, implying 130 mph is the baseline unconditional rating. This overstates the standard wind warranty by 20 mph.",
+     "fix": "Revise the Legacy pitch to match the Vista AR framing: add 'with Secure Choice accessories' to the 130 mph claim, e.g., '...wind-warranted to 130 mph with Malarkey Secure Choice accessories — the same standard required for IBHS FORTIFIED Roof eligibility.' The standard (non-accessory) wind rating is 110 mph and should not be omitted or conflated with the enhanced rating."
+    }
+   ]
+  },
+  "legal": {
+   "pass": false,
+   "violations": [
+    {
+     "where": "hail.payload.whatToExpect.bullets[0]",
+     "problem": "\"giving you a documented baseline your carrier cannot dispute\" implies a guarantee of carrier acceptance or adjuster outcome. The dossier's banned-phrase table prohibits any guarantee of a specific payout amount and flags language that implies the insurer's response is predetermined. Carriers can and do dispute documentation; this phrase sets a false expectation that could constitute dishonest urgency or implied guarantee-of-approval under the same principle.",
+     "fix": "Replace with: \"giving you a documented baseline your insurer can review alongside their own adjuster's findings.\" This removes the outcome-certainty implication while preserving the value proposition of pre-filing documentation."
+    },
+    {
+     "where": "hub.payload.faqSection.faqs[4].answer (RCV/ACV FAQ, last sentence — 'If you have an ACV policy, we will give you an honest picture of what the payout is likely to cover and what the gap will be.')",
+     "problem": "'What the payout is likely to cover' frames the roofing contractor as a predictor of the insurance settlement amount — a claim-advisory function that borders on the unauthorized public-adjuster role prohibited by N.C.G.S. § 58-33A-10. The dossier bans 'We maximize your settlement' and 'We recover every dollar you're owed' under the same unauthorized-public-adjusting category; this phrase is softer but still implies the contractor is forecasting the monetary outcome of a claim rather than educating on policy mechanics.",
+     "fix": "Replace with: \"we will explain how ACV depreciation works on a roof your age so you know what to expect from your own policy review before you file — the actual settlement amount stays between you and your insurer.\" This shifts framing from payout-prediction to policy-education, which is the dossier's safe lane."
+    },
+    {
+     "where": "hail.payload.whatToExpect.stats[2].label (also appears in hub.payload.whatToExpect.stats[2].label)",
+     "problem": "The '42% of claims close at zero payout' statistic is published as a hard fact with no attribution or confidence qualifier. The dossier explicitly marks this as 'NAIC data, medium confidence — present as directional.' Publishing an unattributed, unqualified insurance-outcome statistic in a storm/insurance context overstates its certainty and creates FTC/credibility risk if a consumer or regulator challenges the sourcing. The dossier's own honest-urgency section includes this stat but with the directional qualifier.",
+     "fix": "Add source and confidence qualifier to the label: change to \"close at zero payout — usually due to incomplete documentation, not missing damage (NAIC data, directional estimate).\" This matches the dossier's own framing of the stat in the honest-urgency section."
+    }
+   ]
+  }
+ }
+}

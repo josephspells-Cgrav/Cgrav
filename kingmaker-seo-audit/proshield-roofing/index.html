@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProShield Commercial Roofing — Website Audit | King Maker SEO</title>
+<meta name="description" content="Full on-page, technical, and conversion audit of ProShield Commercial Roofing's website, benchmarked against a King Maker enterprise build — Charlotte, NC + 30-mile area." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  /* ============================== TOKENS — pulled 1:1 from kingmakerseo.com globals.css ============================== */
+  :root {
+    --color-bg: #ffffff;
+    --color-bg-tint: #eef2f8;
+    --color-surface: #ffffff;
+    --color-surface-2: #f1f5f9;
+    --color-surface-3: #e2e8f0;
+    --color-line: #e2e8f0;
+    --color-line-soft: #eef2f6;
+
+    --color-blue: #1d4ed8;
+    --color-blue-action: #2563eb;
+    --color-blue-deep: #172554;
+    --color-blue-tint: #eff6ff;
+    --color-blue-100: #dbeafe;
+
+    --color-ink: #0f172a;
+    --color-muted: #475569;
+    --color-dim: #586679;
+
+    --color-red: #dc2626;
+    --color-red-ink: #b91c1c;
+    --color-red-tint: #fef2f2;
+
+    /* Green is NOT part of the firm-site brand system (blue = positive, red = negative, by design).
+       Reserved here strictly for the functional pass/fail glyphs in the audit checklist —
+       the clearest convention for a client-facing scorecard. Everything else stays on-brand. */
+    --color-green: #16a34a;
+    --color-green-ink: #15803d;
+
+    --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+    --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+    --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.05), 0 6px 16px -6px rgba(15, 23, 42, 0.12), 0 20px 44px -16px rgba(15, 23, 42, 0.20);
+    --shadow-lift: 0 2px 6px rgba(15, 23, 42, 0.08), 0 12px 28px -8px rgba(15, 23, 42, 0.16), 0 34px 64px -18px rgba(15, 23, 42, 0.30);
+    --shadow-blue: 0 2px 6px rgba(37, 99, 235, 0.12), 0 14px 34px -10px rgba(37, 99, 235, 0.22), 0 30px 62px -20px rgba(37, 99, 235, 0.32);
+
+    --sidebar-w: 288px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 17px;
+    color: var(--color-ink);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; margin: 0; }
+  a { color: var(--color-blue); }
+  p { margin: 0 0 1em; color: var(--color-muted); font-size: 1em; }
+
+  /* ============================== SIDEBAR ============================== */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: var(--sidebar-w);
+    background: var(--color-blue-deep);
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 26px;
+    z-index: 20;
+    overflow-y: auto;
+  }
+  .sidebar .brand {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 20px;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .sidebar .brand span { color: #93c5fd; }
+  .sidebar .brand-sub {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #93a5c9;
+    margin-top: 6px;
+  }
+  .sidebar .client-block {
+    margin-top: 34px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .sidebar .client-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #7d8cb4;
+    margin-bottom: 8px;
+  }
+  .sidebar .client-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+  .sidebar .client-meta {
+    margin-top: 8px;
+    font-size: 14.5px;
+    color: #b6c2e0;
+    line-height: 1.55;
+  }
+  .sidebar nav {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .sidebar nav a {
+    color: #b6c2e0;
+    text-decoration: none;
+    font-size: 15.5px;
+    font-weight: 600;
+    padding: 11px 14px;
+    border-radius: 3px;
+    border-left: 3px solid transparent;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .sidebar nav a:hover { background: rgba(255,255,255,0.06); color: #ffffff; }
+  .sidebar nav a.active {
+    background: rgba(37, 99, 235, 0.28);
+    color: #ffffff;
+    border-left-color: #60a5fa;
+  }
+  .sidebar .footer-block {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    font-size: 12px;
+    color: #7d8cb4;
+    line-height: 1.6;
+  }
+  .sidebar .footer-block strong { color: #b6c2e0; display: block; margin-bottom: 2px; }
+
+  /* ============================== MAIN ============================== */
+  .main { margin-left: var(--sidebar-w); }
+
+  .section { padding: 76px 56px; max-width: 1180px; }
+  .section.tint { background: var(--color-bg-tint); }
+  .section-eyebrow {
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--color-blue);
+    margin-bottom: 10px;
+  }
+  .section h2 {
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 800;
+    color: var(--color-ink);
+    margin-bottom: 14px;
+  }
+  .section .section-intro {
+    font-size: 16px;
+    color: var(--color-muted);
+    max-width: 760px;
+    margin-bottom: 8px;
+  }
+
+  /* ---- HERO ---- */
+  .hero { padding: 88px 56px 60px; }
+  .hero .tag {
+    display: inline-block;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--color-blue);
+    background: var(--color-blue-tint);
+    border: 1px solid var(--color-blue-100);
+    padding: 6px 12px;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 4.4vw, 50px);
+    font-weight: 900;
+    color: var(--color-ink);
+    line-height: 1.08;
+    max-width: 820px;
+  }
+  .hero .sub {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--color-muted);
+    max-width: 700px;
+  }
+  .hero .meta-row {
+    margin-top: 30px;
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .hero .meta-item .k { white-space: nowrap; }
+  .hero .meta-item { }
+  .hero .meta-item .k {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-dim);
+    margin-bottom: 5px;
+  }
+  .hero .meta-item .v {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 21px;
+    color: var(--color-ink);
+  }
+
+  /* ---- CHECKLIST ---- */
+  .checklist-header-row {
+    display: grid;
+    grid-template-columns: 1fr 168px 168px;
+    gap: 12px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-dim);
+  }
+  .checklist-header-row .col-current { text-align: center; }
+  .checklist-header-row .col-km { text-align: center; color: var(--color-blue); }
+
+  .checklist-group-label {
+    margin-top: 22px;
+    margin-bottom: 6px;
+    padding: 10px 20px;
+    background: var(--color-surface-3);
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--color-ink);
+  }
+  .checklist-group-label:first-of-type { margin-top: 4px; }
+
+  .checklist-row {
+    display: grid;
+    grid-template-columns: 1fr 168px 168px;
+    gap: 12px;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-line-soft);
+    font-size: 16px;
+  }
+  .checklist-row .label { color: var(--color-ink); font-weight: 500; }
+  .checklist-row .cell { display: flex; justify-content: center; }
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .icon svg { width: 16px; height: 16px; }
+  /* Solid fill (not a pale tint) so the badge itself pops off the white/tint page background —
+     this is the bigger perceptual-contrast lever than the glyph color alone. White stroke on
+     these solid fills verifies at 5.3:1 (green) / 6.6:1 (red) — both above the current pastel version. */
+  .icon.yes { background: #15803d; }
+  .icon.no { background: #b91c1c; }
+
+  /* ---- FINDINGS ---- */
+  .finding {
+    margin-top: 40px;
+    padding-top: 8px;
+  }
+  .finding:first-of-type { margin-top: 28px; }
+  .finding h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-ink);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .finding h3 .letter {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 900;
+    color: #ffffff;
+    background: var(--color-blue);
+    width: 26px; height: 26px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .finding p, .finding ul { max-width: 800px; }
+  .finding ul { margin: 0 0 1em; padding-left: 20px; color: var(--color-muted); }
+  .finding li { margin-bottom: 6px; }
+  .finding strong { color: var(--color-ink); }
+
+  .rank-table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    margin: 18px 0 22px;
+    font-size: 15.5px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+  .rank-table th, .rank-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .rank-table th {
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-dim);
+    background: var(--color-surface-2);
+  }
+  .rank-table td.pos { font-family: var(--font-display); font-weight: 700; color: var(--color-red-ink); white-space: nowrap; }
+  .rank-table td.type { color: var(--color-muted); font-size: 14.5px; }
+
+  .callout {
+    margin-top: 24px;
+    padding: 18px 22px;
+    background: var(--color-red-tint);
+    border-left: 3px solid var(--color-red);
+    max-width: 800px;
+    font-size: 16px;
+    color: var(--color-ink);
+  }
+  .callout strong { color: var(--color-red-ink); }
+
+  /* ---- LEADS ---- */
+  .leads-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+    max-width: 900px;
+  }
+  .lead-card {
+    background: var(--color-surface);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-card);
+    border-top: 4px solid var(--color-line);
+  }
+  .lead-card.km { border-top-color: var(--color-blue); box-shadow: var(--shadow-blue); }
+  .lead-card .card-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-dim);
+    margin-bottom: 18px;
+  }
+  .lead-card.km .card-label { color: var(--color-blue); }
+  .lead-stat { margin-bottom: 18px; }
+  .lead-stat:last-child { margin-bottom: 0; }
+  .lead-stat .n {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 34px;
+    line-height: 1;
+    color: var(--color-red-ink);
+  }
+  .lead-card.km .lead-stat .n { color: var(--color-blue); }
+  .lead-stat .lbl { font-size: 14.5px; color: var(--color-muted); margin-top: 6px; }
+
+  .leads-note {
+    max-width: 800px;
+    margin-top: 26px;
+    padding: 16px 20px;
+    background: var(--color-blue-tint);
+    border-left: 3px solid var(--color-blue);
+    font-size: 15.5px;
+    color: var(--color-ink);
+  }
+  .leads-note + .leads-note { margin-top: 12px; }
+  .leads-note strong { color: var(--color-blue); }
+
+  /* ---- BUILD (Part 4) ---- */
+  .build-principles {
+    max-width: 800px;
+    margin: 18px 0 36px;
+    padding-left: 20px;
+  }
+  .build-principles li { margin-bottom: 10px; color: var(--color-muted); font-size: 16px; }
+  .build-principles strong { color: var(--color-ink); }
+
+  .axis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .axis-card {
+    background: var(--color-surface);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-card);
+  }
+  .axis-card .axis-count {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 27px;
+    color: var(--color-blue);
+    margin-bottom: 6px;
+  }
+  .axis-card h4 { font-size: 17px; font-weight: 800; color: var(--color-ink); margin-bottom: 10px; }
+  .axis-card p { font-size: 15px; color: var(--color-muted); margin: 0; line-height: 1.65; }
+
+  .scope-total {
+    margin-top: 34px;
+    padding: 26px 30px;
+    background: var(--color-blue-deep);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    max-width: 900px;
+  }
+  .scope-total .num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 42px;
+    color: #93c5fd;
+    line-height: 1;
+  }
+  .scope-total .txt { font-size: 15.5px; color: #cbd5e1; max-width: 560px; }
+  .scope-total .txt strong { color: #ffffff; }
+
+  .build-notes { margin-top: 22px; max-width: 800px; }
+  .build-notes p { font-size: 15.5px; }
+
+  /* ---- FOOTER ---- */
+  .page-footer {
+    padding: 40px 56px 60px;
+    font-size: 12.5px;
+    color: var(--color-dim);
+    border-top: 1px solid var(--color-line);
+  }
+
+  /* ============================== RESPONSIVE ============================== */
+  @media (max-width: 960px) {
+    :root { --sidebar-w: 0px; }
+    .sidebar {
+      position: static;
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      overflow: visible;
+    }
+    .sidebar .client-block { display: none; }
+    .sidebar nav { display: none; }
+    .sidebar .footer-block { display: none; }
+    .main { margin-left: 0; }
+    .section, .hero { padding: 44px 22px; }
+    .checklist-header-row, .checklist-row { grid-template-columns: 1fr 70px 70px; gap: 6px; }
+    .leads-grid { grid-template-columns: 1fr; }
+    .axis-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div>
+      <div class="brand">KING MAKER<br><span>SEO</span></div>
+      <div class="brand-sub">Website Audit</div>
+    </div>
+
+    <div class="client-block">
+      <div class="client-label">Prepared For</div>
+      <div class="client-name">ProShield<br>Commercial Roofing</div>
+      <div class="client-meta">Commercial Roofing<br>Charlotte, NC + 30-Mile Area</div>
+    </div>
+
+    <nav>
+      <a href="#overview" data-nav>Overview</a>
+      <a href="#checklist" data-nav>The Checklist</a>
+      <a href="#findings" data-nav>Detailed Findings</a>
+      <a href="#leads" data-nav>Leads Per Month</a>
+      <a href="#build" data-nav>The Enterprise Build</a>
+    </nav>
+
+    <div class="footer-block">
+      <strong>King Maker SEO</strong>
+      Website audits &amp; enterprise SEO builds for home-service contractors.
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- ============================== OVERVIEW / HERO ============================== -->
+    <section class="hero" id="overview">
+      <span class="tag">Website Audit</span>
+      <h1>ProShield Commercial Roofing — Website Audit</h1>
+      <p class="sub">Current Website vs. King Maker Build · Commercial Roofing · Charlotte, NC + 30-Mile Area</p>
+      <p class="sub">A full on-page, technical, content, and conversion audit of the current website, side-by-side with a King Maker build. Left column of the checklist below is the current site. Right column is the King Maker build.</p>
+
+      <div class="meta-row">
+        <div class="meta-item">
+          <div class="k">Ranked Keywords</div>
+          <div class="v">~11–22</div>
+        </div>
+        <div class="meta-item">
+          <div class="k">Current Visitors / Mo</div>
+          <div class="v">~2</div>
+        </div>
+        <div class="meta-item">
+          <div class="k">Local Searches / Mo</div>
+          <div class="v">~1,120</div>
+        </div>
+        <div class="meta-item">
+          <div class="k">Projected Visitors / Mo</div>
+          <div class="v">~224</div>
+        </div>
+        <div class="meta-item">
+          <div class="k">Projected Leads / Mo</div>
+          <div class="v">~22</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PART 1 — CHECKLIST ============================== -->
+    <section class="section tint" id="checklist">
+      <div class="section-eyebrow">Part 1</div>
+      <h2>The Checklist</h2>
+      <p class="section-intro">Every factor below, current site vs. King Maker build. Detailed findings for every item follow in Part 2.</p>
+
+      <div class="checklist-header-row">
+        <div></div>
+        <div class="col-current">Current Site</div>
+        <div class="col-km">King Maker Build</div>
+      </div>
+
+      <div class="checklist-group-label">What the Current Site Has</div>
+      <div class="checklist-row"><div class="label">Secure (HTTPS)</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Mobile-responsive layout</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Title tag on every page</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Meta description on every page</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Canonical tags</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Clean, readable URLs</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">XML sitemap + Yoast SEO plugin</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Google Analytics + Tag Manager</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Indexed by Google</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Clickable phone number</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">A quote-request form exists (on one page)</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Review pages exist</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">One deep content page (4,500+ words)</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Project/portfolio page exists</div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+
+      <div class="checklist-group-label">On-Page SEO (Missing / Broken)</div>
+      <div class="checklist-row"><div class="label">Titles target Charlotte + the metro (not just 2 suburbs)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Titles within Google's length limit (homepage is 76 characters)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Complete homepage H1 (currently ends mid-sentence: "…Roofs that:")</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Section subheadings (H2s) on every page (several have none)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Image alt text (0 of ~150 images have it)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Enough content on key pages (homepage is ~300 words)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">No leftover template placeholders (Reviews page reads "around Somewhere")</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Page titles match page content (Testimonials page is titled "Contact…")</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+
+      <div class="checklist-group-label">Content &amp; Site Structure (Missing)</div>
+      <div class="checklist-row"><div class="label">Service pages for buyer terms (repair, replacement, inspection)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">City/location pages (Charlotte + 15 surrounding towns)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Service-area page</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Resource / blog / education content</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">FAQ content</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Warranty / guarantee page</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Financing page</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Certifications / licensing / insurance trust page</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+
+      <div class="checklist-group-label">Technical (Missing / Broken)</div>
+      <div class="checklist-row"><div class="label">Passes Core Web Vitals (layout shift 0.92 — needs &lt;0.10)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Fast load (Performance 59/100, 1.4 MB, 74 scripts)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Minified, non-render-blocking CSS/JS</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Modern compressed images (WebP)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Valid page code (doctype present)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">No broken plugins (robots.txt leaks a PHP error)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Sitemap served over HTTPS (declared as http://)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+
+      <div class="checklist-group-label">Local, Schema &amp; AI Search (Missing)</div>
+      <div class="checklist-row"><div class="label">LocalBusiness schema (business data tags)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Service schema</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Review / star-rating schema (stars in Google results)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">FAQ schema</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Readable by AI search (ChatGPT / Google AI) — scores 1/100</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+
+      <div class="checklist-group-label">Conversion &amp; Trust (Missing)</div>
+      <div class="checklist-row"><div class="label">Lead-capture form on the homepage / above the fold</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Prominent "Get an Estimate" buttons on every page</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Reviews shown on the homepage with live star ratings</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Sticky click-to-call bar on mobile</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="checklist-row"><div class="label">Trust badges (manufacturer cert, licensing, BBB, insured)</div><div class="cell"><span class="icon no"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div><div class="cell"><span class="icon yes"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+    </section>
+
+    <!-- ============================== PART 2 — DETAILED FINDINGS ============================== -->
+    <section class="section" id="findings">
+      <div class="section-eyebrow">Part 2</div>
+      <h2>Detailed Findings</h2>
+      <p class="section-intro">The evidence behind every line in the checklist above.</p>
+
+      <div class="finding">
+        <h3><span class="letter">A</span> Keyword Targeting &amp; Rankings</h3>
+        <p>The site ranks for <strong>~11–22 keywords total, with an estimated ~2 visits per month.</strong> Nearly every Page-1 ranking is the business's <strong>own name</strong>, not customer searches:</p>
+        <table class="rank-table">
+          <thead><tr><th>Keyword</th><th>Position</th><th>Type</th></tr></thead>
+          <tbody>
+            <tr><td>pro shield roofing</td><td class="pos">17 (Page 2)</td><td class="type">Own brand name</td></tr>
+            <tr><td>proshield roofing</td><td class="pos">28 (Page 3)</td><td class="type">Own brand name</td></tr>
+            <tr><td>roofing companies mint hill nc</td><td class="pos">65 (Page 7)</td><td class="type">Local — buried</td></tr>
+            <tr><td>commercial metal roofing types</td><td class="pos">65 (Page 7)</td><td class="type">Informational — buried</td></tr>
+            <tr><td>fabric reinforced roofing</td><td class="pos">75 (Page 8)</td><td class="type">Product term — buried</td></tr>
+            <tr><td>single-ply pvc roofing membrane</td><td class="pos">87 (Page 9)</td><td class="type">Product term — buried</td></tr>
+            <tr><td>different types of commercial roofing</td><td class="pos">112</td><td class="type">Informational — buried</td></tr>
+          </tbody>
+        </table>
+        <div class="callout"><strong>The problem:</strong> the site ranks Page 1 for <strong>zero</strong> money keywords. The highest-value commercial-roofing searches in the area have no page targeting them at all — see Finding C.</div>
+      </div>
+
+      <div class="finding">
+        <h3><span class="letter">B</span> Page-by-Page On-Page Problems</h3>
+        <ul>
+          <li><strong>Homepage</strong> — title is 76 characters (Google cuts off ~60, so it truncates). H1 is an incomplete sentence: <em>"We Install Commercial Roofs that:"</em>. Only ~300 words of content (needs ~800–1,500 to rank). 7 images, <strong>0 with alt text</strong>.</li>
+          <li><strong>Reviews page</strong> — H1 reads <em>"Conklin Roofing Testimonials around Somewhere"</em> — <strong>"around Somewhere" is an unfilled template placeholder</strong> that was never replaced. Uses the manufacturer's name (Conklin), not ProShield.</li>
+          <li><strong>Testimonials page</strong> — the page title is <em>"Contact ProShield Commercial Roofing in North Carolina"</em> — the <strong>title doesn't match the page</strong> (it's a reviews page titled as a contact page).</li>
+          <li><strong>Every service page</strong> targets <em>"Mint Hill &amp; Matthews, NC"</em> in the title — two small suburbs — while <strong>Charlotte (the large market) is targeted nowhere.</strong></li>
+          <li><strong>Site-wide:</strong> roughly 150 images across the site and <strong>almost none have alt text</strong> (0 on most pages) — a miss for both Google and accessibility.</li>
+        </ul>
+      </div>
+
+      <div class="finding">
+        <h3><span class="letter">C</span> Service Page Gap</h3>
+        <p>Existing pages are named after <strong>Conklin manufacturer products/systems</strong>, not what customers type into Google:</p>
+        <ul>
+          <li>Has pages for: Membrane Coating System, Fabric-Reinforced Roofing System, Metal Roof Restoration, Single-Ply Membrane System, Spray Polyurethane Foam, Conklin Roof Coating Options, Why Conklin Roofing.</li>
+          <li><strong>Missing pages for how customers actually search</strong> (with local monthly volume):
+            <ul>
+              <li>Commercial Roof Repair — <strong>110/mo</strong> — no page</li>
+              <li>Commercial Roof Replacement — <strong>50/mo</strong> — no page</li>
+              <li>Commercial Roof Inspection — <strong>50/mo</strong> — no page</li>
+              <li>Commercial Flat Roof Repair — <strong>30/mo</strong> — no page</li>
+              <li>Commercial Roofing Company / Contractor — <strong>290/mo combined</strong> — no dedicated page</li>
+              <li>"Commercial roofers near me" — no optimized page</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="finding">
+        <h3><span class="letter">D</span> Location Coverage Gap</h3>
+        <p><strong>Zero city pages.</strong> The site names only Mint Hill &amp; Matthews. There are <strong>no pages</strong> for Charlotte, Concord, Gastonia, Huntersville, Matthews, Mint Hill, Indian Trail, Monroe, Pineville, Cornelius, Davidson, Kannapolis, Belmont, Mount Holly, Waxhaw, or Harrisburg — the 16 towns that make up the local demand.</p>
+      </div>
+
+      <div class="finding">
+        <h3><span class="letter">E</span> Technical Issues (With Metrics)</h3>
+        <ul>
+          <li><strong>Cumulative Layout Shift: 0.92</strong> — Google's target is under 0.10. The page visibly jumps as it loads (fails Core Web Vitals).</li>
+          <li><strong>Performance score: 59/100.</strong> Total page weight 1.4 MB, 74 scripts, server response ~975 ms, render-blocking resources, unused/unminified CSS &amp; JS, no modern image formats.</li>
+          <li><strong>Missing &lt;!doctype&gt; tag</strong> — a basic HTML validity error.</li>
+          <li><strong>Broken plugin:</strong> the robots.txt file outputs a PHP fatal warning from an outdated "portfolio-gallery" plugin before the actual rules — visible to Google and anyone who checks.</li>
+          <li><strong>Sitemap is declared as http://</strong> (not https://) inside robots.txt.</li>
+          <li>Running <strong>WordPress 6.8.5</strong> with legacy plugins; last meaningful update July 2025.</li>
+        </ul>
+      </div>
+
+      <div class="finding">
+        <h3><span class="letter">F</span> Schema &amp; AI Readiness</h3>
+        <ul>
+          <li>Only basic Yoast schema (WebPage / WebSite / Breadcrumb) on all 16 pages.</li>
+          <li><strong>No LocalBusiness, Service, Review/AggregateRating, or FAQ schema anywhere</strong> — so the site is not eligible for star ratings or rich results in Google.</li>
+          <li><strong>AI-search readability score: 1/100</strong> (Google Lighthouse "Agentic Browsing") — effectively invisible to ChatGPT, Google AI Overviews, and other AI search tools.</li>
+        </ul>
+      </div>
+
+      <div class="finding">
+        <h3><span class="letter">G</span> Conversion &amp; Trust Gap</h3>
+        <ul>
+          <li>A "Free Roof Evaluation" quote form exists — but it's on a <strong>separate buried page</strong>, not on the homepage or above the fold. No lead-capture on the page most visitors land on.</li>
+          <li><strong>No prominent, repeated "Get an Estimate" call-to-action</strong> across the site.</li>
+          <li><strong>No sticky click-to-call bar</strong> for mobile visitors.</li>
+          <li>Review pages exist but are <strong>broken/unoptimized</strong> (placeholder text, no review schema, not shown on the homepage) — so no star ratings and no social proof where buyers decide.</li>
+          <li><strong>No trust badges</strong> — no manufacturer certification, licensing, insurance, or BBB signals surfaced.</li>
+          <li><strong>No warranty, financing, or FAQ pages</strong> — all key decision-drivers for commercial roofing buyers.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================== PART 3 — LEADS ============================== -->
+    <section class="section tint" id="leads">
+      <div class="section-eyebrow">Part 3</div>
+      <h2>Leads Per Month</h2>
+      <p class="section-intro">Local commercial roofing searches — Charlotte + 30-mile area: <strong>~1,120 per month.</strong></p>
+
+      <div class="leads-grid">
+        <div class="lead-card">
+          <div class="card-label">Current Site</div>
+          <div class="lead-stat"><div class="n">~0.2%</div><div class="lbl">Share of searches captured</div></div>
+          <div class="lead-stat"><div class="n">~2</div><div class="lbl">Visitors per month from search</div></div>
+          <div class="lead-stat"><div class="n">&lt;1</div><div class="lbl">Leads per month</div></div>
+        </div>
+        <div class="lead-card km">
+          <div class="card-label">King Maker Build</div>
+          <div class="lead-stat"><div class="n">20%</div><div class="lbl">Share of searches captured</div></div>
+          <div class="lead-stat"><div class="n">~224</div><div class="lbl">Visitors per month from search</div></div>
+          <div class="lead-stat"><div class="n">~22</div><div class="lbl">Leads per month (10% of visitors call/request)</div></div>
+        </div>
+      </div>
+
+      <div class="leads-note"><strong>Why ~2 visitors today:</strong> the site ranks Page 1 only for its own business name — not for the ~1,120 monthly commercial-roofing searches in the area. Almost none of that demand is reaching it.</div>
+      <div class="leads-note"><strong>The 10% lead rate</strong> reflects commercial roofing being high-intent — people searching these terms are ready to hire and request estimates, so a larger share of visitors convert to calls than in most industries.</div>
+    </section>
+
+    <!-- ============================== PART 4 — THE BUILD ============================== -->
+    <section class="section" id="build">
+      <div class="section-eyebrow">Part 4</div>
+      <h2>The King Maker Enterprise Build — Page Structure &amp; Scope</h2>
+      <p class="section-intro">The full page architecture for a commercial roofing site built for maximum Google topical authority across Charlotte + the 30-mile area — complete coverage of every service, roofing system, building type, and buyer question a commercial roof decision-maker searches.</p>
+
+      <ul class="build-principles">
+        <li><strong>A dedicated page on every axis</strong> — one page per service, per roofing system, per building type, per city. Never "service + city" or "building-type + city" combo pages (Google penalizes those as spam). Local and segment intent lives in the copy.</li>
+        <li><strong>Authority through completeness</strong> — Google ranks the site that most completely and expertly covers the topic. Every facet of commercial roofing gets its own authoritative page, interlinked into a silo: services ↔ systems ↔ industries ↔ locations ↔ resources ↔ projects.</li>
+        <li><strong>Every page real</strong> — backed by actual expertise and completed projects. Depth, never thin duplicates.</li>
+      </ul>
+
+      <div class="axis-grid">
+        <div class="axis-card">
+          <div class="axis-count">~20</div>
+          <h4>Company &amp; Trust Pages</h4>
+          <p>Home · About · Why Choose Us · Team &amp; Leadership · Certifications · Safety &amp; OSHA Record · Our Process · Careers · Community · Services / Systems / Industries / Service Areas / Resources / Projects hubs · Reviews · FAQ · Financing · Warranties · Free Estimate · Contact.</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-count">~20</div>
+          <h4>Service Pages</h4>
+          <p>Commercial Roof Repair · Emergency 24/7 Repair · Leak Repair · Preventive Maintenance · Inspections · Infrared Moisture Surveys · Replacement · New Installation · Re-Roofing · Coatings · Restoration · Storm/Hail Damage · Insurance Claims · Waterproofing · Drainage · Flashing · Skylights · Ventilation · Gutters.</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-count">~15</div>
+          <h4>Roofing System / Material Pages</h4>
+          <p>TPO · EPDM · PVC · Built-Up (BUR) · Modified Bitumen · Single-Ply Membrane (pillar) · Commercial Metal · Standing Seam · Metal Restoration · SPF · Silicone Coatings · Acrylic Coatings · Green/Vegetative · Solar · Liquid-Applied Membrane.</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-count">~16</div>
+          <h4>Industries / Building Types We Serve</h4>
+          <p>Warehouse · Industrial &amp; Manufacturing · Retail · Office · Apartment/Multifamily · HOA/Condo · Medical/Healthcare · School · Church · Restaurant · Hotel/Hospitality · Government/Municipal · Distribution/Logistics · Self-Storage · Auto Dealership · Property Managers.</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-count">~6</div>
+          <h4>Manufacturer / Brand Pages</h4>
+          <p>GAF · Carlisle · Duro-Last · Conklin · Firestone/Elevate · Johns Manville — only systems ProShield is certified for. Final list = ProShield's actual certifications.</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-count">~20</div>
+          <h4>Location Pages</h4>
+          <p>16 cities — Charlotte, Concord, Gastonia, Huntersville, Matthews, Mint Hill, Indian Trail, Monroe, Pineville, Cornelius, Davidson, Kannapolis, Belmont, Mount Holly, Waxhaw, Harrisburg — plus 4 county hubs: Mecklenburg, Union, Cabarrus, Gaston. Dedicated, no combos.</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-count">~38</div>
+          <h4>Resource / Education Library</h4>
+          <p>Cost guides · comparisons (TPO vs EPDM vs PVC, repair vs replace) · buyer guides (lifespan, warranty, inspection, maintenance) · technical &amp; financial (codes, insulation, insurance, financing, Section 179 tax) · local &amp; seasonal (storm prep, Charlotte climate).</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-count">~13</div>
+          <h4>Project / Case Study Pages</h4>
+          <p>Real completed projects, each naturally combining system + building type + city (e.g. "TPO Replacement — Charlotte Warehouse"). The strongest E-E-A-T and long-tail asset on the site. Grows over time.</p>
+        </div>
+      </div>
+
+      <div class="scope-total">
+        <div class="num">~148</div>
+        <div class="txt"><strong>pages of dedicated, expert, interlinked content</strong> — vs. 16 today. Full schema stack, quote form + sticky click-to-call on every page, Core Web Vitals passing, written for Google AI + ChatGPT citation.</div>
+      </div>
+
+      <div class="build-notes">
+        <p><strong>Not "doorway" pages:</strong> the anti-spam line Google draws is about thin, duplicate pages — especially geo-clones. Every page here is unique, substantial, expert content on a distinct facet of commercial roofing. Breadth built on real depth is topical authority; that is exactly what Google rewards.</p>
+        <p><strong>Launch phasing:</strong> core + priority services / systems / industries / cities go live first; the full resource library and case studies phase in over the first months — that ongoing depth is what compounds the topical authority.</p>
+      </div>
+    </section>
+
+    <div class="page-footer">Prepared by King Maker SEO · Charlotte, NC · This audit reflects the site as measured at the time of preparation.</div>
+
+  </main>
+
+  <script>
+    (function () {
+      var links = document.querySelectorAll('[data-nav]');
+      var sections = Array.prototype.map.call(links, function (l) {
+        return document.querySelector(l.getAttribute('href'));
+      });
+      function setActive() {
+        var y = window.scrollY + 140;
+        var current = sections[0];
+        sections.forEach(function (s) { if (s && s.offsetTop <= y) current = s; });
+        links.forEach(function (l) {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + current.id);
+        });
+      }
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "question": "Which CRM features matter most for running a small residential roofing company ($1.8M/yr, 15-19 jobs/mo, storm/insurance + retail replacement work, solo owner + crews, one office) — and which are worth adding to a lean custom CRM that already has a pipeline board, calendar, weekly attribution reports, and estimate logging?",
+  "subQuestions": [
+    "Which features do the leading roofing CRMs (AccuLynx, JobNimbus, Roofr, Leap, RoofSnap, ServiceTitan, Contractor Foreman) treat as core for residential roofers — and which get adopted vs sit as shelf-ware?",
+    "What do roofers themselves (Reddit, roofing forums, Facebook groups, verified reviews on G2/Capterra/SoftwareAdvice) say they use daily, and what do they complain the big CRMs get wrong (bloat, price, complexity, lock-in)?",
+    "What storm/insurance-specific workflow features matter: claim tracking fields, adjuster meeting coordination, supplements tracking, Xactimate artifacts, contingency agreements?",
+    "What post-sale production/operations features matter: production scheduling boards, crew assignment, material ordering, photo documentation, punch lists, warranty registration?",
+    "What sales/follow-up features drive revenue at this size: aging/no-contact alerts, follow-up sequences, commission tracking, per-job costing/profit?"
+  ],
+  "checklist": [
+    "vendor core feature sets (AccuLynx/JobNimbus/Roofr/Leap/ServiceTitan)",
+    "roofer forum/review voice (what's actually used daily)",
+    "storm/insurance claim workflow fields",
+    "supplements tracking",
+    "production scheduling / job board",
+    "crew assignment",
+    "photo documentation",
+    "homeowner communication expectations",
+    "follow-up automation / aging alerts",
+    "commission tracking",
+    "job costing / profit per job",
+    "warranty tracking",
+    "common complaints / what NOT to build"
+  ],
+  "tier": "lite",
+  "mode": "breadth",
+  "stopCondition": "Every checklist topic touched by at least one credible source, with the roofer-voice lens (forums/reviews) genuinely exercised — vendor marketing alone does not count as coverage.",
+  "currentDate": "2026-07-08",
+  "userConfirmedTier": true
+}

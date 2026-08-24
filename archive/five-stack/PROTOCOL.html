@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>King Maker — 5-Stack Experiment Protocol</title>
+<style>
+  :root {
+    --doc-bg:        #0F1117;
+    --doc-surface:   #161922;
+    --doc-surface-2: #1d2230;
+    --doc-border:    #2a3145;
+    --doc-text:      #e8eaf0;
+    --doc-text-mute: #9ca3b8;
+    --doc-text-dim:  #6b7388;
+    --doc-mono:      ui-monospace, SFMono-Regular, Menlo, monospace;
+    --doc-display:   ui-sans-serif, -apple-system, system-ui, sans-serif;
+    --xp-bg:         #1a1428;
+    --xp-bord:       #3a2a55;
+    --xp-accent:     #b88dff;
+    --am-red:        #b02549;
+    --accent-amber:  #f4d56b;
+    --accent-green:  #6dd57c;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--doc-bg); color: var(--doc-text);
+    font-family: var(--doc-display); font-size: 16px; line-height: 1.6;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .doc-header {
+    border-bottom: 1px solid var(--doc-border);
+    padding: 64px 32px 44px;
+    background: linear-gradient(180deg, var(--xp-bg) 0%, var(--doc-bg) 100%);
+  }
+  .doc-header .ver {
+    color: var(--xp-accent); font-family: var(--doc-mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 18px; display: inline-block;
+  }
+  .doc-header h1 {
+    margin: 0 0 12px; font-size: clamp(32px, 4.2vw, 52px);
+    font-weight: 800; letter-spacing: -0.02em; line-height: 1.04;
+  }
+  .doc-header .tagline { color: var(--doc-text-mute); font-size: 18px; max-width: 820px; margin: 0 0 16px; }
+  .doc-header .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--xp-bg); border: 1px solid var(--xp-bord);
+    border-left: 3px solid var(--xp-accent); border-radius: 4px;
+    padding: 10px 16px; margin-top: 16px;
+    font-family: var(--doc-mono); font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #fff; font-weight: 700;
+  }
+  .doc-header .badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--xp-accent); box-shadow: 0 0 6px rgba(184,141,255,0.85);
+  }
+  section.chapter { border-top: 1px solid var(--doc-border); padding: 56px 0 48px; }
+  section.chapter:first-of-type { border-top: 0; }
+  h2.chapter-title {
+    font-size: clamp(24px, 3vw, 32px); font-weight: 800;
+    letter-spacing: -0.01em; margin: 0 0 20px; line-height: 1.1;
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  h2.chapter-title .ix {
+    font-family: var(--doc-mono); font-size: 13px;
+    color: var(--xp-accent); font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  h3.section-title { font-size: 19px; font-weight: 700; margin: 28px 0 12px; color: #fff; }
+  h4.subsection { font-size: 15px; font-weight: 700; margin: 22px 0 8px; color: var(--doc-text); }
+  p { margin: 0 0 14px; } p.lede { font-size: 17px; color: var(--doc-text-mute); max-width: 860px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; } li { margin-bottom: 6px; }
+  code {
+    font-family: var(--doc-mono); font-size: 0.9em;
+    background: var(--doc-surface-2); color: var(--accent-amber);
+    padding: 1px 6px; border-radius: 3px;
+  }
+  pre {
+    font-family: var(--doc-mono); background: var(--doc-surface);
+    border: 1px solid var(--doc-border); border-left: 3px solid var(--xp-accent);
+    border-radius: 4px; padding: 14px 16px; overflow-x: auto;
+    font-size: 13px; line-height: 1.55; color: #d8dde9; margin: 12px 0 18px;
+  }
+  .callout {
+    background: var(--doc-surface); border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--xp-accent); border-radius: 4px;
+    padding: 14px 18px; margin: 16px 0;
+  }
+  .callout.warn { border-left-color: #d97757; background: rgba(217,119,87,0.05); }
+  .callout.good { border-left-color: var(--accent-green); background: rgba(109,213,124,0.06); }
+  .callout .label {
+    font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 700; color: var(--xp-accent);
+    display: inline-block; margin-right: 8px;
+  }
+  .callout.warn .label { color: #d97757; }
+  .callout.good .label { color: var(--accent-green); }
+  table.t {
+    width: 100%; border-collapse: collapse; margin: 12px 0 22px; font-size: 13.5px;
+  }
+  table.t th, table.t td {
+    text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--doc-border); vertical-align: top;
+  }
+  table.t th {
+    color: var(--xp-accent); font-family: var(--doc-mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+    background: var(--doc-surface);
+  }
+  table.t td.name { font-weight: 700; color: #fff; }
+  table.t td.use { color: var(--doc-text-mute); }
+  table.t td.evidence { font-family: var(--doc-mono); font-size: 12px; color: var(--accent-amber); }
+  .stack-step {
+    background: var(--xp-bg); border: 1px solid var(--xp-bord);
+    border-left: 3px solid var(--xp-accent); border-radius: 4px;
+    padding: 18px 22px; margin: 16px 0 24px;
+  }
+  .stack-step h3 { margin: 0 0 10px; color: #fff; font-size: 17px; font-weight: 800; }
+  .stack-step .step-num {
+    font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 700; color: var(--xp-accent);
+    display: block; margin-bottom: 6px;
+  }
+  footer.doc-footer {
+    border-top: 1px solid var(--doc-border); padding: 36px 32px 56px;
+    color: var(--doc-text-dim); text-align: center; font-size: 13px;
+  }
+  a { color: var(--accent-amber); } a:hover { color: #fff; }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="wrap">
+    <div class="ver">King Maker · 5-Stack Experiment · 2026-05-19</div>
+    <h1>5-Stack Motion Generation Protocol</h1>
+    <p class="tagline">
+      Experimental workflow targeting ~95% doctrine compliance for fully-automated
+      motion-heavy contractor sites. Overrides the static-first default. Stacks five
+      interventions: two-doctrine read-checkpoint, section-by-section verification,
+      AST normalization, agent split, manual final pass. Mechanical brute force where
+      compression-based architecture failed.
+    </p>
+    <div class="badge"><span class="dot"></span>EXPERIMENTAL · OVERRIDES STATIC-FIRST · LOADS ON EXPLICIT TRIGGER</div>
+  </div>
+</header>
+
+<!-- ============================ §00 OVERVIEW ============================ -->
+<section class="chapter wrap" id="overview">
+  <h2 class="chapter-title"><span class="ix">00</span>Overview — when to use this protocol</h2>
+
+  <p class="lede">
+    This protocol activates when the user explicitly says "5-stack experiment" or
+    pastes the launch prompt from §09. It OVERRIDES the static-first default in
+    <code>~/.claude/CLAUDE.md</code> for the duration of the session — motion
+    generation is ENABLED. The protocol exists to test whether stacked verification
+    can achieve ~95% doctrine compliance on a motion-heavy contractor site.
+  </p>
+
+  <h3 class="section-title">The five stacks</h3>
+  <ol>
+    <li><strong>Two-doctrine read-checkpoint.</strong> Load STRUCTURE_DOCTRINE + MOTION_DOCTRINE (NOT split into three). Read each in chunks. Output a "key clauses captured" checklist after each chunk — anchors values in transcript.</li>
+    <li><strong>Section-by-section verification.</strong> Build one section, capture via Playwright, grep for required clauses, run axe, gate next section on pass.</li>
+    <li><strong>AST normalization.</strong> Run <code>web/scripts/normalize-motion.mjs</code> after each section. Deterministic post-generation rewriter adds missing ambient pulses, normalizes cascade timings, completes hover catalog. Catches what compression dropped.</li>
+    <li><strong>Agent split (Structure + Motion subagents).</strong> Structure Architect ships static atoms via Agent tool. Motion Choreographer wraps that output in cascade ladder + ambient loops + hover catalog. Each subagent has dedicated intent slot for one concern.</li>
+    <li><strong>Manual final pass.</strong> User reviews the agent's output and applies remaining touch-up. The 95% ceiling assumes ~20-30 min of manual cleanup per site.</li>
+  </ol>
+
+  <h3 class="section-title">Compliance target</h3>
+  <p>
+    Target: ~95% perceived site-level compliance. ~90% on combinatorial clauses
+    (per-card cascade, ambient pulse coverage, hover catalog). ~98% on single-value
+    clauses (cascade ladder timings, brand palette, hero spec).
+  </p>
+
+  <div class="callout warn">
+    <span class="label">Cost</span>
+    <strong>~3-4x baseline token cost per project.</strong> Significant tedium per
+    project. If results don't justify the cost after this experiment, fall back to
+    static-first as the production architecture.
+  </div>
+</section>
+
+<!-- ============================ §01 PRE-FLIGHT ============================ -->
+<section class="chapter wrap" id="preflight">
+  <h2 class="chapter-title"><span class="ix">01</span>Pre-flight — read with checkpoint, invoke skills with evidence</h2>
+
+  <p class="lede">
+    Pre-flight has THREE phases. Each produces evidence in transcript. No phase can
+    be skipped. Each phase's evidence becomes anchoring context for the generation
+    phase that follows.
+  </p>
+
+  <h3 class="section-title">Phase A — Read with checkpoint (stack 1)</h3>
+  <p>Doctrine files loaded in chunks. After each chunk, output the literal checkpoint block. Do not summarize lazily — quote exact values.</p>
+
+  <pre>READ ORDER:
+
+1. STRUCTURE_DOCTRINE.html chunks 1-3 (lines 1-360, 361-720, 721-end)
+   After each chunk, output:
+   ┌─────────────────────────────────────────────────────────┐
+   │ STRUCTURE checkpoint · chunk [N] / 3                    │
+   │ Key clauses captured:                                   │
+   │   - The Eleven Locks: [list 1-11]                       │
+   │   - Variance dimensions: [10 dimensions named]          │
+   │   - Atom palette references: [REFERENCE §14 noted]      │
+   │   - Brand palettes loaded: AM navy/red, KMv2 black/gold │
+   │   - Engineering bans: [PP-08 through PP-13 listed]      │
+   │   - Verification stack: VC-01 through VC-12             │
+   │   - Skeleton tiers: SMALL / MEDIUM / LARGE              │
+   └─────────────────────────────────────────────────────────┘
+
+2. MOTION_DOCTRINE.html chunks 1-3 (lines 1-360, 361-720, 721-end)
+   After each chunk, output:
+   ┌─────────────────────────────────────────────────────────┐
+   │ MOTION checkpoint · chunk [N] / 3                       │
+   │ Key motion specs captured:                              │
+   │   - ENTER_EASE = [0.16, 1, 0.3, 1]                      │
+   │   - Viewport margin: "200px" positive pre-trigger       │
+   │   - Cascade ladder: eyebrow 0.00s, H2 0.50s,            │
+   │     subhead 0.45s, right-col 0.55s,                     │
+   │     CTAs 3.2/3.4s, stats 3.8s                           │
+   │   - Per-card cd offsets: icon 0.30+cd, title 0.55+cd,   │
+   │     bullets 0.65+cd+bi*0.07, stats 0.20+i*0.06          │
+   │   - Ambient loops: diamond 2.4s, alert 1.8s,            │
+   │     vignette 9s, zoom 18s, marquee 45/50/55s, halo 2.4s │
+   │   - Hover catalog: 12 gestures (list briefly)           │
+   │   - Springs: 260/18 pop, 380/32 layoutId               │
+   │   - Hero spec: min-h-[100svh], poster swap, vignette,   │
+   │     content cascade 0.2/1.0/2.6/3.2/3.4/3.8             │
+   │   - Reduced-motion floor: every primitive checks first  │
+   └─────────────────────────────────────────────────────────┘
+
+3. MOTION_PLAYBOOK.html (single read, full file)
+   After read, output:
+   ┌─────────────────────────────────────────────────────────┐
+   │ PLAYBOOK checkpoint                                     │
+   │ §07 recipes available: Hero A/B/C, mid-page header,     │
+   │   tier card grid, process, testimonial, service area,   │
+   │   CTA band, footer, SectionBridge, ProofMarquee         │
+   │ §08 voice index: ~30 vocabulary mappings                │
+   └─────────────────────────────────────────────────────────┘</pre>
+
+  <div class="callout">
+    <span class="label">Why checkpoints work</span>
+    The checkpoint OUTPUT is what anchors values in transcript. Reading alone puts
+    values in context once; checkpoint output writes them into the conversation,
+    where they're closer to active intent during generation. The decay rate of
+    transcript context is slower than the decay rate of context-only loading.
+  </div>
+
+  <h3 class="section-title">Phase B — Skill invocation with evidence (stack 1 cont.)</h3>
+  <p>
+    INVOKE each ALWAYS skill via the Skill tool — not just declare the name. Each
+    skill must produce a specific evidence artifact during the run. See §02 for
+    per-skill evidence requirements.
+  </p>
+  <pre>Step 1: Invoke ALL 7 ALWAYS skills via Skill tool in parallel (single message,
+        7 Skill tool calls).
+        For 5-stack: design-motion-principles IS REQUIRED (overrides static-first
+        which has it conditional). The full 7-skill list for this experiment:
+        - impeccable
+        - design-taste-frontend
+        - frontend-design
+        - ui-ux-pro-max
+        - high-end-visual-design
+        - gpt-taste
+        - design-motion-principles
+
+Step 2: After invocation, output:
+        Skills loaded: impeccable, design-taste-frontend, frontend-design, ui-ux-pro-max, high-end-visual-design, gpt-taste, design-motion-principles
+
+Step 3: Output skill capabilities engaged (with specific commands/artifacts each
+        will produce during this run — see §02 table):
+        Skill capabilities engaged this turn:
+          - impeccable.critique (will fire after each section ships)
+          - design-taste-frontend.variance-dial (will produce dial settings at Lock 5)
+          - frontend-design.aesthetic-statement (will produce design direction)
+          - ui-ux-pro-max.design-system-query (will surface pattern matches)
+          - high-end-visual-design.premium-audit (will audit premium calibration)
+          - gpt-taste.design_plan (will produce design_plan block before any code)
+          - design-motion-principles.audit-checklist (will audit per-section motion)</pre>
+
+  <h3 class="section-title">Phase C — Verification stack confirmed</h3>
+  <pre>Step 1: Confirm Chrome MCP loaded:
+        Chrome MCP loaded: navigate, screenshot, read_page, read_console_messages,
+        read_network_requests, get_page_text, gif_creator, find, javascript_tool — ready.
+
+Step 2: Confirm Playwright stack in web/:
+        - @playwright/test installed
+        - capture.spec.ts present
+        - playwright.config.ts present with video.mode "on" + trace "on"
+        - @axe-core/playwright installed
+        If missing, install via pnpm before continuing.
+
+Step 3: Confirm AST normalization script:
+        - web/scripts/normalize-motion.mjs present
+        - Executable: node web/scripts/normalize-motion.mjs --help responds
+
+Step 4: Output:
+        Verification stack ready: Chrome MCP ✓ Playwright ✓ axe-core ✓ AST ✓</pre>
+</section>
+
+<!-- ============================ §02 SKILL EVIDENCE ============================ -->
+<section class="chapter wrap" id="skill-evidence">
+  <h2 class="chapter-title"><span class="ix">02</span>Skill use evidence — what "actually using" looks like</h2>
+
+  <p class="lede">
+    The recurring failure has been "skill loaded, never used." Each skill below has
+    a specific evidence artifact it must produce during this run. If the artifact
+    doesn't appear in transcript by the time the corresponding gate fires, the
+    skill was loaded but not engaged — pre-flight failure.
+  </p>
+
+  <table class="t">
+    <thead><tr><th>Skill</th><th>Evidence artifact</th><th>When it fires</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">impeccable</td>
+        <td class="evidence">Critique block after each section ships. Format: "impeccable.critique · [section]: [3 specific observations on what works/breaks]"</td>
+        <td class="use">After each section's Playwright capture; gates next section</td>
+      </tr>
+      <tr>
+        <td class="name">design-taste-frontend</td>
+        <td class="evidence">Variance/intensity/density dial settings output at Lock 5. Format: "Variance composition: [10 dims] · Intensity: [LOW/DEFAULT/HIGH] · Density: [light/medium/dense]"</td>
+        <td class="use">Lock 5 variance composition (pre-write)</td>
+      </tr>
+      <tr>
+        <td class="name">frontend-design</td>
+        <td class="evidence">Aesthetic commitment statement before any JSX. 2-3 sentences naming the design direction in plain language. Format: "frontend-design.aesthetic: [statement]"</td>
+        <td class="use">After intake interview, before first JSX</td>
+      </tr>
+      <tr>
+        <td class="name">ui-ux-pro-max</td>
+        <td class="evidence">Design system pattern matches surfaced for each section type before building. Format: "ui-ux-pro-max.patterns · [section]: [3 atoms/components matched from palette or shadcn]"</td>
+        <td class="use">Before each section's JSX</td>
+      </tr>
+      <tr>
+        <td class="name">high-end-visual-design</td>
+        <td class="evidence">Premium audit after each section. Format: "high-end-visual-design.audit · [section]: typography ✓/✗, spacing ✓/✗, color discipline ✓/✗, hierarchy ✓/✗"</td>
+        <td class="use">After each section's Playwright capture</td>
+      </tr>
+      <tr>
+        <td class="name">gpt-taste</td>
+        <td class="evidence">&lt;design_plan&gt; block BEFORE any UI code. Plain-language plan covering AIDA + layout structure + typography + variance composition for the section. Required by skill definition.</td>
+        <td class="use">Before EACH section's JSX (not just once at session start)</td>
+      </tr>
+      <tr>
+        <td class="name">design-motion-principles</td>
+        <td class="evidence">3-step audit (context recon → gap analysis → designer-weighted audit) for each motion-applied section. Format: "design-motion-principles.audit · [section]: Kowalski [score], Krehel [score], Tompkins [score]"</td>
+        <td class="use">After motion application on each section</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <span class="label">Enforcement</span>
+    Before claiming any section "complete" or moving to the next section, all
+    seven evidence artifacts for THAT section must appear in transcript. Missing
+    artifacts = re-engage the skill before advancing. The agent self-audits this;
+    no mechanical hook enforces it (yet).
+  </div>
+</section>
+
+<!-- ============================ §03 INTAKE INTERVIEW ============================ -->
+<section class="chapter wrap" id="intake">
+  <h2 class="chapter-title"><span class="ix">03</span>Intake interview</h2>
+
+  <p class="lede">
+    After pre-flight (§01) and skill capabilities listed (§02), run the intake
+    interview before proposing variance composition. ONE question at a time.
+    User voice-drives; agent walks through.
+  </p>
+
+  <h3 class="section-title">Q1 — Branch question (always first)</h3>
+  <pre>Ask via AskUserQuestion tool:
+  "Is this for a new client, a demo, or something else?"
+  Options: [New client] [Demo] [Other]</pre>
+
+  <h3 class="section-title">Q2-N — Branch-specific spec questions</h3>
+  <p>Asked one at a time via plain prose (faster than AskUserQuestion for open-ended).</p>
+
+  <h4 class="subsection">New client branch</h4>
+  <ol>
+    <li>Client business name + city/region?</li>
+    <li>Vertical? (plumber / HVAC / electrician / roofer / painter / kitchen / GC / landscape / hardscape)</li>
+    <li>Scope tier? (SMALL ~5-7 pages / MEDIUM ~10-20 / LARGE 30+)</li>
+    <li>Brand voice direction? (regional / premium / middle)</li>
+    <li>Palette? (custom hex codes OR pick from STRUCTURE §05 library OR brand assets provided)</li>
+    <li>Primary contact phone for Twilio SMS lead capture?</li>
+    <li>Domain status? (have one / need one / no domain yet)</li>
+    <li>Reference sites? (URLs or screenshots, optional)</li>
+    <li>Motion intensity? (LOW / DEFAULT / HIGH per MOTION §03.1) — 5-stack experiment defaults to DEFAULT unless otherwise specified</li>
+  </ol>
+
+  <h4 class="subsection">Demo branch (lighter intake)</h4>
+  <ol>
+    <li>Vertical? (which contractor type to demo)</li>
+    <li>Scope? (default SMALL for demo unless specified)</li>
+    <li>Voice direction? (regional / premium / middle)</li>
+    <li>Palette? (pick from library OR specify hex)</li>
+    <li>Reference sites? (optional)</li>
+    <li>Motion intensity? (DEFAULT unless specified)</li>
+  </ol>
+
+  <h4 class="subsection">Other branch</h4>
+  <p>Ask what specifically and tailor the spec questions to it.</p>
+</section>
+
+<!-- ============================ §04 VARIANCE + APPROVAL ============================ -->
+<section class="chapter wrap" id="variance">
+  <h2 class="chapter-title"><span class="ix">04</span>Variance composition + approval gate</h2>
+
+  <p class="lede">
+    After intake, propose the Lock 5 variance composition (10-line block) and
+    audit against STRUCTURE §04 coherence rules. Surface any BREAKS combinations
+    for user resolution. Then WAIT for explicit approval.
+  </p>
+
+  <pre>Variance composition:
+Buttons: ([A/B/C]) [pick + reason]
+Dividers: ([A/B/C]) [pick + reason]
+Heading: ([A/B/C]) [pick + reason]
+Trust: ([A/B/C]) [pick + reason]
+Image: ([A/B/C]) [pick + reason]
+Form: ([A/B/C]) [pick + reason]
+Footer: ([A/B/C]) [pick + reason]
+Voice: ([A/B/C]) [pick + reason]
+Glyph: ([A/B/C]) [pick + reason]
+Grid pattern: ([A/B/C]) [pick + reason]
+
+Coherence audit:
+  - [combination 1]: SAFE / BREAKS / DEBATABLE
+  - [combination 2]: SAFE / BREAKS / DEBATABLE
+
+Intensity dial (design-taste-frontend evidence): [LOW/DEFAULT/HIGH] · [light/medium/dense]
+Aesthetic commitment (frontend-design evidence): [2-3 sentence statement]
+
+Approval required before any JSX. Confirm or redirect.</pre>
+
+  <div class="callout warn">
+    <span class="label">Gate</span>
+    No JSX is written until user explicitly approves variance composition. If user
+    redirects, agent updates picks and re-outputs the block + audit.
+  </div>
+</section>
+
+<!-- ============================ §05 SECTION LOOP ============================ -->
+<section class="chapter wrap" id="section-loop">
+  <h2 class="chapter-title"><span class="ix">05</span>Section-by-section generation loop (stacks 2-4)</h2>
+
+  <p class="lede">
+    The core generation pattern. Each section runs through a fixed 9-step loop.
+    No section advances until all 9 steps pass. This is where stacks 2 (verification),
+    3 (AST normalization), and 4 (agent split) fire.
+  </p>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 1 · gpt-taste design_plan</span>
+    <p>Before writing JSX, output a <code>&lt;design_plan&gt;</code> block for this section. AIDA + layout + typography + which atom/recipe applies + motion intensity for this section.</p>
+  </div>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 2 · ui-ux-pro-max pattern match</span>
+    <p>Surface 3 atoms/components from the AM palette (REFERENCE_LIBRARY §14) or universal pattern library (§06) that fit this section. Pick one. Output: <code>ui-ux-pro-max.patterns · [section]: [3 matches] → selected: [name]</code></p>
+  </div>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 3 · Re-output relevant clauses (compression mitigation)</span>
+    <p>Before writing JSX, re-output the motion clauses specific to this section type. Decay defense — checkpoints from pre-flight have lost weight by the time later sections are built.</p>
+    <pre>Pre-write checkpoint · [section]:
+  - Cascade ladder for this depth: eyebrow [delay]s, H2 [delay]s, ...
+  - Per-card cd offsets: icon [delay]+cd, title [delay]+cd, ...
+  - Ambient loops applicable: [list specific loops]
+  - Hover gestures applicable: [list from §05 catalog]
+  - Section-specific MUSTs per MOTION §04: [list]</pre>
+  </div>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 4 · Structure subagent (stack 4)</span>
+    <p>Spawn Structure Architect via Agent tool. Self-contained prompt with: section spec, variance composition, atom selection, copy direction. Subagent returns static JSX (no motion). Read result.</p>
+    <pre>Agent({
+  description: "Build [section] static structure",
+  subagent_type: "general-purpose",
+  prompt: `You are the Structure Architect. Load STRUCTURE_DOCTRINE.html in full.
+           Build [section] for [client] static JSX only. NO motion code at all.
+           Atom: [selected atom]. Variance: [composition].
+           Copy direction: [from intake]. Palette: [hex codes].
+           Write to web/app/[project]/components/sections/[Section].tsx.
+           Return: file path + section structure summary.`
+})</pre>
+  </div>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 5 · Motion subagent (stack 4)</span>
+    <p>Spawn Motion Choreographer via Agent tool. Self-contained prompt with: static JSX file path, section type, motion intensity, MOTION_PLAYBOOK §07 recipe reference. Subagent wraps elements per playbook block. Returns modified file + diff summary.</p>
+    <pre>Agent({
+  description: "Apply motion to [section]",
+  subagent_type: "general-purpose",
+  prompt: `You are the Motion Choreographer. Load MOTION_DOCTRINE.html and
+           MOTION_PLAYBOOK.html in full.
+           Static JSX at: [file path]
+           Section type: [section]. Motion intensity: [LOW/DEFAULT/HIGH].
+           Apply MOTION_PLAYBOOK §07.[N] recipe exactly — paste blocks, do NOT
+           improvise. Cascade ladder per §03. Ambient loops per §04.
+           Hover catalog per §05.
+           Re-output: cascade timings + ambient specs + hover utilities before
+           applying each block (decay defense).
+           Write to same file path. Return: diff summary + clauses applied.`
+})</pre>
+  </div>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 6 · Playwright capture (stack 2)</span>
+    <p>Run section-scoped capture: <code>CAPTURE_ROUTE=/[project] CAPTURE_LABEL=[section] pnpm exec playwright test --project=desktop</code>. Outputs screenshots, video, console errors, network log.</p>
+  </div>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 7 · Grep verification (stack 2)</span>
+    <p>Grep the generated file for required motion clauses per MOTION §05 audit.</p>
+    <pre>grep -E "ENTER_EASE\s*=\s*\[0\.16,\s*1,\s*0\.3,\s*1\]" [file] → must hit
+grep -E 'margin:\s*"200px"' [file] → must hit
+grep -E "duration:\s*2\.4,?\s*repeat:\s*Infinity" [file] → for sections with diamonds
+grep -E "duration:\s*1\.8,?\s*repeat:\s*Infinity" [file] → for sections with alert dots
+grep -E "hover:-translate-y-1" [file] → for sections with cards
+grep -E "duration-300|duration-200" [file] → hover gesture durations
+grep -E "type:\s*\"spring\",\s*stiffness:\s*260" [file] → for sections with icon tiles
+... (full audit list per section type)
+
+Output: "Grep verify · [section]: [N/M] required clauses present"</pre>
+  </div>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 8 · AST normalization (stack 3)</span>
+    <p>Run <code>node web/scripts/normalize-motion.mjs --section [name] --file [path]</code>. Script scans JSX, identifies missing clauses (bare ◆ without pulse, missing hover gestures on group parents, cascade timing drift), and rewrites the file.</p>
+    <pre>Output: "AST normalize · [section]: [N] transformations applied
+  - Added pulse to [N] bare ◆ markers
+  - Normalized cascade timings on [N] elements
+  - Completed hover catalog on [N] group parents
+  - Added missing ENTER_EASE declaration
+  ..."</pre>
+  </div>
+
+  <div class="stack-step">
+    <span class="step-num">Loop step 9 · axe + skill evidence + advance gate</span>
+    <p>Run axe-core on captured page. Output skill evidence for this section (impeccable.critique, high-end-visual-design.audit, design-motion-principles.audit). If all gates pass, advance to next section.</p>
+    <pre>Section complete · [section]:
+  ✓ design_plan emitted
+  ✓ patterns matched (ui-ux-pro-max)
+  ✓ pre-write checkpoint output
+  ✓ Structure subagent shipped
+  ✓ Motion subagent applied playbook
+  ✓ Playwright capture OK
+  ✓ Grep verify: [N/M]
+  ✓ AST normalize: [N] transforms
+  ✓ axe-core: 0 critical, 0 serious
+  ✓ impeccable.critique: [3 observations]
+  ✓ high-end-visual-design.audit: [4 dimensions]
+  ✓ design-motion-principles.audit: [Kowalski/Krehel/Tompkins scores]
+
+Advancing to next section.</pre>
+  </div>
+
+  <div class="callout">
+    <span class="label">Cadence</span>
+    Every 3rd section, re-output "Locks satisfied: 1✓ 2✓ ... 11✓" as a global
+    compression check. If any Lock has slipped, pause and re-engage before next
+    section.
+  </div>
+</section>
+
+<!-- ============================ §06 AST NORMALIZATION ============================ -->
+<section class="chapter wrap" id="ast">
+  <h2 class="chapter-title"><span class="ix">06</span>AST normalization — what the script does (stack 3)</h2>
+
+  <p class="lede">
+    <code>web/scripts/normalize-motion.mjs</code> is a deterministic post-generation
+    rewriter. It scans the generated JSX file, identifies known patterns where
+    compression typically drops specs, and inserts the missing clauses. See the
+    script source for current capabilities.
+  </p>
+
+  <h3 class="section-title">Transformations the script performs</h3>
+  <table class="t">
+    <thead><tr><th>Transform</th><th>Detect</th><th>Insert/normalize</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">Ambient pulse on bare ◆</td>
+        <td class="use">Any &lt;span&gt; / &lt;p&gt; child containing literal "◆" without surrounding motion.span wrapper</td>
+        <td class="use">Wrap in motion.span with 2.4s opacity+scale loop + delay i*0.3</td>
+      </tr>
+      <tr>
+        <td class="name">Ambient pulse on alert dots</td>
+        <td class="use">Any element with class containing "rounded-full" + "bg-{accent}" + size w-2 h-2 or w-3 h-3, not already in motion.X</td>
+        <td class="use">Convert to motion.span with 1.8s opacity+scale loop</td>
+      </tr>
+      <tr>
+        <td class="name">Cascade timing normalization</td>
+        <td class="use">FadeUp/HeadingWithUnderline with delay values not matching §03 ladder (e.g. delay 0.05, 0.18 are wrong; should be 0.00, 0.50, 0.45)</td>
+        <td class="use">Replace with canonical ladder values based on element role inferred from context</td>
+      </tr>
+      <tr>
+        <td class="name">Hover catalog completion</td>
+        <td class="use">Any element with className containing "group" but missing hover:-translate-y, hover:shadow-, or group-hover children</td>
+        <td class="use">Add card-lift basic (hover:-translate-y-1 transition-all duration-300) at minimum</td>
+      </tr>
+      <tr>
+        <td class="name">ENTER_EASE declaration</td>
+        <td class="use">File uses framer-motion but doesn't declare ENTER_EASE constant at top</td>
+        <td class="use">Inject const ENTER_EASE = [0.16, 1, 0.3, 1] as const; after imports</td>
+      </tr>
+      <tr>
+        <td class="name">Reduced-motion guard</td>
+        <td class="use">File uses motion.X without useReducedMotion check or motion-reduce: utility</td>
+        <td class="use">Inject useReducedMotion + conditional render or animation skip</td>
+      </tr>
+      <tr>
+        <td class="name">transition-all duration default fix</td>
+        <td class="use">className with "transition-all" but no explicit duration-* utility</td>
+        <td class="use">Append duration-300 (cards) or duration-200 (nudges/icons) based on element role</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">Usage</h3>
+  <pre># Dry run (show what would change without writing)
+node web/scripts/normalize-motion.mjs --section hero --file path/to/Hero.tsx --dry-run
+
+# Apply transformations
+node web/scripts/normalize-motion.mjs --section hero --file path/to/Hero.tsx
+
+# Full-page run (all sections in app dir)
+node web/scripts/normalize-motion.mjs --all --dir web/app/[project]/
+
+# Output to stdout (JSON) for tooling integration
+node web/scripts/normalize-motion.mjs --section hero --file path/to/Hero.tsx --json</pre>
+
+  <div class="callout warn">
+    <span class="label">Scaffold state</span>
+    The initial scaffold at <code>web/scripts/normalize-motion.mjs</code> has the
+    detection patterns documented as TODOs. Transformation logic is partially
+    implemented. The script SHOULD work for "Add pulse to bare ◆" and "ENTER_EASE
+    declaration" out of the box. Other transforms require iteration. Plan to
+    implement transforms in order of impact: ambient pulses first (highest payoff),
+    cascade timing normalization second, hover completion third.
+  </div>
+</section>
+
+<!-- ============================ §07 FINAL SHIP CHECK ============================ -->
+<section class="chapter wrap" id="ship">
+  <h2 class="chapter-title"><span class="ix">07</span>Final ship check + manual touch-up (stack 5)</h2>
+
+  <p class="lede">
+    After all sections shipped through the §05 loop, run the final ship check
+    before claiming the run complete. Then user does manual touch-up pass.
+  </p>
+
+  <h3 class="section-title">Automated final checks</h3>
+  <ol>
+    <li>Full-page Playwright capture at desktop (1440×900) and mobile (iPhone 13)</li>
+    <li>axe-core full-site run — 0 critical, 0 serious</li>
+    <li>VC-01 through VC-12 audit (per STRUCTURE §08)</li>
+    <li>Compression-check final output: re-Read STRUCTURE_DOCTRINE §00-§04 + MOTION §01-§04, output "Locks satisfied: 1✓ 2✓ ... 11✓" with evidence</li>
+    <li>Per-section compliance scoring (see §08)</li>
+  </ol>
+
+  <h3 class="section-title">Manual touch-up pass (stack 5)</h3>
+  <p>User reviews captures and applies remaining corrections. Typical gaps to look for:</p>
+  <ul>
+    <li>Static decorative glyphs that should pulse (AST normalize should catch most but not all)</li>
+    <li>Hover gestures missing on specific elements where the catalog should apply</li>
+    <li>Cascade timing drift on specific cards where AST normalize didn't infer the role correctly</li>
+    <li>Reduced-motion fallbacks missing on specific motion.X usages</li>
+    <li>Copy edits (motion doesn't fix word choice)</li>
+    <li>Per-card cd offsets that drifted from i*0.06-0.12 range</li>
+  </ul>
+
+  <p>Expected touch-up time: ~20-30 minutes for a SMALL tier site, ~45-60 for MEDIUM, ~90+ for LARGE.</p>
+</section>
+
+<!-- ============================ §08 COMPLIANCE SCORING ============================ -->
+<section class="chapter wrap" id="scoring">
+  <h2 class="chapter-title"><span class="ix">08</span>Compliance scoring</h2>
+
+  <p class="lede">
+    At end of run, compute compliance score so we can evaluate whether the 5-stack
+    actually hit the 95% target. Honest measurement — no rounding up.
+  </p>
+
+  <h3 class="section-title">Scoring formula</h3>
+  <pre>Per section:
+  - Atom palette compliance: [pattern matched / total sections] × 1.0 weight
+  - Cascade ladder compliance: [sections with correct delays / total] × 1.5 weight
+  - Ambient loop coverage: [glyphs with pulse / total decorative glyphs] × 1.5 weight
+  - Hover catalog coverage: [hover gestures present / applicable] × 1.0 weight
+  - Per-card inner cascade: [cards with icon+title+bullets / total cards] × 1.0 weight
+  - Reduced-motion: [primitives with guard / total] × 0.5 weight
+  - axe: 0 critical/serious required, else fail × 2.0 weight
+  - VC-01 through VC-12: [passed / 12] × 1.0 weight
+
+Site total: weighted sum / max possible × 100%</pre>
+
+  <h3 class="section-title">Target tiers</h3>
+  <ul>
+    <li><strong>95-100%</strong> — Hit the target. 5-stack confirmed viable.</li>
+    <li><strong>85-94%</strong> — Improvement vs baseline (~30-40%) but didn't hit target. Identify where it failed; consider whether the gap is closeable.</li>
+    <li><strong>&lt; 85%</strong> — Below the 2-file + checkpoint ceiling. Something in the stack regressed. Diagnose.</li>
+  </ul>
+
+  <h3 class="section-title">Honest reporting</h3>
+  <pre>Output at end of run:
+5-stack experiment complete · [client]
+  Site compliance: [X]%
+  Per-clause breakdown:
+    - atom palette: [X]%
+    - cascade ladder: [X]%
+    - ambient coverage: [X]%
+    - hover catalog: [X]%
+    - per-card cascade: [X]%
+    - reduced-motion: [X]%
+    - axe 0/0: [pass/fail]
+    - VC-01..12: [X/12]
+  Token cost vs baseline static-first: [X]x
+  Manual touch-up time: [X] min
+  Verdict: [hit target / partial / regress]
+  Next decision: [continue / fallback to static-first / iterate stack]</pre>
+</section>
+
+<!-- ============================ §09 LAUNCH PROMPT ============================ -->
+<section class="chapter wrap" id="launch">
+  <h2 class="chapter-title"><span class="ix">09</span>Launch prompt — what user pastes</h2>
+
+  <p class="lede">
+    The launch prompt below activates this protocol. Paste into a fresh session.
+    Agent reads this file in full, runs pre-flight, then runs intake interview.
+  </p>
+
+  <pre>5-STACK EXPERIMENT · ROOFING PROJECT
+
+This OVERRIDES the static-first default in CLAUDE.md for this session only.
+Motion generation is ENABLED. Apply the 5-stack protocol at
+~/.claude/experiments/five-stack/PROTOCOL.html.
+
+Execute in order:
+
+1. Read PROTOCOL.html in full. Output: "5-stack protocol loaded — stacks 1-5 ready."
+
+2. Pre-flight per PROTOCOL §01:
+   a. Read STRUCTURE_DOCTRINE.html in 3 chunks, output STRUCTURE checkpoint after each
+   b. Read MOTION_DOCTRINE.html in 3 chunks, output MOTION checkpoint after each
+   c. Read MOTION_PLAYBOOK.html in full, output PLAYBOOK checkpoint
+   d. INVOKE all 7 ALWAYS skills via Skill tool in parallel (single message,
+      7 Skill calls): impeccable, design-taste-frontend, frontend-design,
+      ui-ux-pro-max, high-end-visual-design, gpt-taste, design-motion-principles
+   e. Output "Skills loaded: ..." line + "Skill capabilities engaged this turn: ..."
+      with specific commands/artifacts per PROTOCOL §02
+   f. Confirm verification stack: Chrome MCP / Playwright / axe-core / AST script
+
+3. Intake interview per PROTOCOL §03:
+   a. First ask via AskUserQuestion: new client, demo, or other?
+   b. Walk through spec questions one at a time based on branch
+   c. Default to roofing vertical if not specified
+
+4. Variance composition per PROTOCOL §04:
+   a. Propose Lock 5 10-line block + coherence audit + intensity dial + aesthetic statement
+   b. WAIT for explicit approval before any JSX
+
+5. Section-by-section generation per PROTOCOL §05 (9-step loop per section):
+   a. gpt-taste design_plan
+   b. ui-ux-pro-max pattern match
+   c. Pre-write checkpoint (decay mitigation)
+   d. Structure subagent (Agent tool)
+   e. Motion subagent (Agent tool)
+   f. Playwright capture
+   g. Grep verify
+   h. AST normalization (node web/scripts/normalize-motion.mjs)
+   i. axe + skill evidence + advance gate
+   Every 3rd section: re-output "Locks satisfied" check
+
+6. Final ship check per PROTOCOL §07:
+   a. Full-page Playwright capture (desktop + mobile)
+   b. Full-site axe-core
+   c. VC-01..12 audit
+   d. Compression-check (re-Read §00-§04 of both doctrines)
+
+7. Compliance scoring per PROTOCOL §08:
+   Output site compliance %, per-clause breakdown, token cost, verdict.
+
+I'll then do the manual touch-up pass (stack 5).
+
+NON-NEGOTIABLE GATES:
+- Every skill must produce its evidence artifact (PROTOCOL §02 table) before its
+  corresponding gate fires. Loaded ≠ used.
+- Section never advances until all 9 loop steps complete with output evidence.
+- "Verified" / "shipped" / "complete" claims require captures on disk + skill
+  evidence + Locks 1-11 satisfied output.
+
+If any gate fails, STOP and surface the gap. Do not paper over.</pre>
+
+  <div class="callout good">
+    <span class="label">Ready to run</span>
+    Paste the launch prompt above into a fresh Claude Code session.
+    Default first question after pre-flight: new client / demo / other?
+  </div>
+</section>
+
+<footer class="doc-footer">
+  <div>King Maker · 5-Stack Experiment · 2026-05-19 · loads on explicit launch prompt · supersedes static-first default for the session · scoped to <code>~/.claude/experiments/five-stack/</code></div>
+</footer>
+
+</body>
+</html>

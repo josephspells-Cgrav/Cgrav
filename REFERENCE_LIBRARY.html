@@ -1,0 +1,1624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>King Maker — Reference Library (browse on demand)</title>
+<style>
+  :root {
+    --doc-bg:        #0F1117;
+    --doc-surface:   #161922;
+    --doc-surface-2: #1d2230;
+    --doc-border:    #2a3145;
+    --doc-text:      #e8eaf0;
+    --doc-text-mute: #9ca3b8;
+    --doc-text-dim:  #6b7388;
+    --doc-mono:      ui-monospace, SFMono-Regular, Menlo, monospace;
+    --doc-display:   ui-sans-serif, -apple-system, system-ui, sans-serif;
+    --am-navy:       #1b3361;
+    --am-red:        #b02549;
+    --am-red-hover:  #8a1d3a;
+    --am-text:       #1a1a1a;
+    --am-muted:      #6b7280;
+    --am-border:     #e5e7eb;
+    --am-tint:       #f5f7fb;
+    --am-white:      #ffffff;
+    --km-bg:         #0A0A0A;
+    --km-surface:    #15110A;
+    --km-border:     #2D2516;
+    --km-gold:       #FFB900;
+    --km-gold-bright:#FFD24A;
+    --km-text-mute:  #B5A982;
+    --km-alert:      #C25A3A;
+    --contract-bg:   #1a0d12;
+    --contract-bord: #4a1a28;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--doc-bg);
+    color: var(--doc-text);
+    font-family: var(--doc-display);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--am-red); color: #fff; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  .doc-header {
+    border-bottom: 1px solid var(--doc-border);
+    padding: 64px 32px 44px;
+    background: linear-gradient(180deg, var(--doc-surface) 0%, var(--doc-bg) 100%);
+  }
+  .doc-header .ver {
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+  .doc-header h1 {
+    margin: 0 0 12px;
+    font-size: clamp(32px, 4.2vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+  .doc-header .tagline {
+    color: var(--doc-text-mute);
+    font-size: 18px;
+    max-width: 820px;
+    margin: 0 0 16px;
+  }
+  .doc-header .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid #f4d56b;
+    border-radius: 4px;
+    padding: 10px 16px;
+    margin-top: 16px;
+    font-family: var(--doc-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+  }
+  .doc-header .badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f4d56b;
+    box-shadow: 0 0 6px rgba(244,213,107,0.85);
+  }
+
+  section.chapter {
+    border-top: 1px solid var(--doc-border);
+    padding: 56px 0 48px;
+  }
+  section.chapter:first-of-type { border-top: 0; }
+  h2.chapter-title {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    line-height: 1.1;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  h2.chapter-title .ix {
+    font-family: var(--doc-mono);
+    font-size: 13px;
+    color: var(--am-red);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  h3.section-title {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 28px 0 12px;
+    color: #fff;
+  }
+  h4.subsection {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 22px 0 8px;
+    color: var(--doc-text);
+    letter-spacing: 0.01em;
+  }
+  p { margin: 0 0 14px; }
+  p.lede { font-size: 17px; color: var(--doc-text-mute); max-width: 860px; }
+
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+
+  code {
+    font-family: var(--doc-mono);
+    font-size: 0.9em;
+    background: var(--doc-surface-2);
+    color: #f4d56b;
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+  pre {
+    font-family: var(--doc-mono);
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #d8dde9;
+    margin: 12px 0 18px;
+  }
+
+  .callout {
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .callout.warn { border-left-color: #d97757; background: rgba(217,119,87,0.05); }
+  .callout.good { border-left-color: #6dd57c; background: rgba(109,213,124,0.06); }
+  .callout.gold { border-left-color: var(--km-gold); }
+  .callout .label {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--am-red);
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .callout.warn .label { color: #d97757; }
+  .callout.good .label { color: #6dd57c; }
+  .callout.gold .label { color: var(--km-gold); }
+
+  table.t {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 22px;
+    font-size: 13.5px;
+  }
+  table.t th, table.t td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--doc-border);
+    vertical-align: top;
+  }
+  table.t th {
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--doc-surface);
+  }
+  table.t td.id { font-family: var(--doc-mono); color: var(--doc-text-mute); width: 64px; }
+  table.t td.name { font-weight: 700; color: #fff; }
+  table.t td.use { color: var(--doc-text-mute); }
+  table.t td.where { font-family: var(--doc-mono); font-size: 12px; color: #f4d56b; }
+
+  .preview {
+    border: 1px solid var(--doc-border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 14px 0 22px;
+  }
+  .preview .preview-label {
+    padding: 8px 14px;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--am-red);
+    background: var(--doc-surface-2);
+    border-bottom: 1px solid var(--doc-border);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .preview .preview-label .src { color: var(--doc-text-dim); font-weight: 500; }
+  .preview .canvas { padding: 28px 24px; }
+  .canvas.am-white { background: var(--am-white); color: var(--am-text); font-family: var(--doc-display); }
+  .canvas.am-tint { background: var(--am-tint); color: var(--am-text); }
+  .canvas.am-navy { background: var(--am-navy); color: #fff; }
+  .canvas.km-dark { background: var(--km-bg); color: #fff; }
+
+  .am-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .am-eyebrow .rule { display: block; height: 1px; width: 40px; background: var(--am-red); }
+  .am-h2 {
+    font-family: var(--doc-display);
+    font-weight: 800;
+    color: var(--am-navy);
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+    display: inline-block;
+    position: relative;
+  }
+  .am-h2-underline {
+    display: block;
+    height: 3px;
+    background: var(--am-red);
+    border-radius: 3px;
+    margin-top: 6px;
+    box-shadow: 0 0 2px rgba(176,37,73,0.55);
+  }
+  .am-subhead {
+    margin-top: 22px;
+    color: var(--am-muted);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 620px;
+  }
+  .am-stat-cluster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
+  .am-stat {
+    border-left: 2px solid rgba(176,37,73,0.25);
+    padding: 8px 0 8px 16px;
+    position: relative;
+  }
+  .am-stat .row { display: flex; align-items: baseline; gap: 6px; }
+  .am-stat .val { font-family: var(--doc-display); font-weight: 800; color: var(--am-navy); font-size: 28px; line-height: 1; }
+  .am-stat .unit {
+    font-family: var(--doc-mono);
+    font-weight: 700;
+    color: var(--am-red);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .am-stat .lbl { color: var(--am-muted); font-size: 12px; margin-top: 6px; }
+  .am-stat .dot { position: absolute; left: -5px; top: 12px; width: 8px; height: 8px; border-radius: 50%; background: var(--am-red); opacity: 0.55; }
+  .am-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 8px 0;
+    color: var(--am-text);
+    font-size: 15px;
+  }
+  .am-bullet .diamond { color: var(--am-red); font-size: 11px; margin-top: 6px; }
+  .am-card {
+    background: var(--am-white);
+    border: 1px solid var(--am-border);
+    border-radius: 6px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .am-card.navy { background: var(--am-navy); color: #fff; border-color: var(--am-navy); }
+  .am-card .accent {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--am-red);
+    box-shadow: 0 0 2px rgba(176,37,73,0.55);
+  }
+  .am-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--am-border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--am-navy);
+    background: #fff;
+    margin-right: 6px;
+  }
+  .am-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(176,37,73,0.55); }
+
+  footer.doc-footer {
+    border-top: 1px solid var(--doc-border);
+    padding: 36px 32px 56px;
+    color: var(--doc-text-dim);
+    text-align: center;
+    font-size: 13px;
+  }
+  a { color: #f4d56b; }
+  a:hover { color: #fff; }
+
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px 14px;
+    margin-top: 24px;
+  }
+  .toc a {
+    color: var(--doc-text);
+    text-decoration: none;
+    padding: 11px 14px;
+    border: 1px solid var(--doc-border);
+    border-radius: 4px;
+    background: var(--doc-surface);
+    font-size: 14px;
+    transition: border-color 200ms, color 200ms;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .toc a:hover { border-color: var(--am-red); color: var(--am-red); }
+  .toc a .ix {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    color: var(--doc-text-dim);
+    letter-spacing: 0.18em;
+    font-weight: 700;
+  }
+  .toc a:hover .ix { color: var(--am-red); }
+
+  .slop-warn {
+    background: rgba(232,118,92,0.08);
+    border: 1px solid #4a2a22;
+    border-left: 3px solid #e8765c;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .slop-warn .head {
+    color: #e8765c;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .slop-warn p { color: rgba(255,255,255,0.85); margin: 0; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="wrap">
+    <div class="ver">King Maker · REFERENCE_LIBRARY · 2026-05-18 · split from v13</div>
+    <h1>Reference Library — browse on demand</h1>
+    <p class="tagline">
+      This file is REFERENCE material. Browse when matching a pattern, avoiding a known
+      failure, or consulting flagship precedent. <strong>NOT a generation constraint.</strong>
+      The generation programs are
+      <a href="MOTION_DOCTRINE.html">MOTION_DOCTRINE.html</a> and
+      <a href="STRUCTURE_DOCTRINE.html">STRUCTURE_DOCTRINE.html</a>.
+    </p>
+    <div class="badge"><span class="dot"></span>REFERENCE ONLY · NOT LOADED BY DEFAULT · BROWSE ON DEMAND</div>
+    <div class="toc">
+      <a href="#patterns"><span class="ix">06</span>Pattern library</a>
+      <a href="#recipes"><span class="ix">07</span>Recipes 1–61</a>
+      <a href="#anti"><span class="ix">08</span>Anti-patterns 7.1–7.33</a>
+      <a href="#tp"><span class="ix">11</span>Taste profile (TP-01–TP-32)</a>
+      <a href="#op"><span class="ix">12</span>Operating principles (OP-01–OP-18)</a>
+      <a href="#seo-full"><span class="ix">13</span>SEO doctrine (full)</a>
+      <a href="#flagship"><span class="ix">14</span>Flagship · American Masterworks</a>
+      <a href="#flagship-b"><span class="ix">14B</span>Flagship · King Maker v2</a>
+      <a href="#composition"><span class="ix">15</span>Composition + freedom</a>
+      <a href="#self-contained"><span class="ix">16</span>Self-contained principle</a>
+      <a href="#am-build"><span class="ix">17</span>AM build state</a>
+      <a href="#changelog"><span class="ix">18</span>Changelog</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ §06 PATTERN LIBRARY ============================ -->
+<section class="chapter wrap" id="patterns">
+  <h2 class="chapter-title"><span class="ix">06</span>Pattern library — rendered signatures</h2>
+  <p class="lede">22 signature patterns that recur across builds. Each one is rendered live below — no imagining required. These are the visible expressions of the DNA (MOTION §01).</p>
+
+  <h3 class="section-title">6.1 · Signature section header</h3>
+  <p>Eyebrow rule + caps + cinematic H2 with glow underline + supporting subhead. The default for every section across an AM-style build.</p>
+  <div class="preview">
+    <div class="preview-label">Signature header <span class="src">section-header pattern</span></div>
+    <div class="canvas am-tint">
+      <div class="am-eyebrow"><span class="rule"></span>Why It Matters</div>
+      <h2 class="am-h2">What Eastern NC Homeowners Already Know.<span class="am-h2-underline" style="width: 100%;"></span></h2>
+      <p class="am-subhead">Three steps, the same way every time. No high-pressure sales, no surprise charges, no subcontracted crews.</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.2 · Right-side stat anchor cluster</h3>
+  <p>Companion to §6.1 on the right side. 3 anchors per section, red 2px vertical rule + offset dot per cell.</p>
+  <div class="preview">
+    <div class="preview-label">Stat anchor cluster <span class="src">SignsGrid / ProcessSteps / etc.</span></div>
+    <div class="canvas am-tint">
+      <div class="am-stat-cluster">
+        <div class="am-stat"><span class="dot"></span><div class="row"><span class="val">6</span><span class="unit">SIGNS · COMMON</span></div><div class="lbl">What we see most often</div></div>
+        <div class="am-stat"><span class="dot"></span><div class="row"><span class="val">30+</span><span class="unit">YR · ORIGINAL</span></div><div class="lbl">Aluminum and single-pane life</div></div>
+        <div class="am-stat"><span class="dot"></span><div class="row"><span class="val">$0</span><span class="unit">DIAGNOSIS</span></div><div class="lbl">Free in-home assessment</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.3 · Spec-line bullets with pulsing red diamonds</h3>
+  <div class="preview">
+    <div class="preview-label">Spec bullets <span class="src">HomeWindowsTeaser, ProcessSteps, SpecDeck</span></div>
+    <div class="canvas am-white">
+      <div class="am-bullet"><span class="diamond">◆</span><span>Energy-efficient dual-pane glass standard</span></div>
+      <div class="am-bullet"><span class="diamond">◆</span><span>Custom-fit measurement, no stock approximations</span></div>
+      <div class="am-bullet"><span class="diamond">◆</span><span>Vinyl, fiberglass, wood, aluminum-clad — picked to the home</span></div>
+      <div class="am-bullet"><span class="diamond">◆</span><span>Same crew start to finish — we don't subcontract</span></div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.4 · Brand chip cluster</h3>
+  <div class="preview">
+    <div class="preview-label">Brand chips <span class="src">HomeWindowsTeaser / HomeDoorsTeaser</span></div>
+    <div class="canvas am-tint">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="am-chip"><span class="dot"></span>MI</span>
+        <span class="am-chip"><span class="dot"></span>HARVEY</span>
+        <span class="am-chip"><span class="dot"></span>PROVIA</span>
+        <span class="am-chip"><span class="dot"></span>THERMA-TRU</span>
+        <span class="am-chip"><span class="dot"></span>SIMPSON</span>
+        <span class="am-chip"><span class="dot"></span>TRUSTILE</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.5 · Symptom card with question framing</h3>
+  <p>For self-identification grids. Title in question form, warning-glyph badge in tinted pill (NOT filled red), short diagnostic body. See Recipe 46 + Anti-pattern 7.7 / 7.11.</p>
+  <div class="preview">
+    <div class="preview-label">Symptom card <span class="src">SignsGrid card</span></div>
+    <div class="canvas am-white">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(176,37,73,0.08); border: 1px solid rgba(176,37,73,0.25); border-radius: 999px; padding: 4px 10px; color: var(--am-red); font-family: var(--doc-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;" aria-hidden="true">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        Symptom
+      </div>
+      <h3 style="font-family: var(--doc-display); font-weight: 800; font-size: 22px; color: var(--am-navy); margin: 14px 0 6px;">Drafts at every seal?</h3>
+      <p style="color: var(--am-muted); font-size: 14px; margin: 0; max-width: 480px;">Cold air sneaks past sashes you can't see daylight through. The seal has aged out before the frame.</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.6 · Navy spec-card with tier bars (match-the-word logic)</h3>
+  <p>MaterialsGrid pattern. Navy card pops on light section. Tier bars match the WORD literally — LOW = small fill, HIGH = large fill (NOT a "score"). See anti-pattern 7.4.</p>
+  <div class="preview">
+    <div class="preview-label">Navy spec-card <span class="src">MaterialsGrid · Recipe 38</span></div>
+    <div class="canvas am-tint">
+      <div class="am-card navy" style="max-width: 340px;">
+        <span style="display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.85); font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--am-red);"></span>
+          Best For <span style="color: rgba(255,255,255,0.55);">·</span> Most NC Homes
+        </span>
+        <h3 style="font-size: 22px; font-weight: 800; margin: 14px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--am-red); display: inline-block;">Vinyl</h3>
+        <p style="color: rgba(255,255,255,0.75); font-size: 14px; margin: 0 0 16px;">Low maintenance, strong insulation, the most popular choice in this region.</p>
+        <div style="margin: 8px 0;"><div style="display: flex; justify-content: space-between; font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px;"><span style="color: rgba(255,255,255,0.85); font-weight: 600;">MAINTENANCE</span><span style="font-weight: 800;">LOW</span></div><div style="height: 6px; background: rgba(255,255,255,0.15); border-radius: 999px; overflow: hidden;"><span style="display: block; height: 100%; width: 25%; background: var(--am-red); box-shadow: 0 0 4px rgba(176,37,73,0.5);"></span></div></div>
+        <div style="margin: 8px 0;"><div style="display: flex; justify-content: space-between; font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px;"><span style="color: rgba(255,255,255,0.85); font-weight: 600;">INSULATION</span><span style="font-weight: 800;">HIGH</span></div><div style="height: 6px; background: rgba(255,255,255,0.15); border-radius: 999px; overflow: hidden;"><span style="display: block; height: 100%; width: 75%; background: var(--am-red); box-shadow: 0 0 4px rgba(176,37,73,0.5);"></span></div></div>
+        <div style="margin: 8px 0;"><div style="display: flex; justify-content: space-between; font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px;"><span style="color: rgba(255,255,255,0.85); font-weight: 600;">LIFETIME</span><span style="font-weight: 800;">25–30 YR</span></div><div style="height: 6px; background: rgba(255,255,255,0.15); border-radius: 999px; overflow: hidden;"><span style="display: block; height: 100%; width: 40%; background: var(--am-red); box-shadow: 0 0 4px rgba(176,37,73,0.5);"></span></div></div>
+        <span class="accent" style="position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--am-red);"></span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.7 · Thematic CTA card (right-side fill alternative)</h3>
+  <p>When the right side of an asymmetric header should CONVERT, not just stat-anchor. Recipe 41.</p>
+  <div class="preview">
+    <div class="preview-label">Thematic CTA card <span class="src">SignsGrid right-fill</span></div>
+    <div class="canvas am-tint">
+      <div style="background: var(--am-navy); color: #fff; border-radius: 6px; padding: 24px; max-width: 380px; position: relative; overflow: hidden;">
+        <span style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--am-red); box-shadow: 0 0 2px rgba(176,37,73,0.55);"></span>
+        <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--am-red);"></span>
+          <span style="font-family: var(--doc-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;">See a sign?</span>
+        </div>
+        <p style="margin: 0 0 18px; color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.5;">Spot one or two? Time to call. We'll come measure and tell you straight whether it's a fix or a full replacement — no pressure.</p>
+        <div style="background: var(--am-red); color: #fff; border-radius: 6px; padding: 10px 16px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px;">Call (252) 314-0185</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.8 · AT A GLANCE bullet card</h3>
+  <p>Right-side fill on location-info sections. Caps eyebrow + red-diamond bullets in tinted card with left red rail. Recipe 42.</p>
+  <div class="preview">
+    <div class="preview-label">AT A GLANCE card <span class="src">LocationBrief right column</span></div>
+    <div class="canvas am-white">
+      <div style="background: var(--am-tint); border: 1px solid var(--am-border); border-radius: 6px; padding: 24px; max-width: 420px; position: relative; overflow: hidden;">
+        <span style="position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; background: var(--am-red); box-shadow: 0 0 2px rgba(176,37,73,0.55);"></span>
+        <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--am-red);"></span>
+          <span style="font-family: var(--doc-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--am-red);">Castalia · At a Glance</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div class="am-bullet"><span class="diamond">◆</span><span>HQ on Main, crew within 15 miles</span></div>
+          <div class="am-bullet"><span class="diamond">◆</span><span>Housing eras: 1900s farmhouses through 2020s builds</span></div>
+          <div class="am-bullet"><span class="diamond">◆</span><span>Most-requested: full-home window replacement on 30+ year homes</span></div>
+        </div>
+        <span style="position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--am-red); box-shadow: 0 0 2px rgba(176,37,73,0.55);"></span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.9 · Single-word category eyebrow</h3>
+  <p>SpecDeck pattern (Recipe 43). One big display-font word in accent color as the dominant card identifier. Title becomes sub-line.</p>
+  <div class="preview">
+    <div class="preview-label">Single-word eyebrow <span class="src">SpecDeck</span></div>
+    <div class="canvas am-navy">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+        <div>
+          <h4 style="font-family: var(--doc-display); font-weight: 800; font-size: 32px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-red); margin: 0; line-height: 1;">GLASS</h4>
+          <span style="display: block; height: 1px; width: 40px; background: var(--am-red); margin-top: 12px;"></span>
+        </div>
+        <div style="width: 48px; height: 48px; border-radius: 6px; background: var(--am-red); display: flex; align-items: center; justify-content: center; color: #fff;">▢</div>
+      </div>
+      <h3 style="color: #fff; margin: 18px 0 8px; font-size: 22px; padding-bottom: 4px; border-bottom: 2px solid var(--am-red); display: inline-block;">The Pane That Carries the Climate</h3>
+      <p style="color: rgba(255,255,255,0.75); margin: 8px 0 14px; font-size: 14px;">Dual-pane is the baseline you should expect, not the upgrade tier. Triple-pane goes where heat loss actually accumulates.</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.10 · Scrolling proof / trust marquee</h3>
+  <p>Continuous left-scroll. Triple-array trick + linear infinite x animation. Recipe 32. AM ProofMarquee atop every inner page; KMv2 tech-stack credibility bar.</p>
+  <div class="preview">
+    <div class="preview-label">ProofMarquee <span class="src">top of every inner page</span></div>
+    <div style="overflow: hidden;">
+      <div style="background: var(--am-navy); padding: 14px 0; color: #fff;">
+        <div style="display: flex; gap: 28px; align-items: center; padding-left: 28px; white-space: nowrap;">
+          <span style="font-family: var(--doc-mono); font-weight: 800; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.85);">Free In-Home Estimates</span>
+          <span style="color: var(--am-red);">◆</span>
+          <span style="font-family: var(--doc-mono); font-weight: 800; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.85);">Energy Star Rated</span>
+          <span style="color: var(--am-red);">◆</span>
+          <span style="font-family: var(--doc-mono); font-weight: 800; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.85);">Custom-Fit Every Opening</span>
+          <span style="color: var(--am-red);">◆</span>
+          <span style="font-family: var(--doc-mono); font-weight: 800; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.85);">One Crew, Start to Finish</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.11 · Button vocabulary (4 variants)</h3>
+  <div class="preview">
+    <div class="preview-label">AM button vocabulary <span class="src">site-wide</span></div>
+    <div class="canvas am-white">
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 6px; font-weight: 700; font-size: 14px; background: var(--am-red); color: #fff;">Get a Free Estimate <span>→</span></a>
+        <a style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 6px; font-weight: 700; font-size: 14px; background: var(--am-navy); color: #fff;">See Window Options <span>→</span></a>
+        <a style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 6px; font-weight: 700; font-size: 14px; background: transparent; color: var(--am-navy); border: 2px solid var(--am-navy);">Call (252) 314-0185</a>
+        <a style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; background: #fff; color: var(--am-navy); border: 2px solid var(--am-navy);">→ Tap to Call</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.12 · Numbered card (giant red numeral)</h3>
+  <div class="preview">
+    <div class="preview-label">Numbered card <span class="src">SignsGrid · early v9</span></div>
+    <div class="canvas am-tint">
+      <div style="background: #fff; border: 1px solid var(--am-border); border-radius: 6px; padding: 22px; max-width: 380px; position: relative;">
+        <div style="font-family: var(--doc-display); font-weight: 800; color: var(--am-red); font-size: 64px; line-height: 0.85; letter-spacing: -0.04em; display: inline-block; border-bottom: 3px solid var(--am-red); padding-bottom: 4px; margin-bottom: 16px;">01</div>
+        <div style="font-weight: 700; color: var(--am-navy); font-size: 16px; border-bottom: 2px solid var(--am-red); display: inline-block; padding-bottom: 2px; margin-bottom: 8px;">Drafts at every seal</div>
+        <p style="color: var(--am-muted); font-size: 13px; line-height: 1.55; margin: 0;">Cold air sneaks past sashes you can't see daylight through. The seal has aged out before the frame.</p>
+        <span style="position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--am-red); box-shadow: 0 0 2px rgba(176,37,73,0.55);"></span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.13 · Bordered chip eyebrow (KMv2 contribution)</h3>
+  <p>Alternative to the inline-rule eyebrow. Bordered chip with tinted background — stronger label-like presence.</p>
+  <div class="preview">
+    <div class="preview-label">Bordered chip eyebrow <span class="src">KMv2</span></div>
+    <div class="canvas km-dark">
+      <div style="display: inline-block; border: 1px solid var(--km-gold); background: rgba(255,185,0,0.08); color: var(--km-gold); font-family: var(--doc-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; padding: 6px 12px; margin-bottom: 18px;">The Work</div>
+      <div><span style="color: #fff; font-weight: 800; font-size: 36px; line-height: 1.05; letter-spacing: -0.01em; display: inline-block; border-bottom: 3px solid var(--km-gold); padding-bottom: 8px;">Sites we've built. Live.</span></div>
+      <p style="color: var(--km-text-mute); margin-top: 18px; max-width: 620px;">Three contractor sites running this exact system right now. Open them in a new tab. Click through every page. Then come back.</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.14 · Audit Ledger Card (KMv2 origin)</h3>
+  <p>Diagnostic-as-content. Tabular layout with brick-red ALERT callout footer. Recipe 30. Best when proving a problem the user has.</p>
+  <div class="preview">
+    <div class="preview-label">Audit Ledger <span class="src">KMv2 · Recipe 30</span></div>
+    <div class="canvas km-dark">
+      <div style="background: var(--km-surface); border: 1px solid var(--km-border); border-radius: 4px; padding: 18px; max-width: 560px;">
+        <table style="width: 100%; border-collapse: collapse; font-family: var(--doc-mono); font-size: 13px;">
+          <thead>
+            <tr>
+              <th style="color: var(--km-text-mute); font-weight: 600; text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--km-border);">City</th>
+              <th style="color: var(--km-text-mute); font-weight: 600; text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--km-border);">Searches/mo</th>
+              <th style="color: var(--km-text-mute); font-weight: 600; text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--km-border);">Your rank</th>
+              <th style="color: var(--km-text-mute); font-weight: 600; text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--km-border);">Pages indexed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: left; font-weight: 700; color: #fff;">Cary</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: #fff;">212</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: var(--km-gold); font-weight: 700;">24</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: var(--km-gold); font-weight: 700;">1</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: left; font-weight: 700; color: #fff;">Apex</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: #fff;">188</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: var(--km-alert); font-weight: 700;">100+</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: var(--km-alert); font-weight: 700;">0</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: left; font-weight: 700; color: #fff;">Wake Forest</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: #fff;">176</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: var(--km-alert); font-weight: 700;">100+</td>
+              <td style="padding: 8px; border-bottom: 1px solid rgba(45,37,22,0.5); text-align: right; color: var(--km-alert); font-weight: 700;">0</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 14px; border: 1px solid rgba(194,90,58,0.5); background: rgba(194,90,58,0.08); color: var(--km-alert); text-align: center; padding: 12px; border-radius: 4px;">
+          <div style="font-weight: 700;">You are invisible in 5 of 6 sampled cities.</div>
+          <div style="color: var(--km-text-mute); font-size: 12px; margin-top: 4px;">Google can't verify your service coverage based on your current site structure.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.15 · Narrative Split Pattern</h3>
+  <p>The doctrine-compliant alternative to "3 paragraphs of explanatory prose." 50/50 photo+copy split with floating stat callout overlaid on the image. Right column: eyebrow → cinematic H2 → ONE short lede paragraph (~50-60 words max) → 4 thread bullets with pulsing red diamonds → 3-up stat anchor strip. The atom's TypeScript type prevents prose stacking at write-time. Required when the section role is "explain why" / "installer perspective" / any narrative-explanation content. Replaces deprecated BrandWhyNarrative which trips the slop signature Form 2.</p>
+  <div class="preview">
+    <div class="preview-label">BrandNarrativeSplit <span class="src">/brands/[slug] — replaces deprecated BrandWhyNarrative</span></div>
+    <div class="canvas am-white">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+        <div style="background: var(--am-tint); aspect-ratio: 4/3; border-radius: 6px; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px; position: relative;">
+          <div style="background: #fff; border: 1px solid var(--am-border); border-radius: 6px; padding: 12px 16px; max-width: 180px; position: relative;">
+            <div style="display: flex; align-items: baseline; gap: 6px;"><span style="font-weight: 800; color: var(--am-navy); font-size: 24px; line-height: 1;">5</span><span style="font-family: var(--doc-mono); font-size: 10px; color: var(--am-red); letter-spacing: 0.22em;">LINES · INSTALLED</span></div>
+            <div style="font-size: 11px; color: var(--am-muted); margin-top: 4px;">Vinyl, fiberglass, picture, geometric</div>
+            <span style="position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--am-red);"></span>
+          </div>
+        </div>
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 12px; color: var(--am-red); margin-bottom: 14px;"><span style="height: 1px; width: 28px; background: var(--am-red);"></span><span style="font-family: var(--doc-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;">Installer Perspective</span></div>
+          <h3 style="font-family: var(--doc-display); font-weight: 800; color: var(--am-navy); font-size: 24px; margin: 0; line-height: 1.05; padding-bottom: 4px; border-bottom: 3px solid var(--am-red); display: inline-block;">Why MI Shows Up in Most of Our Estimates</h3>
+          <p style="color: var(--am-muted); margin: 18px 0 14px; font-size: 14px; max-width: 480px;">MI is the workhorse we reach for on most full-home replacements. Their vinyl line hits the intersection of price, build quality, and parts availability.</p>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div class="am-bullet"><span class="diamond">◆</span><span style="font-size: 13px;">Vinyl chemistry handles humid Augusts and ice-storm Februaries</span></div>
+            <div class="am-bullet"><span class="diamond">◆</span><span style="font-size: 13px;">Standard sizing fits the 80% of NC homes built after 1960</span></div>
+            <div class="am-bullet"><span class="diamond">◆</span><span style="font-size: 13px;">Predictable warranty support across our finished jobs</span></div>
+            <div class="am-bullet"><span class="diamond">◆</span><span style="font-size: 13px;">Reaches its limit on historic restoration and custom geometry</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.16 · Compact Quick Answer Band</h3>
+  <p>The doctrine-compliant FaqSection.answerBlock. Replaces the hero-sized card with a compact left-rail band: caps Q tag + question + caps A arrow + answer capped at ~30 words. Visual footprint drops ~70%. AI Overview extraction still works. Hero-sized answer block was Form 3 slop on 24 pages before catch.</p>
+  <div class="preview">
+    <div class="preview-label">Compact Quick Answer band <span class="src">FaqSection.answerBlock — cascades to 24 pages</span></div>
+    <div class="canvas am-white">
+      <div style="max-width: 640px; padding: 12px 0 12px 20px; position: relative;">
+        <span style="position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; background: var(--am-red); border-radius: 999px;"></span>
+        <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;">
+          <span style="font-family: var(--doc-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--am-red);">Q · Quick Answer</span>
+          <span style="font-family: var(--doc-mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--am-muted);">AI-Extractable</span>
+        </div>
+        <h3 style="font-family: var(--doc-display); font-weight: 800; color: var(--am-navy); font-size: 16px; line-height: 1.3; margin: 0 0 10px;">Is MI Windows a good brand for replacement windows in NC?</h3>
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: var(--doc-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--am-red); flex-shrink: 0;">A →</span>
+          <p style="margin: 0; color: var(--am-text); font-size: 14px; line-height: 1.5;">Yes — MI is the mid-tier vinyl we install most often. Strong vinyl chemistry, predictable parts, ENERGY STAR lines, limited lifetime warranty. The right pick for most full-home replacements on standard openings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.17 · ProductLocationsStrip pattern</h3>
+  <p>Cross-link strip on a product page that connects to all service-area pages via "{Product} in {City}, NC" anchor text. Builds matrix coverage in the internal link graph WITHOUT spinning up doorway URLs. See §13 SEO doctrine for the underlying logic.</p>
+  <div class="preview">
+    <div class="preview-label">ProductLocationsStrip <span class="src">/windows/[style] + /doors/[type]</span></div>
+    <div class="canvas am-tint">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span style="display: inline-flex; align-items: center; gap: 12px; color: var(--am-red); font-family: var(--doc-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;">
+          <span style="display: block; height: 1px; width: 40px; background: var(--am-red);"></span>
+          Where We Install Double-Hung Windows
+          <span style="display: block; height: 1px; width: 40px; background: var(--am-red);"></span>
+        </span>
+      </div>
+      <h2 style="text-align: center; font-family: var(--doc-display); font-weight: 800; color: var(--am-navy); font-size: 26px; margin: 0 0 24px;">Double-Hung Window Installation Across Eastern NC</h2>
+      <ul style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; list-style: none; padding: 0; max-width: 720px; margin: 0 auto;">
+        <li><a style="display: flex; justify-content: space-between; gap: 12px; background: #fff; border: 1px solid var(--am-border); border-radius: 6px; padding: 12px 14px; text-decoration: none;"><span style="color: var(--am-navy); font-weight: 500; font-size: 14px;">Double-Hung Windows in Castalia, NC</span><span style="color: var(--am-red);">→</span></a></li>
+        <li><a style="display: flex; justify-content: space-between; gap: 12px; background: #fff; border: 1px solid var(--am-border); border-radius: 6px; padding: 12px 14px; text-decoration: none;"><span style="color: var(--am-navy); font-weight: 500; font-size: 14px;">Double-Hung Windows in Bunn, NC</span><span style="color: var(--am-red);">→</span></a></li>
+        <li><a style="display: flex; justify-content: space-between; gap: 12px; background: #fff; border: 1px solid var(--am-border); border-radius: 6px; padding: 12px 14px; text-decoration: none;"><span style="color: var(--am-navy); font-weight: 500; font-size: 14px;">Double-Hung Windows in Louisburg, NC</span><span style="color: var(--am-red);">→</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.18 · Per-Heading Motion-Blur Reveal (KMv2 origin)</h3>
+  <p>
+    Pattern source: KMv2. Available as variance heading-reveal pick (B) — applied to
+    every H2 AND H3 site-wide. Implementation is a dual-span: an <code>.sr-only</code>
+    copy of the heading text for accessibility, plus a visible <code>aria-hidden
+    inline-flex flex-wrap</code> wrapper that splits the heading into per-word spans,
+    each motion-blurring from soft → crisp over 0.5–0.7s with stagger. KMv2's reference
+    build fires this 78 times across one landing — discipline of application is the
+    signature. Recipe 59 details implementation. Coherence: requires motion intensity
+    DEFAULT or HIGH.
+  </p>
+  <div class="preview">
+    <div class="preview-label">Per-Heading Motion-Blur Reveal <span class="src">KMv2 · applied site-wide</span></div>
+    <div class="canvas km-dark">
+      <span class="sr-only">Sites we've built. Live.</span>
+      <div aria-hidden="true" style="display: inline-flex; flex-wrap: wrap; gap: 0.35em; font-family: var(--doc-display); font-weight: 900; font-size: 56px; line-height: 1.0; letter-spacing: -0.02em; color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,0.55);">
+        <span style="display: inline-block;">Sites</span>
+        <span style="display: inline-block;">we've</span>
+        <span style="display: inline-block;">built.</span>
+        <span style="display: inline-block; color: var(--km-gold);">Live.</span>
+      </div>
+      <p style="color: var(--km-text-mute); margin-top: 16px; font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;">↑ each word motion-blurs in independently · 0.5–0.7s · stagger 60ms</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.19 · Massive-Numeral Concept Card (KMv2)</h3>
+  <p>
+    Distinct from Recipe 34 (numbered process step) and Recipe 12 (process steps with
+    connectors). Concept cards in a 4-up grid where each card is anchored by a 3–4rem
+    gold numeral and a named concept ("The Engine / The Gas / The Keys / The Result").
+    Numeral is dominant visual; title is sub-scale. Pairs with KMv2's concept-naming
+    voice. NOT a numbered process — these are <em>named system parts</em>, each carrying
+    metaphor weight.
+  </p>
+  <div class="preview">
+    <div class="preview-label">Massive-Numeral Concept Card <span class="src">KMv2 · The Engine / Gas / Keys / Result</span></div>
+    <div class="canvas km-dark">
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 640px;">
+        <div style="background: var(--km-surface); border: 1px solid var(--km-border); padding: 24px;">
+          <div style="font-family: var(--doc-display); font-weight: 900; color: var(--km-gold); font-size: 56px; line-height: 1; letter-spacing: -0.02em;">01</div>
+          <div style="color: #fff; font-family: var(--doc-display); font-weight: 800; font-size: 18px; margin-top: 14px;">The Engine</div>
+          <p style="color: var(--km-text-mute); font-size: 13px; line-height: 1.55; margin: 8px 0 0;">A 92-page location engine that ranks for every city in your metro within 8 weeks.</p>
+        </div>
+        <div style="background: var(--km-surface); border: 1px solid var(--km-border); padding: 24px;">
+          <div style="font-family: var(--doc-display); font-weight: 900; color: var(--km-gold); font-size: 56px; line-height: 1; letter-spacing: -0.02em;">02</div>
+          <div style="color: #fff; font-family: var(--doc-display); font-weight: 800; font-size: 18px; margin-top: 14px;">The Gas</div>
+          <p style="color: var(--km-text-mute); font-size: 13px; line-height: 1.55; margin: 8px 0 0;">Programmatic backlinks from vertical-relevant sources. Authority feeds the engine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.20 · Square-Corner Button System (KMv2)</h3>
+  <p>
+    KMv2's button DNA: <code>border-radius: 0</code>, 16/28 padding, two atoms only.
+    <strong>.btn-primary:</strong> gold-fill with black text, hover ramps to
+    <code>--gold-bright</code> plus <code>0 0 0 3px var(--gold-glow)</code> outer ring.
+    <strong>.btn-ghost:</strong> transparent with <code>--gold-deep</code> border + gold
+    text. Primary CTAs always end in "→". No rounded / pill / oval variants exist in this
+    pick. Default-bleed from AM rounded button into a KMv2-pick build = anti-pattern 7.26.
+  </p>
+  <div class="preview">
+    <div class="preview-label">Square-Corner Button System <span class="src">KMv2 · only two button atoms</span></div>
+    <div class="canvas km-dark">
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <button style="background: var(--km-gold); color: #000; font-family: var(--doc-display); font-weight: 700; font-size: 14px; padding: 16px 28px; border: none; border-radius: 0; cursor: pointer; letter-spacing: 0.02em;">Apply for the Engine →</button>
+        <button style="background: transparent; color: var(--km-gold); border: 1px solid #856709; border-radius: 0; font-family: var(--doc-display); font-weight: 700; font-size: 14px; padding: 16px 28px; cursor: pointer; letter-spacing: 0.02em;">See the Work</button>
+      </div>
+      <p style="color: var(--km-text-mute); margin-top: 18px; font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;">↑ border-radius 0 · gold + black · outer-ring glow on hover · → always</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.21 · Bottom-Border-Only Form Input (KMv2)</h3>
+  <p>
+    KMv2's form is itself a design statement. <strong>No boxed inputs.</strong> No
+    background-fill. No rounded corners. Each input is transparent with a 1px bottom
+    border in <code>--border</code>, becoming gold on focus. Labels uppercase mono, sitting
+    above each field. Single column on black background. Visually opposite to AM's bordered
+    + radius'd inputs.
+  </p>
+  <div class="preview">
+    <div class="preview-label">Bottom-Border-Only Form Input <span class="src">KMv2 · application form</span></div>
+    <div class="canvas km-dark">
+      <div style="max-width: 420px;">
+        <label style="display: block; color: var(--km-text-mute); font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 8px;">Company / Brand</label>
+        <input type="text" value="Acme Roofing" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--km-border); color: #fff; font-family: var(--doc-display); font-size: 18px; padding: 6px 0 10px; outline: none;">
+        <label style="display: block; color: var(--km-text-mute); font-family: var(--doc-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 24px; margin-bottom: 8px;">Service Vertical</label>
+        <input type="text" value="Commercial roofing · Southeast" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--km-gold); color: #fff; font-family: var(--doc-display); font-size: 18px; padding: 6px 0 10px; outline: none;">
+        <p style="color: var(--km-text-mute); margin-top: 12px; font-family: var(--doc-mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;">↑ focused — border turns gold</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.22 · Mono-Caps Inline-Rule Divider (KMv2)</h3>
+  <p>
+    Standalone divider for in-section breaks where the alternating-surface rhythm (Recipe
+    60) isn't carrying its own contrast. Pattern: <code>— SECTION LABEL —</code> in mono
+    caps, gold color, 0.22em tracking, with a thin gold em-rule on each side. Recurring
+    KMv2 inline marker.
+  </p>
+  <div class="preview">
+    <div class="preview-label">Mono-Caps Inline-Rule Divider <span class="src">KMv2 · in-section breaks</span></div>
+    <div class="canvas km-dark" style="text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 14px; color: var(--km-gold); font-family: var(--doc-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;">
+        <span style="display: block; height: 1px; width: 40px; background: var(--km-gold);"></span>
+        Currently Working Across the Southeast
+        <span style="display: block; height: 1px; width: 40px; background: var(--km-gold);"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ §07 RECIPE LIBRARY ============================ -->
+<section class="chapter wrap" id="recipes">
+  <h2 class="chapter-title"><span class="ix">07</span>Recipe library (1–61)</h2>
+  <p class="lede">Every recipe accumulated v3 → v13. Single numbered list. Recipes 59–61 added v13 session-4 to backfill KMv2 implementation patterns.</p>
+
+  <table class="t">
+    <thead><tr><th>ID</th><th>Recipe</th><th>Use case</th><th>Where canonical</th></tr></thead>
+    <tbody>
+      <tr><td class="id">01</td><td class="name">useMotionValue Counter</td><td class="use">Number tickers with target-scaled durations. Range/prefix/suffix/word-value handling.</td><td class="where">StatCounter — both flagships</td></tr>
+      <tr><td class="id">02</td><td class="name">SlideIn (left/right cinematic)</td><td class="use">Hero images, sticky panels enter directionally. 1.35s ease-out cinematic.</td><td class="where">All hero treatments</td></tr>
+      <tr><td class="id">03</td><td class="name">FadeUp / Stagger</td><td class="use">Standard reveal vocabulary. Positive 200px margin (not negative — see anti-pattern 7.2).</td><td class="where">All content blocks</td></tr>
+      <tr><td class="id">04</td><td class="name">PerimeterDraw on cards</td><td class="use">Premium card entry — SVG rect with dashoffset animation. "Crafted, not stamped."</td><td class="where">AM ReviewsSection</td></tr>
+      <tr><td class="id">05</td><td class="name">AnimatedUnderline on H2s</td><td class="use">Inline animated underline scaling left-to-right. Multi-word, never single-word orphan.</td><td class="where">HeadingWithUnderline</td></tr>
+      <tr><td class="id">06</td><td class="name">TypeIn character-staggered headline</td><td class="use">Hero + every section H2. Cinematic preset for slower/heavier. Blur+offset entry.</td><td class="where">Both flagships</td></tr>
+      <tr><td class="id">07</td><td class="name">Fine-line section separators</td><td class="use">1px accent-colored rules scaling 0→1 between content zones within a section.</td><td class="where">Various</td></tr>
+      <tr><td class="id">08</td><td class="name">Trust banner below hero</td><td class="use">Stats + counters directly below hero. Establishes credibility before scroll.</td><td class="where">AM home</td></tr>
+      <tr><td class="id">09</td><td class="name">Directional card entrances</td><td class="use">Cards in grids alternate left/right entrance direction by grid position.</td><td class="where">Various card grids</td></tr>
+      <tr><td class="id">10</td><td class="name">Featured + supporting layout</td><td class="use">One dominant hero element + smaller supporting elements. Hierarchy IS the design.</td><td class="where">AM ReviewsSection</td></tr>
+      <tr><td class="id">11</td><td class="name">Category tag pills on cards</td><td class="use">Per-card accent + small category tag pill. Palette-locked.</td><td class="where">AM ReviewsSection</td></tr>
+      <tr><td class="id">12</td><td class="name">Process steps with visual connectors</td><td class="use">Animated connecting lines between steps. Each step has internal 2-col grid (icon + title + body LEFT, bullets RIGHT).</td><td class="where">AM ProcessSteps</td></tr>
+      <tr><td class="id">13</td><td class="name">Video hero with fallback chain</td><td class="use">Looping background video. Fallback: Higgsfield generation → animated gradient → static color (last resort).</td><td class="where">AM HomeHero</td></tr>
+      <tr><td class="id">14</td><td class="name">Proactive image generation</td><td class="use">Generate AI assets where they elevate. Don't make user ask. See STRUCTURE §06.3 Higgsfield workflow.</td><td class="where">Pre-build pattern</td></tr>
+      <tr><td class="id">15–29</td><td class="name">v3–v7 recipes (inherited)</td><td class="use">Various — see worked-example codebases for canonical implementations.</td><td class="where">AM / KMv2 codebases</td></tr>
+      <tr><td class="id">30</td><td class="name">Audit Ledger Card</td><td class="use">Tabular diagnosis — "here's what's wrong, concretely." Per-row stagger reveal. ALERT callout footer.</td><td class="where">KMv2 Problem.tsx</td></tr>
+      <tr><td class="id">31</td><td class="name">Dual Scrub Counter (Pinned ScrollTrigger)</td><td class="use">Two related metrics ticking in lockstep on a pinned section. Section height = sticky + (sticky × 0.3) for punchy pin.</td><td class="where">KMv2 Urgency.tsx</td></tr>
+      <tr><td class="id">32</td><td class="name">Scrolling Brand Bar (marquee)</td><td class="use">Tooling stack, trust signals, brand logos. Triple-array trick + linear infinite x animation. <strong>Default duration 50s</strong> (range 45–55s). Width formula: content scrollWidth ÷ duration ≈ 100–140 px/sec target velocity.</td><td class="where">AM ProofMarquee + KMv2 tech bar</td></tr>
+      <tr><td class="id">33</td><td class="name">Perimeter Draw (SVG rect)</td><td class="use">Premium card entry treatment. IntersectionObserver-triggered. <code>vector-effect: non-scaling-stroke</code>.</td><td class="where">AM PerimeterDraw.tsx</td></tr>
+      <tr><td class="id">34</td><td class="name">Process Step with Right-Side Stat Callouts</td><td class="use">Process cards with concrete proof per step. <code>grid-cols-[auto_1fr_auto]</code>. Concrete numbers over adjectives.</td><td class="where">KMv2 Process.tsx (AM extends with bullet-stack)</td></tr>
+      <tr><td class="id">35</td><td class="name">Sticky Pin Section formula</td><td class="use">section_height = sticky_height × (1 + pin_factor). Pin factor 0.3–0.6 = punchy, 1.0 = meditative, &gt; 1.5 = avoid.</td><td class="where">KMv2 Urgency.tsx</td></tr>
+      <tr><td class="id">36</td><td class="name">Optional Service Pattern (form graceful degradation)</td><td class="use">Form posts to env-var-gated service. Without env var: console.log + return ok. Ships form before secrets are wired.</td><td class="where">AM ContactForm</td></tr>
+      <tr><td class="id">37</td><td class="name">Above-the-Fold Reveal</td><td class="use">Hero TypeIn that fires on first paint. <code>whileInView</code> + <code>viewport={{ once: true, amount: 0.01 }}</code>.</td><td class="where">Both flagships</td></tr>
+      <tr><td class="id">38</td><td class="name">Editorial Spec-Sheet Card with Tier Bars</td><td class="use">Comparing 3-4 options on same axes. BEST FOR pill, body, 3 animated horizontal tier bars (match-the-word fills).</td><td class="where">AM MaterialsGrid.tsx</td></tr>
+      <tr><td class="id">39</td><td class="name">Asymmetric Sticky-CTA FAQ</td><td class="use">2-col FAQ: heading + stat anchors + sticky CTA panel LEFT, card-stack accordion RIGHT. Giant red mono numerals.</td><td class="where">AM FaqSection.tsx</td></tr>
+      <tr><td class="id">40</td><td class="name">Section Bridge Marquee</td><td class="use">Mild scrolling proof bar between heavy sections. Edge gradient masks. Themable per surface.</td><td class="where">AM SectionBridge.tsx</td></tr>
+      <tr><td class="id">41</td><td class="name">Thematic Right-Side CTA Card</td><td class="use">When right-side header fill should CONVERT, not stat-anchor. Navy card + red-dot eyebrow + body + Call CTA.</td><td class="where">AM SignsGrid.tsx</td></tr>
+      <tr><td class="id">42</td><td class="name">AT A GLANCE Bullet Card</td><td class="use">Replaces "single prose paragraph in bordered card" pattern. Caps eyebrow + 4-5 red-diamond bullets, tinted card, left red rail.</td><td class="where">AM LocationBrief.tsx</td></tr>
+      <tr><td class="id">43</td><td class="name">Single-Word Category Eyebrow</td><td class="use">Big display-font word in accent color as dominant card identifier. Title becomes sub-line.</td><td class="where">AM SpecDeck.tsx</td></tr>
+      <tr><td class="id">44</td><td class="name">Two-tier logo workshop process</td><td class="use">Brand mark design when no equity to preserve. Board 1: 6 concept directions. Board 2: 6 refinement treatments. Produce variant set.</td><td class="where">AM logo workshop</td></tr>
+      <tr><td class="id">45</td><td class="name">Unequal-density column alignment</td><td class="use">Two-col layout with lighter column. <code>flex flex-col h-full justify-between</code> on lighter column distributes content top-to-bottom.</td><td class="where">AM Footer</td></tr>
+      <tr><td class="id">46</td><td class="name">Symptom-card pattern</td><td class="use">Self-identification cards. (1) Title in question form (2) Proper warning glyph (3) Tinted-pill SYMPTOM tag (not filled).</td><td class="where">AM SignsGrid</td></tr>
+      <tr><td class="id">47</td><td class="name">StyleGrid partial-row centering</td><td class="use">Card grids where item count doesn't fill. Switch CSS grid → flex-wrap + justify-center for clean partial-row centering.</td><td class="where">AM StyleGrid.tsx</td></tr>
+      <tr><td class="id">48</td><td class="name">Location-templated brand descriptor</td><td class="use">Signature line under footer wordmark templates per-page on <code>usePathname()</code>. Reinforces local-SEO signal sitewide.</td><td class="where">AM FooterDescriptor</td></tr>
+      <tr><td class="id">49</td><td class="name">Crop the viewBox to the content</td><td class="use">SVG with trailing viewBox whitespace renders smaller after cropping. Measure via <code>getBBox()</code>, crop + buffer.</td><td class="where">AM Header LogoLockup</td></tr>
+      <tr><td class="id">50</td><td class="name">Progressive-disclosure cluster labels</td><td class="use">CTA buttons reveal labels progressively across breakpoints: icon-only → short → full. Touch target 44×44 minimum.</td><td class="where">AM PhoneCTA / ReviewCTA</td></tr>
+      <tr><td class="id">51</td><td class="name">Body-content cross-link strip</td><td class="use">Inline editorial anchor text from hub to spoke pages. Body anchors weight more than nav for SEO.</td><td class="where">AM LocationPage</td></tr>
+      <tr><td class="id">52</td><td class="name">Product page rich-section pattern</td><td class="use">PageHero + SignsGrid + SpecDeck + BrandsTrustBar + MaterialsGrid + ServiceAreaGrid + FaqSection + FooterCTA. Optional data fields enable per-page upgrade without breaking unupgraded peers.</td><td class="where">AM /windows/[style] + /doors/[type]</td></tr>
+      <tr><td class="id">53</td><td class="name">Header dropdowns for product nav</td><td class="use">Hover/focus dropdown panel for parent items with 5+ children. 140ms setTimeout close-grace. Sub-nav data inline (client-safe).</td><td class="where">AM Header NAV_DROPDOWNS</td></tr>
+      <tr><td class="id">54</td><td class="name">Mobile menu click-outside via pointerdown</td><td class="use">Document-level pointerdown listener while menu is open. <code>contains()</code> check against panel + toggle refs. Fixes iOS Safari stacking-context quirk.</td><td class="where">AM Header</td></tr>
+      <tr><td class="id">55</td><td class="name">FaqSection 6-item balance rule</td><td class="use">2-col FaqSection with fixed-height left CTA panel: target 6 FAQs per page so right-col accordion height matches left. Content rule, not code.</td><td class="where">AM product pages</td></tr>
+      <tr><td class="id">56</td><td class="name">SMS body comprehensive lead context</td><td class="use">Twilio SMS includes Name + Phone + Email + ZIP + Service + Message + friendly timestamp. Recipe 36 graceful-degradation gating still applies.</td><td class="where">AM /api/contact</td></tr>
+      <tr><td class="id">57</td><td class="name">Parallel agent due-diligence</td><td class="use">Substantive strategic decision: spawn 3-6 parallel research agents on distinct facets. Each gets self-contained focused brief + word cap.</td><td class="where">AM SEO audit (v12)</td></tr>
+      <tr><td class="id">58</td><td class="name">Research-overshoot-then-distill</td><td class="use">For substantial content where uniqueness matters: research to 150% of target volume, distill to best 90% before writing. Editorial discipline forces quality upfront.</td><td class="where">AM SEO content workflow</td></tr>
+      <tr><td class="id">59</td><td class="name">Dual-Span Motion-Blur Heading (KMv2 discipline)</td><td class="use">Every H2 AND H3 site-wide. Render <code>&lt;span className="sr-only"&gt;{text}&lt;/span&gt;</code> + <code>&lt;span aria-hidden inline-flex flex-wrap&gt;</code> with per-word children. Each word motion-blurs soft → crisp 0.5–0.7s, 60ms stagger. SSR-safe.</td><td class="where">KMv2 every section heading</td></tr>
+      <tr><td class="id">60</td><td class="name">Contrast-Is-The-Divider section rhythm</td><td class="use">KMv2 alternative to TP-04 animated separators. Sections alternate <code>bg</code> (transparent on dark) vs <code>surface/40</code> with <code>border-y border-[var(--border-soft)]</code>. py-28 md:py-36. <strong>NO scaleX rule between sections.</strong></td><td class="where">KMv2 landing structure</td></tr>
+      <tr><td class="id">61</td><td class="name">Trust-through-Artifacts replacement</td><td class="use">KMv2 alternative to testimonials + star ratings + logo strips. Three artifacts in concert: (1) live portfolio screenshots in browser-chrome frames, (2) tech-stack ◆-separated mono marquee, (3) audit-ledger card on the user's own data. The page proves itself; no endorsement layer needed.</td><td class="where">KMv2 landing</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ §08 ANTI-PATTERNS ============================ -->
+<section class="chapter wrap" id="anti">
+  <h2 class="chapter-title"><span class="ix">08</span>Anti-pattern catalog (7.1–7.33)</h2>
+  <p class="lede">Failure modes that cost real time during real builds. Avoid in future builds.</p>
+
+  <h3 class="section-title">7.1 · Red-on-navy caps eyebrow</h3>
+  <p>Dark-on-dark — ~2.5:1 contrast. Illegible. Fix: <code>text-white/85 font-semibold</code> with red dot accent as the only red.</p>
+
+  <h3 class="section-title">7.2 · FadeUp / Stagger negative viewport margin claiming "pre-trigger"</h3>
+  <p>Negative margin SHRINKS the trigger box — elements have to scroll DEEPER in before firing. Backwards. Use positive 200px for actual pre-trigger.</p>
+
+  <h3 class="section-title">7.3 · JSX from 'use client' module across RSC boundary</h3>
+  <p>JSX exports from <code>'use client'</code> modules don't survive RSC import. Put JSX (icons, etc.) in non-client modules so server components can pass them as props.</p>
+
+  <h3 class="section-title">7.4 · Bar fill = "score" instead of literal magnitude</h3>
+  <p>LOW maintenance with HIGH bar reads as contradiction. Fix: bar literally matches the word — LOW = short bar, HIGH = long bar.</p>
+
+  <h3 class="section-title">7.5 · StatCounter with fixed duration on small targets</h3>
+  <p>1.1s to count 0→6 holds visibly at 0. Scale duration: ≤10 → 0.45s, ≤50 → 0.6s, ≤100 → 0.8s, larger → 1.0s.</p>
+
+  <h3 class="section-title">7.6 · v8 carry-forward</h3>
+  <ul>
+    <li>Wide outer glow halos creating strikethrough — cap at 2px alpha 0.55</li>
+    <li><code>mb-*</code> inside HeadingWithUnderline className — routes to outer wrapper, creates overline effect</li>
+    <li><code>filter: blur(*)</code> on text animations — removed sitewide; opacity + offset only</li>
+    <li>"Playing card" 4-up color-coded stat blocks — rejected; use structured cards with rhythm</li>
+    <li>Off-palette accents — gold/yellow/teal in AM, red in KMv2 — palette discipline</li>
+    <li>Deploying without clearing dev cache — <code>rm -rf .next</code> between heavy edit batches</li>
+    <li><code>playbackRate &lt; 1.0</code> on hero video — halves frame rate, visible stutter</li>
+    <li>Hooks-in-loop in React 19 strict — kills parent silently; extract loop body to child</li>
+  </ul>
+
+  <h3 class="section-title">7.7 · Ambiguous symptom icon (▲)</h3>
+  <p>Plain unicode triangle reads as up-arrow/expand/sort. Use proper SVG warning-triangle-with-! glyph for universal "this is a problem" semantic.</p>
+
+  <h3 class="section-title">7.8 · Filled-pill accent on caps-mono spec card</h3>
+  <p>Filled-red pill in caps-mono context reads as bolted-on foreign element. Match smallest existing unit — red dot + caps eyebrow.</p>
+
+  <h3 class="section-title">7.9 · Layered header weight</h3>
+  <p>Utility strip + hairline + 2 red CTAs + active dot + active underline = 6 red appearances in header. Strip back to ≤3. One accent line, one filled CTA color, one active-state cue.</p>
+
+  <h3 class="section-title">7.10 · Auto-stretched grid columns with top-anchored content</h3>
+  <p>Two-col grid stretches both cells, but lighter column's content stays top-anchored → visible empty gap. Fix: Recipe 45 (flex + justify-between on lighter column at lg+).</p>
+
+  <h3 class="section-title">7.11 · Statement-form copy on self-identification cards</h3>
+  <p>"Drafts at the threshold." reads as flat statement. "Drafts at the threshold?" triggers reader to self-check. One ? per title.</p>
+
+  <h3 class="section-title">7.12 · Multiple filled-red CTAs without hierarchy</h3>
+  <p>Two filled-red CTAs in same header compete. Distinguish via icon, label, or size — or make one outlined.</p>
+
+  <h3 class="section-title">7.13 · Right-cluster long-text overflow at md/lg</h3>
+  <p>Header action CTAs showing full text labels at md+ (768+) overflow viewport. Push long text to xl+ (1280+), use short label at sm–lg.</p>
+
+  <h3 class="section-title">7.14 · Trailing viewBox whitespace</h3>
+  <p>SVGs with viewBox extending past content waste pixels at every render size. Audit + crop via Recipe 49.</p>
+
+  <h3 class="section-title">7.15 · Badge-only mobile brand fallback</h3>
+  <p>Swapping full lockup → badge alone below sm. First-time mobile visitors can't read company name. Always show wordmark (Recipe 49 + 50 to make room).</p>
+
+  <h3 class="section-title">7.16 · Hyperlocal pages without real photos</h3>
+  <p>Location × product pages without real install photos collapse into "templated reasoning + local color sprinkled on top" — the doorway pattern Google's spam policy names. Evidence: May 2024 HCS de-indexed ~500/700 geo-templated pages from one site.</p>
+
+  <h3 class="section-title">7.17 · Trusting fabricated specific content claims</h3>
+  <p>"22% lower energy bill," "4.9/5 from 30+ reviewers" — unverified specifics create legal + reputation risk. Verify with customer OR use safer vaguer framings.</p>
+
+  <h3 class="section-title">7.18 · Word-count uniqueness without topic-level uniqueness</h3>
+  <p>80–90% word-level uniqueness still fails doorway-page detection if reasoning is templated. <strong>The swap test:</strong> swap city/product on a page; if it still reads correctly, it's a doorway. Topic-level uniqueness beats word-level.</p>
+
+  <h3 class="section-title">7.19 · Self-serving review schema on LocalBusiness</h3>
+  <p>Google hasn't rendered star rich results from Review markup on own LocalBusiness since 2019. AggregateRating only OK with third-party reviews. Audit + strip self-collected on-site Review/AggregateRating.</p>
+
+  <h3 class="section-title">7.20 · Deprecated HowTo schema</h3>
+  <p>Deprecated Sept 2023, removed from Search Console. Strip if present.</p>
+
+  <h3 class="section-title">7.21 · Narrative section without a visual partner</h3>
+  <p>3 paragraphs of body text stacked vertically with no photo, image, stat panel, tier bars, or other structural visual partner — the canonical slop signature <strong>even when the atom uses HeadingWithUnderline + StatCounter</strong>. Cinematic header dresses up the slop but the body IS the slop. Fix: photo+copy split (§06.15 BrandNarrativeSplit) or a structural-data partner. Reading time should DROP, not rise, vs the section above.</p>
+
+  <h3 class="section-title">7.22 · FaqSection.answerBlock rendered hero-sized</h3>
+  <p>A giant white card with eyebrow + cinematic H3 + 4-line paragraph above the FAQ accordion. The Quick Answer should be a compact band (left rail + caps Q tag + question + caps A arrow + ≤30-word answer) — see §06.16. AI Overview extraction works on compact form just as well. Visual footprint cap: ≤30% of accordion footprint.</p>
+
+  <h3 class="section-title">7.23 · Atom membership is not slop immunity</h3>
+  <p>"Atom from §14.2 ≠ slop-free output." An atom + slop content = slop output. BrandWhyNarrative was in v13 session-1 palette, used per spec, used HeadingWithUnderline + StatCounter — and still shipped 3-paragraph wall-of-text slop because <em>the atom's data shape allowed long-form prose</em> (<code>paragraphs: readonly string[]</code>). The §00 Render Preview Lock is the structural prevention at write-time. <strong>Atoms whose data shape permits slop are themselves slop-prone — refactor the shape or deprecate.</strong></p>
+
+  <h3 class="section-title">7.24 · <code>items-end</code> on an asymmetric header grid when the LEFT column is taller</h3>
+  <p>Inverse of 7.10. Two-column asymmetric grid (e.g. <code>lg:grid-cols-[1.3fr_1fr]</code>) with <code>items-end</code> bottom-aligns both columns. If the LEFT column is taller than the RIGHT, <code>items-end</code> pushes the RIGHT column DOWN to align bottoms — creating 200-240px of empty space ABOVE the right-column content. The right-side stat anchor cluster floats disconnected from the heading.</p>
+  <p><strong>Diagnostic:</strong> measure eyebrow Y vs. right-column-top Y. If right column starts 100px+ below the eyebrow with no visual reason, this anti-pattern is firing.</p>
+  <p><strong>Fix:</strong> change <code>items-end</code> → <code>items-start</code> on the header grid. <strong>Default to <code>items-start</code> for asymmetric header grids unless there is a specific reason to bottom-align.</strong></p>
+
+  <h3 class="section-title">7.25 · Claiming "shipped" off the git push alone</h3>
+  <p><code>git push origin main</code> is a CODE PUSH, not a deploy. Production ships only when the platform's deploy mechanism fires. On Vercel projects with GitHub auto-deploy disabled (audit: Deployments tab → "source" column always <code>vercel deploy</code>, never a commit hash), the push lands on GitHub but production stays on the prior build until <code>npx vercel deploy --prod --yes</code> runs from the linked <code>web/</code> directory.</p>
+  <p><strong>Symptom in the wild:</strong> 36 brand-image assets + 6 product-line atoms pushed to <code>origin/main</code>, declared shipped. User reported "duplicate photos" across Chrome, Chrome incognito, and Edge — three independent cache surfaces, same failure. Traced to CDN serving 2-hour-old prerendered HTML referencing <code>/images/window-detail.webp</code> (old stock placeholder) 4× per brand page. The new <code>/images/brands/{slug}/{line}.webp</code> paths were 404 on the CDN — never deployed.</p>
+  <p><strong>Prevention is two-layered, both already in the doctrine:</strong> STRUCTURE §07.3 deploy command + STRUCTURE §08 VC-11 fetch-grep verification. Escalated to Lock 6.</p>
+
+  <h3 class="section-title">7.26 · Wholesale-clone default-bleed</h3>
+  <p>
+    Shipping a contractor-trade project as a wholesale clone of AM or KMv2 across every
+    variance dimension instead of composing a deliberate variance. Symptom: the new project
+    looks like AM-in-different-colors. Visitor on multiple contractor sites built from the
+    doctrine can't tell them apart.
+  </p>
+  <p>
+    <strong>Diagnostic:</strong> count the variance picks that come from one reference
+    project. If 8 or 9 of 9+ dimensions trace to AM (or KMv2), default-bleed is firing.
+    Typical safe distribution: AM = 4–5 picks, KMv2 = 2–3 picks, vertical-specific or
+    hybrid (C) = 1–2 picks.
+  </p>
+
+  <h3 class="section-title">7.27 · Stock people on a no-people image-policy pick</h3>
+  <p>
+    When the project's variance composition picked image policy <strong>(B) property-led,
+    no people</strong>, slipping stock headshots, posed team shots, or smiling-person hero
+    photography back in breaks the pick. Common slip: agent picks (B) for a premium
+    kitchen-remodel project, then the hero image gets generated as "happy family in
+    finished kitchen" — undoes the premium-restraint signal.
+  </p>
+  <p>
+    <strong>Diagnostic:</strong> any image of a person on a project where image-policy pick
+    is (B). Stock or staged, generated or real. None pass.
+  </p>
+
+  <h3 class="section-title">7.28 · Single-anchor right column on asymmetric header grid</h3>
+  <p>
+    The asymmetric 1.4fr/1fr header grid expects a stat-anchor cluster, thematic CTA card,
+    or AT A GLANCE bullet panel on the right. Shipping a single stat anchor — or two — in
+    the right column leaves a visible empty rectangle, making the section read as broken.
+    The grid IS asymmetric; when the right column is undersized, the asymmetry reads as
+    missing content.
+  </p>
+  <p>
+    <strong>Diagnostic:</strong> count <code>.stat</code> children of <code>.stat-cluster</code>.
+    If &lt;3, this anti-pattern is firing.
+  </p>
+  <p>
+    <strong>Fix:</strong> three real anchors OR swap the right column to Recipe 41 / 42 / 38.
+    Never ship a half-filled right column.
+  </p>
+
+  <h3 class="section-title">7.29 · Inter / generic-sans default font</h3>
+  <p>
+    Banned by design-taste-frontend skill. Inter (and Roboto / Arial / system-ui defaults)
+    is the recognizable AI-slop typography reflex. <strong>Default to Geist, Outfit, Cabinet
+    Grotesk, or Satoshi</strong> for display + body. JetBrains Mono / Geist Mono for code
+    and mono-caps eyebrows.
+  </p>
+
+  <h3 class="section-title">7.30 · Pure #000 / #fff neutrals (untinted)</h3>
+  <p>
+    Banned by both impeccable and design-taste-frontend skills. Pure black and pure white
+    are flat against any chromatic palette — they read as un-considered defaults rather than
+    deliberate brand choices. <strong>Tint every neutral toward the brand hue</strong>
+    (chroma 0.005–0.01 in OKLCH; or for hex, shift R/G/B by 4–12 units toward the dominant
+    brand color).
+  </p>
+
+  <h3 class="section-title">7.31 · Em dashes in body copy</h3>
+  <p>
+    Banned by impeccable skill. Em dashes are an AI writing tic that signals machine-
+    generated copy at scroll glance even when the actual text is good. Replace per-context:
+    clause separator = period or semicolon; aside/elaboration = comma or parentheses;
+    introducing a list = colon. Title/wordmark separator = colon or pipe, NOT em dash.
+  </p>
+
+  <h3 class="section-title">7.32 · Side-stripe borders &gt; 1px on cards / callouts / alerts</h3>
+  <p>
+    Banned by impeccable skill (absolute ban). <strong>This is a doctrine bug, not just a
+    demo bug.</strong> Multiple v13 atoms ship side-stripe borders by default:
+  </p>
+  <ul>
+    <li>§06.16 Compact Quick Answer Band has <code>border-left: 3px solid var(--am-red)</code> on the left rail.</li>
+    <li>§3.5 stat-anchor cluster ships with <code>border-left: 2px solid rgba(red, 0.32)</code>.</li>
+    <li>BrandWhenRight reinforcement card uses <code>absolute left: 0; width: 3px; bg: red</code>.</li>
+  </ul>
+  <p>
+    <strong>Doctrine correction:</strong> rework these atoms to use full borders + tinted
+    backgrounds + leading icons/dots. Demos can use the workaround (full border + leading
+    dot) without changing the atom definitions, but the atoms themselves remain on the
+    doctrine-bug list.
+  </p>
+
+  <h3 class="section-title">7.33 · Repeated 3-column card grids on the same page</h3>
+  <p>
+    Banned by design-taste-frontend skill. One 3-col grid per page is defensible (e.g.
+    ServicesGrid); shipping three or four 3-col grids stacked vertically (services +
+    testimonials + service-areas + process) reads as a single repetitive pattern that gives
+    away the doctrine template. <strong>Vary grid pattern per section:</strong> one bento
+    (1 feature + 2 small), one horizontal scroller, one classic 3-col, one asymmetric
+    zig-zag. Diversification IS the differentiation. Variance dimension "Section grid
+    pattern" (10th dimension) codifies this — pick (A) is anti-pattern 7.33 by default.
+  </p>
+</section>
+
+<!-- ============================ §11 TASTE PROFILE ============================ -->
+<section class="chapter wrap" id="tp">
+  <h2 class="chapter-title"><span class="ix">11</span>Taste profile (TP-01 — TP-32)</h2>
+  <p class="lede">Soft defaults. Yield to reference sites or explicit instruction. Listed in single chronological run — every TP active unless explicitly deprecated.</p>
+
+  <ul>
+    <li><strong>TP-01</strong> Typed-in headline animations on every section H2.</li>
+    <li><strong>TP-02</strong> Selective animated underlines on key headings, multiple words wide.</li>
+    <li><strong>TP-03</strong> Trust banner directly below the hero. Stats with counters.</li>
+    <li><strong>TP-04</strong> Animated fine-line separators (1px, scaleX 0→1) between content zones.</li>
+    <li><strong>TP-05</strong> Counter numbers with stat underlines. Scale duration by target size.</li>
+    <li><strong>TP-06</strong> Directional card entrances (alternating left/right by grid position).</li>
+    <li><strong>TP-07</strong> Stat sections are supporting weight, not main content.</li>
+    <li><strong>TP-08</strong> Split layout for service areas (media one side, content other).</li>
+    <li><strong>TP-09</strong> Mobile execution non-negotiable. Verify on mobile.</li>
+    <li><strong>TP-10</strong> Featured + supporting layout — hierarchy IS the design.</li>
+    <li><strong>TP-11</strong> Accent-colored category tags on cards (palette-locked).</li>
+    <li><strong>TP-12</strong> Process sections with visual connectors. 2-col internal layout per card.</li>
+    <li><strong>TP-13</strong> Video hero by default.</li>
+    <li><strong>TP-14</strong> Proactive image generation. Don't make user ask.</li>
+    <li><strong>TP-15</strong> Brand-palette discipline. Programmatic + visual enforcement.</li>
+    <li><strong>TP-16</strong> Scale to section role. Supporting content starts smaller.</li>
+    <li><strong>TP-17</strong> Pattern propagation from user signals. Strong feedback → catalog pattern.</li>
+    <li><strong>TP-18</strong> Mid-build skill audit at every major iteration.</li>
+    <li><strong>TP-19</strong> Source-of-truth constants in <code>lib/data.ts</code>.</li>
+    <li><strong>TP-20</strong> Higgsfield realism via anti-prompts.</li>
+    <li><strong>TP-21</strong> Match-the-word bar logic. LOW = short fill, HIGH = long fill.</li>
+    <li><strong>TP-22</strong> Clearly clickable at rest. Hover is enhancement, not the only affordance.</li>
+    <li><strong>TP-23</strong> Hours always pair with day-range. Never "Mon-Sat" alone — always with "9 AM – 6 PM."</li>
+    <li><strong>TP-24</strong> Right-side fill is a slot, not stat-only. Can hold stat anchors OR thematic CTA card OR AT A GLANCE bullets — pick by what the section needs to convert.</li>
+    <li><strong>TP-25</strong> Trim to deliberate counts. 4 in 2×2 over 6 in 3-col. Spec lines 3-4 max. Brand chips 3-6. Location stats 4.</li>
+    <li><strong>TP-26</strong> Count the accent. If &gt; 3 accent-colored elements in a band/section, strip back.</li>
+    <li><strong>TP-27</strong> Question-form for self-identification copy. One ? per title turns flat copy into diagnostic prompt.</li>
+    <li><strong>TP-28</strong> Match the smallest unit. When adding accent to a card, match the smallest existing visual unit's weight.</li>
+    <li><strong>TP-29</strong> Always show the wordmark. Never drop to badge-only on mobile. Use Recipe 49/50 to make room.</li>
+    <li><strong>TP-30</strong> Measure before sizing. <code>getBBox()</code> / <code>getBoundingClientRect()</code> beats estimating + iterating.</li>
+    <li><strong>TP-31</strong> Audit before architecture. Multiplicative expansion (2x+ pages, multi-tenant, etc.) gets research first.</li>
+    <li><strong>TP-32</strong> Don't depend on customer for quality content. Design workflows that work when customer is busy/slow/unavailable.</li>
+  </ul>
+</section>
+
+<!-- ============================ §12 OPERATING PRINCIPLES ============================ -->
+<section class="chapter wrap" id="op">
+  <h2 class="chapter-title"><span class="ix">12</span>Operating principles (OP-01 — OP-18)</h2>
+  <p class="lede">Mental models that govern HOW work happens. Cannot be overridden.</p>
+
+  <ul>
+    <li><strong>OP-01</strong> Vision for taste, assertions for correctness. Use both.</li>
+    <li><strong>OP-02</strong> Never build UI blind. Look at the result after every meaningful change.</li>
+    <li><strong>OP-03</strong> Recognize inference vs. perception. Always close the loop with perception.</li>
+    <li><strong>OP-04</strong> Scale to section role. Different elements have different size budgets based on hierarchical role.</li>
+    <li><strong>OP-05</strong> Trust user taste signals broadly. Single-element feedback rarely about a single element.</li>
+    <li><strong>OP-06</strong> Brand-palette discipline — programmatic + visual enforcement.</li>
+    <li><strong>OP-07</strong> Audit tool/skill utilization mid-build. Pre-flight is START gate, mid-build audit is mandatory.</li>
+    <li><strong>OP-08</strong> When verification stalls, switch tier. Don't burn time fighting CDP — pivot to deploy-and-verify.</li>
+    <li><strong>OP-09</strong> Save handoff docs to <code>docs/</code>. Files outlive any single conversation.</li>
+    <li><strong>OP-10</strong> Push back when a request risks the goal. Present 2-3 options with recommendation, not literal execution.</li>
+    <li><strong>OP-11</strong> Operating-mode mantra discipline. When user references another section ("apply the home-page DNA here"), study, identify visual language, apply without asking section-by-section.</li>
+    <li><strong>OP-12</strong> Standby mode for batched edits. Queue without executing. Wait for explicit "go."</li>
+    <li><strong>OP-13</strong> Cascading components are the leverage point. ALWAYS prefer component-level edits over page-level repetition.</li>
+    <li><strong>OP-14</strong> <strong>DEPRECATED v13.</strong> Was: "Doctrine evolves additively, supplements stack." v13 replaces with: <em>monolithic self-contained doctrine, no supplements, milestone doctrines supersede in entirety</em>.</li>
+    <li><strong>OP-15</strong> Capability transparency upfront on substantive tasks. State confidence + gaps + substitutes before non-trivial work.</li>
+    <li><strong>OP-16</strong> Worktree-prefix all paths. Edits to main-repo paths from a worktree session land on main, not the worktree.</li>
+    <li><strong>OP-17</strong> Audit before scaling. Multiplicative architecture expansion gets research first.</li>
+    <li><strong>OP-18</strong> Customer-independent quality content. Design workflows that don't gate on customer responsiveness.</li>
+  </ul>
+</section>
+
+<!-- ============================ §13 SEO DOCTRINE (FULL) ============================ -->
+<section class="chapter wrap" id="seo-full">
+  <h2 class="chapter-title"><span class="ix">13</span>SEO doctrine for 2026 (full)</h2>
+  <p class="lede">What Google actually rewards in 2026. Grounded in 3 parallel-agent audit findings from Google Search Central docs, BrightLocal 2026 ranking factors, Sterling Sky 8186-business study, Search Central blog, web.dev. Essentials (13.1 / 13.2 / 13.3 / 13.6) live in STRUCTURE_DOCTRINE §09; the long-form rest is below.</p>
+
+  <h3 class="section-title">13.1 · What Google actually rewards (ranked by leverage)</h3>
+  <ol>
+    <li><strong>Google Business Profile completeness + correct primary category.</strong> #1 local-pack factor per BrightLocal 2026. Customer-gated.</li>
+    <li><strong>Steady review velocity with text reviews.</strong> Review weight rose 16% → 20% of local-pack 2023–2025. Monthly volume &gt; total count. Customer-gated.</li>
+    <li><strong>First-hand experience content with named authorship.</strong> Helpful Content guidance explicitly rewards "first-hand expertise + depth of knowledge." Person schema for owner, real install photos.</li>
+    <li><strong>Schema graph: LocalBusiness + Service + Product + FAQPage + BreadcrumbList.</strong> Foundational. Use <code>HomeAndConstructionBusiness</code> as more-specific type. Add <code>areaServed</code> with Wikipedia <code>sameAs</code>, <code>hasCredential</code> for licenses, <code>employee</code>/<code>founder</code> Person nodes.</li>
+    <li><strong>Core Web Vitals at p75 in CrUX field data.</strong> LCP &lt; 2.5s, INP &lt; 200ms (replaced FID March 2024), CLS &lt; 0.1.</li>
+    <li><strong>Internal linking with descriptive varied anchor text.</strong> Mueller: "one of the biggest things you can do" for SEO. Zyppy's 23M-link study: variety + 2-5 word descriptive anchors beat repetitive.</li>
+    <li><strong>Earned citations from authoritative local sources.</strong> BBB, chamber, supplier dealer-locator pages, local press. Mueller de-emphasizes raw link count, prioritizes earned/relevant.</li>
+    <li><strong>HTTPS + mobile-friendly.</strong> Table stakes. Absence is a flag; presence doesn't move the needle.</li>
+  </ol>
+
+  <h3 class="section-title">13.2 · What Google penalizes</h3>
+  <ul>
+    <li><strong>Doorway pages</strong> — explicitly named in Google's spam policy.</li>
+    <li><strong>Scaled content abuse</strong> (May 2024 spam policy) — "many pages for the primary purpose of manipulating Search rankings," AI- or human-written.</li>
+    <li><strong>Helpful Content System</strong> — folded into core ranking March 2024, site-wide. Thin pages drag the whole domain's classifier down.</li>
+    <li><strong>Link-buying / footer links across unrelated sites.</strong> Manual-action risk.</li>
+    <li><strong>Faking freshness</strong> via updated dates + thin filler. HCS hammers this pattern.</li>
+  </ul>
+
+  <h3 class="section-title">13.3 · The swap test (operational rule)</h3>
+  <p>
+    If you can take a page and swap the city or product modifier, and the page still reads
+    correctly without other rewrites, it's a doorway page. Every hyperlocal or category-
+    variant page must pass the swap test. Topic-level uniqueness beats word-level
+    uniqueness. Subdivision names, local routes, climate notes — all are "local color" if
+    the page's reasoning is identical to peers.
+  </p>
+
+  <h3 class="section-title">13.4 · The 18-page safe ceiling for hyperlocal expansion</h3>
+  <p>
+    Multi-town single-location contractor: safe ceiling for hyperlocal expansion is ~18 pages
+    (6 enhanced town landings + up to 12 town × category overviews). Above 40 pages is documented
+    penalty territory. Penalty risk scales with <em>pattern strength</em>, not just count.
+  </p>
+
+  <h3 class="section-title">13.5 · AI Overview citation patterns</h3>
+  <ul>
+    <li>Only ~1.2% of local businesses get cited by AI per SOCi's 350K-location analysis.</li>
+    <li>AI citation drivers: NAP consistency across 10+ platforms, review velocity (3x lift), FAQ schema with prompt-shaped Q&A (2.8x lift), third-party mentions, GBP optimization.</li>
+    <li>NOT driven by hyperlocal page count.</li>
+    <li>AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) don't execute JavaScript. SSR/SSG initial HTML is required. Next.js 15 default behavior is sufficient.</li>
+    <li>Robots.txt: explicitly allow all AI crawlers — being cited in AI Overviews is the new local pack.</li>
+  </ul>
+
+  <h3 class="section-title">13.6 · The 70/30 customer-gated rule</h3>
+  <p>
+    For a local contractor: ~70-90% of SEO leverage is customer-gated (GBP, reviews, photos,
+    authorizations). The other 10-30% is engineer/agency unilateral (schema, internal linking,
+    meta tags, technical hygiene). Don't pretend engineering-only SEO captures the bulk of upside.
+  </p>
+
+  <h3 class="section-title">13.7 · Matrix in link graph, never in URL tree</h3>
+  <p>
+    To get N × M coverage across products × locations without doorway URLs: use the
+    <strong>ProductLocationsStrip</strong> pattern (§06.17, Recipe 51-extended). 14 products × 6 cities = 84
+    paired anchors in the link graph, zero matrix URLs. Anchor text patterned
+    "{Product} in {City}, NC" carries both contexts.
+  </p>
+</section>
+
+<!-- ============================ §14 FLAGSHIP REFERENCE: AM ============================ -->
+<section class="chapter wrap" id="flagship">
+  <h2 class="chapter-title"><span class="ix">14</span>Reference project · American Masterworks</h2>
+  <p class="lede">
+    AM is the v13 flagship visual DNA reference. The richest extant build of the doctrine — multi-page,
+    location-aware, motion-choreographed, SEO-disciplined. New projects reference AM's atom palette as
+    the canonical embodiment of the DNA, then invent their own atoms that carry the same DNA.
+    <strong>Canonical motion default values from §14.3 (per-primitive durations, delays, eases) have
+    been PROMOTED into MOTION_DOCTRINE §03.3</strong> so they apply to every project, not just AM.
+    The narrative below remains for case-study reference.
+  </p>
+
+  <h3 class="section-title">14.1 · Why AM is the flagship</h3>
+  <ul>
+    <li><strong>Structural depth.</strong> 28 indexable pages across 5 surface types (core, service-area hub, location, product, brand). Most other examples are single-page or 3-5 page.</li>
+    <li><strong>Atom maturity.</strong> 20+ named section atoms with documented composition rules.</li>
+    <li><strong>Motion choreography.</strong> TypeIn + FadeUp + SlideIn + StatCounter + Stagger working together in cinematic cascades, not isolated animations.</li>
+    <li><strong>SEO discipline.</strong> The full 13.x doctrine is implemented in production (schema graph, link-graph matrix without URL matrix, AI crawler allow-list, FAQ Quick Answer blocks, etc.).</li>
+    <li><strong>Voice-locked content.</strong> BRIEF §7 voice rules enforced site-wide; no exclamation points, no marketing fluff, regional-craftsman tone consistent across hundreds of paragraphs.</li>
+  </ul>
+
+  <h3 class="section-title">14.2 · The AM atom palette</h3>
+  <p>
+    These are the named section components. Anyone building a new section on AM uses one of these
+    OR proposes a new named atom — never inline-defaults. The atoms embody the DNA.
+  </p>
+
+  <table class="t">
+    <thead><tr><th>Atom</th><th>Role</th><th>DNA carried</th></tr></thead>
+    <tbody>
+      <tr><td class="name">PageHero</td><td class="use">Page-level intro with eyebrow + cinematic H1 + subhead + CTA + image</td><td class="where">Asymmetric, glow underline, photo-led, cinematic motion</td></tr>
+      <tr><td class="name">ProofMarquee</td><td class="use">Continuous-scroll trust strip atop inner pages</td><td class="where">Recipe 32, layered nav-bg contrast</td></tr>
+      <tr><td class="name">SignsGrid</td><td class="use">4-card 2×2 grid for self-identification ("is this you?")</td><td class="where">Symptom tags, question-form titles, ◆ markers, thematic CTA card right-fill</td></tr>
+      <tr><td class="name">SpecDeck</td><td class="use">3-card navy band with single-word category eyebrows + stat anchor cluster</td><td class="where">Asymmetric, single-word eyebrows, navy background rhythm, anchor cluster</td></tr>
+      <tr><td class="name">MaterialsGrid</td><td class="use">4-card material comparison with tier-bar visualizations</td><td class="where">Match-the-word bar logic, navy spec-cards, BEST FOR eyebrow</td></tr>
+      <tr><td class="name">StyleGrid</td><td class="use">Photo-led product/category tile grid</td><td class="where">Photo-led, hover bloom, "Explore" affordance, flex-wrap centering</td></tr>
+      <tr><td class="name">BrandsTrustBar</td><td class="use">Brand chip strip with logos/wordmarks</td><td class="where">Brand chips with red dot, layered bg, Recipe 32 marquee</td></tr>
+      <tr><td class="name">ServiceAreaGrid</td><td class="use">Aerial map + chip cloud of service cities, navy panel right</td><td class="where">Photo-led, navy contrast, asymmetric, hover bloom on chips</td></tr>
+      <tr><td class="name">ServiceAreaHubSections</td><td class="use">Per-town hub sections on /service-area with deep-link anchors</td><td class="where">Asymmetric 1.4fr/1fr per section, eyebrows + bullets, internal link matrix</td></tr>
+      <tr><td class="name">ReviewsSection</td><td class="use">Featured + supporting review grid with perimeter draw</td><td class="where">Featured + supporting hierarchy, Recipe 33 perimeter draw, category tags</td></tr>
+      <tr><td class="name">FaqSection</td><td class="use">2-col asymmetric FAQ: stat anchors + sticky CTA panel + Quick Answer block + card-stack accordion</td><td class="where">Recipe 39 asymmetric, Quick Answer block (AI-extractable)</td></tr>
+      <tr><td class="name">FooterCTA</td><td class="use">Full-width conversion band before footer with form preview + Call card</td><td class="where">Asymmetric two-column, layered red+navy split, embedded testimonial</td></tr>
+      <tr><td class="name">SectionBridge</td><td class="use">Marquee proof bar between heavy sections</td><td class="where">Recipe 40, edge gradient masks, themable per surface</td></tr>
+      <tr><td class="name">ProductLocationsStrip</td><td class="use">Product → all locations cross-link grid</td><td class="where">SEO link-graph matrix, NOT URL matrix (§13.7)</td></tr>
+      <tr><td class="name">LocationStats / LocationBrief / LocationRequests / LocalSnapshot</td><td class="use">Location-page section atoms</td><td class="where">Stat anchors, AT A GLANCE bullet card, 3-card commons-requests, photo-led architecture-types strip</td></tr>
+      <tr><td class="name">NearbyAreas</td><td class="use">Sibling-location cross-link tiles with distance pills + all-areas exit</td><td class="where">Photo-led tiles, hover bloom, navy "all areas" exit tile</td></tr>
+      <tr><td class="name">HomeHero</td><td class="use">Cinematic video hero with TypeIn cascade</td><td class="where">Video background, breathing vignette, TypeIn, sequenced CTAs</td></tr>
+      <tr><td class="name">HomeWindowsTeaser / HomeDoorsTeaser</td><td class="use">2-col home-page product teasers with photo + spec bullets + brand chips + dual CTAs</td><td class="where">Photo + FloatingStat, ◆ markers, brand chips, asymmetric</td></tr>
+      <tr><td class="name">ProcessSteps</td><td class="use">3-step process cards with internal 2-col grids</td><td class="where">Visual connectors, internal 2-col, concrete numbers</td></tr>
+      <tr><td class="name">TrustTabs</td><td class="use">Single-word tab cluster with category eyebrows + teaser bodies</td><td class="where">Recipe 43 single-word eyebrows, clearly clickable at rest</td></tr>
+      <tr><td class="name">BrandNarrativeSplit</td><td class="use">Brand-page "why this brand" narrative — 50/50 photo+copy split with floating stat + lede + 4 thread bullets + 3-up stat strip</td><td class="where">§06.15 Narrative Split, data shape locks slop out. Replaces deprecated BrandWhyNarrative.</td></tr>
+      <tr><td class="name">BrandLinesGrid</td><td class="use">Brand-page product lines — photo-led 2x2 tile grid</td><td class="where">Photo-led, hover bloom, asymmetric header + stat anchor cluster</td></tr>
+      <tr><td class="name">BrandWhenRight</td><td class="use">"When to pick this brand" 2x2 decision grid with single-word category eyebrows per card</td><td class="where">§06.9 single-word eyebrow per card, pulsing diamond, motion underline</td></tr>
+      <tr><td class="name">BrandCaveats</td><td class="use">Navy "honest trade-offs" band — 3 cards with pickInstead tags pointing to the solution brand</td><td class="where">SpecDeck-derived navy band, single-word eyebrows, pickInstead tag</td></tr>
+      <tr><td class="name">BrandPeerLinks</td><td class="use">Photo-led peer-brand cross-link tiles + navy "browse all" exit tile</td><td class="where">NearbyAreas-derived, photo-led tiles, hover bloom, navy contrast exit</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <span class="label">Slop audit</span>
+    <strong>Every atom in §14.2 has been audited against slop signatures (Forms 1-4)
+    and Lock 4 (Render Preview).</strong> Atom membership is not a free pass — every USE
+    of an atom is subject to the same render check. Atoms whose data shape allows slop
+    content are themselves slop-prone and get refactored or deprecated.
+  </div>
+
+  <h3 class="section-title">14.3 · The AM motion components — case study (canonical values now in MOTION §03.3)</h3>
+  <p>
+    AM ships 9 motion primitives in <code>web/components/motion/</code>. <strong>All per-
+    primitive default values from this section have been promoted into MOTION_DOCTRINE §03.3
+    as canonical generation rules</strong> (not AM-specific defaults). The narrative below
+    documents AM's specific usage pattern + count for case-study reference.
+  </p>
+  <ul>
+    <li><strong>FadeUp</strong> — 48 uses site-wide. Section eyebrows, subheads, body paragraphs, stat clusters, CTA rows.</li>
+    <li><strong>Stagger + StaggerItem</strong> — BrandsStrip, BrandsDetailed, BrandCaveats, BrandLinesGrid, BrandWhenRight, ProseBlock, ReviewsSection (childDelay 0.28s — unusual sequential cadence), SignsGrid, StyleGrid, TrustStrip, WhyUsPillars, FaqSection.</li>
+    <li><strong>TypeIn (default)</strong> — Below-fold H3 / sub-H2 reveals (rare; cinematic preferred).</li>
+    <li><strong>TypeIn (cinematic)</strong> — Hero H1 (delay 1.0s additive to per-char), every H2 via HeadingWithUnderline cinematic typeIn (typeInDelay 0.1s). AM uses blurAmount 0; KMv2 variant uses 8.</li>
+    <li><strong>HeadingWithUnderline (fullWidth)</strong> — Every section H2 site-wide; PageHero H1 with fullWidth+glow+cinematic+typeIn.</li>
+    <li><strong>AnimatedUnderline (inline)</strong> — WhyUsPillars; default mode of HeadingWithUnderline when fullWidth=false.</li>
+    <li><strong>SlideIn</strong> — PageHero image, HomeWindowsTeaser / HomeDoorsTeaser / BrandNarrativeSplit photo, FooterCTA split block, ServiceAreaGrid aerial + navy panel (distance 80-140px).</li>
+    <li><strong>Marquee</strong> — BrandsMarquee (45s), ProofMarquee (55s), SectionBridge (50s default), BrandsTrustBar (55s with custom whileHover pause attempted).</li>
+    <li><strong>StatCounter</strong> — Every stat-anchor cluster on AM. Handles "9", "100", "100%", "$0", "30+", "1–3", "25–50", "10–15%", "ALL", "CUSTOM", "HQ".</li>
+    <li><strong>PerimeterDraw</strong> — ReviewsSection supporting review cards (duration 1.2s, delay 0.35 + i×0.22s stagger).</li>
+  </ul>
+  <p>
+    <strong>The expo-out ease curve</strong> <code>[0.16, 1, 0.3, 1]</code> is re-declared as
+    <code>const ENTER_EASE</code> at the top of every primitive file + 27 section files. There
+    is no shared <code>motion/easing.ts</code>; each file copies the constant. This is the
+    pattern to preserve. Deviations from ENTER_EASE: Marquee uses "linear" (by definition),
+    hero ambient loops use "easeInOut", icon-spring + layoutId-spring use spring physics,
+    scroll-triggered halos use "easeOut".
+  </p>
+
+  <h3 class="section-title">14.4 · How to use AM as reference on a new project</h3>
+  <ol>
+    <li><strong>Identify your project's structural shape</strong> (single-page? multi-page? per-location?).</li>
+    <li><strong>For each section you need, find the AM atom that does the equivalent job</strong> (see 14.2 table).</li>
+    <li><strong>Map the DNA principles that atom carries</strong> (see "DNA carried" column).</li>
+    <li><strong>Invent a project-specific atom</strong> that carries those same DNA principles in your project's variance composition + palette.</li>
+    <li><strong>Never copy AM atoms verbatim</strong> — they are AM-shaped, not universal. Carry the DNA, leave the specifics. The variance composition is what differentiates your project from AM.</li>
+  </ol>
+
+  <div class="callout">
+    <span class="label">Example translation (contractor-trade)</span>
+    Plumbing project needs a section that compares service-tier offerings. AM's equivalent is
+    <code>MaterialsGrid</code> with tier-bar visualizations. DNA: navy spec-card, BEST FOR
+    eyebrow, match-the-word tier bars, hover bloom. New atom for plumbing: <code>ServiceTiersGrid</code>
+    with the same asymmetric header, the same tier-bar treatment, but adapted to plumbing
+    service tiers (Diagnose / Patch / Replace) + the project's variance composition.
+  </div>
+</section>
+
+<!-- ============================ §14B FLAGSHIP-B · KMv2 ============================ -->
+<section class="chapter wrap" id="flagship-b">
+  <h2 class="chapter-title"><span class="ix">14B</span>Reference project · King Maker v2</h2>
+  <p class="lede">
+    KMv2 is the second flagship, paired with §14 American Masterworks. Where AM is the
+    multi-page service-business doctrine ship, KMv2 is the single-page B2B-agency doctrine
+    ship (one-vertical-per-city offering, trust-through-artifacts, zero people imagery,
+    concept-named system). The two flagships exist as peers so the doctrine is portable
+    across project shapes — the variance library is seeded with two genuinely-different
+    reference points. <strong>Canonical motion variant deltas from §14B.2 (TypeIn cinematic
+    blurAmount 8 dark-bg variant, CSS-keyframe perimeter draw variant) have been promoted
+    into MOTION_DOCTRINE §03.3.</strong>
+  </p>
+
+  <h3 class="section-title">14B.1 · Why KMv2 is the second flagship</h3>
+  <ul>
+    <li>It is a complete shipping product, not a fragment — kingmaker-v2.vercel.app is live.</li>
+    <li>It exercises a substantially different pattern composition from AM across nearly every variance dimension.</li>
+    <li>It surfaces the doctrine gaps AM alone hid: button DNA bias (rounded vs square), divider strategy bias (animated vs contrast), trust strategy bias (testimonials vs artifacts), image policy bias (people-photography vs zero-people), form atom bias (bordered vs underline-only), footer bias (dense vs restrained), voice bias (sentence-form regional vs concept-named metaphor).</li>
+  </ul>
+
+  <h3 class="section-title">14B.2 · KMv2 atom + recipe palette (cross-reference)</h3>
+  <table class="t">
+    <thead><tr><th>Atom / Recipe</th><th>Where defined</th><th>What it carries</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Bordered Chip Eyebrow</td><td class="where">§06.13</td><td class="use">Stronger label-like presence than the inline-rule eyebrow. THE WORK / THE PROBLEM / THE SYSTEM.</td></tr>
+      <tr><td class="name">Audit Ledger Card</td><td class="where">§06.14 · Recipe 30</td><td class="use">Diagnostic-as-content. The trust-through-artifacts core. Brick-red ALERT callout footer.</td></tr>
+      <tr><td class="name">Per-Heading Motion-Blur Reveal</td><td class="where">§06.18 · Recipe 59</td><td class="use">Site-wide heading discipline — every H2 AND H3. Dual-span sr-only + aria-hidden animated.</td></tr>
+      <tr><td class="name">Massive-Numeral Concept Card</td><td class="where">§06.19</td><td class="use">Named system parts (Engine / Gas / Keys / Result). Voice rhymes with design.</td></tr>
+      <tr><td class="name">Square-Corner Button System</td><td class="where">§06.20</td><td class="use">Two atoms only. Gold-fill primary with BLACK text + outer-ring glow. Ghost = transparent + gold-deep border.</td></tr>
+      <tr><td class="name">Bottom-Border-Only Form Input</td><td class="where">§06.21</td><td class="use">Form is itself a design statement. Underline-on-focus gold. Mono caps labels above.</td></tr>
+      <tr><td class="name">Mono-Caps Inline-Rule Divider</td><td class="where">§06.22</td><td class="use">In-section break when contrast rhythm isn't carrying. — SECTION LABEL —</td></tr>
+      <tr><td class="name">Dual Scrub Counter (Pinned)</td><td class="where">Recipe 31</td><td class="use">Pinned ScrollTrigger urgency counter — gold ticker + red loss tally on horizontal timeline.</td></tr>
+      <tr><td class="name">Scrolling Brand Bar (tech marquee)</td><td class="where">Recipe 32</td><td class="use">◆-separated mono caps. Tech stack as competence wall. Triple-array linear infinite x.</td></tr>
+      <tr><td class="name">Process Step with Right-Side Stat</td><td class="where">Recipe 34</td><td class="use">Numbered chip + gold icon + name + right-aligned stat. AM extends with bullet-stack.</td></tr>
+      <tr><td class="name">Sticky Pin Section formula</td><td class="where">Recipe 35</td><td class="use">section_height = sticky × (1 + pin_factor). 0.3–0.6 = punchy. KMv2 urgency core.</td></tr>
+      <tr><td class="name">Contrast-Is-The-Divider Rhythm</td><td class="where">Recipe 60</td><td class="use">Alternating bg / surface/40 with border-y. NO animated dividers between sections.</td></tr>
+      <tr><td class="name">Trust-through-Artifacts Replacement</td><td class="where">Recipe 61</td><td class="use">Live portfolio screenshots + tech marquee + audit ledger. Replaces testimonials / star ratings / logo strips.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">14B.3 · How to use KMv2 as reference on a new project</h3>
+  <ol>
+    <li><strong>Pick KMv2-leaning variance picks at pre-flight.</strong> Square buttons (Button DNA B), contrast-only dividers (Section dividers B), motion-blur headings (Heading reveal B), artifacts-led trust (Trust strategy B), no-people imagery (Image policy B), bottom-border forms (Form input B), restrained footer (Footer density B), concept-named voice (Voice B), cross-surface signature glyph (Brand glyph B).</li>
+    <li><strong>For each section, find the KMv2 atom or recipe</strong> (see 14B.2 table). If no KMv2-specific atom exists, check §06 — many atoms are mode-neutral.</li>
+    <li><strong>Audit against the variance library row-by-row before writing any JSX.</strong></li>
+    <li><strong>Never default to the AM-shaped §06 atom defaults.</strong> If a §06 atom has a variance override, the override wins.</li>
+    <li><strong>Carry the DNA, leave the specifics.</strong> KMv2's "Engine / Gas / Keys / Result" naming is project-specific. The DNA (concept-named system, metaphor cohesion, fragment voice) is portable.</li>
+  </ol>
+
+  <div class="callout">
+    <span class="label">Example translation</span>
+    A B2B-agency project targets accountants instead of contractors. KMv2's structural shape
+    — single-page landing with a 4-up named-system concept block, audit ledger demonstrating
+    the visitor's own books, application form at bottom — translates directly. The variance
+    composition locks the visual DNA (square buttons, no people, contrast rhythm, bottom-
+    border form). The accountant project gets a different concept-naming system ("The
+    Ledger / The Lens / The Lever / The Lift") but keeps the same atoms.
+  </div>
+</section>
+
+<!-- ============================ §15 COMPOSITION + FREEDOM ============================ -->
+<section class="chapter wrap" id="composition">
+  <h2 class="chapter-title"><span class="ix">15</span>Composition + creative freedom</h2>
+  <p class="lede">The doctrine constrains output quality. It does not dictate specific components. Project-specific atoms diverge; the DNA stays the same.</p>
+
+  <div class="callout gold">
+    <span class="label">Posture</span>
+    <strong>Compose using DNA, invent atoms per project.</strong> If a new build looks like a
+    recolored AM, the doctrine has been misapplied. If a new build looks fundamentally different
+    from AM but every section embodies the DNA, the doctrine has been correctly applied.
+  </div>
+
+  <h3 class="section-title">How to compose for a new project</h3>
+  <ol>
+    <li><strong>Pick variance composition</strong> from STRUCTURE §03. Lock palette per STRUCTURE §05.</li>
+    <li><strong>Identify the project's structural shape</strong> — single page? multi-page? per-location? portfolio? audit tool?</li>
+    <li><strong>For each section, map to AM atom equivalent</strong> (§14.4), pull DNA principles, invent project-specific atom that carries them.</li>
+    <li><strong>Apply pattern library §06</strong> for the standard signature elements.</li>
+    <li><strong>Run the verification contract STRUCTURE §08</strong> before declaring done.</li>
+    <li><strong>Save handoff doc</strong> in project's <code>docs/</code> (OP-09). At project milestone, write a fresh self-contained doctrine document (full rewrite, not supplement).</li>
+  </ol>
+
+  <h3 class="section-title">When to deviate</h3>
+  <ul>
+    <li>The reference site direction overrides taste (TP &lt; Reference per priority).</li>
+    <li>The user explicitly requests it (TP &lt; User per priority).</li>
+    <li>Engineering rules + operating principles + Generation Contract always hold.</li>
+  </ul>
+</section>
+
+<!-- ============================ §16 SELF-CONTAINED PRINCIPLE ============================ -->
+<section class="chapter wrap" id="self-contained">
+  <h2 class="chapter-title"><span class="ix">16</span>The self-contained doctrine principle</h2>
+  <p class="lede">v13 banished the supplement chain. This is the structural fix for the v9-v10-v11-v12 problem.</p>
+
+  <h3 class="section-title">Why supplements were wrong</h3>
+  <ul>
+    <li><strong>Loading discipline failure.</strong> Supplements rely on "read v9 first, then v10, then v11, then v12." If a session loads only the latest, ~90% of the doctrine is missing.</li>
+    <li><strong>Inheritance is load-bearing but invisible.</strong> Each supplement's "Inherited from..." section is the seam that fails silently when predecessors aren't loaded.</li>
+    <li><strong>The supplement chain compounds.</strong> v12 inheriting from v11 inheriting from v10 inheriting from v9. Five files to read. Reality: only the latest gets read.</li>
+  </ul>
+
+  <h3 class="section-title">The v13+ model</h3>
+  <ul>
+    <li><strong>Every major milestone produces a fresh self-contained doctrine document.</strong> v13 contained everything. v14 (when it lands) will contain everything v13 contained + new material + corrections — not as deltas, as a rewrite.</li>
+    <li><strong>Previous versions become historical artifacts</strong>, preserved on disk but not part of the load chain.</li>
+    <li><strong>No "inherited from" sections in v13+.</strong> If a recipe applies, it's listed here. If a TP applies, it's listed here. If an OP applies, it's listed here.</li>
+    <li><strong>OP-14 deprecated.</strong> "Doctrine evolves additively" built the supplement chain. v13 replaces with: <em>doctrine evolves via monolithic rewrite at milestone boundaries</em>.</li>
+  </ul>
+
+  <h3 class="section-title">The 2026-05-18 split — supplement chain still banished</h3>
+  <p>
+    The split into MOTION_DOCTRINE + STRUCTURE_DOCTRINE + REFERENCE_LIBRARY is NOT a return
+    to supplements. It is a <strong>generation-architecture split</strong>:
+  </p>
+  <ul>
+    <li>MOTION + STRUCTURE are loaded together at session start, both required to fire as generation programs. Neither inherits from the other; they cover non-overlapping concerns.</li>
+    <li>REFERENCE is browsed on demand. It does not contain any clause not present in MOTION or STRUCTURE. It is the long-form narrative + worked examples + rendered previews.</li>
+    <li>Future v14 will be a fresh self-contained doctrine in the same three-file architecture, full rewrites of each file. The split is the new permanent shape; supplements stay banished.</li>
+  </ul>
+
+  <h3 class="section-title">When v14 happens</h3>
+  <p>Triggers for v14 doctrine rewrite:</p>
+  <ul>
+    <li>AM launches into production (DNS cutover + GBP optimized + form creds wired + 90 days of real GSC data) — confirms or revises the SEO doctrine §13.</li>
+    <li>A second flagship-quality build ships, contributing recipes that supplant or extend AM's atom palette.</li>
+    <li>The doctrine accumulates enough learnings that supplementing v13 would be cleaner than rewriting — at which point, rewrite anyway.</li>
+  </ul>
+</section>
+
+<!-- ============================ §17 AM BUILD STATE ============================ -->
+<section class="chapter wrap" id="am-build">
+  <h2 class="chapter-title"><span class="ix">17</span>AM build state · current (v13 frozen snapshot)</h2>
+  <p class="lede">Where AM stands at v13 ship. Frozen here so the doctrine has a self-contained record.</p>
+
+  <div class="callout">
+    <span class="label">Snapshot · 2026-05-17</span>
+    <strong>Live:</strong> <a href="https://web-azure-ten-69.vercel.app">https://web-azure-ten-69.vercel.app</a><br>
+    <strong>Repo:</strong> <a href="https://github.com/josephspells-Cgrav/american-masterworks">github.com/josephspells-Cgrav/american-masterworks</a><br>
+    <strong>Latest commit on main:</strong> <code>a6b6fa6</code> — Session handoff post-SEO Item 9 ship.<br>
+    <strong>Pages:</strong> 28 indexable URLs across 5 surface types (5 core + service-area hub + Castalia location + 14 products + 6 brands).<br>
+    <strong>Strategic state:</strong> SEO optimization plan fully shipped (9 items, 3 deploys). Brand pages need design rebuild to match flagship DNA.
+  </div>
+
+  <h3 class="section-title">17.1 · Stack</h3>
+  <ul>
+    <li>Next.js 15 + App Router + TypeScript</li>
+    <li>Tailwind CSS v4 (CSS-first config in <code>app/globals.css</code>)</li>
+    <li>framer-motion 12.38 via <strong>pnpm</strong> (never npm)</li>
+    <li>Vercel hosting (aliased to <code>web-azure-ten-69.vercel.app</code>)</li>
+    <li>Inter Tight (display) + Inter (body) via <code>next/font/google</code> — slated for replacement per anti-pattern 7.29</li>
+  </ul>
+
+  <h3 class="section-title">17.2 · What shipped in the v13 session</h3>
+  <ul>
+    <li>SEO optimization plan executed end-to-end (9 items, 3 deploys, ~250-280k tokens)</li>
+    <li>Title + meta rewrites across all 25 original pages (51-58 char titles, 140-160 char descriptions)</li>
+    <li>Schema upgrade: <code>HomeAndConstructionBusiness</code> + Wikipedia <code>sameAs</code> + <code>GeoCircle</code> 50km radius + env-gated <code>hasCredential</code> + <code>founder</code></li>
+    <li>Internal linking: new <code>ProductLocationsStrip</code> (14 × 6 = 84 paired anchors)</li>
+    <li>Service-area consolidation: 5 location pages → <code>/service-area</code> hub with 308 redirects; Castalia kept as full page</li>
+    <li>robots.txt: explicit allow for 10 AI crawlers</li>
+    <li>6 brand pages at <code>/brands/[slug]</code> — "we install [brand]" framing, no dealer claims, ~600-750 words unique per brand</li>
+    <li>LCP image optimization: explicit <code>fetchPriority="high"</code> on every hero image</li>
+    <li>FAQ "Quick Answer" 40-60 word direct-answer blocks on 24 FAQ-bearing pages</li>
+  </ul>
+
+  <h3 class="section-title">17.3 · Outstanding work (NOT in v13)</h3>
+  <ul>
+    <li><strong>Brand page visual rebuild — COMPLETED v13 session-2.</strong> Root cause was structural, not cosmetic: §14.2 atoms were used per spec but the data shape allowed slop content. Fix: <code>BrandWhyNarrative</code> deprecated and replaced by <code>BrandNarrativeSplit</code>.</li>
+    <li><strong>/service-area hub town sections.</strong> Same flat-card signature — should use LocationStats / LocationBrief / LocationRequests atoms rather than inline JSX.</li>
+    <li><strong>ProductLocationsStrip.</strong> Currently flat anchor grid — should be photo-led tile grid matching the StyleGrid pattern.</li>
+    <li><strong>Customer-gated SEO.</strong> GBP optimization, citation cleanup, review velocity engine, real install photography, DNS cutover + GSC setup, 90 days of GSC data.</li>
+    <li><strong>Env vars to activate.</strong> <code>AM_CONTRACTOR_LICENSE</code> + <code>AM_OWNER_NAME</code> on Vercel to activate <code>hasCredential</code> + <code>founder</code> schema. <code>RESEND_API_KEY</code> + Twilio creds for form lead delivery.</li>
+  </ul>
+
+  <h3 class="section-title">17.4 · Voice rules (BRIEF §7, inviolable)</h3>
+  <ul>
+    <li>Confident, plainspoken, regional craftsman tone. Reading age 8th-10th grade.</li>
+    <li><strong>Banned:</strong> exclamation points, "amazing/incredible/stunning", "we pride ourselves on...", "family-owned and operated since..."</li>
+    <li>Reference NC weather, county geography, real materials, real brand names.</li>
+  </ul>
+</section>
+
+<!-- ============================ §18 CHANGELOG ============================ -->
+<section class="chapter wrap" id="changelog">
+  <h2 class="chapter-title"><span class="ix">18</span>Changelog · v8 → v13 → 2026-05-18 split</h2>
+
+  <h3 class="section-title">2026-05-18 split — MOTION + STRUCTURE + REFERENCE</h3>
+  <p>
+    Two consecutive deep-remix sessions proved v13's monolithic format failed as a
+    generation program: the agent read v13, formed compressed intent, and shipped code
+    that missed depth specs (cascade ladder timings, ambient pulsing on decorative glyphs,
+    hover catalog, per-card inner cascade). At 3,308 lines v13 was beyond the model's
+    active intent slot during generation. The fix: split into a tight motion generation
+    file + a tight structure generation file + a browsable reference library.
+  </p>
+  <ul>
+    <li><strong>MOTION_DOCTRINE.html (target 600–800 lines):</strong> §03 DNA (with §03.8 surfaced as the most-missed clause), motion intensity dial, full motion catalog with all 9 primitive canonical defaults surfaced (promoted from §14.3 + §14B.2), hero structural spec, depth-staged cascade ladder, 7 ambient loops, 12 hover gestures, 2 spring configs, per-section motion grammar (motion-only — no layout/copy), §04.8 utilization audit upgraded with depth checks (greps for specific delay values + transition durations + hover gesture utilities — catches "primitive imported but configured wrong"), §09.1 motion-relevant performance bans, motion-touching Locks 1/8/9/10/11.</li>
+    <li><strong>STRUCTURE_DOCTRINE.html (target 600–800 lines):</strong> §00 Eleven Locks (full generation contract), §02 instruction priority, §04.1 universal aesthetic, §04.2 variance library (9 dimensions + 10th grid-pattern dimension), §04.3 composition workflow, §04.4 coherence rules, §05 brand palettes (AM + KMv2 + validation rule + slop-banned defaults), §09.2 hydration + framework, §09.3 accessibility, §09.4 tactical ops, §10 verification contract VC-01–VC-12, §13 SEO essentials (top-3 leverage, penalties, swap test, 70/30 rule), §14C contractor skeleton (page inventory per tier), §04.9 audit-loop methodology.</li>
+    <li><strong>REFERENCE_LIBRARY.html (this file — naturally long):</strong> §06 pattern library with rendered visual previews, §07 recipes 1–61, §08 anti-patterns 7.1–7.33, §11 TP-01–TP-32, §12 OP-01–OP-18, §13 full SEO doctrine (long-form rest beyond essentials), §14 AM flagship narrative + atom palette + how-to-reference, §14B KMv2 flagship narrative + atom palette + how-to-reference, §15 composition + freedom, §16 self-contained principle (extended with split rationale), §17 AM build state, §18 changelog.</li>
+  </ul>
+  <p>
+    <strong>Audit findings — clauses promoted from §14/§14B into generation programs:</strong>
+  </p>
+  <ul>
+    <li>Per-primitive canonical defaults from §14.3 → MOTION §03.3 table (FadeUp duration 0.6s / y 20 / margin "200px"; Stagger childDelay 0.08s with ReviewsSection 0.28s exception; TypeIn default vs cinematic presets; HeadingWithUnderline glow spec exactly 2px alpha 0.55; SlideIn distance 120px with 80–140 range; Marquee 45/50/55 with velocity target 100–140 px/sec; StatCounter target-scaled duration table; PerimeterDraw negative -100px margin).</li>
+    <li>KMv2 variant deltas from §14B.2 → MOTION §03.3 (TypeIn cinematic blurAmount 8 dark-bg variant vs AM 0; CSS-keyframe perimeter-draw variant vs motion.rect).</li>
+    <li>ENTER_EASE re-declaration pattern from §14.3 → MOTION §03.2 ("declared at top of every primitive file + 27 section files; no shared motion/easing.ts; each file copies the constant — preserve this discipline").</li>
+    <li>Reduced-motion behavior pattern from §14.3 → MOTION §03.3 (canonical per-primitive behavior baked into defaults table).</li>
+    <li>Spring scarcity from §14.3 → MOTION §03.8 (exactly 2 configs, 4 total uses across AM codebase).</li>
+    <li>AM-specific cascade delays from §14.3 → MOTION §03.5 (standard depth + deep depth tables with exact delay/duration values).</li>
+    <li>Hero ambient loop specs from §14.3 → MOTION §03.6 (breathing vignette 9s easeInOut; slow zoom 18s linear; per-primitive structural location).</li>
+  </ul>
+
+  <h3 class="section-title">v13 session-14 audit + edit (2026-05-18) — Eleven Locks · surfaced output lines · verification stack elevated</h3>
+  <p>
+    Session-14 was a compliance audit + in-place doctrine edit triggered by the deep-remix
+    Holloway experiment killed 2026-05-18. The experiment cost the user two days. Post-mortem
+    found 22 distinct v13 doctrine violations across one experiment — 8 CRIT, 9 HIGH, 3 MED,
+    2 LOW. Most damning: OP-02 ("never build UI blind"), OP-03 ("close the loop with
+    perception"), OP-07 ("audit tool/skill utilization mid-build"), OP-08 ("when
+    verification stalls, switch tier"), TP-18 (mid-build audit), and §10 Layer 1/2/3
+    (Chrome MCP + Playwright + axe-core) — ALL named in plain language in v13, ALL bypassed
+    across the experiment. Pattern: Locks with a surfaced required output line (Lock 1)
+    were honored; Locks with output lines buried in prose (5, 6, 7) were not.
+  </p>
+  <ul>
+    <li><strong>§00 contract — "Seven Locks" → "Eleven Locks".</strong> Four new Locks added; four existing strengthened with surfaced output lines.</li>
+    <li><strong>Lock 1 strengthened.</strong> Now requires TWO output lines: "Skills loaded: ..." AND "Skill capabilities engaged this turn: ...".</li>
+    <li><strong>Lock 5 surfaced.</strong> The labeled variance composition (10 lines) lives inside Lock 5 itself.</li>
+    <li><strong>Lock 6 surfaced.</strong> "Verified shipped: ..." evidence statement promoted to <code>&lt;pre&gt;</code>.</li>
+    <li><strong>Lock 7 surfaced.</strong> "Audit loop pass complete: ..." line promoted to <code>&lt;pre&gt;</code>.</li>
+    <li><strong>NEW Lock 8 — Mid-build skill audit cadence.</strong> Every 5th UI Edit/Write requires "Mid-build skill audit · iter N / edit M: ..." line.</li>
+    <li><strong>NEW Lock 9 — Chrome MCP loaded.</strong> §10 Layer 1 elevated to a Lock.</li>
+    <li><strong>NEW Lock 10 — Playwright FULL ready.</strong> §10 Layer 2 elevated. Most damning audit finding: 0% Playwright usage despite the doctrine explicitly saying "video recording — every motion-heavy build."</li>
+    <li><strong>NEW Lock 11 — axe-core 0/0.</strong> §10 Layer 3 elevated. Gates "shipped" / "complete" claims on accessibility evidence.</li>
+    <li><strong>Mechanical enforcement built outside the doctrine:</strong> SessionStart / PreToolUse / PostToolUse / Stop hooks in the holloway-remix project; <code>verify-before-claim</code> user-global skill.</li>
+  </ul>
+
+  <h3 class="section-title">v13 session-10 (2026-05-17) — §01.1 skill catalog complete + ALL-invoke enforcement</h3>
+  <p>Session-10 fixed the §01.1 skill table after session-9 shipped partial enforcement. All 10 ALWAYS skills (impeccable, design-taste-frontend, frontend-design, ui-ux-pro-max, high-end-visual-design, gpt-taste, design-motion-principles) now mandatory in Lock 1.</p>
+
+  <h3 class="section-title">v13 session-13 — audit-loop methodology codified</h3>
+  <p>The audit loop pattern (Lock 7 + §04.9 + §10 VC-12) emerged from the Holloway plumbing demo where the first-draft "stiff" failure mode required 2 manual review rounds + a 5-iteration unattended loop to reach AM/KMv2 parity. The loop replaces both manual review rounds with one automated pass with human approval gates only on items that need them.</p>
+
+  <h3 class="section-title">v13 session-12 — §04.7 per-section grammar + §04.8 utilization audit</h3>
+  <p>Codified after first-draft Holloway plumbing demo audit showed every motion atom in AM + KMv2 inventory was missing or under-used. The doctrine had vocabulary (§04.6) but not grammar (§04.7) or check (§04.8).</p>
+
+  <h3 class="section-title">v13 session-11 — §04.6 motion catalog</h3>
+  <p>§04.6 was added after the plumbing-demo first-draft audit showed every section motion atom in the AM + KMv2 inventory was missing from the build. The doctrine had the principles (§03 DNA) but not the implementation reference. §04.6 closed that gap.</p>
+
+  <h3 class="section-title">v13 session-2 — slop signatures Forms 2-4 codified</h3>
+  <p>Brand-page audit shipped 3-paragraph wall-of-text slop on 6 pages despite using §14.2 atoms per spec. Root cause: atom data shape allowed prose stacking. Fix: deprecated BrandWhyNarrative, added BrandNarrativeSplit with type-locked data shape. Slop signatures expanded with Forms 2-4. Anti-patterns 7.21-7.23 added.</p>
+
+  <h3 class="section-title">v13 base (2026-05-15) — self-contained rewrite, supplements banished</h3>
+  <p>v13 was a full rewrite of v12 with everything from v9 + v10 + v11 + v12 folded inline. OP-14 ("doctrine evolves additively") deprecated. Future versions = full rewrites, never supplements.</p>
+</section>
+
+<footer class="doc-footer">
+  <div>King Maker · REFERENCE_LIBRARY · 2026-05-18 · browse on demand · pair with MOTION_DOCTRINE.html + STRUCTURE_DOCTRINE.html (both always loaded) · archival v13 at C:\Users\josep\Claude Gravity\KING_MAKER_v13.html</div>
+</footer>
+
+</body>
+</html>

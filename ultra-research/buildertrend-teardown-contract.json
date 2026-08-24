@@ -1,0 +1,29 @@
+{
+  "question": "What is Buildertrend (buildertrend.com) — complete current feature inventory, pricing/packaging, real-user strengths/complaints, roofing-specific fit vs trade competitors, and hard technical/business moats — as the verified evidence base for a recreate-difficulty tier list (S = a 2-person AI-driven shop with a live custom Next.js/Postgres roofing CRM can recreate or beat it; F = virtually impossible to recreate)?",
+  "subQuestions": [
+    "What is Buildertrend's complete current (2025-2026) feature inventory, module by module — sales/CRM, scheduling, daily logs/field ops, estimates/takeoffs, change orders/selections, budgets/job costing/purchase orders, invoicing/online payments, client portal, subcontractor portal, messaging/communications, documents/photos, reporting, time clock, warranty — per official site and help-center documentation?",
+    "What are Buildertrend's current pricing tiers and packaging (2025-2026), what features gate per tier, what add-ons exist, and what do real multi-seat monthly bills look like (is ~$3,000/mo a plausible real-world spend)?",
+    "What do real users — especially roofers and exterior contractors — praise, complain about, and churn over (G2, Capterra, Reddit, contractor forums), and which features are load-bearing daily-use vs rarely-used bloat?",
+    "How does Buildertrend fit ROOFING specifically versus trade-focused competitors (AccuLynx, JobNimbus, Roofr) — which Buildertrend features do roofers actually use or ignore, and why do roofers pick the trade tools instead?",
+    "What are Buildertrend's hard-to-replicate technical and business moats — embedded payments processing, financing/lending products, QuickBooks/Xero sync depth, native mobile apps (offline, GPS time clock), takeoff/material-ordering integrations, the CBUSA group-purchasing network, template/content libraries, onboarding/support organization?",
+    "What is Buildertrend's company scale and history (founding, headcount, customers, acquisitions like CBUSA) — the context for what 'recreating 20 years of software' actually means?"
+  ],
+  "checklist": [
+    "feature inventory: sales/CRM + scheduling + daily logs",
+    "feature inventory: estimates/takeoffs + change orders/selections",
+    "feature inventory: budgets/job costing/POs + invoicing/payments",
+    "feature inventory: client portal + sub portal + messaging/docs/photos",
+    "feature inventory: reports + time clock + warranty + integrations + mobile apps",
+    "pricing tiers, per-tier gating, add-ons, real multi-seat bills",
+    "user praise + complaints + churn drivers (incl. roofers)",
+    "roofing fit vs AccuLynx/JobNimbus/Roofr",
+    "moats: payments, financing, QBO sync, mobile/offline/GPS, CBUSA network, templates, support org",
+    "company scale/history/acquisitions"
+  ],
+  "tier": "standard",
+  "mode": "breadth",
+  "stopCondition": "Every checklist module has at least one primary (official docs) source; pricing and the top user complaints each have at least two independent sources; engine saturation rules govern rounds.",
+  "currentDate": "2026-07-10",
+  "userConfirmedTier": true,
+  "context": "Requested by Joseph 2026-07-10 (explicit swarm commission, sub-agents on Sonnet). Downstream use: OS18 maps verified evidence to an S-F recreate-difficulty tier list calibrated to the live mabrey-crm codebase (Next.js/Vercel/Neon Postgres/Drizzle: kanban board, calendar w/ drag-reschedule, period reports, estimates ledger, photo uploads, claim/supplement tracking, calls w/ VAPI transcripts, EagleView measurement seam, documents layer, pg_trgm global search, Customer 360 timeline, install map, price book + deterministic options matrix, commissions + payroll CSV, role-scoped API tokens + audit log) plus an AI layer Buildertrend lacks (VAPI receptionist, Slack agent ops). Sean Mabrey pays ~$3k/mo for an unused CRM — the replacement target."
+}

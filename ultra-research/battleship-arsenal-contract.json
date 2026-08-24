@@ -1,0 +1,35 @@
+{
+  "question": "The Battleship Arsenal sweep: an ultra-deep discovery + verification pass over (A) the GitHub/open-source ecosystem for tooling that lets a lean AI-native SEO agency (King Maker SEO — Claude Code + MCP-based, scaling from 1 to ~5-10 local-contractor clients) operate at battleship readiness, and (B) the 2026 UGC/short-form content-creation stack (Higgsfield, CapCut, AI avatar/UGC tools, automation repos) for a solo founder about to start posting daily marketing content.",
+  "subQuestions": [
+    "GitHub: what are the best ACTIVELY-MAINTAINED (2025-2026 commits) open-source tools for local-SEO agency operations — local rank tracking / geo-grid tools, Google Business Profile management and audit tooling, schema/structured-data generators, citation & NAP tooling, technical site auditors, internal-linking tools, SERP data collectors — and which popular ones are abandoned/broken (verify repo activity, don't trust listicles)?",
+    "GitHub: what LLM-agent / AI-powered SEO automation actually exists and works — MCP servers for SEO APIs (DataForSEO, GSC, GBP, Ahrefs-like), programmatic/agentic SEO frameworks, AI content pipelines with quality gates, Claude-Code-adjacent SEO workflows — which are production-usable vs demos, and which carry spam/policy risk?",
+    "What self-hostable/open-source stack can run CLIENT OPERATIONS for a 5-10 client agency lean: white-label reporting dashboards, analytics (Plausible/Umami/Matomo class), call-tracking and lead attribution, review monitoring/management, uptime + SERP monitoring, client portals — what do lean agencies actually run in 2026?",
+    "The 2026 solo-operator UGC/short-form stack: what are Higgsfield's current strongest capabilities (image/video/avatar/product models as of mid-2026), the CapCut (or superior alternative) editing workflow for daily output, and the leading AI-avatar/UGC-ad tools (HeyGen, Arcads, Captions, etc.) — costs, strengths, what the leanest daily-posting pipeline looks like end to end?",
+    "What short-form content formats and hooks are MEASURABLY working in 2025-2026 for B2B-service / local-service marketing audiences (owner-on-camera authority content, audit teardowns, case-study breakdowns, before/after) on TikTok / Reels / Shorts — evidence from creator data, not guru claims?",
+    "GitHub/OSS: which video/content automation tools are maintained and production-usable — auto-captioning (Whisper-based pipelines), clip extraction/repurposing, batch rendering (Remotion/FFmpeg frameworks), social-media schedulers/cross-posters — that a solo operator can wire into a Claude-Code-driven content pipeline?"
+  ],
+  "checklist": [
+    "local rank tracking / geo-grid OSS repos (activity-verified)",
+    "GBP management/audit tools (API-based, maintained)",
+    "schema generator repos + validators",
+    "SEO MCP servers ecosystem (DataForSEO/GSC/others) on GitHub 2026",
+    "programmatic/agentic SEO frameworks (activity + real usage evidence)",
+    "AI content pipeline repos with quality gates",
+    "self-hosted white-label SEO reporting dashboards",
+    "open-source call tracking / attribution options",
+    "review monitoring OSS",
+    "Higgsfield capability set mid-2026 (models, avatar/UGC features, pricing)",
+    "CapCut pro workflow vs alternatives (Descript, Premiere templates) for daily shorts",
+    "AI avatar/UGC ad tools compared (HeyGen, Arcads, Captions, Creatify)",
+    "Whisper-based auto-captioning pipelines (maintained repos)",
+    "clip extraction / repurposing tools (OSS + SaaS)",
+    "Remotion/FFmpeg batch video frameworks",
+    "social scheduler / cross-poster OSS (Postiz/Mixpost class)",
+    "short-form B2B-local content format performance evidence 2025-2026",
+    "repo abandonment check: every recommended repo verified active (commits within ~6-12mo)"
+  ],
+  "tier": "max",
+  "mode": "breadth",
+  "currentDate": "2026-07-06",
+  "stopCondition": "Every recommended repo/tool is verified active (recent commits or releases) with its niche stated; each stack layer (rank tracking, GBP, schema, reporting, call tracking, captioning, scheduling, avatar/UGC) has at least one production-usable recommendation or an honest 'nothing good exists — buy SaaS X instead'; UGC stack has costs; format-performance claims carry evidence."
+}

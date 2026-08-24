@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; overflow:hidden; }
+  body { font-family:'Barlow',sans-serif; position:relative; }
+  .ad { width:1080px; height:1350px; position:relative; display:none; flex-direction:column; }
+  .ad.active { display:flex; }
+
+  /* ============ SHARED ============ */
+  .topbar { display:flex; justify-content:space-between; align-items:center; padding:44px 72px 0; }
+  .brand { font-family:'Barlow Condensed'; font-weight:800; font-size:34px; letter-spacing:2.5px; }
+  .locale { font-weight:600; font-size:22px; letter-spacing:3px; opacity:.75; }
+  .rule { height:6px; margin:22px 72px 0; }
+  .eyebrow { font-weight:700; font-size:26px; letter-spacing:6px; padding:0 72px; }
+  h1 { font-family:'Barlow Condensed'; font-weight:800; line-height:.95; padding:0 72px; }
+  .sub { font-size:33px; line-height:1.35; font-weight:500; padding:0 72px; }
+  .offer { margin:0 72px; border-radius:18px; padding:34px 40px; }
+  .offer .o1 { font-family:'Barlow Condensed'; font-weight:800; font-size:58px; line-height:1; letter-spacing:.5px; }
+  .offer .o2 { font-weight:600; font-size:28px; margin-top:10px; }
+  .chips { display:flex; flex-wrap:wrap; gap:14px; padding:0 72px; }
+  .chip { font-weight:600; font-size:23px; padding:13px 22px; border-radius:999px; border:2px solid; display:flex; align-items:center; gap:10px; }
+  .cta { margin:auto 72px 0; text-align:center; border-radius:16px; padding:30px; font-family:'Barlow Condensed'; font-weight:800; font-size:46px; letter-spacing:1.5px; position:relative; z-index:2; }
+  .cta-sub { text-align:center; font-size:25px; font-weight:500; padding:18px 72px 96px; position:relative; z-index:2; }
+
+  /* ============ V1 — NAVY / ORANGE — "15+ YEARS OLD" ============ */
+  .v1 { background:linear-gradient(160deg,#0B1E30 0%,#123252 62%,#16406B 100%); color:#fff; }
+  .v1 .rule { background:#F26522; }
+  .v1 .eyebrow { color:#F5A623; margin-top:56px; }
+  .v1 h1 { font-size:128px; margin-top:18px; }
+  .v1 h1 .hl { color:#F26522; }
+  .v1 .sub { color:#C9D8E8; margin-top:26px; max-width:900px; }
+  .v1 .offer { background:#F26522; color:#12100E; margin-top:44px; box-shadow:0 20px 50px rgba(0,0,0,.35); }
+  .v1 .chips { margin-top:36px; }
+  .v1 .chip { border-color:rgba(255,255,255,.35); color:#E8F0F8; }
+  .v1 .chip svg { flex:none; }
+  .v1 .cta { background:#fff; color:#0B1E30; margin-top:44px; }
+  .v1 .cta-sub { color:#9FB4C8; }
+  .v1 .roofline { position:absolute; bottom:0; left:0; width:1080px; height:88px; opacity:.5; z-index:1; }
+
+  /* ============ V2 — CHARCOAL / RED — "DON'T WAIT FOR THE LEAK" ============ */
+  .v2 { background:linear-gradient(170deg,#141414 0%,#232323 60%,#2E2E2E 100%); color:#fff; }
+  .v2 .rule { background:#D7263D; }
+  .v2 .eyebrow { color:#FF6B7F; margin-top:56px; }
+  .v2 h1 { font-size:118px; margin-top:18px; }
+  .v2 h1 .hl { color:#D7263D; }
+  .v2 .sub { color:#CFCFCF; margin-top:26px; max-width:900px; }
+  .v2 .quote { margin:36px 72px 0; border-left:8px solid #D7263D; padding:8px 0 8px 28px; font-size:30px; font-weight:600; color:#EDEDED; line-height:1.35; }
+  .v2 .offer { background:#D7263D; color:#fff; margin-top:40px; box-shadow:0 20px 50px rgba(0,0,0,.4); }
+  .v2 .chips { margin-top:34px; }
+  .v2 .chip { border-color:rgba(255,255,255,.3); color:#E8E8E8; }
+  .v2 .cta { background:#fff; color:#141414; margin-top:42px; }
+  .v2 .cta-sub { color:#9A9A9A; }
+  .v2 .roofline { position:absolute; bottom:0; left:0; width:1080px; height:88px; opacity:.45; z-index:1; }
+
+  /* ============ V3 — LIGHT / CHECKLIST — "21-POINT INSPECTION" ============ */
+  .v3 { background:#F6F1E8; color:#12263A; }
+  .v3 .rule { background:#F26522; }
+  .v3 .eyebrow { color:#C24E0F; margin-top:50px; }
+  .v3 h1 { font-size:94px; margin-top:16px; color:#12263A; }
+  .v3 h1 .hl { color:#F26522; }
+  .v3 .sub { color:#4A5A68; margin-top:22px; max-width:880px; }
+  .v3 .checkcard { margin:32px 72px 0; background:#fff; border-radius:18px; padding:26px 38px; box-shadow:0 14px 40px rgba(18,38,58,.12); }
+  .v3 .checkcard .cc-title { font-family:'Barlow Condensed'; font-weight:800; font-size:34px; letter-spacing:1px; color:#12263A; margin-bottom:14px; }
+  .v3 .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px 28px; }
+  .v3 .gi { display:flex; align-items:center; gap:12px; font-size:27px; font-weight:600; color:#22394E; }
+  .v3 .gi .box { width:30px; height:30px; border-radius:8px; background:#F26522; display:flex; align-items:center; justify-content:center; flex:none; }
+  .v3 .more { margin-top:14px; font-size:24px; font-weight:600; color:#C24E0F; }
+  .v3 .chips { margin-top:34px; }
+  .v3 .chip { border-color:rgba(18,38,58,.3); color:#22394E; }
+  .v3 .cta { background:#12263A; color:#fff; margin-top:40px; }
+  .v3 .cta-sub { color:#7A8896; }
+</style>
+</head>
+<body>
+
+<!-- Shared SVG bits -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <g id="houses">
+      <path d="M0 120 L120 40 L240 120 V220 H0 Z" />
+      <path d="M200 120 L340 20 L480 120 V220 H200 Z" />
+      <path d="M440 120 L560 45 L680 120 V220 H440 Z" />
+      <path d="M640 120 L790 25 L940 120 V220 H640 Z" />
+      <path d="M900 120 L1020 45 L1140 120 V220 H900 Z" />
+    </g>
+    <g id="check"><path d="M4 12 L10 18 L20 6" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </defs>
+</svg>
+
+<!-- ================= VARIANT 1 ================= -->
+<section class="ad v1" id="v1">
+  <div class="topbar">
+    <div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div>
+    <div class="locale">RALEIGH–DURHAM, NC</div>
+  </div>
+  <div class="rule"></div>
+  <div class="eyebrow">FOR TRIANGLE HOMEOWNERS</div>
+  <h1>IS YOUR ROOF<br><span class="hl">15+ YEARS</span> OLD?</h1>
+  <p class="sub">NC heat, humidity, and summer storms wear asphalt roofs out faster than you think. Catch small problems now — before they turn into a full replacement.</p>
+  <div class="offer">
+    <div class="o1">FREE 21-POINT ROOF INSPECTION</div>
+    <div class="o2">+ Written condition report. No obligation, no pressure.</div>
+  </div>
+  <div class="chips">
+    <div class="chip"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#check"/></svg>Family Owned &amp; Operated</div>
+    <div class="chip"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#check"/></svg>Insurance Claim Experts</div>
+    <div class="chip"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#check"/></svg>Dedicated Warranty Dept.</div>
+    <div class="chip"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#check"/></svg>Military Discounts</div>
+  </div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+  <svg class="roofline" viewBox="0 0 1140 220" preserveAspectRatio="none" height="150"><use href="#houses" fill="#071320"/></svg>
+</section>
+
+<!-- ================= VARIANT 2 ================= -->
+<section class="ad v2" id="v2">
+  <div class="topbar">
+    <div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div>
+    <div class="locale">RALEIGH–DURHAM, NC</div>
+  </div>
+  <div class="rule"></div>
+  <div class="eyebrow">A NOTE FROM YOUR LOCAL ROOFER</div>
+  <h1>DON'T WAIT FOR<br>THE <span class="hl">FIRST DRIP.</span></h1>
+  <p class="sub">By the time a roof leak shows on your ceiling, the damage underneath has usually been building for months.</p>
+  <div class="quote">Roof problems never get cheaper.<br>They get bigger.</div>
+  <div class="offer">
+    <div class="o1">FREE 21-POINT ROOF INSPECTION</div>
+    <div class="o2">+ Written condition report. No obligation, no pressure.</div>
+  </div>
+  <div class="chips">
+    <div class="chip"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#check"/></svg>Family Owned &amp; Operated</div>
+    <div class="chip"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#check"/></svg>Insurance Claim Experts</div>
+    <div class="chip"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#check"/></svg>Dedicated Warranty Dept.</div>
+    <div class="chip"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#check"/></svg>Military Discounts</div>
+  </div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; Takes 60 seconds to book</div>
+  <svg class="roofline" viewBox="0 0 1140 220" preserveAspectRatio="none" height="150"><use href="#houses" fill="#0A0A0A"/></svg>
+</section>
+
+<!-- ================= VARIANT 3 ================= -->
+<section class="ad v3" id="v3">
+  <div class="topbar">
+    <div class="brand">MABREY ROOFING &amp; CONSTRUCTION</div>
+    <div class="locale">RALEIGH–DURHAM, NC</div>
+  </div>
+  <div class="rule"></div>
+  <div class="eyebrow">FOR HOMEOWNERS IN THE TRIANGLE</div>
+  <h1>YOUR ROOF HAS <span class="hl">21 WEAK POINTS.</span><br>WE CHECK THEM ALL. FREE.</h1>
+  <p class="sub">One visit. One written report. Know exactly where your roof stands — before a small fix becomes a big bill.</p>
+  <div class="checkcard">
+    <div class="cc-title">WHAT'S ON THE 21-POINT CHECKLIST:</div>
+    <div class="grid">
+      <div class="gi"><div class="box"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#check"/></svg></div>Shingles &amp; granule wear</div>
+      <div class="gi"><div class="box"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#check"/></svg></div>Flashing &amp; sealants</div>
+      <div class="gi"><div class="box"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#check"/></svg></div>Attic ventilation</div>
+      <div class="gi"><div class="box"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#check"/></svg></div>Gutters &amp; drainage</div>
+      <div class="gi"><div class="box"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#check"/></svg></div>Decking &amp; soft spots</div>
+      <div class="gi"><div class="box"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#check"/></svg></div>Chimney &amp; valleys</div>
+    </div>
+    <div class="more">+ 15 more checkpoints on your written report</div>
+  </div>
+  <div class="chips">
+    <div class="chip">Family Owned &amp; Operated</div>
+    <div class="chip">Insurance Claim Experts</div>
+    <div class="chip">Military Discounts</div>
+  </div>
+  <div class="cta">BOOK YOUR FREE INSPECTION →</div>
+  <div class="cta-sub">mabreyroofing.com &nbsp;·&nbsp; No obligation, no pressure</div>
+</section>
+
+<script>
+  const v = new URLSearchParams(location.search).get('v') || '1';
+  document.getElementById('v' + v).classList.add('active');
+</script>
+</body>
+</html>

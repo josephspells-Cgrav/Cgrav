@@ -18,8 +18,30 @@
       "Bash(npx create-next-app@latest . --yes)",
       "Bash(npm run:*)",
       "Bash(npx tsc:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "mcp__Claude_in_Chrome__navigate",
+      "Bash(node check-deck.mjs)",
+      "Bash(node serve.mjs 8132)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "mcp__Claude_in_Chrome__computer",
+      "Bash(node -e \"const fs=require\\('fs'\\);const d='C:/Users/josep/Claude Gravity/kingmaker/deck';fs.copyFileSync\\(d+'/deck.html',d+'/deck-eco-backup.html'\\);console.log\\('backed up deck.html -> deck-eco-backup.html'\\);\")",
+      "Bash(node \"C:/Users/josep/Claude Gravity/blackboard/bb.mjs\" read --agent n8n-claude-architect-1)",
+      "Bash(echo \"BUILD_EXIT=$?\")",
+      "Bash(grep -i \"error\" /tmp_build_check.log)"
     ],
     "defaultMode": "bypassPermissions"
+  },
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:/Users/josep/Claude Gravity/backup-all.mjs\""
+          }
+        ]
+      }
+    ]
   }
 }

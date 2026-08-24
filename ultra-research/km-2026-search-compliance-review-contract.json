@@ -1,0 +1,30 @@
+{
+  "question": "As of July 2026, what is the verified current state of (A) local-search and AI-search ranking for home-service contractors, (B) TCPA/AI-outreach compliance for AI voice calls and SMS to captured leads, and (C) Google Business Profile review-enforcement changes since 2026-07-19 — with explicit deltas against King Maker's existing doctrine (site-wins-pack thesis, 15-factor local-SEO rubric from May-June 2026, 25/wk review cadence verdict, AI-legibility claims, TCPA window-guard + consent gates, and the parked meta_lead_ad auto-call legal flag)?",
+  "subQuestions": [
+    "What changed in Google local/map-pack ranking in 2026 — core updates, review signal weighting (count/velocity/recency/replies), proximity, GBP profile factors — versus the May-June 2026 understanding?",
+    "How do AI answer engines (Google AI Overviews / AI Mode, ChatGPT search, Perplexity, Gemini) select and cite local home-service contractors in mid-2026, and what measurably increases a contractor's citation/recommendation likelihood?",
+    "What is the 2026 LSA vs map-pack vs organic interplay for local services — placement changes, cost trends, review-count gates, and monetization shifts?",
+    "Which on-page/schema/content factors still verifiably move local-service rankings in 2026, and which popular tactics have been debunked or deprecated?",
+    "What is the mid-2026 legal status of AI-voice outbound calls and SMS follow-ups to web-form and Meta Lead Ads leads — FCC AI-generated-voice TCPA rulings and enforcement, the one-to-one consent rule after its court challenges, North Carolina mini-TCPA / AI-disclosure laws, and NC rules on roofing/storm-damage/insurance-claim marketing solicitation?",
+    "What Google Business Profile review-policy or enforcement changes, sweeps, or documented enforcement waves have occurred SINCE 2026-07-19 (freshness delta only — a thorough adversarial verdict through that date already exists)?"
+  ],
+  "checklist": [
+    "2026 Google core/local update timeline with documented local-ranking impacts",
+    "review-signal weighting evidence: count, velocity, recency, owner replies",
+    "AI Overviews / AI Mode behavior on local-intent queries + citation patterns",
+    "ChatGPT search and Perplexity local-contractor recommendation mechanics",
+    "LSA placement/cost/eligibility changes in 2026",
+    "on-page/schema factors verified vs debunked for local in 2026",
+    "FCC AI-generated-voice TCPA ruling status + 2025-2026 enforcement actions",
+    "one-to-one consent rule legal status post-Eleventh-Circuit as of mid-2026",
+    "North Carolina telemarketing / AI-disclosure state law status",
+    "Meta Lead Ads consent-language chain adequacy for AI auto-calls",
+    "NC roofing/storm/insurance-claim solicitation marketing rules",
+    "GBP review-enforcement changes strictly after 2026-07-19"
+  ],
+  "tier": "standard",
+  "mode": "breadth",
+  "currentDate": "2026-07-21",
+  "stopCondition": "Each checklist item has >=2 independent sources or is enumerated as a gap; Module C (post-07-19 GBP delta) may close on a clean nothing-new finding after two search rounds; every claim contradicting existing King Maker doctrine must be explicitly flagged as a DOCTRINE DELTA.",
+  "userConfirmedTier": true
+}

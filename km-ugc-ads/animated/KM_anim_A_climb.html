@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KM Animated Ad - A (Climb the Map)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0B0D; --bg2:#16161B; --gold:#E6B23E; --gold2:#F4D592; --ink:#FFFFFF; --dim:#9AA0A6;
+    --panel:#FFFFFF; --pink:#202124; --psec:#5F6368; --line:#E8EAED;
+    --gblue:#1A73E8; --gred:#EA4335; --star:#FBBC04; --green:#1E8E3E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+  html,body{background:#000;overflow:hidden;}
+  #stage{position:relative;width:1080px;height:1920px;background:var(--bg);overflow:hidden;
+    font-family:'Sora',system-ui,sans-serif;color:var(--ink);}
+  #stage::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 80% at 50% 16%, rgba(230,178,62,.10), transparent 55%),
+               radial-gradient(120% 90% at 50% 108%, rgba(230,178,62,.06), transparent 50%);
+    pointer-events:none;z-index:0;}
+  .scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;padding:0 80px;opacity:0;will-change:opacity;z-index:1;}
+
+  .eyebrow{font-size:27px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+  .cap{font-weight:800;line-height:1.05;letter-spacing:-.01em;text-align:center;}
+  .cap .hl{color:var(--gold);}
+  .sub{color:var(--dim);font-weight:500;}
+
+  /* google wordmark */
+  .glogo{font-family:'Roboto',sans-serif;font-weight:500;font-size:96px;letter-spacing:-3px;}
+
+  /* google search bar */
+  .gbar{display:flex;align-items:center;gap:24px;width:780px;height:108px;background:#fff;
+    border-radius:60px;padding:0 42px;box-shadow:0 24px 60px rgba(0,0,0,.45);}
+  .gbar .q{font-family:'Roboto';font-size:40px;color:var(--pink);font-weight:400;white-space:nowrap;}
+  .gbar .cursor{display:inline-block;width:3px;height:46px;background:var(--gblue);margin-left:4px;vertical-align:middle;transform:translateY(8px);}
+
+  /* white google result panel */
+  .panel{width:824px;background:#fff;border-radius:34px;overflow:hidden;padding-bottom:16px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);color:var(--pink);}
+  .map{height:296px;position:relative;background:#EAEFE7;overflow:hidden;}
+  .road{position:absolute;background:#fff;}
+  .pin{position:absolute;width:34px;height:34px;transform:translate(-50%,-100%);}
+  .pin i{display:block;width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+    margin:4px auto;box-shadow:0 4px 8px rgba(0,0,0,.3);}
+  .row{display:flex;align-items:center;gap:24px;padding:26px 34px;border-top:1px solid var(--line);background:#fff;}
+  .rank{flex:0 0 auto;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;font-family:'Roboto';font-weight:900;font-size:30px;background:#F1F3F4;color:var(--psec);}
+  .rbody{flex:1 1 auto;min-width:0;}
+  .rname{font-family:'Roboto';font-weight:700;font-size:35px;color:var(--pink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .rmeta{font-family:'Roboto';font-size:26px;color:var(--psec);margin-top:4px;display:flex;align-items:center;gap:10px;}
+  .stars{color:var(--star);letter-spacing:2px;font-size:26px;}
+
+  /* browser window mock */
+  .win{border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.55);}
+  .winbar{height:62px;background:#E8EAED;display:flex;align-items:center;gap:14px;padding:0 26px;}
+  .dot{width:18px;height:18px;border-radius:50%;}
+  .winurl{flex:1;height:38px;background:#fff;border-radius:19px;margin-left:14px;display:flex;align-items:center;
+    padding:0 22px;font-family:'Roboto';font-size:23px;color:var(--psec);}
+  .winbody{height:436px;background:linear-gradient(155deg,#202b38 0%,#0e141c 100%);position:relative;color:#fff;padding:40px 48px;overflow:hidden;}
+  .winnav{display:flex;gap:30px;font-family:'Roboto';font-size:22px;color:#aeb8c4;font-weight:500;margin-bottom:42px;}
+  .winnav b{color:#fff;font-weight:700;}
+  .winbody .wh{font-size:54px;font-weight:800;line-height:1.04;position:relative;z-index:2;}
+  .winbody .wsub{margin-top:16px;color:#c7d0da;font-size:27px;font-weight:500;position:relative;z-index:2;}
+  .winbtn{margin-top:30px;display:inline-block;background:var(--gold);color:#1a1300;font-weight:800;
+    font-size:27px;padding:17px 36px;border-radius:12px;position:relative;z-index:2;}
+  .winbadge{margin-top:24px;font-family:'Roboto';font-size:24px;color:var(--star);font-weight:700;position:relative;z-index:2;}
+  .winbadge span{color:#c7d0da;font-weight:500;}
+  .winroof{position:absolute;right:-60px;top:40px;width:360px;height:360px;border-radius:30px;
+    background:linear-gradient(135deg,#52647a,#2b3644);transform:rotate(14deg);opacity:.62;z-index:1;}
+  .winroof::after{content:"";position:absolute;left:50%;top:42px;width:0;height:0;
+    border-left:120px solid transparent;border-right:120px solid transparent;border-bottom:78px solid rgba(255,255,255,.18);transform:translateX(-50%);}
+
+  /* review cards */
+  .rev{width:804px;background:#fff;border-radius:26px;padding:32px 36px;color:var(--pink);
+    box-shadow:0 22px 60px rgba(0,0,0,.45);display:flex;gap:24px;align-items:flex-start;}
+  .av{flex:0 0 auto;width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Roboto';font-weight:700;font-size:34px;color:#fff;}
+  .revname{font-family:'Roboto';font-weight:700;font-size:31px;color:var(--pink);}
+  .revstars{color:var(--star);font-size:27px;letter-spacing:2px;margin:6px 0 10px;}
+  .revtxt{font-family:'Roboto';font-size:28px;line-height:1.4;color:#3c4043;}
+  .gsum{display:flex;align-items:center;gap:22px;color:#fff;}
+  .gsum .big{font-family:'Roboto';font-weight:900;font-size:118px;line-height:1;color:var(--gold);}
+
+  .offerline{font-weight:800;letter-spacing:-.01em;line-height:1;}
+  .crown{filter:drop-shadow(0 10px 22px rgba(230,178,62,.45));}
+  .wordmark{font-weight:800;font-size:104px;letter-spacing:.02em;line-height:1;}
+  .wordmark .seo{color:var(--gold);}
+  .endcta{margin-top:30px;font-size:42px;font-weight:700;text-align:center;line-height:1.2;}
+  .endurl{margin-top:38px;font-family:'Roboto';font-weight:700;font-size:33px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--gold);}
+  .pill{display:inline-flex;align-items:center;gap:16px;margin-top:48px;background:var(--gold);color:#1a1300;
+    font-weight:800;font-size:36px;padding:23px 50px;border-radius:60px;box-shadow:0 18px 50px rgba(230,178,62,.4);}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- S1 HOOK -->
+  <section class="scene" id="s1">
+    <div class="eyebrow" id="s1eb" style="margin-bottom:54px">A homeowner near you, right now</div>
+    <div class="glogo" id="s1logo" style="margin-bottom:44px"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></div>
+    <div class="gbar" id="s1bar">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#5F6368" stroke-width="2.4"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="#5F6368" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <div class="q"><span id="s1q"></span><span class="cursor" id="s1cur"></span></div>
+    </div>
+  </section>
+
+  <!-- S2 PROBLEM -->
+  <section class="scene" id="s2">
+    <div class="cap" id="s2cap" style="font-size:58px;margin-bottom:42px">They get <span class="hl">every</span> call.<br>You're nowhere.</div>
+    <div class="panel" id="s2panel">
+      <div class="map" id="s2map">
+        <div style="position:absolute;left:36px;top:26px;width:210px;height:150px;background:#C7E7C9;border-radius:14px"></div>
+        <div style="position:absolute;right:-50px;bottom:-40px;width:320px;height:200px;background:#AECBFA;border-radius:40px;transform:rotate(-16deg)"></div>
+        <div class="road" style="left:0;top:118px;width:100%;height:16px;transform:rotate(-6deg)"></div>
+        <div class="road" style="left:0;top:206px;width:100%;height:10px;transform:rotate(4deg)"></div>
+        <div class="road" style="left:0;top:158px;width:100%;height:22px;background:#FCE293;transform:rotate(-6deg)"></div>
+        <div class="road" style="left:330px;top:0;width:13px;height:100%"></div>
+        <div class="road" style="left:566px;top:0;width:9px;height:100%;transform:rotate(8deg)"></div>
+        <div class="pin" style="left:300px;top:150px"><i style="background:var(--gred)"></i></div>
+        <div class="pin" style="left:470px;top:198px"><i style="background:var(--gred)"></i></div>
+        <div class="pin" style="left:612px;top:128px"><i style="background:var(--gred)"></i></div>
+      </div>
+      <div id="s2rows"></div>
+    </div>
+  </section>
+
+  <!-- S3 SOLUTION + CLIMB -->
+  <section class="scene" id="s3" style="justify-content:flex-start;padding-top:206px">
+    <div class="cap" id="s3cap" style="font-size:54px;margin-bottom:38px">We build it.<br><span class="hl">You climb.</span></div>
+    <div id="s3stage" style="position:relative;width:824px;height:548px">
+      <div class="win" id="s3win" style="position:absolute;top:12px;left:32px;width:760px">
+        <div class="winbar"><span class="dot" style="background:#FF5F57"></span><span class="dot" style="background:#FEBC2E"></span><span class="dot" style="background:#28C840"></span><span class="winurl">summitridgeroofing.com</span></div>
+        <div class="winbody">
+          <div class="winnav"><b>Home</b><span>Services</span><span>Reviews</span><span>Contact</span></div>
+          <div class="wh">Summit Ridge<br>Roofing</div>
+          <div class="wsub">Trusted local roofers &middot; Free inspections</div>
+          <div class="winbtn">Get a Free Quote</div>
+          <div class="winbadge">&#9733;&#9733;&#9733;&#9733;&#9733; 5.0 <span>&middot; 138 Google reviews</span></div>
+          <div class="winroof"></div>
+        </div>
+      </div>
+      <div id="s3hero" style="position:absolute;top:64px;left:0;width:824px;display:flex;flex-direction:column;align-items:center;gap:46px">
+        <div id="s3card" style="display:flex;align-items:center;gap:36px;width:768px;background:#fff;border-radius:28px;padding:44px 46px;box-shadow:0 30px 80px rgba(0,0,0,.5)">
+          <div id="s3rk" style="flex:0 0 auto;width:150px;height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Roboto';font-weight:900;font-size:80px;background:#F1F3F4;color:#5F6368">14</div>
+          <div style="flex:1;min-width:0;text-align:left">
+            <div class="rname" style="font-size:44px">Your Roofing Co.</div>
+            <div class="rmeta" style="font-size:29px;margin-top:8px"><span class="stars" style="font-size:29px">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 &middot; Roofer</div>
+            <div id="s3status" style="margin-top:18px;font-family:'Roboto';font-weight:700;font-size:29px;color:#9AA0A6">Buried on page 2 of Google</div>
+          </div>
+        </div>
+        <div id="s3note2" style="font-size:42px;font-weight:800;color:var(--gold);text-align:center">Free until you actually rank</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 PROOF -->
+  <section class="scene" id="s4">
+    <div class="cap" id="s4cap" style="font-size:56px;margin-bottom:40px">Then the <span class="hl">calls</span> come.</div>
+    <div class="gsum" id="s4sum" style="margin-bottom:38px">
+      <div class="big" id="s4big">5.0</div>
+      <div>
+        <div class="revstars" style="font-size:40px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="sub" style="font-size:30px;font-family:'Roboto'"><span id="s4cnt">0</span> Google reviews</div>
+      </div>
+    </div>
+    <div id="s4cards" style="display:flex;flex-direction:column;gap:24px;width:804px"></div>
+  </section>
+
+  <!-- S5 OFFER -->
+  <section class="scene" id="s5">
+    <div style="text-align:center">
+      <div class="offerline" id="o1" style="font-size:98px">FREE UNTIL<br>YOU RANK</div>
+      <div id="orule" style="height:6px;width:0;background:var(--gold);margin:48px auto;border-radius:3px"></div>
+      <div class="offerline" id="o2" style="font-size:44px;font-weight:700;color:var(--ink)">No monthly &middot; No contracts</div>
+      <div class="offerline" id="o3" style="font-size:44px;font-weight:800;color:var(--gold);margin-top:22px">One roofer per market</div>
+    </div>
+  </section>
+
+  <!-- S6 END / CTA -->
+  <section class="scene" id="s6">
+    <svg class="crown" id="s6crown" width="150" height="110" viewBox="0 0 150 110" fill="none">
+      <path d="M12 96 L24 30 L52 64 L75 16 L98 64 L126 30 L138 96 Z" fill="#E6B23E"/>
+      <rect x="12" y="96" width="126" height="14" rx="3" fill="#E6B23E"/>
+    </svg>
+    <div class="wordmark" id="s6wm" style="margin-top:30px">KING<span class="seo">MAKER</span></div>
+    <div class="endcta" id="s6cta">See if your market<br>is still open.</div>
+    <div class="pill" id="s6pill">Tap below &rarr;</div>
+    <div class="endurl" id="s6url">kingmakerseo.com</div>
+  </section>
+
+</div>
+
+<script>
+const DURATION = 27;
+const clamp01 = v => v < 0 ? 0 : v > 1 ? 1 : v;
+const seg = (t, s, d) => clamp01((t - s) / d);
+const eOut = p => 1 - Math.pow(1 - p, 3);
+const eInOut = p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p+2,3)/2;
+const eBack = p => { const c=1.70158; return 1 + (c+1)*Math.pow(p-1,3) + c*Math.pow(p-1,2); };
+const lerp = (a,b,p) => a + (b-a)*p;
+const px = v => v.toFixed(1) + 'px';
+const $ = id => document.getElementById(id);
+
+const SCENES = [
+  {el:'s1', t0:0.0,  t1:4.8},
+  {el:'s2', t0:4.4,  t1:11.0},
+  {el:'s3', t0:10.6, t1:18.9},
+  {el:'s4', t0:18.5, t1:22.0},
+  {el:'s5', t0:21.6, t1:24.4},
+  {el:'s6', t0:24.0, t1:27.0},
+];
+const sceneOpacity = (t,s) => { const fin=(t-s.t0)/0.45; const fout = s.t1>=DURATION ? 1 : (s.t1-t)/0.45; return clamp01(Math.min(fin,fout,1)); };
+
+const COMPET = [
+  {n:'Apex Roofing Co.', r:'5.0', c:'212'},
+  {n:'Carolina Peak Roofers', r:'4.9', c:'176'},
+  {n:'BlueRidge Exteriors', r:'4.9', c:'143'},
+];
+const REVIEWS = [
+  {i:'M', n:'Mike D.', clr:'#1A73E8', t:'Showed up on time, did it right. Best roofer in town, hands down.'},
+  {i:'S', n:'Sarah P.', clr:'#1E8E3E', t:'Found them at the top of Google and so glad I called. Flawless job.'},
+];
+let built = false;
+function build(){
+  if (built) return; built = true;
+  // S2: 3 competitors + greyed #14
+  $('s2rows').innerHTML = COMPET.map((c,i)=>`
+    <div class="row" data-r="${i}">
+      <div class="rank">${i+1}</div>
+      <div class="rbody"><div class="rname">${c.n}</div>
+        <div class="rmeta"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> ${c.r} (${c.c}) &middot; Roofer</div></div>
+    </div>`).join('') + `
+    <div class="row" data-r="you" style="background:#FAFAFA">
+      <div class="rank">14</div>
+      <div class="rbody"><div class="rname" style="color:#9AA0A6">Your Roofing Co.</div>
+        <div class="rmeta" style="color:#BDC1C6">No website &middot; not ranking</div></div>
+    </div>`;
+  // S3 hero rank card is static HTML, animated in rS3 (no rows to build).
+  // S4 reviews
+  $('s4cards').innerHTML = REVIEWS.map((r,i)=>`
+    <div class="rev" data-rev="${i}">
+      <div class="av" style="background:${r.clr}">${r.i}</div>
+      <div><div class="revname">${r.n}</div>
+        <div class="revstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="revtxt">${r.t}</div></div>
+    </div>`).join('');
+}
+
+function rS1(lt){
+  const eb=$('s1eb'); eb.style.opacity=seg(lt,0,.5); eb.style.transform=`translateY(${px(lerp(16,0,eOut(seg(lt,0,.5))))})`;
+  const lg=$('s1logo'); const lp=eOut(seg(lt,.2,.5)); lg.style.opacity=seg(lt,.2,.45); lg.style.transform=`translateY(${px(lerp(20,0,lp))}) scale(${lerp(.94,1,lp)})`;
+  const bar=$('s1bar'); const p=eOut(seg(lt,.5,.6)); bar.style.opacity=seg(lt,.5,.5); bar.style.transform=`translateY(${px(lerp(26,0,p))}) scale(${lerp(.96,1,p)})`;
+  const full='roofers near me'; const n=Math.floor(seg(lt,1.2,2.0)*full.length);
+  $('s1q').textContent=full.slice(0,n);
+  $('s1cur').style.opacity=(Math.floor(lt*2)%2===0)?1:0.15;
+}
+function rS2(lt){
+  const cap=$('s2cap'); cap.style.opacity=seg(lt,0,.5); cap.style.transform=`translateY(${px(lerp(20,0,eOut(seg(lt,0,.5))))})`;
+  const pan=$('s2panel'); const pp=eOut(seg(lt,.3,.6)); pan.style.opacity=seg(lt,.3,.5); pan.style.transform=`translateY(${px(lerp(40,0,pp))})`;
+  document.querySelectorAll('#s2rows .row').forEach((r,i)=>{
+    if(r.dataset.r==='you') return;
+    const p=eOut(seg(lt,.9+i*.22,.5)); r.style.opacity=seg(lt,.9+i*.22,.4); r.style.transform=`translateX(${px(lerp(28,0,p))})`;
+  });
+  const you=document.querySelector('#s2rows .row[data-r="you"]');
+  const yp=eOut(seg(lt,2.6,.7)); you.style.opacity=seg(lt,2.6,.5); you.style.transform=`translateX(${px(lerp(28,0,yp))})`;
+  you.style.boxShadow = seg(lt,3.3,.4)>0 ? 'inset 6px 0 0 var(--gred)' : 'none';
+}
+function rS3(lt){
+  const cap=$('s3cap'); cap.style.opacity=seg(lt,0,.4); cap.style.transform=`translateY(${px(lerp(20,0,eOut(seg(lt,0,.4))))})`;
+  const win=$('s3win'), hero=$('s3hero');
+  win.style.opacity = seg(lt,.2,.5) * (1 - seg(lt,5.0,.5));
+  const wp=eOut(seg(lt,.2,.6)); win.style.transform=`translateY(${px(lerp(28,0,wp))}) scale(${lerp(.96,1,wp)})`;
+  hero.style.opacity = seg(lt,5.0,.5);
+  const cp=eInOut(seg(lt,5.5,2.1));
+  const card=$('s3card'), rk=$('s3rk'), status=$('s3status'), note=$('s3note2');
+  card.style.transform=`translateY(${px(lerp(40,0,eOut(seg(lt,5.0,.6))) - 12*cp)})`;
+  card.style.background = cp>0.02 ? `rgb(255,${Math.round(lerp(255,247,cp))},${Math.round(lerp(255,221,cp))})` : '#fff';
+  card.style.boxShadow = cp>0.7 ? '0 30px 80px rgba(230,178,62,.5)' : '0 30px 80px rgba(0,0,0,.5)';
+  rk.textContent=Math.round(lerp(14,1,cp));
+  rk.style.background = cp>0.85?'var(--gold)':(cp>0.02?'#FEF0CE':'#F1F3F4');
+  rk.style.color = cp>0.85?'#1a1300':(cp>0.02?'#9A6B00':'#5F6368');
+  if(cp>0.9){ status.textContent='#1 on Google · top of the map pack'; status.style.color='#1E8E3E'; }
+  else { status.textContent='Buried on page 2 of Google'; status.style.color='#9AA0A6'; }
+  note.style.opacity=seg(lt,7.2,.5);
+  note.style.transform=`translateY(${px(lerp(14,0,eOut(seg(lt,7.2,.5))))})`;
+}
+function rS4(lt){
+  const cap=$('s4cap'); cap.style.opacity=seg(lt,0,.4); cap.style.transform=`translateY(${px(lerp(18,0,eOut(seg(lt,0,.4))))})`;
+  const sum=$('s4sum'); sum.style.opacity=seg(lt,.4,.5); sum.style.transform=`scale(${lerp(.9,1,eOut(seg(lt,.4,.6)))})`;
+  $('s4cnt').textContent=Math.round(lerp(0,138,eOut(seg(lt,.5,1.2))));
+  document.querySelectorAll('#s4cards .rev').forEach((r,i)=>{
+    const p=eOut(seg(lt,1.0+i*.45,.5)); r.style.opacity=seg(lt,1.0+i*.45,.45); r.style.transform=`translateY(${px(lerp(40,0,p))})`;
+  });
+}
+function rS5(lt){
+  const o1=$('o1'),o2=$('o2'),o3=$('o3'),rule=$('orule');
+  const p1=eBack(seg(lt,.1,.6)); o1.style.opacity=seg(lt,.1,.4); o1.style.transform=`scale(${lerp(.82,1,p1)})`;
+  rule.style.width=px(lerp(0,420,eOut(seg(lt,.7,.5))));
+  o2.style.opacity=seg(lt,1.0,.5); o2.style.transform=`translateY(${px(lerp(16,0,eOut(seg(lt,1.0,.5))))})`;
+  o3.style.opacity=seg(lt,1.4,.5); o3.style.transform=`translateY(${px(lerp(16,0,eOut(seg(lt,1.4,.5))))})`;
+}
+function rS6(lt){
+  const cr=$('s6crown'); const cp=eBack(seg(lt,.1,.7)); cr.style.opacity=seg(lt,.1,.4); cr.style.transform=`translateY(${px(lerp(28,0,cp))}) scale(${lerp(.72,1,cp)})`;
+  const wm=$('s6wm'); wm.style.opacity=seg(lt,.5,.5); wm.style.transform=`translateY(${px(lerp(20,0,eOut(seg(lt,.5,.5))))})`;
+  const cta=$('s6cta'); cta.style.opacity=seg(lt,.9,.5); cta.style.transform=`translateY(${px(lerp(18,0,eOut(seg(lt,.9,.5))))})`;
+  const pill=$('s6pill'); const pp=eBack(seg(lt,1.3,.6)); pill.style.opacity=seg(lt,1.3,.4); pill.style.transform=`scale(${lerp(.85,1,pp)})`;
+  $('s6url').style.opacity=seg(lt,1.7,.5);
+}
+const RENDER = {s1:rS1,s2:rS2,s3:rS3,s4:rS4,s5:rS5,s6:rS6};
+
+function render(t){
+  for (const s of SCENES){
+    const el=$(s.el); const op=sceneOpacity(t,s);
+    el.style.opacity=op; el.style.display = op>0.001 ? 'flex':'none';
+    if (op>0.001) RENDER[s.el](t - s.t0);
+  }
+}
+
+let time=0, playing=false, lastTick=null;
+function tick(now){
+  if (lastTick===null){ lastTick=now; window.__ready=true; render(time); requestAnimationFrame(tick); return; }
+  const dt=(now-lastTick)/1000; lastTick=now;
+  if (playing){ let t=time+dt; if (t>=DURATION){ t = window.__recording ? DURATION-0.001 : 0; } time=t; render(time); }
+  requestAnimationFrame(tick);
+}
+window.__seek = (t)=>{ time=t; lastTick=null; render(t); };
+document.fonts.ready.then(()=>{ build(); render(0); playing=true; requestAnimationFrame(tick); });
+</script>
+</body>
+</html>

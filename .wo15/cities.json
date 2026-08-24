@@ -1,0 +1,642 @@
+[
+  {
+    "slug": "morrisville",
+    "lead": "lifecycle",
+    "county": "Wake County",
+    "permitAuthority": "Town of Morrisville",
+    "data": {
+      "name": "Morrisville",
+      "county": "Wake County",
+      "permitAuthority": "Town of Morrisville Inspections Department",
+      "permitNote": "Morrisville roof permits run through the Town of Morrisville Inspections Department, which enforces the N.C. State Building Code and handles requests through its online EnerGov portal. We confirm the right authority for your address, pull the permit before work starts, and schedule the inspection for you.",
+      "neighborhoods": [
+        "Breckenridge",
+        "Carpenter Village",
+        "Kitts Creek",
+        "Shiloh Grove",
+        "Savannah",
+        "McCrimmon at the Park"
+      ],
+      "landmarks": [
+        "Lake Crabtree County Park",
+        "Morrisville Aquatics and Fitness Center",
+        "Raleigh-Durham International Airport (RDU)"
+      ],
+      "intro": "Morrisville is the Triangle town where the first-replacement clock ran out first. While Raleigh's newer boomburbs are still on their original shingles, Morrisville filled up earlier, growing from a rural crossroads of under 1,500 people in 1990 into a dense tech-corridor town as workers poured into nearby Research Triangle Park. Those builder-grade roofs across Breckenridge and Carpenter Village went on in the late 1990s and early 2000s, which puts a huge share of them at 20-plus years old right now. That is end of life for a builder roof. Summit and Oak helps Morrisville owners read the wear honestly with a free documented inspection and a straight repair-or-replace answer.",
+      "stormHook": "Morrisville roofs take a steady, grinding kind of wear rather than one dramatic event. Summers here are long, humid, and hot, and that combination bakes asphalt shingles year after year until the granules let go and the mats turn brittle. Many neighborhoods near RDU and the RTP edge sit on open, recently cleared land with wide roof planes and few mature trees, so afternoon thunderstorm gusts hit the field directly. On a 20-year-old builder roof that has already lost half its granules to the sun, one strong summer storm is often what turns slow aging into an active leak.",
+      "housingStock": "The defining fact about Morrisville's housing is that it aged before its neighbors did. Big master-planned communities like Breckenridge, with more than 1,000 homes, were built out in the early 2000s, and many surrounding subdivisions went up in the 1990s for the first wave of RTP workers. That makes Morrisville's builder-grade roofs the oldest of the new-growth Triangle towns. The original three-tab and entry-level architectural shingles are reaching the end of their service life on the same rough timeline across entire streets, so a whole subdivision tends to come due at once.",
+      "localConsiderations": [
+        "Many builder roofs across Breckenridge and Carpenter Village are now 20-plus years old and at end of life on a shared timeline.",
+        "Planned tech-corridor subdivisions here commonly require HOA architectural approval, so shingle color and profile must be submitted before work begins.",
+        "Homes under the RDU flight path live with constant aircraft activity, so we plan tear-off timing and debris control with that in mind."
+      ],
+      "localProjects": [
+        {
+          "title": "First-replacement architectural upgrade",
+          "neighborhood": "Breckenridge",
+          "detail": "Replaced an original early-2000s builder roof at end of life with a 30-year architectural shingle, then walked the first-time owners through every line of the estimate before any work started."
+        },
+        {
+          "title": "HOA-approved color match",
+          "neighborhood": "Carpenter Village",
+          "detail": "Helped a homeowner select an architectural shingle that met the neighborhood architectural guidelines, prepared the approval submission, and replaced the roof once the HOA signed off."
+        },
+        {
+          "title": "Sun-worn slope repair",
+          "neighborhood": "Kitts Creek",
+          "detail": "Documented heavy granule loss on south-facing planes from years of full sun, then completed a targeted repair that bought the owner several more seasons before a full replacement."
+        }
+      ],
+      "localReviews": [
+        {
+          "quote": "Our roof was 21 years old and we honestly had no idea. They walked the whole thing, showed us photos of the granule loss, and never once pushed. The replacement looked great and matched our HOA colors.",
+          "author": "Anita R.",
+          "area": "Breckenridge",
+          "rating": 5
+        },
+        {
+          "quote": "First roof we have ever had to replace and the process was painless. They handled the Morrisville permit, kept the yard clean even with the kids home, and finished in a day. Fair price too.",
+          "author": "Devon K.",
+          "area": "Carpenter Village",
+          "rating": 5
+        }
+      ],
+      "faqs": [
+        {
+          "q": "My Morrisville home was built in the early 2000s. Does the roof really need replacing already?",
+          "a": "Often, yes. The builder-grade shingles used across Breckenridge, Carpenter Village, and similar early-2000s subdivisions commonly reach end of life around 20 years, sooner on sun-baked south-facing slopes. A free documented inspection tells you honestly whether you need a full replacement or just a targeted repair to buy more time."
+        },
+        {
+          "q": "Do I need a permit to replace my roof in Morrisville, and who handles it?",
+          "a": "Yes. Roof replacements in Morrisville are permitted through the Town of Morrisville Inspections Department under the N.C. State Building Code, with requests filed through the town's online portal. We confirm the right authority for your exact address, pull the permit before work begins, and schedule the required inspection so you do not have to."
+        },
+        {
+          "q": "My subdivision has an HOA. Will that affect my roof replacement?",
+          "a": "Likely, yes. Many planned communities here require architectural approval before exterior work, including shingle color and profile. We help you choose a compliant architectural shingle and prepare the submission, so your roof clears the HOA and matches the neighborhood before we install anything."
+        }
+      ],
+      "metaDescription": "Roof replacement in Morrisville, NC. Early-2000s RTP-corridor builder roofs are hitting end of life. Free documented inspection in Wake County. Book today.",
+      "heroAlt": "Architectural shingle roof replacement on a Breckenridge home in Morrisville, NC"
+    }
+  },
+  {
+    "slug": "wake-forest",
+    "lead": "heritage",
+    "county": "Wake County",
+    "permitAuthority": "Town of Wake Forest",
+    "data": {
+      "name": "Wake Forest",
+      "county": "Wake County",
+      "permitAuthority": "Town of Wake Forest Inspections Department",
+      "permitNote": "Wake Forest roof permits are issued by the Town of Wake Forest Inspections Department, in the Town Hall at 301 S. Brooks Street. Homes inside the Wake Forest Historic District can carry added preservation review, and we account for that before we schedule the work.",
+      "neighborhoods": [
+        "Wake Forest Historic District",
+        "North Main Street",
+        "Heritage",
+        "Traditions",
+        "Holding Village",
+        "Wakefield"
+      ],
+      "landmarks": [
+        "E. Carroll Joyner Park",
+        "Wake Forest Historical Museum (Calvin Jones House)",
+        "Southeastern Baptist Theological Seminary"
+      ],
+      "intro": "Wake Forest is a college town that outgrew its campus. Wake Forest College was born here in 1834 and stayed until 1956, when it left for Winston-Salem and handed the grounds to Southeastern Baptist Theological Seminary. What remained is a deep historic core, the streets around the old college and the homes along North Main, ringed now by some of the fastest new growth in the Triangle. Summit and Oak roofs both worlds. A pre-war home under heavy oaks near the seminary and a builder-grade tear-off in Holding Village ask for different work, and we bring the right approach to each address.",
+      "stormHook": "Wake Forest sees the same Triangle straight-line wind and summer hail as the rest of Wake County, but its tree cover changes the math. The old neighborhoods around the seminary and North Main sit under a heavy mature oak and maple canopy, and that canopy is the threat. Saturated soil after a storm loosens big limbs, and a falling branch puts more roofs out of service here than hail does. Debris piles in valleys and behind chimneys, traps water, and rots decking from above. A documented inspection after every major blow is what keeps a dropped limb from turning into a deck repair.",
+      "housingStock": "Wake Forest splits cleanly by age. The Historic District and North Main carry homes from the 1820s through the 1950s, the old Faculty Avenue stock, with steeper pitches, real wood detailing, and preservation sensitivities. Everything outside that core is recent. Master-planned communities like Heritage, Traditions, and Holding Village added thousands of homes as the town swelled past 50,000, most on straightforward architectural-shingle roofs now reaching their first replacement window. We work the antique end and the builder-grade end with equal care.",
+      "localConsiderations": [
+        "Historic District and North Main homes can require added preservation review, so we plan a roofline-matching approach rather than a stock tear-off.",
+        "Mature oak and maple canopy over the older core drops heavy limbs and debris, concentrating damage at valleys, hips, and chimney flashing.",
+        "Master-planned communities like Heritage and Traditions are hitting first-replacement age on builder-grade architectural shingles at the same time."
+      ],
+      "localProjects": [
+        {
+          "title": "Canopy-debris valley rebuild",
+          "neighborhood": "Wake Forest Historic District",
+          "detail": "Cleared a fallen oak limb off a 1920s home near the old college, then rebuilt the rotted valley and decking it had crushed and matched the existing roofline profile through the preservation review."
+        },
+        {
+          "title": "First architectural-shingle replacement",
+          "neighborhood": "Heritage",
+          "detail": "Full tear-off and re-roof on a builder-grade home in the golf community that had reached the end of its original shingle life, with upgraded underlayment and ridge ventilation to add years to the next roof."
+        },
+        {
+          "title": "North Main flashing and chimney repair",
+          "neighborhood": "North Main Street",
+          "detail": "Replaced failed step flashing and rebuilt the chimney cricket on a steep Faculty Avenue roof where wind-driven rain and trapped leaf debris had found their way past the original details."
+        }
+      ],
+      "localReviews": [
+        {
+          "quote": "A big oak limb came down on our roof near the seminary after a storm. Summit and Oak had it tarped that afternoon, documented all of it so we could file, and the rebuilt valley matched the old roofline.",
+          "author": "Daniel R.",
+          "area": "Wake Forest Historic District",
+          "rating": 5
+        },
+        {
+          "quote": "Our Heritage home needed its first new roof and we got several quotes. These guys explained the ventilation upgrade plainly, started when they said, and left the yard cleaner than they found it. No surprises on the bill.",
+          "author": "Megan T.",
+          "area": "Heritage",
+          "rating": 5
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can you roof a home in the Wake Forest Historic District?",
+          "a": "Yes. We work the older homes around the old college and along North Main regularly. We match the existing roofline profile and account for any added preservation review the district requires before we schedule, so the home keeps its character and the permit clears without surprises."
+        },
+        {
+          "q": "Who issues a roof permit in Wake Forest?",
+          "a": "The Town of Wake Forest Inspections Department, based in the Town Hall at 301 S. Brooks Street, issues residential roof permits and runs inspections inside town limits. We pull the permit and handle the inspection schedule for you. Historic District homes can carry an added review, which we plan for up front."
+        },
+        {
+          "q": "A tree limb hit my roof. What should I do first?",
+          "a": "Call us for an emergency tarp to stop water getting in, then document the damage with photos before anything is moved. We inspect, write up exactly what the limb did, and give you a clear report. If it is commonly covered, you file and stay in control. We are not a public adjuster."
+        }
+      ],
+      "metaDescription": "Roof repair and replacement in Wake Forest, NC. Historic-core homes to new Triangle subdivisions, storm and tree-limb damage handled. Get a free estimate.",
+      "heroAlt": "Architectural shingle roof replacement on a Heritage neighborhood home in Wake Forest, NC"
+    }
+  },
+  {
+    "slug": "holly-springs",
+    "lead": "lifecycle",
+    "county": "Wake County",
+    "permitAuthority": "Town of Holly Springs",
+    "data": {
+      "name": "Holly Springs",
+      "county": "Wake County",
+      "permitAuthority": "Town of Holly Springs",
+      "permitNote": "Holly Springs roof permits run through the Town of Holly Springs permitting and inspections office, with Wake County serving as the backstop for nearby unincorporated parcels. We confirm the right authority for your exact address, pull the permit before we start, and schedule the required inspection so your replacement is documented and on record.",
+      "neighborhoods": [
+        "12 Oaks",
+        "Holly Glen",
+        "Forest Springs",
+        "Sunset Ridge",
+        "Bass Lake",
+        "Holly Pointe"
+      ],
+      "landmarks": [
+        "Bass Lake Park",
+        "Sugg Farm at Bass Lake Retreat",
+        "Downtown Holly Springs"
+      ],
+      "intro": "Holly Springs is the Triangle town where whole streets reach roof-replacement age at once. The town went from about 9,000 people in 2000 to more than 41,000 by 2020, and most of that growth landed in a tight window of new subdivisions. When a neighborhood is built in the same few years, its roofs wear out in the same few years. That creates a synchronized aging wave: your neighbor's leak is usually a preview of yours. Summit and Oak helps these young-family homeowners get ahead of the wave with a free documented inspection and a straight repair-or-replace answer before water finds the deck.",
+      "stormHook": "Holly Springs sits in the Triangle's summer storm path, where afternoon thunderstorms bring hail and straight-line wind from spring through early fall. The catch here is the canopy. Subdivisions like 12 Oaks and Forest Springs went up on cleared land, so the trees are still young and thin and do little to slow the wind across wide roof planes. Hail dents and bruises soft asphalt, and gusts lift the edges of shingles that are already a decade or more old. On a synchronized-age street, one storm can expose the same weak point on house after house.",
+      "housingStock": "The defining fact about Holly Springs housing is how compressed its timeline is. The population more than doubled in the 2000s and grew another 67 percent in the 2010s, so a huge share of homes here are builder-grade construction from that single boom. The original architectural shingles those builders used are now reaching 15 to 20 years old across whole subdivisions at the same time. Owners here skew young and are often facing a first replacement, which is exactly why an honest walkthrough matters more than a quick sales pitch.",
+      "localConsiderations": [
+        "Entire subdivisions were built in the same short window, so roofs across a street commonly reach end of life on the same 15-to-20-year timeline.",
+        "Young, thin tree canopy in newer sections leaves wide roof planes exposed to wind, making edge lift and shingle blow-off the first failure point.",
+        "Many owners are young families facing a first replacement, so a plain-English inspection and an honest repair-or-replace answer matter more than a hard sell."
+      ],
+      "localProjects": [
+        {
+          "title": "Synchronized-wave full replacement",
+          "neighborhood": "12 Oaks",
+          "detail": "Replaced an original mid-2000s builder roof at end of life with a 30-year architectural shingle, then walked two neighbors on the same street through their own inspections after they saw the work."
+        },
+        {
+          "title": "Wind-lift edge repair",
+          "neighborhood": "Forest Springs",
+          "detail": "A summer gust peeled back shingles along an exposed rake edge on a home with little tree cover. We documented the damage, re-secured and replaced the field, and showed the owner the early wear elsewhere."
+        },
+        {
+          "title": "First-replacement walkthrough",
+          "neighborhood": "Holly Glen",
+          "detail": "First-time owners thought a few missing shingles meant a full tear-off. A free inspection found the deck was sound, so we did a targeted repair and gave them a clear timeline for the eventual replacement."
+        }
+      ],
+      "localReviews": [
+        {
+          "quote": "Three houses on our street replaced their roofs the same summer and ours was next. Summit and Oak inspected it, showed us photos of the wear, and gave us a fair price with no pressure. Felt like honest neighbors.",
+          "author": "Megan R.",
+          "area": "12 Oaks",
+          "rating": 5
+        },
+        {
+          "quote": "First roof we have ever had to replace and we had no idea what to look for. They explained every line, did the work fast, and cleaned up so well you would never know a crew was here. Highly recommend.",
+          "author": "Daniel K.",
+          "area": "Holly Glen",
+          "rating": 5
+        }
+      ],
+      "faqs": [
+        {
+          "q": "My whole street in Holly Springs seems to be replacing roofs at once. Is that normal?",
+          "a": "Yes, and it is the defining pattern here. Many Holly Springs subdivisions were built in the same few years during the boom, so the original shingles wear out on the same timeline. When several neighbors replace in one summer, your roof is usually close behind. A free documented inspection tells you exactly where yours stands."
+        },
+        {
+          "q": "My Holly Springs home is only about 15 years old. Could it really need a new roof?",
+          "a": "Often, yes. Builder-grade architectural shingles used across Holly Springs subdivisions in the boom commonly reach end of life around 15 to 20 years, sooner on wind-exposed slopes with thin tree cover. A free inspection shows you whether you need a full replacement now or a targeted repair that buys you a few more seasons."
+        },
+        {
+          "q": "Who issues the roof permit for my Holly Springs home, and do you handle it?",
+          "a": "Holly Springs roof permits go through the Town of Holly Springs permitting and inspections office, with Wake County as the backstop for nearby unincorporated parcels. We confirm the correct authority for your address, pull the permit before work begins, and schedule the inspection so your new roof is fully documented and on record."
+        }
+      ],
+      "metaDescription": "Holly Springs, NC roofing built for the Triangle's synchronized roof-aging wave. Free inspection and honest repair-or-replace answer. Book today.",
+      "heroAlt": "Architectural shingle roof replacement on a 12 Oaks home in Holly Springs, NC"
+    }
+  },
+  {
+    "slug": "wendell",
+    "lead": "storm",
+    "county": "Wake County",
+    "permitAuthority": "Town of Wendell",
+    "data": {
+      "name": "Wendell",
+      "county": "Wake County",
+      "permitAuthority": "Town of Wendell Planning Department (inspections by Wake County)",
+      "permitNote": "Roofing permits in Wendell are pulled through the Town of Wendell Planning Department, which handles the paperwork and zoning side. The actual building inspection is performed by Wake County under contract with the town. We file the permit, schedule the inspection, and hand you the closed-out record when the job is done.",
+      "neighborhoods": [
+        "Wendell Falls",
+        "Ponder",
+        "Foxborough Crossing",
+        "Woods of Timberlake",
+        "Downtown Wendell Historic District",
+        "Lake Glad Road area"
+      ],
+      "landmarks": [
+        "Lake Myra County Park",
+        "Downtown Wendell Boulevard Historic District",
+        "Wendell Falls Farmhouse and town center"
+      ],
+      "intro": "Summit and Oak is a roofing contractor working the eastern edge of Wake County, and Wendell is the town where that edge shows up on a roof. This is a place caught mid-change, old tobacco-town bungalows downtown on one side, brand-new Wendell Falls and Ponder rooflines on open lots on the other. The two need very different hands. A repair on a 1920s home off Wendell Boulevard and an architectural tear-off on a wide, exposed Wendell Falls plane are not the same job, and we do not pretend they are. We bring the right crew, the right material, and a documented inspection to each one.",
+      "stormHook": "Wendell's roofing problem is wind, and the eastern edge of Wake County makes it worse. Out here the mature canopy that shields the western Triangle thins out fast, so when straight-line wind and microbursts roll through, they hit roofs head-on with nothing to break them. The new subdivisions make it sharper still: wide, open lots mean broad roof planes catching the full gust. Triangle storms regularly push 55 to 75 mph, and survey crews have clocked straight-line winds far higher just east of here. Wind lifts and creases shingles in ways the driveway never shows, which is why a documented inspection matters in Wendell.",
+      "housingStock": "Wendell's roofs split into two clear eras. Downtown and the older blocks hold early-1900s bungalows and brick commercial buildings, some with original decking and layers worth a careful look. Then there is the new Wendell, the explosive Wendell Falls and Ponder growth of the last decade, entitled for thousands of homes on what was farmland, almost all builder-grade architectural shingle. We scope each one to the 2018 North Carolina code, a 115 mph design gust, and Exposure B, then match material to the house in front of us.",
+      "localConsiderations": [
+        "Wendell Falls and Ponder lots sit open with little tree cover, so wide roof planes take the full force of straight-line wind off the eastern edge.",
+        "Downtown's early-1900s bungalows and historic-district buildings often hide original decking and old layers, which a careful tear-off has to account for.",
+        "Rapid build-out means many roofs share the same builder-grade shingle and install date, so wind wear tends to show up across a whole street at once."
+      ],
+      "localProjects": [
+        {
+          "title": "Wind-lifted architectural shingle replacement",
+          "neighborhood": "Wendell Falls",
+          "detail": "A wide front-facing plane on an open Wendell Falls lot showed creased and lifted tabs after a spring gust. We replaced the field, upgraded the starter and ridge, and documented every slope for the homeowner's records."
+        },
+        {
+          "title": "Historic bungalow tear-off and re-deck",
+          "neighborhood": "Downtown Wendell Historic District",
+          "detail": "An early-1900s home off Wendell Boulevard had two old layers over soft decking. We stripped to the rafters, replaced rotted boards, and set a new architectural roof sympathetic to the historic streetscape."
+        },
+        {
+          "title": "Storm inspection and selective repair",
+          "neighborhood": "Foxborough Crossing",
+          "detail": "After an east Wake wind event a Foxborough Crossing owner wanted answers, not a sales pitch. We documented lifted shingles and flashing damage, repaired the affected slope, and left the sound sections alone."
+        }
+      ],
+      "localReviews": [
+        {
+          "quote": "Our Wendell Falls roof caught wind damage on the front slope after a storm and Summit and Oak walked the whole thing with us. They photographed every section, fixed what was actually wrong, and the permit was handled before I thought to ask.",
+          "author": "Derek M.",
+          "area": "Wendell Falls",
+          "rating": 5
+        },
+        {
+          "quote": "We have an old place near downtown and were nervous about anyone touching it. Their crew respected the house, found rotted decking we did not know about, and the new roof looks right for the neighborhood. Clean work and clear pricing.",
+          "author": "Janet R.",
+          "area": "Downtown Wendell Historic District",
+          "rating": 5
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Who issues my roofing permit in Wendell, the town or Wake County?",
+          "a": "Both play a part. The Town of Wendell Planning Department processes the roofing permit and handles the zoning side, while Wake County performs the building inspection under a contract with the town. We pull the permit through Wendell, schedule the county inspection, and give you the closed-out paperwork when the work passes."
+        },
+        {
+          "q": "Why does my new Wendell Falls roof seem to catch more wind damage than older homes?",
+          "a": "It comes down to exposure. Wendell Falls lots are open with young trees, so wide roof planes meet straight-line wind with nothing to slow it. Older downtown homes often sit behind mature cover. We address it by upgrading starter strips, ridge caps, and nailing patterns to hold up on those exposed eastern-edge planes."
+        },
+        {
+          "q": "My roof has storm damage. Does Summit and Oak handle the insurance side?",
+          "a": "We document the damage thoroughly with photos and a written report, and you file your own claim so you stay in control of it. Wind damage is commonly covered, though coverage is always your insurer's call. We are not a public adjuster and do not negotiate claims, but our documentation gives you exactly what you need to file."
+        }
+      ],
+      "metaDescription": "Wendell, NC roofing contractor for the east Wake County edge. Wind and storm repair, replacement, and documented inspections. Get a free estimate.",
+      "heroAlt": "Architectural shingle roof replacement on a Wendell Falls home in Wendell, NC"
+    }
+  },
+  {
+    "slug": "fuquay-varina",
+    "lead": "heritage",
+    "county": "Wake County",
+    "permitAuthority": "Town of Fuquay-Varina",
+    "data": {
+      "name": "Fuquay-Varina",
+      "county": "Wake County",
+      "permitAuthority": "Town of Fuquay-Varina Inspections Department",
+      "permitNote": "Fuquay-Varina roof permits are issued by the Town of Fuquay-Varina Inspections Department on North Main Street, which enforces the North Carolina State Building Code. A full replacement, or any work that touches the sheathing or strips old layers, needs a permit, and we pull it and schedule the required inspection for you.",
+      "neighborhoods": [
+        "Bentwinds",
+        "Ballentine Place",
+        "South Lakes",
+        "Southern Oaks",
+        "Phillips Pointe",
+        "Lakestone Village"
+      ],
+      "landmarks": [
+        "Fuquay Mineral Spring Park",
+        "Fuquay Springs Historic District",
+        "Varina Commercial Historic District"
+      ],
+      "intro": "Fuquay-Varina is two old towns wearing one name. Fuquay Springs grew up around an 1858 mineral spring along US 401, and Varina rose a short walk away on NC 55, and the two merged in 1963 without ever fully blending. That history put two roofing worlds inside one town line. Near the two historic downtowns sit older homes with settled rooflines and decades of patches, while the subdivisions that pushed the population past fifty thousand carry young architectural-shingle roofs. Summit and Oak works both. A careful repair on an aging downtown home and a clean tear-off in a new neighborhood are different jobs, and we bring the right one to each.",
+      "stormHook": "Fuquay-Varina catches the same Wake County weather as the rest of the Triangle. Summer brings fast pop-up storms with straight-line wind and the occasional band of hail, and the long humid stretch from spring into fall keeps north-facing slopes damp enough to grow dark algae streaks. On the older homes near the two downtowns, that wear has had decades to add up at the valleys, the flashing, and the layers underneath. On the newer subdivision roofs, the first real test is usually one hard storm finding a lifted shingle or a soft nail. A documented inspection after a storm is how you tell which one you have before water moves inside.",
+      "housingStock": "Fuquay-Varina grew roughly ninety percent between the last two censuses, one of the fastest rates in the state, and that boom defines its roofs. Most homes here are recent construction in subdivisions like South Lakes and Lakestone Village, sitting on first-generation architectural shingles that are aging together and will need replacing in waves. The exception is the older stock near the Fuquay Springs and Varina downtowns, where settled homes carry steeper, more patched rooflines that reward repair over a quick swap. Bentwinds, developed back in 1984, falls in between, with established homes now reaching replacement age.",
+      "localConsiderations": [
+        "Older homes near the two downtowns often hide layered or patched roofs, so we inspect the decking before quoting a tear-off, not after.",
+        "Newer subdivisions like South Lakes share a build era, so neighboring roofs tend to reach failure and need replacing within the same few years.",
+        "The long Triangle humidity feeds algae streaking on shaded north slopes here, which reads as age but is usually a cleaning or shingle-line question."
+      ],
+      "localProjects": [
+        {
+          "title": "Layered downtown roof tear-off",
+          "neighborhood": "Fuquay Springs Historic District",
+          "detail": "Stripped two old shingle layers off a settled home near the spring, found and replaced soft decking underneath, and rebuilt the valley flashing so the new roof started on sound wood instead of buried damage."
+        },
+        {
+          "title": "Storm-damaged slope replacement",
+          "neighborhood": "Bentwinds",
+          "detail": "Replaced a wind-lifted section on an established home off Sunset Lake Road, documented the damage in writing for the homeowner's own claim, and matched the existing architectural shingle so the repair blended across the full roof."
+        },
+        {
+          "title": "First-generation shingle replacement",
+          "neighborhood": "South Lakes",
+          "detail": "Tore off the original builder-grade shingles on a newer home reaching the end of their run and installed a full architectural system with upgraded underlayment and ridge ventilation rated for Triangle summer heat."
+        }
+      ],
+      "localReviews": [
+        {
+          "quote": "Our place near downtown Fuquay turned out to have two layers of old shingles nobody told us about. Summit and Oak caught the soft decking, showed us photos, and did it right instead of just shingling over the problem.",
+          "author": "Dana R.",
+          "area": "Fuquay Springs Historic District",
+          "rating": 5
+        },
+        {
+          "quote": "A summer storm lifted part of our roof in Bentwinds. They came out fast, wrote up the damage in plain language so I could file myself, and the new section matches the rest perfectly. Easy to work with start to finish.",
+          "author": "Marcus T.",
+          "area": "Bentwinds",
+          "rating": 5
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do I need a permit to replace my roof in Fuquay-Varina?",
+          "a": "Yes, a full replacement does. The Town of Fuquay-Varina Inspections Department on North Main Street enforces the state building code, and a tear-off, a re-deck, or stripping old layers all require a permit and a final inspection. We pull the permit and schedule the inspection as part of your job, so you never have to deal with the Town directly."
+        },
+        {
+          "q": "My home is near one of the old downtowns and may have multiple roof layers. Does that change the job?",
+          "a": "Often yes. Older homes near the Fuquay Springs and Varina downtowns sometimes carry two or more shingle layers added over the years. We inspect for that up front, because hidden layers and soft decking change both the price and the scope. We show you what we find with photos before any work starts, so there are no surprises mid-job."
+        },
+        {
+          "q": "Half my neighborhood was built the same year. Should we all expect roofs to fail together?",
+          "a": "Roughly, yes. Newer Fuquay-Varina subdivisions like South Lakes went up in a short window on the same builder-grade shingles, so they tend to age and fail within a few years of each other. If a neighbor is replacing theirs, yours is worth a look. A free inspection tells you whether you have a year left or several."
+        }
+      ],
+      "metaDescription": "Roof repair and replacement in Fuquay-Varina, NC. Summit and Oak roofs historic-downtown homes and new Wake County subdivisions. Free local inspection.",
+      "heroAlt": "Architectural shingle roof replacement on a Bentwinds home in Fuquay-Varina, NC"
+    }
+  },
+  {
+    "slug": "zebulon",
+    "lead": "storm",
+    "county": "Wake County",
+    "permitAuthority": "Town of Zebulon",
+    "data": {
+      "name": "Zebulon",
+      "county": "Wake County",
+      "permitAuthority": "Town of Zebulon Planning Department",
+      "permitNote": "Roofing work in Zebulon is permitted through the Town of Zebulon Planning Department, which reviews applications and zoning online through its GeoCivix portal on North Arendell Avenue. Wake County inspectors then perform the building inspection. We pull the permit, schedule the inspection, and hand you the documented sign-off.",
+      "neighborhoods": [
+        "Pilot Ridge",
+        "Weavers Pond",
+        "Olde Place",
+        "Wakelon Heights",
+        "Little River",
+        "Whitley Manor"
+      ],
+      "landmarks": [
+        "Five County Stadium",
+        "Little River and the historic dam spillway",
+        "GSK manufacturing plant on North Arendell Avenue"
+      ],
+      "intro": "Summit and Oak is a roofing contractor working Zebulon, the far eastern edge of Wake County where the Triangle gives way to open farmland. Zebulon is different from the canopied suburbs to the west. Out here homes sit on wide lots and acreage off Johnson Town Road, ringed by fields instead of mature oaks, which changes how a roof lives and how it fails. We know this town, from the older ranch and minimal-traditional homes near downtown Arendell Avenue to the newer builds in Weavers Pond and Pilot Ridge. We bring the right crew, the right shingle, and a documented inspection to every one.",
+      "stormHook": "Zebulon's roofing threat is wind, and the open country makes it worse. With far less tree cover than the canopied towns west of here, roofs sit fully exposed to straight-line wind sweeping unbroken across open fields. Fast-moving QLCS storm lines roll through the eastern Triangle every season, and the Zebulon area has logged dozens of severe weather warnings in the past year alone, with gusts measured up to 85 miles per hour and embedded tornado risk. Wind lifts and creases shingles in ways you cannot read from the ground. On an exposed Zebulon roof that quiet damage is exactly what a documented inspection is built to catch.",
+      "housingStock": "Zebulon's housing tells two stories. Near downtown Arendell Avenue you find older ranch and minimal-traditional homes, many with original decking and aging shingle, built when this was a quiet farm town. Then the growth came east along the I-87 corridor, and subdivisions like Weavers Pond and Pilot Ridge filled in with newer architectural-shingle builds on large lots. We scope every Zebulon home to the current North Carolina code, a 115 mile-per-hour design gust, and Exposure C wind loading for open terrain, then match the material to the house.",
+      "localConsiderations": [
+        "Open-field exposure means higher real-world wind loads, so we spec and install to Exposure C terrain ratings rather than the sheltered Exposure B used in canopied towns.",
+        "Older homes near downtown often hide original decking and multiple shingle layers, so we plan for tear-off and deck repair instead of a quick layover.",
+        "Large rural lots and acreage off roads like Johnson Town mean wider debris fields, so we protect landscaping and run a magnet sweep before we leave."
+      ],
+      "localProjects": [
+        {
+          "title": "Full architectural tear-off on an exposed acre lot",
+          "neighborhood": "Pilot Ridge",
+          "detail": "A custom home on a wide wooded lot off Johnson Town Road had wind-creased shingles across the windward slope. We tore off to the deck, replaced soft sheathing, and installed a high-wind architectural system rated for the open exposure."
+        },
+        {
+          "title": "Older ranch re-roof with deck repair",
+          "neighborhood": "Wakelon Heights",
+          "detail": "A minimal-traditional ranch near downtown carried two aging shingle layers over original 1960s decking. We stripped both layers, replaced rotted boards, upgraded the underlayment, and brought the whole assembly current to code."
+        },
+        {
+          "title": "Storm-damage inspection and documented repair",
+          "neighborhood": "Weavers Pond",
+          "detail": "After a QLCS line moved through, a newer build showed lifted ridge caps and a few missing tabs. We documented every slope with photos for the homeowner's file, then made the targeted repair. Commonly covered work, you file, you stay in control."
+        }
+      ],
+      "localReviews": [
+        {
+          "quote": "Our place sits out on open acreage and the wind here is no joke. Summit and Oak spec'd a roof built for it and walked the whole job with us. Two storm seasons later it has not moved an inch.",
+          "author": "Dale R.",
+          "area": "Pilot Ridge",
+          "rating": 5
+        },
+        {
+          "quote": "We have an older ranch close to downtown and figured it was just a quick re-shingle. They found two old layers and bad decking, explained everything, and did it right. No surprises on the bill.",
+          "author": "Tammy W.",
+          "area": "Wakelon Heights",
+          "rating": 5
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Who issues a roofing permit in Zebulon, and do you handle it?",
+          "a": "Permits go through the Town of Zebulon Planning Department, which reviews the application and zoning online via its GeoCivix portal on North Arendell Avenue. Wake County inspectors then perform the building inspection. We pull the permit, manage the review, and schedule the inspection for you, so you receive a documented sign-off without chasing two separate offices yourself."
+        },
+        {
+          "q": "My home is on open farmland with no tree cover. Does that change the roof I need?",
+          "a": "Yes. Without a tree canopy to slow the wind, a Zebulon roof takes the full straight-line gust sweeping across the fields. We design to Exposure C open-terrain wind loading and spec a high-wind architectural shingle with reinforced nailing and sealed ridge caps, so the most exposed slopes hold up to the gusts this part of the county sees every storm season."
+        },
+        {
+          "q": "There was a fast storm line through Zebulon. How do I know if my roof was hit?",
+          "a": "Straight-line wind lifts and creases shingles in ways you cannot see from the driveway, and the open exposure here makes that the most common damage. We perform a documented inspection, photograph every slope, and give you the report. If it is storm damage, that work is commonly covered, you file the claim, and you stay in control. We are not a public adjuster."
+        }
+      ],
+      "metaDescription": "Zebulon, NC roofing contractor built for open-farmland wind. Summit and Oak inspects and re-roofs exposed Wake County homes. Get a documented estimate.",
+      "heroAlt": "Architectural shingle roof replacement on a Pilot Ridge home surrounded by open farmland in Zebulon, NC"
+    }
+  },
+  {
+    "slug": "rolesville",
+    "lead": "lifecycle",
+    "county": "Wake County",
+    "permitAuthority": "Town of Rolesville",
+    "data": {
+      "name": "Rolesville",
+      "county": "Wake County",
+      "permitAuthority": "Town of Rolesville (permits and inspections administered through Wake County)",
+      "permitNote": "Roofing permits for Rolesville addresses go through the Town of Rolesville, which partners with Wake County for building code review and inspections via the Wake County Permit Portal. We confirm the right authority for your parcel, pull the permit, and handle the inspection scheduling so the paperwork stays clean and your warranty is protected.",
+      "neighborhoods": [
+        "Granite Falls",
+        "Granite Crest",
+        "Carlton Pointe",
+        "Averette Ridge",
+        "Walden Creek",
+        "Granite Ridge"
+      ],
+      "landmarks": [
+        "Main Street Park and the historic downtown core",
+        "Granite Falls Swim & Athletic Club",
+        "Little House Museum and the Historic Rolesville Society"
+      ],
+      "intro": "Rolesville is the Triangle's young-roof town. It is one of the oldest incorporated towns in Wake County, chartered back in 1837, yet almost everything built here went up in the last fifteen years. The town more than doubled in a single decade, and subdivisions like Granite Falls and Carlton Pointe are full of roofs that are nowhere near replacement age. So the conversation here is different. It is not whether your roof is due. It is how to protect a near-new investment. Summit & Oak helps Rolesville homeowners catch builder-grade defects and storm damage early, while a young roof can still be saved with a smart repair.",
+      "stormHook": "Rolesville sits in open north Wake County, where the newer subdivisions have wide, treeless roof planes and very little mature canopy to slow the wind. That matters more than people expect on a young roof. Spring and summer bring fast-moving storms, and hail was reported near town as recently as May 2025. On a five or ten year old roof, the damage is rarely obvious from the ground. A few bruised shingles or lifted edges look fine until the next rain finds them. Early documentation is what keeps a small, fixable problem from quietly aging into a leak.",
+      "housingStock": "The defining fact about Rolesville housing is how new it is. Whole neighborhoods like Granite Falls were built between roughly 2014 and 2023, and crews are still framing homes today. That means most roofs in town are well inside their warranty window, which changes everything about the right call. Builder-grade shingles can hide installation shortcuts, flashing gaps, and nail-placement issues that surface years later. The smart move on a young roof is rarely replacement. It is a documented inspection that protects warranty coverage and fixes the small stuff first.",
+      "localConsiderations": [
+        "Most Rolesville roofs are still under warranty, so the right answer is usually a documented repair, not a costly full replacement.",
+        "Builder-grade installs across fast-built subdivisions can hide flashing gaps and nail issues that only surface a few years in.",
+        "Open, low-canopy roof planes leave young shingles exposed to wind and hail, so early storm documentation matters."
+      ],
+      "localProjects": [
+        {
+          "title": "Warranty-age leak traced to flashing, not the field",
+          "neighborhood": "Granite Falls",
+          "detail": "A six-year-old roof developed a ceiling stain. Instead of selling a replacement, we found a builder flashing gap at a sidewall, repaired it, and documented the work so the owner kept full shingle warranty coverage."
+        },
+        {
+          "title": "Early hail inspection on a near-new roof",
+          "neighborhood": "Carlton Pointe",
+          "detail": "After a spring storm, we walked an eight-year-old roof and found scattered hail bruising invisible from the driveway. We photographed every slope so the owner had clean documentation on file to decide their next step."
+        },
+        {
+          "title": "Maintenance tune-up to extend a young roof",
+          "neighborhood": "Averette Ridge",
+          "detail": "On a ten-year-old roof, we resealed exposed fasteners, replaced a handful of wind-lifted shingles, and cleared debris from valleys. A few hundred dollars of upkeep added years to a roof nowhere near replacement."
+        }
+      ],
+      "localReviews": [
+        {
+          "quote": "We thought our roof was failing and braced for a huge bill. They climbed up, showed us photos, and explained it was one flashing detail. Fixed it the same week for a fraction of what we feared. Honest people.",
+          "author": "Derek H.",
+          "area": "Granite Falls",
+          "rating": 5
+        },
+        {
+          "quote": "After a hailstorm I had no idea what to look for. Summit & Oak documented the whole roof and walked me through it without any pressure to replace anything. I finally felt like someone was on my side.",
+          "author": "Priya N.",
+          "area": "Carlton Pointe",
+          "rating": 5
+        }
+      ],
+      "faqs": [
+        {
+          "q": "My Rolesville home is only a few years old. Why would I need a roofer already?",
+          "a": "Because young roofs hide problems. A lot of homes here went up fast during the building boom, and builder-grade installs can leave flashing gaps or nail issues that surface years later. A free documented inspection catches small defects early, while your warranty still applies and a low-cost repair can solve it."
+        },
+        {
+          "q": "Who issues roofing permits in Rolesville, and will you handle it?",
+          "a": "The Town of Rolesville administers permits and inspections through its partnership with Wake County, using the Wake County Permit Portal. We confirm the correct authority for your address, pull the permit, and schedule the required inspections for you. You stay in control, and the paperwork stays clean to protect your warranty."
+        },
+        {
+          "q": "A storm hit and I think my new roof might be damaged. What should I do?",
+          "a": "Start with documentation. Hail and wind damage on a young roof is often invisible from the ground. We inspect every slope and photograph what we find so you have a clear record. Roof storm damage is commonly covered by homeowners insurance. We document the damage, you file the claim, and you stay in control. We are not a public adjuster."
+        }
+      ],
+      "metaDescription": "Rolesville, NC roofing for young roofs. Summit & Oak documents storm damage and builder defects early to protect your new Triangle home. Free inspection.",
+      "heroAlt": "Architectural shingle roof inspection on a near-new Granite Falls home in Rolesville, NC"
+    }
+  },
+  {
+    "slug": "durham",
+    "lead": "heritage",
+    "county": "Durham County",
+    "permitAuthority": "City of Durham / Durham County",
+    "data": {
+      "name": "Durham",
+      "county": "Durham County",
+      "permitAuthority": "City-County Inspections Department (Durham City-County Building & Safety)",
+      "permitNote": "Durham roof permits run through the City-County Inspections Department, which serves both the City of Durham and Durham County from one office. This is a different jurisdiction than Wake County, so the forms and review steps are not the same. We pull the permit and schedule the inspection for you.",
+      "neighborhoods": [
+        "Trinity Park",
+        "Forest Hills",
+        "Watts-Hillandale",
+        "Old West Durham",
+        "Hope Valley",
+        "Cleveland-Holloway"
+      ],
+      "landmarks": [
+        "Duke University",
+        "American Tobacco Campus",
+        "Erwin Mills (West Durham)"
+      ],
+      "intro": "Durham is the Bull City, and its roofs carry more history than almost anywhere in the Triangle. Trinity Park craftsman homes, Forest Hills bungalows, and the old mill houses around Erwin Mills sit beside fast-growing newer suburbs. One detail sets Durham apart for roofers. It is in Durham County, not Wake, so permits run through the City-County Inspections Department, a different jurisdiction with its own forms and review steps. Most Triangle roofers are Wake-centric. We handle Durham jurisdiction routinely, and we match older rooflines instead of dropping a stock tear-off on a historic home.",
+      "stormHook": "Durham sees the same Triangle weather as the rest of the region, with straight-line wind gusts near 60 mph and hail under three-quarters of an inch in summer storms. The risk here is the housing. Older bungalow and mill rooflines have low pitches and wide eaves where wind-driven rain works under aging shingles, and the mature oak canopy over Trinity Park drops limbs that puncture a deck in one gust. Heat and humidity then bake any small leak into rot. A documented inspection after a storm catches damage on these older roofs before it reaches the framing.",
+      "housingStock": "Durham has the deepest genuinely historic housing stock in the Triangle. Trinity Park and Forest Hills hold craftsman, Queen Anne, and Tudor homes from the 1890s through the 1930s, and the old textile-mill village around Erwin Mills still has worker houses with simple pyramid and L-shaped roofs. Watts-Hillandale fills in with 1910s to 1930s bungalows and Foursquares. Around all of it, newer suburban subdivisions keep growing. That spread means one Durham roof might be a 1920s low-pitch bungalow and the next a builder-grade architectural tear-off.",
+      "localConsiderations": [
+        "Older bungalow and mill-house roofs in Durham carry low pitches and wide eaves, so flashing and underlayment details matter more than a stock shingle swap.",
+        "Permits run through Durham's City-County Inspections Department, a separate jurisdiction from Wake County with its own forms, which we handle for you.",
+        "Mature oak canopy over Trinity Park and Forest Hills means limb strikes and constant debris, so deck condition gets checked closely on every estimate."
+      ],
+      "localProjects": [
+        {
+          "title": "Craftsman bungalow re-roof",
+          "neighborhood": "Trinity Park",
+          "detail": "Replaced a low-pitch craftsman roof on a 1920s home, rebuilding the wide-eave flashing and adding ice-and-water protection in the valleys where the original detailing had let water track under the shingles."
+        },
+        {
+          "title": "Mill-house roofline match",
+          "neighborhood": "Old West Durham",
+          "detail": "Re-roofed a former Erwin Mills worker house with a simple pyramid form, matching the historic profile and color so the home stayed in character with the rest of the mill-village block."
+        },
+        {
+          "title": "Storm-damage architectural tear-off",
+          "neighborhood": "Hope Valley",
+          "detail": "Documented hail and wind damage on a newer Hope Valley home, completed a full architectural-shingle tear-off, and handed the homeowner the photo report to file their own claim."
+        }
+      ],
+      "localReviews": [
+        {
+          "quote": "Our Trinity Park house is from the 1920s and the roofline is anything but standard. Summit and Oak matched the eaves and flashing instead of forcing a generic job. It finally looks right and the leaks are gone.",
+          "author": "Marcus D.",
+          "area": "Trinity Park",
+          "rating": 5
+        },
+        {
+          "quote": "They knew Durham County permits run through a different office than Raleigh and handled all of it. Our Watts-Hillandale bungalow got a clean tear-off with no surprises and the crew left the yard spotless.",
+          "author": "Lena P.",
+          "area": "Watts-Hillandale",
+          "rating": 5
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do Durham roof permits go through the same office as Raleigh?",
+          "a": "No. Durham is in Durham County, so permits run through the City-County Inspections Department that serves both the City of Durham and the county. It is a different jurisdiction than Wake County with its own forms and review steps. We pull the permit and schedule the required inspection as part of your job, so you do not have to learn the process."
+        },
+        {
+          "q": "Can you re-roof an older bungalow or mill house in Durham?",
+          "a": "Yes. We work on Trinity Park craftsman homes, Watts-Hillandale bungalows, and the old Erwin Mills village houses regularly. These roofs have low pitches and wide eaves, so we match the existing profile and rebuild the flashing details instead of dropping a stock tear-off on a historic home."
+        },
+        {
+          "q": "My Durham roof was hit by a storm. How do you handle insurance?",
+          "a": "We inspect the roof, document the wind or hail damage with photos, and give you a clear written report. You file the claim and stay in control of it. We are not a public adjuster and we do not negotiate with your insurer, but our documentation gives you what you need for a commonly covered claim."
+        }
+      ],
+      "metaDescription": "Durham, NC roofing built for the Bull City. Historic Trinity Park bungalows to Durham County permits handled right. Get a free roof estimate.",
+      "heroAlt": "Architectural shingle roof replacement on a 1920s craftsman bungalow in the Trinity Park neighborhood of Durham, NC"
+    }
+  }
+]

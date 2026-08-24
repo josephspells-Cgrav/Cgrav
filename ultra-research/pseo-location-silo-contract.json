@@ -1,0 +1,43 @@
+{
+  "slug": "pseo-location-silo",
+  "tier": "lite",
+  "mode": "balanced",
+  "question": "Can a GENUINE multi-location home-service contractor (each location a real physical office with its own street address, staff, and Google Business Profile) scale a website into per-location silos — a base ~15-page site PLUS a full ~15-page silo per additional location, launching at ~10 locations (~150 pages total) — WITHOUT triggering Google's doorway-page, scaled-content-abuse, thin/templated-content, or unhelpful-content penalties, while achieving genuine per-page TOPIC-level uniqueness AND helpfulness? Prioritize PRIMARY current sources (Google Search Central docs/blog, web.dev) over SEO-blog opinion; label community/SEO sources as inference not policy. Latest-wins: 2024-2026 reality beats older lore.",
+  "subQuestions": [
+    "What is Google's CURRENT (2024-2026) doorway-page and scaled-content-abuse policy (exact definition + enforcement), how did the March-2024 spam-policy consolidation and May-2024 scaled-content-abuse policy change it, and crucially how does Google distinguish a GENUINE multi-location business (real offices, each with its own address/staff/Google Business Profile) from FAKE single-office hyperlocal expansion (one office spinning up town pages for areas with no real presence)? When do legit franchises / multi-branch businesses rank without penalty vs get nuked?",
+    "What does the Helpful Content / people-first system (folded into core ranking March 2024) operationally require — what do 'helpfulness' and 'information gain' mean, what is the who/how/why self-assessment framework, and how does site-wide classifier drag from thin pages actually work?",
+    "Does Google weight percent word-level uniqueness or topic/intent-level uniqueness when judging templated location pages, and what is the real 2024-2026 threshold? Validate the 'Swap Test' (swap the city and the page should no longer read correctly) against current Google guidance and practitioner evidence.",
+    "Real 2024-2026 case studies: large multi-location / programmatic location-page sites that rank WITHOUT penalty, AND ones that got penalized/de-indexed — extract the concrete differentiators (real entity backing, information gain, genuine local value). Local home-service examples where possible.",
+    "What categories of genuinely-unique, helpful, per-location PUBLIC data exist for a home-service trade (roofing/HVAC/plumbing) — local climate/storm/hail history, permit data, building codes & local code requirements, housing-stock age/value, neighborhood & landmark names, HOA/permitting quirks, seasonal patterns, local hazards, demographic/market data — and WHERE to source each (specific APIs / public datasets)? Map each category to HOW it creates topic-level uniqueness (passes the Swap Test), not just local color.",
+    "Best practice for tying >=5 location-specific reviews/testimonials to each location (sprinkled through the silo and/or a dedicated per-location reviews page), Google's CURRENT stance on review/rating schema (is self-serving Review/AggregateRating markup on your own LocalBusiness penalized or ignored?), and how location-specific reviews drive uniqueness + E-E-A-T + local trust.",
+    "Recommended architecture for legit location silos: subfolder vs subdomain vs 'subsite'; internal-linking / siloing / link-graph design; schema (LocalBusiness / HomeAndConstructionBusiness per location, Service, FAQPage, BreadcrumbList); canonical and areaServed handling. State a recommended per-location page set AND a safe site-wide page ceiling for a GENUINE multi-location business."
+  ],
+  "checklist": [
+    "Current Google doorway-page policy: exact definition (Google Search Central spam policies)",
+    "March 2024 spam-policy consolidation: what changed",
+    "May 2024 scaled-content-abuse policy: exact wording + enforcement",
+    "Helpful Content System folded into core ranking March 2024 (site-wide signal)",
+    "Operational meaning of 'information gain'",
+    "Who/how/why self-assessment framework (people-first content questions)",
+    "Site-wide classifier drag mechanism from thin pages",
+    "Word-level vs topic/intent-level uniqueness threshold for templated pages",
+    "Swap Test validation against current guidance",
+    "Penalized programmatic / location-page case studies (2024-2026)",
+    "Surviving programmatic / location-page case studies (2024-2026)",
+    "Genuine multi-location vs fake hyperlocal-expansion distinction (policy + practice)",
+    "How legit franchises / multi-branch businesses rank without penalty",
+    "When ~150 pages is safe vs penalty-bait (pattern strength vs raw count)",
+    "Per-location public data categories: climate/storm/hail, permits, building codes, housing stock, demographics, hazards, neighborhoods/landmarks, HOA quirks, seasonal",
+    "Specific sources/APIs/datasets for per-location public data",
+    "Per-location reviews best practice (>=5 each; sprinkled vs dedicated page)",
+    "Current Review/AggregateRating self-serving schema stance (rich-result eligibility)",
+    "URL architecture: subfolder vs subdomain for multi-location",
+    "Internal-linking / siloing design for location silos",
+    "Schema graph per location (LocalBusiness/Service/FAQPage/BreadcrumbList) + areaServed + canonical",
+    "Recommended per-location page set",
+    "Safe site-wide page ceiling for a genuine multi-location business"
+  ],
+  "stopCondition": "Stop when the doorway / scaled-content / helpful-content policy sub-questions each have >=2 independent sources (ideally Google Search Central primary docs); the genuine-vs-fake multi-location distinction is resolved with at least one concrete case study on each side (a surviving location-page site AND a penalized one); and K consecutive rounds surface no novel claims bearing on the open pillars. Remaining gaps surfaced as PROVISIONAL, not hidden.",
+  "deliverableNote": "Final report goes to vault/inbox/pseo-location-silo-research-2026-06-05.md as a RAW research doc. Do NOT distill into wiki/ — vault-agent runs Mode A ingest later. Override the skill's default wiki capture.",
+  "CLIENT_REALITY_CONFIRMED_BY_JOSEPH_2026-06-05": "ALL ASPIRATIONAL — 1 real office, ~9 are towns/areas the client wants to rank in but does NOT physically occupy (no own address, no own GBP there). This is the §13.4 fake single-office hyperlocal-expansion trap at ~8x the documented penalty ceiling. VERDICT for the proposed 150-page full-silo plan AS LITERALLY PROPOSED = NO-GO. The premise of 'genuine multi-location' is FALSE for this client. Report must lead with NO-GO on the cloned-silo-per-town plan, then give the doctrine-compliant pivot: deep service+project+education architecture for the 1 real office (page count is fine if content is genuinely unique), ~18-page hyperlocal ceiling for highest-priority ADJACENT serviceable towns only, matrix-in-link-graph (§13.7), real project/photo content tied to towns actually serviced, + Local Service Ads for reach into towns organic+map-pack cannot legitimately reach (map pack is proximity-gated per km-local-seo-mechanics; fake 2nd GBP = ToS violation). The sin is the TEMPLATED-GEO-REPLICATION pattern, not the raw page count."
+}

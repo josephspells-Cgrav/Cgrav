@@ -1,0 +1,955 @@
+{
+  "pillars": [
+    {
+      "id": "T1",
+      "kind": "thesis",
+      "title": "Proximity ceiling of the map pack",
+      "section": "",
+      "loadBearing": [],
+      "whatNotToOversell": [],
+      "gaps": [
+        "No primary source publishes a single defensible universal effective radius in miles; the ~5-7mi figure remains a directional synthesis of exponential-decay + density-variance data, not a measured constant. Treat as modeled.",
+        "No source quantifies a per-location DOLLAR revenue cap for pack-sourced leads; the cap is a sound logical inference (address-anchored ranking + finite within-radius population + 3 shared slots), not a measured figure — must be labeled as derived.",
+        "The proximity weight is directional (expert-survey/perceived), never a published causal % — the warm-context caution against asserting '55%' holds; no primary Whitespark table gives a clean number.",
+        "Roofing-specific decay data is thin: the cleanest per-mile decay study (rankings.io, -8 positions/mile) is a LAW-FIRM dataset. Mechanism (address-anchored proximity) is industry-agnostic, but a roofing-specific geo-grid would harden the claim — consider a Local Falcon SoLV roofing scan as own-data proof.",
+        "Exact post-Vicinity radius shrink is described qualitatively ('shrunk the pack', 'harder outside home city') but not given as a before/after mile delta in any primary source."
+      ],
+      "counter": [
+        {
+          "point": "Individual-firm variance is large: 'Every law firm behaves differently. Some hold rankings for several miles, others drop out of the top 20 almost immediately.' A strong-SEO, high-prominence business can stretch its effective radius meaningfully beyond a weak one.",
+          "soWhat": "KM cannot promise a fixed mile number, but this actually SUPPORTS the offer: organic prominence (links, reviews, on-page) is exactly what dilates the radius — so the lever KM sells (organic dominance) is the same lever that buys extra pack reach. Promise the floor, project the ceiling.",
+          "source_url": "https://rankings.io/blog/proximity-local-seo/"
+        },
+        {
+          "point": "The pack still captures ~29-44% of local clicks and is the highest-intent surface within radius — calling it a non-scaling 'byproduct' risks underselling a genuinely valuable lead source for the home-market and emergency slice.",
+          "soWhat": "Frame the pack as the near-default proximity prize KM still delivers (and wins on ties), while organic regional dominance is the engine that scales past one office. Never say 'useless.'",
+          "source_url": "https://www.brightlocal.com/research/local-services-ads-click-study/"
+        },
+        {
+          "point": "Multi-location is the sanctioned scaling path: real, staffed offices each create a new proximity bubble, and the biggest competitors already do this. A roofer COULD scale pack coverage by opening offices — pack isn't inherently capped at the company level, only at the per-location level.",
+          "soWhat": "Concede the per-LOCATION framing precisely: one office = capped. Scaling the pack requires capex (new staffed addresses); scaling organic requires content/links/authority — far cheaper per market. That cost asymmetry is the offer argument, not a claim that pack can never grow.",
+          "source_url": "https://brandonrollins.com/p/how-to-rank-a-service-area-business-in-google"
+        },
+        {
+          "point": "No source publishes a single defensible 'X mile' radius or a per-location dollar revenue cap; the radius is density-dependent and the revenue cap is a logical inference, not a measured constant.",
+          "soWhat": "Label the ~5-7mi figure as directional/modeled and the revenue cap as a derived inference from address-anchored ranking + density-variable decay — never as a measured universal number. This keeps the FTC-exposed offer claim defensible.",
+          "source_url": "https://rankings.io/blog/proximity-local-seo/"
+        }
+      ],
+      "allClaims": [
+        {
+          "claim": "Google itself names Distance (proximity of each business to the searcher) as one of three primary local-ranking factors, alongside Relevance and Prominence — confirming proximity is a structural, first-party input to the pack, not a vendor theory.",
+          "stat": "1 of 3 core factors (Relevance, Distance, Prominence)",
+          "source_url": "https://support.google.com/business/answer/7091",
+          "source_type": "primary-google",
+          "snippet": "Distance: 'how far each business is from the customer who's searching' ... Prominence: 'how well-known a business is ... based on info like how many websites link to your business and how many reviews you have.'",
+          "confidence": "high",
+          "measured_or_modeled": "first-party-documentation",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Proximity is the single most heavily weighted local-PACK factor in the expert-survey consensus — the top finder/pack factor. (Flag: expert-survey = modeled/perceived weight, not a published causal coefficient; do not assert a precise '55%'.)",
+          "stat": "ranked #1 pack factor (directional, no defensible %)",
+          "source_url": "https://whitespark.ca/blog/7-local-search-ranking-factors-that-may-challenge-your-current-thinking/",
+          "source_type": "vendor-incentive",
+          "snippet": "Moz/Whitespark surveys: 'Proximity of Address to the Point of Search' is the most important factor to survey participants for the Local Pack; proximity to where the user searches from increased in importance.",
+          "confidence": "medium",
+          "measured_or_modeled": "modeled (expert survey)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Google's November 2021 'Vicinity' update — its largest local algorithm change in ~5 years — explicitly increased proximity weight and SHRANK the pack's radius of visibility, making it much harder for one location to rank in the 3-pack outside its home city. This is the keystone corroborator that the radius is a Google-imposed cap, not an artifact of weak SEO.",
+          "stat": "rolled out Nov 30–Dec 8, 2021; biggest local update since 2017",
+          "source_url": "https://www.sterlingsky.ca/vicinity-algorithm-update/",
+          "source_type": "independent",
+          "snippet": "The update heavily increased the weight of proximity ... 'shrunk' the size of the map pack, making it much harder for businesses to rank in the 3-pack for locations outside their home city; businesses that previously ranked across multiple cities saw visibility reduced outside their immediate area.",
+          "confidence": "high",
+          "measured_or_modeled": "measured (confirmed algorithm update + observed ranking shifts)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Pack rankings decay with distance following EXPONENTIAL decay with a sharp first-mile cliff: across 1,100 samples the average drop was -8 positions per mile, with the immediate first-mile drop ranging 5.3 to 11.8 positions. This is the measured radius-decay mechanism behind the ~5-7mi effective ceiling.",
+          "stat": "-8 positions/mile avg; 5.3–11.8 position first-mile drop; n=1,100",
+          "source_url": "https://rankings.io/blog/proximity-local-seo/",
+          "source_type": "agency-study",
+          "snippet": "'immediately dropping anywhere from 5.3 to 11.8 positions' ... 'For all 1100 samples, the average drop was -8 positions.' ... 'rankings follow the law of exponential decay'",
+          "confidence": "high",
+          "measured_or_modeled": "measured (1,100-sample geo study)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "The effective radius is NOT a universal mile number — it varies sharply with population/competition density. In dense metros a single location falls out of the top 20 almost immediately; in lower-density metros it holds far longer. This is why KM must promise a FLOOR, not a fixed radius.",
+          "stat": "dense: Boston 81.5% / LA 82.3% / NYC 80.8% dropped from top 20; sparse: Columbus 28.5% / Pittsburgh 26.7%",
+          "source_url": "https://rankings.io/blog/proximity-local-seo/",
+          "source_type": "agency-study",
+          "snippet": "'In Boston (81.5%), Los Angeles (82.3%), and New York City (80.8%), nearly every law firm has dropped out of the top 20' ... 'In cities like Columbus (28.5%) and Pittsburgh (26.7%), less than a third of firms had dropped out'",
+          "confidence": "high",
+          "measured_or_modeled": "measured",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Pack ranking is computed from the VERIFIED PHYSICAL ADDRESS, not the listed service area — so a single office's pack reach is anchored to one geographic point. The service-area setting is visual only and does not extend rankings. This is the structural root of the per-location revenue cap.",
+          "stat": "service-area setting has zero ranking impact",
+          "source_url": "https://www.sterlingsky.ca/does-the-service-area-in-google-my-business-impact-ranking/",
+          "source_type": "independent",
+          "snippet": "'the ranking is based on the address at which the business verified the listing. The only impact that the service area has is visual.' ... 'Rankings are based on the address used to verify the listing.'",
+          "confidence": "high",
+          "measured_or_modeled": "measured (case study)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Because reach is anchored to a physical point, scaling pack coverage to a region requires ADDING physical locations (one proximity bubble each) — confirming the pack scales by capex/footprint, not by site depth. One office = one bubble = a hard revenue cap on pack-sourced leads.",
+          "stat": "each staffed physical address = one new proximity bubble; up to 20 service areas allowed but they don't rank",
+          "source_url": "https://brandonrollins.com/p/how-to-rank-a-service-area-business-in-google",
+          "source_type": "agency-study",
+          "snippet": "'Proximity to the searcher is the single strongest ranking signal in Google Maps' ... 'multiple Google Business Profile locations — each with a legitimate physical address, staffed and operational — each create their own ranking proximity bubble.'",
+          "confidence": "medium",
+          "measured_or_modeled": "directional",
+          "verifies_seed": true
+        },
+        {
+          "claim": "The pack captures a large but NOT dominant share of local clicks — ~29-32% pack vs ~44-51% organic in a controlled 5,500-tester study. Organic OUT-CLICKS the pack. This is the empirical spine of KM's 'organic is the engine, pack is a byproduct' offer frame; corrects the inflated '60-90% pack' myth.",
+          "stat": "pack 28.8% (LSAs present) / 32.3% (absent); organic 43.9% / 50.8%; n=5,500",
+          "source_url": "https://www.brightlocal.com/research/local-services-ads-click-study/",
+          "source_type": "independent",
+          "snippet": "Local Pack '28.8%' of clicks; Organic Results '43.9%'; when LSAs absent organic '50.8%' vs Local Pack '32.3%'. Study: '5,500 testers' across five SAB categories in San Francisco.",
+          "confidence": "high",
+          "measured_or_modeled": "measured (controlled click study)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Google recommends a service area no larger than roughly a 2-hour drive — but that is a guideline ceiling on the SETTING, not a ranking radius. Combined with the address-anchored ranking finding, it underscores that listing a wide area does not buy wide pack visibility.",
+          "stat": "Google guidance: service area within ~2-hour drive of base",
+          "source_url": "https://www.podium.com/article/service-area-business",
+          "source_type": "agency-study",
+          "snippet": "'Google recommends that your service area not extend much beyond a two hour drive from your business's physical base. However, the ranking is based on the address at which the business verified the listing, not the service area itself.'",
+          "confidence": "medium",
+          "measured_or_modeled": "first-party-guidance (relayed)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "A visible physical address is itself a measured top-10 pack factor (7th most influential, across 8,186 businesses / 200 cities) — independent confirmation that the pack rewards a real, located office and structurally disadvantages address-hiding service businesses. Reinforces that the pack is location-bound, not site-depth-bound.",
+          "stat": "visible address = 7th most influential pack factor; n=8,186 businesses / 200 cities",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/",
+          "source_type": "independent",
+          "snippet": "Study of 8,186 businesses across 200 cities: 'a negative correlation between hiding your address and ranking well in the local pack' — 'Have a real office with a real address.' Visible address ranks as the 7th most influential factor.",
+          "confidence": "high",
+          "measured_or_modeled": "measured (8,186-business study)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Within the pack, click share is nearly flat across the three slots (#1 ~17.8%, #2 ~15.4%, #3 ~15.1%) — so the pack is the highest-intent surface WITHIN radius, but its total click pool is capped and shared three ways. The pack is valuable, not useless; it is just bounded.",
+          "stat": "pack CTR #1 17.8% / #2 15.4% / #3 15.1%",
+          "source_url": "https://redlocalagency.com/google-local-pack-statistics/",
+          "source_type": "vendor-incentive",
+          "snippet": "'The #1 local pack result received 17.8% of click-throughs, followed by 15.4% for #2 and 15.1% for #3.' Pack ~44% of clicks vs organic ~29% in their aggregate framing.",
+          "confidence": "medium",
+          "measured_or_modeled": "measured (aggregated)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Whitespark attributes a 360% jump in the importance of proximity-to-centroid directly to the post-Vicinity radius reduction — tying the modeled survey weight to the measured 2021 algorithm change, and confirming the radius tightened by Google design.",
+          "stat": "+360% signal-importance increase for proximity-to-centroid post-Vicinity",
+          "source_url": "https://searchlabdigital.com/blog/2023-lsrf/",
+          "source_type": "vendor-incentive",
+          "snippet": "'Proximity of address to centroid ... saw signal importance increase 360% since the last LSRF, likely due to the reduction in the radius of visibility after the Vicinity update in late 2021.'",
+          "confidence": "medium",
+          "measured_or_modeled": "modeled (expert survey, tied to measured update)",
+          "verifies_seed": true
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "kind": "thesis",
+      "title": "Prominence dilates the pack radius (organic feeds the map)",
+      "section": "",
+      "loadBearing": [],
+      "whatNotToOversell": [],
+      "gaps": [
+        "No source provides a MEASURED magnitude (e.g. 'X more links => Y additional miles of pack reach'). The radius-dilation claim is directional/mechanistic only — flag as such in any reel; do not invent a number.",
+        "Could not extract the exact Whitespark 2026 thematic weight TABLE (links % pack vs organic; on-page % pack vs organic) from a primary URL — the report page is JS/gated and the figure circulated by vendor blogs (e.g. 'proximity ~55%') did NOT trace to a primary Whitespark table, so it is intentionally NOT asserted here. Recommend buying/opening the full Whitespark PDF to lock the exact split before reel-binding.",
+        "The Joy Hawkins 'links matter more organically than in pack' quote came via search aggregation of Sterling Sky content, not a single confirmed article URL — confirm the exact source article/timestamp before quoting verbatim on camera.",
+        "The Moz '88% up from 65%' figure was captured via a vendor (Rio SEO) citing Moz's State of Local SEO; confirm against the primary Moz report for the exact year/wording.",
+        "No first-party Google statement was found that explicitly says 'your organic web ranking position' (as opposed to links/reviews) is a pack input — the verbatim Google doc names links + reviews only. The 'web results position' framing lives in the trade-interpretation layer (Search Engine Land), so attribute it there, not to Google."
+      ],
+      "counter": [
+        {
+          "point": "The single best independent measurement of what drives the pack (Sterling Sky, 8,186 businesses) found on-page/organic content correlates only SLIGHTLY; the dominant pack levers were review recency and a visible address — NOT website authority.",
+          "soWhat": "Promise the FLOOR: organic authority supports prominence directionally; do NOT claim a measured radius gain. The pack is won by proximity + review velocity, which is why we never sell the site as the pack-winner.",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/"
+        },
+        {
+          "point": "Pack results cluster in a 'tight radius' / 2:1 triangle even in huge metros, and hiding the address can erase the pack entirely — proximity is a hard structural gate that prominence cannot remove.",
+          "soWhat": "Radius dilation is bounded. Frame it as 'prominence widens the effective radius around a REAL office,' never as ranking anywhere regardless of distance. Distance still caps the pack.",
+          "source_url": "https://www.sterlingsky.ca/local-pack-clustering-making-sense-of-googles-ranking-patterns/"
+        },
+        {
+          "point": "Multiple authorities (BrightLocal, Media Captain) model pack and organic as SEPARATE systems with separate factor tables; the 88% 'correlation' figure is marketer BELIEF (Moz survey), not an algorithmic causal measurement.",
+          "soWhat": "Correlation between organic and local ≠ proof that organic CAUSES pack lift. Keep the claim at 'organic feeds prominence, a stated pack input' (defensible) rather than 'organic ranking lifts pack rank by X' (not measured).",
+          "source_url": "https://www.brightlocal.com/learn/google-local-algorithm-and-ranking-factors/"
+        },
+        {
+          "point": "Link weight for the pack is small and DROPPING (~8% category, Whitespark/BrightLocal), and Joy Hawkins states link building 'doesn't directly impact local pack rankings.'",
+          "soWhat": "The link/authority mechanism pays off mostly in ORGANIC (the engine), with only a soft prominence assist to the pack. This is exactly the spine: organic dominance is the prize; the pack is a proximity-capped byproduct."
+        }
+      ],
+      "allClaims": [
+        {
+          "claim": "Google's own definition of local-pack Prominence explicitly counts inbound website links and reviews as inputs — i.e. web/organic authority is a stated, first-party local-ranking factor.",
+          "stat": "Prominence = one of 3 ranking factors (relevance, distance, prominence); inputs named: 'how many websites link to your business' + review count/quality.",
+          "source_url": "https://support.google.com/business/answer/7091?hl=en",
+          "source_type": "primary-google-firstparty",
+          "snippet": "Prominence means how well-known a business is. Prominent places are more likely to show up in search results. This factor's also based on info like how many websites link to your business and how many reviews you have. More reviews and positive ratings can help your business's local ranking.",
+          "confidence": "high",
+          "measured_or_modeled": "directional (Google first-party definition, not a measured weight)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Building stronger prominence (links, reviews, brand authority) lets a business OUTRANK physically-closer competitors and rank across a WIDER geographic radius — the core radius-dilation mechanism. This is the directional 'organic feeds the pack' claim, stated mechanistically, not as a measured miles-per-link figure.",
+          "stat": "No numeric radius; directional: specialized/authoritative businesses 'rank across a wider radius'.",
+          "source_url": "https://searchengineland.com/guide/google-proximity-bias-in-local-search",
+          "source_type": "primary-independent-trade",
+          "snippet": "If your business has built up stronger signals of relevance and prominence than competitors who are physically nearer to a searcher, you may succeed at outranking them. ... If your business specializes in some goods, services, or amenities that are hard to find, you may find yourself ranking across a wider radius. ... Prominence relates to how well-known your business is. This is based on signals like the authority of links your website receives.",
+          "confidence": "high",
+          "measured_or_modeled": "directional/mechanistic",
+          "verifies_seed": true
+        },
+        {
+          "claim": "The asymmetry is real and load-bearing: links/web authority move ORGANIC rankings strongly but the LOCAL PACK weakly. Link signals are dropping specifically for the pack (~8% category weight in the 2026 survey), while organic and pack are modeled as separate systems with separate factor tables.",
+          "stat": "Link category ~8% weight for local pack (down trend); pack vs organic modeled as distinct factor hierarchies.",
+          "source_url": "https://www.brightlocal.com/learn/google-local-algorithm-and-ranking-factors/",
+          "source_type": "independent-study",
+          "snippet": "Link signals continue to drop, particularly for local pack rankings. ... [the page presents] separate tables for 'Local Pack/Maps Ranking Factors' versus 'Local Organic Ranking Factors Grouped.'",
+          "confidence": "high",
+          "measured_or_modeled": "modeled (Whitespark expert-survey weights, vendor-aggregated by BrightLocal)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "An independent local-SEO authority (Joy Hawkins / Sterling Sky) states directly that links have MORE impact organically than in the local pack, and that link building doesn't directly drive pack rankings — confirming the asymmetry that organic feeds the pack far more than the reverse, with links as the cleanest example.",
+          "stat": "Qualitative: 'links having more impact organically than in local pack rankings'; link building 'doesn't directly impact local pack rankings' but is effective for organic.",
+          "source_url": "https://www.sterlingsky.ca/",
+          "source_type": "primary-independent-expert",
+          "snippet": "Links are noted as 'the big things' to focus on, with links having more impact organically than in local pack rankings. ... While link building doesn't directly impact local pack rankings, it's effective for organic SEO.",
+          "confidence": "medium",
+          "measured_or_modeled": "directional (expert opinion, surfaced via search aggregation of Sterling Sky content; recommend confirming on a specific Sterling Sky article URL before reel-binding)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Marketer consensus that organic and local rankings are correlated has risen sharply — a directional signal that organic strength and local visibility move together (does NOT prove causation organic->pack).",
+          "stat": "88% of marketers agree organic and local search rankings are closely correlated, up from 65% in 2019 (Moz State of Local SEO).",
+          "source_url": "https://www.rioseo.com/blog/how-to-support-your-local-rankings-with-organic-seo/",
+          "source_type": "vendor-citing-independent-study",
+          "snippet": "88% of marketers agree that there is a close correlation between organic and local search rankings. That's up from 65% in 2019.",
+          "confidence": "medium",
+          "measured_or_modeled": "measured (survey of marketer belief — belief, not algorithmic measurement; correlation not causation)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Independent large-scale study: a deep on-page/organic-content signal correlates only SLIGHTLY with pack ranking — the honest ceiling on 'organic feeds the pack.' On-page content helps, but it is a weak pack lever versus proximity/reviews.",
+          "stat": "8,186 businesses / 200 cities; 'slight correlation' between more substantive on-page words and better local rankings; review RECENCY and visible address dominated.",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/",
+          "source_type": "primary-independent-study",
+          "snippet": "There is a slight correlation between having more substantive words on your page and better local rankings. ... The number of reviews you've gotten this month matters more than your total number of reviews. ... a negative correlation between hiding your address and ranking well in the local pack.",
+          "confidence": "high",
+          "measured_or_modeled": "measured (observational correlation study)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Proximity still GATES the pack: results cluster in a tight radius regardless of market size, so prominence dilates but never removes the distance cap. This is the mandatory not-oversell counterweight.",
+          "stat": "Pack results consistently within 'several miles'; 2:1 triangle clustering holds even in 100s-of-sq-mi metros (LA, Houston) and at state level.",
+          "source_url": "https://www.sterlingsky.ca/local-pack-clustering-making-sense-of-googles-ranking-patterns/",
+          "source_type": "primary-independent-study",
+          "snippet": "Results are consistently within several miles of each other, with two results close together and one a slightly larger distance away. ... While the distance between points is a bit larger in larger cities, Google consistently shows results in a tight radius.",
+          "confidence": "high",
+          "measured_or_modeled": "measured (observational pattern study)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Address/proximity gating is causal, not just correlational: hiding the address (removing the proximity anchor) tanked pack rankings and in one case made the local pack disappear entirely for a keyword — distance is a hard structural input the site cannot override.",
+          "stat": "Real home-service client A/B over time: address hidden -> rankings tanked / pack vanished; address restored -> rankings recovered.",
+          "source_url": "https://www.sterlingsky.ca/hiding-address-google-business-ranking/",
+          "source_type": "primary-independent-casestudy",
+          "snippet": "When they hid the address ... the rankings tanked, but when they added the address back a month later, their rankings jumped back up. ... hiding the address caused the local pack to disappear for a main keyword.",
+          "confidence": "high",
+          "measured_or_modeled": "measured (before/after field test, n=1 client)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Prominence-overcomes-proximity is the practitioner-accepted mechanism: a more prominent business slightly farther away can outrank a closer one with weak signals. Confirms direction (authority widens reach) without a measured magnitude.",
+          "stat": "Illustrative: a business ~20 min away with more citations/relevant reviews can outrank one ~3 min away that lacks those signals.",
+          "source_url": "https://searchengineland.com/guide/google-proximity-bias-in-local-search",
+          "source_type": "primary-independent-trade",
+          "snippet": "a business that is slightly farther away but significantly more prominent and relevant can still outrank a closer competitor.",
+          "confidence": "medium",
+          "measured_or_modeled": "directional (illustrative example, not measured)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Google publicly states SEO best practices for the website carry into local — the site's organic strength is a recognized lever on prominence, supporting (not winning) the pack.",
+          "stat": "Qualitative: 'website strength' and 'website content (so SEO best practices also apply to local search optimization)' named as prominence inputs.",
+          "source_url": "https://support.google.com/business/answer/7091?hl=en",
+          "source_type": "primary-google-firstparty",
+          "snippet": "Prominence is improved by factors that Google has deemed important such as the presence of plentiful good reviews, website strength, website content (so SEO best practices also apply to local search optimization).",
+          "confidence": "medium",
+          "measured_or_modeled": "directional (paraphrase/expansion of Google guidance; the verbatim Google doc names links+reviews — 'website strength' wording is the trade-interpretation layer)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Local pack and organic are independent surfaces a business can own simultaneously — reinforces that the site's job is to win ORGANIC outright while only SUPPORTING the pack; you do not win the pack with pages.",
+          "stat": "A business can hold two separate page-1 placements (one organic, one local).",
+          "source_url": "https://www.themediacaptain.com/local-pack-versus-organic/",
+          "source_type": "agency-blog",
+          "snippet": "The Local SEO and Organic SEO results are treated as two separate entities. ... You could own two different placements on the first page of Google, one for organic and the other for local.",
+          "confidence": "medium",
+          "measured_or_modeled": "directional",
+          "verifies_seed": false
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "kind": "thesis",
+      "title": "Link-absorption capacity (deep site vs thin site)",
+      "section": "",
+      "loadBearing": [],
+      "whatNotToOversell": [],
+      "gaps": [
+        "No primary Google source states an explicit 'safe anchor ratio' or 'link velocity threshold' — all specific percentages (5-10% exact-match, >30% flag, velocity spikes) are practitioner-modeled/directional. Treat as directional, never as a Google-confirmed line.",
+        "The '$5-10k/mo absorption' figure has no external source — it is an internal mechanism inference from anchor-distribution headroom (more URLs = more anchor variety). Frame as modeled, FLOOR = 'a deep site distributes link investment more safely than a thin one,' not a specific dollar capacity.",
+        "SearchPilot causal tests are on large enterprise/ecommerce/publisher sites, not small contractor/roofing sites — the direction transfers (internal links move organic) but the exact magnitudes (7-25%) are not measured in the roofing vertical.",
+        "Could not retrieve the Google Dec-2022 blog body verbatim via WebFetch (JS-rendered archive shell); the 'nullify the impact of unnatural links' wording is corroborated across multiple secondary sources and matches Google's known phrasing, but the exact one-line quote was confirmed via secondary coverage, not a direct read of the primary page text.",
+        "No clean study isolating 'thin site over-optimizes -> filtered' as a causal experiment — that mechanism is an inference chaining Google's spam policy + reasonable-surfer + anchor-distribution math; directionally sound but not a single measured result."
+      ],
+      "counter": [
+        {
+          "point": "Google's enforcement default is DEVALUATION not penalty — SpamBrain 'turns off' the credit. So the thin-site 'spam-filter/velocity risk' is real but usually means lost gains, not a ranking collapse. Manual actions and Penguin-style demotions exist but are the tail, not the base case.",
+          "soWhat": "Do NOT promise 'thin sites get penalized.' Frame it as: a deep site SAFELY absorbs aggressive link investment because equity distributes across many URLs and anchors; a thin site WASTES the same budget (devalued) and carries elevated demotion tail-risk. Sell the efficiency + safety, not a guaranteed competitor penalty.",
+          "source_url": "https://developers.google.com/search/blog/2022/12/december-22-link-spam-update"
+        },
+        {
+          "point": "The clean causal evidence (SearchPilot) is for INTERNAL links, which a site fully controls. External/inbound link acquisition — where over-optimization velocity risk actually lives — is largely an ONGOING off-page activity, out of pillar scope. The one-time shippable deliverable is the internal-mesh architecture + the rankable-URL inventory that makes future link investment safe.",
+          "soWhat": "Position T3 honestly as: King Maker ships the ABSORPTIVE STRUCTURE (deep silo + internal equity cascade + many anchor-able URLs). That is the one-time asset. It does not itself guarantee the off-page links get earned.",
+          "source_url": "https://www.searchpilot.com/resources/case-studies/seo-split-test-lessons-increasing-internal-linking"
+        },
+        {
+          "point": "Link COUNT -> rank is correlation; many 'factors' (incl. exact anchor ratios and the $5-10k/mo absorption figure) are practitioner-modeled, not Google-confirmed. The $5-10k absorption is a MECHANISM claim (a deep site has the surface area to spend it across silos without anchor concentration), not a guaranteed-ranking claim.",
+          "soWhat": "Never state a dollar figure as a rank guarantee. State: a 40-50+ URL spine gives ~10x the anchor-distribution headroom of a 5-page site, so a larger monthly link budget lands as natural-looking diversity instead of homepage anchor stuffing.",
+          "source_url": "https://www.basesearchmarketing.com/blog/right-ratio-of-exact-match-anchor-text-in-link-building/"
+        },
+        {
+          "point": "More internal links also DILUTE per-link equity (100 links = 1/100 each) — a deep site is not automatically better; it must be ARCHITECTED (siloed, body-text contextual links, reasonable counts). A sprawling unstructured site can leak equity as badly as a thin one concentrates it.",
+          "soWhat": "The claim is 'deep + well-architected silo,' not 'deep' alone. The deliverable's value is the architecture (topical silos, contextual linking, controlled counts), which is exactly what King Maker bakes in vs a generic page dump.",
+          "source_url": "https://visively.com/kb/content/internal-linking-architecture"
+        }
+      ],
+      "allClaims": [
+        {
+          "claim": "Internal-linking changes causally move organic traffic: a controlled SEO split-test on a large site found increased internal linking produced a 25% uplift in organic traffic across category pages, with both linked-to AND linked-from pages gaining 20%+. This is causal (split-test), not correlational, and is the core mechanism by which a deep site converts link equity into rankings.",
+          "stat": "25% organic uplift; both page groups 20%+",
+          "measured_or_modeled": "measured",
+          "source_type": "independent-study",
+          "source_url": "https://www.searchpilot.com/resources/case-studies/seo-split-test-lessons-increasing-internal-linking",
+          "snippet": "Not only was this test positive, but it was one of our most positive tests to date resulting in a 25% uplift to organic traffic across level two and level three category pages... Both page groups alone also had estimated uplifts in the 20%+ range, which means the increased internal linking also benefited the pages being linked from.",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "A deep site's MORE internal link sources is itself a ranking lever: a SearchPilot split-test adding related-article links showed a 95% probability of positive impact and a 16% uplift on the DONOR (linking-from) pages, with the combined groups showing a 90% probability of positive outcome and 11% uplift. More content = more pages that can both emit and absorb internal equity. (Honesty: recipient pages showed no detectable effect here, likely sample size.)",
+          "stat": "16% uplift on donor pages (95% prob); 11% combined (90% prob)",
+          "measured_or_modeled": "measured",
+          "source_type": "independent-study",
+          "source_url": "https://www.searchpilot.com/resources/case-studies/seo-split-test-lessons-increasing-related-article-links",
+          "snippet": "95% chance of a positive impact on organic traffic, reporting a 16% uplift [donor pages]... No detectable impact on organic traffic [recipient pages]... 90% chance this change would result in a positive outcome with an 11% uplift [combined].",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Internal links to NEARBY LOCATION pages causally lift organic traffic — directly relevant to a multi-city roofing site's silo cascade. A SearchPilot split-test adding links to nearby location pages produced a 7% organic uplift on the linked-to location pages. A deep multi-location spine has the URLs to build this mesh; a 5-page site does not.",
+          "stat": "7% organic uplift on location pages",
+          "measured_or_modeled": "measured",
+          "source_type": "independent-study",
+          "source_url": "https://www.searchpilot.com/resources/case-studies/seo-split-test-lessons-nearby-location-links",
+          "snippet": "This corresponded to a 7% uplift in organic traffic.",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Google's own spam policy defines link spam as links created 'primarily for the purpose of manipulating search rankings' and explicitly names 'links with optimized anchor text' and 'excessive link exchanges' as violations. This is the PRIMARY-source basis for the over-optimization risk: aggressive exact-match anchoring is named spam by Google itself, not vendor opinion.",
+          "stat": "Google-named violations: optimized anchor text, excessive link exchanges",
+          "measured_or_modeled": "measured",
+          "source_type": "primary",
+          "source_url": "https://developers.google.com/search/docs/essentials/spam-policies",
+          "snippet": "Link spam is the practice of creating links to or from a site primarily for the purpose of manipulating search rankings... Advertorials or native advertising where payment is received for articles that include links that pass ranking credit, or links with optimized anchor text... Excessive link exchanges ('Link to me and I'll link to you') or partner pages exclusively for the sake of cross-linking.",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Google's enforcement against unnatural links is primarily DEVALUATION, not penalty. The Dec 2022 link spam update used SpamBrain to 'nullify the impact of unnatural links' — ranking gains from spammy links are neutralized and the credit is lost, distinct from a manual penalty. This is the defensible framing: thin-site over-optimization most often costs the gain (devalued), with manual-action/Penguin demotion as the tail risk — NOT a guaranteed catastrophic penalty.",
+          "stat": "links neutralized/credit lost, not penalized (Dec 2022 update)",
+          "measured_or_modeled": "measured",
+          "source_type": "primary",
+          "source_url": "https://developers.google.com/search/blog/2022/12/december-22-link-spam-update",
+          "snippet": "Google reported it used SpamBrain to 'neutralize the impact of unnatural links'; widely reported: 'whatever effect they had on a website's rankings is now negated — this is different from penalizing... it only turns them off' (corroborated via SE Roundtable / Authority Builders coverage of the update).",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Practitioner safe-anchor consensus: exact-match commercial anchors should stay under ~5-10% of the backlink profile; exceeding ~10% for a single phrase materially raises over-optimization risk. The bulk should be branded (40-60%), naked URLs (15-25%), generic/partial. A 5-page thin site funneling links to a homepage with the money keyword cannot hit this distribution — the limited URL set forces anchor concentration.",
+          "stat": "exact-match <5-10%; >10% per phrase = elevated risk",
+          "measured_or_modeled": "directional",
+          "source_type": "secondary",
+          "source_url": "https://www.basesearchmarketing.com/blog/right-ratio-of-exact-match-anchor-text-in-link-building/",
+          "snippet": "keep exact match links down to less than 5-10%... [too many] can begin to look suspicious to Google's algorithm.",
+          "confidence": "medium",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Internal links are a PageRank distribution system: link equity passes as a fraction per outbound link (a page with 10 links passes ~1/10 each; 100 links ~1/100), and equity decays with each click-hop from a high-authority source. A deep, siloed site routes equity down topical paths to many rankable targets; a thin site has nowhere to route it. Google has confirmed internal PageRank remains in the ranking system despite retiring the public toolbar metric.",
+          "stat": "~1/N equity per outbound link; decays per hop",
+          "measured_or_modeled": "modeled",
+          "source_type": "secondary",
+          "source_url": "https://visively.com/kb/content/internal-linking-architecture",
+          "snippet": "a page with 10 internal links distributes roughly 1/10th of its equity per link, while a page with 100 internal links distributes 1/100th... Every page linked directly from the homepage receives more equity than pages accessible only through deeper navigation layers.",
+          "confidence": "medium",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Google's 'reasonable surfer' model weights links by placement and click-probability: body-text contextual links carry the most weight, footer/sidebar links the least. This means a deep site's in-content topical silo links (high-weight) are both safer and more effective than a thin site's repeated nav/footer keyword links — the equity routing of a deep site is qualitatively superior, not just quantitatively larger.",
+          "stat": "body-text links weighted highest; footer/sidebar lowest",
+          "measured_or_modeled": "modeled",
+          "source_type": "secondary",
+          "source_url": "https://uprankd.com/news/guides/how-google-interprets-internal-links-beyond-simple-page-rank-flow",
+          "snippet": "Google's 'reasonable surfer' patent describes how link value varies based on placement, user behaviour, and click probability. The Reasonable Surfer model weights body-text links highest, footer and sidebar links lowest.",
+          "confidence": "medium",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Unnatural-link risk is assessed RELATIONALLY across the whole profile — SpamBrain analyzes anchor-text distribution across all links to a target, the topical relevance of linking content, and historical velocity, not individual links in isolation. Practitioner disavow thresholds cited: exact-match commercial anchors >30% of profile, or >15-20% of referring domains showing network affiliation. A concentrated thin-site profile is exactly the relational pattern these systems flag.",
+          "stat": "risk flags: >30% exact-match anchors; >15-20% affiliated domains",
+          "measured_or_modeled": "directional",
+          "source_type": "secondary",
+          "source_url": "https://bluetree.digital/unnatural-links/",
+          "snippet": "SpamBrain... analyses the relational patterns between the linking domain, the linked domain, the topic cluster of the linking content, the anchor text distribution across all links pointing to the target, and the historical behaviour of every domain in the network... exact-match commercial anchors account for more than 30% of the anchor profile.",
+          "confidence": "medium",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Expanding internal link sources from a high-authority page (homepage footer) causally lifts the linked-to pages: a SearchPilot split-test found pages receiving links from an expanded homepage footer saw a ~5% organic uplift vs control. Confirms the 'more link targets fed by authority pages = measurable lift' mechanism that a deep site can exploit at scale and a thin site cannot.",
+          "stat": "~5% organic uplift on footer-linked pages",
+          "measured_or_modeled": "measured",
+          "source_type": "independent-study",
+          "source_url": "https://www.searchpilot.com/resources/blog/3-seo-split-tests-you-should-try",
+          "snippet": "Pages that received links from an expanded homepage footer saw a 5% uplift in organic traffic compared to a control group.",
+          "confidence": "medium",
+          "verifies_seed": false
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "kind": "thesis",
+      "title": "Map-vs-organic ranking-factor weighting",
+      "section": "",
+      "loadBearing": [],
+      "whatNotToOversell": [],
+      "gaps": [
+        "Primary whitespark.ca/local-search-ranking-factors/ page is JavaScript-rendered and was not directly machine-readable in this pass; the full-column figures rest on three independent agency summaries of it. A verifier should confirm the rendered report (or PDF) to lock the exact 2026 percentages before FTC-exposed reel copy.",
+        "No published error bars / variance for the Whitespark survey weights — they are point estimates from 47 experts. Cannot state a defensible +/- range numerically; can only label 'directional'.",
+        "Roofing-specific pack-vs-organic click split not isolated; the 44/29 figure is general local-search. A roofing-specific behavioral source (longer sales cycle favoring organic touchpoints) would strengthen the vertical fit.",
+        "Sterling Sky's measured study covered plumber/HVAC/locksmith/garage-door/lawn-care, not roofing specifically — proximity/velocity findings are highly transferable but not roofing-measured.",
+        "Did not pull a BrightLocal independent corroborator this pass (Firecrawl out of credits limited search breadth); a BrightLocal consumer/ranking study would add a second independent (non-Whitespark) anchor on the pack-importance side."
+      ],
+      "counter": [
+        {
+          "point": "The entire pack/organic split is an EXPERT-OPINION SURVEY (47 people scoring factors), not measured Google data. A skeptic can dismiss any single percentage as crowd-sourced opinion with no error bars published. Treat numbers as directional ranks (+/- several points), never as precise weights — promise the pattern (on-page+links dominate organic), not the decimal.",
+          "soWhat": "Frame in pitches as 'industry's largest expert consensus' and the DIRECTION (which levers dominate which surface), never as a Google-certified weight. The Sterling Sky measured study is the harder backstop for the proximity/velocity/content claims.",
+          "source_url": "https://sambretzmann.com/2026-local-seo-ranking-factors-overview/"
+        },
+        {
+          "point": "Secondhand summaries disagree at the margins: one search-engine summary reported pack as on-page 19 / reviews 16 / links 15 (closer to older/2023 editions or a category mislabel), versus the 15/20/8 confirmed by two detailed sources. The primary whitespark.ca page is JS-rendered and was not directly machine-readable here — the figures rest on agency summaries of it.",
+          "soWhat": "Two independent detailed summaries (AdviceLocal, Kyle Eggleston) agree exactly on the full pack column and one (Sam Bretzmann) on the organic top-3, so confidence is high — but a verifier should ideally confirm against the rendered whitespark.ca report before it goes into FTC-exposed reel copy.",
+          "source_url": "https://biziq.com/blog/local-seo-statistics/"
+        },
+        {
+          "point": "Proximity is the confound the survey-category buckets hide: in the PACK, GBP-category + proximity + address are top individual factors, and proximity is a hard geographic cap no amount of on-page/links overcomes within a competitor's tighter radius. So 'on-page 15% of pack' overstates how much a site can move the pack for a far-away searcher.",
+          "soWhat": "Reinforces the spine: do NOT sell the pack as a site-driven win — sell ORGANIC regional dominance (where on-page+links = 57%) and treat the pack as the proximity-capped ~5-7mi byproduct. Never naively sum proximity into a category bucket.",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/"
+        },
+        {
+          "point": "Click-share (pack 44% vs organic 29%) means the PACK still wins the most local clicks head-to-head. A skeptic says 'so why not center the pack?' The answer is scale + control: the pack is proximity-capped to one office radius and flat across positions, while organic scales region-wide and is the only surface a $5-10k/mo deep-site + off-page budget can compound.",
+          "soWhat": "Position organic as the regional-scale ENGINE and the pack as the local near-default it also captures — rank the prizes, sell the bigger. Do not claim pack is '60-90%' of clicks; it is ~44%."
+        }
+      ],
+      "allClaims": [
+        {
+          "claim": "Whitespark's 2026 Local Search Ranking Factors gives the LOCAL PACK (Maps) thematic category split as: GBP signals 32%, review signals 20%, on-page signals 15%, behavioral signals 9%, link signals 8%, citation signals 6%, personalization 6%. This confirms the seed pack column.",
+          "stat": "Pack: GBP 32 / reviews 20 / on-page 15 / behavioral 9 / links 8 / citations 6 / personalization 6",
+          "source_url": "https://www.advicelocal.com/blog/2026-local-search-ranking-factors-maps-organic-ai/",
+          "source_type": "agency-blog-summary-of-primary",
+          "snippet": "Local Pack/Maps: GBP Signals: 32%, Review Signals: 20%, On-Page Signals: 15%, Link Signals: 8%, Behavioral Signals: 9%, Citation Signals: 6%, Personalization: 6%",
+          "confidence": "high",
+          "measured_or_modeled": "modeled (expert-opinion survey, NOT Google-published)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Whitespark's 2026 LSRF gives the LOCAL ORGANIC split as: on-page signals 33%, link signals 24%, behavioral 10%, personalization 8%, GBP 7%, citations 7%, reviews 6%. This confirms the seed organic column (on-page 33 / links 24 / GBP 7).",
+          "stat": "Organic: on-page 33 / links 24 / behavioral 10 / personalization 8 / GBP 7 / citations 7 / reviews 6",
+          "source_url": "https://www.advicelocal.com/blog/2026-local-search-ranking-factors-maps-organic-ai/",
+          "source_type": "agency-blog-summary-of-primary",
+          "snippet": "Local Organic: On-Page Signals: 33%, Link Signals: 24%, Behavioral Signals: 10%, Personalization: 8%, GBP Signals: 7%, Citation Signals: 7%, Review Signals: 6%",
+          "confidence": "high",
+          "measured_or_modeled": "modeled (expert-opinion survey)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "THE LOAD-BEARING TAKEAWAY: in Local Organic, on-page (33%) + links (24%) = ~57% of modeled ranking weight — the majority of organic rank is won by the two levers a deep site plus one-time shippable off-page directly controls. GBP is only ~7% of organic. This is the engine of the organic-dominance offer.",
+          "stat": "on-page 33 + links 24 = 57% of organic; GBP only 7% of organic",
+          "source_url": "https://sambretzmann.com/2026-local-seo-ranking-factors-overview/",
+          "source_type": "agency-blog-summary-of-primary",
+          "snippet": "For traditional website rankings below the map pack, your on-page optimization and backlink profile dominate, accounting for over 50% of the impact.",
+          "confidence": "high",
+          "measured_or_modeled": "modeled (expert-opinion survey)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Conversely, the LOCAL PACK is dominated by GBP (32%) + reviews (20%) = ~52% — both proximity-/profile-gated factors. On-page is only 15% and links only 8% of the pack. The pack rewards the GBP/proximity bundle, not site depth.",
+          "stat": "GBP 32 + reviews 20 = 52% of pack; on-page 15, links 8",
+          "source_url": "https://sambretzmann.com/2026-local-seo-ranking-factors-overview/",
+          "source_type": "agency-blog-summary-of-primary",
+          "snippet": "Combined, your Google Business Profile and reviews account for over half the ranking impact for map pack results.",
+          "confidence": "high",
+          "measured_or_modeled": "modeled (expert-opinion survey)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "The split is a MODELED expert-opinion survey, NOT Google-published weights: Whitespark's 2026 report aggregates a ~two-hour survey of 47 leading local-search experts scoring 187 factors. The percentages are aggregated expert opinion (directional, +/- points), not measured Google data — flag this every time the numbers are cited.",
+          "stat": "47 experts surveyed, 187 factors, by Darren Shaw (Whitespark founder)",
+          "source_url": "https://sambretzmann.com/2026-local-seo-ranking-factors-overview/",
+          "source_type": "agency-blog-summary-of-primary",
+          "snippet": "Whitespark sends a comprehensive two-hour survey to 47 of the industry's leading local search experts ... 187 ranking factors ... Darren Shaw, founder of Whitespark",
+          "confidence": "high",
+          "measured_or_modeled": "methodology disclosure — confirms modeled",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Independent second source confirms the identical pack split (GBP 32 / reviews 20 / on-page 15 / behavioral 9 / links 8 / citations 6 / personalization 6), reducing single-source risk on the pack column.",
+          "stat": "Pack column identical to AdviceLocal across an independent summary",
+          "source_url": "https://www.kyleeggleston.com/blog/2026-local-seo-ranking-factors/",
+          "source_type": "agency-blog-summary-of-primary",
+          "snippet": "GBP signals: 32% ... Review signals: 20% ... On-page signals: 15% ... Behavioral signals: 9% ... Link signals: 8% ... Citation signals: 6% ... Personalization: 6%",
+          "confidence": "high",
+          "measured_or_modeled": "modeled (expert-opinion survey)",
+          "verifies_seed": true
+        },
+        {
+          "claim": "MEASURED corroboration that proximity/address and review velocity are real pack levers (not just survey opinion): Sterling Sky analyzed 8,186 businesses across 200 cities (with Places Scout) — a quantitative measured study, not opinion. It found a negative correlation between hiding your address and pack ranking, and that this-month review velocity outranks total review count.",
+          "stat": "8,186 businesses / 200 cities; measured (top-10 pack per term, tens of thousands of data points)",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/",
+          "source_type": "independent-measured-study",
+          "snippet": "We Analyzed 8,186 Businesses in 200 Cities ... negative correlation between hiding your address and ranking well in the local pack ... The number of reviews you've gotten this month matters more than your total number of reviews.",
+          "confidence": "high",
+          "measured_or_modeled": "measured (data-driven, partnered with Places Scout)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Sterling Sky's measured study found review VELOCITY is the fastest, most volatile pack lever: a dental client with 60+ reviews/month dominated until going dormant 18 days, after which rankings 'fell off a cliff.' This is measured behavior corroborating the modeled ~20% pack review weight.",
+          "stat": "60+ reviews/month dominated; rankings collapsed after 18 days dormant",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/",
+          "source_type": "independent-measured-study",
+          "snippet": "A dental client with 60+ monthly reviews dominated the rankings until stopping for 18 days, after which rankings fell off a cliff.",
+          "confidence": "high",
+          "measured_or_modeled": "measured (client case data within the study)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Sterling Sky measured that landing-page content substance correlates with pack rank — 'more meaningful words' on the landing page (not raw volume), independently corroborating that on-page still matters (the modeled ~15% pack / ~33% organic on-page weight) and that a deep site helps even on the proximity-capped pack.",
+          "stat": "content substance (meaningful words) positively correlated with rank",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/",
+          "source_type": "independent-measured-study",
+          "snippet": "More meaningful words on landing pages correlate with better rankings, not simply volume.",
+          "confidence": "medium",
+          "measured_or_modeled": "measured (correlational)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Click-share reality check (do NOT oversell the pack): in 2025 ~44% of local-search clicks went to the Local Pack vs ~29% to organic, ~19% paid, ~8% 'more local results.' The pack captures the plurality but NOT 60-90% — and organic's ~29% is the regional-dominance prize the deep site wins.",
+          "stat": "Pack 44% / organic 29% / paid 19% / more-results 8% of local clicks (2025)",
+          "source_url": "https://mondaydigital.com/blog/google-local-pack-traffic-statistics/",
+          "source_type": "agency-blog-aggregated-stat",
+          "snippet": "44% of local searchers clicked on Local Pack or Map Pack results, while 29% for organic results, 19% for paid results, and 8% for more local results.",
+          "confidence": "medium",
+          "measured_or_modeled": "directional (aggregated CTR stat, secondhand)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Per-position pack CTRs are flat and proximity-gated: #1 pack ~17.8%, #2 ~15.4%, #3 ~15.1% — only ~3 points separate top-3, and proximity caps which businesses even appear. This is why the pack is a near-default byproduct within ~5-7 miles, not a scalable regional engine.",
+          "stat": "Pack CTR #1 17.8% / #2 15.4% / #3 15.1%",
+          "source_url": "https://mondaydigital.com/blog/google-local-pack-traffic-statistics/",
+          "source_type": "agency-blog-aggregated-stat",
+          "snippet": "The #1 local pack result received 17.8% of click-throughs, followed by 15.4% for #2 and 15.1% for #3.",
+          "confidence": "medium",
+          "measured_or_modeled": "directional (aggregated CTR stat)",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Whitespark's third 2026 column (AI search visibility) further de-centers GBP: on-page 24%, reviews 16%, citations 13%, links 13%, GBP 12%, personalization 9%, behavioral 4%. As local discovery shifts to AI overviews, the content+links+citations bundle (a deep site delivers) outweighs GBP — reinforcing the organic-first thesis for durability.",
+          "stat": "AI search: on-page 24 / reviews 16 / citations 13 / links 13 / GBP 12 / personalization 9 / behavioral 4",
+          "source_url": "https://www.advicelocal.com/blog/2026-local-search-ranking-factors-maps-organic-ai/",
+          "source_type": "agency-blog-summary-of-primary",
+          "snippet": "AI Search Visibility Factors: On-Page Signals: 24%, Review Signals: 16%, Citation Signals: 13%, Link Signals: 13%, GBP Signals: 12%, Personalization: 9%, Behavioral Signals: 4%",
+          "confidence": "medium",
+          "measured_or_modeled": "modeled (expert-opinion survey)",
+          "verifies_seed": false
+        }
+      ]
+    },
+    {
+      "id": "T5",
+      "kind": "thesis",
+      "title": "Revenue contrast (defensible ranges, floor/ceiling)",
+      "section": "",
+      "loadBearing": [],
+      "whatNotToOversell": [],
+      "gaps": [
+        "No PRIMARY (non-vendor) source pins the exact 5-7mi vs 30-50mi numbers as a measured pack-radius distribution; the radius figures are aggregated from SEO-vendor posts (vendor-incentive) corroborated by practitioner forums. Sterling Sky/Whitespark confirm proximity gating qualitatively but do not publish a measured mileage distribution.",
+        "The jobs/week floor (~1-3) and ceiling (~5-10) are a first-party synthesis MODEL, not an externally measured benchmark. No public study measures 'incremental jobs/week from pack-only vs organic-regional' for roofing — this is inherently modeled and must stay labeled as such.",
+        "Household density (households, not just population) for the exact 5-7mi suburb footprint vs the 30-50mi region was not pulled to a Census tract level; population CSA/MSA figures are confirmed but a tract-level household count for the precise radii would tighten the denominator.",
+        "The '93% more actions' pack stat (counter-evidence) traces to a secondary aggregator, not a located primary Google/BrightLocal table — should be independently re-sourced before using it in a rebuttal.",
+        "Roofing-specific organic CTR-by-position (vs generic local CTR) was not isolated; the close-rate band (15-25%) is sourced but the click-to-lead rate for a roofing organic #1 specifically is directional."
+      ],
+      "counter": [
+        {
+          "point": "Pack listings still generate disproportionate ACTIONS (calls, directions, clicks) even at a lower raw click share — some studies cite Google-3-pack businesses getting '93% more actions.' Click-share alone understates the pack's conversion intensity for emergency/near-me intent.",
+          "soWhat": "Don't claim organic beats the pack on emergency lead VALUE; frame organic as the larger-volume regional engine and the pack as the high-intent emergency-slice byproduct (consistent with dual-intent forking). Promise reach, not that organic replaces the pack.",
+          "source_url": "https://redlocalagency.com/google-local-pack-statistics/"
+        },
+        {
+          "point": "The reach multiplier is geometric and assumes the contractor can actually RANK metro-wide and SERVICE it. In a competitive metro, ranking #1 organically for 'roofing [big city]' against entrenched DA-70 competitors can take 6-18 months and may never reach #1; the 50-mi ceiling assumes a near-best-case competitive position.",
+          "soWhat": "This is exactly why it's MODELED and the ceiling is 'projected.' The floor (a couple jobs/week from improved organic visibility) is far more defensible than the 5-10 ceiling. Never quote the ceiling as the expected outcome.",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/"
+        },
+        {
+          "point": "Population/area does not equal addressable demand. Roof replacement is episodic (storm-driven, ~once per 15-25 years per home); a 70x larger area does not mean 70x more in-market buyers this week, and storm timing is lumpy.",
+          "soWhat": "The jobs/week figure must be framed as a steady-state range across normal demand, with a note that storm events spike it. Reinforces ranges-not-promises and 'depends on market.'"
+        },
+        {
+          "point": "Close rate (15-25% organic) is itself a CLIENT variable — it depends on the contractor's sales process and 60-second response time (which can lift conversions up to 391%). A great site feeding a slow-responding contractor underperforms the model.",
+          "soWhat": "Attribute the jobs/week outcome partly to the client's operations; the site maximizes qualified at-bats, it doesn't control the swing. Keeps the claim FTC-defensible (we control reach/leads, not their close).",
+          "source_url": "https://clicksgeek.com/seo-conversion-rate-for-roofing/"
+        },
+        {
+          "point": "Net margin ~2.8% (NRCA average) means even a strong revenue lift can leave a poorly-run contractor barely profitable; revenue framing could be read as a profit promise by an unsophisticated buyer.",
+          "soWhat": "Always say REVENUE, show the margin range, and let the owner apply their own margin. This is the single biggest FTC exposure in the pillar.",
+          "source_url": "https://hookagency.com/blog/profit-margin-roofing/"
+        }
+      ],
+      "allClaims": [
+        {
+          "claim": "The five-figure roofing ticket is real and current: the average U.S. residential roof REPLACEMENT cost reached $17,631 in 2025 (repairs averaged $4,699), per Verisk's analysis of insurance claim data. This anchors the per-job revenue used in any jobs/week revenue model.",
+          "stat": "$17,631 avg residential roof replacement (2025); $4,699 avg repair; +33% / +25% vs prior 4-yr avg",
+          "measured_or_modeled": "measured",
+          "source_type": "independent",
+          "source_url": "https://www.carriermanagement.com/news/2026/05/29/288511.htm",
+          "snippet": "Average residential roof replacement costs reached $17,631 in 2025, with repair costs averaging $4,699. ... replacement costs jumped 33% and repair costs climbed 25% in 2025 [vs the prior four-year average].",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Verisk primary source corroboration: total U.S. roof repair/replacement claim value reached ~$30-31B in 2024 (up ~30% since 2022), with wind and hail the predominant drivers, accounting for more than half of residential claims. Confirms storm/replacement work is a large, recurring, high-ticket category — not a tail event.",
+          "stat": "~$30-31B total 2024 roof claims; +30% since 2022; wind/hail >50% of residential claims",
+          "measured_or_modeled": "measured",
+          "source_type": "primary",
+          "source_url": "https://www.verisk.com/company/newsroom/u.s.-roof-claims-costs-reached-over-$30-billion-in-2024-underscoring-evolving-risks/",
+          "snippet": "U.S. Roof Claims Costs Reached Over $30 Billion In 2024... In 2024, roof repair and replacement cost value totaled nearly $31 billion, up nearly 30 percent since 2022. Wind and hail were the predominant drivers.",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "CORRECTED FRAMING (the load-bearing honesty point): the pack does NOT capture 60-90% of local clicks. BrightLocal's click study (5,500+ users, MTurk) found that when Local Services Ads are absent, ORGANIC takes 50.8% of clicks vs the Local Pack's 32.3%; when LSAs are present, organic 43.9% vs pack 28.8%. Organic out-clicks the pack in both conditions. This directly supports the organic-dominance thesis: the deeper organic surface wins the larger click share.",
+          "stat": "Organic 43.9-50.8% of clicks vs Local Pack 28.8-32.3%; paid 14.6-25.3%; map ~2%",
+          "measured_or_modeled": "measured",
+          "source_type": "independent",
+          "source_url": "https://www.brightlocal.com/research/local-services-ads-click-study/",
+          "snippet": "When LSAs are absent: Local Pack 32.3%, Organic 50.8%, Paid 14.5%, Map 2.3%. When LSAs are present: Local Pack 28.8%, Organic 43.9%, Paid (PPC+LSA) 24.9% combined. Based on more than 5,500 impartial internet users.",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Pack reach is proximity-capped to a tight radius — typically under ~3 miles in dense/urban areas and up to ~10-15 miles only in low-competition rural areas. A perfectly optimized business 8 miles out routinely loses pack placement to a weaker competitor 2 miles from the searcher. This is the geometric ceiling on how many households a single map-pack position can serve.",
+          "stat": "Pack proximity radius ~1-3 mi urban, up to ~15 mi rural; proximity is the 3rd-ranked pack factor",
+          "measured_or_modeled": "measured",
+          "source_type": "vendor-incentive",
+          "source_url": "https://localdominator.co/local-search-ranking-factors/",
+          "snippet": "In dense cities, coverage is often 1 to 3 miles... usually under 3 miles in urban areas and up to 15 miles in rural regions. A perfectly optimized business located 8 miles from a searcher will often lose Google 3 pack placement to a less-optimized competitor 2 miles away.",
+          "confidence": "medium",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Independent corroboration of the proximity cap: Sterling Sky's study of 8,186 businesses across 200 cities found a visible street address is the 7th-most-influential local-pack ranking factor; hiding the address tanked rankings (in one case the pack disappeared entirely for a main keyword). The pack is structurally tied to a physical point and its surrounding radius — it cannot be 'won' across a whole metro from one location.",
+          "stat": "8,186 businesses / 200 cities; visible address = 7th most influential pack factor",
+          "measured_or_modeled": "measured",
+          "source_type": "independent",
+          "source_url": "https://www.sterlingsky.ca/what-gets-you-ranking-for-near-me-2025/",
+          "snippet": "We Analyzed 8,186 Businesses in 200 Cities... when they hid a home service client's address... their rankings tanked, and when they added the address back a month later, their rankings jumped back up. Having a visible address was the 7th most influential factor on local rank.",
+          "confidence": "high",
+          "verifies_seed": false
+        },
+        {
+          "claim": "REACH MULTIPLIER (the spine, MODELED geometric math): addressable area scales with the square of radius. A proximity-capped pack footprint (~6-mi radius suburb) covers ~113 mi². Organic regional dominance across a 30-50-mi radius covers ~2,800-7,850 mi² — a ~25x (floor, 30mi) to ~70x (ceiling, 50mi) larger addressable area, ~44x at a 40-mi midpoint. Organic ranks the same site across every town in the metro simultaneously; the pack re-localizes to whoever is nearest.",
+          "stat": "π·6²≈113 mi² (pack) vs π·30²≈2,827 / π·40²≈5,027 / π·50²≈7,854 mi² (organic) → ~25-70x area",
+          "measured_or_modeled": "modeled",
+          "source_type": "first-party-model",
+          "source_url": "https://localdominator.co/local-search-ranking-factors/",
+          "snippet": "Geometric model built on the cited proximity radius (pack ~1-3mi urban / ~6mi suburb) vs roofer service radius (~30mi typical, up to ~100mi); area = π·r², so reach scales with radius squared. MODELED, not a lead-count promise.",
+          "confidence": "high",
+          "verifies_seed": true
+        },
+        {
+          "claim": "The wider organic radius is SERVICEABLE, not theoretical: roofing contractors commonly run a ~30-mile-radius service area, with many extending to 100 miles / multiple cities for storm and replacement work. So organic's metro-wide reach maps to jobs the crew can actually take — the reach multiplier converts to real revenue, not unservable clicks.",
+          "stat": "Typical roofer service radius ~30 mi; extended areas up to ~100 mi / multiple cities",
+          "measured_or_modeled": "directional",
+          "source_type": "forum-practitioner",
+          "source_url": "https://www.roofingtalk.com/threads/how-far-do-you-guys-travel-to-a-job.180/",
+          "snippet": "Many roofing contractors prefer to maintain about a 30-mile radius service area... Some contractors run service areas covering close to 100 miles in a semi-circle from their office, encompassing around 150 small towns and 4 major cities.",
+          "confidence": "medium",
+          "verifies_seed": false
+        },
+        {
+          "claim": "The reach multiplier has real population behind it. The Charlotte MSA holds ~2.9M people (2025 est., 11 counties) and the Charlotte CSA ~3.39M (18 counties); the Raleigh-Durham-Cary CSA ~2.44M. A 5-7-mi suburban pack footprint reaches only a small five-figure-household slice of that, while metro-wide organic addresses the multi-million-person region — the denominator behind the floor/ceiling jobs gap.",
+          "stat": "Charlotte MSA ~2.94M / CSA ~3.39M (18 counties); Triangle CSA ~2.44M",
+          "measured_or_modeled": "measured",
+          "source_type": "primary",
+          "source_url": "https://en.wikipedia.org/wiki/Charlotte_metropolitan_area",
+          "snippet": "For 2025, the MSA population is estimated at 2,938,830 (ranked 21st nationally), and the CSA population stands at 3,387,115... The official Charlotte–Concord–Gastonia MSA encompasses 11 counties total.",
+          "confidence": "high",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Organic close-rate seed CONFIRMED by an independent benchmark: while the blended roofing lead converts at only ~3-7%, EXCLUSIVE high-intent organic-search leads convert at ~15-25% — because the searcher self-selected by typing the service. This is the close-rate band to use in the jobs/week model (and why organic leads are worth more than purchased shared leads).",
+          "stat": "Blended roofing lead close ~3-7%; exclusive high-intent organic ~15-25%",
+          "measured_or_modeled": "measured",
+          "source_type": "vendor-incentive",
+          "source_url": "https://clicksgeek.com/seo-conversion-rate-for-roofing/",
+          "snippet": "Exclusive and high-intent leads from organic search tend to convert at rates between 15-25%, which is significantly higher than the general roofing benchmark [3-7%].",
+          "confidence": "medium",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Per-job VALUE bracket corroborates the Verisk ticket independently: industry lead-economics sources peg a roofing job at $8,000-$25,000, which is why contractors pay $80-$300+ per qualified lead. The Verisk $17,631 replacement average sits squarely inside this band — the revenue-per-job input to the model is doubly sourced.",
+          "stat": "Roofing job value $8,000-$25,000; qualified lead cost $80-$300+",
+          "measured_or_modeled": "measured",
+          "source_type": "vendor-incentive",
+          "source_url": "https://getbiddable.com/blog/average-cost-per-lead-for-roofing-contractors",
+          "snippet": "A roofing job is worth $8,000–$25,000, which means contractors are willing to pay significantly for the lead... typically $80 to $220 for qualified leads... above $300 [for premium exclusive].",
+          "confidence": "medium",
+          "verifies_seed": true
+        },
+        {
+          "claim": "REVENUE != PROFIT (mandatory honesty guardrail): roofing net margins are thin — typically 6-12% after overhead/taxes, and the NRCA reports the AVERAGE contractor nets just 2.8%. So a five-figure ticket and a multi-job/week lift must be quoted as REVENUE; the owner's take-home is a fraction. Never convert the jobs/week model into a profit promise.",
+          "stat": "Roofing net margin ~6-12% typical; NRCA average 2.8%; gross margin ~25-40%",
+          "measured_or_modeled": "measured",
+          "source_type": "vendor-incentive",
+          "source_url": "https://hookagency.com/blog/profit-margin-roofing/",
+          "snippet": "Net profit margin after overhead, taxes, etc. typically ranges from 6% to 12%... the NRCA reports the average roofing contractor nets just 2.8% — meaning half of all roofing companies make less than that.",
+          "confidence": "medium",
+          "verifies_seed": true
+        },
+        {
+          "claim": "JOBS/WEEK FLOOR-CEILING MODEL (MODELED — promise the floor, project the ceiling). Conditions stated explicitly: (1) pack-only suburb domination = proximity-capped to the ~5-7mi footprint, realistically a couple incremental jobs/week (~1-3); (2) organic regional dominance across a 30-50mi radius = the same site ranking metro-wide, realistically ~5-10 incremental jobs/week. The contrast is driven by the ~25-70x addressable-area multiplier x serviceable radius, NOT a guaranteed lead count. Output depends on market size, competition, review velocity, and the client's own close rate and capacity — all client variables.",
+          "stat": "Pack-only: ~1-3 jobs/wk (proximity-capped). Organic regional: ~5-10 jobs/wk. MODELED range, not a point-promise.",
+          "measured_or_modeled": "modeled",
+          "source_type": "first-party-model",
+          "source_url": "https://www.brightlocal.com/research/local-services-ads-click-study/",
+          "snippet": "Synthesis model: organic out-clicks pack (BrightLocal 44-51% vs 29-32%) x ~25-70x reach multiplier (π·r²) x serviceable 30mi radius x 15-25% high-intent close x $17,631 ticket. Floor = promised, ceiling = projected; gated on market/competition/capacity.",
+          "confidence": "medium",
+          "verifies_seed": true
+        },
+        {
+          "claim": "WHY ORGANIC, NOT PACK, IS THE ENGINE (mechanism, not just outcome): the same expert-survey weighting that governs the pack shows links drive ORGANIC ~24% but the pack only ~8%, and on-page drives organic ~33% vs pack ~15%. A deep authority site compounds across the entire organic surface (every town page, every service page) where the pack is a near-binary proximity gate. The site is the asset that scales; the pack is the byproduct it throws off near the office.",
+          "stat": "Links: organic ~24% vs pack ~8%; on-page: organic ~33% vs pack ~15% (LSRF expert survey = modeled)",
+          "measured_or_modeled": "modeled",
+          "source_type": "vendor-incentive",
+          "source_url": "https://whitespark.ca/blog/7-local-search-ranking-factors-that-may-challenge-your-current-thinking/",
+          "snippet": "Whitespark Local Search Ranking Factors expert survey (EXPERT-SURVEY = modeled, not measured): organic weighting on-page 33% / links 24% vs pack on-page 15% / links 8%. Flag: survey-based, directional.",
+          "confidence": "medium",
+          "verifies_seed": false
+        }
+      ]
+    },
+    {
+      "id": "T6",
+      "kind": "thesis",
+      "title": "The two execution conditions",
+      "section": "",
+      "loadBearing": [],
+      "whatNotToOversell": [],
+      "gaps": [
+        "No measured causal study isolating EXTERNAL backlink acquisition -> organic rank gain for a roofing/home-services site at the $5-10k/mo spend level; external-link claims rest on correlation (Ahrefs) + timeline aggregates, not a controlled test.",
+        "Could not verify the specific Sterling Sky 'competitors gaining 15-45 reviews/month' figure on the primary page; only the 'fall off a cliff after ~3 weeks' and Magic-10/16->31 plateau lines traced. The exact dormancy-to-drop interval beyond 'three weeks' is not granularly documented in the public case study.",
+        "The exact 2026 Whitespark numeric weights were not re-pulled from the primary whitespark.ca page this session (harmo summary lacked numbers); weights carried from KM_VALUEPROP warm context — a fresh primary pull would harden them.",
+        "No roofing-specific measured ROI figure tying a $5-10k/mo off-page spend to incremental leads/revenue (the value-per-lead bridge lives in other pillars); this pillar quantifies rank movement, not closed-loop ROI.",
+        "FTC penalty figure (~$51,744/violation) carried from warm context; the exact current inflation-adjusted per-violation amount should be confirmed against the live FTC page before reel use."
+      ],
+      "counter": [
+        {
+          "point": "The cleanest causal off-page evidence we have is INTERNAL linking (SearchPilot split-tests), not EXTERNAL link building. External-link impact is correlational (Ahrefs) and a fifth of SERPs rank a top page with no traffic-links at all — so a $5-10k/mo external campaign is a probabilistic bet, not a guaranteed rank mover.",
+          "soWhat": "Lean the GUARANTEED part of the offer on the shippable internal mesh (measured +5-25%) and frame external link earning as the compounding, probabilistic ceiling — don't promise external links produce a fixed rank gain.",
+          "source_url": "https://ahrefs.com/blog/links-with-traffic-study/"
+        },
+        {
+          "point": "$5-10k/mo is 2-4x the typical roofer SEO spend ($1.5-3.5k) and only ~19% of providers even operate at the $5k+ tier. Centering the offer on this number risks pricing out the ICP and implying the floor is enterprise-tier when most clients win on far less.",
+          "soWhat": "Position $5-10k/mo explicitly as the aggressive enterprise CEILING for multi-location regional dominance, not the entry requirement; most clients run less and still win the proximity-capped pack.",
+          "source_url": "https://backlinko.com/seo-pricing"
+        },
+        {
+          "point": "The vivid Sterling Sky 'competitors getting 15-45 reviews/month' figure did NOT trace cleanly to the primary case-study page on fetch (only the 'fall off a cliff after ~3 weeks' TL;DR line and the Magic-10/16->31 plateau did). Asserting the 15-45 number as primary would be a retrofitted citation.",
+          "soWhat": "Use the verifiable 'fall off a cliff after ~3 weeks dormancy' + Magic-10 + 16->31 plateau lines; treat 15-45/mo as directional secondary-summary, not a load-bearing primary stat.",
+          "source_url": "https://www.sterlingsky.ca/number-of-reviews-impact-ranking/"
+        },
+        {
+          "point": "Organic dominance is slow (avg #1 page ~5 yrs old; only 1.74% of new pages reach top-10 in a year). A 90-day guarantee tied to organic money-terms is at odds with this timeline; the realistic compounding window is 6-12mo+.",
+          "soWhat": "Define the guarantee window honestly (6-12mo for organic compounding) or scope the 90-day promise to the proximity-capped pack/near-me terms where reviews+GBP move faster, not competitive organic head terms.",
+          "source_url": "https://ahrefs.com/blog/how-long-does-it-take-to-rank-in-google-and-how-old-are-top-ranking-pages/"
+        },
+        {
+          "point": "All the headline weight splits (GBP 32%, reviews 20%, links 24% organic, etc.) come from an EXPERT SURVEY (Whitespark LSRF, ~47 pros) = modeled opinion, not measured algorithm output. Stacking an offer on these as if they were measured causal weights overstates certainty.",
+          "soWhat": "Label the weights as expert-consensus modeling; anchor the hard claims on the MEASURED items (SearchPilot split-tests, Ahrefs crawl ages, FTC penalty figure) and use the survey only for directional weighting.",
+          "source_url": "https://harmo.me/en/blog/local-seo-ranking-factors-2026-whitespark"
+        }
+      ],
+      "allClaims": [
+        {
+          "claim": "A legitimate off-page campaign moves ORGANIC rank far more than it moves the local pack: in the expert-survey model, links carry ~24% of localized-organic weight versus only ~8% of local-pack weight. So a $5-10k/mo earn-don't-buy link program is primarily an organic-dominance lever, secondarily a pack lever — which is exactly the spine (organic is the engine; the pack is a proximity-capped byproduct).",
+          "stat": "Links ~24% organic weight vs ~8% pack weight (expert survey)",
+          "source_url": "https://whitespark.ca/local-search-ranking-factors/",
+          "source_type": "independent-study",
+          "snippet": "Whitespark 2026 Local Search Ranking Factors (expert survey of ~47 professionals): for localized organic, links are weighted ~24% (second only to on-page ~33%); for the local pack, links are only ~8%. (Weights confirmed in KM_VALUEPROP warm context this session; harmo.me summary confirms the report exists and that 'Review Signals' and 'Behavioural Signals' gained prominence in 2026.)",
+          "confidence": "high",
+          "measured_or_modeled": "modeled",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Internal links are the one-time, shippable off-page-adjacent lever with CAUSAL split-test evidence, and the geo-mesh on a multi-location roofing site is the highest-leverage form: linking each location/regional page to its nearest neighbors produced a measured +7% organic-traffic uplift on the receiving pages. This is the proof that a properly meshed authority site moves organic on its own — before a single external link is earned.",
+          "stat": "+7% organic traffic on pages linked to 6 nearest regions (~8,000 regional pages)",
+          "source_url": "https://www.searchpilot.com/resources/blog/internal-linking-tests",
+          "source_type": "independent-study",
+          "snippet": "\"A customer with ~8,000 regional pages across the USA tested adding links to the 6 nearest geographic regions and saw a 7% uplift in organic traffic on the pages receiving new links.\"",
+          "confidence": "high",
+          "measured_or_modeled": "measured",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Broader internal-link split-tests confirm the mechanism is real and the range is +5% to +25% causal organic uplift — promise the floor (~5%), project the ceiling (~25%). A grocery site's level-2/level-3 category interlinking drove a +25% organic-traffic uplift (~9,200 extra sessions/mo); a homepage-footer link test drove +5% on the recipient pages.",
+          "stat": "+5% to +25% causal organic uplift from internal linking (25% top result, 5% footer test)",
+          "source_url": "https://www.searchpilot.com/resources/case-studies/seo-split-test-lessons-increasing-internal-linking",
+          "source_type": "independent-study",
+          "snippet": "\"Not only was this test positive, but it was one of our most positive tests to date resulting in a 25% uplift to organic traffic across level two and level three category pages\" (est. 9,200 additional organic sessions monthly). Footer test: \"pages that received links from the homepage footer saw a 5% uplift in organic traffic compared to a control group.\"",
+          "confidence": "high",
+          "measured_or_modeled": "measured",
+          "verifies_seed": false
+        },
+        {
+          "claim": "External backlinks (referring domains) are the strongest correlated off-page factor for organic rank, but the relationship is correlational, not a guarantee — about one-fifth of SERPs have a top-ranking page with no links from traffic-generating pages. This is why the campaign must promise a FLOOR (compounding authority over 6-12mo) and not a point-promise: links strongly help, but rank is multi-factor and a page can rank without them.",
+          "stat": "~1/5 (20%) of studied SERPs had a top page with zero links from pages with traffic",
+          "source_url": "https://ahrefs.com/blog/links-with-traffic-study/",
+          "source_type": "independent-study",
+          "snippet": "\"it's possible to rank on the first page of Google without links from pages with traffic\" — approximately one-fifth of studied SERPs had top-ranking pages with no links from pages generating organic traffic; \"no single factor determines ranking success.\"",
+          "confidence": "high",
+          "measured_or_modeled": "measured",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Off-page link work COMPOUNDS over 6-12 months — it is not fast. An individual link's median time to measurable ranking impact is ~10 weeks on an established domain; a full campaign acquiring multiple referring domains monthly takes 6-12 months to materialize as organic-traffic growth. This is the honest timeline the guarantee must be built around, not a 30-90 day promise.",
+          "stat": "~10-week median per-link impact; 6-12 months for full campaign effect",
+          "source_url": "https://www.searchenginejournal.com/link-building-time-to-results/448340/",
+          "source_type": "industry-publication",
+          "snippet": "Median time from link acquisition to measurable ranking improvement is ~10 weeks (established domains); a sustained campaign acquiring multiple new referring domains monthly takes 6-12 months to materialize as measurable organic-traffic growth.",
+          "confidence": "medium",
+          "measured_or_modeled": "measured",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Independent crawl data confirms organic dominance is a SLOW, authority-driven game that rewards a sustained off-page program: the average #1-ranking page is ~5 years old, 72.9% of top-10 pages are 3+ years old, and only 1.74% of new pages reach the top 10 within a year. The implication: a one-time site cannot 'set and forget' to the top of competitive organic — sustained authority signals (links earned over 6-12mo+) are a genuine requirement, not a hedge.",
+          "stat": "Avg #1 page ~5 yrs old; 72.9% of top-10 are 3+ yrs; only 1.74% of new pages hit top-10 in a year",
+          "source_url": "https://ahrefs.com/blog/how-long-does-it-take-to-rank-in-google-and-how-old-are-top-ranking-pages/",
+          "source_type": "independent-study",
+          "snippet": "\"Only 1.74% of newly published pages rank in the top 10 within a year\"; \"72.9% of pages in Google's top 10 are more than 3 years old\"; the average #1 ranking page is 5 years old.",
+          "confidence": "high",
+          "measured_or_modeled": "measured",
+          "verifies_seed": false
+        },
+        {
+          "claim": "A company-wide review mandate is the FASTEST lever for the local pack: review signals carry ~20% of pack weight, and within that, recency/velocity now outweigh raw count. Sterling Sky's case research shows rankings can 'fall off a cliff' if a business stops collecting reviews for even ~three weeks — making sustained velocity a genuine ongoing requirement, not a one-time push.",
+          "stat": "Reviews ~20% of pack weight; ranking drop after ~3 weeks of dormancy",
+          "source_url": "https://www.sterlingsky.ca/number-of-reviews-impact-ranking/",
+          "source_type": "independent-study",
+          "snippet": "TL;DR of Sterling Sky case study: \"Rankings can 'fall off a cliff' if you stop receiving reviews for even three weeks; stay consistent.\" Review signals ~16-20% of local-pack weight (Whitespark/BrightLocal, growing 2023->2026).",
+          "confidence": "high",
+          "measured_or_modeled": "measured",
+          "verifies_seed": true
+        },
+        {
+          "claim": "The review mechanism has a diminishing-returns shape that the mandate must be designed around: hitting the 'Magic 10' triggers a real ranking boost, but raw count plateaus fast (no measurable lift going 16->31 reviews). Therefore the durable win is sustained VELOCITY/recency, not a one-time count push — which makes the ongoing client-executed review cadence a true requirement (KM ships the review-ask machine; the client runs it).",
+          "stat": "Boost at 10 reviews; no measurable lift from 16->31 reviews",
+          "source_url": "https://www.sterlingsky.ca/number-of-reviews-impact-ranking/",
+          "source_type": "independent-study",
+          "snippet": "\"once you hit ten reviews, there is a ranking boost\"; \"there really is not a ranking numbers increase when the listing went from 16 to 31 reviews\" — consistent monthly reviews (recency) are more impactful than a large, stagnant total.",
+          "confidence": "high",
+          "measured_or_modeled": "measured",
+          "verifies_seed": false
+        },
+        {
+          "claim": "$5-10k/mo is the AGGRESSIVE ENTERPRISE tier, not the typical roofer spend — do not let the offer imply most clients need it. Independent pricing data: the average US SEO retainer is $1,000-$2,500/mo; only ~19% of US/UK/AU providers operate at the $5,000+/mo enterprise tier; most roofers run $1,500-$3,500/mo. Frame $5-10k/mo as the ceiling that buys faster compounding, not the floor.",
+          "stat": "Avg $1,000-$2,500/mo; only ~19% of US providers at $5k+/mo enterprise tier",
+          "source_url": "https://backlinko.com/seo-pricing",
+          "source_type": "industry-publication",
+          "snippet": "\"The average monthly cost for SEO is $1,000-$2,500.\" Tier breakdown: Enterprise ($5,000+/month) = \"19%\" of US/UK/Australia providers; Premium ($2,501-$5,000) = 34%.",
+          "confidence": "high",
+          "measured_or_modeled": "measured",
+          "verifies_seed": true
+        },
+        {
+          "claim": "Independent roofing-specific pricing corroborates the tier framing: basic local SEO runs $300-$1,000/mo, mid-tier $1,000-$2,000/mo, comprehensive $2,000-$5,000/mo, and enterprise $5,000-$25,000+/mo. A $5-10k/mo program lands at the bottom of enterprise — defensible for a multi-location roofer chasing regional organic dominance, but explicitly above what a single-location shop typically needs.",
+          "stat": "Roofing SEO: basic $300-1k, mid $1-2k, comprehensive $2-5k, enterprise $5k-25k+/mo",
+          "source_url": "https://builtrightdigital.com/roofing-seo-cost/",
+          "source_type": "vendor-incentive",
+          "snippet": "Mid-level roofing SEO packages \"usually costing between $1,000 and $2,000 per month\"; comprehensive \"$2,000 to $5,000 or more\"; enterprise packages \"run $5,000 to $25,000+ per month.\" (Agency source — corroborates Backlinko independent tiers.)",
+          "confidence": "medium",
+          "measured_or_modeled": "measured",
+          "verifies_seed": true
+        },
+        {
+          "claim": "The review mandate must be UNIVERSAL and unscreened to stay legal: the FTC's review rule (effective Oct 2024) bars review gating/suppression with penalties up to ~$51,744 per violation, and self-serving aggregateRating markup is ineligible for star rich-results. So the 'machine' KM ships must ask every customer (no cherry-picking happy ones) — a compliance constraint that doubles as why velocity (not curated count) is the right design.",
+          "stat": "FTC penalty up to ~$51,744/violation; review gating prohibited (Oct 2024)",
+          "source_url": "https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials",
+          "source_type": "gov",
+          "snippet": "FTC final rule on fake reviews and testimonials (Aug 2024, effective Oct 2024) prohibits review suppression/gating; civil penalties up to ~$51,744 per violation. (KM_VALUEPROP warm context.)",
+          "confidence": "medium",
+          "measured_or_modeled": "measured",
+          "verifies_seed": false
+        },
+        {
+          "claim": "Both conditions are GENUINE REQUIREMENTS, not hedges, because the heaviest organic factors (on-page ~33% + links ~24% = ~57% of organic weight) are exactly the two things a static one-time site cannot sustain alone: on-page is shipped once, but links and reviews are ongoing signals competitors actively accrue. Standing still while competitors earn links and gain reviews is a relative decline — the data on dormant reviews ('fall off a cliff') and page-age dominance both show the floor erodes without sustained off-page + review velocity.",
+          "stat": "On-page ~33% + links ~24% = ~57% of organic weight (expert survey)",
+          "source_url": "https://whitespark.ca/local-search-ranking-factors/",
+          "source_type": "independent-study",
+          "snippet": "Whitespark 2026: localized organic on-page ~33% + links ~24% dominate organic weighting; both reviews (pack ~20%) and links (organic ~24%) are signals competitors continuously accrue, so a one-time site without sustained off-page/review velocity declines relative to active competitors.",
+          "confidence": "high",
+          "measured_or_modeled": "modeled",
+          "verifies_seed": true
+        }
+      ]
+    }
+  ],
+  "verdicts": [],
+  "thesis": null,
+  "levers": null,
+  "guardrails": null,
+  "meta": {
+    "pillars": 6,
+    "loadBearing": 0,
+    "verified": 0,
+    "survived": 0
+  }
+}

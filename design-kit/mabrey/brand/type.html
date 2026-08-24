@@ -1,0 +1,111 @@
+<!-- @dsCard group="Brand" name="Typography" subtitle="Newsreader display + Plus Jakarta Sans · the two-voice system" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mabrey — Typography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --page:#fff; --ink:#14213d; --body:#33415c; --navy:#0e2140;
+    --surface:#f4f6fb; --tint:#eef2fb; --line:#e2e8f0;
+    --brand:#1a489a; --brandsoft:#eaf0fb; --red:#c02026; --mist:#51607a;
+    --display:"Newsreader",Georgia,ui-serif,serif;
+    --sans:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --elev-2:0 1px 2px rgba(15,23,42,.05), 0 14px 30px -14px rgba(15,23,42,.16);
+    --inset-hi:inset 0 1px 0 rgba(255,255,255,.7);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--body);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55}
+  .wrap{max-width:1140px;margin:0 auto;padding:56px 40px 72px}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--brand)}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
+  h1.page{font-family:var(--display);font-weight:600;font-size:clamp(34px,4vw,46px);color:var(--ink);margin:14px 0 10px;letter-spacing:-.015em}
+  .lede{font-size:17px;color:var(--mist);max-width:680px;margin:0 0 42px}
+
+  .voices{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:46px}
+  .voice{background:#fff;border:1px solid var(--line);box-shadow:var(--inset-hi),var(--elev-2);padding:26px 26px 24px;position:relative;overflow:hidden}
+  .voice .fold{position:absolute;top:0;right:0;height:20px;width:20px;background:var(--brand);clip-path:polygon(0 0,100% 0,100% 100%)}
+  .voice .lbl{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--brand);letter-spacing:.04em}
+  .voice .fam{font-size:26px;color:var(--ink);margin:8px 0 4px;letter-spacing:-.01em}
+  .voice .fam.ser{font-family:var(--display);font-weight:600}
+  .voice .fam.san{font-family:var(--sans);font-weight:800}
+  .voice .stack{font-family:var(--mono);font-size:11.5px;color:var(--mist);margin-bottom:14px}
+  .voice .job{font-size:14px;color:var(--body);border-top:1px solid var(--line);padding-top:13px}
+  .voice .spec{font-family:var(--display);font-size:44px;color:var(--ink);line-height:1;margin:10px 0 16px}
+  .voice .spec.san{font-family:var(--sans);font-weight:800;letter-spacing:-.02em}
+
+  h2{font-family:var(--display);font-weight:600;font-size:21px;color:var(--ink);margin:44px 0 16px;letter-spacing:-.01em}
+  .scale{border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line)}
+  .row .m{font-family:var(--mono);font-size:11.5px;color:var(--mist);line-height:1.7}
+  .row .m b{display:block;color:var(--ink);font-size:12px;font-weight:600;letter-spacing:-.01em}
+  .s-h1{font-family:var(--display);font-weight:600;font-size:46px;color:var(--ink);letter-spacing:-.015em;line-height:1.08;text-wrap:balance}
+  .s-h2{font-family:var(--display);font-weight:600;font-size:32px;color:var(--ink);letter-spacing:-.012em;line-height:1.15}
+  .s-h3{font-family:var(--sans);font-weight:700;font-size:21px;color:var(--ink);letter-spacing:-.008em}
+  .s-body{font-family:var(--sans);font-weight:400;font-size:17px;color:var(--body);max-width:640px}
+  .s-small{font-family:var(--sans);font-weight:500;font-size:14px;color:var(--mist)}
+  .s-kick{font-family:var(--sans);font-weight:700;font-size:11.5px;color:var(--brand);letter-spacing:.2em;text-transform:uppercase}
+  .s-mono{font-family:var(--mono);font-size:13px;color:var(--ink)}
+
+  .rules{margin-top:46px;padding:24px 26px;background:var(--tint);border-left:3px solid var(--brand)}
+  .rules h3{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);margin:0 0 12px}
+  .rules ul{margin:0;padding-left:19px}
+  .rules li{font-size:14.5px;color:var(--body);margin-bottom:8px}
+  .rules b{color:var(--ink)}
+  @media(max-width:820px){.voices{grid-template-columns:1fr}.row{grid-template-columns:1fr;gap:8px}.wrap{padding:40px 22px 56px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="kicker"><span class="dot"></span> Mabrey Roofing &amp; Construction</span>
+  <h1 class="page">Typography</h1>
+  <p class="lede">Two voices. A serif that carries authority in the headline, a geometric sans that stays legible under money copy at every size.</p>
+
+  <div class="voices">
+    <div class="voice">
+      <span class="fold"></span>
+      <div class="lbl">--font-display</div>
+      <div class="fam ser">Newsreader</div>
+      <div class="stack">Newsreader → Georgia → ui-serif</div>
+      <div class="spec">Aa Rg</div>
+      <div class="job">The authority voice. Page titles, section headings, pull quotes. Optical-size axis, weights 500–600. Never below 20px — at small sizes it loses its spine.</div>
+    </div>
+    <div class="voice">
+      <span class="fold"></span>
+      <div class="lbl">--font-sans</div>
+      <div class="fam san">Plus Jakarta Sans</div>
+      <div class="stack">Plus Jakarta Sans → system-ui → -apple-system</div>
+      <div class="spec san">Aa Rg</div>
+      <div class="job">The working voice. Body, labels, buttons, tables, every number a homeowner reads. Weights 400–800. Readability of money copy is a floor that never trades.</div>
+    </div>
+  </div>
+
+  <h2>The scale</h2>
+  <div class="scale">
+    <div class="row"><div class="m"><b>H1 · display</b>46px / 1.08<br>-0.015em · 600</div><div class="s-h1">A roof is a system, not a shingle.</div></div>
+    <div class="row"><div class="m"><b>H2 · display</b>32px / 1.15<br>-0.012em · 600</div><div class="s-h2">What the inspection actually finds</div></div>
+    <div class="row"><div class="m"><b>H3 · sans</b>21px<br>-0.008em · 700</div><div class="s-h3">Storm &amp; wind damage restoration</div></div>
+    <div class="row"><div class="m"><b>Body · sans</b>17px / 1.55<br>400</div><div class="s-body">We document every slope with close-up photographs before a single shingle comes off, so the homeowner and the adjuster are reading the same roof.</div></div>
+    <div class="row"><div class="m"><b>Small · sans</b>14px<br>500 · mist</div><div class="s-small">Licensed &amp; insured · North Carolina General Contractor</div></div>
+    <div class="row"><div class="m"><b>Kicker · sans</b>11.5px<br>0.2em · 700 · brand</div><div class="s-kick">Durham + the Triangle</div></div>
+    <div class="row"><div class="m"><b>Mono · data</b>13px<br>tokens, specs, counts</div><div class="s-mono">32 squares · GAF Timberline HDZ · 115 mph design gust</div></div>
+  </div>
+
+  <div class="rules">
+    <h3>Rules that hold</h3>
+    <ul>
+      <li><b>Headings balance.</b> <span style="font-family:var(--mono);font-size:12.5px">text-wrap: balance</span> on h1–h3 — no orphaned last words in a headline.</li>
+      <li><b>Serif never goes small.</b> Below 20px, Newsreader loses its authority and its legibility. Drop to the sans instead.</li>
+      <li><b>Numbers are sans, always.</b> Squares, prices, phone numbers, wind ratings — the working voice, because they are read, not admired.</li>
+      <li><b>Money copy readability is a floor.</b> It never trades for density, motion, or style. If the price is hard to read, the section is broken.</li>
+      <li><b>Kickers carry the brand,</b> not the headline. The blue lives in the eyebrow; the headline stays ink.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

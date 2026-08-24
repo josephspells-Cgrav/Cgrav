@@ -1,0 +1,1699 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>King Maker v9 — Motion Doctrine + Worked Examples</title>
+<style>
+  /* ============================================================
+     KING MAKER v9 — single-file doctrine + handoff.
+     Self-contained: no JS, no external CSS, no fonts.
+     Brand tokens for both worked examples are baked in so the
+     rendered examples in this doc match the live sites.
+     ============================================================ */
+  :root {
+    /* Doctrine surface */
+    --doc-bg:        #0F1117;
+    --doc-surface:   #161922;
+    --doc-surface-2: #1d2230;
+    --doc-border:    #2a3145;
+    --doc-text:      #e8eaf0;
+    --doc-text-mute: #9ca3b8;
+    --doc-text-dim:  #6b7388;
+    --doc-mono:      ui-monospace, SFMono-Regular, Menlo, monospace;
+    --doc-display:   ui-sans-serif, -apple-system, system-ui, sans-serif;
+
+    /* Worked Example A — American Masterworks */
+    --am-navy:       #1b3361;
+    --am-red:        #b02549;
+    --am-red-hover:  #8a1d3a;
+    --am-text:       #1a1a1a;
+    --am-muted:      #6b7280;
+    --am-border:     #e5e7eb;
+    --am-tint:       #f5f7fb;
+    --am-white:      #ffffff;
+
+    /* Worked Example B — King Maker v2 */
+    --km-bg:         #0A0A0A;
+    --km-surface:    #15110A;
+    --km-surface-2:  #1F1A10;
+    --km-border:     #2D2516;
+    --km-gold:       #FFB900;
+    --km-gold-bright:#FFD24A;
+    --km-gold-deep:  #856709;
+    --km-text:       #ffffff;
+    --km-text-mute:  #B5A982;
+    --km-alert:      #C25A3A;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--doc-bg);
+    color: var(--doc-text);
+    font-family: var(--doc-display);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--am-red); color: #fff; }
+
+  /* Layout */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .doc-header {
+    border-bottom: 1px solid var(--doc-border);
+    padding: 48px 32px 32px;
+    background: linear-gradient(180deg, var(--doc-surface) 0%, var(--doc-bg) 100%);
+  }
+  .doc-header h1 {
+    margin: 0 0 8px;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .doc-header .ver {
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+  .doc-header .sub {
+    color: var(--doc-text-mute);
+    font-size: 18px;
+    max-width: 780px;
+  }
+
+  section.chapter {
+    border-top: 1px solid var(--doc-border);
+    padding: 64px 0 56px;
+  }
+  section.chapter:first-of-type { border-top: 0; }
+
+  h2.chapter-title {
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+    line-height: 1.1;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  h2.chapter-title .ix {
+    font-family: var(--doc-mono);
+    font-size: 13px;
+    color: var(--am-red);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  h3.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    color: #fff;
+  }
+  h4.sub-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 24px 0 8px;
+    color: var(--doc-text);
+    letter-spacing: 0.01em;
+  }
+  p { margin: 0 0 14px; }
+  p.lede { font-size: 17px; color: var(--doc-text-mute); max-width: 860px; }
+
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+
+  code {
+    font-family: var(--doc-mono);
+    font-size: 0.9em;
+    background: var(--doc-surface-2);
+    color: #f4d56b;
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+  pre {
+    font-family: var(--doc-mono);
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #d8dde9;
+    margin: 12px 0 18px;
+  }
+  pre.km { border-left-color: var(--km-gold); }
+
+  /* Callouts */
+  .callout {
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 18px 0;
+  }
+  .callout.warn { border-left-color: #d97757; background: rgba(217,119,87,0.05); }
+  .callout.gold { border-left-color: var(--km-gold); }
+  .callout .label {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--am-red);
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .callout.warn .label { color: #d97757; }
+  .callout.gold .label { color: var(--km-gold); }
+
+  /* TOC grid */
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 8px 16px;
+    margin-top: 24px;
+  }
+  .toc a {
+    color: var(--doc-text);
+    text-decoration: none;
+    padding: 10px 12px;
+    border: 1px solid var(--doc-border);
+    border-radius: 4px;
+    background: var(--doc-surface);
+    font-size: 14px;
+    transition: border-color 200ms, color 200ms;
+  }
+  .toc a:hover { border-color: var(--am-red); color: var(--am-red); }
+  .toc a .ix {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    color: var(--doc-text-dim);
+    margin-right: 8px;
+  }
+  .toc a:hover .ix { color: var(--am-red); }
+
+  /* Color swatches */
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 14px 0 22px; }
+  .swatch { border: 1px solid var(--doc-border); border-radius: 4px; overflow: hidden; background: var(--doc-surface); }
+  .swatch .chip { height: 64px; }
+  .swatch .meta { padding: 10px 12px; font-size: 12px; }
+  .swatch .meta .name { font-weight: 700; color: #fff; }
+  .swatch .meta .hex { font-family: var(--doc-mono); color: var(--doc-text-mute); margin-top: 2px; }
+  .swatch .meta .ratio { font-family: var(--doc-mono); color: var(--doc-text-dim); font-size: 11px; margin-top: 4px; }
+
+  /* Two-column comparison */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 18px 0 24px;
+  }
+  @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+  .compare > div {
+    border: 1px solid var(--doc-border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--doc-surface);
+  }
+  .compare .label-row {
+    padding: 8px 14px;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--doc-surface-2);
+    border-bottom: 1px solid var(--doc-border);
+    font-weight: 700;
+  }
+  .compare .label-row.bad { color: #e8765c; }
+  .compare .label-row.good { color: #6dd57c; }
+  .compare .body { padding: 18px; }
+
+  /* Component-style preview frame */
+  .preview {
+    border: 1px solid var(--doc-border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 14px 0 22px;
+  }
+  .preview .preview-label {
+    padding: 8px 14px;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--am-red);
+    background: var(--doc-surface-2);
+    border-bottom: 1px solid var(--doc-border);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .preview .preview-label .src { color: var(--doc-text-dim); font-weight: 500; }
+  .preview .canvas { padding: 28px 24px; }
+
+  /* AM context (white surface) */
+  .canvas.am-white { background: var(--am-white); color: var(--am-text); font-family: var(--doc-display); }
+  .canvas.am-tint { background: var(--am-tint); color: var(--am-text); }
+  .canvas.am-navy { background: var(--am-navy); color: #fff; }
+  /* KM context (dark) */
+  .canvas.km-dark { background: var(--km-bg); color: var(--km-text); }
+
+  /* AM rendered components — these mirror the production look */
+  .am-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .am-eyebrow .rule { display: block; height: 1px; width: 40px; background: var(--am-red); }
+  .am-h2 {
+    font-family: var(--doc-display);
+    font-weight: 800;
+    color: var(--am-navy);
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+    display: inline-block;
+    position: relative;
+  }
+  .am-h2-underline {
+    display: block;
+    height: 3px;
+    background: var(--am-red);
+    border-radius: 3px;
+    margin-top: 6px;
+    box-shadow: 0 0 2px rgba(176,37,73,0.55);
+  }
+  .am-subhead {
+    margin-top: 22px;
+    color: var(--am-muted);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 620px;
+  }
+  .am-stat-cluster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
+  .am-stat {
+    border-left: 2px solid rgba(176,37,73,0.25);
+    padding: 8px 0 8px 16px;
+    position: relative;
+  }
+  .am-stat .row { display: flex; align-items: baseline; gap: 6px; }
+  .am-stat .val { font-family: var(--doc-display); font-weight: 800; color: var(--am-navy); font-size: 28px; line-height: 1; }
+  .am-stat .unit {
+    font-family: var(--doc-mono);
+    font-weight: 600;
+    color: var(--am-red);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .am-stat .lbl { color: var(--am-muted); font-size: 12px; margin-top: 6px; }
+  .am-stat .dot { position: absolute; left: -5px; top: 12px; width: 8px; height: 8px; border-radius: 50%; background: var(--am-red); opacity: 0.55; }
+
+  .am-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 8px 0;
+    color: var(--am-text);
+    font-size: 15px;
+  }
+  .am-bullet .diamond { color: var(--am-red); font-size: 11px; margin-top: 6px; }
+
+  .am-card {
+    background: var(--am-white);
+    border: 1px solid var(--am-border);
+    border-radius: 6px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .am-card.navy { background: var(--am-navy); color: #fff; border-color: var(--am-navy); }
+  .am-card .accent {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--am-red);
+    box-shadow: 0 0 2px rgba(176,37,73,0.55);
+  }
+  .am-card-title {
+    font-weight: 700;
+    color: var(--am-navy);
+    font-size: 18px;
+    margin: 0 0 8px;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--am-red);
+  }
+  .am-card.navy .am-card-title { color: #fff; }
+  .am-card-body { color: var(--am-muted); font-size: 14px; line-height: 1.6; margin: 0; }
+  .am-card.navy .am-card-body { color: rgba(255,255,255,0.75); }
+
+  /* AM big numeral card (SignsGrid-style) */
+  .am-numeral-card {
+    background: #fff;
+    border: 1px solid var(--am-border);
+    border-radius: 6px;
+    padding: 22px;
+    position: relative;
+  }
+  .am-numeral-card .num {
+    font-family: var(--doc-display);
+    font-weight: 800;
+    color: var(--am-red);
+    font-size: 64px;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    display: inline-block;
+    border-bottom: 3px solid var(--am-red);
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+  }
+  .am-numeral-card .title {
+    font-weight: 700;
+    color: var(--am-navy);
+    font-size: 16px;
+    border-bottom: 2px solid var(--am-red);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+  }
+  .am-numeral-card .body { color: var(--am-muted); font-size: 13px; line-height: 1.55; margin: 0; }
+
+  /* AM buttons */
+  .am-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 200ms, box-shadow 200ms;
+    cursor: default;
+  }
+  .am-btn-primary { background: var(--am-red); color: #fff; }
+  .am-btn-secondary { background: var(--am-navy); color: #fff; }
+  .am-btn-outline {
+    background: transparent; color: var(--am-navy);
+    border: 2px solid var(--am-navy);
+  }
+  .am-btn-call {
+    background: transparent; color: var(--am-navy);
+    border: 2px solid var(--am-navy);
+  }
+  .am-btn .arrow { font-size: 14px; }
+
+  /* AM brand chip */
+  .am-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--am-border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--am-navy);
+    background: #fff;
+    margin-right: 6px;
+  }
+  .am-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(176,37,73,0.55); }
+
+  /* AM symptom tag */
+  .am-symptom-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(176,37,73,0.08);
+    border: 1px solid rgba(176,37,73,0.25);
+    border-radius: 999px;
+    padding: 4px 10px;
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .am-symptom-tag .ico { font-size: 11px; line-height: 1; }
+
+  /* AM BEST FOR pill (inside MaterialsGrid navy card) */
+  .am-bestfor {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--am-red);
+    border: 1px solid var(--am-red);
+    color: #fff;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .am-bestfor .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+
+  /* AM tier bar */
+  .am-tier {
+    color: #fff;
+    margin: 8px 0 0;
+  }
+  .am-tier .row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .am-tier .lbl { color: rgba(255,255,255,0.85); font-weight: 600; }
+  .am-tier .val { color: #fff; font-weight: 800; }
+  .am-tier .track {
+    height: 6px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .am-tier .fill {
+    display: block;
+    height: 100%;
+    background: var(--am-red);
+    box-shadow: 0 0 4px rgba(176,37,73,0.5);
+  }
+
+  /* AM marquee preview */
+  .am-marquee {
+    background: var(--am-navy);
+    padding: 14px 0;
+    overflow: hidden;
+    color: #fff;
+  }
+  .am-marquee .row { display: flex; gap: 28px; align-items: center; padding-left: 28px; white-space: nowrap; }
+  .am-marquee .item {
+    font-family: var(--doc-mono);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+  .am-marquee .sep { color: var(--am-red); }
+
+  /* KM rendered components */
+  .km-eyebrow {
+    display: inline-block;
+    border: 1px solid var(--km-gold);
+    background: rgba(255,185,0,0.08);
+    color: var(--km-gold);
+    font-family: var(--doc-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    margin-bottom: 18px;
+  }
+  .km-h2 {
+    color: #fff;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0;
+    display: inline-block;
+    border-bottom: 3px solid var(--km-gold);
+    padding-bottom: 8px;
+  }
+  .km-subhead { color: var(--km-text-mute); margin-top: 18px; max-width: 620px; }
+
+  /* KM Audit Ledger */
+  .km-ledger {
+    background: var(--km-surface);
+    border: 1px solid var(--km-border);
+    border-radius: 4px;
+    padding: 18px;
+    margin-top: 14px;
+  }
+  .km-ledger table { width: 100%; border-collapse: collapse; font-family: var(--doc-mono); font-size: 13px; }
+  .km-ledger th {
+    color: var(--km-text-mute);
+    font-weight: 600;
+    text-align: right;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--km-border);
+  }
+  .km-ledger th:first-child { text-align: left; }
+  .km-ledger td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(45,37,22,0.5);
+    font-size: 14px;
+    text-align: right;
+    color: var(--km-text);
+  }
+  .km-ledger td:first-child { text-align: left; font-weight: 700; }
+  .km-ledger td.bad { color: var(--km-alert); font-weight: 700; }
+  .km-ledger td.good { color: var(--km-gold); font-weight: 700; }
+  .km-ledger .callout {
+    margin-top: 14px;
+    border: 1px solid rgba(194,90,58,0.5);
+    background: rgba(194,90,58,0.08);
+    color: var(--km-alert);
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+  }
+  .km-ledger .callout .head { font-weight: 700; }
+  .km-ledger .callout .sub { color: var(--km-text-mute); font-size: 12px; margin-top: 4px; }
+
+  /* KM marquee */
+  .km-marquee {
+    background: var(--km-bg);
+    border-top: 1px solid var(--km-border);
+    border-bottom: 1px solid var(--km-border);
+    padding: 14px 0;
+    overflow: hidden;
+  }
+  .km-marquee .row { display: flex; gap: 24px; align-items: center; padding-left: 24px; white-space: nowrap; }
+  .km-marquee .item {
+    font-family: var(--doc-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--km-gold);
+  }
+  .km-marquee .sep { color: var(--km-gold); }
+
+  /* Anti-pattern visual demos */
+  .anti {
+    background: #1a1d28;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid var(--doc-border);
+    text-align: center;
+  }
+  .anti.dark-on-dark {
+    background: var(--am-navy);
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 24px;
+  }
+  .anti.fixed {
+    background: var(--am-navy);
+    color: #fff;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .anti.fixed .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--am-red); }
+
+  .strike-overlay {
+    position: relative;
+    display: inline-block;
+  }
+  .strike-overlay::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: -8px; right: -8px;
+    height: 2px; background: #e8765c;
+    transform: rotate(-3deg);
+  }
+
+  /* Recipe table */
+  table.recipes {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 24px;
+    font-size: 14px;
+  }
+  table.recipes th, table.recipes td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--doc-border);
+    vertical-align: top;
+  }
+  table.recipes th {
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--doc-surface);
+  }
+  table.recipes td.id { font-family: var(--doc-mono); color: var(--doc-text-mute); width: 90px; }
+  table.recipes td.name { font-weight: 700; color: #fff; }
+  table.recipes td.use { color: var(--doc-text-mute); }
+  table.recipes td.where { font-family: var(--doc-mono); font-size: 12px; color: var(--km-gold); }
+
+  /* Footer / closing */
+  footer.doc-footer {
+    border-top: 1px solid var(--doc-border);
+    padding: 32px;
+    margin-top: 32px;
+    color: var(--doc-text-dim);
+    text-align: center;
+    font-size: 13px;
+  }
+
+  a { color: #f4d56b; }
+  a:hover { color: var(--km-gold-bright); }
+
+  /* Helper: forced color for inline mention */
+  .ink-red { color: var(--am-red); font-weight: 600; }
+  .ink-gold { color: var(--km-gold); font-weight: 600; }
+  .ink-mute { color: var(--doc-text-mute); }
+
+  hr.divider {
+    border: 0;
+    border-top: 1px solid var(--doc-border);
+    margin: 28px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="wrap">
+    <div class="ver">King Maker · v9 · 2026-05-14</div>
+    <h1>King Maker Motion Doctrine v9</h1>
+    <p class="sub">
+      Universal motion + engineering guide for premium scrolling-first web experiences.
+      Self-contained doctrine + two worked examples (American Masterworks, King Maker v2)
+      + handoff state for the AM build. Open in any browser. Every pattern below
+      is rendered, not described.
+    </p>
+  </div>
+</header>
+
+<!-- ============================ TOC ============================ -->
+<section class="chapter wrap" id="toc">
+  <h2 class="chapter-title"><span class="ix">00</span>Table of Contents</h2>
+  <p class="lede">Chapters are stand-alone — jump to any. Worked-example chapters near the end ground the doctrine in shipped sites.</p>
+  <div class="toc">
+    <a href="#preflight"><span class="ix">01</span>Pre-flight</a>
+    <a href="#priority"><span class="ix">02</span>Instruction priority</a>
+    <a href="#modes"><span class="ix">03</span>Aesthetic modes</a>
+    <a href="#palette"><span class="ix">04</span>Brand palette discipline</a>
+    <a href="#patterns"><span class="ix">05</span>Pattern library</a>
+    <a href="#recipes"><span class="ix">06</span>Recipe library</a>
+    <a href="#anti"><span class="ix">07</span>Anti-pattern catalog</a>
+    <a href="#engineering"><span class="ix">08</span>Engineering rules</a>
+    <a href="#verification"><span class="ix">09</span>Verification contract</a>
+    <a href="#tp"><span class="ix">10</span>Taste profile</a>
+    <a href="#op"><span class="ix">11</span>Operating principles</a>
+    <a href="#example-am"><span class="ix">12</span>Worked example A · AM</a>
+    <a href="#example-km"><span class="ix">13</span>Worked example B · KMv2</a>
+    <a href="#am-build"><span class="ix">14</span>AM build state (handoff)</a>
+    <a href="#composition"><span class="ix">15</span>Composition + freedom</a>
+    <a href="#changelog"><span class="ix">16</span>Changelog v8 → v9</a>
+  </div>
+
+  <div class="callout gold" style="margin-top: 24px;">
+    <span class="label">Posture</span>
+    <strong>Compose, don't clone.</strong> Both worked examples below ship the same
+    doctrine in different aesthetic modes — KMv2 in <em>Regal Black + Gold</em>,
+    AM in <em>Patriotic Navy + Red</em>. The recipes are modular. Future builds
+    pick a mode, pick recipes, and arrange them with creative judgment.
+    Cloning either site verbatim is a doctrine violation.
+  </div>
+</section>
+
+<!-- ============================ PRE-FLIGHT ============================ -->
+<section class="chapter wrap" id="preflight">
+  <h2 class="chapter-title"><span class="ix">01</span>Pre-flight checklist</h2>
+  <p class="lede">Run BEFORE any build work. Same as v8, condensed. The full step-by-step lives in v8 §0.0; the only changes here are skill/MCP names that have shifted since.</p>
+
+  <h3 class="section-title">Skills · invoke at gates</h3>
+  <table class="recipes">
+    <thead><tr><th>Gate</th><th>Required skill(s)</th><th>Skip allowed?</th></tr></thead>
+    <tbody>
+      <tr><td class="id">PRE-BUILD</td><td class="name">redesign-existing-projects (modernization) OR brandkit (new brand)</td><td>No</td></tr>
+      <tr><td class="id">DESIGN</td><td class="name">design-taste-frontend / frontend-design / gpt-taste / impeccable</td><td>No — at least one</td></tr>
+      <tr><td class="id">POST-BUILD</td><td class="name">design-motion-principles AND impeccable</td><td>No — both</td></tr>
+      <tr><td class="id">VERIFY</td><td class="name">Chrome MCP visual + Playwright (FULL caps) + axe-core</td><td>No — all three</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">MCPs · bulk-load via ToolSearch</h3>
+  <pre>ToolSearch({ query: "chrome browser navigate screenshot", max_results: 15 })
+ToolSearch({ query: "preview screenshot start", max_results: 10 })
+ToolSearch({ query: "firecrawl scrape extract", max_results: 10 })
+ToolSearch({ query: "computer-use", max_results: 30 })
+ToolSearch({ query: "generate image video balance models", max_results: 10 })</pre>
+
+  <div class="callout"><span class="label">v9 add</span>
+    Always confirm the production site URL is reachable via <code>curl -sI</code> before
+    leaning on Chrome MCP. CDP screenshots time out frequently against motion-heavy
+    pages — use the curl + JS-tool combo as the resilient verification path
+    (see Engineering §08 OP-08).
+  </div>
+</section>
+
+<!-- ============================ PRIORITY ============================ -->
+<section class="chapter wrap" id="priority">
+  <h2 class="chapter-title"><span class="ix">02</span>Instruction priority</h2>
+  <pre>Priority 1 (LOWEST)  — Taste profile
+Priority 2           — Doctrine recipes & patterns
+Priority 3           — Reference site direction
+Priority 4           — Explicit user instruction
+Priority 5 (HIGHEST) — Engineering rules + operating principles</pre>
+  <p>Engineering rules + operating principles are NEVER overridden — not by taste, not by reference, not by user instruction. They prevent broken builds.</p>
+</section>
+
+<!-- ============================ MODES ============================ -->
+<section class="chapter wrap" id="modes">
+  <h2 class="chapter-title"><span class="ix">03</span>Aesthetic modes</h2>
+  <p class="lede">Each mode locks <em>visual direction</em>. Doctrine controls motion + engineering + operating principles. They layer simultaneously — Brutalist mode still uses springs, blur enters, the verification stack.</p>
+
+  <table class="recipes">
+    <thead><tr><th>Mode</th><th>What it is</th><th>Validated</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Default (Taste)</td><td class="use">Anti-slop balanced premium. Spring motion, blur enters, glassmorphism. Variance/intensity/density dials 1-10.</td><td class="where">v3-v8</td></tr>
+      <tr><td class="name">Soft</td><td class="use">$150K agency look — Ethereal Glass / Editorial Luxury / Soft Structuralism.</td><td class="where">v6+</td></tr>
+      <tr><td class="name">Minimalist</td><td class="use">Notion-like editorial. Warm monochrome, extreme serif/sans contrast, flat bento.</td><td class="where">v5+</td></tr>
+      <tr><td class="name">Brutalist</td><td class="use">Swiss Industrial Print OR Tactical Telemetry CRT terminal.</td><td class="where">v6+</td></tr>
+      <tr><td class="name">Color-Blocked Brutalist</td><td class="use">Recipe 29 — color-blocked numbered cards, oversized numerals.</td><td class="where">v7+</td></tr>
+      <tr><td class="name">Motion Heavy</td><td class="use">Maximum cinematic motion. GSAP ScrollTrigger pinning, scrub, parallax.</td><td class="where">v6+</td></tr>
+      <tr><td class="name">Regal Black + Gold</td><td class="use">King Maker v2 DNA. Disciplined two-color palette (gold + alert red), refined dark surfaces, native-1.0x video, scrub-counter dramatics.</td><td class="where">v8 ⭐</td></tr>
+      <tr><td class="name">Patriotic Navy + Red</td><td class="use">American Masterworks DNA. Single-accent red on navy + white. Confident regional craftsman tone. Heavy hovers, editorial card grids, asymmetric FAQ, location-page structural complexity.</td><td class="where">v9 ⭐ NEW</td></tr>
+      <tr><td class="name">Redesign</td><td class="use">Process, not look. Pair with any mode for target aesthetic.</td><td class="where">v3+</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ PALETTE ============================ -->
+<section class="chapter wrap" id="palette">
+  <h2 class="chapter-title"><span class="ix">04</span>Brand palette discipline</h2>
+  <p class="lede">Two validated palette templates ship with v9. Both have WCAG-AA contrast verified per surface. Use as-is or as starting points.</p>
+
+  <h3 class="section-title">Patriotic Navy + Red — American Masterworks (v9 ⭐ NEW)</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="chip" style="background: var(--am-navy);"></div><div class="meta"><div class="name">--color-navy</div><div class="hex">#1b3361</div><div class="ratio">21:1 vs white ✅</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-red);"></div><div class="meta"><div class="name">--color-red</div><div class="hex">#b02549</div><div class="ratio">7.6:1 vs white ✅</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-red-hover);"></div><div class="meta"><div class="name">--color-red-hover</div><div class="hex">#8a1d3a</div><div class="ratio">10:1 vs white ✅</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-text);"></div><div class="meta"><div class="name">--color-text</div><div class="hex">#1a1a1a</div><div class="ratio">17:1 vs white ✅</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-muted);"></div><div class="meta"><div class="name">--color-muted</div><div class="hex">#6b7280</div><div class="ratio">4.7:1 vs white ✅ AA</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-tint); border-bottom: 1px solid var(--am-border);"></div><div class="meta"><div class="name">--color-tint</div><div class="hex">#f5f7fb</div><div class="ratio">Section bg</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-border);"></div><div class="meta"><div class="name">--color-border</div><div class="hex">#e5e7eb</div><div class="ratio">Card dividers</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--am-white); border-bottom: 1px solid var(--am-border);"></div><div class="meta"><div class="name">--color-white</div><div class="hex">#ffffff</div><div class="ratio">Primary bg</div></div></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="label">Critical</span>
+    <strong>Red on navy is the contrast killer.</strong> The full red <code>#b02549</code>
+    on navy <code>#1b3361</code> renders ~2.5:1 — illegible. Site-wide rule: caps eyebrows
+    on dark surfaces use <code>text-white/85</code> with the red dot/rule as the only red
+    accent. See Anti-Pattern catalog §07.
+  </div>
+
+  <h3 class="section-title">Regal Black + Gold — King Maker v2</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="chip" style="background: var(--km-bg);"></div><div class="meta"><div class="name">--bg</div><div class="hex">#0A0A0A</div><div class="ratio">21:1 vs white ✅</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-surface);"></div><div class="meta"><div class="name">--surface</div><div class="hex">#15110A</div><div class="ratio">Warm-dark cards</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-gold);"></div><div class="meta"><div class="name">--gold</div><div class="hex">#FFB900</div><div class="ratio">11.4:1 vs bg ✅ AAA</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-gold-bright);"></div><div class="meta"><div class="name">--gold-bright</div><div class="hex">#FFD24A</div><div class="ratio">Hover</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-gold-deep);"></div><div class="meta"><div class="name">--gold-deep</div><div class="hex">#856709</div><div class="ratio">Sub-accents</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-text-mute);"></div><div class="meta"><div class="name">--text-muted</div><div class="hex">#B5A982</div><div class="ratio">7.6:1 vs bg ✅ AAA</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-alert);"></div><div class="meta"><div class="name">--alert</div><div class="hex">#C25A3A</div><div class="ratio">4.7:1 vs bg ✅ AA</div></div></div>
+    <div class="swatch"><div class="chip" style="background: var(--km-border);"></div><div class="meta"><div class="name">--border</div><div class="hex">#2D2516</div><div class="ratio">Subtle dividers</div></div></div>
+  </div>
+
+  <div class="callout gold">
+    <span class="label">Discipline</span>
+    KMv2 reserves <code>--alert</code> (brick red) <strong>exclusively</strong> for diagnostic /
+    failure content (e.g., the Audit Ledger callout "You are invisible in 5 of 6
+    sampled cities"). Brand color discipline: gold for everything brand-positive,
+    alert for everything brand-negative, never crossed. AM uses single-accent red
+    across all content; both are valid.
+  </div>
+</section>
+
+<!-- ============================ PATTERN LIBRARY ============================ -->
+<section class="chapter wrap" id="patterns">
+  <h2 class="chapter-title"><span class="ix">05</span>Pattern library — rendered</h2>
+  <p class="lede">Every signature pattern below is rendered live in this document. No imagining required.</p>
+
+  <h3 class="section-title">5.1 · The signature section header</h3>
+  <p>Eyebrow rule + caps + cinematic H2 with full-width red glow underline + supporting subhead. Used on every section across the AM site.</p>
+  <div class="preview">
+    <div class="preview-label">AM signature header <span class="src">section-header pattern</span></div>
+    <div class="canvas am-tint">
+      <div class="am-eyebrow"><span class="rule"></span>Why It Matters</div>
+      <h2 class="am-h2">What Eastern NC Homeowners Already Know.<span class="am-h2-underline" style="width: 100%;"></span></h2>
+      <p class="am-subhead">Three steps, the same way every time. No high-pressure sales, no surprise charges, no subcontracted crews.</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.2 · Right-side stat anchor cluster</h3>
+  <p>Companion to the section header on the right. 3 anchors per section, red 2px vertical rule + small offset dot per cell. Numerals counter-animate on viewport entry (StatCounter, Recipe TP-05).</p>
+  <div class="preview">
+    <div class="preview-label">AM stat anchor cluster <span class="src">SignsGrid / ProcessSteps / etc.</span></div>
+    <div class="canvas am-tint">
+      <div class="am-stat-cluster">
+        <div class="am-stat"><span class="dot"></span><div class="row"><span class="val">6</span><span class="unit">SIGNS · COMMON</span></div><div class="lbl">What we see most often</div></div>
+        <div class="am-stat"><span class="dot"></span><div class="row"><span class="val">30+</span><span class="unit">YR · ORIGINAL</span></div><div class="lbl">Aluminum and single-pane life</div></div>
+        <div class="am-stat"><span class="dot"></span><div class="row"><span class="val">$0</span><span class="unit">DIAGNOSIS</span></div><div class="lbl">Free in-home assessment</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.3 · Spec-line bullets with pulsing red diamonds</h3>
+  <p>Replaces wall-of-text body copy. 3-5 lines per stack. Diamond markers pulse subtly (opacity + scale).</p>
+  <div class="preview">
+    <div class="preview-label">AM spec bullets <span class="src">HomeWindowsTeaser, ProcessSteps, SpecDeck</span></div>
+    <div class="canvas am-white">
+      <div class="am-bullet"><span class="diamond">◆</span><span>Energy-efficient dual-pane glass standard</span></div>
+      <div class="am-bullet"><span class="diamond">◆</span><span>Custom-fit measurement, no stock approximations</span></div>
+      <div class="am-bullet"><span class="diamond">◆</span><span>Vinyl, fiberglass, wood, aluminum-clad — picked to the home</span></div>
+      <div class="am-bullet"><span class="diamond">◆</span><span>Same crew start to finish — we don't subcontract</span></div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.4 · Button vocabulary (4 variants)</h3>
+  <div class="preview">
+    <div class="preview-label">AM buttons <span class="src">site-wide</span></div>
+    <div class="canvas am-white">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a class="am-btn am-btn-primary">Get a Free Estimate <span class="arrow">→</span></a>
+        <a class="am-btn am-btn-secondary">See Window Options <span class="arrow">→</span></a>
+        <a class="am-btn am-btn-outline">📞 Call (252) 314-0185</a>
+        <a class="am-btn" style="background:#fff; color:var(--am-navy); border:2px solid var(--am-navy); border-radius:999px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase;">→ Tap to Call</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.5 · Brand chip cluster</h3>
+  <p>Small caps mono pills with red dot indicators. Hover bumps dot to full red, lifts -0.5px, border flips red. Used to display partner brands.</p>
+  <div class="preview">
+    <div class="preview-label">AM brand chips <span class="src">HomeWindowsTeaser / HomeDoorsTeaser</span></div>
+    <div class="canvas am-tint">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="am-chip"><span class="dot"></span>MI</span>
+        <span class="am-chip"><span class="dot"></span>HARVEY</span>
+        <span class="am-chip"><span class="dot"></span>PROVIA</span>
+        <span class="am-chip"><span class="dot"></span>THERMA-TRU</span>
+        <span class="am-chip"><span class="dot"></span>SIMPSON</span>
+        <span class="am-chip"><span class="dot"></span>TRUSTILE</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.6 · Symptom tag (warning frame)</h3>
+  <p>Used when a card needs to read as a problem at a glance — adds explicit framing alongside the section eyebrow.</p>
+  <div class="preview">
+    <div class="preview-label">AM symptom tag <span class="src">SignsGrid card top-right</span></div>
+    <div class="canvas am-white">
+      <span class="am-symptom-tag"><span class="ico">▲</span>Symptom</span>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.7 · Numbered card (giant red numeral)</h3>
+  <p>Big red numeral as the dominant visual anchor, with red glow underline. Title gets right-drawn red underline. Used on SignsGrid cards.</p>
+  <div class="preview">
+    <div class="preview-label">AM numbered card <span class="src">SignsGrid / before the v9 trim</span></div>
+    <div class="canvas am-tint">
+      <div class="am-numeral-card" style="max-width:380px;">
+        <div class="num">01</div>
+        <div class="title">Drafts at every seal</div>
+        <p class="body">Cold air sneaks past sashes you can't see daylight through. The seal has aged out before the frame.</p>
+        <span style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--am-red);box-shadow:0 0 2px rgba(176,37,73,0.55);"></span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.8 · Navy spec-card with BEST FOR pill + tier bars</h3>
+  <p>MaterialsGrid pattern. Navy card pops on light section. BEST FOR pill is filled red w/ white text (legible against navy). Tier bars match the WORD literally — LOW = small fill, HIGH = large fill (NOT a "score").</p>
+  <div class="preview">
+    <div class="preview-label">AM navy spec-card <span class="src">MaterialsGrid</span></div>
+    <div class="canvas am-tint">
+      <div class="am-card navy" style="max-width:340px;">
+        <span class="am-bestfor"><span class="dot"></span>BEST FOR <span style="color:rgba(255,255,255,0.7);">›</span> MOST NC HOMES</span>
+        <h3 style="font-size:22px; font-weight:800; margin:14px 0 8px; padding-bottom:4px; border-bottom:2px solid var(--am-red); display:inline-block;">Vinyl</h3>
+        <p style="color:rgba(255,255,255,0.75); font-size:14px; margin:0 0 16px;">Low maintenance, strong insulation, the most popular choice in this region.</p>
+        <div class="am-tier"><div class="row"><span class="lbl">MAINTENANCE</span><span class="val">LOW</span></div><div class="track"><span class="fill" style="width:25%;"></span></div></div>
+        <div class="am-tier"><div class="row"><span class="lbl">INSULATION</span><span class="val">HIGH</span></div><div class="track"><span class="fill" style="width:75%;"></span></div></div>
+        <div class="am-tier"><div class="row"><span class="lbl">LIFETIME</span><span class="val">25–30 YR</span></div><div class="track"><span class="fill" style="width:40%;"></span></div></div>
+        <span class="accent" style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--am-red);"></span>
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <span class="label">Logic</span>
+    Bar fill = literal magnitude of the label, NOT "goodness." LOW maintenance →
+    SMALL fill (matches the word). HIGH maintenance → LARGE fill. Wood (HIGH
+    maintenance) gets a NEAR-FULL bar; vinyl (LOW) gets a NEAR-EMPTY bar.
+    User-tested principle from v9: viewers expect words to match what they see.
+  </div>
+
+  <h3 class="section-title">5.9 · Scrolling proof / trust marquee</h3>
+  <p>Continuous left-scroll. Triple-array trick + linear infinite x animation (Recipe 32). Used as ProofMarquee atop inner pages, BrandsTrustBar, SectionBridge, or location-themed bridge bars.</p>
+  <div class="preview">
+    <div class="preview-label">AM ProofMarquee <span class="src">top of every inner page</span></div>
+    <div style="overflow:hidden;">
+      <div class="am-marquee">
+        <div class="row">
+          <span class="item">Free In-Home Estimates</span><span class="sep">◆</span>
+          <span class="item">Energy Star® Rated Products</span><span class="sep">◆</span>
+          <span class="item">Custom-Fit Every Opening</span><span class="sep">◆</span>
+          <span class="item">One Crew, Start to Finish</span><span class="sep">◆</span>
+          <span class="item">Over a Decade Installing</span><span class="sep">◆</span>
+          <span class="item">Castalia, NC · Franklin + Nash County</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.10 · Thematic CTA card (replaces stat cluster)</h3>
+  <p>v9 pattern. When a section's right-side fill needs to be a conversion point instead of more stats, swap the stat anchor cluster for a navy CTA card.</p>
+  <div class="preview">
+    <div class="preview-label">AM "See a sign?" CTA card <span class="src">SignsGrid right-side fill</span></div>
+    <div class="canvas am-tint">
+      <div style="background:var(--am-navy); color:#fff; border-radius:6px; padding:24px; max-width:380px; position:relative; overflow:hidden;">
+        <span style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--am-red);box-shadow:0 0 2px rgba(176,37,73,0.55);"></span>
+        <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--am-red);"></span>
+          <span style="font-family:var(--doc-mono);font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;">See a sign?</span>
+        </div>
+        <p style="margin:0 0 18px; color:rgba(255,255,255,0.85); font-size:14px; line-height:1.5;">Spot one or two? Time to call. We'll come measure and tell you straight whether it's a fix or a full replacement — no pressure.</p>
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <a class="am-btn am-btn-primary" style="font-size:14px; padding:10px 16px;">📞 Call (252) 314-0185</a>
+          <span style="font-family:var(--doc-mono);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.85);display:inline-flex;align-items:center;gap:6px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--am-red);"></span>$0 · Free Diagnosis
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.11 · AT A GLANCE bullet card (location pages)</h3>
+  <p>v9 pattern. Right-side fill on the LocationBrief section — replaces the prior single-prose-paragraph treatment with structured bullet-list intel.</p>
+  <div class="preview">
+    <div class="preview-label">AM AT A GLANCE card <span class="src">LocationBrief right column</span></div>
+    <div class="canvas am-white">
+      <div style="background:var(--am-tint); border:1px solid var(--am-border); border-radius:6px; padding:24px; max-width:420px; position:relative; overflow:hidden;">
+        <span style="position:absolute;left:0;top:20px;bottom:20px;width:3px;background:var(--am-red);box-shadow:0 0 2px rgba(176,37,73,0.55);"></span>
+        <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--am-red);"></span>
+          <span style="font-family:var(--doc-mono);font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--am-red);">Castalia · At a Glance</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="am-bullet"><span class="diamond">◆</span><span>HQ on Main, crew within 15 miles</span></div>
+          <div class="am-bullet"><span class="diamond">◆</span><span>Housing eras: 1900s farmhouses through 2020s builds</span></div>
+          <div class="am-bullet"><span class="diamond">◆</span><span>Most-requested: full-home window replacement on 30+ year homes</span></div>
+          <div class="am-bullet"><span class="diamond">◆</span><span>Working off NC-58, NC-581, and the back roads in between</span></div>
+        </div>
+        <span style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--am-red);box-shadow:0 0 2px rgba(176,37,73,0.55);"></span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.12 · Single-word category eyebrow (KMv2-influenced)</h3>
+  <p>v9 pattern. When a card needs an unmistakable category anchor, use a single big word as the eyebrow rather than tiny mono caps.</p>
+  <div class="preview">
+    <div class="preview-label">SpecDeck single-word eyebrow <span class="src">/windows /doors</span></div>
+    <div class="canvas am-navy">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px;">
+        <div>
+          <h4 style="font-family:var(--doc-display); font-weight:800; font-size:32px; letter-spacing:0.06em; text-transform:uppercase; color:var(--am-red); margin:0; line-height:1;">GLASS</h4>
+          <span style="display:block; height:1px; width:40px; background:var(--am-red); margin-top:12px;"></span>
+        </div>
+        <div style="width:48px; height:48px; border-radius:6px; background:var(--am-red); display:flex; align-items:center; justify-content:center; color:#fff;">▢</div>
+      </div>
+      <h3 style="color:#fff; margin:18px 0 8px; font-size:22px; padding-bottom:4px; border-bottom:2px solid var(--am-red); display:inline-block;">The Pane That Carries the Climate</h3>
+      <p style="color:rgba(255,255,255,0.75); margin:8px 0 14px; font-size:14px;">Dual-pane is the baseline you should expect, not the upgrade tier. Triple-pane goes where heat loss actually accumulates.</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.13 · Bordered chip eyebrow (KMv2 contribution)</h3>
+  <p>Alternative to AM's inline-rule eyebrow. Bordered chip with a tinted background. Stronger visual presence, more "label-like."</p>
+  <div class="preview">
+    <div class="preview-label">KMv2 chip eyebrow <span class="src">"THE WORK" / etc.</span></div>
+    <div class="canvas km-dark">
+      <div class="km-eyebrow">THE WORK</div>
+      <div><span class="km-h2">Sites we've built. Live.</span></div>
+      <p class="km-subhead">Three contractor sites running this exact system right now. Open them in a new tab. Click through every page. Then come back.</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.14 · Audit Ledger Card (Recipe 30 — KMv2 origin)</h3>
+  <p>Diagnostic-as-content. Tabular layout with brick-red ALERT callout footer. Best when proving a problem the user has.</p>
+  <div class="preview">
+    <div class="preview-label">KMv2 audit ledger <span class="src">Recipe 30 — rendered live</span></div>
+    <div class="canvas km-dark">
+      <div class="km-ledger" style="max-width:560px;">
+        <table>
+          <thead><tr><th>City</th><th>Searches/mo</th><th>Your rank</th><th>Pages indexed</th></tr></thead>
+          <tbody>
+            <tr><td>Cary</td><td>212</td><td class="good">24</td><td class="good">1</td></tr>
+            <tr><td>Apex</td><td>188</td><td class="bad">100+</td><td class="bad">0</td></tr>
+            <tr><td>Wake Forest</td><td>176</td><td class="bad">100+</td><td class="bad">0</td></tr>
+            <tr><td>Chapel Hill</td><td>143</td><td class="bad">100+</td><td class="bad">0</td></tr>
+          </tbody>
+        </table>
+        <div class="callout">
+          <div class="head">You are invisible in 5 of 6 sampled cities.</div>
+          <div class="sub">Google can't verify your service coverage based on your current site structure.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">5.15 · Tech-stack credibility marquee (KMv2)</h3>
+  <p>Displays the real tools that built the work. Equivalent of AM's ProofMarquee but reads as engineering credibility instead of service trust.</p>
+  <div class="preview">
+    <div class="preview-label">KMv2 tech marquee <span class="src">below the work hero</span></div>
+    <div style="overflow:hidden;">
+      <div class="km-marquee">
+        <div class="row">
+          <span class="item">Claude Opus 4.7</span><span class="sep">◆</span>
+          <span class="item">Antigravity</span><span class="sep">◆</span>
+          <span class="item">Playwright</span><span class="sep">◆</span>
+          <span class="item">Higgsfield</span><span class="sep">◆</span>
+          <span class="item">Next.js 16</span><span class="sep">◆</span>
+          <span class="item">GSAP ScrollTrigger</span><span class="sep">◆</span>
+          <span class="item">Framer Motion</span><span class="sep">◆</span>
+          <span class="item">Tailwind 4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ RECIPES ============================ -->
+<section class="chapter wrap" id="recipes">
+  <h2 class="chapter-title"><span class="ix">06</span>Recipe library</h2>
+  <p class="lede">Recipes 1–37 inherited from v8. v9 adds Recipes 38–43 from the AM build. The Where column points to the canonical implementation.</p>
+
+  <h3 class="section-title">v9 additions (38–43)</h3>
+  <table class="recipes">
+    <thead><tr><th>ID</th><th>Recipe</th><th>Use case</th><th>Where (canonical)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="id">38</td>
+        <td class="name">Editorial Spec-Sheet Card with Tier Bars</td>
+        <td class="use">Comparing 3-4 options on the same axes (frame materials, plan tiers, etc.). Each card carries a BEST FOR pill, short body, and 3 animated horizontal tier bars whose fills literally match the word labels (LOW=short, HIGH=long).</td>
+        <td class="where">AM · MaterialsGrid.tsx</td>
+      </tr>
+      <tr>
+        <td class="id">39</td>
+        <td class="name">Asymmetric Sticky-CTA FAQ</td>
+        <td class="use">Two-column FAQ: heading + stat anchors + sticky-feel navy CTA panel on the LEFT, card-stack accordion on the RIGHT. Each FAQ card has a giant red mono numeral, hover bloom, and a "still curious? Call ..." tail row when open.</td>
+        <td class="where">AM · FaqSection.tsx + FaqAccordion.tsx</td>
+      </tr>
+      <tr>
+        <td class="id">40</td>
+        <td class="name">Section Bridge Marquee</td>
+        <td class="use">Mild scrolling proof bar between two heavy sections. Fills dead bands without competing. Edge gradient masks fade items in/out cleanly. Themable per surface (white / tint / navy).</td>
+        <td class="where">AM · SectionBridge.tsx</td>
+      </tr>
+      <tr>
+        <td class="id">41</td>
+        <td class="name">Thematic Right-Side CTA Card</td>
+        <td class="use">When the right-side header fill should convert (not just stat-anchor). Navy card with red dot eyebrow + body + Call CTA + supporting micro-stat. Used on SignsGrid to convert "here's what's wrong" into "here's what to do."</td>
+        <td class="where">AM · SignsGrid.tsx (v9 redesign)</td>
+      </tr>
+      <tr>
+        <td class="id">42</td>
+        <td class="name">AT A GLANCE Bullet Card</td>
+        <td class="use">Replaces "single prose paragraph in a bordered card" pattern. Caps eyebrow + 4-5 red-diamond bullets in a tinted card with left red rail. Used on location pages.</td>
+        <td class="where">AM · LocationBrief.tsx</td>
+      </tr>
+      <tr>
+        <td class="id">43</td>
+        <td class="name">Single-Word Category Eyebrow</td>
+        <td class="use">When a card needs an unmistakable category anchor: drop the small mono caps, use one big display-font word (text-2xl/3xl, font-bold, tracking-wider) in the accent color as the dominant card identifier. Title becomes the sub-line beneath.</td>
+        <td class="where">AM · SpecDeck.tsx (v9)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">v8 carry-forward (key recipes)</h3>
+  <table class="recipes">
+    <thead><tr><th>ID</th><th>Recipe</th><th>Where canonical now</th></tr></thead>
+    <tbody>
+      <tr><td class="id">06</td><td class="name">TypeIn cinematic headline reveal</td><td class="where">Both</td></tr>
+      <tr><td class="id">30</td><td class="name">Audit Ledger Card</td><td class="where">KMv2</td></tr>
+      <tr><td class="id">31</td><td class="name">Dual Scrub Counter (Pinned ScrollTrigger)</td><td class="where">KMv2</td></tr>
+      <tr><td class="id">32</td><td class="name">Scrolling Brand Bar</td><td class="where">Both — AM ProofMarquee + KMv2 tech bar</td></tr>
+      <tr><td class="id">33</td><td class="name">Perimeter Draw on Cards</td><td class="where">AM (ReviewsSection)</td></tr>
+      <tr><td class="id">34</td><td class="name">Process Step with Right-Side Stat Callouts</td><td class="where">AM ProcessSteps (v9 redesign with bullet-stack instead)</td></tr>
+      <tr><td class="id">35</td><td class="name">Sticky Pin Section</td><td class="where">KMv2 Urgency</td></tr>
+      <tr><td class="id">36</td><td class="name">Optional Service Pattern (form/API graceful degradation)</td><td class="where">AM ContactForm (Resend deferred)</td></tr>
+      <tr><td class="id">37</td><td class="name">Above-the-Fold Reveal (whileInView with amount: 0.01)</td><td class="where">Both heroes</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ ANTI-PATTERNS ============================ -->
+<section class="chapter wrap" id="anti">
+  <h2 class="chapter-title"><span class="ix">07</span>Anti-pattern catalog — rendered</h2>
+  <p class="lede">Failure modes shown rendered, not described. Each one was hit during the AM build and cost real time before the fix landed. Avoid in future builds.</p>
+
+  <h3 class="section-title">7.1 · Red-on-navy caps eyebrow</h3>
+  <p><code>text-red</code> against <code>bg-navy</code> is dark-on-dark. Renders ~2.5:1 — illegible. Hit on FooterCTA, FAQ STILL NOT SURE, SpecDeck eyebrow, Footer column headers — fixed sitewide in v9.</p>
+  <div class="compare">
+    <div>
+      <div class="label-row bad">❌ Anti-pattern · red caps on navy</div>
+      <div class="body" style="padding:0;"><div class="anti dark-on-dark">Step 1 · Fast Estimate</div></div>
+    </div>
+    <div>
+      <div class="label-row good">✅ Fix · white caps + red dot accent</div>
+      <div class="body" style="padding:0;"><div class="anti fixed"><span class="dot"></span>Step 1 · Fast Estimate</div></div>
+    </div>
+  </div>
+
+  <h3 class="section-title">7.2 · FadeUp / Stagger / SlideIn negative viewport margin</h3>
+  <p>The doctrine pre-v9 used <code>margin: "-260px"</code> for IntersectionObserver triggers and called it "pre-trigger." This is BACKWARDS — negative root margin SHRINKS the trigger box, meaning elements have to scroll DEEPER into the viewport before firing. The CTAs on home teasers were appearing way too late as a result.</p>
+  <div class="compare">
+    <div>
+      <div class="label-row bad">❌ Pre-v9 · negative margin POST-triggers</div>
+      <div class="body"><pre style="margin:0;">margin = "-260px"  // Element triggers
+                   // 260px AFTER it enters
+                   // viewport. Late.</pre></div>
+    </div>
+    <div>
+      <div class="label-row good">✅ v9 · positive margin actually pre-triggers</div>
+      <div class="body"><pre style="margin:0;">margin = "200px"   // Trigger zone expands
+                   // 200px ABOVE viewport.
+                   // Fires early.</pre></div>
+    </div>
+  </div>
+  <div class="callout warn">
+    <span class="label">Audit needed</span>
+    Any earlier project still using <code>-260px</code> defaults from v3-v8 inherited the same
+    bug. Audit on next handoff: search for <code>margin = "-260px"</code> in motion components,
+    flip to positive 200px.
+  </div>
+
+  <h3 class="section-title">7.3 · JSX exported from a 'use client' module crossing the RSC boundary</h3>
+  <p>Storing JSX (e.g., SVG icon constants) in a <code>'use client'</code> module and importing them from a server component to pass as props strips them at the boundary. They render as nothing.</p>
+  <div class="compare">
+    <div>
+      <div class="label-row bad">❌ Pre-v9 · JSX in 'use client' module</div>
+      <div class="body"><pre style="margin:0;">// SignsGrid.tsx
+'use client';
+export const SignIcons = {
+  draft: (&lt;svg&gt;...&lt;/svg&gt;),
+};
+
+// app/windows/page.tsx (server)
+import { SignIcons } from '@/.../SignsGrid';
+// SignIcons.draft → client ref → empty render</pre></div>
+    </div>
+    <div>
+      <div class="label-row good">✅ v9 · JSX in plain (non-client) module</div>
+      <div class="body"><pre style="margin:0;">// SignIcons.tsx (no 'use client')
+export const SignIcons = {
+  draft: (&lt;svg&gt;...&lt;/svg&gt;),
+};
+
+// app/windows/page.tsx (server)
+import { SignIcons } from '@/.../SignIcons';
+// JSX survives RSC boundary, renders properly</pre></div>
+    </div>
+  </div>
+
+  <h3 class="section-title">7.4 · Bar fill = "score" instead of literal magnitude</h3>
+  <p>If the BAR represents "this material is GOOD at maintenance", LOW maintenance gets a HIGH bar (because low is good). Confusing — viewers expect "the bar shows the value of the word." Fix: bars represent literal magnitude. LOW = short bar, HIGH = long bar. Wood (HIGH maintenance) = nearly-full bar.</p>
+  <div class="compare">
+    <div>
+      <div class="label-row bad">❌ Score-as-fill (confusing)</div>
+      <div class="body" style="padding:0; background:var(--am-navy);">
+        <div style="padding:14px 16px;">
+          <div class="am-tier"><div class="row"><span class="lbl">MAINTENANCE</span><span class="val">LOW</span></div><div class="track"><span class="fill" style="width:88%;"></span></div></div>
+          <div class="am-tier"><div class="row"><span class="lbl">MAINTENANCE</span><span class="val">HIGH</span></div><div class="track"><span class="fill" style="width:35%;"></span></div></div>
+          <p style="color:rgba(255,255,255,0.6); font-size:12px; margin:14px 0 0;">"LOW maintenance" with a near-full bar reads as a contradiction.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="label-row good">✅ Magnitude-as-fill (intuitive)</div>
+      <div class="body" style="padding:0; background:var(--am-navy);">
+        <div style="padding:14px 16px;">
+          <div class="am-tier"><div class="row"><span class="lbl">MAINTENANCE</span><span class="val">LOW</span></div><div class="track"><span class="fill" style="width:25%;"></span></div></div>
+          <div class="am-tier"><div class="row"><span class="lbl">MAINTENANCE</span><span class="val">HIGH</span></div><div class="track"><span class="fill" style="width:80%;"></span></div></div>
+          <p style="color:rgba(255,255,255,0.6); font-size:12px; margin:14px 0 0;">Bar literally matches the word. Reads correctly without thought.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">7.5 · StatCounter with fixed duration on small targets</h3>
+  <p>1.1s duration to count 0→6 means the user sees "0" for too long. v9 scales duration by target size: ≤10 → 0.45s, ≤50 → 0.6s, ≤100 → 0.8s, larger → 1.0s. Small numbers land cleanly without holding visibly at 0.</p>
+
+  <h3 class="section-title">7.6 · Other cataloged anti-patterns (v8 carry-forward)</h3>
+  <ul>
+    <li><strong>Wide outer glow halos</strong> — bleed creates a strikethrough effect through the heading. Cap at 2px alpha 0.55.</li>
+    <li><strong><code>mb-*</code> inside HeadingWithUnderline className</strong> — the component routes margin classes to the outer wrapper; inner mb creates an overline effect.</li>
+    <li><strong><code>filter: blur(*)</code> on text animations</strong> — removed sitewide. Opacity + offset only.</li>
+    <li><strong>"Playing card" 4-up color-coded stat blocks</strong> — explicitly rejected. Use structured cards with rhythm.</li>
+    <li><strong>Gold/yellow/teal in AM, red in KMv2</strong> — palette discipline. Substitute brand color when adapting references.</li>
+    <li><strong>Deploying without clearing dev cache</strong> — webpack <code>.next</code> corruption is recurring. <code>rm -rf .next</code> + restart between heavy edit batches.</li>
+    <li><strong><code>playbackRate &lt; 1.0</code> on hero video</strong> — halves frame rate, visible stutter. Generate at native long duration instead.</li>
+    <li><strong>Hooks-in-loop in React 19 strict</strong> — kills the parent silently. Extract loop body to child component (see v8 §1.2).</li>
+  </ul>
+</section>
+
+<!-- ============================ ENGINEERING ============================ -->
+<section class="chapter wrap" id="engineering">
+  <h2 class="chapter-title"><span class="ix">08</span>Engineering rules</h2>
+  <p class="lede">Hard rules. Never bend. Carries forward from v8 §1 with v9 additions noted.</p>
+
+  <h3 class="section-title">8.1 · Performance bans</h3>
+  <table class="recipes">
+    <thead><tr><th>ID</th><th>Ban</th><th>Reason</th></tr></thead>
+    <tbody>
+      <tr><td class="id">PP-08</td><td class="name">No infinite boxShadow animations</td><td class="use">Real paint cost. Use opacity or filter.</td></tr>
+      <tr><td class="id">PP-09</td><td class="name">No width/height/top/left animations</td><td class="use">Layout reflow per frame. Use transform + opacity only.</td></tr>
+      <tr><td class="id">PP-10</td><td class="name">No setInterval counters</td><td class="use">setInterval drifts and re-renders. Use useMotionValue or rAF.</td></tr>
+      <tr><td class="id">PP-11</td><td class="name">No HTML video playbackRate &lt; 1.0</td><td class="use">Halves frame rate → stutter. Generate at native long duration.</td></tr>
+      <tr><td class="id">CCR-06</td><td class="name">No &lt;div&gt; inside &lt;span&gt;/&lt;p&gt;/&lt;a&gt;</td><td class="use">Invalid HTML. Hydration mismatches.</td></tr>
+      <tr><td class="id">PP-12 ⭐</td><td class="name">No negative IntersectionObserver root margin defaults claiming "pre-trigger"</td><td class="use">Negative margin POST-triggers. Use positive (e.g. 200px) for true pre-trigger. v9 fix.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">8.2 · Hydration & framework</h3>
+  <ul>
+    <li><code>'use client'</code> on every component using Framer Motion or GSAP. No exceptions.</li>
+    <li><code>useGSAP()</code> hook for all GSAP in React. Never raw useEffect + gsap.context.</li>
+    <li>GSAP and Framer Motion never target the same DOM element. One element, one animation system.</li>
+    <li><strong>Hooks-in-loop is fatal in React 19 strict.</strong> Never call FM hooks (useTransform, useMotionValueEvent, useScroll) inside <code>.map()</code>. Extract loop body to child component.</li>
+    <li><strong>JSX exports from <code>'use client'</code> modules don't survive RSC boundaries.</strong> Put JSX (icons, etc.) in non-client modules. v9 lesson — see Anti §7.3.</li>
+  </ul>
+
+  <h3 class="section-title">8.3 · Accessibility (non-negotiable)</h3>
+  <ul>
+    <li>WCAG 2.1 AA color contrast: 4.5:1 normal text, 3:1 large.</li>
+    <li><code>prefers-reduced-motion</code> honored. Continuous loops stop. Opacity reveals stay.</li>
+    <li>axe-core: 0 critical, 0 serious. Run on every page.</li>
+    <li><code>aria-hidden="true"</code> on glows, lines, particles, decorative chars.</li>
+    <li>Translucent fixed-position navs need ≥40% backdrop opacity at all scroll positions or axe false-positives.</li>
+    <li>Every input has paired <code>label htmlFor</code> with matching id, OR <code>aria-label</code>. Range sliders need aria-label.</li>
+    <li>Validate token brightness against every surface BEFORE first build (palette tables in §04).</li>
+  </ul>
+
+  <h3 class="section-title">8.4 · Tactical operations (v9 ⭐ updated)</h3>
+  <ul>
+    <li><strong>Vercel deploy via npx (no CLI install):</strong> <code>npx vercel@latest --prod --yes</code></li>
+    <li><strong>When CDP screenshots time out</strong> against motion-heavy pages, switch to <code>curl -sI</code> for status verification + the chrome JS tool for inspecting computed styles. Don't burn 20+ minutes fighting CDP retry loops. (v8 OP-08 + v9 reinforcement.)</li>
+    <li><strong>Dev cache corruption is recurring.</strong> After production builds clobber the <code>.next</code> dir, <code>rm -rf .next</code> + restart preview. Symptom: <code>Cannot find module './741.js'</code>.</li>
+    <li><strong>Never run <code>npm install</code> in pnpm projects.</strong> Lockfile mixing silently breaks builds.</li>
+    <li><strong>Centralize repeated strings.</strong> v9 add: any "Mon-Sat" abbreviation pairs with hours via a <code>BUSINESS.hoursShort</code> constant — never let day-range appear without time.</li>
+  </ul>
+</section>
+
+<!-- ============================ VERIFICATION ============================ -->
+<section class="chapter wrap" id="verification">
+  <h2 class="chapter-title"><span class="ix">09</span>Verification contract</h2>
+  <p class="lede">Three-layer stack. All three required. Skipping any = incomplete verification.</p>
+
+  <pre>Layer 1: VISUAL    (Chrome MCP — Primary Eyes)
+   ↓
+Layer 2: AUTOMATED (Playwright FULL capabilities — not just DOM)
+   ↓
+Layer 3: ACCESSIBILITY (axe-core)</pre>
+
+  <h3 class="section-title">Playwright FULL capabilities — use all of these</h3>
+  <ul>
+    <li>Video recording (<code>video: { mode: 'on' }</code>) — every motion-heavy build</li>
+    <li>Trace files — debug failed sequences</li>
+    <li><code>toHaveScreenshot()</code> pixel-diff — catch unintended regressions</li>
+    <li>Device emulation — real mobile profiles, not just viewport size</li>
+    <li>Network interception — loading perf, missing assets</li>
+    <li>Console listeners — uncaught exceptions, hydration mismatches</li>
+    <li>Accessibility tree — beyond axe</li>
+  </ul>
+
+  <h3 class="section-title">Verification checklist</h3>
+  <table class="recipes">
+    <thead><tr><th>ID</th><th>Check</th><th>Pass</th></tr></thead>
+    <tbody>
+      <tr><td class="id">VC-01</td><td class="name">Reload stability</td><td class="use">Hero settles. No stuck animations.</td></tr>
+      <tr><td class="id">VC-02</td><td class="name">FPS desktop</td><td class="use">50fps sustained, 30fps floor.</td></tr>
+      <tr><td class="id">VC-03</td><td class="name">FPS mobile</td><td class="use">5fps headless floor (verify on physical device).</td></tr>
+      <tr><td class="id">VC-04</td><td class="name">Horizontal overflow</td><td class="use">No scrollbar at 390px.</td></tr>
+      <tr><td class="id">VC-05</td><td class="name">Stat container fit</td><td class="use">Numbers fit. No overflow.</td></tr>
+      <tr><td class="id">VC-06</td><td class="name">Accessibility</td><td class="use">axe: 0 critical, 0 serious.</td></tr>
+      <tr><td class="id">VC-07</td><td class="name">Contrast</td><td class="use">4.5:1 against backgrounds.</td></tr>
+      <tr><td class="id">VC-08</td><td class="name">Reduced motion</td><td class="use">Loops stop with <code>prefers-reduced-motion: reduce</code>.</td></tr>
+      <tr><td class="id">VC-09</td><td class="name">Cross-viewport</td><td class="use">1440x900 + 390x844 both pass.</td></tr>
+      <tr><td class="id">VC-10</td><td class="name">Asset weight</td><td class="use">Total &lt; 5MB. Hero video &lt; 3MB.</td></tr>
+      <tr><td class="id">VC-11</td><td class="name">Post-deploy visual confirmation</td><td class="use">Production URL serves the new build, changes visible to a real user.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ TASTE PROFILE ============================ -->
+<section class="chapter wrap" id="tp">
+  <h2 class="chapter-title"><span class="ix">10</span>Taste profile</h2>
+  <p class="lede">Soft defaults — what to do when nothing else says otherwise. NOT rules. Yield to reference sites or explicit instruction. Carries forward from v8 §0.2 with v9 additions.</p>
+  <ul>
+    <li><strong>TP-01</strong> Typed-in headline animations on every section H2.</li>
+    <li><strong>TP-02</strong> Selective animated underlines on key headings, multiple words wide.</li>
+    <li><strong>TP-03</strong> Trust banner directly below the hero. Stats with counters.</li>
+    <li><strong>TP-04</strong> Animated fine-line separators (1px, scaleX 0→1) between content zones.</li>
+    <li><strong>TP-05</strong> Counter numbers with stat underlines. <code>useMotionValue</code> + thin animated underline. <em>v9: scale duration by target size.</em></li>
+    <li><strong>TP-06</strong> Directional card entrances (alternating left/right by grid position).</li>
+    <li><strong>TP-07</strong> Stat sections supporting weight, not main content.</li>
+    <li><strong>TP-08</strong> Split layout for service areas (media one side, content other).</li>
+    <li><strong>TP-09</strong> Mobile execution non-negotiable. Verify on mobile.</li>
+    <li><strong>TP-10</strong> Featured + supporting review layout — hierarchy IS the design.</li>
+    <li><strong>TP-11</strong> Accent-colored category tags on cards (palette-locked).</li>
+    <li><strong>TP-12</strong> Process sections with visual connectors. <em>v9: 2-col internal layout per card (icon + title + body LEFT, bullet stack RIGHT).</em></li>
+    <li><strong>TP-13</strong> Video hero by default.</li>
+    <li><strong>TP-14</strong> Proactive image generation. Don't make user ask.</li>
+    <li><strong>TP-15</strong> Brand-palette discipline. Programmatic + visual enforcement.</li>
+    <li><strong>TP-16</strong> Scale to section role. Supporting content starts smaller.</li>
+    <li><strong>TP-17</strong> Pattern propagation from user signals. Strong feedback → catalog pattern.</li>
+    <li><strong>TP-18</strong> Mid-build skill audit at every major iteration.</li>
+    <li><strong>TP-19</strong> Source-of-truth constants in <code>lib/data.ts</code>.</li>
+    <li><strong>TP-20</strong> Higgsfield realism via anti-prompts.</li>
+    <li><strong>TP-21 ⭐ NEW v9</strong> <strong>Match-the-word bar logic.</strong> When a bar/meter represents an attribute with a worded label (LOW/HIGH/etc.), bar fill matches literal magnitude of the word — NEVER a "score." LOW = small fill. HIGH = large fill. Viewers expect words and bars to agree without translation.</li>
+    <li><strong>TP-22 ⭐ NEW v9</strong> <strong>Clearly clickable at rest.</strong> Interactive elements must signal interactivity WITHOUT requiring hover. Stronger borders, ambient glows, persistent arrows, status pills. Hover is enhancement, not the only affordance.</li>
+    <li><strong>TP-23 ⭐ NEW v9</strong> <strong>Hours always pair with day-range.</strong> Never let "Mon-Sat" appear in caps without "9 AM – 6 PM." Centralize as <code>BUSINESS.hoursShort</code>.</li>
+    <li><strong>TP-24 ⭐ NEW v9</strong> <strong>Right-side fill is a slot, not a stat-only zone.</strong> The space next to a section header can hold stat anchors OR a thematic CTA card OR an AT A GLANCE bullet list — pick by what the section's downstream conversion needs.</li>
+    <li><strong>TP-25 ⭐ NEW v9</strong> <strong>Trim to deliberate counts.</strong> 6 cards in a 3-col grid often overwhelm. Trim to 4 in a 2x2 — feels deliberate. Same for spec lines (3-4 max), brand chips (3-6), location stats (4).</li>
+  </ul>
+</section>
+
+<!-- ============================ OPERATING PRINCIPLES ============================ -->
+<section class="chapter wrap" id="op">
+  <h2 class="chapter-title"><span class="ix">11</span>Operating principles</h2>
+  <p class="lede">Mental models that govern HOW Claude works. Cannot be overridden.</p>
+  <ul>
+    <li><strong>OP-01</strong> Vision for taste, assertions for correctness. Use both.</li>
+    <li><strong>OP-02</strong> Never build UI blind. Look at the result after every meaningful change.</li>
+    <li><strong>OP-03</strong> Recognize inference vs perception. Always close the loop with perception.</li>
+    <li><strong>OP-04</strong> Scale to section role.</li>
+    <li><strong>OP-05</strong> Trust user taste signals broadly. Single-element feedback rarely about a single element.</li>
+    <li><strong>OP-06</strong> Brand-palette discipline — programmatic + visual enforcement.</li>
+    <li><strong>OP-07</strong> Audit tool/skill utilization mid-build.</li>
+    <li><strong>OP-08</strong> When verification stalls, switch tier. Don't burn time fighting CDP — pivot to deploy-and-verify.</li>
+    <li><strong>OP-09</strong> Save handoff docs to <code>docs/</code>. Files outlive any single conversation.</li>
+    <li><strong>OP-10</strong> Push back when a request risks the goal. Present 2-3 options with recommendation.</li>
+    <li><strong>OP-11 ⭐ NEW v9</strong> <strong>Operating-mode mantra discipline.</strong> When the user gives a task that references another section ("apply the home-page DNA here"), the implicit pattern is always: study the referenced section, identify its visual language, apply it without asking section-by-section direction. Confirm the plan tightly, then ship.</li>
+    <li><strong>OP-12 ⭐ NEW v9</strong> <strong>Standby mode for batched edits.</strong> When the user announces a "round of edits," queue them all without executing. Note each clearly with the planned approach. Wait for explicit "go" before any code changes. Reduces context-switching cost and lets the user think out a sequence end-to-end.</li>
+    <li><strong>OP-13 ⭐ NEW v9</strong> <strong>Cascading components are the leverage point.</strong> Edits to shared components (FaqSection, SignsGrid, MaterialsGrid, LocationPage) automatically propagate across every page that uses them. ALWAYS prefer component-level edits over page-level repetition. One change in <code>FaqSection.tsx</code> hits home + windows + doors + 6 location pages = 9 pages cleaned in one commit.</li>
+  </ul>
+</section>
+
+<!-- ============================ EXAMPLE A · AM ============================ -->
+<section class="chapter wrap" id="example-am">
+  <h2 class="chapter-title"><span class="ix">12</span>Worked example A · American Masterworks</h2>
+  <p class="lede">Patriotic Navy + Red mode. 11-page Next.js 15 site for a Castalia, NC window/door installer. Live at <a href="https://web-azure-ten-69.vercel.app">web-azure-ten-69.vercel.app</a>. Repo: <a href="https://github.com/josephspells-Cgrav/american-masterworks">github.com/josephspells-Cgrav/american-masterworks</a>.</p>
+
+  <h3 class="section-title">Stack</h3>
+  <ul>
+    <li>Next.js 15 + App Router + TypeScript</li>
+    <li>Tailwind CSS v4 (CSS-first config in <code>app/globals.css</code> — no <code>tailwind.config.js</code>)</li>
+    <li>framer-motion 12.38 via <strong>pnpm</strong></li>
+    <li>Vercel hosting (project "web", aliased to <code>web-azure-ten-69.vercel.app</code>)</li>
+    <li>Inter Tight (display) + Inter (body) via <code>next/font/google</code></li>
+  </ul>
+
+  <h3 class="section-title">Component inventory (v9 state)</h3>
+  <table class="recipes">
+    <thead><tr><th>File</th><th>Used on</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="id">HomeHero</td><td class="use">/</td><td class="where">Cinematic, complete</td></tr>
+      <tr><td class="id">ProofMarquee</td><td class="use">/ + every inner page top</td><td class="where">Recipe 32</td></tr>
+      <tr><td class="id">HomeWindowsTeaser / HomeDoorsTeaser</td><td class="use">/</td><td class="where">v9: eyebrow + bullets + chips + dual CTAs + floating stat + corner grace notes</td></tr>
+      <tr><td class="id">ProcessSteps</td><td class="use">/</td><td class="where">v9: numerals removed, 2-col internal grid, bullet stacks per step</td></tr>
+      <tr><td class="id">SectionBridge</td><td class="use">/ (between ProcessSteps→ServiceArea + Reviews→FAQ)</td><td class="where">Recipe 40 ⭐ v9</td></tr>
+      <tr><td class="id">ServiceAreaGrid</td><td class="use">/, /windows, /doors</td><td class="where">v8 fine</td></tr>
+      <tr><td class="id">TrustTabs</td><td class="use">/</td><td class="where">v9: chip buttons w/ category eyebrow + teaser, arrow LEFT, at-rest affordance</td></tr>
+      <tr><td class="id">ReviewsSection</td><td class="use">/</td><td class="where">Recipe 33 (perimeter draw)</td></tr>
+      <tr><td class="id">FaqSection + FaqAccordion</td><td class="use">9 pages</td><td class="where">Recipe 39 ⭐ v9 (asymmetric sticky-CTA)</td></tr>
+      <tr><td class="id">FooterCTA</td><td class="use">every page</td><td class="where">v9: brightened caps, hoursShort</td></tr>
+      <tr><td class="id">Footer (layout)</td><td class="use">every page</td><td class="where">v9: brightened, hoursShort</td></tr>
+      <tr><td class="id">PageHero</td><td class="use">/windows, /doors, /gallery, /contact, 6 locations</td><td class="where">Cinematic</td></tr>
+      <tr><td class="id">SignsGrid</td><td class="use">/windows, /doors</td><td class="where">v9: trimmed 6→4, ▲ SYMPTOM tag, Recipe 41 thematic CTA card</td></tr>
+      <tr><td class="id">StyleGrid</td><td class="use">/windows, /doors</td><td class="where">v9: home-page-caliber header w/ stat anchors</td></tr>
+      <tr><td class="id">BrandsTrustBar</td><td class="use">/windows, /doors</td><td class="where">v9: Recipe 32 (replaced BrandsDetailed cards)</td></tr>
+      <tr><td class="id">SpecDeck + SpecIcons</td><td class="use">/windows, /doors</td><td class="where">v9: single-word category eyebrow (Recipe 43), brightened</td></tr>
+      <tr><td class="id">MaterialsGrid</td><td class="use">/windows, /doors</td><td class="where">v9: Recipe 38 (navy spec-cards w/ tier bars). Match-the-word fills (TP-21).</td></tr>
+      <tr><td class="id">LocationPage (wrapper)</td><td class="use">6 locations</td><td class="where">v9: rewired composition (10 sections)</td></tr>
+      <tr><td class="id">LocationStats ⭐</td><td class="use">6 locations</td><td class="where">v9 NEW</td></tr>
+      <tr><td class="id">LocationBrief</td><td class="use">6 locations</td><td class="where">v9: Recipe 42 (AT A GLANCE card)</td></tr>
+      <tr><td class="id">LocationRequests ⭐</td><td class="use">6 locations</td><td class="where">v9 NEW (3-card "common requests")</td></tr>
+      <tr><td class="id">LocalSnapshot ⭐</td><td class="use">6 locations</td><td class="where">v9 NEW (3-up architecture-types photo strip)</td></tr>
+      <tr><td class="id">NearbyAreas</td><td class="use">6 locations</td><td class="where">v9: photo cards + distance pills + ALL SERVICE AREAS tile</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">Motion components</h3>
+  <table class="recipes">
+    <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td class="id">TypeIn</td><td class="use">Character-staggered headline reveal. Cinematic preset for slower/heavier.</td></tr>
+      <tr><td class="id">HeadingWithUnderline</td><td class="use">Signature pattern. fullWidth mode renders block-level underline. Splits margin classes to outer wrapper.</td></tr>
+      <tr><td class="id">FadeUp / Stagger / SlideIn</td><td class="use">v9: <strong>positive 200px viewport margin</strong> for actual pre-trigger. Negative was a polarity bug.</td></tr>
+      <tr><td class="id">Marquee</td><td class="use">Recipe 32 — triple-array continuous scroll.</td></tr>
+      <tr><td class="id">PerimeterDraw</td><td class="use">Recipe 33 — SVG rect with pathLength animation.</td></tr>
+      <tr><td class="id">StatCounter ⭐</td><td class="use">v9 NEW. TP-05 with target-scaled durations. Handles ranges (1–3), suffixes (100%/30+), prefixes ($0), word values (ALL/CUSTOM).</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ EXAMPLE B · KMv2 ============================ -->
+<section class="chapter wrap" id="example-km">
+  <h2 class="chapter-title"><span class="ix">13</span>Worked example B · King Maker v2</h2>
+  <p class="lede">Regal Black + Gold mode. SEO marketing site for $3M+ contractor firms. Live at <a href="https://kingmaker-v2.vercel.app">kingmaker-v2.vercel.app</a>. Repo: <a href="https://github.com/josephspells-Cgrav/kingmaker-v2">github.com/josephspells-Cgrav/kingmaker-v2</a>.</p>
+
+  <h3 class="section-title">What KMv2 contributes to v9</h3>
+  <ul>
+    <li><strong>Recipe 30 — Audit Ledger Card</strong> (rendered in §05.14). Tabular city ranking ledger with brick-red ALERT callout footer. The "diagnose → here's what it costs you" pattern.</li>
+    <li><strong>Recipe 31 — Dual Scrub Counter</strong>. Two related metrics ticking in lockstep on a pinned ScrollTrigger. "Watch the impact accumulate as you scroll."</li>
+    <li><strong>Recipe 32 — Scrolling Brand Bar</strong> (with proper tools listed: Claude Opus, Antigravity, Playwright, Higgsfield, Next 16, GSAP, Framer, Tailwind). Maps directly to AM ProofMarquee.</li>
+    <li><strong>Recipe 34 — Process Step with Right-Side Stat Callouts</strong> (AM extends with bullet-stack treatment in v9).</li>
+    <li><strong>Bordered chip eyebrow</strong> alternative to AM's inline rule + caps. Adds variety to the eyebrow vocabulary.</li>
+    <li><strong>Stat sidebar embedded in image card</strong> (Peak Roofing showcase: 18+ years / 3,400+ jobs / 15 MIN response). Useful for portfolio tiles.</li>
+    <li><strong>Single-secondary-accent discipline</strong>: brick-red reserved EXCLUSIVELY for diagnostic/alert content. Brand color discipline at its tightest.</li>
+    <li><strong>Declarative emphasis underline</strong> on inline lines ("That costs you rankings. And it costs you jobs."). Different use case from H2 underline.</li>
+  </ul>
+
+  <h3 class="section-title">When to lean on KMv2 vs AM as the reference</h3>
+  <table class="recipes">
+    <thead><tr><th>If the build is...</th><th>Lean on...</th></tr></thead>
+    <tbody>
+      <tr><td class="name">SEO marketing site for $3M+ contractor</td><td class="use">KMv2 — its DNA is built for exactly this</td></tr>
+      <tr><td class="name">Multi-page service-business site (windows, doors, plumbing, etc.)</td><td class="use">AM — has the structural complexity (location pages × N, FAQs, materials, etc.)</td></tr>
+      <tr><td class="name">Diagnostic / audit tool</td><td class="use">KMv2 — Audit Ledger Card + scrub counters</td></tr>
+      <tr><td class="name">Editorial / spec-sheet content</td><td class="use">AM — MaterialsGrid / SpecDeck / SignsGrid card patterns</td></tr>
+      <tr><td class="name">Single dark hero + scroll-driven storytelling</td><td class="use">KMv2 — pinned sections, dual scrub counters</td></tr>
+      <tr><td class="name">Multi-location SEO with structural per-city pages</td><td class="use">AM — LocationPage composition</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ AM BUILD STATE / HANDOFF ============================ -->
+<section class="chapter wrap" id="am-build">
+  <h2 class="chapter-title"><span class="ix">14</span>AM build state · handoff</h2>
+  <p class="lede">Where this site is right now, what shipped recently, and what's next. Effectively the V4_PROGRESS handoff folded into the doctrine since AM is the v9 worked example.</p>
+
+  <div class="callout">
+    <span class="label">Current state</span>
+    <strong>Live:</strong> <a href="https://web-azure-ten-69.vercel.app">https://web-azure-ten-69.vercel.app</a><br>
+    <strong>Repo:</strong> <a href="https://github.com/josephspells-Cgrav/american-masterworks">github.com/josephspells-Cgrav/american-masterworks</a><br>
+    <strong>Local:</strong> <code>C:\Users\josep\OneDrive\Documents\Claude\Projects\American Master Works Redaux\</code><br>
+    <strong>Latest commit on main:</strong> <code>e72ee2c</code> — "Massive round: section redesigns + location-page sweep across all 9 pages"
+  </div>
+
+  <h3 class="section-title">First 5 minutes runbook</h3>
+  <ol>
+    <li>Read this v9 file you're reading right now (top to bottom or jump via TOC).</li>
+    <li>Read <code>&lt;project-root&gt;/AMERICAN_MASTERWORKS_BRIEF.md</code> (v1.1, locked, voice rules + page architecture).</li>
+    <li>Read <code>&lt;project-root&gt;/web/lib/data.ts</code> + <code>web/lib/data-styles.ts</code> (source-of-truth constants — including the new v9 LOCATION_CONTENT extensions: stats, atAGlance, commonRequests, architectureTags).</li>
+    <li>Open the live URL in a browser. Scroll the home page, /windows, /doors, /locations/castalia-nc cold to form your own visual judgment.</li>
+    <li>Verify env: <code>cd "C:/Users/josep/OneDrive/Documents/Claude/Projects/American Master Works Redaux"</code>; <code>git status</code> (should be clean on main); <code>git log --oneline -5</code> (latest is e72ee2c).</li>
+  </ol>
+
+  <h3 class="section-title">Recent commit chronology (v9 session)</h3>
+  <table class="recipes">
+    <thead><tr><th>SHA</th><th>What landed</th></tr></thead>
+    <tbody>
+      <tr><td class="id">da4d150 → 2f0bc24</td><td class="use">Redesign 1 — SignsGrid built + RSC icon-boundary fix (icons moved to non-client module)</td></tr>
+      <tr><td class="id">7ad3f69 → f5787bc</td><td class="use">Big round 1 — Edits 1-6: ProofMarquee atop inner pages, SignsGrid card numerals, StyleGrid header, BrandsDetailed → BrandsTrustBar, SpecDeck, MaterialsGrid spec-sheet, LocationBrief</td></tr>
+      <tr><td class="id">b6406cd</td><td class="use">Home teasers redesign + new SectionBridge component + FAQ asymmetric 2-col + card-stack accordion</td></tr>
+      <tr><td class="id">ae8544d</td><td class="use">StatCounter component + tightened teaser cascade + corner grace notes + clickable TrustTabs chips + reviews-themed SectionBridge</td></tr>
+      <tr><td class="id">e72ee2c</td><td class="use">Massive round: ProcessSteps numeral removal + bullet stacks, TrustTabs single-word redesign, SignsGrid 6→4 trim + SEE A SIGN? CTA card, SpecDeck single-word eyebrows, MaterialsGrid navy cards + bar logic inversion, full location-page redesign with 4 new components, FadeUp polarity bug fix sitewide, FAQ + Footer brightness pass, BUSINESS.hoursShort constant</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">Operating mode (the working pattern)</h3>
+  <div class="callout">
+    <span class="label">Mantra</span>
+    <strong>"Based on the home page, think about what we've already done there and apply it here."</strong><br><br>
+    Don't ask for section-by-section direction. Look at the home page's equivalent section, identify the
+    pattern (eyebrow + cinematic H2 + glow underline + structured cards + filled whitespace + heavy
+    hovers + Call-verb phone CTAs), and apply it. Show a tight plan before executing, confirm scope,
+    then ship decisively.
+  </div>
+
+  <h3 class="section-title">Voice rules (brief §7, inviolable)</h3>
+  <ul>
+    <li>Confident, plainspoken, regional craftsman tone</li>
+    <li>Reading age 8th-10th grade</li>
+    <li><strong>Banned:</strong> exclamation points, "amazing/incredible/stunning", "we pride ourselves on...", "family-owned and operated since..."</li>
+    <li>Reference NC weather, county geography, real materials, real brand names</li>
+  </ul>
+
+  <h3 class="section-title">What's NOT done / known opportunities</h3>
+  <ul>
+    <li><strong>Resend + Twilio integration</strong> — the contact form uses Recipe 36 (graceful degradation) and console-logs in dev. Production-ready when env vars populated.</li>
+    <li><strong>Per-architecture stills for LocalSnapshot</strong> — currently uses ImagePlaceholder (labeled black div). Generate 3 stills per city × 6 cities = 18 photos when ready.</li>
+    <li><strong>Per-location hero stills</strong> — generated for /castalia, /spring-hope, /bunn, /louisburg, /nashville, /franklinton already (loc-*.webp). All present.</li>
+    <li><strong>OG images</strong> — 11 pages × 1200x630 with logo. Not yet generated.</li>
+    <li><strong>Schema validation</strong> — run Google's Rich Results Test on /, /windows, /doors, all 6 locations before launch. Should pass cleanly (FAQPage + LocalBusiness + Service + BreadcrumbList all wired).</li>
+    <li><strong>Real GA4 + Clarity IDs</strong> — placeholders in env per brief §11.</li>
+    <li><strong>DNS cutover</strong> — production aliased to <code>web-azure-ten-69.vercel.app</code>; client still owns the real domain. Cutover at launch.</li>
+  </ul>
+
+  <h3 class="section-title">Operational gotchas</h3>
+  <ul>
+    <li><strong>pnpm not npm.</strong> <code>pnpm-lock.yaml</code> in <code>/web</code>. Mixing breaks builds.</li>
+    <li><strong><code>cd web</code> before vercel.</strong> <code>npx vercel --prod --yes</code> from <code>/web</code>.</li>
+    <li><strong>Dev cache corruption</strong> after production builds: <code>rm -rf .next</code> + restart preview. Symptom: <code>Cannot find module './741.js'</code>. Recurring — preempt by clearing <code>.next</code> between heavy edit batches.</li>
+    <li><strong>CCR git push 403:</strong> if <code>git push</code> errors with "Invalid GitHub source exchange token", use a PAT: <code>git push https://&lt;token&gt;@github.com/josephspells-Cgrav/american-masterworks.git main</code>, then <code>git fetch origin main</code> to sync the local tracking branch.</li>
+    <li><strong>CDP screenshot timeouts</strong> on motion-heavy pages. Single retry usually clears it. If not, switch to curl status verification + chrome JS tool inspection. Don't burn 20+ minutes fighting CDP loops.</li>
+  </ul>
+
+  <h3 class="section-title">Reference paths</h3>
+  <ul>
+    <li><strong>Doctrine (you are here):</strong> <code>docs/KING_MAKER_v9.html</code></li>
+    <li><strong>Brief:</strong> <code>AMERICAN_MASTERWORKS_BRIEF.md</code> (v1.1)</li>
+    <li><strong>Previous handoffs (historical):</strong> <code>docs/V2_PROGRESS.md</code>, <code>docs/V3_PROGRESS.md</code></li>
+    <li><strong>Source-of-truth data:</strong> <code>web/lib/data.ts</code> + <code>web/lib/data-styles.ts</code></li>
+    <li><strong>Live:</strong> <a href="https://web-azure-ten-69.vercel.app">https://web-azure-ten-69.vercel.app</a></li>
+    <li><strong>Repo:</strong> <a href="https://github.com/josephspells-Cgrav/american-masterworks">github.com/josephspells-Cgrav/american-masterworks</a></li>
+  </ul>
+</section>
+
+<!-- ============================ COMPOSITION + FREEDOM ============================ -->
+<section class="chapter wrap" id="composition">
+  <h2 class="chapter-title"><span class="ix">15</span>Composition + creative freedom</h2>
+  <p class="lede">v9 is a doctrine, not a template. Both worked examples ship the same recipes in different aesthetic modes. Future builds compose; they don't clone.</p>
+
+  <div class="callout gold">
+    <span class="label">Posture</span>
+    <strong>Compose, don't clone.</strong> If a future build looks like a recolored AM, the doctrine
+    has been misapplied. The recipes are modular. The aesthetic mode is chosen for the project.
+    Creative judgment fills the gaps.
+  </div>
+
+  <h3 class="section-title">How to compose for a new project</h3>
+  <ol>
+    <li><strong>Pick an aesthetic mode</strong> from §03 (or extend with a new validated one). Lock palette per §04.</li>
+    <li><strong>Identify the project's structural shape</strong> — single page? multi-page? per-location? portfolio? audit tool?</li>
+    <li><strong>Pull recipes by need</strong>, not by template:
+      <ul>
+        <li>Need to prove a problem? Recipe 30 (Audit Ledger).</li>
+        <li>Need to compare options on the same axes? Recipe 38 (Spec-Sheet w/ tier bars).</li>
+        <li>Need a conversion fill instead of more stats? Recipe 41 (Thematic CTA card).</li>
+        <li>Need to present per-location intel? AM LocationPage composition (Recipes 38-43 stack).</li>
+        <li>Need scroll-driven counter dramatics? Recipe 31 (Dual Scrub Counter).</li>
+      </ul>
+    </li>
+    <li><strong>Apply pattern library §05</strong> for the standard signature elements (eyebrow + H2, stat anchor cluster, spec bullets, etc.).</li>
+    <li><strong>Run the verification contract §09</strong> before declaring done.</li>
+    <li><strong>Save handoff doc</strong> in project's <code>docs/</code> (OP-09).</li>
+  </ol>
+
+  <h3 class="section-title">When to deviate</h3>
+  <ul>
+    <li>The aesthetic mode requires it (Brutalist mode breaks several of the soft TPs by design).</li>
+    <li>The reference site direction overrides taste (TP < Reference per §02).</li>
+    <li>The user explicitly requests it (TP < User per §02).</li>
+    <li>Engineering rules and operating principles still hold. Always.</li>
+  </ul>
+</section>
+
+<!-- ============================ CHANGELOG ============================ -->
+<section class="chapter wrap" id="changelog">
+  <h2 class="chapter-title"><span class="ix">16</span>Changelog · v8 → v9</h2>
+
+  <h3 class="section-title">Added</h3>
+  <ul>
+    <li>New aesthetic mode: <strong>Patriotic Navy + Red</strong> (AM-validated).</li>
+    <li>Second worked example: <strong>American Masterworks</strong> alongside KMv2.</li>
+    <li>Recipes 38-43 (Editorial Spec-Sheet, Asymmetric Sticky-CTA FAQ, Section Bridge Marquee, Thematic Right-Side CTA, AT A GLANCE Bullet Card, Single-Word Category Eyebrow).</li>
+    <li>TP-21 (Match-the-word bar logic), TP-22 (Clearly clickable at rest), TP-23 (Hours pair with day-range), TP-24 (Right-side fill is a slot, not stat-only), TP-25 (Trim to deliberate counts).</li>
+    <li>OP-11 (Operating-mode mantra discipline), OP-12 (Standby mode for batched edits), OP-13 (Cascading components are the leverage point).</li>
+    <li>PP-12 (No negative IntersectionObserver root margin defaults claiming "pre-trigger").</li>
+    <li>StatCounter motion primitive with target-scaled durations + range/prefix/suffix/word-value handling.</li>
+    <li>BUSINESS.hoursShort centralization pattern.</li>
+    <li>Anti-pattern catalog with rendered before/after demos for: red-on-navy, FadeUp polarity, JSX-across-RSC, score-as-fill, fixed StatCounter duration.</li>
+    <li>Single-file HTML format with rendered visual examples — eliminates the interpretation gap that markdown forced.</li>
+  </ul>
+
+  <h3 class="section-title">Refined / fixed</h3>
+  <ul>
+    <li><strong>FadeUp / Stagger / SlideIn polarity bug:</strong> default margin <code>-260px</code> → <code>200px</code>. The negative value POST-triggered despite the "pre-trigger" comment. Cascade lag eliminated sitewide.</li>
+    <li><strong>Caps text on dark surfaces:</strong> all instances of <code>text-red</code> on navy/red bg switched to <code>text-white/85 font-semibold</code> with red dot accents. Legibility recovered across FooterCTA, Footer, FAQ, SpecDeck.</li>
+    <li><strong>Stat-caps general treatment:</strong> <code>text-[10-11px] tracking-[0.22em]</code> → <code>text-xs md:text-sm tracking-[0.18em] font-semibold</code>. Sitewide.</li>
+    <li><strong>v8 starter palette table:</strong> KMv2 palette already there; AM palette added with full WCAG matrix.</li>
+  </ul>
+
+  <h3 class="section-title">Removed / deprecated</h3>
+  <ul>
+    <li>v8 markdown format. v9 is HTML-rendered.</li>
+    <li>Old SignsGrid <code>SignStat</code> right-side cluster pattern (replaced by Recipe 41 thematic CTA card).</li>
+    <li>Old MaterialsGrid white-on-white card pattern (replaced by navy spec-cards per Recipe 38).</li>
+    <li>Old FaqSection centered narrow column (replaced by Recipe 39 asymmetric layout).</li>
+    <li>Old TrustTabs flat label cells with thin underline indicator (replaced by chip buttons).</li>
+    <li>Old LocationPage twin-ProseBlock layout (replaced by Recipe 42 + LocationStats + LocationRequests + LocalSnapshot).</li>
+  </ul>
+
+  <h3 class="section-title">Inherited wholesale (no changes)</h3>
+  <ul>
+    <li>v8 §0.0 pre-flight checklist (skill discovery, MCP bulk-load, Higgsfield workflow, Playwright verification, dev environment, web scraping, capabilities report, aesthetic mode selection).</li>
+    <li>v8 §0.1 instruction priority hierarchy.</li>
+    <li>v8 §1.1-1.7 hard performance bans, hydration rules, accessibility, animation behavior, verification contract, technical stack, asset compression standards.</li>
+    <li>Recipes 1-37.</li>
+  </ul>
+</section>
+
+<footer class="doc-footer">
+  <div>
+    King Maker Motion Doctrine v9 · Generated 2026-05-14 · Single self-contained HTML.<br>
+    Replaces <code>KING_MAKER_MASTER_v8.md</code>. v8 preserved as historical reference.
+  </div>
+</footer>
+
+</body>
+</html>

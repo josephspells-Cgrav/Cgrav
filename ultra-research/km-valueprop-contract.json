@@ -1,0 +1,59 @@
+{
+  "slug": "km-valueprop-master",
+  "question": "Is the King Maker enterprise authority site (one-time ~$5k own-it + ~$500/mo efficient off-page ops) a defensibly superior value proposition vs a $297/mo GoHighLevel template, for an NC roofing contractor — and what is the honest, fully-cited case for each claim?",
+  "tier": "max",
+  "mode": "balanced",
+  "lens": "Defensible, not optimistic. Every load-bearing claim cited + adversarially verified; modeled flagged as modeled; ranges not point-promises; explicitly mark what NOT to oversell. The deliverable's credibility IS the product (FTC/screenshot-proof posture).",
+  "stopCondition": "Each load-bearing claim (the ones that go on a sales slide / reel) has either (a) >=2 independent sources with at least one primary/non-incentivized, OR (b) is explicitly downgraded to modeled/directional/provisional with that flag carried into the claim library. Diverse source lenses exercised (Google first-party, independent SEO studies, contractor-vertical practitioner, platform feature-boards, ROI/economics).",
+  "subQuestions": [
+    "P1 Deep-vs-thin: does ~130 pages out-traffic/out-lead ~15-20 by a defensible multiple, and what gates it (quality, info-gain, site-wide drag)?",
+    "P2 Location/service matrix: lift vs one hub; organic ranking in non-located suburbs vs the map-pack proximity ceiling; real-job/unique requirement + doorway downside.",
+    "P3 Storm/insurance vertical: post-storm surge %, ticket size, close rate, share of roofer revenue; why a hub template captures ~none; NC/Triangle specifics.",
+    "P4 Off-page synergy: does deep content amplify off-page ROI; what $500/mo realistically buys + 6-12mo impact; the $5k own-it + $500/mo vs $297/mo rent case.",
+    "P5 GHL platform SEO limits: PageSpeed cap, no SSR/edge, schema gaps, CMS ceiling, no programmatic gen, duplicate-URL traps — cited to GHL's OWN boards where possible; plus the honest balance.",
+    "P6 Map-pack honesty: GBP~32%+reviews drive the pack; the site wins organic+long-tail+storm and SUPPORTS the pack but does not win it with pages.",
+    "P7 Conversion architecture: map-pack call-button cut -> call leak; 74%-unanswered stat; speed-to-lead/instant-estimate/dual-intent close-rate data.",
+    "P8 AI search future-proofing: AI ~0.3% of lead VOLUME today; agentic booking grounds on the site (schema/pricing); sell future-proofing not a lead flood.",
+    "P9 Platform-tier scaling: what scaled/multi-office roofers actually run vs the GHL-template tier; the scaling-headroom case (don't name brands unverified).",
+    "P10 ROI math: ticket x close-rate band -> value-per-lead -> annual revenue + delta vs each GHL tier; conservative/realistic/optimistic; flag MODELED.",
+    "P11 Honesty guardrails: the consolidated what-NOT-to-claim list + FTC/defensibility posture."
+  ],
+  "checklist": [
+    "Traffic multiple (deep vs thin) with conditions",
+    "Lead multiple (deep vs thin) with conditions",
+    "Thin-page downside (zero/negative) caveat",
+    "Location-page lift case studies, verified + de-vendored",
+    "Proximity ceiling on the pack for far suburbs",
+    "Doorway penalty line / real-job requirement",
+    "Post-storm search surge % corroborated beyond one vendor",
+    "Storm ticket size + close rate ranges",
+    "Off-page: links move organic > pack; $500/mo buys foundation+drip",
+    "GHL PageSpeed cap cited to measurable evidence",
+    "GHL schema/CMS/programmatic ceilings cited to GHL's own boards",
+    "GHL honest concessions (5-page local + CRM/conversion)",
+    "Map-pack: site supports but does not win the pack with pages",
+    "Call-button cut -> 20-40% call leak (provenance graded)",
+    "74% unanswered-calls provenance graded",
+    "Speed-to-lead close-rate data (5-min rule etc.)",
+    "AI ~0.3% lead volume double-confirmed; quality higher",
+    "Agentic booking grounds on schema/pricing (future-proofing)",
+    "Scaled roofers run custom/WP/enterprise not $297 templates (headroom case, no unverified brands)",
+    "ROI model inputs all sourced; outputs flagged modeled",
+    "Consolidated honesty / what-not-to-claim list"
+  ],
+  "deliverables": [
+    "KM_VALUEPROP_MASTER.md (one section per pillar, every claim cited inline)",
+    "KM_VALUEPROP_CLAIM_LIBRARY.md (claim -> stat -> source URL -> confidence/measured-vs-modeled)",
+    "KM_VALUEPROP_OBJECTIONS.md (objection-handling appendix)",
+    "KM_VALUEPROP_MODEL_TABLE.md (conservative/realistic/optimistic)",
+    "KM_VALUEPROP_REELS_HOOKS.md (~10-15 hooks, each tied to a citation + honest framing)",
+    "copy of master -> vault/inbox/"
+  ],
+  "priorVerifiedResearch": [
+    "vault/wiki/km-research-mappack-fulfillment-2026.md (P6, P2 proximity)",
+    "vault/wiki/km-research-sge-local-search-2026.md (P8, P7 call-leak, P6)",
+    "vault/raw_sources/offpage-seo-budget-vendor-research-2026-06-05.md (P4)",
+    "vault/raw_sources/pseo-location-silo-research-2026-06-05.md (P2 doorway/swap-test/proximity)"
+  ],
+  "created": "2026-06-24"
+}

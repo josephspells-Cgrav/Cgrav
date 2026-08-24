@@ -1,0 +1,86 @@
+{
+  "pageHero": {
+    "eyebrow": "Transparent Pricing for Raleigh Homeowners",
+    "heading": "What Does a Roof Replacement Cost in Raleigh, NC?",
+    "subhead": "Most roofing contractors won't publish their pricing. We do. Real installed ranges, honest cost drivers, and the financing facts you need before you sign anything — because you deserve to make this decision with clear numbers, not pressure.",
+    "ctaLabel": "Get Your Free Measured Quote",
+    "imageDescription": "A Raleigh home mid-replacement — crew on the roof stripping old shingles, fresh decking visible, GAF Timberline HDZ bundles staged at the ridge. Morning light, residential neighborhood, no storm damage visible."
+  },
+  "whatToExpect": {
+    "eyebrow": "What Moves the Number",
+    "heading": "5 Factors That Determine Your Actual Price",
+    "bullets": [
+      "Roof footprint, not home square footage, is what you pay for — a single-story 2,000 sq ft home has nearly twice the roof area of a two-story home the same size, so story count is one of the first questions on every estimate.",
+      "Pitch and slope add 30–50% to labor costs on steep roofs (8/12 pitch and above) because the crew works slower, uses safety equipment, and carries higher workers' compensation exposure — that cost is real and shows up in every honest bid.",
+      "Every layer of old roofing that has to come off adds $0.40–$2.00 per square foot in tear-off and disposal fees, so a home that's been re-roofed over once or twice carries meaningfully higher base costs before a single new shingle is installed.",
+      "Rotted or damaged decking is the hidden-cost risk on every job — it can't be assessed until old shingles are stripped, so any contractor who quotes a firm price without a written allowance for decking repair is leaving you exposed to surprise charges at $2–$5 per square foot or $75–$120 per sheet.",
+      "Material choice is the single largest variable in the total project price — the gap between standard architectural asphalt and standing-seam metal on the same Raleigh home can exceed $20,000, so matching material to budget and use case is the most important conversation before a number is ever written down."
+    ],
+    "stats": [
+      {
+        "value": "Free",
+        "unit": "measured on-site quote",
+        "label": "No estimates from the street — we measure your actual roof footprint before quoting"
+      },
+      {
+        "value": "Itemized",
+        "unit": "written estimate",
+        "label": "Every line item in writing: materials, labor, tear-off, decking allowance, accessories"
+      },
+      {
+        "value": "25-Year",
+        "unit": "workmanship warranty",
+        "label": "Manufacturer-backed labor coverage — not just a contractor promise that disappears if we do"
+      }
+    ],
+    "columns": {
+      "included": [
+        "Tear-off and disposal of existing shingles (up to one layer)",
+        "New felt or synthetic underlayment",
+        "Ridge cap and starter strips",
+        "Drip edge replacement",
+        "Re-flash of all penetrations (vents, pipes)",
+        "Manufacturer-registered warranty documentation",
+        "Post-install cleanup and magnet sweep for nails"
+      ],
+      "excluded": [
+        "Rotted or damaged decking beyond one sheet (quoted separately on discovery)",
+        "Chimney masonry repair (flashing replacement is included; brick repointing is not)",
+        "Gutter replacement or realignment",
+        "Solar panel removal and reinstall",
+        "Structural repairs to rafters or fascia boards",
+        "HVAC equipment on flat roofs"
+      ],
+      "timeline": [
+        "Day 1 — On-site measurement and inspection; written itemized quote same day or next morning",
+        "Days 2–5 — Material delivery and permit pulled from Wake County (required for full replacements)",
+        "Installation day(s) — Most Raleigh homes complete in one day; complex rooflines or larger homes may take two",
+        "Day after completion — Final inspection, walkthrough, warranty registration submitted to manufacturer"
+      ]
+    }
+  },
+  "faqSection": {
+    "faqs": [
+      {
+        "question": "What does a roof replacement actually cost in Raleigh, NC?",
+        "answer": "For a typical Raleigh home, installed costs run $10,500–$22,000 for standard architectural asphalt shingles. NC runs 15–20% below the national average, so Raleigh homeowners generally land below what you'll see quoted on national cost sites. The range is wide because roof footprint, pitch, layers to tear off, and material choice all move the number. A 1,700 sq ft home on a standard pitch with one layer to remove and GAF Timberline HDZ typically lands in the $9,500–$11,000 range. A steeper roof, a second layer to tear off, or a premium material pushes that number meaningfully higher. We quote after measuring — not before."
+      },
+      {
+        "question": "What's the difference between standard and premium shingles, and is the upgrade worth it?",
+        "answer": "Standard architectural asphalt (GAF HDZ, Owens Corning Duration, CertainTeed Landmark) runs $4.11–$5.57 per square foot installed and carries a 25-year manufacturer-backed workmanship warranty on a Golden Pledge or Platinum Protection system. Designer and premium lines run $4.39–$5.95 installed and add features like Class 4 impact resistance, longer algae warranties, and heavier weight for a more dimensional appearance. The upgrade is most defensible if you're in a hail-prone area (Class 4 shingles can qualify for insurance premium reductions), if the home has a high-visibility roofline where curb appeal matters, or if you're planning to sell within five years and want a transferable manufacturer warranty as a selling point."
+      },
+      {
+        "question": "Will my insurance cover the replacement, and how does that work?",
+        "answer": "For storm-damaged roofs, the average insurance payout for a hail or wind claim in NC runs $12,000–$17,000 — most homeowners pay only their deductible out of pocket on a replacement cost value (RCV) policy. The critical detail is policy type: an RCV policy pays the full cost to replace with like materials, minus your deductible. An actual cash value (ACV) policy depreciates the payout based on roof age — a 20-year-old roof on an ACV policy can result in a check as low as $3,000 toward a $15,000 job. We conduct a thorough post-storm inspection and provide written documentation with photos. We can meet your insurance adjuster on-site to ensure all covered damage is reviewed. We do not negotiate your claim or act as a public adjuster — the settlement stays between you and your insurer."
+      },
+      {
+        "question": "Can I finance a new roof, and what does that actually cost per month?",
+        "answer": "Yes. A $12,000 roof replacement financed over 60 months at 8.99% APR is approximately $249 per month — less than most car payments, protecting the largest asset you own. Ask about promotional payment options when you request your quote. One disclosure worth knowing: some roofing financing programs advertise deferred-interest plans. These are not the same as 0% interest — interest accrues during the promotional period and is back-charged in full if the balance isn't paid before the promo window closes. We'll explain the terms of any financing option clearly before you sign anything. Financing is subject to credit approval."
+      },
+      {
+        "question": "How do I know if I need a full replacement or just a repair?",
+        "answer": "A repair is often the right call for isolated damage — a few missing shingles after a wind event, a single flashing failure, or localized granule loss on an otherwise young roof. A replacement typically makes more economic sense when the roof is within 5 years of its expected lifespan, when damage covers more than 30% of the surface, or when a second layer of old shingles is already in place (a third layer is not permitted under NC building code and requires full tear-off). The honest answer can only come after an inspection — any contractor who recommends a full replacement from the driveway, without getting on the roof, is selling, not assessing."
+      }
+    ]
+  }
+}

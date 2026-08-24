@@ -1,0 +1,1149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>King Maker — Motion Doctrine (generation program)</title>
+<style>
+  :root {
+    --doc-bg:        #0F1117;
+    --doc-surface:   #161922;
+    --doc-surface-2: #1d2230;
+    --doc-border:    #2a3145;
+    --doc-text:      #e8eaf0;
+    --doc-text-mute: #9ca3b8;
+    --doc-text-dim:  #6b7388;
+    --doc-mono:      ui-monospace, SFMono-Regular, Menlo, monospace;
+    --doc-display:   ui-sans-serif, -apple-system, system-ui, sans-serif;
+    --am-navy:       #1b3361;
+    --am-red:        #b02549;
+    --am-red-hover:  #8a1d3a;
+    --am-text:       #1a1a1a;
+    --am-muted:      #6b7280;
+    --am-border:     #e5e7eb;
+    --am-tint:       #f5f7fb;
+    --am-white:      #ffffff;
+    --contract-bg:   #1a0d12;
+    --contract-bord: #4a1a28;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--doc-bg);
+    color: var(--doc-text);
+    font-family: var(--doc-display);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--am-red); color: #fff; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  .doc-header {
+    border-bottom: 1px solid var(--doc-border);
+    padding: 64px 32px 44px;
+    background: linear-gradient(180deg, var(--doc-surface) 0%, var(--doc-bg) 100%);
+  }
+  .doc-header .ver {
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+  .doc-header h1 {
+    margin: 0 0 12px;
+    font-size: clamp(32px, 4.2vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+  .doc-header .tagline {
+    color: var(--doc-text-mute);
+    font-size: 18px;
+    max-width: 820px;
+    margin: 0 0 16px;
+  }
+  .doc-header .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--contract-bg);
+    border: 1px solid var(--contract-bord);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 10px 16px;
+    margin-top: 16px;
+    font-family: var(--doc-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+  }
+  .doc-header .badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--am-red);
+    box-shadow: 0 0 6px rgba(176,37,73,0.85);
+  }
+
+  section.chapter {
+    border-top: 1px solid var(--doc-border);
+    padding: 56px 0 48px;
+  }
+  section.chapter:first-of-type { border-top: 0; }
+  h2.chapter-title {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    line-height: 1.1;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  h2.chapter-title .ix {
+    font-family: var(--doc-mono);
+    font-size: 13px;
+    color: var(--am-red);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  h3.section-title {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 28px 0 12px;
+    color: #fff;
+  }
+  h4.subsection {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 22px 0 8px;
+    color: var(--doc-text);
+    letter-spacing: 0.01em;
+  }
+  p { margin: 0 0 14px; }
+  p.lede { font-size: 17px; color: var(--doc-text-mute); max-width: 860px; }
+
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+
+  code {
+    font-family: var(--doc-mono);
+    font-size: 0.9em;
+    background: var(--doc-surface-2);
+    color: #f4d56b;
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+  pre {
+    font-family: var(--doc-mono);
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #d8dde9;
+    margin: 12px 0 18px;
+  }
+
+  .callout {
+    background: var(--doc-surface);
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid var(--am-red);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .callout.warn { border-left-color: #d97757; background: rgba(217,119,87,0.05); }
+  .callout.good { border-left-color: #6dd57c; background: rgba(109,213,124,0.06); }
+  .callout .label {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--am-red);
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .callout.warn .label { color: #d97757; }
+  .callout.good .label { color: #6dd57c; }
+
+  .contract {
+    background: var(--contract-bg);
+    border: 2px solid var(--contract-bord);
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0 28px;
+    position: relative;
+  }
+  .contract::before {
+    content: "GENERATION PROGRAM · NON-OVERRIDABLE";
+    position: absolute;
+    top: -11px;
+    left: 24px;
+    background: var(--am-red);
+    color: #fff;
+    font-family: var(--doc-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+  .contract h3 {
+    color: #fff;
+    font-size: 17px;
+    margin: 0 0 10px;
+    font-weight: 800;
+  }
+  .contract p { color: rgba(255,255,255,0.85); margin: 0 0 12px; font-size: 14px; line-height: 1.6; }
+  .contract ol, .contract ul { color: rgba(255,255,255,0.85); padding-left: 24px; margin: 0 0 12px; }
+  .contract li { margin-bottom: 8px; }
+  .contract strong { color: #fff; }
+  .contract code { background: rgba(255,255,255,0.08); color: #ffc8c8; }
+  .contract pre { background: rgba(0,0,0,0.35); border-left-color: var(--am-red); color: #ffe1e1; }
+
+  table.t {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 22px;
+    font-size: 13.5px;
+  }
+  table.t th, table.t td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--doc-border);
+    vertical-align: top;
+  }
+  table.t th {
+    color: var(--am-red);
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--doc-surface);
+  }
+  table.t td.id { font-family: var(--doc-mono); color: var(--doc-text-mute); width: 64px; }
+  table.t td.name { font-weight: 700; color: #fff; }
+  table.t td.use { color: var(--doc-text-mute); }
+  table.t td.where { font-family: var(--doc-mono); font-size: 12px; color: #f4d56b; }
+
+  footer.doc-footer {
+    border-top: 1px solid var(--doc-border);
+    padding: 36px 32px 56px;
+    color: var(--doc-text-dim);
+    text-align: center;
+    font-size: 13px;
+  }
+  a { color: #f4d56b; }
+  a:hover { color: #fff; }
+  hr.divider { border: 0; border-top: 1px solid var(--doc-border); margin: 28px 0; }
+
+  .slop-warn {
+    background: rgba(232,118,92,0.08);
+    border: 1px solid #4a2a22;
+    border-left: 3px solid #e8765c;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .slop-warn .head {
+    color: #e8765c;
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .slop-warn p { color: rgba(255,255,255,0.85); margin: 0; font-size: 14px; }
+
+  .surface {
+    border: 1px solid var(--doc-border);
+    border-left: 3px solid #f4d56b;
+    background: rgba(244,213,107,0.04);
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+  .surface .label {
+    font-family: var(--doc-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #f4d56b;
+    margin-bottom: 8px;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="wrap">
+    <div class="ver">King Maker · MOTION_DOCTRINE · 2026-05-18 · DEPRECATED as auto-load</div>
+    <h1>Motion Doctrine — Phase 2 Deep Reference (NOT generation contract)</h1>
+    <p class="tagline">
+      <strong>Post static-first pivot (2026-05-18):</strong> this file is no longer
+      auto-loaded. It is Phase 2 deep reference only — consult when MOTION_PLAYBOOK.html
+      doesn't cover a specific case. Default Phase 1 generation uses STRUCTURE_DOCTRINE.html
+      alone and ships zero motion code.
+    </p>
+    <div class="badge" style="background: rgba(232,118,92,0.08); border-color: #4a2a22;">
+      <span class="dot" style="background: #e8765c; box-shadow: 0 0 6px rgba(232,118,92,0.85);"></span>
+      PHASE 2 DEEP REFERENCE · BROWSE ON DEMAND · DO NOT AUTO-LOAD
+    </div>
+  </div>
+</header>
+
+<!-- ============================ DEPRECATION BANNER ============================ -->
+<section class="chapter wrap" style="padding-top: 36px; padding-bottom: 0;">
+  <div class="slop-warn" style="margin: 0 0 12px;">
+    <div class="head">⚠ Deprecation notice · 2026-05-18 static-first pivot</div>
+    <p style="margin: 0 0 8px;">
+      Three consecutive sessions (deep-remix v1, deep-remix v2, Cedar Creek Plumbing)
+      confirmed motion-heavy first-draft generation fails under compression even with
+      MOTION_DOCTRINE at ~1,050 lines. Precision values (cascade ladder 0.00/0.50/0.45,
+      ambient 2.4s/1.8s, hover 300ms/200ms, spring 260/18) bypass routinely. Two days
+      of iteration produced no clean first-draft.
+    </p>
+    <p style="margin: 0 0 8px;">
+      <strong>New flow:</strong> Phase 1 ships static-only via STRUCTURE_DOCTRINE.html
+      (no motion code at all). Phase 2 applies motion manually, voice-driven, via
+      MOTION_PLAYBOOK.html (section-pattern-keyed copy-paste catalog). This file
+      (MOTION_DOCTRINE.html) is the deeper "why" behind the playbook entries —
+      browse it only when MOTION_PLAYBOOK doesn't cover a specific case.
+    </p>
+    <p style="margin: 0;">
+      <strong>If you are loading this file:</strong> ask the user first whether
+      MOTION_PLAYBOOK.html should be loaded instead. This file is reference; the
+      playbook is the working catalog.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ §00 PREAMBLE + MOTION LOCKS ============================ -->
+<section class="chapter wrap" id="preamble">
+  <h2 class="chapter-title"><span class="ix">00</span>Preamble — read first</h2>
+
+  <p class="lede">
+    The agent (Claude) compresses long doctrine during generation and drops specific clauses.
+    Two consecutive deep-remix sessions proved this: v13 was read, intent was formed, code
+    was generated, and the motion catalog was implemented at ~20% of canonical depth —
+    cascade ladder timings missing, ambient pulses absent on decorative glyphs, per-card
+    inner cascade flattened, hover catalog only partially fired. This file is the surgical
+    cut: motion-only, generation-only, every clause surfaced and load-bearing.
+  </p>
+
+  <p>
+    <strong>Discipline:</strong> when you load this file, the assumption is you are about
+    to write or audit motion-heavy UI. Treat every value below as a literal default.
+    Treat every audit threshold as a hard gate. Treat the cascade ladder, ambient loop
+    catalog, hover gesture catalog, and per-section grammar as <em>checklists</em>, not
+    suggestions.
+  </p>
+
+  <h3 class="section-title">Motion-touching Locks — gate every UI Edit</h3>
+  <p>
+    Eleven Locks live in the full Generation Contract (see STRUCTURE_DOCTRINE.html §00).
+    Five of them are motion-touching — they gate every motion-heavy UI edit. Surfaced
+    here so they fire even if STRUCTURE_DOCTRINE isn't actively re-read this turn.
+  </p>
+
+  <div class="contract">
+    <h3>Motion Locks (subset of the Eleven)</h3>
+    <ol>
+      <li>
+        <strong>Lock 1 — Skills + capabilities surfaced.</strong> Pre-flight must output
+        BOTH lines verbatim before any UI Edit / Write:
+        <pre>Skills loaded: impeccable, design-taste-frontend, frontend-design, ui-ux-pro-max, high-end-visual-design, gpt-taste, design-motion-principles</pre>
+        <pre>Skill capabilities engaged this turn: design-motion-principles.audit-checklist, impeccable.critique, ui-ux-pro-max.design-system, [specific commands per turn]</pre>
+        Absence of either line = Lock 1 violation. Mid-build skill audit (Lock 8) at
+        every 5th UI Edit/Write reinforces this.
+      </li>
+      <li>
+        <strong>Lock 8 — Mid-build skill audit cadence.</strong> Every 5th UI Edit/Write
+        (or iteration boundary), output:
+        <pre>Mid-build skill audit · iter [N] / edit [M]:
+- skill capacity (10 ALWAYS): avg [X%], underused [&lt;50%]: [list]
+- verification stack: Chrome MCP [ready/missing], Playwright [ready/missing], axe-core [ready/missing]
+- next iteration adjustments: [specific commands / workflows to engage]</pre>
+        Codified after audit found ~12% average skill-capacity usage despite Lock 1 being
+        honored. Invoking a skill is not using it.
+      </li>
+      <li>
+        <strong>Lock 9 — Chrome MCP loaded.</strong> At session start (or first UI tool
+        use), output:
+        <pre>Chrome MCP loaded: navigate, screenshot, gif_creator, read_console_messages, read_network_requests, get_page_text — ready.</pre>
+        ToolSearch queries <code>"chrome browser navigate screenshot"</code> +
+        <code>"computer-use"</code> bring these online. Without this line, Edit/Write
+        to UI files is a Lock 9 violation.
+      </li>
+      <li>
+        <strong>Lock 10 — Playwright FULL ready.</strong> At session start, output:
+        <pre>Playwright stack: @playwright/test installed, capture.spec.ts exists, playwright.config.ts has video.mode "on" + trace "on", axe-core integrated — ready.</pre>
+        Required at session start for any motion-heavy project. The 2026-05-18 audit
+        found Playwright was the most damning bypass: doctrine named it explicitly,
+        I read the doctrine during pre-flight, I never acted.
+      </li>
+      <li>
+        <strong>Lock 11 — axe-core 0/0.</strong> After each Playwright capture run:
+        <pre>axe-core (post-capture): 0 critical, 0 serious, [N] moderate, [M] minor — [pass/fail].</pre>
+        Critical or serious violations block "shipped" / "complete" claims.
+      </li>
+    </ol>
+  </div>
+
+  <div class="callout warn">
+    <span class="label">Cardinal sin</span>
+    <strong>Skipping any motion default or canonical value below is the failure mode this
+    file exists to prevent.</strong> The doctrine clauses are present in v13 but routinely
+    bypassed because they are buried inside a 3,300-line file. Treat each value in this
+    file as load-bearing.
+  </div>
+</section>
+
+<!-- ============================ §01 KING MAKER DNA ============================ -->
+<section class="chapter wrap" id="dna">
+  <h2 class="chapter-title"><span class="ix">01</span>King Maker DNA — universal design language</h2>
+  <p class="lede">
+    Ten principles. Constant across every contractor-trade project. The motion catalog
+    in §03 is the implementation; the DNA names the principles. <strong>§01.8 ("Pulsing
+    dots in eyebrows. Everything has subtle life") is the most-bypassed clause in v13's
+    history.</strong> Surfaced first so it cannot be missed.
+  </p>
+
+  <div class="surface">
+    <span class="label">Most-missed clause · surfaced first</span>
+    <p style="margin: 0; color: var(--doc-text); font-size: 15px;">
+      <strong>3.8 · Hover bloom and pulsing markers.</strong> Cards lift on hover
+      (<code>-translate-y-1</code>), gain red shadow
+      (<code>shadow-[0_28px_56px_-24px_rgba(176,37,73,0.35)]</code>), and reveal a bottom
+      2px accent rule that scales left-to-right. Red diamond bullet markers
+      (<code>◆</code>) pulse subtly via animated opacity + scale.
+      <strong>Pulsing dots in eyebrows. Everything has subtle life.</strong>
+      No decorative glyph, eyebrow dot, or rail marker is allowed to be static.
+      Every visible ◆ ◯ ● gets the 2.4s pulse (diamonds) or 1.8s pulse (alert dots).
+      See §03.5 ambient loop catalog for exact specs.
+    </p>
+  </div>
+
+  <h3 class="section-title">1.1 · Cinematic motion language — the universal substrate</h3>
+  <p>
+    The motion language is the always-true substrate. <strong>Four constants apply to every
+    contractor-site build, every brand mode, every motion intensity setting.</strong> They
+    don't vary. If a recipe diverges from a constant, the recipe is wrong, not the constant.
+  </p>
+  <ol>
+    <li>
+      <strong>Universal entry ease curve:</strong>
+      <code>ENTER_EASE = [0.16, 1, 0.3, 1]</code> (cubic-bezier expo-out). Declared once per
+      project (or per-component if no shared file). Used on every entry transition site-wide.
+      <strong>No <code>"linear"</code> for entries.</strong> <strong>No <code>"ease-in-out"</code>
+      for entries</strong> (ease-in-out is reserved for the infinite-loop ambient pulses below).
+      AM uses this curve 32× across 30 files; KMv2 shares it. ENTER_EASE is re-declared at
+      the top of every primitive file + 27 section files. No shared <code>motion/easing.ts</code>
+      — each file copies the constant.
+    </li>
+    <li>
+      <strong>Positive 200px pre-trigger viewport margin:</strong>
+      <code>viewport: { once: true, margin: "200px" }</code> is the default on FadeUp /
+      Stagger / SlideIn. Positive margin EXPANDS the IntersectionObserver root box so the
+      reveal fires 200px BEFORE the element enters the viewport. <strong>This is the single
+      biggest contributor to the "fluid" feel of AM and KMv2.</strong> Without it, reveals
+      catch up to scroll position and feel stuttery. Negative margins (<code>"-180px"</code>,
+      <code>"-160px"</code>) are used selectively for inner-bullet stagger delay only,
+      never as section-reveal default.
+    </li>
+    <li>
+      <strong>Reduced-motion is non-negotiable:</strong> every motion primitive checks
+      <code>useReducedMotion()</code> first and either renders a plain element (no motion
+      wrapper) or sets <code>initial={false}</code> / <code>duration: 0</code>. The
+      <code>@media (prefers-reduced-motion: reduce)</code> global CSS rule is required in
+      <code>globals.css</code> as a final safety net (forces all animation/transition
+      durations to 0.01ms).
+    </li>
+    <li>
+      <strong>Ambient cadence pair — 2.4s for diamonds, 1.8s for alert dots:</strong>
+      every infinite-loop pulse uses one of these two durations. Use 2.4s for spec/thread/
+      glance bullet markers (<code>◆</code> pulsing markers, <code>opacity [0.65, 1, 0.65],
+      scale [1, 1.18, 1]</code>) and section-bridge separators. Use 1.8s for navy-bg CTA pip
+      dots + sticky CTA reinforcement (<code>opacity [0.6, 1, 0.6], scale [1, 1.3, 1]</code>).
+      Other durations (9s hero vignette, 18s hero video zoom, 45-55s marquee) are specific
+      to those atoms — see §03.5. <strong>Loops use <code>ease: "easeInOut"</code></strong>,
+      not the ENTER_EASE expo-out.
+    </li>
+  </ol>
+
+  <p>
+    Above-the-fold heroes run a <strong>3-4 second cinematic cascade</strong>: eyebrow rises
+    first (delay 0.2s), then H1 via TypeIn cinematic (delay 1.0s, per-char stagger 0.022s,
+    so an 8-word H1 lands by ~2.2s), then subhead rises (delay 2.6s), then dual CTAs pop
+    sequenced (delay 3.2s and 3.4s). Below-fold sections run the cascade ladder in §03.4 —
+    eyebrow → H2 → subhead → cards → per-card inner cascade. <strong>Sub-1.5-second total
+    section reveal feels stiff. 3-4 seconds feels intentional.</strong>
+  </p>
+
+  <h3 class="section-title">1.2 · Asymmetric 1.4fr/1fr header grid</h3>
+  <p>
+    Almost every section's header is a two-column row: heading + eyebrow + subhead LEFT, stat-anchor
+    cluster OR thematic CTA card OR AT A GLANCE bullet list RIGHT. The ratio is roughly 1.4fr/1fr —
+    heading column is wider, anchor column is denser. Centered headers are the exception, not the rule.
+  </p>
+
+  <h3 class="section-title">1.3 · Hierarchical eyebrows with red rule + ◆ markers</h3>
+  <p>
+    Caps-mono small text in the accent color, paired with a 40px horizontal rule on the left
+    (or red diamond marker, or red dot). Sits above every section H2 and inside cards. Universal
+    "this is what the next thing is" signal. Replaces uppercase plain text labels.
+  </p>
+  <p>
+    <strong>Glyph size minimum:</strong> decorative eyebrow glyphs
+    (◆ ◯ ▸ lightning / droplet / leaf SVGs) must render at <strong>≥13×17px</strong> to be
+    perceivable at eye-level scroll distance. Smaller reads as visual noise. <strong>When the
+    eyebrow is an inline-flex container, glyph children require <code>flex-shrink: 0</code> +
+    explicit <code>min-width</code></strong> — flex defaults squash them to ~5px at narrow
+    container widths, breaking the signal entirely.
+  </p>
+
+  <h3 class="section-title">1.4 · Glow underlines on H2s</h3>
+  <p>
+    Section H2s use <code>HeadingWithUnderline</code> with <code>fullWidth glow cinematic typeIn</code>.
+    A 3px accent-colored bar with a 2px glow shadow renders below the heading, scaling left-to-right
+    as the typeIn completes. Plain underlines (no glow) read flat; the glow is what makes it
+    feel cinematic. Glow spec: <code>boxShadow "0 0 2px rgba(accent, 0.55)"</code> — exactly 2px,
+    alpha 0.55, never wider (anti-pattern: wide outer glow halos creating strikethrough).
+  </p>
+
+  <h3 class="section-title">1.5 · Stat-anchor clusters (the right-side fill default)</h3>
+  <p>
+    Big numeric value + caps-mono unit + muted label, anchored by a red vertical rule with offset dot.
+    <strong>Exactly 3 anchors per section — never fewer.</strong> Numerals animate via
+    <code>StatCounter</code> with target-scaled durations (small targets count faster — see
+    §02 PP-13 below). Pairs with the asymmetric header (§1.2) as the right column.
+  </p>
+  <p>
+    <strong>3-anchor minimum is a hard rule:</strong> if the section can't justify 3 distinct
+    stats, swap right column to Recipe 41 (thematic CTA card), Recipe 42 (AT A GLANCE bullet
+    card), or reinforcement panel pattern. Single-anchor right column = anti-pattern 7.28
+    (see REFERENCE_LIBRARY).
+  </p>
+
+  <h3 class="section-title">1.6 · Layered background rhythm</h3>
+  <p>
+    Sections alternate background surfaces: <code>white → tint → navy/dark → white → tint → ...</code>
+    The visual rhythm comes from the transitions. A page where every section is the same background
+    feels flat. A page where every section is a different jarring color feels chaotic. Alternating
+    white/tint/dark in deliberate sequence gives the eye contrast at the right cadence.
+  </p>
+
+  <h3 class="section-title">1.7 · Photo-led composition where information is dense</h3>
+  <p>
+    When a section carries dense info, pair it with a real photo (hero), a stat callout overlaid on
+    the photo (<code>FloatingStat</code>), or photo-led tiles (StyleGrid pattern). Image is anchor,
+    not decoration. Generate via Higgsfield rather than ship flat content.
+  </p>
+  <p>
+    <strong>Photo aspect defaults:</strong> hero 3:2 or 16:10 landscape (NOT portrait — portrait
+    crops cut the H1 column off and read as a LinkedIn profile); tile photos 4:3 landscape;
+    row photos 16:10; floating stat overlays protrude ~24px left of photo edge with 3px left
+    accent rule (verify with <code>left: max(-24px, calc(-1 * var(--gutter)))</code> at narrow widths).
+  </p>
+
+  <h3 class="section-title">1.8 · Hover bloom and pulsing markers — EVERYTHING HAS SUBTLE LIFE</h3>
+  <div class="surface">
+    <span class="label">Generation rule — applies to every visible glyph + marker</span>
+    <p style="margin: 0 0 8px 0; color: var(--doc-text); font-size: 15px;">
+      Cards lift on hover (<code>-translate-y-1</code>), gain red shadow
+      (<code>shadow-[0_28px_56px_-24px_rgba(176,37,73,0.35)]</code>), and reveal a bottom 2px
+      accent rule that scales left-to-right. Red diamond bullet markers (<code>◆</code>) pulse
+      subtly via animated opacity + scale.
+    </p>
+    <p style="margin: 0; color: var(--doc-text); font-size: 15px;">
+      <strong>Pulsing dots in eyebrows. Everything has subtle life.</strong>
+      Every visible ◆ inside an eyebrow, every dot on a stat anchor, every rail dot on a
+      ProcessSteps timeline, every chip dot, every CTA pip — has the appropriate ambient
+      loop attached (2.4s for diamonds, 1.8s for alert dots; see §03.5).
+      Static decorative glyphs are slop.
+    </p>
+  </div>
+
+  <h3 class="section-title">1.9 · The anti-flat-card discipline</h3>
+  <div class="slop-warn">
+    <div class="head">⚠ Slop signatures — recognize and refuse (4 forms)</div>
+    <p style="margin-bottom: 8px;">
+      <strong>Form 1 — Flat editorial card:</strong> plain bordered white card + centered
+      eyebrow + h2 + paragraph + bullet list. Training-data default reflex.
+    </p>
+    <p style="margin-bottom: 8px;">
+      <strong>Form 2 — Narrative section without a visual partner:</strong>
+      cinematic header (good) → 3 paragraphs of body text stacked vertically (slop). Atom used
+      HeadingWithUnderline + StatCounter and still shipped slop because the body has no
+      visual partner. Fix: photo+copy split (BrandNarrativeSplit shape) or structural-data
+      partner (stat panel, tier bars, audit ledger).
+    </p>
+    <p style="margin-bottom: 8px;">
+      <strong>Form 3 — Quick Answer at hero size:</strong> FaqSection answerBlock rendered
+      as giant white card with H3 + 4-line paragraph above the FAQ accordion. Should be
+      compact band at ~30% the visual footprint. AI Overview extraction works on compact form.
+    </p>
+    <p style="margin: 0;">
+      <strong>Form 4 — Card grid with no per-card differentiation:</strong>
+      2x2 or 3x3 grid where every card is title + body + index marker. Fix: per-card single-word
+      eyebrow, per-card icon/glyph, per-card tier bar, or per-card pick-instead tag —
+      something that VARIES between cards beyond the index number.
+    </p>
+  </div>
+
+  <h3 class="section-title">1.10 · "Compose using DNA, never compose from primitives"</h3>
+  <p>
+    On a project with existing atoms (AM — see REFERENCE_LIBRARY §14), use them. On a project
+    without atoms yet, invent the atoms first, then compose. Never write inline JSX that
+    ignores the atom layer. If composing from primitives feels easier than picking or proposing
+    an atom, that's the warning signal — stop and audit which atom this content maps to.
+  </p>
+</section>
+
+<!-- ============================ §02 MOTION-RELEVANT ENGINEERING BANS ============================ -->
+<section class="chapter wrap" id="bans">
+  <h2 class="chapter-title"><span class="ix">02</span>Motion-relevant engineering bans (Priority 5)</h2>
+  <p class="lede">
+    Carry Priority 5 with the Generation Contract — never overridden by taste, reference site,
+    or user instruction. The bans below specifically prevent broken motion + perf failures.
+  </p>
+  <table class="t">
+    <thead><tr><th>ID</th><th>Ban</th><th>Reason</th></tr></thead>
+    <tbody>
+      <tr><td class="id">PP-08</td><td class="name">No infinite boxShadow animations</td><td class="use">Real paint cost. Use opacity or filter.</td></tr>
+      <tr><td class="id">PP-09</td><td class="name">No width/height/top/left animations</td><td class="use">Layout reflow per frame. Use transform + opacity only.</td></tr>
+      <tr><td class="id">PP-10</td><td class="name">No setInterval counters</td><td class="use">Drifts and re-renders. Use useMotionValue or rAF.</td></tr>
+      <tr><td class="id">PP-11</td><td class="name">No HTML video playbackRate &lt; 1.0</td><td class="use">Halves frame rate → stutter. Generate at native long duration (Cinema Studio 3.0 12s, not 6s + playbackRate 0.5).</td></tr>
+      <tr><td class="id">PP-12</td><td class="name">No negative IntersectionObserver margin claiming "pre-trigger"</td><td class="use">Negative margin POST-triggers. Use positive 200px for true pre-trigger.</td></tr>
+      <tr><td class="id">PP-13</td><td class="name">No StatCounter with fixed duration on small targets</td><td class="use">1.1s to count 0→6 holds visibly at 0. Scale duration: ≤1 → 0.35s, ≤10 → 0.45s, ≤50 → 0.6s, ≤100 → 0.8s, &gt;100 → 1.0s.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">Hydration + framework — non-negotiable</h3>
+  <ul>
+    <li><code>'use client'</code> on every component using Framer Motion or GSAP. No exceptions.</li>
+    <li><code>useGSAP()</code> hook for all GSAP in React. Never raw <code>useEffect</code> + <code>gsap.context</code>.</li>
+    <li>GSAP and Framer Motion never target the same DOM element. One element, one animation system.</li>
+    <li><strong>Hooks-in-loop is fatal in React 19 strict.</strong> Never call FM hooks (<code>useTransform</code>, <code>useMotionValueEvent</code>, <code>useScroll</code>) inside <code>.map()</code>. Extract loop body to child component.</li>
+    <li><strong>JSX exports from <code>'use client'</code> modules don't survive RSC boundaries.</strong> Put JSX (icons) in non-client modules so server components can pass them as props.</li>
+  </ul>
+</section>
+
+<!-- ============================ §03 MOTION CATALOG ============================ -->
+<section class="chapter wrap" id="catalog">
+  <h2 class="chapter-title"><span class="ix">03</span>Motion catalog — primitives, hero, cascade, loops, hovers, springs</h2>
+  <p class="lede">
+    Seven subsections. <strong>Enforceable as Priority-5 engineering rules.</strong>
+    The four universal constants, the nine primitives WITH all canonical defaults, the hero
+    structural spec, the depth-staged cascade ladder, seven ambient loops, twelve hover
+    gestures, two spring configs. Codified from the AM + KMv2 exhaustive motion audit; both
+    flagships ship the entire catalog at DEFAULT intensity. Values below were promoted from
+    v13 §14.3 (AM motion components) + §14B.2 (KMv2 variants) so the catalog is canonical,
+    not flagship-specific. AM-specific vs KMv2-specific variant values are flagged inline.
+  </p>
+
+  <h3 class="section-title">3.1 · Motion intensity dial</h3>
+  <p>
+    Universal aesthetic is "well-animated, not overstimulating" by default. The dial lets
+    the agent shift up or down per project at pre-flight:
+  </p>
+  <table class="t">
+    <thead><tr><th>Setting</th><th>What it means</th><th>Fits</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">LOW</td>
+        <td class="use">Restrained. Opacity + small y reveals only. <strong>No continuous loops</strong> (no pulsing diamonds, no breathing vignette, no marquee). FadeUp + Stagger + HeadingWithUnderline only. No GSAP. <strong>Hero variant B (cinematic still) or C (split) only</strong> — full-bleed video A becomes unavailable. Reduced-motion fallbacks mandatory at every level.</td>
+        <td class="where">Regional plumber / electrician / HVAC service sites where trust outweighs theatrics. Homeowners price-comparing under stress.</td>
+      </tr>
+      <tr>
+        <td class="name">DEFAULT</td>
+        <td class="use">Universal King Maker baseline. <strong>Hero variant A (full-bleed cinematic video with breathing vignette + 18s slow zoom + cinematic TypeIn cascade) is baseline, not HIGH.</strong> Below-fold sections use FadeUp / Stagger with positive <code>margin: "200px"</code> pre-trigger. Hover bloom on tiles + buttons. Pulsing accent markers (◆ at 2.4s on bullets, alert dot at 1.8s on CTA pips). Scrolling brand marquee in trust bar. Subtle continuous life across the page. <strong>This is the doctrine default.</strong></td>
+        <td class="where">Most contractor sites. Plumbing / HVAC / installer / painter / general contractor / roofer / mid-tier kitchen / standard landscape.</td>
+      </tr>
+      <tr>
+        <td class="name">HIGH</td>
+        <td class="use">Adds <strong>GSAP ScrollTrigger pinning (Recipe 35)</strong> — <code>sticky top-0 h-screen</code> inside parent with height = 2× viewport, scroll-scrubbed counters via <code>useScroll/useTransform</code>. Parallax depth layers on hero. Per-word scrub reveal below the fold. Cinema Studio 3.0 (12s) hero video instead of 6s loop. Reduced-motion fallbacks mandatory.</td>
+        <td class="where">Premium kitchen-remodel, design-build hardscape, regional HVAC trying to feel premium, boutique general contractor.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">3.2 · The 4 universal motion constants (recap)</h3>
+  <ol>
+    <li><strong>Entry ease curve:</strong> <code>ENTER_EASE = [0.16, 1, 0.3, 1]</code>. Used on every entry transition. No <code>"linear"</code> for entries. No <code>"ease-in-out"</code> for entries (reserved for ambient loops). AM uses this curve in 32 occurrences across 30 files. Declared at the top of every primitive file + 27 section files (no shared <code>motion/easing.ts</code>; each file copies the constant — preserve this discipline).</li>
+    <li><strong>Positive 200px pre-trigger margin:</strong> <code>viewport: { once: true, margin: "200px" }</code> default on FadeUp / Stagger / SlideIn. Fires reveal 200px BEFORE element enters viewport. Eliminates catch-up feel. Negative margins reserved for inner-bullet delay only.</li>
+    <li><strong>Reduced-motion floor:</strong> every primitive checks <code>useReducedMotion()</code> first; renders plain element OR sets <code>initial={false}</code> / <code>duration: 0</code>. Plus globals.css <code>@media (prefers-reduced-motion: reduce)</code> safety net.</li>
+    <li><strong>Ambient cadence pair:</strong> 2.4s for diamond ◆ pulses (<code>opacity [0.65, 1, 0.65], scale [1, 1.18, 1]</code>) on bullets, 1.8s for alert dot pulses (<code>opacity [0.6, 1, 0.6], scale [1, 1.3, 1]</code>) on CTA pips. Loops use <code>ease: "easeInOut"</code>.</li>
+  </ol>
+
+  <h3 class="section-title">3.3 · The 9 motion primitive components (canonical spec — ALL defaults surfaced)</h3>
+  <p>
+    Scaffold all 9 in <code>components/motion/</code> at pre-flight. Copy AM's
+    <code>web/components/motion/</code> verbatim, then rename palette tokens. The canonical
+    defaults below are the spec — promoted from v13 §14.3 (AM-side) and §14B.2 (KMv2 variant
+    deltas). <strong>If the agent imports a primitive but configures it with non-canonical
+    values, that's a Lock-7 audit finding.</strong>
+  </p>
+  <table class="t">
+    <thead><tr><th>Primitive</th><th>Animates</th><th>Canonical defaults (LOAD-BEARING)</th><th>Trigger</th><th>Reduced-motion</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">FadeUp</td>
+        <td class="use">opacity 0→1, y 20→0, x 0, filter blur(blur)→blur(0)</td>
+        <td class="where">duration 0.6s · delay 0 · y 20 · x 0 · blur 0 · margin "200px" · ease ENTER_EASE</td>
+        <td>whileInView</td>
+        <td>plain &lt;Tag&gt;</td>
+      </tr>
+      <tr>
+        <td class="name">Stagger + StaggerItem</td>
+        <td class="use">per-child opacity 0→1, y 16→0 via variants</td>
+        <td class="where">childDelay 0.08s · delay 0 · item y 16 · item duration 0.5s · margin "200px" · ease ENTER_EASE. <strong>Exception:</strong> ReviewsSection supporting cards use childDelay 0.28s (slow — sequential, not simultaneous).</td>
+        <td>whileInView</td>
+        <td>plain &lt;Tag&gt;</td>
+      </tr>
+      <tr>
+        <td class="name">TypeIn (default)</td>
+        <td class="use">per-char opacity 0→1, y 0.35em→0, x from-direction 0.4em→0, filter blur(blurAmount)→0</td>
+        <td class="where">charStagger 0.012s · duration 0.45s · yOffset 0.35em · blurAmount 0 · from "bottom"</td>
+        <td>whileInView · viewport amount 0.01 (fires on 1px visible)</td>
+        <td>plain &lt;Tag&gt; with full text</td>
+      </tr>
+      <tr>
+        <td class="name">TypeIn (cinematic)</td>
+        <td class="use">per-char opacity 0→1, y 0.5em→0, x 0.4em→0, filter blur→0</td>
+        <td class="where">charStagger 0.022s · duration 0.6s · yOffset 0.5em · blurAmount <strong>0 (AM canonical)</strong> or <strong>8 (KMv2 variant — only on dark backgrounds with high-contrast text where the blur amplifies the gold-on-black premium feel)</strong></td>
+        <td>whileInView · viewport amount 0.01</td>
+        <td>plain &lt;Tag&gt; with full text</td>
+      </tr>
+      <tr>
+        <td class="name">HeadingWithUnderline (fullWidth)</td>
+        <td class="use">block underline scaleX 0→1 from origin-left + optional TypeIn on text</td>
+        <td class="where">height 3 · marginTop 4 · glow boxShadow <code>"0 0 2px rgba(accent, 0.55)"</code> (EXACTLY 2px alpha 0.55 — wider halos read as strikethrough) · duration 0.55s (cinematic min 0.7s) · delay 0.15s · viewport amount 0.4 · ease ENTER_EASE</td>
+        <td>whileInView</td>
+        <td>scaleX 1 pre-drawn</td>
+      </tr>
+      <tr>
+        <td class="name">AnimatedUnderline (inline)</td>
+        <td class="use">inline scaleX 0→1 from origin-left under last N words</td>
+        <td class="where">color accent · height 3 · delay 0.15s · offset 4 · duration 0.55s · viewport amount 0.6 (requires 60% visible) · glow false default</td>
+        <td>whileInView</td>
+        <td>scaleX 1 pre-drawn</td>
+      </tr>
+      <tr>
+        <td class="name">SlideIn</td>
+        <td class="use">opacity 0→1, x|y ±distance→0, filter blur(blur)→0</td>
+        <td class="where">from "left" · distance 120px (range 80–140 for specific contexts) · duration 1.4s · delay 0 · blur 0 · margin "200px" · ease ENTER_EASE</td>
+        <td>whileInView</td>
+        <td>plain &lt;Tag&gt;</td>
+      </tr>
+      <tr>
+        <td class="name">Marquee</td>
+        <td class="use">x ["0%", "-33.333%"] on triplicated children</td>
+        <td class="where">duration 50s default · range 45–55s (45 = urgency, 50 = section bridge default, 55 = ProofMarquee / BrandsTrustBar for readability) · direction "left" · ease "linear" · repeat Infinity. <strong>Velocity target: 100–140 px/sec (content scrollWidth ÷ duration). Below 30s reads jittery, above 50s reads visually stuck.</strong></td>
+        <td>animate prop on mount</td>
+        <td>static row, no animate</td>
+      </tr>
+      <tr>
+        <td class="name">StatCounter</td>
+        <td class="use">numeric count-up via animate(motionValue, target); non-numeric values get opacity+y fade-up</td>
+        <td class="where">duration auto-scales by target: <strong>≤1: 0.35s · ≤10: 0.45s · ≤50: 0.6s · ≤100: 0.8s · &gt;100: 1.0s</strong>. delay 0. ease ENTER_EASE. Handles "9", "100", "100%", "$0", "30+", "1–3", "25–50", "10–15%", "ALL", "CUSTOM", "HQ".</td>
+        <td>useInView margin <strong>"-120px" (NEGATIVE — fires AFTER 120px past edge, intentional)</strong></td>
+        <td>final string immediately</td>
+      </tr>
+      <tr>
+        <td class="name">PerimeterDraw</td>
+        <td class="use"><strong>AM canonical:</strong> SVG motion.rect pathLength 0→1, opacity 0→1. <strong>KMv2 variant:</strong> CSS-keyframe perimeter-draw on a pseudo-element (no framer-motion — used inside contrast-rhythm sections where animation is restrained).</td>
+        <td class="where">duration 1.6s · delay 0 · stroke accent (AM <code>"rgb(176, 37, 73)"</code>) · strokeWidth 1.5 · cornerRadius 6 · vectorEffect "non-scaling-stroke" · viewport margin <strong>"-100px" (negative)</strong> · ease ENTER_EASE</td>
+        <td>whileInView</td>
+        <td>pathLength 1 pre-drawn</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>All primitives share <code>ease: [0.16, 1, 0.3, 1]</code>.</strong> The only
+    exceptions are Marquee (linear, by definition), the 2 hero ambient loops (easeInOut),
+    the icon-spring + layoutId-spring (per §3.7), and the scroll-triggered halos (easeOut).
+  </p>
+
+  <h3 class="section-title">3.4 · Hero structural spec (variant A — the DEFAULT)</h3>
+  <p>
+    Full-bleed cinematic video hero is the default contractor-site hero. <strong>NOT a HIGH-
+    intensity option.</strong> Copy literally, adapt only the palette tokens, the H1 text,
+    the video src + poster path, and the brand-deep background fallback.
+  </p>
+  <pre>&lt;section className="relative isolate min-h-[100svh] flex flex-col overflow-hidden bg-{brand-deep}"&gt;
+  &lt;motion.video
+    className="absolute inset-0 w-full h-full object-cover motion-reduce:hidden"
+    src="/hero.mp4"
+    poster="/hero-poster.jpg"
+    autoPlay muted loop playsInline preload="metadata"
+    aria-hidden
+    initial={prefersReducedMotion ? false : { scale: 1.08 }}
+    animate={{ scale: 1 }}
+    transition={{ duration: 18, ease: "linear" }}
+  /&gt;
+  &lt;Image src="/hero-poster.jpg" alt="" fill priority fetchPriority="high"
+    className="object-cover hidden motion-reduce:block" sizes="100vw" /&gt;
+
+  {/* WCAG AA gradient overlay — REQUIRED for white-text-on-video legibility */}
+  &lt;div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/40" /&gt;
+
+  {/* Breathing vignette — 9s opacity loop, REQUIRED for cinematic depth */}
+  &lt;motion.div aria-hidden className="absolute inset-0 pointer-events-none"
+    style={{ background: "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 100%)" }}
+    initial={prefersReducedMotion ? false : { opacity: 0.55 }}
+    animate={{ opacity: [0.55, 0.7, 0.55] }}
+    transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+  /&gt;
+
+  {/* Content layer — flush left, max-w-3xl, padded for viewport breathing */}
+  &lt;div className="relative mx-auto max-w-7xl px-6 py-28 md:py-36 lg:py-44 min-h-[640px] md:min-h-[720px] flex items-center grow"&gt;
+    &lt;div className="max-w-3xl"&gt;
+      {/* Eyebrow — motion.p initial y:-8, delay 0.2s, duration 1.1s */}
+      {/* TypeIn cinematic H1 — delay 1.0s, char stagger 0.022s × N chars */}
+      {/* Subhead — motion.p whileInView y:24, delay 2.6s, duration 1.0s */}
+      {/* CTAs — motion.div initial y:20 scale:0.9, delay 3.2s / 3.4s, duration 0.85s */}
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+  <p>
+    <strong>Locked rules:</strong> use <code>min-h-[100svh]</code> not <code>100vh</code>
+    (avoids iOS Safari toolbar jump). <code>&lt;motion.video&gt;</code> always autoPlay
+    muted loop playsInline. Always poster swap on motion-reduce. Always at least one dark
+    gradient overlay. Breathing vignette required at DEFAULT intensity (9s easeInOut infinite).
+    Content <code>max-w-3xl</code> text column inside <code>max-w-7xl</code> container. Hero
+    must reach <code>min-h-[100svh]</code> via section min-height OR content layer
+    <code>min-h-[640px] md:min-h-[720px]</code>; never let it ship short.
+  </p>
+  <p>
+    Variant (B) cinematic still — swap <code>&lt;motion.video&gt;</code> for
+    <code>&lt;Image priority fetchPriority="high"&gt;</code>. Keep overlay, vignette, cascade.
+    Variant (C) asymmetric split — different structure entirely;
+    <code>lg:grid-cols-[1.05fr_0.95fr]</code> with Doppelrand-framed photo right; reserve
+    for projects where the photo IS the selling proof.
+  </p>
+
+  <h3 class="section-title">3.5 · The depth-staged cascade ladder (LOAD-BEARING)</h3>
+  <p>
+    Every section header runs the same orchestrated cascade. Delays are additive — each step
+    waits for the previous to land. <strong>Sub-1.5-second total section reveal feels stiff.
+    Doctrine cascade runs ~3-4 seconds per section.</strong>
+  </p>
+
+  <h4 class="subsection">Standard depth (sections 2–5 from top of page)</h4>
+  <table class="t">
+    <thead><tr><th>Element</th><th>Primitive</th><th>delay</th><th>duration</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Eyebrow</td><td class="use">FadeUp</td><td class="where">0.00s</td><td class="where">0.70s</td><td class="use">First. Sets the cadence.</td></tr>
+      <tr><td class="name">H2 (typeIn + underline)</td><td class="use">HeadingWithUnderline cinematic typeIn</td><td class="where">0.50s (typeInDelay 0.10s)</td><td class="where">0.60s</td><td class="use">Lands ~0.7s after eyebrow. Underline draws after typeIn completes.</td></tr>
+      <tr><td class="name">Subhead</td><td class="use">FadeUp y:20</td><td class="where">0.45s</td><td class="where">0.70s</td><td class="use">Starts before H2 finishes — feels concurrent, not sequential-rigid.</td></tr>
+      <tr><td class="name">Right-col fill</td><td class="use">FadeUp y:24-28</td><td class="where">0.55–0.60s</td><td class="where">0.70–0.75s</td><td class="use">Slightly behind subhead.</td></tr>
+      <tr><td class="name">Cards container</td><td class="use">Stagger childDelay 0.08s</td><td class="where">0.20s</td><td class="where">—</td><td class="use">Below the header, kicks off card cascade.</td></tr>
+    </tbody>
+  </table>
+
+  <h4 class="subsection">Per-card inner cascade (cd = i × 0.06–0.12s)</h4>
+  <table class="t">
+    <thead><tr><th>Element</th><th>Animation</th><th>delay</th><th>duration</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Icon spring-pop</td><td class="use">motion.div scale 0.5→1, opacity 0→1, type:"spring" stiffness:260 damping:18</td><td class="where">0.30 + cd</td><td class="where">0.50s</td></tr>
+      <tr><td class="name">Title underline</td><td class="use">scaleX origin-right</td><td class="where">0.55 + cd</td><td class="where">0.70s</td></tr>
+      <tr><td class="name">Body bullets</td><td class="use">motion.li opacity+x:-8, per bullet bi × 0.07s</td><td class="where">0.65 + cd + bi×0.07s</td><td class="where">0.50s</td></tr>
+      <tr><td class="name">Stat counts</td><td class="use">StatCounter</td><td class="where">0.20 + i×0.06s</td><td class="where">auto by target</td></tr>
+    </tbody>
+  </table>
+
+  <h4 class="subsection">Deep depth (sections 5+ — StyleGrid, SpecDeck, ServiceAreaGrid, BrandsTrustBar)</h4>
+  <p>
+    Shift entire ladder later by <strong>~0.4s</strong>. Eyebrow / H2 / Subhead delays
+    become <strong>0.85–1.1s</strong> instead of 0.45–0.6s. Compensates for cognitive
+    expectation slow-down at fold 4+.
+  </p>
+
+  <div class="callout warn">
+    <span class="label">The signature</span>
+    The cascade ladder is the difference between "stuff fades in together" and "section
+    reveals as an orchestrated moment." Invisible if you don't know what to look for —
+    and immediately stiff-looking when missing. Per-card inner cascade specifically is
+    the most-bypassed sub-element: agents reach for the section reveal and skip the
+    per-card icon-spring + title-underline + per-bullet stagger.
+  </div>
+
+  <h3 class="section-title">3.6 · Ambient loop catalog (7 loops — surface life)</h3>
+  <p>
+    Seven infinite-loop motions that make a contractor-site page feel alive. They run
+    forever in the background; nothing else has to be happening for the page to feel
+    inhabited.
+  </p>
+  <table class="t">
+    <thead><tr><th>Loop</th><th>Spec</th><th>Used on</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Pulsing diamond ◆ (universal)</td><td class="use"><code>animate: { opacity: [0.65, 1, 0.65], scale: [1, 1.18, 1] }, duration: 2.4s, repeat: Infinity, ease: "easeInOut", delay: index * 0.3</code></td><td class="where">Every spec / thread / glance / common-requests bullet, card eyebrow marker, section bridge separator</td></tr>
+      <tr><td class="name">Pulsing alert dot (navy / CTA)</td><td class="use"><code>animate: { opacity: [0.6, 1, 0.6], scale: [1, 1.3, 1] }, duration: 1.8s, repeat: Infinity, ease: "easeInOut"</code></td><td class="where">Navy CTA tile pips, sticky CTA reinforcement dots, "Active" labels</td></tr>
+      <tr><td class="name">Process rail dot boxShadow halo</td><td class="use"><code>animate: { boxShadow: ["0 0 0 3px #fff, 0 0 0 0 rgba(accent, 0.55)", "0 0 0 3px #fff, 0 0 0 8px rgba(accent, 0)", "0 0 0 3px #fff, 0 0 0 0 rgba(accent, 0)"] }, duration: 2.4s, repeat: Infinity, ease: "easeOut", delay: index*0.4</code></td><td class="where">ProcessSteps rail dots only</td></tr>
+      <tr><td class="name">Hero breathing vignette</td><td class="use"><code>animate: { opacity: [0.55, 0.7, 0.55] }, duration: 9s, repeat: Infinity, ease: "easeInOut"</code> on a radial-gradient overlay</td><td class="where">Hero section variant A only</td></tr>
+      <tr><td class="name">Hero video slow zoom</td><td class="use"><code>initial: { scale: 1.08 }, animate: { scale: 1 }, transition: { duration: 18, ease: "linear" }</code> (no repeat — sustains at scale 1 after 18s)</td><td class="where">Hero section variant A only</td></tr>
+      <tr><td class="name">Marquee continuous loop</td><td class="use"><code>animate: { x: ["0%", "-33.333%"] }, duration: 45-55s, ease: "linear", repeat: Infinity</code>. Triplicated children. Speed variants: 45s (urgency), 50s (default), 55s (readability).</td><td class="where">Brand strips, proof strips, trust bars, section bridges</td></tr>
+      <tr><td class="name">Phone halo (Tailwind animate-pulse — only pure-CSS loop on AM)</td><td class="use">Tailwind <code>animate-pulse</code> (2s default) on a <code>bg-white/25 blur-[2px] scale-110</code> halo behind a phone glyph</td><td class="where">FooterCTA phone link only</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">3.7 · Hover microgesture catalog (12 gestures — mix-and-match within element)</h3>
+  <p>
+    The 12 universal hover gestures. Each maps to a specific element type. Mix-and-match
+    within an element is acceptable; <strong>replacing the canonical gesture with something
+    else is not</strong>.
+  </p>
+  <table class="t">
+    <thead><tr><th>Gesture</th><th>Spec</th><th>Used on</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Card lift (basic)</td><td class="use"><code>hover:-translate-y-1 transition-all duration-300</code></td><td class="where">Every clickable card site-wide</td></tr>
+      <tr><td class="name">Card lift (heavy) + shadow bloom</td><td class="use"><code>hover:-translate-y-1.5 hover:shadow-[0_32px_56px_-24px_rgba(accent, 0.4-0.6)] transition-all duration-300</code></td><td class="where">Premium tiles, hero CTAs</td></tr>
+      <tr><td class="name">Card boxShadow bloom (whileHover)</td><td class="use"><code>whileHover={{ boxShadow: "0 32px 56px -24px rgba(accent, 0.4-0.65), 0 0 0 1px rgba(accent, 0.18-0.35)" }}</code></td><td class="where">SignsGrid, ProcessSteps, SpecDeck, MaterialsGrid card variants. <strong>Use framer-motion whileHover, NOT Tailwind hover:shadow-[]</strong> — Tailwind variant ships dead-code regressions when the parent isn't <code>group</code>.</td></tr>
+      <tr><td class="name">Image scale-105 (editorial)</td><td class="use"><code>group-hover:scale-105 transition-transform duration-[450ms] ease-out</code></td><td class="where">All photo-led tiles (slower than card hover — editorial, not snappy)</td></tr>
+      <tr><td class="name">Button arrow nudge</td><td class="use"><code>group-hover:translate-x-1 transition-transform duration-200</code></td><td class="where">Every "Get a quote" / "See more" CTA arrow site-wide</td></tr>
+      <tr><td class="name">Phone glyph rotate (the warmth gesture)</td><td class="use"><code>group-hover:rotate-[-12deg] transition-transform duration-200</code></td><td class="where">Every "Call …" button site-wide (Header, hero, FooterCTA, SignsGrid, FaqSection, Footer)</td></tr>
+      <tr><td class="name">Bottom accent rule scaleX</td><td class="use"><code>bg-accent origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100</code></td><td class="where">Most photo-tile + nav-link bottom-rule reveals</td></tr>
+      <tr><td class="name">Left rail scaleY</td><td class="use"><code>bg-accent origin-top scale-y-0 transition-transform duration-300 group-hover:scale-y-100</code></td><td class="where">Premium cards (SignsGrid, LocationRequests, FaqAccordion)</td></tr>
+      <tr><td class="name">Icon tile fill + rotate</td><td class="use"><code>group-hover:bg-accent group-hover:border-accent group-hover:rotate-[-4deg]</code></td><td class="where">ProcessSteps, SignsGrid, SpecDeck icon tiles</td></tr>
+      <tr><td class="name">Chip dot bloom</td><td class="use"><code>group-hover:bg-accent group-hover:scale-125</code> on inner dot; chip <code>hover:border-accent hover:text-accent hover:-translate-y-0.5</code></td><td class="where">Brand chips, FaqSection chips, ServiceAreaGrid chips</td></tr>
+      <tr><td class="name">Marquee logo grayscale → color</td><td class="use"><code>grayscale opacity-70 group-hover/tile:grayscale-0 group-hover/tile:opacity-100 transition-all duration-300</code></td><td class="where">BrandsTrustBar marquee logos only</td></tr>
+      <tr><td class="name">Tap-to-Call arrow reveal</td><td class="use"><code>opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200</code></td><td class="where">FooterCTA phone link only</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title">3.8 · Spring usage restriction (EXACTLY 2 spring configs)</h3>
+  <p>
+    Exactly <strong>2 spring configurations</strong> in the entire doctrine. AM uses each
+    a small number of times (4 total uses across the codebase). The scarcity is itself
+    doctrine: springs are reserved for element-pop + layoutId-shared-element-move only.
+    <strong>Don't bring springs to entry animations, hover states, or section reveals.</strong>
+    Use ENTER_EASE for everything else.
+  </p>
+  <table class="t">
+    <thead><tr><th>Use case</th><th>Spring config</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Icon tile pop-in (ProcessSteps, SignsGrid, SpecDeck)</td><td class="use"><code>type: "spring", stiffness: 260, damping: 18</code> — moderate bounce, ~0.5s effective duration</td></tr>
+      <tr><td class="name">LayoutId shared-element move (TrustTabs active border ring sliding to clicked tab)</td><td class="use"><code>type: "spring", stiffness: 380, damping: 32</code> — snappier, controlled, no overshoot</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ §04 SECTION GRAMMAR ============================ -->
+<section class="chapter wrap" id="grammar">
+  <h2 class="chapter-title"><span class="ix">04</span>Per-section motion grammar (§04.7 — enforcement layer)</h2>
+  <p class="lede">
+    §03 specifies the universal atom catalog. §04 specifies <strong>which atoms each
+    section type MUST ship</strong> beyond the universal baseline. <strong>This is a hard
+    checklist, not a recommendation.</strong> Skipping any "MUST" row = the section will
+    feel flat compared to AM/KMv2 first-draft parity.
+  </p>
+  <p>
+    <strong>This file omits layout / copy specs from per-section grammar</strong> — those
+    live in STRUCTURE_DOCTRINE. The rows below are motion-only.
+  </p>
+  <table class="t">
+    <thead><tr><th>Section type</th><th>MUST ship (motion beyond §03 baseline)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">Hero (variant A — full-bleed video)</td>
+        <td class="use">Full §03.4 cinematic cascade + breathing vignette (9s easeInOut) + 18s slow zoom (scale 1.08→1 linear, no repeat) + at least one StatCluster of 3 stats at end of cascade (delay 3.8s+) — verified shipping with all 5 elements per §03.4 specimen code.</td>
+      </tr>
+      <tr>
+        <td class="name">Mid-page content header (3.5+ sections)</td>
+        <td class="use"><strong>Right-side StatCounter cluster (3 anchors) is MANDATORY</strong> unless §1.5 callout triggers a different right-fill. Pattern: <code>StatCounter delay={0.2 + i * 0.06}</code> per anchor + pulsing dot (1.8s) per anchor + <code>border-l-2 border-{accent}/25 pl-4 py-2 hover:border-{accent} transition-colors</code> per anchor. Single-anchor right column = anti-pattern 7.28.</td>
+      </tr>
+      <tr>
+        <td class="name">Tier card grid (Audit Ledger / Materials Grid / Spec Deck)</td>
+        <td class="use">Per tier card MUST ship: (a) left accent rail draw on viewport entry (origin-top scaleY 0→1, dur 0.85s, delay 0.3 + cd, with accent boxShadow glow), (b) card-level <code>whileHover</code> boxShadow bloom <code>"0 32px 56px -24px rgba(accent, 0.5), 0 0 0 1px rgba(accent, 0.35)"</code> via framer-motion (NOT Tailwind), (c) right-drawn title underline (scaleX 0→1, origin-right, dur 0.7s, delay 0.55 + cd), (d) per-bullet motion.li cascade with pulsing ◆ markers (2.4s loop), (e) scroll-triggered inset halo on each card (boxShadow inset opacity 0→1, dur 1.6s, delay 0.5 + cd). Spec Deck variant also requires alternating-direction entry (cards 0/2 from left, card 1 from top, x: ±100, dur 1.05).</td>
+      </tr>
+      <tr>
+        <td class="name">Process / Step section</td>
+        <td class="use">Each Step MUST be a card with: (a) alternating-direction entry (<code>fromLeft ? x: -100 : x: +100</code>, dur 1.2s), (b) icon spring-pop tile (<code>scale 0.5→1, type:"spring" stiffness:260 damping:18, group-hover:rotate-[-4deg] group-hover:bg-{accent}</code>), (c) per-bullet <code>motion.li</code> x:-8→0 cascade with pulsing diamond markers (delay 0.65 + bi*0.07s), (d) scroll-triggered inset halo, (e) right-drawn title underline, (f) card-level whileHover boxShadow bloom, (g) rail with copper glow shadow + animated rail dots (boxShadow halo loop 2.4s easeOut + inner pulse 2.4s easeInOut).</td>
+      </tr>
+      <tr>
+        <td class="name">Testimonial / Review section</td>
+        <td class="use">Featured + 3-up supporting structure. Supporting cards MUST ship <code>PerimeterDraw</code> on viewport entry (dur 1.2s, delay 0.35 + i*0.22s — copper stroke). <strong><code>Stagger childDelay</code> on supporting cards MUST be 0.28s (slow — sequential), not the universal 0.08s</strong> — so cards land in clear sequence not simultaneously. Featured card MUST ship italic-serif blockquote + red copper <code>ldquo</code>/<code>rdquo</code> quote marks. Non-featured cards need a <code>group</code> class if any group-hover behaviors are present (avoid dead-code regression).</td>
+      </tr>
+      <tr>
+        <td class="name">Service area / coverage section</td>
+        <td class="use">Town chip cloud MUST have per-chip hover transformation: outlined → filled-{accent} with <code>hover:bg-{accent} hover:border-{accent} hover:text-white hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(accent, 0.7)]</code>. Town pins MUST have spring-pop entry (scale 0.7→1, type spring 260/18, cascade 0.4 + i*0.08s) + per-pin pulse loop (1.8s emphasized / 2.4s rest, Infinity). Featured pin MUST have blurred copper halo glow.</td>
+      </tr>
+      <tr>
+        <td class="name">CTA band (FooterCTA equivalent)</td>
+        <td class="use">RIGHT-side phone block MUST ship pulsing halo (Tailwind animate-pulse on bg-white/25 blur-[2px] scale-110) + phone glyph rotate (group-hover:rotate-[-12deg] dur 200ms) + Tap-to-Call arrow reveal (opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0, dur 200ms). Header right row MUST have 4 quick-promise tiles with <code>hover:border-{accent}/40 hover:-translate-y-0.5 hover:shadow-[...]</code>.</td>
+      </tr>
+      <tr>
+        <td class="name">Footer</td>
+        <td class="use"><strong>MUST wrap every column in <code>FadeUp</code></strong> (durations 0.85–0.9s, cascading delays 0 / 0.15 / 0.2 / 0.3s). <strong>MUST wrap every link list in <code>Stagger</code>+<code>StaggerItem</code></strong> (childDelay 0.04–0.05s). Per-link sliding underline (origin-left scaleX 0→1, dur 300ms, with accent glow). Phone glyph rotate(-12deg) on hover. Phone halo via <code>animate-pulse</code> OR opacity-on-hover. <strong>A footer that doesn't animate on scroll = the most visible flat zone of any page.</strong></td>
+      </tr>
+      <tr>
+        <td class="name">Between heavy sections (CONDITIONAL)</td>
+        <td class="use"><code>SectionBridge</code> — continuous marquee proof-points strip between consecutive content-heavy sections. <code>Marquee duration={50}</code> with ~9-12 caps-mono proof points separated by pulsing diamond ◆ marker (2.4s easeInOut Infinity). Edge fade masks. <strong>MANDATORY between any 2 consecutive content-heavy sections UNLESS adjacent sections use a strong bg-contrast handoff AND the page already runs ProofMarquee + at least 2 SectionBridges elsewhere.</strong> A page that ships zero SectionBridges is always slop; fewer than 2 needs explicit comment in <code>page.tsx</code> justifying each omission.</td>
+      </tr>
+      <tr>
+        <td class="name">First scroll-into-view (post-hero, MANDATORY)</td>
+        <td class="use"><code>ProofMarquee</code> — band immediately after Hero on <code>bg-{brand-deep}</code> (echoes hero band visually). Marquee duration 55s + bg-brand-deep + slightly larger text. <strong>Without ProofMarquee, post-hero scroll is a dead transition.</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================ §05 PRIMITIVE UTILIZATION AUDIT (DEPTH-CHECKED) ============================ -->
+<section class="chapter wrap" id="audit">
+  <h2 class="chapter-title"><span class="ix">05</span>Primitive utilization audit — depth-checked (mandatory build-end)</h2>
+  <p class="lede">
+    Before reporting any contractor-site build as complete, run the audit. <strong>v13's
+    §04.8 only checked imports.</strong> This iteration adds <strong>depth checks</strong>:
+    grep for specific delay values, transition durations, and hover gesture utilities.
+    Catches the "primitive imported but configured wrong" failure mode that was bypassed in
+    the deep-remix sessions.
+  </p>
+
+  <h3 class="section-title">5.1 · Import audit (Layer 1 — same as v13 §04.8)</h3>
+  <pre>cd {project}/
+grep -rE "import.*\{ FadeUp \}" components/sections/ | wc -l           # must be &gt;= 1
+grep -rE "import.*\{ Stagger" components/sections/ | wc -l             # must be &gt;= 1
+grep -rE "import.*\{ TypeIn \}" components/sections/ | wc -l           # must be &gt;= 1
+grep -rE "import.*\{ HeadingWithUnderline \}" components/sections/ | wc -l   # must be &gt;= 1
+grep -rE "import.*\{ AnimatedUnderline \}" components/sections/ | wc -l      # must be &gt;= 1
+grep -rE "import.*\{ SlideIn \}" components/sections/ | wc -l          # must be &gt;= 1
+grep -rE "import.*\{ Marquee \}" components/sections/ | wc -l          # must be &gt;= 1
+grep -rE "import.*\{ StatCounter" components/sections/ | wc -l         # must be &gt;= 2 (Hero + ≥1 mid-page header)
+grep -rE "import.*\{ PerimeterDraw \}" components/sections/ | wc -l    # must be &gt;= 1</pre>
+
+  <h3 class="section-title">5.2 · Configuration depth audit (NEW — Layer 2)</h3>
+  <p>
+    For each imported primitive, grep that <strong>canonical defaults appear in actual usage</strong>.
+    If the primitive is imported but configured with off-spec values, it's still a violation
+    (the agent shipped the infrastructure but used it wrong). Threshold: each check must
+    return ≥ 1 hit.
+  </p>
+  <pre># ENTER_EASE constant — must be declared in every motion-using file
+grep -rE "ENTER_EASE\s*=\s*\[0\.16,\s*1,\s*0\.3,\s*1\]" components/ | wc -l    # &gt;= 9 (every primitive file + ≥1 section)
+
+# Positive 200px pre-trigger margin — never negative on section reveals
+grep -rE 'margin:\s*"200px"' components/ | wc -l                                # &gt;= 5 (FadeUp / Stagger / SlideIn at minimum)
+grep -rE 'margin:\s*"-[0-9]+px"' components/sections/ | wc -l                   # &lt;= 2 (only inner-bullet stagger should be negative; PP-12 ban for section reveals)
+
+# Cascade ladder evidence — H2 delay ~0.5s, eyebrow delay 0, subhead delay ~0.45s
+grep -rE 'delay:\s*0\.50?s?|delay=\{0\.50?\}' components/sections/ | wc -l       # &gt;= 3 (multiple H2 cascade delays)
+grep -rE 'typeInDelay:?\s*0\.10?' components/sections/ | wc -l                   # &gt;= 1 (HeadingWithUnderline cinematic typeIn)
+
+# Per-card inner cascade evidence — icon spring + title underline + per-bullet
+grep -rE 'type:\s*["\x27]spring["\x27],\s*stiffness:\s*260' components/ | wc -l  # &gt;= 1 (icon pop-in)
+grep -rE 'stiffness:\s*380,\s*damping:\s*32' components/ | wc -l                 # &gt;= 0 (layoutId — only used if TrustTabs present)
+
+# Ambient loops — pulsing diamonds + alert dots + breathing vignette
+grep -rE 'duration:\s*2\.4,?\s*repeat:\s*Infinity' components/ | wc -l          # &gt;= 2 (diamonds on bullets + rail halos)
+grep -rE 'duration:\s*1\.8,?\s*repeat:\s*Infinity' components/ | wc -l          # &gt;= 1 (alert dots on CTA pips)
+grep -rE 'duration:\s*9,?\s*repeat:\s*Infinity' components/sections/Hero | wc -l # &gt;= 1 (breathing vignette in Hero variant A)
+grep -rE 'duration:\s*18,?\s*ease:\s*["\x27]linear["\x27]' components/sections/Hero | wc -l  # &gt;= 1 (hero video slow zoom)
+
+# Hover catalog evidence — card lift + arrow nudge + phone rotate
+grep -rE 'hover:-translate-y-1' components/ | wc -l                              # &gt;= 5 (card lift on multiple sections)
+grep -rE 'group-hover:translate-x-1' components/ | wc -l                         # &gt;= 3 (button arrow nudge)
+grep -rE 'group-hover:rotate-\[-12deg\]' components/ | wc -l                     # &gt;= 1 (phone glyph rotate — the warmth gesture)
+grep -rE 'group-hover:scale-105' components/ | wc -l                             # &gt;= 2 (photo tile editorial scale)
+
+# StatCounter target-scaled duration — verify the auto-scale logic shipped
+grep -rE 'target\s*&lt;=?\s*10\s*\?\s*0\.45' components/motion/StatCounter | wc -l  # &gt;= 1
+
+# PerimeterDraw evidence in ReviewsSection
+grep -rE 'PerimeterDraw' components/sections/Reviews | wc -l                     # &gt;= 1
+
+# Marquee triple-children + 45-55s duration
+grep -rE 'duration:\s*(45|50|55),?\s*ease:\s*["\x27]linear["\x27]' components/ | wc -l  # &gt;= 1</pre>
+
+  <h3 class="section-title">5.3 · Output line (mandatory; surfaced per Lock 1 discipline)</h3>
+  <pre>Primitive utilization (imports): FadeUp=N, Stagger=N, TypeIn=N, HeadingWithUnderline=N, AnimatedUnderline=N, SlideIn=N, Marquee=N, StatCounter=N, PerimeterDraw=N — all ≥ thresholds ✓
+Configuration depth: ENTER_EASE=N, positive-margin=N, cascade-delays=N, springs=N, ambient-2.4s=N, ambient-1.8s=N, hero-9s=N, hero-18s=N, hover-lift=N, arrow-nudge=N, phone-rotate=N, photo-scale=N — all ≥ thresholds ✓</pre>
+  <p>
+    <strong>Any zero or below-threshold = the audit fails.</strong> Fix the gap (use the
+    primitive in the section §04 requires it for, OR configure with canonical values) before
+    reporting shipped.
+  </p>
+
+  <div class="callout warn">
+    <span class="label">Why depth-check, not just imports</span>
+    v13 §04.8 caught "primitive scaffolded but unused." It did NOT catch "primitive imported
+    and called, but called with wrong values" — which is what the deep-remix sessions
+    actually shipped. The §03 catalog has exact values; the §05 audit verifies they made it
+    into the build. The chain is §03 (vocabulary) → §04 (grammar) → §05 (verified usage).
+    Skip any link and stiffness reappears.
+  </div>
+</section>
+
+<!-- ============================ §06 RUTHLESS POSTURE ============================ -->
+<section class="chapter wrap" id="posture">
+  <h2 class="chapter-title"><span class="ix">06</span>Posture — generation discipline</h2>
+
+  <div class="callout">
+    <span class="label">The two-line generation reflex</span>
+    Before writing any frontend section JSX:
+    <ol>
+      <li><strong>Which existing section atom does this content map to?</strong> See REFERENCE_LIBRARY §14 for AM palette + §06 for universal patterns.</li>
+      <li><strong>If no atom fits, which §01 DNA principles must the new atom carry?</strong></li>
+    </ol>
+    If you cannot answer (1) or (2), STOP. Do not write a flat default section. Propose
+    extending an atom or proposing a new named atom. Never inline-compose from primitives.
+  </div>
+
+  <div class="callout good">
+    <span class="label">What this file IS</span>
+    <strong>Generation program.</strong> Every clause is a constraint that fires at write
+    time. Canonical values for the 9 primitives. Required cascade ladder. Required ambient
+    loops. Required hover catalog. Required per-section motion grammar. Depth-checked
+    utilization audit.
+  </div>
+
+  <div class="callout warn">
+    <span class="label">What this file IS NOT</span>
+    <strong>Reference material.</strong> No flagship case studies, no recipe library, no
+    pattern preview gallery, no anti-pattern catalog with worked examples, no TP/OP soft
+    defaults. Those live in REFERENCE_LIBRARY.html and STRUCTURE_DOCTRINE.html. Browse
+    REFERENCE on demand when matching a specific recipe or avoiding a known failure.
+  </div>
+</section>
+
+<!-- ============================ §07 CHANGELOG ============================ -->
+<section class="chapter wrap" id="changelog">
+  <h2 class="chapter-title"><span class="ix">07</span>Changelog — split from v13 (2026-05-18)</h2>
+  <p class="lede">
+    This file is the motion-only carve-out of King Maker v13. v13 lives at
+    <code>C:\Users\josep\Claude Gravity\KING_MAKER_v13.html</code> as the archival source.
+  </p>
+  <ul>
+    <li><strong>Source:</strong> v13 sections promoted into MOTION_DOCTRINE — §03 DNA (all 10 principles, §03.8 surfaced first), §04.5 (motion intensity dial), §04.6 (catalog: 4 constants, 9 primitives, hero spec, cascade ladder, 7 ambient loops, 12 hover gestures, 2 spring configs), §04.7 (per-section motion grammar; layout/copy specs stripped), §04.8 (utilization audit + new depth checks), §09.1 (PP-08 through PP-13), motion-touching Locks 1/8/9/10/11 from §00.</li>
+    <li><strong>Canonical values promoted from §14.3 (AM-specific) into §03:</strong> all 9 primitive default tables (durations, delays, distances, margins, eases), ENTER_EASE re-declaration pattern, reduced-motion behavior per primitive, AM-vs-KMv2 variant deltas surfaced inline (TypeIn cinematic blurAmount 0 vs 8; PerimeterDraw motion.rect vs CSS-keyframe).</li>
+    <li><strong>Canonical values promoted from §14B.2 (KMv2-specific) into §03:</strong> TypeIn cinematic blurAmount 8 (dark-bg variant), CSS-keyframe perimeter draw, Marquee 45s/50s/55s velocity targets.</li>
+    <li><strong>§03.8 ("Pulsing dots in eyebrows. Everything has subtle life") surfaced at top of §01 DNA</strong> as the most-missed clause. Repeated in §01.8 with explicit generation rule callout.</li>
+    <li><strong>§05 audit upgraded with depth-check Layer 2.</strong> v13 §04.8 only counted imports. New layer greps for specific delay values, transition durations, hover gesture utilities, ambient loop signatures. Catches "primitive imported but configured wrong" failure mode.</li>
+    <li><strong>Cut from this file (lives elsewhere):</strong> §04.1 universal aesthetic (→ STRUCTURE), §04.2 variance library (→ STRUCTURE), §04.3 composition workflow (→ STRUCTURE), §04.4 coherence rules (→ STRUCTURE), §04.9 audit-loop methodology (→ STRUCTURE), §06 rendered pattern previews (→ REFERENCE), §07 recipes 1–61 (→ REFERENCE), §08 anti-patterns (→ REFERENCE), §11 TPs (→ REFERENCE), §12 OPs (→ REFERENCE), §13 SEO (→ REFERENCE for full, STRUCTURE for essentials), §14/§14B flagship narrative (→ REFERENCE), §16/§17/§18 (→ REFERENCE).</li>
+  </ul>
+</section>
+
+<footer class="doc-footer">
+  <div>King Maker · MOTION_DOCTRINE · 2026-05-18 · companion to STRUCTURE_DOCTRINE.html (always loaded) + REFERENCE_LIBRARY.html (browse on demand) · archival v13 at C:\Users\josep\Claude Gravity\KING_MAKER_v13.html</div>
+</footer>
+
+</body>
+</html>

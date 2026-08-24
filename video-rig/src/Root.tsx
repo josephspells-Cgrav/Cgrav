@@ -1,5 +1,10 @@
 import React from 'react';
 import {Composition} from 'remotion';
+import {ElsieTen} from './ElsieTen';
+import {ElsieRepro} from './ElsieRepro';
+import {ElsieFull} from './ElsieFull';
+import {GrooveeAd} from './GrooveeAd';
+import {GrooveeAd2} from './GrooveeAd2';
 import {MoGraph01, MOGRAPH01_FRAMES} from './MoGraph01';
 import {MoGraph02, MOGRAPH02_FRAMES} from './MoGraph02';
 import {IconLab, ICONLAB_FRAMES} from './IconLab';
@@ -26,6 +31,16 @@ export const Root: React.FC = () => {
       width={1080}
       height={1920}
     />
+  <Composition id="GrooveeV2" component={GrooveeAd2} durationInFrames={910} fps={30} width={1080} height={1920} />
+  <Composition id="GrooveeMatte" component={GrooveeAd} defaultProps={{mode:"matte" as const}} durationInFrames={910} fps={30} width={1080} height={1920} />
+  <Composition id="GrooveePlain" component={GrooveeAd} defaultProps={{mode:"plain" as const}} durationInFrames={910} fps={30} width={1080} height={1920} />
+  <Composition id="FullMatte" component={ElsieFull} defaultProps={{mode:"matte" as const}} durationInFrames={1160} fps={30} width={1080} height={2038} />
+  <Composition id="FullBlack" component={ElsieFull} defaultProps={{mode:"black" as const}} durationInFrames={1160} fps={30} width={1080} height={2038} />
+  <Composition id="ReproBlack" component={ElsieRepro} defaultProps={{mode:"black" as const}} durationInFrames={314} fps={30} width={1080} height={2038} />
+  <Composition id="ReproFootage" component={ElsieRepro} defaultProps={{mode:"footage" as const}} durationInFrames={314} fps={30} width={1080} height={2038} />
+  <Composition id="ReproMatte" component={ElsieRepro} defaultProps={{mode:"matte" as const}} durationInFrames={314} fps={30} width={1080} height={2038} />
+  <Composition id="ElsieTenBlack" component={ElsieTen} defaultProps={{bg: "black" as const}} durationInFrames={309} fps={30} width={1080} height={1920} />
+  <Composition id="ElsieTenFootage" component={ElsieTen} defaultProps={{bg: "footage" as const}} durationInFrames={309} fps={30} width={1080} height={1920} />
   <Composition id="IconLabBlind" component={IconLabBlind} durationInFrames={ICONLABBLIND_FRAMES} fps={30} width={1080} height={1920} />
   <Composition id="IconLab" component={IconLab} durationInFrames={ICONLAB_FRAMES} fps={30} width={1080} height={1920} />
   <Composition id="MoGraph02" component={MoGraph02} durationInFrames={MOGRAPH02_FRAMES} fps={30} width={1080} height={1920} />

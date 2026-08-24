@@ -1,0 +1,25 @@
+{
+  "question": "What landing-page structure converts cold Meta/Facebook roofing-lead traffic best on mobile (Facebook in-app browser as primary surface) — specifically multi-step quiz funnels vs single-page forms vs calendar-first self-scheduling vs click-to-call — with measured benchmarks, and what door/above-the-fold and contact-step designs measurably raise form-start and completion rates?",
+  "subQuestions": [
+    "Measured click-to-lead conversion benchmarks for roofing and home-services landing pages on COLD Facebook/Meta prospecting traffic, broken out by format (multi-step quiz, single-page form, calendar/self-scheduling, click-to-call) — from CRO case studies, Unbounce/Instapage-class benchmark reports, or home-services PPC agencies publishing client data",
+    "Above-the-fold 'door' design for the Facebook in-app mobile browser: headline patterns with A/B evidence (offer-framed vs question vs price-anchored vs no headline), and what measurably moves form-START rate",
+    "Multi-step funnel mechanics with data: optimal question count and order, where the contact-info ask sits (start/middle/end), phone-field friction and mitigations, effort cues like 'takes 30 seconds', progress indicators",
+    "Calendar-first / self-scheduling landing pages for home services: does direct appointment booking convert better or worse than quote-request forms on cold social traffic, and what are show rates for self-booked vs rep-scheduled appointments",
+    "Mobile and in-app-browser technical/UX factors with measured conversion impact: load time, native-feel styling that mimics Meta instant forms, sticky CTAs, tap-target size",
+    "Revealed preference: what landing-page structures do the highest-spending roofing/home-services Meta advertisers actually run right now"
+  ],
+  "checklist": [
+    "benchmarks table with real numbers (roofing or home-services, paid social)",
+    "quiz/multi-step vs single-form comparative data",
+    "calendar-first or self-scheduling evidence",
+    "phone-field / contact-step friction data",
+    "headline or door A/B evidence",
+    "FB in-app browser specific factors",
+    "show rates: self-booked vs rep-scheduled appointments"
+  ],
+  "tier": "lite",
+  "mode": "balanced",
+  "currentDate": "2026-08-11",
+  "stopCondition": "Each format-comparison verdict carries at least one source with actual numbers; the benchmarks table draws on 3+ independent sources; the calendar-first question is answered with data or explicitly marked evidence-thin.",
+  "context": "Client runs $98/mo financing-framed roof-replacement ads (LEARN_MORE, 'schedule my free quote' painted CTA) to a 4-tap quiz -> calendar -> name/phone funnel styled like a Meta instant form. Click->form-start currently 5-7%; historical best full completion 9.1%. Live experiments: 4 door-headline/flow arms including calendar-first. Deliverable: benchmarks table + ranked keep/change/test recommendations mapped to this funnel + a specific calendar-first vs quiz-first verdict for cold roofing traffic."
+}

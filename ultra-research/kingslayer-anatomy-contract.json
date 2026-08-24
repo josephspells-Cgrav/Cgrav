@@ -1,0 +1,23 @@
+{
+  "question": "How exactly did billraganroofing.com (Nashville), colonyroofers.com (Atlanta), and rhodenroofing.com (Wichita) build market-dominating organic positions in roofing — operationally (who/cadence/method/agency) and structurally — and did they truly displace entrenched incumbents or grow into weak/unclaimed organic SERPs?",
+  "subQuestions": [
+    "What is the documented operational playbook of Bill Ragan Roofing's content program — who executed it (content manager, videographer, IMPACT/They-Ask-You-Answer), publishing cadence, formats, timeline, and revenue/close-rate attribution?",
+    "What is known operationally about Colony Roofers' growth engine — in-house vs agency, learning-center publishing cadence, founding-to-Inc-5000 trajectory, market expansion?",
+    "What is known operationally about Rhoden Roofing's SEO build — who built it, the service-area-page + glossary strategy, timeline?",
+    "Did these three displace entrenched high-authority incumbents in their metros, or grow into weak/unclaimed organic SERPs — who held/lost the positions they now occupy?",
+    "How did Google's Helpful Content and core updates 2023-2025 treat education-library local-service sites — were content-heavy roofers winnowed, and which content classes lost vs survived?",
+    "What do practitioner sources converge on as the highest-value content classes for local-service topical authority (cost guides, comparisons, problem/symptom queries) versus low-value bloat?"
+  ],
+  "checklist": [
+    "Ragan operational timeline + cadence + attribution claims",
+    "Colony operational engine + trajectory",
+    "Rhoden operational engine",
+    "incumbent-displacement evidence (or its absence) per metro",
+    "HCU/core-update impact on content-library local-service sites",
+    "money-content classes vs bloat practitioner consensus"
+  ],
+  "tier": "lite",
+  "mode": "balanced",
+  "currentDate": "2026-07-03",
+  "taskStopCondition": "Each company's operational story has >=2 independent sources; the displacement question has at least one direct-evidence source per metro or is enumerated as a gap; HCU-winnowing question has >=2 independent sources."
+}

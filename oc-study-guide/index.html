@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>OC Study Guide</title>
+<style>
+  :root{
+    --ink:#111; --red:#c1121f; --blue:#0b5394; --gray:#666; --lgray:#ccc;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:#111;font-family:Georgia,'Times New Roman',Cambria,serif;}
+  .page{max-width:900px;margin:0 auto;padding:40px 26px 100px;}
+  header.masthead{text-align:center;border-bottom:3px solid #111;padding-bottom:22px;margin-bottom:10px;}
+  header.masthead h1{font-size:40px;margin:0 0 8px;letter-spacing:.5px;}
+  header.masthead p{font-size:16px;color:#555;margin:0;font-style:italic;}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 8px;}
+  nav.toc a{font-family:Georgia,serif;font-size:14px;color:#0b5394;text-decoration:none;border:1px solid #cfd8e3;border-radius:20px;padding:5px 14px;background:#f6f8fb;}
+  nav.toc a:hover{background:#eaf0f9;}
+  section.question{margin-top:64px;padding-top:26px;border-top:2px solid #111;}
+  section.question h2{font-size:26px;margin:0 0 4px;}
+  section.question .qsub{font-size:15px;color:var(--gray);margin:0 0 22px;font-style:italic;}
+  .panel{margin:26px 0;}
+  .panel h3{font-size:17px;margin:0 0 6px;color:#222;}
+  svg.diagram{width:100%;height:auto;display:block;background:#fff;}
+  .figcap{font-size:13.5px;color:#777;text-align:center;margin-top:2px;font-style:italic;}
+  table.classify{width:100%;border-collapse:collapse;font-size:15px;margin:18px 0;}
+  table.classify th{background:#f3f3f3;border:1px solid var(--lgray);padding:9px 10px;text-align:left;}
+  table.classify td{border:1px solid var(--lgray);padding:9px 10px;vertical-align:middle;}
+  table.classify td.sp{width:110px;text-align:center;}
+  table.classify tr:nth-child(even) td{background:#fafafa;}
+  .note-block{background:#f6f7f5;border-left:4px solid #0b5394;padding:12px 18px;font-size:15.5px;line-height:1.55;margin:16px 0;}
+  .note-block b{color:#0b5394;}
+  .teach{font-size:14.5px;color:#666;font-style:italic;margin:4px 0 0;}
+  .divider{border:none;border-top:1px solid #e2e2e2;margin:30px 0;}
+  strong.ans{color:#0b5394;}
+  .chg{color:#0b5394;font-weight:bold;}
+  /* ---- chemistry drawing grammar (applies inside every inline SVG) ---- */
+  .bond{stroke:#111;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .bond2{stroke:#111;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .arrow{stroke:#c1121f;stroke-width:2.8;fill:none;stroke-linecap:round;}
+  .arrow2{stroke:#c1121f;stroke-width:1.9;fill:none;stroke-linecap:round;}
+  .rxnarrow{stroke:#111;stroke-width:3;fill:none;}
+  .dblarrow{stroke:#111;stroke-width:2.3;fill:none;}
+  .chargeCircle{stroke:#0b5394;stroke-width:2.3;fill:#fff;}
+  .chargeText{fill:#0b5394;font-weight:bold;}
+  .lbl{fill:#111;}
+  .note{fill:#666;}
+  .leader{stroke:#999;stroke-width:1.2;fill:none;}
+  .calloutBox{fill:#fff;stroke:#999;stroke-width:1.3;}
+  .dot{fill:#111;}
+  .chkbox{fill:#fff;stroke:#111;stroke-width:2;}
+  .chkmark{stroke:#0b5394;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .chkgroup-frame{fill:#fff;stroke:#ccc;stroke-width:1.5;}
+  @media print{
+    a{color:#111 !important;text-decoration:none;}
+    nav.toc{display:none;}
+    section.question, .panel, table.classify tr{break-inside:avoid;page-break-inside:avoid;}
+    .page{max-width:100%;padding:10px 14px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ shared SVG defs (markers + reusable ring symbol), referenced by url(#id)/use from every diagram below ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c1121f"/>
+    </marker>
+    <marker id="rxn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/>
+    </marker>
+    <marker id="dbl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/>
+    </marker>
+    <marker id="fh" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,1.6 L10,5 L0,4.4 z" fill="#c1121f"/>
+    </marker>
+    <!-- small fixed-size (userSpaceOnUse) markers for tightly-scaled ring/chain diagrams, so the arrowhead never overwhelms a short curve -->
+    <marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c1121f"/>
+    </marker>
+    <marker id="fhs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,5 z" fill="#c1121f"/>
+    </marker>
+    <!-- reusable small benzene ring, ipso attachment point at local (50,0) -->
+    <symbol id="benz" viewBox="-60 -60 120 120" overflow="visible">
+      <g class="bond">
+        <path d="M50,0 L25,43.3"/>
+        <path d="M25,43.3 L-25,43.3"/>
+        <path d="M-25,43.3 L-50,0"/>
+        <path d="M-50,0 L-25,-43.3"/>
+        <path d="M-25,-43.3 L25,-43.3"/>
+        <path d="M25,-43.3 L50,0"/>
+      </g>
+      <g class="bond2">
+        <path d="M41.1,3.5 L23.6,33.8"/>
+        <path d="M-23.6,33.8 L-41.1,3.5"/>
+        <path d="M-17.5,-37.3 L17.5,-37.3"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="page">
+
+<header class="masthead">
+  <h1>OC Study Guide</h1>
+  <p>Hybridization &middot; Resonance &middot; Acid/Base &middot; Mechanisms &middot; Substitution/Elimination/Addition</p>
+</header>
+
+<nav class="toc">
+  <a href="#q1">Q1 Hybridization</a>
+  <a href="#q2">Q2 Resonance</a>
+  <a href="#q3">Q3 Acid/Base</a>
+  <a href="#q4">Q4 Mechanisms</a>
+  <a href="#q5">Q5 Acidity</a>
+  <a href="#q6">Q6 Products</a>
+</nav>
+
+<!-- ======================================================================= -->
+<!-- Q1 — HYBRIDIZATION -->
+<!-- ======================================================================= -->
+<section class="question" id="q1">
+  <h2>Q1 &nbsp;&mdash;&nbsp; Hybridization</h2>
+  <p class="qsub">Every atom's hybridization is decided by how many things it's attached to (&sigma; bonds + lone pairs) &mdash; count the groups, don't guess from the drawing.</p>
+
+  <!-- ---- Structure 1: cyclopentadiene ring, C5 = OH + prop-1-ynyl ---- -->
+  <div class="panel">
+    <h3>Structure 1 &mdash; 5-hydroxy-5-(prop-1-ynyl)cyclopenta-1,3-diene</h3>
+    <svg class="diagram" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(290,260)">
+        <!-- ring bonds: C5(0,-78) C1(74.2,-24.1) C2(45.8,63.1) C3(-45.8,63.1) C4(-74.2,-24.1) -->
+        <g class="bond">
+          <path d="M0,-78 L74.2,-24.1"/>
+          <path d="M74.2,-24.1 L45.8,63.1"/>
+          <path d="M45.8,63.1 L-45.8,63.1"/>
+          <path d="M-45.8,63.1 L-74.2,-24.1"/>
+          <path d="M-74.2,-24.1 L0,-78"/>
+        </g>
+        <g class="bond2">
+          <path d="M62,-12.6 L42.7,46.7"/>
+          <path d="M-42.7,46.7 L-62,-12.6"/>
+        </g>
+        <!-- OH substituent from C5 -->
+        <path class="bond" d="M0,-78 L-38,-134"/>
+        <text x="-46" y="-132" text-anchor="end" font-size="21" class="lbl">OH</text>
+        <!-- prop-1-ynyl substituent from C5: C5 - Ca #C Cb - CH3 -->
+        <path class="bond" d="M0,-78 L42,-138"/>
+        <g class="bond">
+          <path d="M42,-138 L110,-138"/>
+        </g>
+        <g class="bond2">
+          <path d="M50,-143 L102,-143"/>
+          <path d="M50,-133 L102,-133"/>
+        </g>
+        <path class="bond" d="M110,-138 L152,-116"/>
+        <text x="160" y="-110" font-size="21" class="lbl">CH&#8323;</text>
+        <text x="160" y="-92" font-size="12.5" class="note">sp&#179;</text>
+        <!-- callout: ring alkene carbons, right box -> C1,C2 -->
+        <g font-size="14">
+          <path class="leader" d="M120,20 L74.2,-24.1"/>
+          <path class="leader" d="M120,30 L45.8,63.1"/>
+          <rect x="120" y="0" width="150" height="46" rx="8" class="calloutBox"/>
+          <text x="195" y="18" text-anchor="middle" class="note">ring alkene CH</text>
+          <text x="195" y="38" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#178;</text>
+        </g>
+        <!-- callout: ring alkene carbons, left box -> C3,C4 -->
+        <g font-size="14">
+          <path class="leader" d="M-160,20 L-45.8,63.1"/>
+          <path class="leader" d="M-160,30 L-74.2,-24.1"/>
+          <rect x="-270" y="0" width="150" height="46" rx="8" class="calloutBox"/>
+          <text x="-195" y="18" text-anchor="middle" class="note">ring alkene CH</text>
+          <text x="-195" y="38" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#178;</text>
+        </g>
+        <!-- callout: C5 itself -->
+        <g font-size="14">
+          <path class="leader" d="M0,-155 L0,-82"/>
+          <rect x="-72" y="-192" width="144" height="46" rx="8" class="calloutBox"/>
+          <text x="0" y="-174" text-anchor="middle" class="note">C5 (4 &sigma; bonds)</text>
+          <text x="0" y="-154" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#179;</text>
+        </g>
+        <!-- callout: O of OH -->
+        <g font-size="14">
+          <path class="leader" d="M-150,-176 L-42,-136"/>
+          <rect x="-270" y="-198" width="126" height="46" rx="8" class="calloutBox"/>
+          <text x="-207" y="-180" text-anchor="middle" class="note">O of &ndash;OH</text>
+          <text x="-207" y="-160" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#179;</text>
+        </g>
+        <!-- callout: alkyne carbons -->
+        <g font-size="14">
+          <path class="leader" d="M180,-190 L60,-138"/>
+          <path class="leader" d="M195,-190 L106,-138"/>
+          <rect x="150" y="-224" width="150" height="46" rx="8" class="calloutBox"/>
+          <text x="225" y="-206" text-anchor="middle" class="note">C&#8801;C (both)</text>
+          <text x="225" y="-186" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp</text>
+        </g>
+      </g>
+      <text x="380" y="460" text-anchor="middle" font-size="14" class="note">ring C=C carbons + C5 + O + both alkyne C labeled; alkyne terminal CH&#8323; is sp&#179; (minor)</text>
+    </svg>
+  </div>
+
+  <!-- ---- Structure 2: cyclohexane ring, imine + acetyl ---- -->
+  <div class="panel">
+    <h3>Structure 2 &mdash; cyclohexane ring bearing an N-methyl imine and an acetyl group</h3>
+    <svg class="diagram" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(340,300)">
+        <!-- ring hexagon, all single bonds. V0 top(0,-80) V1(69.3,-40) V2(69.3,40) V3 bottom(0,80) V4(-69.3,40) V5(-69.3,-40) -->
+        <g class="bond">
+          <path d="M0,-80 L69.3,-40"/>
+          <path d="M69.3,-40 L69.3,40"/>
+          <path d="M69.3,40 L0,80"/>
+          <path d="M0,80 L-69.3,40"/>
+          <path d="M-69.3,40 L-69.3,-40"/>
+          <path d="M-69.3,-40 L0,-80"/>
+        </g>
+        <!-- imine at V0: V0=N, N-CH3 -->
+        <path class="bond" d="M0,-80 L0,-142"/>
+        <g class="bond2"><path d="M7,-88 L7,-134"/></g>
+        <text x="0" y="-150" text-anchor="middle" font-size="21" class="lbl">N</text>
+        <path class="bond" d="M8,-160 L58,-188"/>
+        <text x="66" y="-186" font-size="21" class="lbl">CH&#8323;</text>
+        <!-- acetyl at V3: V3-Cx(=O)-CH3 -->
+        <path class="bond" d="M0,80 L0,142"/>
+        <path class="bond" d="M0,142 L52,172"/>
+        <g class="bond2"><path d="M4.3,152.6 L40.7,173.6"/></g>
+        <path class="bond" d="M0,142 L-52,172"/>
+        <text x="60" y="180" font-size="21" class="lbl">O</text>
+        <text x="-60" y="180" text-anchor="end" font-size="21" class="lbl">CH&#8323;</text>
+        <!-- callouts -->
+        <g font-size="14">
+          <path class="leader" d="M-100,-118 L-4,-84"/>
+          <rect x="-260" y="-140" width="160" height="46" rx="8" class="calloutBox"/>
+          <text x="-180" y="-122" text-anchor="middle" class="note">ring C of C=N</text>
+          <text x="-180" y="-102" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#178;</text>
+        </g>
+        <g font-size="14">
+          <path class="leader" d="M-100,-210 L-2,-150"/>
+          <rect x="-260" y="-232" width="160" height="52" rx="8" class="calloutBox"/>
+          <text x="-180" y="-214" text-anchor="middle" class="note">imine N</text>
+          <text x="-180" y="-196" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#178;</text>
+          <text x="-180" y="-183" text-anchor="middle" font-size="11" class="note">lone pair in sp&#178; orbital</text>
+        </g>
+        <g font-size="14">
+          <path class="leader" d="M150,-230 L62,-190"/>
+          <rect x="130" y="-252" width="150" height="46" rx="8" class="calloutBox"/>
+          <text x="205" y="-234" text-anchor="middle" class="note">N&ndash;CH&#8323; carbon</text>
+          <text x="205" y="-214" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#179;</text>
+        </g>
+        <g font-size="14">
+          <path class="leader" d="M150,196 L4,144"/>
+          <rect x="130" y="196" width="150" height="46" rx="8" class="calloutBox"/>
+          <text x="205" y="214" text-anchor="middle" class="note">carbonyl C</text>
+          <text x="205" y="234" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#178;</text>
+        </g>
+        <g font-size="14">
+          <path class="leader" d="M130,270 L62,182"/>
+          <rect x="130" y="252" width="150" height="46" rx="8" class="calloutBox"/>
+          <text x="205" y="270" text-anchor="middle" class="note">carbonyl O</text>
+          <text x="205" y="290" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#178;</text>
+        </g>
+        <g font-size="14">
+          <path class="leader" d="M-150,240 L-58,182"/>
+          <rect x="-280" y="252" width="150" height="46" rx="8" class="calloutBox"/>
+          <text x="-205" y="270" text-anchor="middle" class="note">acetyl CH&#8323;</text>
+          <text x="-205" y="290" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#179;</text>
+        </g>
+        <!-- ring CH/CH2 callouts: right pair V1,V2 -->
+        <g font-size="14">
+          <path class="leader" d="M170,0 L73,-40"/>
+          <path class="leader" d="M170,10 L73,40"/>
+          <rect x="170" y="-24" width="140" height="46" rx="8" class="calloutBox"/>
+          <text x="240" y="-6" text-anchor="middle" class="note">ring CH&#8322;</text>
+          <text x="240" y="14" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#179;</text>
+        </g>
+        <!-- V3 itself: ring CH bearing the acetyl group -->
+        <g font-size="14">
+          <path class="leader" d="M110,120 L4,84"/>
+          <rect x="110" y="108" width="130" height="46" rx="8" class="calloutBox"/>
+          <text x="175" y="126" text-anchor="middle" class="note">ring CH</text>
+          <text x="175" y="146" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#179;</text>
+        </g>
+        <!-- left pair V4,V5 -->
+        <g font-size="14">
+          <path class="leader" d="M-170,0 L-73,40"/>
+          <path class="leader" d="M-170,10 L-73,-40"/>
+          <rect x="-310" y="-24" width="140" height="46" rx="8" class="calloutBox"/>
+          <text x="-240" y="-6" text-anchor="middle" class="note">ring CH&#8322;</text>
+          <text x="-240" y="14" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#179;</text>
+        </g>
+      </g>
+      <text x="350" y="660" text-anchor="middle" font-size="14" class="note">the imine C=N and the carbonyl C=O are both fully sp&#178; systems &mdash; same reasoning, two different heteroatoms</text>
+    </svg>
+  </div>
+
+  <!-- ---- Structure 3: mesityl oxide ---- -->
+  <div class="panel">
+    <h3>Structure 3 &mdash; mesityl oxide, CH&#8323;&ndash;C(=O)&ndash;CH=C(CH&#8323;)&#8322;</h3>
+    <svg class="diagram" viewBox="0 0 820 420" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(140,220)">
+        <!-- chain: Me(0,30) Cc(56,-10) O(56,-70) Ca(112,30) Cb(168,-10) Me1(224,30) Me2(168,-70) -->
+        <g class="bond">
+          <path d="M0,30 L56,-10"/>
+          <path d="M56,-10 L56,-70"/>
+          <path d="M56,-10 L112,30"/>
+          <path d="M112,30 L168,-10"/>
+          <path d="M168,-10 L224,30"/>
+          <path d="M168,-10 L168,-70"/>
+        </g>
+        <g class="bond2">
+          <path d="M64,-16 L64,-64"/>
+          <path d="M118,22 L156,-3"/>
+        </g>
+        <text x="-8" y="42" text-anchor="end" font-size="21" class="lbl">H&#8323;C</text>
+        <text x="56" y="-80" text-anchor="middle" font-size="21" class="lbl">O</text>
+        <text x="234" y="42" font-size="21" class="lbl">CH&#8323;</text>
+        <text x="168" y="-80" text-anchor="middle" font-size="21" class="lbl">CH&#8323;</text>
+        <!-- callouts -->
+        <g font-size="14">
+          <path class="leader" d="M10,-150 L56,-10"/>
+          <rect x="-80" y="-196" width="150" height="46" rx="8" class="calloutBox"/>
+          <text x="-5" y="-178" text-anchor="middle" class="note">carbonyl C</text>
+          <text x="-5" y="-158" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#178;</text>
+        </g>
+        <g font-size="14">
+          <path class="leader" d="M180,-150 L114,26"/>
+          <path class="leader" d="M220,-150 L168,-14"/>
+          <rect x="120" y="-196" width="170" height="46" rx="8" class="calloutBox"/>
+          <text x="205" y="-178" text-anchor="middle" class="note">both alkene C</text>
+          <text x="205" y="-158" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#178;</text>
+        </g>
+        <g font-size="14">
+          <path class="leader" d="M-10,90 L-4,36"/>
+          <path class="leader" d="M240,90 L228,36"/>
+          <path class="leader" d="M168,90 L168,-64"/>
+          <rect x="20" y="96" width="216" height="46" rx="8" class="calloutBox"/>
+          <text x="128" y="114" text-anchor="middle" class="note">every CH&#8323; (&times;3)</text>
+          <text x="128" y="134" text-anchor="middle" font-size="19" font-weight="bold" class="lbl">sp&#179;</text>
+        </g>
+      </g>
+      <text x="410" y="400" text-anchor="middle" font-size="14" class="note">a fully conjugated enone chain &mdash; carbonyl C and both alkene C are sp&#178;, all three methyls are sp&#179;</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- Q2 — RESONANCE -->
+<!-- ======================================================================= -->
+<section class="question" id="q2">
+  <h2>Q2 &nbsp;&mdash;&nbsp; Resonance contributors</h2>
+  <p class="qsub">Curved arrows show where electrons move FROM (a lone pair or &pi; bond) and TO (a new bond or a new lone pair). Draw them on the structure they convert FROM.</p>
+
+  <!-- ---- 2a: methyl vinyl ketone, 3-structure chain I<->II<->III ---- -->
+  <div class="panel">
+    <h3>a) Methyl vinyl ketone CH&#8322;=CH&ndash;C(=O)&ndash;CH&#8323;</h3>
+    <svg class="diagram" viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Structure I -->
+      <g transform="translate(190,260)">
+        <g class="bond">
+          <path d="M0,40 L52,5"/>
+          <path d="M52,5 L104,40"/>
+          <path d="M104,40 L104,-25"/>
+          <path d="M104,40 L156,5"/>
+        </g>
+        <g class="bond2">
+          <path d="M11.7,40.6 L48.1,16.1"/>
+          <path d="M112,30.25 L112,-15.25"/>
+        </g>
+        <text x="-10" y="48" text-anchor="end" font-size="24" class="lbl">H&#8322;C</text>
+        <text x="104" y="-33" text-anchor="middle" font-size="24" class="lbl">O</text>
+        <text x="166" y="12" font-size="24" class="lbl">CH&#8323;</text>
+        <!-- arrow: C=O pi -> O -->
+        <path class="arrow2" d="M92,12 C72,-2 72,-18 94,-23" marker-end="url(#ahs)"/>
+        <text x="60" y="90" text-anchor="middle" font-size="15" class="note">major &mdash; no charge separation</text>
+        <text x="60" y="-60" text-anchor="middle" font-size="17" font-weight="bold" class="lbl">I</text>
+      </g>
+
+      <!-- resonance arrow I <-> II -->
+      <path class="dblarrow" d="M430,260 L488,260" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure II -->
+      <g transform="translate(650,260)">
+        <g class="bond">
+          <path d="M0,40 L52,5"/>
+          <path d="M52,5 L104,40"/>
+          <path d="M104,40 L104,-25"/>
+          <path d="M104,40 L156,5"/>
+        </g>
+        <g class="bond2">
+          <path d="M11.7,40.6 L48.1,16.1"/>
+        </g>
+        <text x="-10" y="48" text-anchor="end" font-size="24" class="lbl">H&#8322;C</text>
+        <text x="104" y="-33" text-anchor="middle" font-size="24" class="lbl">O</text>
+        <text x="166" y="12" font-size="24" class="lbl">CH&#8323;</text>
+        <!-- O minus charge -->
+        <circle class="chargeCircle" cx="126" cy="-38" r="12"/>
+        <text x="126" y="-33" text-anchor="middle" font-size="15" class="chargeText">&#8722;</text>
+        <!-- Cc plus charge -->
+        <circle class="chargeCircle" cx="104" cy="66" r="12"/>
+        <text x="104" y="71" text-anchor="middle" font-size="15" class="chargeText">+</text>
+        <!-- arrow: C=C pi -> Cb-Cc bond (forms Cb=Cc) -->
+        <path class="arrow2" d="M22,14 C45,-14 68,-14 84,12" marker-end="url(#ahs)"/>
+        <text x="60" y="90" text-anchor="middle" font-size="15" class="note">carbonyl polarized</text>
+        <text x="60" y="-60" text-anchor="middle" font-size="17" font-weight="bold" class="lbl">II</text>
+      </g>
+
+      <!-- resonance arrow II <-> III -->
+      <path class="dblarrow" d="M888,260 L946,260" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure III: +H2C-CH=C(-O-)-CH3 -->
+      <g transform="translate(1110,260)">
+        <g class="bond">
+          <path d="M0,40 L52,5"/>
+          <path d="M52,5 L104,40"/>
+          <path d="M104,40 L104,-25"/>
+          <path d="M104,40 L156,5"/>
+        </g>
+        <g class="bond2">
+          <path d="M63.7,4.5 L100.1,29.0"/>
+        </g>
+        <text x="-10" y="48" text-anchor="end" font-size="24" class="lbl">H&#8322;C</text>
+        <text x="104" y="-33" text-anchor="middle" font-size="24" class="lbl">O</text>
+        <text x="166" y="12" font-size="24" class="lbl">CH&#8323;</text>
+        <!-- Ca plus charge (terminal CH2+) -->
+        <circle class="chargeCircle" cx="-22" cy="66" r="12"/>
+        <text x="-22" y="71" text-anchor="middle" font-size="15" class="chargeText">+</text>
+        <!-- O minus charge, retained -->
+        <circle class="chargeCircle" cx="126" cy="-38" r="12"/>
+        <text x="126" y="-33" text-anchor="middle" font-size="15" class="chargeText">&#8722;</text>
+        <text x="60" y="90" text-anchor="middle" font-size="15" class="note">the enone&#8217;s &beta;-carbon &mdash; electrophilic</text>
+        <text x="60" y="-60" text-anchor="middle" font-size="17" font-weight="bold" class="lbl">III</text>
+      </g>
+
+      <text x="700" y="440" text-anchor="middle" font-size="16" class="teach">why the enone&#8217;s &beta;-carbon (the terminal CH&#8322;) is electrophilic &mdash; this is the resonance form that explains conjugate addition</text>
+    </svg>
+  </div>
+
+  <!-- ---- 2b: 1-phenylethyl ANION, 4 structures ---- -->
+  <div class="panel">
+    <h3>b) 1-Phenylethyl ANION (Ph&ndash;C<tspan>&#8854;</tspan>H&ndash;CH&#8323;) &mdash; charge walks benzylic &rarr; ortho &rarr; para &rarr; ortho&#8242;</h3>
+    <svg class="diagram" viewBox="0 0 1600 440" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Structure 1: benzylic -->
+      <g transform="translate(190,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M51.9,4.4 L29.8,42.8"/><path d="M-29.8,42.8 L-51.9,4.4"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="dot" cx="129" cy="-43" r="2.3"/><circle class="dot" cx="141" cy="-40" r="2.3"/>
+        <circle class="chargeCircle" cx="150" cy="-50" r="11"/>
+        <text x="150" y="-45.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+        <path class="arrow2" d="M128,-40 C112,-32 100,-24 95,-18" marker-end="url(#ahs)"/>
+        <path class="arrow2" d="M50,30 C60,38 52,48 37,53" marker-end="url(#ahs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">1 &mdash; benzylic</text>
+      </g>
+
+      <path class="dblarrow" d="M432,250 L486,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 2: ortho -->
+      <g transform="translate(560,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M-29.8,42.8 L-51.9,4.4"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="dot" cx="35" cy="68" r="2.3"/><circle class="dot" cx="46" cy="73" r="2.3"/>
+        <circle class="chargeCircle" cx="50" cy="86" r="11"/>
+        <text x="50" y="90.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+        <path class="arrow2" d="M40,72 C25,72 12,68 3,60" marker-end="url(#ahs)"/>
+        <path class="arrow2" d="M-50,30 C-60,20 -66,10 -62,-2" marker-end="url(#ahs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">2 &mdash; ortho</text>
+      </g>
+
+      <path class="dblarrow" d="M802,250 L856,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 3: para -->
+      <g transform="translate(930,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M22.1,47.2 L-22.1,47.2"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="dot" cx="-86" cy="18" r="2.3"/><circle class="dot" cx="-77" cy="23" r="2.3"/>
+        <circle class="chargeCircle" cx="-93" cy="33" r="11"/>
+        <text x="-93" y="37.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+        <path class="arrow2" d="M-81,14 C-68,-8 -58,-24 -50,-27" marker-end="url(#ahs)"/>
+        <path class="arrow2" d="M0,-58 C10,-64 22,-64 30,-58" marker-end="url(#ahs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">3 &mdash; para</text>
+      </g>
+
+      <path class="dblarrow" d="M1172,250 L1226,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 4: ortho' -->
+      <g transform="translate(1300,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M22.1,47.2 L-22.1,47.2"/><path d="M-51.9,-4.4 L-29.8,-42.8"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="dot" cx="35" cy="-68" r="2.3"/><circle class="dot" cx="46" cy="-73" r="2.3"/>
+        <circle class="chargeCircle" cx="50" cy="-86" r="11"/>
+        <text x="50" y="-81.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">4 &mdash; ortho&#8242;</text>
+      </g>
+
+      <text x="800" y="24" text-anchor="middle" font-size="15" class="note">each step: lone pair &rarr; the adjacent C&ndash;C bond (new &pi; bond) &nbsp;+&nbsp; simultaneously the next ring &pi; bond &rarr; the next carbon (new lone pair).<tspan x="800" dy="19">Never lone pair straight into the ring bond &mdash; that breaks ipso&#8217;s octet.</tspan></text>
+      <text x="800" y="410" text-anchor="middle" font-size="15" class="teach">explicit alternating (Kekul&#233;) bonds throughout &mdash; structures 2&ndash;4 are dearomatized, not aromatic. Charge never reaches meta.</text>
+    </svg>
+  </div>
+
+  <!-- ---- 2c: 1-phenylethyl CATION, 4 structures ---- -->
+  <div class="panel">
+    <h3>c) 1-Phenylethyl CATION (Ph&ndash;C<tspan>&#8853;</tspan>H&ndash;CH&#8323;) &mdash; ring &pi; donates into the empty p orbital</h3>
+    <svg class="diagram" viewBox="0 0 1600 440" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Structure 1: benzylic -->
+      <g transform="translate(190,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M51.9,4.4 L29.8,42.8"/><path d="M-29.8,42.8 L-51.9,4.4"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="chargeCircle" cx="150" cy="-50" r="11"/>
+        <text x="150" y="-45.5" text-anchor="middle" font-size="15" class="chargeText">+</text>
+        <path class="arrow2" d="M50,30 C75,25 85,5 94,-16" marker-end="url(#ahs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">1 &mdash; benzylic</text>
+      </g>
+
+      <path class="dblarrow" d="M432,250 L486,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 2: ortho -->
+      <g transform="translate(560,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M-29.8,42.8 L-51.9,4.4"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="chargeCircle" cx="50" cy="86" r="11"/>
+        <text x="50" y="90.5" text-anchor="middle" font-size="15" class="chargeText">+</text>
+        <path class="arrow2" d="M-50,30 C-30,45 -15,50 0,54" marker-end="url(#ahs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">2 &mdash; ortho</text>
+      </g>
+
+      <path class="dblarrow" d="M802,250 L856,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 3: para -->
+      <g transform="translate(930,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M22.1,47.2 L-22.1,47.2"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="chargeCircle" cx="-93" cy="33" r="11"/>
+        <text x="-93" y="37.5" text-anchor="middle" font-size="15" class="chargeText">+</text>
+        <path class="arrow2" d="M0,-58 C-20,-56 -38,-45 -48,-30" marker-end="url(#ahs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">3 &mdash; para</text>
+      </g>
+
+      <path class="dblarrow" d="M1172,250 L1226,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 4: ortho' -->
+      <g transform="translate(1300,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M22.1,47.2 L-22.1,47.2"/><path d="M-51.9,-4.4 L-29.8,-42.8"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="chargeCircle" cx="50" cy="-86" r="11"/>
+        <text x="50" y="-81.5" text-anchor="middle" font-size="15" class="chargeText">+</text>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">4 &mdash; ortho&#8242;</text>
+      </g>
+
+      <text x="800" y="30" text-anchor="middle" font-size="15" class="note">each step: one ring &pi; bond &rarr; the empty benzylic/ring p orbital, forming a new &pi; bond one position over &mdash; the (+) walks the other direction around the ring.</text>
+      <text x="800" y="410" text-anchor="middle" font-size="15" class="teach">same dearomatized-ring convention as the anion. Charge never reaches meta &mdash; this is why benzylic cations are so stable.</text>
+    </svg>
+  </div>
+
+  <!-- ---- 2d: 1-phenylethyl RADICAL, 4 structures, fishhook arrows ---- -->
+  <div class="panel">
+    <h3>d) 1-Phenylethyl RADICAL (Ph&ndash;&#8226;CH&ndash;CH&#8323;) &mdash; fishhook (single-electron) arrows, in pairs</h3>
+    <svg class="diagram" viewBox="0 0 1600 440" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Structure 1: benzylic -->
+      <g transform="translate(190,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M51.9,4.4 L29.8,42.8"/><path d="M-29.8,42.8 L-51.9,4.4"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="dot" cx="138" cy="-42" r="3.4"/>
+        <path class="arrow2" d="M128,-38 C112,-30 100,-24 97,-21" marker-end="url(#fhs)"/>
+        <path class="arrow2" d="M50,30 C60,38 52,48 43,51" marker-end="url(#fhs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">1 &mdash; benzylic</text>
+      </g>
+
+      <path class="dblarrow" d="M432,250 L486,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 2: ortho -->
+      <g transform="translate(560,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M-29.8,42.8 L-51.9,4.4"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="dot" cx="44" cy="74" r="3.4"/>
+        <path class="arrow2" d="M38,70 C25,70 12,66 8,64" marker-end="url(#fhs)"/>
+        <path class="arrow2" d="M-50,30 C-60,20 -66,10 -64,5" marker-end="url(#fhs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">2 &mdash; ortho</text>
+      </g>
+
+      <path class="dblarrow" d="M802,250 L856,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 3: para -->
+      <g transform="translate(930,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M22.1,47.2 L-22.1,47.2"/><path d="M-22.1,-47.2 L22.1,-47.2"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="dot" cx="-77" cy="17" r="3.4"/>
+        <path class="arrow2" d="M-84,-6 C-72,-18 -60,-25 -56,-26" marker-end="url(#fhs)"/>
+        <path class="arrow2" d="M0,-58 C10,-64 22,-64 25,-62" marker-end="url(#fhs)"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">3 &mdash; para</text>
+      </g>
+
+      <path class="dblarrow" d="M1172,250 L1226,250" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- Structure 4: ortho' -->
+      <g transform="translate(1300,250)">
+        <g class="bond">
+          <path d="M65,0 L32.5,56.3"/><path d="M32.5,56.3 L-32.5,56.3"/><path d="M-32.5,56.3 L-65,0"/>
+          <path d="M-65,0 L-32.5,-56.3"/><path d="M-32.5,-56.3 L32.5,-56.3"/><path d="M32.5,-56.3 L65,0"/>
+        </g>
+        <g class="bond2">
+          <path d="M22.1,47.2 L-22.1,47.2"/><path d="M-51.9,-4.4 L-29.8,-42.8"/>
+        </g>
+        <path class="bond" d="M65,0 L121,-33"/>
+        <path class="bond" d="M121,-33 L178,0"/>
+        <g class="bond2"><path d="M69.8,-11.0 L109.0,-34.1"/></g>
+        <text x="193" y="6" font-size="22" class="lbl">CH&#8323;</text>
+        <text x="100" y="-52" font-size="16" class="lbl">H</text>
+        <circle class="dot" cx="44" cy="-74" r="3.4"/>
+        <text x="0" y="98" text-anchor="middle" font-size="15" class="note">4 &mdash; ortho&#8242;</text>
+      </g>
+
+      <text x="800" y="30" text-anchor="middle" font-size="15" class="note">each step, two fishhooks: one off the radical dot forms the new bond; the other, off the adjacent ring &pi; bond, lands on the next carbon as the new radical.</text>
+      <text x="800" y="410" text-anchor="middle" font-size="15" class="teach">exactly one open-shell (single-dot) atom per structure &mdash; never two, never zero.</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- Q3 — ACID/BASE CLASSIFICATION -->
+<!-- ======================================================================= -->
+<section class="question" id="q3">
+  <h2>Q3 &nbsp;&mdash;&nbsp; Acid/base classification</h2>
+  <p class="qsub">Lewis acid/base is about electron pairs (accept/donate); Br&oslash;nsted acid/base is specifically about protons (donate/accept H&#8314;). A species can be both, or Lewis-only.</p>
+
+  <div class="panel">
+    <h3>A) Classify each species</h3>
+    <table class="classify">
+      <tr><th style="width:190px;">species</th><th style="width:230px;">classification</th><th>justification</th></tr>
+      <tr><td><span class="chg">&#8854;</span>C&#8801;N &nbsp;<span style="color:#999;font-size:13px;">(cyanide)</span></td><td>Lewis base + Br&oslash;nsted base</td><td>carbon lone pair donates; accepts H&#8314; &rarr; HCN</td></tr>
+      <tr><td>H&#8322;N<span class="chg">&#8854;</span> &nbsp;<span style="color:#999;font-size:13px;">(amide anion)</span></td><td>Lewis base + Br&oslash;nsted base</td><td>N lone pairs; conj. acid NH&#8323; pK<sub>a</sub> &asymp; 38</td></tr>
+      <tr><td>CH&#8323;CH&#8322;Br &nbsp;<span style="color:#999;font-size:13px;">(ethyl bromide)</span></td><td>Lewis acid (electrophile)</td><td>C&ndash;Br carbon accepts an electron pair as Br&#8315; departs</td></tr>
+      <tr><td>CH&#8323;COOH &nbsp;<span style="color:#999;font-size:13px;">(acetic acid)</span></td><td>Br&oslash;nsted acid</td><td>donates O&ndash;H proton, pK<sub>a</sub> &asymp; 4</td></tr>
+      <tr><td>HO<span class="chg">&#8854;</span> &nbsp;<span style="color:#999;font-size:13px;">(hydroxide)</span></td><td>Lewis base + Br&oslash;nsted base</td><td>conj. acid H&#8322;O pK<sub>a</sub> &asymp; 15.7</td></tr>
+      <tr><td>cyclohexene</td><td>Lewis base (weak Br&oslash;nsted base)</td><td>the &pi; bond is the donatable pair</td></tr>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h3>B) Rank by strength (as a base)</h3>
+    <div class="note-block">
+      <b>NH&#8322;<span class="chg">&#8854;</span> &mdash; STRONG</b> &nbsp;&middot;&nbsp;
+      <b>HO<span class="chg">&#8854;</span> &mdash; STRONG</b> &nbsp;&middot;&nbsp;
+      <b>CN<span class="chg">&#8854;</span> &mdash; WEAK</b> <span style="color:#666;font-weight:normal;">(conj. acid HCN pK<sub>a</sub> &asymp; 9)</span> &nbsp;&middot;&nbsp;
+      <b>cyclohexene &mdash; VERY WEAK</b>
+      <p class="teach" style="margin-top:8px;">the weaker the conjugate acid holds its proton (lower pK<sub>a</sub>), the weaker the base.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>C) Br&oslash;nsted acid vs. base, defined</h3>
+    <div class="note-block">
+      A Br&oslash;nsted acid donates a proton; a Br&oslash;nsted base accepts one. HCl + NH&#8323;: HCl is the acid, NH&#8323; is the base.
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- Q4 — MECHANISMS -->
+<!-- ======================================================================= -->
+<section class="question" id="q4">
+  <h2>Q4 &nbsp;&mdash;&nbsp; Mechanisms</h2>
+  <p class="qsub">Every arrow starts on electrons (a lone pair or a bond) and ends where they land (a new bond or a new lone pair).</p>
+
+  <!-- ---- 4A: phenethyl bromide + NaSH, SN2 ---- -->
+  <div class="panel">
+    <h3>A) PhCH&#8322;CH&#8322;Br + NaSH &rarr; PhCH&#8322;CH&#8322;SH &mdash; SUBSTITUTION (S<tspan baseline-shift="sub" font-size="70%">N</tspan>2), one concerted step</h3>
+    <svg class="diagram" viewBox="0 0 1400 520" xmlns="http://www.w3.org/2000/svg">
+      <text x="700" y="36" text-anchor="middle" font-size="15" class="note">the nucleophile attacks the carbon backside from Br &mdash; both arrows fire at once, no intermediate</text>
+
+      <!-- substrate: phenethyl bromide -->
+      <g transform="translate(200,280)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <path class="bond" d="M163,0 L219,-33"/>
+        <text x="227" y="-38" font-size="22" class="lbl">Br</text>
+      </g>
+
+      <!-- nucleophile HS- approaching backside -->
+      <path class="bond" d="M295,398 L328,378"/>
+      <text x="288" y="405" text-anchor="end" font-size="22" class="lbl">H</text>
+      <text x="336" y="382" font-size="22" class="lbl">S</text>
+      <circle class="dot" cx="345" cy="362" r="2.3"/><circle class="dot" cx="353" cy="369" r="2.3"/>
+      <circle class="chargeCircle" cx="332" cy="410" r="11"/>
+      <text x="332" y="414.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+
+      <!-- arrow 1: S lone pair -> C (backside) -->
+      <path class="arrow2" d="M349,359 C328,336 333,306 362,285" marker-end="url(#ahs)"/>
+      <!-- arrow 2: C-Br sigma -> Br -->
+      <path class="arrow2" d="M388,266 C399,258 409,252 415,248" marker-end="url(#ahs)"/>
+
+      <!-- reaction arrow -->
+      <path class="rxnarrow" d="M480,280 L570,280" marker-end="url(#rxn)"/>
+
+      <!-- product: phenethyl thiol -->
+      <g transform="translate(720,280)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <path class="bond" d="M163,0 L219,-33"/>
+        <text x="227" y="-38" font-size="22" class="lbl">SH</text>
+      </g>
+
+      <text x="1010" y="286" font-size="26" class="lbl">+</text>
+      <text x="1060" y="286" font-size="22" class="lbl">Br</text>
+      <circle class="chargeCircle" cx="1102" cy="270" r="11"/>
+      <text x="1102" y="274.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+
+      <!-- checkbox group -->
+      <g transform="translate(1245,420)">
+        <rect x="-85" y="-42" width="210" height="100" rx="8" class="chkgroup-frame"/>
+        <rect x="-68" y="-30" width="16" height="16" class="chkbox"/>
+        <path d="M-65,-21 L-61,-17 L-55,-28" class="chkmark"/>
+        <text x="-44" y="-17" font-size="16" class="lbl">substitution</text>
+        <rect x="-68" y="-6" width="16" height="16" class="chkbox"/>
+        <text x="-44" y="7" font-size="16" class="lbl">elimination</text>
+        <rect x="-68" y="18" width="16" height="16" class="chkbox"/>
+        <text x="-44" y="31" font-size="16" class="lbl">addition</text>
+      </g>
+
+      <text x="450" y="480" text-anchor="middle" font-size="17" class="teach">1&#176; carbon + great nucleophile = one-step S<tspan baseline-shift="sub" font-size="70%">N</tspan>2, inversion.</text>
+    </svg>
+  </div>
+
+  <!-- ---- 4B: embedded verbatim (verified sample) ---- -->
+  <div class="panel">
+    <h3>B) Propene + HBr &mdash; electrophilic ADDITION (embedded verbatim from the verified sample)</h3>
+    <svg class="diagram" viewBox="0 0 1240 560" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#c1121f"/>
+        </marker>
+        <marker id="rxn2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#111"/>
+        </marker>
+      </defs>
+
+      <text x="620" y="46" text-anchor="middle" font-size="26" font-weight="bold" fill="#111">4B.&#160;&#160;CH&#8323;CH=CH&#8322; &#160;+&#160; HBr &#160;&#8594;&#160; (CH&#8323;)&#8322;CHBr</text>
+      <text x="620" y="76" text-anchor="middle" font-size="19" fill="#444">Electrophilic addition &#183; Markovnikov &#183; two steps, one carbocation intermediate</text>
+
+      <g stroke="#111" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M120,330 L190,285"/>
+        <path d="M190,285 L260,330"/>
+        <path d="M196,296 L254,334" stroke-width="2.6"/>
+        <path d="M352,262 L398,262"/>
+      </g>
+      <text x="104" y="342" font-size="20" fill="#111" text-anchor="end">H&#8323;C</text>
+      <text x="340" y="269" font-size="21" fill="#111" text-anchor="middle">H</text>
+      <text x="416" y="269" font-size="21" fill="#111" text-anchor="middle">Br</text>
+
+      <path d="M228,300 C260,235 300,228 330,250" stroke="#c1121f" stroke-width="2.8" fill="none" marker-end="url(#ah2)"/>
+      <path d="M375,255 C382,232 402,230 412,244" stroke="#c1121f" stroke-width="2.8" fill="none" marker-end="url(#ah2)"/>
+
+      <text x="230" y="415" text-anchor="middle" font-size="17" fill="#666">step 1 &#8212; the &#960; bond grabs H; Br takes the &#963; electrons</text>
+
+      <path d="M455,300 L535,300" stroke="#111" stroke-width="3" fill="none" marker-end="url(#rxn2)"/>
+
+      <g stroke="#111" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M580,330 L650,285"/>
+        <path d="M650,285 L720,330"/>
+      </g>
+      <text x="564" y="342" font-size="20" fill="#111" text-anchor="end">H&#8323;C</text>
+      <text x="738" y="342" font-size="20" fill="#111">CH&#8323;</text>
+      <circle cx="650" cy="248" r="13" stroke="#0b5394" stroke-width="2.4" fill="none"/>
+      <text x="650" y="255" text-anchor="middle" font-size="19" font-weight="bold" fill="#0b5394">+</text>
+      <text x="726" y="352" font-size="15" fill="#999">H</text>
+      <text x="726" y="370" font-size="12" fill="#999">new C&#8211;H</text>
+
+      <text x="652" y="410" font-size="21" fill="#111" text-anchor="middle">Br</text>
+      <circle cx="676" cy="392" r="11" stroke="#0b5394" stroke-width="2.2" fill="none"/>
+      <text x="676" y="398" text-anchor="middle" font-size="16" font-weight="bold" fill="#0b5394">&#8722;</text>
+      <circle cx="637" cy="396" r="2.1" fill="#111"/><circle cx="644" cy="391" r="2.1" fill="#111"/>
+
+      <path d="M648,388 C640,350 640,320 648,300" stroke="#c1121f" stroke-width="2.8" fill="none" marker-end="url(#ah2)"/>
+
+      <text x="650" y="465" text-anchor="middle" font-size="17" fill="#666">2&#176; carbocation &#8212; the more substituted, more stable choice</text>
+      <text x="650" y="488" text-anchor="middle" font-size="17" fill="#666">step 2 &#8212; bromide&#8217;s lone pair attacks C&#8314;</text>
+
+      <path d="M790,300 L870,300" stroke="#111" stroke-width="3" fill="none" marker-end="url(#rxn2)"/>
+
+      <g stroke="#111" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M915,330 L985,285"/>
+        <path d="M985,285 L1055,330"/>
+        <path d="M985,285 L985,215"/>
+      </g>
+      <text x="899" y="342" font-size="20" fill="#111" text-anchor="end">H&#8323;C</text>
+      <text x="1073" y="342" font-size="20" fill="#111">CH&#8323;</text>
+      <text x="985" y="200" font-size="21" fill="#111" text-anchor="middle">Br</text>
+      <text x="985" y="380" text-anchor="middle" font-size="18" fill="#111">2-bromopropane</text>
+
+      <g transform="translate(1060,440)">
+        <rect x="-118" y="-24" width="236" height="100" rx="8" fill="none" stroke="#ccc" stroke-width="1.5"/>
+        <rect x="-100" y="-8" width="16" height="16" fill="none" stroke="#111" stroke-width="2"/>
+        <path d="M-97,-1 L-93,4 L-85,-12" stroke="#0b5394" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <text x="-74" y="6" font-size="17" fill="#111">addition</text>
+        <rect x="-100" y="18" width="16" height="16" fill="none" stroke="#111" stroke-width="2"/>
+        <text x="-74" y="32" font-size="17" fill="#888">substitution</text>
+        <rect x="-100" y="44" width="16" height="16" fill="none" stroke="#111" stroke-width="2"/>
+        <text x="-74" y="58" font-size="17" fill="#888">elimination</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- Q5 — WHY CARBOXYLIC ACID BEATS ALCOHOL -->
+<!-- ======================================================================= -->
+<section class="question" id="q5">
+  <h2>Q5 &nbsp;&mdash;&nbsp; Why carboxylic acid (pK<sub>a</sub>&asymp;4) beats alcohol (pK<sub>a</sub>&asymp;16)</h2>
+  <div class="note-block">
+    Acidity is decided by the <b>CONJUGATE BASE</b>. Acetate spreads its &#8722;1 over two equivalent oxygens by resonance (each O &asymp; &#8722;&#189;) and the carbonyl withdraws inductively; ethoxide&#8217;s &#8722;1 sits on one oxygen with nowhere to go. A stabler anion = an easier-to-lose proton = 12 pK<sub>a</sub> units.
+  </div>
+
+  <div class="panel">
+    <h3>Acetic acid &rarr; acetate (resonance-stabilized)</h3>
+    <svg class="diagram" viewBox="0 0 1300 460" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- acetic acid -->
+      <g transform="translate(160,260)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L52,-65"/>
+          <path d="M52,-5 L104,30"/>
+          <path d="M104,30 L146,5"/>
+        </g>
+        <g class="bond2"><path d="M60,-14 L60,-56"/></g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">H&#8323;C</text>
+        <text x="52" y="-73" text-anchor="middle" font-size="22" class="lbl">O</text>
+        <text x="112" y="24" font-size="22" class="lbl">O</text>
+        <text x="154" y="9" font-size="22" class="lbl">H</text>
+      </g>
+      <!-- generic base attacking the O-H proton -->
+      <text x="349" y="193" font-size="22" class="lbl">B</text>
+      <circle class="dot" cx="343" cy="213" r="2.3"/><circle class="dot" cx="352" cy="219" r="2.3"/>
+      <circle class="chargeCircle" cx="387" cy="191" r="11"/>
+      <text x="387" y="195.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+      <path class="arrow2" d="M347,217 C330,234 317,249 309,260" marker-end="url(#ahs)"/>
+      <path class="arrow2" d="M283,278 C278,290 270,290 264,289" marker-end="url(#ahs)"/>
+
+      <path class="rxnarrow" d="M430,260 L505,260" marker-end="url(#rxn)"/>
+      <text x="467" y="245" text-anchor="middle" font-size="13" class="note">+ BH</text>
+
+      <!-- acetate form 1 -->
+      <g transform="translate(600,260)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L52,-65"/>
+          <path d="M52,-5 L104,30"/>
+        </g>
+        <g class="bond2"><path d="M60,-14 L60,-56"/></g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">H&#8323;C</text>
+        <text x="52" y="-73" text-anchor="middle" font-size="22" class="lbl">O</text>
+        <text x="112" y="24" font-size="22" class="lbl">O</text>
+        <circle class="dot" cx="110" cy="48" r="2.3"/><circle class="dot" cx="122" cy="44" r="2.3"/>
+        <circle class="chargeCircle" cx="122" cy="60" r="11"/>
+        <text x="122" y="64.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+        <path class="arrow2" d="M112,42 C90,28 80,17 78,9" marker-end="url(#ahs)"/>
+        <path class="arrow2" d="M52,-35 C38,-46 36,-54 44,-59" marker-end="url(#ahs)"/>
+        <text x="40" y="90" text-anchor="middle" font-size="14" class="note">form 1</text>
+      </g>
+
+      <path class="dblarrow" d="M770,260 L840,260" marker-start="url(#dbl)" marker-end="url(#dbl)"/>
+
+      <!-- acetate form 2 -->
+      <g transform="translate(930,260)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L52,-65"/>
+          <path d="M52,-5 L104,30"/>
+        </g>
+        <g class="bond2"><path d="M55.9,6.1 L92.3,30.6"/></g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">H&#8323;C</text>
+        <text x="52" y="-73" text-anchor="middle" font-size="22" class="lbl">O</text>
+        <text x="112" y="24" font-size="22" class="lbl">O</text>
+        <circle class="dot" cx="60" cy="-84" r="2.3"/><circle class="dot" cx="72" cy="-80" r="2.3"/>
+        <circle class="chargeCircle" cx="72" cy="-96" r="11"/>
+        <text x="72" y="-91.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+        <text x="40" y="90" text-anchor="middle" font-size="14" class="note">form 2</text>
+      </g>
+
+      <text x="650" y="420" text-anchor="middle" font-size="16" class="teach">the (&#8722;) is shared equally &mdash; two equivalent resonance forms, each O carries about half the charge</text>
+    </svg>
+  </div>
+
+  <div class="panel">
+    <h3>Ethanol &rarr; ethoxide (localized &mdash; no resonance)</h3>
+    <svg class="diagram" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- ethanol -->
+      <g transform="translate(160,220)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L104,30"/>
+          <path d="M104,30 L146,5"/>
+        </g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">H&#8323;C</text>
+        <text x="112" y="24" font-size="22" class="lbl">O</text>
+        <text x="154" y="9" font-size="22" class="lbl">H</text>
+      </g>
+      <text x="349" y="153" font-size="22" class="lbl">B</text>
+      <circle class="dot" cx="343" cy="173" r="2.3"/><circle class="dot" cx="352" cy="179" r="2.3"/>
+      <circle class="chargeCircle" cx="387" cy="151" r="11"/>
+      <text x="387" y="155.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+      <path class="arrow2" d="M347,177 C330,194 317,209 309,220" marker-end="url(#ahs)"/>
+      <path class="arrow2" d="M283,238 C278,250 270,250 264,249" marker-end="url(#ahs)"/>
+
+      <path class="rxnarrow" d="M430,220 L505,220" marker-end="url(#rxn)"/>
+      <text x="467" y="205" text-anchor="middle" font-size="13" class="note">+ BH</text>
+
+      <!-- ethoxide -->
+      <g transform="translate(600,220)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L104,30"/>
+        </g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">H&#8323;C</text>
+        <text x="112" y="24" font-size="22" class="lbl">O</text>
+        <circle class="dot" cx="110" cy="48" r="2.3"/><circle class="dot" cx="122" cy="44" r="2.3"/>
+        <circle class="chargeCircle" cx="122" cy="60" r="11"/>
+        <text x="122" y="64.5" text-anchor="middle" font-size="14" class="chargeText">&#8722;</text>
+      </g>
+      <text x="820" y="225" text-anchor="middle" font-size="17" class="teach">localized &mdash;<tspan x="820" dy="20">no resonance</tspan></text>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- Q6 — PRODUCTS + CLASSIFICATION -->
+<!-- ======================================================================= -->
+<section class="question" id="q6">
+  <h2>Q6 &nbsp;&mdash;&nbsp; Products + classification</h2>
+  <p class="qsub">Reactions 1&ndash;3 share one 1&#176; substrate &mdash; watch the reagent alone flip the outcome. Reactions 4&ndash;7 change substrate too (two alkenes, a benzylic bromide), where addition and substitution take over.</p>
+
+  <!-- ---- Reaction 1 ---- -->
+  <div class="panel">
+    <h3>1) PhCH&#8322;CH&#8322;Br + KCN &rarr; PhCH&#8322;CH&#8322;C&#8801;N</h3>
+    <svg class="diagram" viewBox="0 0 1300 260" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(170,140)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <path class="bond" d="M163,0 L219,-33"/>
+        <text x="227" y="-38" font-size="22" class="lbl">Br</text>
+      </g>
+      <path class="rxnarrow" d="M420,140 L560,140" marker-end="url(#rxn)"/>
+      <text x="490" y="122" text-anchor="middle" font-size="19" class="lbl">KCN</text>
+      <g transform="translate(650,140)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <path class="bond" d="M163,0 L219,-33"/>
+        <g class="bond"><path d="M219,-33 L273,-33"/></g>
+        <g class="bond2"><path d="M227,-38 L265,-38"/><path d="M227,-28 L265,-28"/></g>
+        <text x="281" y="-27" font-size="22" class="lbl">N</text>
+      </g>
+      <g transform="translate(1150,140)">
+        <rect x="-70" y="-38" width="175" height="90" rx="6" class="chkgroup-frame"/>
+        <rect x="-56" y="-27" width="14" height="14" class="chkbox"/>
+        <path d="M-53.5,-19 L-50,-16 L-44.5,-25" class="chkmark"/>
+        <text x="-34" y="-16" font-size="14" class="lbl">substitution</text>
+        <rect x="-56" y="-5" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="6" font-size="14" class="lbl">elimination</text>
+        <rect x="-56" y="17" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="28" font-size="14" class="lbl">addition</text>
+      </g>
+      <text x="20" y="225" font-size="15" class="teach">CN&#8854;: strong nucleophile, weak base &rarr; S<tspan baseline-shift="sub" font-size="70%">N</tspan>2 on the 1&#176; carbon.</text>
+    </svg>
+  </div>
+
+  <!-- ---- Reaction 2 ---- -->
+  <div class="panel">
+    <h3>2) PhCH&#8322;CH&#8322;Br + KOH &rarr; PhCH&#8322;CH&#8322;OH</h3>
+    <svg class="diagram" viewBox="0 0 1300 260" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(170,140)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <path class="bond" d="M163,0 L219,-33"/>
+        <text x="227" y="-38" font-size="22" class="lbl">Br</text>
+      </g>
+      <path class="rxnarrow" d="M420,140 L560,140" marker-end="url(#rxn)"/>
+      <text x="490" y="122" text-anchor="middle" font-size="19" class="lbl">KOH</text>
+      <g transform="translate(650,140)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <path class="bond" d="M163,0 L219,-33"/>
+        <text x="227" y="-38" font-size="22" class="lbl">OH</text>
+      </g>
+      <g transform="translate(1150,140)">
+        <rect x="-70" y="-38" width="175" height="90" rx="6" class="chkgroup-frame"/>
+        <rect x="-56" y="-27" width="14" height="14" class="chkbox"/>
+        <path d="M-53.5,-19 L-50,-16 L-44.5,-25" class="chkmark"/>
+        <text x="-34" y="-16" font-size="14" class="lbl">substitution</text>
+        <rect x="-56" y="-5" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="6" font-size="14" class="lbl">elimination</text>
+        <rect x="-56" y="17" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="28" font-size="14" class="lbl">addition</text>
+      </g>
+      <text x="20" y="225" font-size="15" class="teach">small strong nucleophile, 1&#176; substrate &rarr; S<tspan baseline-shift="sub" font-size="70%">N</tspan>2 beats E2.</text>
+    </svg>
+  </div>
+
+  <!-- ---- Reaction 3 ---- -->
+  <div class="panel">
+    <h3>3) PhCH&#8322;CH&#8322;Br + KO<i>t</i>Bu &rarr; PhCH=CH&#8322; (styrene)</h3>
+    <svg class="diagram" viewBox="0 0 1300 260" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(170,140)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <path class="bond" d="M163,0 L219,-33"/>
+        <text x="227" y="-38" font-size="22" class="lbl">Br</text>
+      </g>
+      <path class="rxnarrow" d="M420,140 L560,140" marker-end="url(#rxn)"/>
+      <text x="490" y="122" text-anchor="middle" font-size="18" class="lbl">KO<tspan font-style="italic">t</tspan>Bu</text>
+      <g transform="translate(650,140)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <g class="bond2"><path d="M111,-22.0 L151,1.1"/></g>
+        <text x="171" y="8" font-size="22" class="lbl">CH&#8322;</text>
+      </g>
+      <g transform="translate(1150,140)">
+        <rect x="-70" y="-38" width="175" height="90" rx="6" class="chkgroup-frame"/>
+        <rect x="-56" y="-27" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="-16" font-size="14" class="lbl">substitution</text>
+        <rect x="-56" y="-5" width="14" height="14" class="chkbox"/>
+        <path d="M-53.5,3 L-50,6 L-44.5,-3" class="chkmark"/>
+        <text x="-34" y="6" font-size="14" class="lbl">elimination</text>
+        <rect x="-56" y="17" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="28" font-size="14" class="lbl">addition</text>
+      </g>
+      <text x="20" y="225" font-size="15" class="teach">bulky base can&#8217;t reach the carbon &rarr; E2; conjugated alkene is the payoff. Compare #2 &mdash; the ONLY change is base bulk.</text>
+    </svg>
+  </div>
+
+  <!-- ---- Reaction 4 ---- -->
+  <div class="panel">
+    <h3>4) 1-methylcyclopentene + HBr &rarr; 1-bromo-1-methylcyclopentane</h3>
+    <svg class="diagram" viewBox="0 0 1300 340" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(190,195)">
+        <g class="bond">
+          <path d="M0,-78 L74.2,-24.1"/>
+          <path d="M74.2,-24.1 L45.8,63.1"/>
+          <path d="M45.8,63.1 L-45.8,63.1"/>
+          <path d="M-45.8,63.1 L-74.2,-24.1"/>
+          <path d="M-74.2,-24.1 L0,-78"/>
+        </g>
+        <g class="bond2"><path d="M7.0,-64.2 L59.0,-26.5"/></g>
+        <path class="bond" d="M0,-78 L-45,-118"/>
+        <text x="-53" y="-116" text-anchor="end" font-size="21" class="lbl">H&#8323;C</text>
+      </g>
+      <path class="rxnarrow" d="M420,175 L560,175" marker-end="url(#rxn)"/>
+      <text x="490" y="157" text-anchor="middle" font-size="19" class="lbl">HBr</text>
+      <g transform="translate(700,195)">
+        <g class="bond">
+          <path d="M0,-78 L74.2,-24.1"/>
+          <path d="M74.2,-24.1 L45.8,63.1"/>
+          <path d="M45.8,63.1 L-45.8,63.1"/>
+          <path d="M-45.8,63.1 L-74.2,-24.1"/>
+          <path d="M-74.2,-24.1 L0,-78"/>
+        </g>
+        <path class="bond" d="M0,-78 L-30,-125"/>
+        <text x="-38" y="-123" text-anchor="end" font-size="21" class="lbl">H&#8323;C</text>
+        <path class="bond" d="M0,-78 L30,-125"/>
+        <text x="38" y="-123" font-size="21" class="lbl">Br</text>
+      </g>
+      <g transform="translate(1150,195)">
+        <rect x="-70" y="-38" width="175" height="90" rx="6" class="chkgroup-frame"/>
+        <rect x="-56" y="-27" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="-16" font-size="14" class="lbl">substitution</text>
+        <rect x="-56" y="-5" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="6" font-size="14" class="lbl">elimination</text>
+        <rect x="-56" y="17" width="14" height="14" class="chkbox"/>
+        <path d="M-53.5,25 L-50,28 L-44.5,19" class="chkmark"/>
+        <text x="-34" y="28" font-size="14" class="lbl">addition</text>
+      </g>
+      <text x="20" y="320" font-size="15" class="teach">Markovnikov: H to the CH, Br to the 3&#176; carbon via the 3&#176; carbocation.</text>
+    </svg>
+  </div>
+
+  <!-- ---- Reaction 5 ---- -->
+  <div class="panel">
+    <h3>5) PhCH&#8322;Br + Li<tspan baseline-shift="super" font-size="65%">+</tspan> &#8854;C&#8801;C&ndash;CH&#8323; &rarr; PhCH&#8322;C&#8801;C&ndash;CH&#8323;</h3>
+    <svg class="diagram" viewBox="0 0 1300 260" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(170,140)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,0"/>
+        <text x="171" y="8" font-size="22" class="lbl">Br</text>
+      </g>
+      <path class="rxnarrow" d="M420,140 L560,140" marker-end="url(#rxn)"/>
+      <text x="490" y="118" text-anchor="middle" font-size="17" class="lbl">Li&#8314;</text>
+      <text x="490" y="163" text-anchor="middle" font-size="17" class="lbl">&#8854;C&#8801;C&ndash;CH&#8323;</text>
+      <g transform="translate(650,140)">
+        <use href="#benz" x="-60" y="-60" width="120" height="120"/>
+        <path class="bond" d="M50,0 L106,-33"/>
+        <path class="bond" d="M106,-33 L163,-15"/>
+        <g class="bond"><path d="M163,-15 L219,-15"/></g>
+        <g class="bond2"><path d="M171,-20 L211,-20"/><path d="M171,-10 L211,-10"/></g>
+        <path class="bond" d="M219,-15 L263,10"/>
+        <text x="271" y="16" font-size="22" class="lbl">CH&#8323;</text>
+      </g>
+      <g transform="translate(1150,140)">
+        <rect x="-70" y="-38" width="175" height="90" rx="6" class="chkgroup-frame"/>
+        <rect x="-56" y="-27" width="14" height="14" class="chkbox"/>
+        <path d="M-53.5,-19 L-50,-16 L-44.5,-25" class="chkmark"/>
+        <text x="-34" y="-16" font-size="14" class="lbl">substitution</text>
+        <rect x="-56" y="-5" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="6" font-size="14" class="lbl">elimination</text>
+        <rect x="-56" y="17" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="28" font-size="14" class="lbl">addition</text>
+      </g>
+      <text x="20" y="225" font-size="15" class="teach">acetylide carbanion = carbon nucleophile; S<tspan baseline-shift="sub" font-size="70%">N</tspan>2 on the benzylic 1&#176; carbon.</text>
+    </svg>
+  </div>
+
+  <!-- ---- Reaction 6 ---- -->
+  <div class="panel">
+    <h3>6) Propene + HBr, peroxides/light &rarr; 1-bromopropane (anti-Markovnikov)</h3>
+    <svg class="diagram" viewBox="0 0 1300 260" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(170,140)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L104,30"/>
+        </g>
+        <g class="bond2"><path d="M11.7,30.6 L48.1,6.1"/></g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">H&#8322;C</text>
+        <text x="112" y="24" font-size="22" class="lbl">CH&#8323;</text>
+      </g>
+      <path class="rxnarrow" d="M420,140 L560,140" marker-end="url(#rxn)"/>
+      <text x="490" y="118" text-anchor="middle" font-size="17" class="lbl">HBr</text>
+      <text x="490" y="163" text-anchor="middle" font-size="15" class="lbl">peroxides, h&#957;</text>
+      <g transform="translate(700,140)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L104,30"/>
+          <path d="M104,30 L156,-5"/>
+        </g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">Br</text>
+        <text x="164" y="1" font-size="22" class="lbl">CH&#8323;</text>
+      </g>
+      <g transform="translate(1150,140)">
+        <rect x="-70" y="-38" width="175" height="90" rx="6" class="chkgroup-frame"/>
+        <rect x="-56" y="-27" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="-16" font-size="14" class="lbl">substitution</text>
+        <rect x="-56" y="-5" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="6" font-size="14" class="lbl">elimination</text>
+        <rect x="-56" y="17" width="14" height="14" class="chkbox"/>
+        <path d="M-53.5,25 L-50,28 L-44.5,19" class="chkmark"/>
+        <text x="-34" y="28" font-size="14" class="lbl">addition</text>
+      </g>
+      <text x="20" y="225" font-size="15" class="teach">radical chain flips the regiochemistry: anti-Markovnikov.</text>
+    </svg>
+  </div>
+
+  <!-- ---- Reaction 7 ---- -->
+  <div class="panel">
+    <h3>7) Propene + 1. BH&#8323; 2. NaOH/H&#8322;O&#8322; &rarr; 1-propanol (anti-Markovnikov, syn addition)</h3>
+    <svg class="diagram" viewBox="0 0 1300 260" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(170,140)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L104,30"/>
+        </g>
+        <g class="bond2"><path d="M11.7,30.6 L48.1,6.1"/></g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">H&#8322;C</text>
+        <text x="112" y="24" font-size="22" class="lbl">CH&#8323;</text>
+      </g>
+      <path class="rxnarrow" d="M420,140 L560,140" marker-end="url(#rxn)"/>
+      <text x="490" y="118" text-anchor="middle" font-size="15" class="lbl">1. BH&#8323;</text>
+      <text x="490" y="163" text-anchor="middle" font-size="15" class="lbl">2. NaOH, H&#8322;O&#8322;</text>
+      <g transform="translate(700,140)">
+        <g class="bond">
+          <path d="M0,30 L52,-5"/>
+          <path d="M52,-5 L104,30"/>
+          <path d="M104,30 L156,-5"/>
+        </g>
+        <text x="-10" y="38" text-anchor="end" font-size="22" class="lbl">HO</text>
+        <text x="164" y="1" font-size="22" class="lbl">CH&#8323;</text>
+      </g>
+      <g transform="translate(1150,140)">
+        <rect x="-70" y="-38" width="175" height="90" rx="6" class="chkgroup-frame"/>
+        <rect x="-56" y="-27" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="-16" font-size="14" class="lbl">substitution</text>
+        <rect x="-56" y="-5" width="14" height="14" class="chkbox"/>
+        <text x="-34" y="6" font-size="14" class="lbl">elimination</text>
+        <rect x="-56" y="17" width="14" height="14" class="chkbox"/>
+        <path d="M-53.5,25 L-50,28 L-44.5,19" class="chkmark"/>
+        <text x="-34" y="28" font-size="14" class="lbl">addition</text>
+      </g>
+      <text x="20" y="225" font-size="15" class="teach">hydroboration-oxidation: anti-Markovnikov OH, syn addition.</text>
+    </svg>
+  </div>
+</section>
+
+<footer style="text-align:center;margin-top:70px;padding-top:20px;border-top:1px solid #e2e2e2;color:#999;font-size:13px;">OC Study Guide &mdash; for study use only</footer>
+
+</div>
+</body></html>
