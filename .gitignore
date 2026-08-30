@@ -62,6 +62,15 @@ king-maker-codes.txt
 mabrey-roofing/
 groovy-lighting/
 wildcat-cctv/
+# Client-repo WORKTREES. The client repos above are ignored, but a worktree
+# created beside them is a sibling directory that inherits none of that — 12
+# `wildcat-wt-*` dirs sat untracked-but-unignored in this PUBLIC repo's working
+# tree until 2026-08-30, one `git add -A` away from publishing a client site.
+# The dirs are gone; these patterns stop the next ones from reopening it.
+wildcat-wt-*/
+mabrey-wt-*/
+groovy-wt-*/
+groovy-worktrees/
 mabrey-crm-app/
 mabrey-docs/
 mabrey-construction/
@@ -164,3 +173,8 @@ vault/_ark/_unlocked/
 
 # retired agent boot briefs — never publish (contains fenced-path map + prod flags)
 AGENTS.md.bak-*
+
+# Local agent permissions + SessionEnd hook. Untracked 2026-08-30: this repo is
+# PUBLIC, and the file named the session-end script path plus a 28-entry
+# allowlist of what agents may run unprompted. No secrets were in it.
+.claude/settings.local.json
