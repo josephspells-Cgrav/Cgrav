@@ -60,6 +60,8 @@ king-maker-codes.txt
 # them here creates gitlink entries, the exact rot dropped in 3f0dabf
 # ("two phantom gitlink entries, showing as permanent D since April").
 mabrey-roofing/
+groovy-lighting/
+wildcat-cctv/
 mabrey-crm-app/
 mabrey-docs/
 mabrey-construction/
@@ -155,3 +157,10 @@ yt-research/**/*.webm
 # as a plain folder and would commit 14,723 files incl. .next build output.
 mabrey-blueprint-forge/
 memory_check_output.txt
+
+# recovery — decrypted secrets never leave the machine
+recovery/_unlocked/
+vault/_ark/_unlocked/
+
+# retired agent boot briefs — never publish (contains fenced-path map + prod flags)
+AGENTS.md.bak-*
