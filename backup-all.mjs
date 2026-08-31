@@ -73,7 +73,7 @@ try {
   const SKILLS_SNAP = `${ROOT}/vault/_skills-snapshot`;
   // .patch/.diff added 2026-08-31: wo/ holds partial-work patches that are the only
   // record of some lanes, and they were silently dropped by the ext-filter.
-  const KEEP = new Set(['.md','.mdx','.mjs','.js','.cjs','.ts','.tsx','.jsx','.py','.json','.txt','.css','.scss','.html','.svg','.yaml','.yml','.sh','.toml','.patch','.diff']);
+  const KEEP = new Set(['.md','.mdx','.mjs','.js','.cjs','.ts','.tsx','.jsx','.py','.json','.txt','.css','.scss','.html','.svg','.yaml','.yml','.sh','.toml','.patch','.diff','.ps1']);
   const SKIP_DIR = new Set(['node_modules','out','dist','coverage','test-results','playwright-report']);
   // dotFiles=false by default. The blanket dot-skip exists to avoid .git/.next/.vercel,
   // but it also silently drops dot-FILES — which cost wo/ two source files that were
@@ -106,6 +106,16 @@ try {
   // NOTE: some files here contain customer-identifying detail. They ride into the
   // PRIVATE vault only. This is the reason wo/ must never be tracked in this repo.
   copyTree(`${ROOT}/wo`, `${ROOT}/vault/_wo-snapshot`, true);  // dotFiles ON: wo/ holds .a5-*.mjs sources
+
+  // 2026-08-31 (Phase 3): recovery/ — THE RUNBOOK ITSELF. vault/_recovery was a
+  // one-time hand copy from 08-28 that NOTHING refreshed: probed today, its
+  // backup-all.mjs was from JUN 19 and two scripts were already stale. The one
+  // directory whose staleness you discover *while recovering* was the one on
+  // nobody's refresh path — the same rot that made the memory snapshot automated
+  // in the first place (see the note at the top of this file).
+  // Two of these are untracked in this PUBLIC repo on purpose; the private vault
+  // is the correct home for them, so this snapshot is their only backup.
+  copyTree(`${ROOT}/recovery`, `${ROOT}/vault/_recovery`, true);
 
   copyTree(`${CLAUDE_HOME}/skills`, `${SKILLS_SNAP}/skills`);
   copyTree(`${CLAUDE_HOME}/hooks`, `${SKILLS_SNAP}/hooks`);
