@@ -28,6 +28,15 @@ const REPOS = [
   `${ROOT}/kingmaker`,
   `${ROOT}/blackboard`,
   'C:/Users/josep/.claude',
+  // 2026-08-31 (Phase 3): both of these had NO REMOTE AT ALL — 49 and 47 commits,
+  // ~1.5GB combined, living on one disk. recovery-census.mjs had been reporting
+  // them as findings the whole time; nothing ran the census. Private remotes were
+  // created and pushed (fetch-back verified), and they are listed HERE rather than
+  // left hand-pushed, because this file's own history records ~/.claude going
+  // 22 DAYS / 15 files stale as a hand-pushed repo. A remote nothing pushes to is
+  // a snapshot, not a backup.
+  `${ROOT}/groovy-lighting`,
+  `${ROOT}/wildcat-cctv`,
 ];
 
 const stamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
