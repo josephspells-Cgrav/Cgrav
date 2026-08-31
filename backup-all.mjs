@@ -17,11 +17,17 @@ const MEMORY_SRC = 'C:/Users/josep/.claude/projects/C--Users-josep-Claude-Gravit
 const SNAPSHOT = `${ROOT}/vault/_memory-snapshot`;
 
 // PRIVATE repos only — the public Cgrav repo is deliberately excluded.
+// 2026-08-28 (recovery v2): ~/.claude added. It was pushed by hand and had gone
+// 22 DAYS / 15 files stale — the one asset with no other source on earth, and
+// the one whose loss fails SILENTLY (a missing gate does not error, the fleet
+// just runs dumber). Its repo is default-deny allowlisted and settings.json is
+// excluded, so auto-pushing it cannot leak the token class the 08-06 sweep found.
 const REPOS = [
   `${ROOT}/vault`,
   `${ROOT}/king_maker_outbound`,
   `${ROOT}/kingmaker`,
   `${ROOT}/blackboard`,
+  'C:/Users/josep/.claude',
 ];
 
 const stamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
@@ -65,6 +71,19 @@ try {
       atomicCopy(s, d);
     }
   };
+  // 2026-08-30 (Phase 3, OS71): wo/ TEXT snapshot. wo/ is 812 files / 1.8GB living
+  // untracked in the PUBLIC Cgrav repo with ZERO backup coverage — grep this file before
+  // 08-30 and "wo" appears nowhere. It holds DEFECT_ESCAPE_LEDGER.md (95 rows of
+  // paid-for defect history, no other copy on earth), every work order, brief and
+  // evidence pack, and wo/roundtable/.
+  // Only the TEXT rides: the KEEP ext-filter above already excludes the 1,697MB of
+  // groovy-brand media by construction. That media is NOT covered here and is not
+  // meant to be — it belongs to the groovy-lighting media gap already logged above,
+  // and bundling it would turn a 42MB problem into a 1.8GB one.
+  // NOTE: some files here contain customer-identifying detail. They ride into the
+  // PRIVATE vault only. This is the reason wo/ must never be tracked in this repo.
+  copyTree(`${ROOT}/wo`, `${ROOT}/vault/_wo-snapshot`);
+
   copyTree(`${CLAUDE_HOME}/skills`, `${SKILLS_SNAP}/skills`);
   copyTree(`${CLAUDE_HOME}/hooks`, `${SKILLS_SNAP}/hooks`);
   if (fs.existsSync(`${CLAUDE_HOME}/CLAUDE.md`)) {
@@ -94,11 +113,35 @@ try {
   // ext-filter) — mabrey's images are Higgsfield-regenerable today; revisit when Sean's
   // REAL job photos land (§8 intake) — those become irreplaceable and must be added here.
   const SITES_SNAP = `${ROOT}/vault/_client-sites-snapshot`;
-  for (const site of ['mabrey-roofing', 'summit-oak-roofing']) {
+  // 2026-08-29 (Groovy Agent 2): groovy-lighting ADDED. It had ZERO backup coverage of
+  // any kind — no git remote, gitignored by the parent repo, absent from REPOS, and absent
+  // from this list — so the deployed site, 11 theme boards, 143 gallery images, the blessed
+  // hero video work and a 51-file build all lived on ONE disk. Same private-vault route
+  // mabrey-roofing and summit-oak-roofing already ride; not a new destination.
+  // KNOWN RESIDUAL, stated not hidden: the ext-filter above captures SOURCE only, so
+  // groovy-lighting's /public media (143 AI-generated gallery stills + the hero videos) is
+  // still NOT covered. Those cost Higgsfield credits and the blessed hero is not trivially
+  // regenerable. Same shape as the mabrey note above about Sean's real job photos.
+  for (const site of ['mabrey-roofing', 'summit-oak-roofing', 'groovy-lighting']) {
     if (fs.existsSync(`${ROOT}/${site}`)) copyTree(`${ROOT}/${site}`, `${SITES_SNAP}/${site}`);
   }
   log.push('skills+hooks+firm-site+client-deliverables+client-sites snapshot refreshed');
 } catch (e) { log.push(`skills-snapshot ERROR: ${String(e.message || e).split('\n')[0]}`); }
+
+// 1c) Re-seal the CREDENTIAL ARK (2026-08-28, recovery v2) — must run BEFORE the
+//     vault commit below so the fresh blob rides the vault's proven push.
+//     Only fires when CGRAV_SECRETS_PASS is set. That env var adds NO marginal
+//     exposure: an attacker with disk access already has every plaintext .env it
+//     encrypts. If it is absent the ark simply goes stale, and recovery-census.mjs
+//     reports that staleness as a finding — fail loud, never fail silent.
+try {
+  if (process.env.CGRAV_SECRETS_PASS) {
+    sh(`node "${ROOT}/recovery/secrets-bundle.mjs" lock`, ROOT);
+    log.push('credential ark re-sealed');
+  } else {
+    log.push('ark SKIPPED (CGRAV_SECRETS_PASS unset) — census will flag it stale');
+  }
+} catch (e) { log.push(`ark ERROR: ${String(e.message || e).split('\n')[0]}`); }
 
 // 2) Commit + push each private repo.
 for (const repo of REPOS) {
