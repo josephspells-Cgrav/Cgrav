@@ -178,3 +178,9 @@ AGENTS.md.bak-*
 # PUBLIC, and the file named the session-end script path plus a 28-entry
 # allowlist of what agents may run unprompted. No secrets were in it.
 .claude/settings.local.json
+
+# 2026-08-30 (Phase 3): wo/ is 1.8GB of work-product incl. customer geocoords in a
+# PUBLIC repo, untracked and UNIGNORED — one `git add -A` from publication and one
+# `git clean -fd` from gone. Ignoring closes the add gun and makes `clean -fd` skip it.
+# The 206 already-tracked files stay tracked until they are deliberately untracked.
+wo/
