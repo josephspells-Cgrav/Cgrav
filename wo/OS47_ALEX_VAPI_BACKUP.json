@@ -1,7 +1,0 @@
-{
- "voicemailDetection": null,
- "voicemailMessage": "Hi, this is Alex with Mabrey Roofing — just following up on your roofing request. I'll try you again soon, or feel free to give us a call anytime. Thanks so much",
- "startSpeakingPlan": {
-  "waitSeconds": 0.4
- }
-}

@@ -71,14 +71,24 @@ try {
 try {
   const CLAUDE_HOME = 'C:/Users/josep/.claude';
   const SKILLS_SNAP = `${ROOT}/vault/_skills-snapshot`;
-  const KEEP = new Set(['.md','.mdx','.mjs','.js','.cjs','.ts','.tsx','.jsx','.py','.json','.txt','.css','.scss','.html','.svg','.yaml','.yml','.sh','.toml']);
+  // .patch/.diff added 2026-08-31: wo/ holds partial-work patches that are the only
+  // record of some lanes, and they were silently dropped by the ext-filter.
+  const KEEP = new Set(['.md','.mdx','.mjs','.js','.cjs','.ts','.tsx','.jsx','.py','.json','.txt','.css','.scss','.html','.svg','.yaml','.yml','.sh','.toml','.patch','.diff']);
   const SKIP_DIR = new Set(['node_modules','out','dist','coverage','test-results','playwright-report']);
-  const copyTree = (src, dst) => {
+  // dotFiles=false by default. The blanket dot-skip exists to avoid .git/.next/.vercel,
+  // but it also silently drops dot-FILES — which cost wo/ two source files that were
+  // its only copy. Opt-in per call rather than globally: turning it on everywhere would
+  // start sweeping .env files out of client lanes into this snapshot, and those belong
+  // in the encrypted ark, not here. Dot-DIRECTORIES stay skipped either way.
+  const copyTree = (src, dst, dotFiles = false) => {
     if (!fs.existsSync(src)) return;
     for (const e of fs.readdirSync(src, { withFileTypes: true })) {
-      if (e.name.startsWith('.') || SKIP_DIR.has(e.name)) continue;   // skip dotdirs (.next/.git/.vercel/.wo0*) + heavy/regenerable dirs
+      if (SKIP_DIR.has(e.name)) continue;                              // heavy/regenerable dirs
+      if (e.isDirectory() && e.name.startsWith('.')) continue;         // .next/.git/.vercel/.wo0*
+      if (!e.isDirectory() && e.name.startsWith('.') && !dotFiles) continue;
+      if (!e.isDirectory() && /^\.env(\.|$)/.test(e.name)) continue;   // never here — ark only
       const s = path.join(src, e.name), d = path.join(dst, e.name);
-      if (e.isDirectory()) { copyTree(s, d); continue; }
+      if (e.isDirectory()) { copyTree(s, d, dotFiles); continue; }
       if (!KEEP.has(path.extname(e.name).toLowerCase())) continue;   // source/IP only — skip binary assets (mp3/png/webp)
       fs.mkdirSync(path.dirname(d), { recursive: true });
       atomicCopy(s, d);
@@ -95,7 +105,7 @@ try {
   // and bundling it would turn a 42MB problem into a 1.8GB one.
   // NOTE: some files here contain customer-identifying detail. They ride into the
   // PRIVATE vault only. This is the reason wo/ must never be tracked in this repo.
-  copyTree(`${ROOT}/wo`, `${ROOT}/vault/_wo-snapshot`);
+  copyTree(`${ROOT}/wo`, `${ROOT}/vault/_wo-snapshot`, true);  // dotFiles ON: wo/ holds .a5-*.mjs sources
 
   copyTree(`${CLAUDE_HOME}/skills`, `${SKILLS_SNAP}/skills`);
   copyTree(`${CLAUDE_HOME}/hooks`, `${SKILLS_SNAP}/hooks`);
