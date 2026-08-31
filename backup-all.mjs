@@ -32,7 +32,11 @@ const REPOS = [
 
 const stamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
 const log = [];
-const sh = (cmd, cwd) => execSync(cmd, { cwd, stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, GIT_TERMINAL_PROMPT: '0' }, timeout: 60000 }).toString().trim();
+// 2026-08-30: timeout is now a parameter. It was hardcoded to 60s, which is right for
+// git but killed the mempalace snapshot mid-copy and left a PARTIAL generation on disk
+// that looks exactly like a real one. Found by testing the branch rather than the
+// happy path — the skip path passed cleanly and told us nothing.
+const sh = (cmd, cwd, timeout = 60000) => execSync(cmd, { cwd, stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, GIT_TERMINAL_PROMPT: '0' }, timeout }).toString().trim();
 // 2026-08-04 (memory audit): ATOMIC copy — plain copyFileSync left a null-byte wreck of
 // useLeadSubmit.tsx in _client-sites-snapshot when a run died mid-copy. Temp + rename is
 // atomic on the same volume; a killed run leaves a .tmp, never plausible-looking garbage.
@@ -142,6 +146,38 @@ try {
     log.push('ark SKIPPED (CGRAV_SECRETS_PASS unset) — census will flag it stale');
   }
 } catch (e) { log.push(`ark ERROR: ${String(e.message || e).split('\n')[0]}`); }
+
+// 1d) mempalace snapshot (Phase 3, 2026-08-30). 380MB, 38,297 records, no git, no
+//     remote, and absent from this file until tonight — the largest memory store on
+//     the machine and the last one with no copy of any kind. It is a LIVE SQLite +
+//     HNSW vector store, so "git init and push" is wrong for it twice over:
+//     chroma.sqlite3 is ~269MB (past GitHub's blob ceiling, so the plan does not even
+//     ship), and a naive copy tears the vector index away from the metadata it
+//     indexes — a tear that is invisible until someone actually needs the restore.
+//     mempalace-snapshot.mjs proves a quiet window instead of assuming one: it hashes
+//     the live store, copies, then re-hashes and discards the copy if anything moved.
+//     AGE-GATED to 12h — this file runs on SessionEnd from several places, and a
+//     400MB copy on every one of them would be its own denial of service.
+try {
+  const MP_OUT = 'C:/Users/josep/.mempalace-backups';
+  const TWELVE_H = 12 * 60 * 60 * 1000;
+  let newest = 0;
+  if (fs.existsSync(MP_OUT)) {
+    for (const e of fs.readdirSync(MP_OUT, { withFileTypes: true })) {
+      if (e.isDirectory()) newest = Math.max(newest, fs.statSync(path.join(MP_OUT, e.name)).mtimeMs);
+    }
+  }
+  if (Date.now() - newest > TWELVE_H) {
+    // 15 min: hashing 380MB twice plus the copy runs well past the 60s default.
+    sh(`node "${ROOT}/recovery/mempalace-snapshot.mjs"`, ROOT, 15 * 60 * 1000);
+    log.push('mempalace snapshot taken + validated');
+  } else {
+    log.push('mempalace snapshot fresh (<12h) — skipped');
+  }
+} catch (e) {
+  const first = String(e.message || e).split('\n')[0];
+  log.push(`mempalace snapshot FAILED: ${first}`);
+}
 
 // 2) Commit + push each private repo.
 for (const repo of REPOS) {
