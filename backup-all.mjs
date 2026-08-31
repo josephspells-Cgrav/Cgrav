@@ -147,6 +147,41 @@ try {
   }
 } catch (e) { log.push(`ark ERROR: ${String(e.message || e).split('\n')[0]}`); }
 
+// 1c-bis) RUN the recovery census (Phase 3, 2026-08-30). The comment above claimed
+//     "recovery-census.mjs reports that staleness as a finding — fail loud, never
+//     fail silent." It does report it, correctly, exiting 1 and naming the exact
+//     remediation command. This file just never CALLED it — 0 invocations, probed.
+//     Its only real invoker was bootstrap-new-machine.ps1, which runs during a
+//     REBUILD: the instrument that tells you your backups are broken fired only
+//     after the disaster it exists to prevent.
+//     ⚖️ A comment asserting that another instrument covers this is not coverage —
+//     it is worse than silence, because naming the safety net is what convinces
+//     every subsequent reader that one exists.
+//     Age-gated to 24h: the census walks every repo and queries Vercel, so it is
+//     far too slow to run on every SessionEnd.
+try {
+  const CENSUS_STAMP = `${ROOT}/.recovery-census-last.txt`;
+  const DAY = 24 * 60 * 60 * 1000;
+  const last = fs.existsSync(CENSUS_STAMP) ? fs.statSync(CENSUS_STAMP).mtimeMs : 0;
+  if (Date.now() - last > DAY) {
+    let out = '';
+    try {
+      out = sh(`node "${ROOT}/recovery/recovery-census.mjs"`, ROOT, 10 * 60 * 1000);
+    } catch (e) {
+      // exit 1 IS the census finding things — capture stdout, do not treat as a crash
+      out = String((e.stdout && e.stdout.toString()) || e.message || '');
+    }
+    fs.writeFileSync(CENSUS_STAMP, out);
+    const findings = (out.match(/^\s*!!/gm) || []).length;
+    log.push(findings
+      ? `🔴 RECOVERY CENSUS: ${findings} finding(s) — see .recovery-census-last.txt`
+      : 'recovery census: clean');
+    for (const line of (out.match(/^\s*!!.*$/gm) || []).slice(0, 6)) log.push(`   ${line.trim()}`);
+  } else {
+    log.push('recovery census fresh (<24h) — skipped');
+  }
+} catch (e) { log.push(`recovery census ERROR: ${String(e.message || e).split('\n')[0]}`); }
+
 // 1d) mempalace snapshot (Phase 3, 2026-08-30). 380MB, 38,297 records, no git, no
 //     remote, and absent from this file until tonight — the largest memory store on
 //     the machine and the last one with no copy of any kind. It is a LIVE SQLite +

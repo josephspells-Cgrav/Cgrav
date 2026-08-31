@@ -184,3 +184,7 @@ AGENTS.md.bak-*
 # `git clean -fd` from gone. Ignoring closes the add gun and makes `clean -fd` skip it.
 # The 206 already-tracked files stay tracked until they are deliberately untracked.
 wo/
+
+# runtime state — census output names credential KEYS; this repo is public
+.recovery-census-last.txt
+.backup-log.txt
