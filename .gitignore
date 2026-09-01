@@ -188,3 +188,16 @@ wo/
 # runtime state — census output names credential KEYS; this repo is public
 .recovery-census-last.txt
 .backup-log.txt
+
+# 2026-09-01 (OS71 handoff): the 08-31 wo/ fix hunted a SHAPE, not the VALUE.
+# Five more untracked paths sat in this PUBLIC repo, unignored — agent scratch,
+# external-seat output and client research, one `git add -A` from publication and
+# one `git clean -fd` from gone. Same class as wo/, missed because the earlier
+# sweep matched the directory NAME instead of the property "untracked business
+# IP in a public repo". Ignoring closes the add gun on all of them.
+.k3-census/
+.kimi-os65-w2/
+.mabrey-sweep/
+ultra-research/
+KIMI_ADVISOR_*.md
+KIMI_JUDGE_*.md
