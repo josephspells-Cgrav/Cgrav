@@ -77,7 +77,11 @@ const JOURNAL = join(SRC, 'palace', 'chroma.sqlite3-journal');
 if (existsSync(JOURNAL)) die('chroma.sqlite3-journal present — a write transaction is in flight. Re-run in a minute.');
 say('ok    step 1  abort-gate: no rollback journal');
 
-const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+// ET-stamped (2026-09-01, item 13): UTC names dated generations "tomorrow" for
+// evening work — an artifact dated in the wrong day seeds wrong-day claims for
+// every future reader. The operation runs ET; its artifacts are named in ET.
+const _p = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).formatToParts(new Date()).reduce((a, x) => (a[x.type] = x.value, a), {});
+const stamp = `${_p.year}-${_p.month}-${_p.day}T${_p.hour}-${_p.minute}-${_p.second}-ET`;
 const gen = join(OUT, stamp);
 summaryPath = join(OUT, `${stamp}.RECEIPT.txt`);
 
@@ -172,7 +176,7 @@ try {
 
 // ---- STEP 7: manifest + restore instructions travel WITH the generation.
 writeFileSync(join(gen, 'MANIFEST.json'), JSON.stringify({
-  created: new Date().toISOString(), source: SRC, files: Object.keys(pre).length,
+  created: new Date().toISOString(), createdET: stamp, source: SRC, files: Object.keys(pre).length,
   runtime: 'the store is only readable through mempalace + chromadb + the uv-managed python; record versions before restoring',
   validation: notes, manifest: pre,
 }, null, 2));
