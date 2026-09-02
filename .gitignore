@@ -201,3 +201,6 @@ wo/
 ultra-research/
 KIMI_ADVISOR_*.md
 KIMI_JUDGE_*.md
+
+# third-party agent skills installed per-project (2026-09-02, video lane): reproducible from upstream via skills-lock.json / git clone; never publish a stranger's tree from this PUBLIC repo
+.claude/skills/
